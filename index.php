@@ -39,7 +39,7 @@ if (isset($_SESSION["user_id"])) {
             </div>
 
             <div class="right">
-                <button><?= htmlspecialchars($user["first_name"]) ?></button>
+                <a href="patient_details.php"><?= htmlspecialchars($user["first_name"]) ?></a>
                 <a href="logout.php">Log Out</a>
             </div>
         </header>
