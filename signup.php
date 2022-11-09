@@ -33,7 +33,11 @@ $stmt->bind_param("sssssss",
                     $_POST["email"],
                     $password_hash);
 
-$stmt->execute();
+if ($stmt->execute()) {
 
-print_r($_POST);
-var_dump($password_hash);
+    header("Location: login.php");
+    exit;
+
+} else {
+    die($mysqli->error."".$mysqli->errno);
+}
