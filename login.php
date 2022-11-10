@@ -57,8 +57,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
 
         <div class="right">
-            <button>LOGIN</button>
-            <button>SIGN UP</button>
+            <a href="login.php">LOGIN</a>
+            <a href="signup.html">SIGN UP</a>
         </div>
     </header>
 

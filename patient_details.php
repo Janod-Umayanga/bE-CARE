@@ -24,7 +24,7 @@ if (isset($_SESSION["user_id"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=\, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Patient-Signup</title>
+    <title>Patient-Details</title>
 </head>
 <body>
 
@@ -89,10 +89,10 @@ if (isset($_SESSION["user_id"])) {
                         <input type="text" id="gender" name="gender" value="<?= htmlspecialchars($user["gender"] ?? "") ?>" required="true">
 
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" value="<?= htmlspecialchars($user["email"] ?? "") ?>" required="true">
+                        <p><?= htmlspecialchars($user["email"] ?? "") ?></p>
 
                         <!-- <label for="password">Password</label>
-                        <input type="password" id="password" name="password" value="<?= htmlspecialchars($user["password"] ?? "") ?>" required="true">
+                        <input type="password" id="password" name="password" required="true">
 
                         <label for="password_confirmation">Confirm Password</label>
                         <input type="password" id="password_confirmation" name="password_confirmation" required="true"> -->

@@ -14,7 +14,7 @@ if (isset($_SESSION["user_id"])) {
 
 }
 
-$sql = "UPDATE patient SET first_name=?, last_name=?, nic=?, contact_number=?, gender=?, email=? WHERE patient_id=? ";
+$sql = "UPDATE patient SET first_name=?, last_name=?, nic=?, contact_number=?, gender=? WHERE patient_id=? ";
 
 
 $stmt = $mysqli->stmt_init();
@@ -23,13 +23,12 @@ if( ! $stmt->prepare($sql)) {
     die("SQL error: ".$mysqli->error);
 }
 
-$stmt->bind_param("ssssssd",
+$stmt->bind_param("sssssd",
                     $_POST["fname"],
                     $_POST["lname"],
                     $_POST["nic"],
                     $_POST["cnumber"],
                     $_POST["gender"],
-                    $_POST["email"],
                     $user["patient_id"]);
 
 if ($stmt->execute()) {

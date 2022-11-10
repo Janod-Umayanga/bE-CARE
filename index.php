@@ -56,23 +56,34 @@ if (isset($_SESSION["user_id"])) {
             </div>
 
             <div class="right">
-                <button>LOGIN</button>
-                <button>SIGN UP</button>
+                <a href="login.php">LOGIN</a>
+                <a href="signup.html">SIGN UP</a>
             </div>
         </header>
 
     <?php endif; ?>
 
-    <sectionc class="signup">
-
-        <div class="content">
-
-                <h1>Paient Home</h1>
-
-                
-
-        </div>
-
+    <section class="patient-approaches">
+            <ul>
+                <li>
+                <a href="#">Channel a Doctor</a>
+                </li>
+                <li>
+                <a href="#">Channel a Counsellor</a>
+                </li>
+                <li>
+                <a href="#">Order Medicine</a>
+                </li>
+                <li>
+                <a href="#">Request a Diet Plan</a>
+                </li>
+                <li>
+                <a href="#">Register for a Meditation Instructor</a>
+                </li>
+                <li>
+                <a href="#">Register for a Session</a>
+                </li>
+            </ul>
     </section>
 
     <footer>
