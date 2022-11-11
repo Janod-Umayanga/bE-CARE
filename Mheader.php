@@ -21,10 +21,9 @@
 
                 <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="requestedservice.php">Requested service providers</a>
-                <a href="accountManagement.php">Account Management</a>
-                <a href="complaints.php">Complaints</a>
-                <a href="financialreports.php">Financial Reports</a>
+                <a href="Mregisteredusers.php">Registered users</a>
+                <a href="Msession.php">Session</a>
+                <a href="Mchangesessiondetails.php">Change Session details</a>
                 </div>
 
                 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
@@ -60,13 +59,13 @@
 
            if(isset($_SESSION["useruid"])){
                echo "
-               <form  action='profile.php' >
+               <form  action='Mprofile.php' >
                         <button>".$_SESSION["useruid"]."</button>
                </form>
                ";
 
                echo "
-               <form  action='includes/logout.inc.php' >
+               <form  action='includes/Mlogout.inc.php' >
                         <button>LOGOUT</button>
                </form>
                ";

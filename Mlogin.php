@@ -1,13 +1,13 @@
 <?php
- include_once "header.php";
+ include_once "Mheader.php";
 ?>
 <sectionc class="signup">
 
       <div class="content">
 
-              <h1>Login as a Admin</h1>
+              <h1>Login as a Meditation Instructor</h1>
 
-              <form action="includes/login.inc.php" method="post">
+              <form action="includes/Mlogin.inc.php" method="post">
                   <div>
 
                       <label>Email</label>
@@ -19,10 +19,10 @@
                       <button type="submit" name="submit">Log In</button>
 
                   </div>
+
                   <div>
 
                   </div>
-
 
 
               </form>
@@ -42,5 +42,5 @@
 
 
 <?php
- include_once "footer.php";
+ include_once "Mfooter.php";
 ?>

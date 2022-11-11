@@ -8,7 +8,7 @@ header{
     position: fixed;
     top: 0;
     width: 100%;
-    height: 10vh;
+    height: 65px;
     background: #58BD53;
     display: flex;
     align-items: center;
@@ -16,29 +16,27 @@ header{
 
 }
 
+
+
 .right{
-    width: 15%;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
+    margin-right: 50px;
 }
 .left h1{
     color: #004141;
-    padding: 0 5px;
+    padding: 2px 5px;
     cursor: pointer;
 }
-.left h1:hover{
-    border: 2px solid #00414188;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.322);
-}
+
 .left{
-    width: 15%;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 60px;
+    margin-left: 50px;
 }
 
 .left div{
@@ -53,21 +51,8 @@ header{
     border-radius: 15px;
     cursor: pointer;
     font-weight: 700;
-}
-
-
-.right button:nth-child(1){
-    background: transparent;
-    color: #005555;
-}
-.right button:nth-child(2){
-    background: #005555;
-    color: aliceblue;
-    transition: 0.3s ease;
-}
-.right button:nth-child(2):hover{
-    background: rgba(255, 255, 255, 0.637);
-    color: #004141;
+    background: #004141;
+    color: white;
 }
 
 
@@ -85,6 +70,7 @@ header{
     width: 30%;
     height: fit-content;
 }
+
 
 .content h1{
     color: #005555;
@@ -111,11 +97,11 @@ header{
 .content form input{
     border: none;
     padding: 3px 5px;
-    width: 100%;
+    width: 300px;
     height: 20px;
     border-radius: 10px;
-    background: #cbeeca6c;
-    color: white;
+    background: white;
+    color: black;
     font-weight: 600;
 }
 
@@ -148,11 +134,10 @@ footer{
     justify-content: space-around;
 }
 footer ul{
-    width: 50%;
-    gap: 20%;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 30px;
 }
 footer ul li{
     list-style: none;
@@ -160,8 +145,9 @@ footer ul li{
 footer ul li a{
     text-decoration: none;
     color: #004141;
-    font-weight: 700;
+    font-weight: 600;
     cursor: pointer;
+
 }
 
 footer p{
@@ -178,7 +164,7 @@ footer p{
   width: 0;
   position: fixed;
   z-index: 1;
-  top: 10vh;
+  top: 9.5vh;
   left: 0;
   background-color: #58BD53;
   overflow-x: hidden;
@@ -211,7 +197,7 @@ footer p{
   background-color: #4CAF50; /* Green */
   border: none;
   color: white;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -224,10 +210,44 @@ footer p{
 
 .button1am {border-radius: 4px;}
 
+
+
+/* amAdmin Delete buttons */
+
 .button1am a{
    text-decoration: none;
    color: white;
 }
+
+.buttonamD {
+  background-color: #B22222;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+
+
+}
+
+.button1amD {border-radius: 4px;}
+
+
+
+
+
+.button1amD a{
+   text-decoration: none;
+   color: white;
+}
+
+
+
+
 
 #customers {
   font-family: Arial, Helvetica, sans-serif;
@@ -250,4 +270,376 @@ footer p{
   text-align: left;
   background-color: #04AA6D;
   color: white;
+}
+
+
+.am{
+
+    width: 100%;
+    margin-top: 65px;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+}
+
+.amcontent{
+    width: 30%;
+    height: fit-content;
+    display: flex;
+    flex-direction:column;
+    gap:5px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* signupAdmin */
+
+.signupAdmin{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentAdmin{
+    width: 50%;
+    height: fit-content;
+}
+
+
+.contentAdmin h1{
+    color: #005555;
+}
+
+.contentAdmin form{
+    margin-top: 20px;
+    width: 100%;
+    height: fit-content;
+    background: #005555;
+    display: flex;
+    padding: 7% 5%;
+    justify-content: space-around;
+    border-radius: 20px;
+    font-weight: 500;
+    color: aliceblue;
+}
+.contentAdmin form label,input{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.contentAdmin form input{
+    border: none;
+    padding: 3px 5px;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background: white;
+    color: black;
+    font-weight: 600;
+}
+
+.contentAdmin form button{
+    width: 100px;
+    margin-top: 30px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+.contentAdmin form button:hover{
+    background: white;
+    color: #58BD53;
+}
+
+
+/* profileAdmin */
+
+.signupAdminProfile{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentAdminProfile{
+    width: 50%;
+    height: fit-content;
+}
+
+
+.contentAdminProfile h1{
+    color: #005555;
+}
+
+.contentAdminProfile form{
+    margin-top: 5px;
+    width: 100%;
+    height: fit-content;
+    background: #005555;
+    display: flex;
+    padding: 4% 5%;
+    justify-content: space-around;
+    border-radius: 20px;
+    font-weight: 500;
+    color: aliceblue;
+}
+.contentAdminProfile form label,input{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.contentAdminProfile form input{
+    border: none;
+    padding: 3px 5px;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background: white;
+    color: black;
+    font-weight: 600;
+}
+
+.contentAdminProfile form button{
+    width: 100px;
+    margin-top: 120px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+.contentAdminProfile form button:hover{
+    background: white;
+    color: #58BD53;
+}
+
+
+.signupAdminAM{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentAdminAM{
+
+    width: 100%;
+    height: 70vh;
+}
+
+
+.contentAdminAM h1{
+    color: #005555;
+}
+
+
+/* signupMedInstructor */
+
+.signupMed{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentMed{
+    width: 50%;
+    height: fit-content;
+}
+
+
+.contentMed h1{
+    color: #005555;
+}
+
+.contentMed form{
+    margin-top: 10px;
+    width: 100%;
+    height: fit-content;
+    background: #005555;
+    display: flex;
+    padding: 7% 5%;
+    justify-content: space-around;
+    border-radius: 20px;
+    font-weight: 500;
+    color: aliceblue;
+}
+.contentMed form label,input{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.contentMed form input{
+    border: none;
+    padding: 3px 5px;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background: white;
+    color: black;
+    font-weight: 600;
+}
+
+.contentMed form button{
+    width: 100px;
+    margin-top: 110px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+.contentMed form button:hover{
+    background: white;
+    color: #58BD53;
+}
+
+
+/* Mcomplaint */
+
+.signupMComplaint{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentMComplaint{
+    width: 50%;
+    height: fit-content;
+}
+
+
+.contentMComplaint h1{
+    color: #005555;
+}
+
+.contentMComplaint form{
+    margin-top: 10px;
+    width: 100%;
+    height: fit-content;
+    background: #005555;
+    display: flex;
+    padding: 7% 5%;
+    justify-content: space-around;
+    border-radius: 20px;
+    font-weight: 500;
+    color: aliceblue;
+}
+.contentMComplaint form label,input{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.contentMComplaint form input{
+    border: none;
+    padding: 3px 5px;
+    width: 100%;
+    height: 20px;
+    border-radius: 5px;
+    background: white;
+    color: black;
+    font-weight: 600;
+}
+
+.contentMComplaint form button{
+    width: 100px;
+    margin-top: 30px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+.contentMComplaint form button:hover{
+    background: white;
+    color: #58BD53;
+}
+
+
+/* Signupas */
+
+.signupAS{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentAS{
+    width: 50%;
+    height: fit-content;
+}
+
+
+.contentAS{
+    color: #005555;
+}
+
+.contentAS form{
+    margin-top: 10px;
+    width: 100%;
+    height: fit-content;
+    background: #005555;
+    display: flex;
+    padding: 7% 5%;
+    justify-content: space-around;
+    border-radius: 20px;
+    font-weight: 500;
+    color: aliceblue;
+}
+
+
+.contentAS form button{
+    width: 300px;
+    height: 100px
+    margin-top: 30px;
+    padding: 20px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+.contentAS form button:hover{
+    background: white;
+    color: #58BD53;
 }

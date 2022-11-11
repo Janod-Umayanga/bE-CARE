@@ -1,22 +1,23 @@
 <?php
  include_once "header.php";
 ?>
+<sectionc class="signupAS">
+
+      <div class="contentAS">
 
 
- <sectionc class="signup">
-     <div class="content">
-            <h1>
-              <?php
 
-                if(isset($_SESSION["useruid"])){
-                    echo "<p>Hello " .$_SESSION["useruid"]."</p>";
-                }
-
-               ?>
+              <form  action='login.php' >
+                       <button>LOGIN AS A ADMIN</button>
+              </form>
 
 
-            </h1>
+              <form  action='Mlogin.php' >
+                       <button>LOGIN AS A MEDITATION INSTRUCTOR</button>
+              </form>
+
       </div>
+
   </section>
 
 

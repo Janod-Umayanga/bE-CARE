@@ -1,20 +1,20 @@
 <?php
- include_once "header.php";
+ include_once "Mheader.php";
 ?>
 
 <?php
  require_once "./includes/dbh.inc.php";
- require_once "./includes/functions.inc.php";
+ require_once "./includes/Mfunctions.inc.php";
 
  $uid=$_SESSION["userid"];
- $result = mysqli_query($conn,"SELECT * FROM admin WHERE admin_id=$uid");
+ $result = mysqli_query($conn,"SELECT * FROM meditation_instructor WHERE meditation_instructor_id=$uid");
  $row = mysqli_fetch_array($result)
  ?>
 
 
-<sectionc class="signupAdminProfile">
+<sectionc class="signupMed">
 
-      <div class="contentAdminProfile">
+      <div class="contentMed">
 
               <h1>Account details</h1>
               <form >
@@ -31,14 +31,23 @@
                       <label>Contact number</label>
                       <input type="text" id="contact_number" name="contact_number" required="true" value="<?php echo $row["contact_number"] ?>">
 
+                      <label>Gender</label>
+                      <input type="text" name="gender" id="gender" required="true" value="<?php echo $row["gender"] ?>">
+
                       <label>Email</label>
                       <input type="email" name="email" id="email" required="true" value="<?php echo $row["email"] ?>">
 
 
                   </div>
                   <div>
-                        <label>Gender</label>
-                        <input type="text" name="gender" id="gender" required="true" value="<?php echo $row["gender"] ?>">
+                        <label>City</label>
+                        <input type="text" name="city" required="true"  value="<?php echo $row["city"] ?>">
+
+                        <label>Address</label>
+                        <input type="text" name="address" id="address" required="true" value="<?php echo $row["address"] ?>">
+
+                        <label>Registration Fee</label>
+                        <input type="number" name="fee" id="fee" required="true" value="<?php echo $row["fee"] ?>">
 
                         <label>Bank Name</label>
                         <input type="text" name="bank_name" id="bank_name"  required="true" value="<?php echo $row["bank_name"] ?>">
@@ -49,12 +58,11 @@
                         <label>Branch</label>
                         <input type="text" name="branch" id="branch" required="true" value="<?php echo $row["branch"] ?>">
 
-                        <label>Account Number</label>
-                        <input type="text" name="account_number" id="account_number" required="true" value="<?php echo $row["account_number"] ?>">
-
                   </div>
 
                   <div>
+                         <label>Account Number</label>
+                         <input type="text" name="account_number" id="account_number" required="true" value="<?php echo $row["account_number"] ?>">
 
 
                          <label>Current Password</label>

@@ -1,13 +1,13 @@
 <?php
- include_once "header.php";
+ include_once "Mheader.php";
 ?>
 
-<sectionc class="signupAdmin">
+<sectionc class="signupMed">
 
-      <div class="contentAdmin">
+      <div class="contentMed">
 
-              <h1>Add New Admin</h1>
-              <form action="includes/addnewadmin.inc.php" method="post">
+              <h1>Signup as a Meditation Instructor</h1>
+              <form action="includes/Msignup.inc.php" method="post">
                   <div>
                       <label>First name</label>
                       <input type="text" id="first_name" name="first_name" required="true" >
@@ -21,24 +21,25 @@
                       <label>Contact number</label>
                       <input type="text" id="contact_number" name="contact_number" required="true" >
 
-
-                  </div>
-                  <div>
                       <label>Gender</label>
                       <input type="text" name="gender" id="gender" required="true" >
 
                       <label>Email</label>
                       <input type="email" name="email" id="email" required="true" >
 
-                      <label>Password</label>
-                      <input type="password" name="password" id="password" required="true">
 
-                      <label>Confirm Password</label>
-                      <input type="password" name="passwordRepeat" id="passwordRepeat"  required="true" >
 
                   </div>
-
                   <div>
+                      <label>City</label>
+                      <input type="text" name="city" required="true" >
+
+                      <label>Address</label>
+                      <input type="text" name="address" id="address" required="true" >
+
+                      <label>Fee</label>
+                      <input type="number" name="fee" id="fee" required="true" >
+
                       <label>Bank Name</label>
                       <input type="text" name="bank_name" id="bank_name"  required="true" >
 
@@ -48,13 +49,25 @@
                       <label>Branch</label>
                       <input type="text" name="branch" id="branch" required="true" >
 
-                      <label>Account Number</label>
-                      <input type="text" name="account_number" id="account_number" required="true" >
-
-
-                      <button type="submit" name="submit">Add</button>
                   </div>
 
+                  <div>
+                    <label>Account Number</label>
+                    <input type="text" name="account_number" id="account_number" required="true" >
+
+                    <label>Qualification File</label>
+                    <input type="file" name="qualification_file" id="qualification_file"  required="true" >
+
+
+                    <label>Password</label>
+                    <input type="password" name="password" id="password" required="true" >
+
+                    <label>Confirm Password</label>
+                    <input type="password" name="passwordRepeat" id="passwordRepeat"  required="true" >
+
+                    <button type="submit" name="submit">Sign Up</button>
+
+                  </div>
 
 
 
@@ -63,7 +76,10 @@
 
                   <?php
                       if(isset($_GET["error"])){
-                        if($_GET["error"]=="invalidemail"){
+                        if($_GET["error"]=="emptyinput"){
+                           echo "<p>Fill in all fields!</p>";
+                        }
+                        else if($_GET["error"]=="invalidemail"){
                            echo "<p>Choose a proper email!</p>";
                         }
                         else if($_GET["error"]=="passwordsdontmatch"){
@@ -90,5 +106,5 @@
 
 
 <?php
- include_once "footer.php";
+ include_once "Mfooter.php";
 ?>

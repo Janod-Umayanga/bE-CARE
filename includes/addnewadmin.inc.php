@@ -11,15 +11,15 @@ if(isset($_POST["submit"])){
     $email=$_POST["email"];
     $password=$_POST["password"];
     $passwordRepeat=$_POST["passwordRepeat"];
+    $bank_name=$_POST["bank_name"];
+    $account_holder_name=$_POST["account_holder_name"];
+    $branch=$_POST["branch"];
+    $account_number=$_POST["account_number"];
 
 
     require_once "dbh.inc.php";
     require_once "addnewfunctions.inc.php";
 
-    if(emptyInputSignup($first_name,$last_name,$nic,$contact_number,$gender,$email,$password,$passwordRepeat)!== false){
-        header("location:../addnewadmin.php?error=emptyinput");
-        exit();
-    }
 
     if(invalidEmail($email)!== false){
         header("location:../addnewadmin.php?error=invalidemail");
@@ -35,7 +35,7 @@ if(isset($_POST["submit"])){
         exit();
     }
 
-    createUser($conn,$first_name,$last_name,$nic,$contact_number,$gender,$email,$password);
+    createUser($conn,$first_name,$last_name,$nic,$contact_number,$gender,$email,$password,$bank_name,$account_holder_name,$branch,$account_number);
 
 }else{
    header("location:../addnewadmin.php");

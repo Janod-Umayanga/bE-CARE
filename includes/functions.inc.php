@@ -1,14 +1,5 @@
  <?php
 
-function emptyInputSignup($first_name,$last_name,$nic,$contact_number,$gender,$email,$password,$passwordRepeat){
-  if(empty($first_name) || empty($last_name)|| empty($nic) || empty($contact_number)|| empty($gender)|| empty($email)|| empty($password)|| empty($passwordRepeat)  ){
-     $result=true;
-  }else{
-    $result=false;
-  }
-  return $result;
-}
-
 
 function invalidEmail($email){
 
@@ -59,25 +50,27 @@ if($row=mysqli_fetch_assoc($resultData)){
 }
 
 
-function createUser($conn,$first_name,$last_name,$nic,$contact_number,$gender,$email,$password){
-  $sql="INSERT INTO admin (first_name,last_name,nic,contact_number,gender,email,password) VALUES (?,?,?,?,?,?,?);";
-  $stmt= mysqli_stmt_init($conn);
 
-  if(!mysqli_stmt_prepare($stmt,$sql)){
-    header("location:../signup.php?error=stmtfailed");
-    exit();
-  }
+function createUser($conn,$first_name,$last_name,$nic,$contact_number,$gender,$email,$password,$bank_name,$account_holder_name,$branch,$account_number){
+ $sql="INSERT INTO admin (first_name,last_name,nic,contact_number,gender,email,password,bank_name,account_holder_name,branch,account_number) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
+ $stmt= mysqli_stmt_init($conn);
+
+ if(!mysqli_stmt_prepare($stmt,$sql)){
+   header("location:../signup.php?error=stmtfailed");
+   exit();
+ }
 
 $hashedPwd=password_hash($password,PASSWORD_DEFAULT);
 
 
-mysqli_stmt_bind_param($stmt,"sssssss",$first_name,$last_name,$nic,$contact_number,$gender,$email,$hashedPwd);
+mysqli_stmt_bind_param($stmt,"sssssssssss",$first_name,$last_name,$nic,$contact_number,$gender,$email,$hashedPwd,$bank_name,$account_holder_name,$branch,$account_number);
 mysqli_stmt_execute($stmt);
 mysqli_stmt_close($stmt);
-header("location:../signup.php?error=none");
+header("location:../index.php?error=none");
 exit();
 
 }
+
 
 function emptyInputLogin($email,$password){
   if(empty($email) || empty($password)){
@@ -106,7 +99,7 @@ function loginUser($conn,$email,$password){
      session_start();
      $_SESSION["userid"]=$uidExists["admin_id"];
      $_SESSION["useruid"]=$uidExists["first_name"];
-     header("location:../index.php");
+     header("location:../indexAdmin.php");
      exit();
   }
 

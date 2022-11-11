@@ -4,10 +4,10 @@
 
 ?>
 
- <sectionc class="signup">
-     <div class="content">
+ <sectionc class="signupAdminAM">
+     <div class="contentAdminAM">
             <h1>Admin Account Management</h1>
-            <button class="buttonam button1am"><a href="addnewadmin.php">Add new Account</a></button><br><br>
+            <button class="buttonam button1am"><a href="addnewadmin.php">Add new Account</a></button>
             <table id="customers">
               <tr>
                 <th>Admin Id</th>
@@ -17,6 +17,11 @@
                 <th>Contact Number</th>
                 <th>Gender</th>
                 <th>Email</th>
+                <th>Bank name</th>
+                <th>Account holder name</th>
+                <th>Branch</th>
+                <th>Account Number</th>
+                <th></th>
 
               </tr>
 
@@ -33,7 +38,13 @@
                 echo "<td>".$row['contact_number']."</td>";
                 echo "<td>".$row['gender']."</td>";
                 echo "<td>".$row['email']."</td>";
-                echo "</tr>";
+                echo "<td>".$row['bank_name']."</td>";
+                echo "<td>".$row['account_holder_name']."</td>";
+                echo "<td>".$row['branch']."</td>";
+                echo "<td>".$row['account_number']."</td>";
+                ?> <td><button class="buttonamD button1amD"><a href="">Delete</a></button></td>
+
+                <?php echo "</tr>";
               }
 
 
