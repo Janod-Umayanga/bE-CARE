@@ -23,11 +23,11 @@ if (isset($_SESSION["user_id"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=\, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Patient-Home</title>
+    <title>Patient-Complaint</title>
 </head>
 <body>
 
-    <?php if (isset($user)): ?>
+<?php if (isset($user)): ?>
         <header>
             <div class="left">
                 <div>
@@ -63,27 +63,31 @@ if (isset($_SESSION["user_id"])) {
 
     <?php endif; ?>
 
-    <section class="patient-approaches">
-            <ul>
-                <li>
-                <a href="channel-a-doctor.php">Channel a Doctor</a>
-                </li>
-                <li>
-                <a href="#">Channel a Counsellor</a>
-                </li>
-                <li>
-                <a href="order-medicine.php">Order Medicine</a>
-                </li>
-                <li>
-                <a href="#">Request a Diet Plan</a>
-                </li>
-                <li>
-                <a href="#">Register for a Meditation Instructor</a>
-                </li>
-                <li>
-                <a href="#">Register for a Session</a>
-                </li>
-            </ul>
+    <sectionc class="signup">
+
+        <div class="content">
+
+                <h1>Report Your Complaint</h1>
+                <form action="complaint-submit.php" method="post">
+                    <div>
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required="true">
+
+                        <label for="description">Description</label>
+                        <input type="text" id="description" name="description" required="true">
+
+                    </div>
+                    <div>
+
+                        <button>Report</button>
+                    </div>
+
+                    
+
+                </form>
+
+        </div>
+
     </section>
 
     <footer>

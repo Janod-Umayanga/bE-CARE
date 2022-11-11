@@ -45,7 +45,7 @@ if (isset($_SESSION["user_id"])) {
             </div>
         </header>
 
-    <?php else: ?>
+        <?php else: ?>
         <header>
             <div class="left">
                 <div>
@@ -57,8 +57,8 @@ if (isset($_SESSION["user_id"])) {
             </div>
 
             <div class="right">
-                <button>LOGIN</button>
-                <button>SIGN UP</button>
+                <a href="login.php">LOGIN</a>
+                <a href="signup.html">SIGN UP</a>
             </div>
         </header>
 
@@ -118,11 +118,17 @@ if (isset($_SESSION["user_id"])) {
                 <a href="#">CONTACT US</a>
             </li>
             <li>
-                <a href="#">FEED BACKS</a>
+                <a href="#">FEEDBACKS</a>
             </li>
-            <li>
-                <a href="#">COMPLAINTS</a>
-            </li>
+            <?php if (isset($user)): ?>
+                <li>
+                    <a href="complaint.php">COMPLAINTS</a>
+                </li>
+            <?php else: ?>
+                <li>
+                    <a href="signup.html">COMPLAINTS</a>
+                </li>
+            <?php endif; ?>
         </ul>
     </footer>
 </body>

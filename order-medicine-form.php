@@ -1,10 +1,8 @@
 <?php
-
 session_start();
+$mysqli = require __DIR__."/database.php";
 
 if (isset($_SESSION["user_id"])) {
-
-    $mysqli = require __DIR__."/database.php";
 
     $sql = "SELECT * FROM patient WHERE patient_id = {$_SESSION["user_id"]}";
 
@@ -13,7 +11,6 @@ if (isset($_SESSION["user_id"])) {
     $user = $result->fetch_assoc();
 
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -23,11 +20,11 @@ if (isset($_SESSION["user_id"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=\, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Patient-Home</title>
+    <title>Patient-Order-Medicine-Form</title>
 </head>
 <body>
 
-    <?php if (isset($user)): ?>
+<?php if (isset($user)): ?>
         <header>
             <div class="left">
                 <div>
@@ -63,27 +60,35 @@ if (isset($_SESSION["user_id"])) {
 
     <?php endif; ?>
 
-    <section class="patient-approaches">
-            <ul>
-                <li>
-                <a href="channel-a-doctor.php">Channel a Doctor</a>
-                </li>
-                <li>
-                <a href="#">Channel a Counsellor</a>
-                </li>
-                <li>
-                <a href="order-medicine.php">Order Medicine</a>
-                </li>
-                <li>
-                <a href="#">Request a Diet Plan</a>
-                </li>
-                <li>
-                <a href="#">Register for a Meditation Instructor</a>
-                </li>
-                <li>
-                <a href="#">Register for a Session</a>
-                </li>
-            </ul>
+    <sectionc class="signup">
+
+        <div class="content">
+
+                <h1>Order Medicine</h1>
+                <form action="order-medicine-form.php" method="post">
+                    <div>
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required="true">
+
+                        <label for="address">Delivery Address</label>
+                        <input type="text" id="address" name="address" required="true">
+                    </div>
+                    <div>
+                        <label for="cnumber">Contact number</label>
+                        <input type="text" id="cnumber" name="cnumber" required="true">
+
+                        <label for="prescription">Upload Prescription</label>
+                        <input type="text" id="prescription" name="prescription" required="true">
+
+                        <button>Submit</button>
+                    </div>
+
+                    
+
+                </form>
+
+        </div>
+
     </section>
 
     <footer>

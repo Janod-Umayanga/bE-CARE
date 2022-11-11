@@ -69,41 +69,41 @@ if (isset($_SESSION["user_id"])) {
             <?php
             if (isset($_GET['search'])) {
                 $filter = $_GET['search'];
-                $sql="SELECT * FROM doctor WHERE CONCAT(first_name,last_name,city,type) LIKE '%$filter%'";
+                $sql="SELECT * FROM pharmacist WHERE CONCAT(pharmacy_name, city) LIKE '%$filter%'";
                 $result = mysqli_query($mysqli, $sql);
 
                 if ($result->num_rows > 0){
                     while($row = $result->fetch_assoc()){ ?>
                         <div class="card">
                             <div class="card-left">
-                                <p>Dr. <?php echo $row['first_name'] ?> <?php echo $row['last_name'] ?> <br><?php echo $row['type'] ?></p>
+                                <p> <?php echo $row['pharmacy_name'] ?> </p>
                             </div>
                             <div class="card-right">
                                 <div>
-                                    <h3><?php echo $row['specialization'] ?></h3>
                                     <p>City : <?php echo $row['city'] ?></p>
+                                    <p>Address : <?php echo $row['address'] ?></p>
                                 </div>
-                                <a href="">Channel</a>
+                                <a href="order-medicine-form.php">Order</a>
                             </div>
                         </div>
                     <?php }
                 }
             }else{
-                $sql="SELECT * FROM doctor";
+                $sql="SELECT * FROM pharmacist";
                 $result = mysqli_query($mysqli, $sql);
 
                 if ($result->num_rows > 0){
                     while($row = $result->fetch_assoc()){ ?>
                         <div class="card">
                             <div class="card-left">
-                                <p>Dr. <?php echo $row['first_name'] ?> <?php echo $row['last_name'] ?> <br><?php echo $row['type'] ?></p>
+                                <p> <?php echo $row['pharmacy_name'] ?> </p>
                             </div>
                             <div class="card-right">
                                 <div>
-                                    <h3><?php echo $row['specialization'] ?></h3>
                                     <p>City : <?php echo $row['city'] ?></p>
+                                    <p>Address : <?php echo $row['address'] ?></p>
                                 </div>
-                                <a href="">Channel</a>
+                                <a href="order-medicine-form.php">Order</a>
                             </div>
                         </div>
                     <?php }

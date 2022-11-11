@@ -106,11 +106,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <a href="#">CONTACT US</a>
             </li>
             <li>
-                <a href="#">FEED BACKS</a>
+                <a href="#">FEEDBACKS</a>
             </li>
-            <li>
-                <a href="#">COMPLAINTS</a>
-            </li>
+            <?php if (isset($user)): ?>
+                <li>
+                    <a href="complaint.php">COMPLAINTS</a>
+                </li>
+            <?php else: ?>
+                <li>
+                    <a href="signup.html">COMPLAINTS</a>
+                </li>
+            <?php endif; ?>
         </ul>
     </footer>
 </body>
