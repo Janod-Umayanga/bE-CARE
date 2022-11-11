@@ -66,7 +66,7 @@ if (isset($_SESSION["user_id"])) {
     <section class="patient-approaches">
             <ul>
                 <li>
-                <a href="#">Channel a Doctor</a>
+                <a href="channel-a-doctor.php">Channel a Doctor</a>
                 </li>
                 <li>
                 <a href="#">Channel a Counsellor</a>
