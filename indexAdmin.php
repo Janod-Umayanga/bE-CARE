@@ -1,3 +1,4 @@
+<?php require_once 'sessionfile.php';?>
 <?php
  include_once "header.php";
 ?>

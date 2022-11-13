@@ -1,7 +1,3 @@
-<?php
-  session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +8,21 @@
     <title>Be-CARE</title>
 </head>
 <body>
+
+<?php
+if(isset($_SESSION["userid"])){
+require_once "includes/dbh.inc.php";
+$userid=$_SESSION["userid"];
+$result = mysqli_query($conn,"SELECT * FROM admin WHERE admin_id=$userid");
+$row = mysqli_fetch_array($result);
+$gender=$row['gender'];
+if($gender=="Male"){
+  $g="Mr. ";
+}else if($gender=="Female"){
+  $g="Mrs. ";
+}
+}
+ ?>
 
  <header>
      <div class="left">
@@ -59,16 +70,19 @@
          <?php
 
            if(isset($_SESSION["useruid"])){
-               echo "
+               echo strtoupper("
                <form  action='profile.php' >
-                        <button>".$_SESSION["useruid"]."</button>
+                        <button class='one' >".$g.$_SESSION["useruid"]."</button>
                </form>
-               ";
+               ");
 
                echo "
-               <form  action='includes/logout.inc.php' >
-                        <button>LOGOUT</button>
+               <form method='post' action='includes/logout.inc.php'>
+                 <button type='submit' class='logout-btn'>
+                    LOGOUT
+                 </button>
                </form>
+
                ";
 
            }
@@ -76,13 +90,13 @@
 
              echo "
              <form  action='index.php' >
-                      <button>LOGIN</button>
+                      <button class='three'>LOGIN</button>
              </form>
              ";
 
              echo "
              <form  action='signupas.php' >
-                      <button>SIGN UP</button>
+                      <button class='four'>SIGN UP</button>
              </form>
              ";
 

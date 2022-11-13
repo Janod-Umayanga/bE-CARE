@@ -1,13 +1,20 @@
 <?php
+ include_once "sessionfile.php";
+?>
+
+<?php
  include_once "header.php";
  require_once "includes/dbh.inc.php";
 
 ?>
 
- <sectionc class="signupAdminAM">
-     <div class="contentAdminAM">
+ <sectionc class="sAdminAM">
+     <div class="cAdminAM">
             <h1>Admin Account Management</h1>
             <button class="buttonam button1am"><a href="addnewadmin.php">Add new Account</a></button>
+           <div class="amAdmintable">
+
+
             <table id="customers">
               <tr>
                 <th>Admin Id</th>
@@ -53,7 +60,7 @@
 
 
            </table>
-
+         </div>
       </div>
   </section>
 

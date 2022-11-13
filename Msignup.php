@@ -2,9 +2,10 @@
  include_once "Mheader.php";
 ?>
 
-<sectionc class="signupMed">
 
-      <div class="contentMed">
+<sectionc class="sMed">
+
+      <div class="cMed">
 
               <h1>Signup as a Meditation Instructor</h1>
               <form action="includes/Msignup.inc.php" method="post">
@@ -21,24 +22,22 @@
                       <label>Contact number</label>
                       <input type="text" id="contact_number" name="contact_number" required="true" >
 
-                      <label>Gender</label>
-                      <input type="text" name="gender" id="gender" required="true" >
-
                       <label>Email</label>
                       <input type="email" name="email" id="email" required="true" >
 
-
+                      <label>Gender</label>
+                      <select name="gender" id="gender" required="true" >
+                         <option value="Male">Male</option>
+                         <option value="Female">Female</option>
+                      </select>
 
                   </div>
                   <div>
                       <label>City</label>
                       <input type="text" name="city" required="true" >
 
-                      <label>Address</label>
-                      <input type="text" name="address" id="address" required="true" >
-
-                      <label>Fee</label>
-                      <input type="number" name="fee" id="fee" required="true" >
+                      <label>Registration Fee (Rs.)</label>
+                      <input type="number" name="fee" id="fee" required="true" placeholder="1500">
 
                       <label>Bank Name</label>
                       <input type="text" name="bank_name" id="bank_name"  required="true" >
@@ -49,11 +48,15 @@
                       <label>Branch</label>
                       <input type="text" name="branch" id="branch" required="true" >
 
+                      <label>Account Number</label>
+                      <input type="text" name="account_number" id="account_number" required="true" >
+
                   </div>
 
                   <div>
-                    <label>Account Number</label>
-                    <input type="text" name="account_number" id="account_number" required="true" >
+
+                    <label>Address</label>
+                    <input type="text" name="address" id="address" required="true" >
 
                     <label>Qualification File</label>
                     <input type="file" name="qualification_file" id="qualification_file"  required="true" >
@@ -64,6 +67,9 @@
 
                     <label>Confirm Password</label>
                     <input type="password" name="passwordRepeat" id="passwordRepeat"  required="true" >
+
+                    <label>Upload portfolio of work or copy of <br>certifiacates or other qualifications as a file</label>
+
 
                     <button type="submit" name="submit">Sign Up</button>
 
@@ -77,22 +83,22 @@
                   <?php
                       if(isset($_GET["error"])){
                         if($_GET["error"]=="emptyinput"){
-                           echo "<p>Fill in all fields!</p>";
+                           echo "<p class='error'>Fill in all fields!</p>";
                         }
                         else if($_GET["error"]=="invalidemail"){
-                           echo "<p>Choose a proper email!</p>";
+                           echo "<p class='error'>Choose a proper email!</p>";
                         }
                         else if($_GET["error"]=="passwordsdontmatch"){
-                           echo "<p>Password doesn't match!</p>";
+                           echo "<p class='error'>Password doesn't match!</p>";
                         }
                         else if($_GET["error"]=="stmtfailed"){
-                           echo "<p>Something went wrong!</p>";
+                           echo "<p class='error'>Something went wrong!</p>";
                         }
                         else if($_GET["error"]=="usernametaken"){
-                           echo "<p>Username already taken!</p>";
+                           echo "<p class='error'>Email already taken!</p>";
                         }
                         else if($_GET["error"]=="none"){
-                           echo "<p>You have signed up!</p>";
+                           echo "<p class='success'>You have signed up!</p>";
                         }
                       }
                    ?>

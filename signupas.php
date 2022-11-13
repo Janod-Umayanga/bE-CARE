@@ -1,9 +1,9 @@
 <?php
  include_once "header.php";
 ?>
-<sectionc class="signupAS">
+<sectionc class="sAS">
 
-      <div class="contentAS">
+      <div class="cAS">
 
 
 

@@ -41,7 +41,12 @@ if(isset($_POST["submit"])){
         exit();
     }
 
-    createUser($conn,$first_name,$last_name,$nic,$contact_number,$gender,$email,$password,$city,$address,$fee,$bank_name,$account_holder_name,$branch,$account_number,$qualification_file);
+    if(uidExistsRM($conn,$email)!== false){
+        header("location:../Msignup.php?error=usernametaken");
+        exit();
+    }
+
+    createUserRM($conn,$first_name,$last_name,$nic,$contact_number,$gender,$email,$password,$city,$address,$fee,$bank_name,$account_holder_name,$branch,$account_number,$qualification_file);
 
 }else{
    header("location:../Msignup.php");

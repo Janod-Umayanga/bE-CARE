@@ -86,21 +86,21 @@ function loginUser($conn,$email,$password){
   $uidExists=uidExists($conn,$email);
 
   if($uidExists===false){
-    header("location:../login.php?error=wronglogin");
+    header("location:../index.php?error=Incorrect login information");
     exit();
   }
 
   $pwdHashed=$uidExists["password"];
   $checkPwd=password_verify($password,$pwdHashed);
   if($checkPwd===false){
-    header("location:../login.php?error=wronglogin");
+    header("location:../index.php?error=Incorrect login information");
     exit();
   }else if($checkPwd===true){
      session_start();
      $_SESSION["userid"]=$uidExists["admin_id"];
      $_SESSION["useruid"]=$uidExists["first_name"];
      header("location:../indexAdmin.php");
-     exit();
+     // exit();
   }
 
 }

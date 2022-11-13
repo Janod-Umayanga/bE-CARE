@@ -1,4 +1,7 @@
 <?php
+ include_once "sessionfile.php";
+?>
+<?php
  include_once "header.php";
 ?>
 
@@ -12,9 +15,9 @@
  ?>
 
 
-<sectionc class="signupAdminProfile">
+<sectionc class="sAdminProfile">
 
-      <div class="contentAdminProfile">
+      <div class="cAdminProfile">
 
               <h1>Account details</h1>
               <form >
@@ -37,9 +40,6 @@
 
                   </div>
                   <div>
-                        <label>Gender</label>
-                        <input type="text" name="gender" id="gender" required="true" value="<?php echo $row["gender"] ?>">
-
                         <label>Bank Name</label>
                         <input type="text" name="bank_name" id="bank_name"  required="true" value="<?php echo $row["bank_name"] ?>">
 
@@ -52,21 +52,20 @@
                         <label>Account Number</label>
                         <input type="text" name="account_number" id="account_number" required="true" value="<?php echo $row["account_number"] ?>">
 
+                        <label>Gender</label>
+                        <select name="gender" id="gender" required="true" value="<?php echo $row["gender"] ?>" >
+                           <option value="Male">Male</option>
+                           <option value="Female">Female</option>
+                        </select>
+
                   </div>
 
                   <div>
 
+                        <button id="cAdminCP"> <a href="profileChangePW.php">Change Password</a></button>
+                         <br>
 
-                         <label>Current Password</label>
-                         <input type="password" name="password" id="password" required="true" >
-
-                         <label>New Password</label>
-                         <input type="password" name="password" id="password" required="true" >
-
-                         <label>Re-Type New Password</label>
-                         <input type="password" name="passwordRepeat" id="passwordRepeat"  required="true">
-
-                         <button type="submit" name="submit">Update</button>
+                         <button type="submit" id="cAdminU" name="submit">Update</button>
 
                   </div>
 
@@ -83,5 +82,5 @@
 
 
 <?php
- include_once "Mfooter.php";
+ include_once "footer.php";
 ?>

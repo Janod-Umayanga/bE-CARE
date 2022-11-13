@@ -1,20 +1,24 @@
 <?php
+ include_once "Msessionfile.php";
+?>
+<?php
  include_once "Mheader.php";
 ?>
+
 
 <?php
  require_once "./includes/dbh.inc.php";
  require_once "./includes/Mfunctions.inc.php";
 
- $uid=$_SESSION["userid"];
+ $uid=$_SESSION["userMid"];
  $result = mysqli_query($conn,"SELECT * FROM meditation_instructor WHERE meditation_instructor_id=$uid");
  $row = mysqli_fetch_array($result)
  ?>
 
 
-<sectionc class="signupMed">
+<sectionc class="sMed">
 
-      <div class="contentMed">
+      <div class="cMed">
 
               <h1>Account details</h1>
               <form >
@@ -32,10 +36,13 @@
                       <input type="text" id="contact_number" name="contact_number" required="true" value="<?php echo $row["contact_number"] ?>">
 
                       <label>Gender</label>
-                      <input type="text" name="gender" id="gender" required="true" value="<?php echo $row["gender"] ?>">
+                      <select name="gender" id="gender" required="true" value="<?php echo $row["gender"] ?>">
+                         <option value="Male">Male</option>
+                         <option value="Female">Female</option>
+                      </select>
 
                       <label>Email</label>
-                      <input type="email" name="email" id="email" required="true" value="<?php echo $row["email"] ?>">
+                      <input type="email" name="email" id="email" required="true" value="<?php echo $row["email"] ?>" disabled>
 
 
                   </div>
@@ -64,17 +71,10 @@
                          <label>Account Number</label>
                          <input type="text" name="account_number" id="account_number" required="true" value="<?php echo $row["account_number"] ?>">
 
+                         <button id="cMedCP"> <a href="MprofileChangePW.php">Change Password</a></button>
+                          <br> 
 
-                         <label>Current Password</label>
-                         <input type="password" name="password" id="password" required="true" >
-
-                         <label>New Password</label>
-                         <input type="password" name="password" id="password" required="true" >
-
-                         <label>Re-Type New Password</label>
-                         <input type="password" name="passwordRepeat" id="passwordRepeat"  required="true">
-
-                         <button type="submit" name="submit">Update</button>
+                         <button type="submit" name="submit" id="cMedS">Update</button>
 
                   </div>
 

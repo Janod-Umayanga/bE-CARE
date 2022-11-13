@@ -4,6 +4,8 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Header */
+
 header{
     position: fixed;
     top: 0;
@@ -55,9 +57,20 @@ header{
     color: white;
 }
 
+.headerprofilebtn{
+    width: 100px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: 700;
+    background: #58BD53;
+    color: white;
+}
 
+/* Section and Div */
 
-.signup{
+.s{
     width: 100%;
     height: 100vh;
     background: white;
@@ -66,17 +79,17 @@ header{
     justify-content: center;
 }
 
-.content{
+.c{
     width: 30%;
     height: fit-content;
 }
 
 
-.content h1{
+.c h1{
     color: #005555;
 }
 
-.content form{
+.c form{
     margin-top: 20px;
     width: 100%;
     height: fit-content;
@@ -88,13 +101,13 @@ header{
     font-weight: 500;
     color: aliceblue;
 }
-.content form label,input{
+.c form label,input{
     display: flex;
     flex-direction: column;
     margin-top: 10px;
 }
 
-.content form input{
+.c form input{
     border: none;
     padding: 3px 5px;
     width: 300px;
@@ -105,7 +118,7 @@ header{
     font-weight: 600;
 }
 
-.content form button{
+.c form button{
     width: 100px;
     margin-top: 30px;
     padding: 5px;
@@ -118,10 +131,12 @@ header{
     font-weight: 700;
 }
 
-.content form button:hover{
+.c form button:hover{
     background: white;
     color: #58BD53;
 }
+
+/* Footer */
 
 footer{
     position: absolute;
@@ -158,6 +173,7 @@ footer p{
     color: #005555;
 }
 
+/* header.php Mheader.php  navbar */
 
 .sidenav {
   height: 100%;
@@ -245,12 +261,39 @@ footer p{
    color: white;
 }
 
+/* Change session details button */
+
+.buttonamU {
+  background-color: #58BD53;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+
+
+}
+
+.button1amU {border-radius: 4px;}
+
+
+
+
+
+.button1amU a{
+   text-decoration: none;
+   color: white;
+}
 
 
 
 
 #customers {
-  font-family: Arial, Helvetica, sans-serif;
+
   border-collapse: collapse;
   width: 100%;
 }
@@ -268,10 +311,11 @@ footer p{
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #04AA6D;
+  background-color: #228B22;
   color: white;
 }
 
+/* accountManagement.php  indexadmin.php  */
 
 .am{
 
@@ -291,11 +335,16 @@ footer p{
     gap:5px;
     align-items: center;
     justify-content: center;
+
 }
 
-/* signupAdmin */
+.am h1{
+  margin-bottom:4px;
+}
 
-.signupAdmin{
+/* addnewadmin.php */
+
+.sAdmin{
     width: 100%;
     height: 100vh;
     background: white;
@@ -304,35 +353,35 @@ footer p{
     justify-content: center;
 }
 
-.contentAdmin{
+.cAdmin{
     width: 50%;
     height: fit-content;
 }
 
 
-.contentAdmin h1{
+.cAdmin h1{
     color: #005555;
 }
 
-.contentAdmin form{
-    margin-top: 20px;
+.cAdmin form{
+    margin-top: 5px;
     width: 100%;
     height: fit-content;
     background: #005555;
     display: flex;
-    padding: 7% 5%;
+    padding: 2% 5%;
     justify-content: space-around;
     border-radius: 20px;
     font-weight: 500;
     color: aliceblue;
 }
-.contentAdmin form label,input{
+.cAdmin form label,input,select,option{
     display: flex;
     flex-direction: column;
     margin-top: 10px;
 }
 
-.contentAdmin form input{
+.cAdmin form input,select,option{
     border: none;
     padding: 3px 5px;
     width: 100%;
@@ -343,7 +392,7 @@ footer p{
     font-weight: 600;
 }
 
-.contentAdmin form button{
+.cAdmin form button{
     width: 100px;
     margin-top: 30px;
     padding: 5px;
@@ -356,7 +405,7 @@ footer p{
     font-weight: 700;
 }
 
-.contentAdmin form button:hover{
+.cAdmin form button:hover{
     background: white;
     color: #58BD53;
 }
@@ -364,7 +413,7 @@ footer p{
 
 /* profileAdmin */
 
-.signupAdminProfile{
+.sAdminProfile{
     width: 100%;
     height: 100vh;
     background: white;
@@ -373,17 +422,17 @@ footer p{
     justify-content: center;
 }
 
-.contentAdminProfile{
+.cAdminProfile{
     width: 50%;
     height: fit-content;
 }
 
 
-.contentAdminProfile h1{
+.cAdminProfile h1{
     color: #005555;
 }
 
-.contentAdminProfile form{
+.cAdminProfile form{
     margin-top: 5px;
     width: 100%;
     height: fit-content;
@@ -395,13 +444,13 @@ footer p{
     font-weight: 500;
     color: aliceblue;
 }
-.contentAdminProfile form label,input{
+.cAdminProfile form label,input{
     display: flex;
     flex-direction: column;
     margin-top: 10px;
 }
 
-.contentAdminProfile form input{
+.cAdminProfile form input{
     border: none;
     padding: 3px 5px;
     width: 100%;
@@ -412,9 +461,9 @@ footer p{
     font-weight: 600;
 }
 
-.contentAdminProfile form button{
-    width: 100px;
-    margin-top: 120px;
+#cAdminCP{
+    width: 150px;
+    margin-top: 40px;
     padding: 5px;
     border: none;
     border-radius: 15px;
@@ -425,13 +474,36 @@ footer p{
     font-weight: 700;
 }
 
-.contentAdminProfile form button:hover{
+#cAdminCP a{
+  text-decoration: none;
+  color: white;
+}
+
+
+#cAdminU{
+    width: 100px;
+    margin-top: 235px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+#cAdminU:hover{
     background: white;
     color: #58BD53;
 }
 
 
-.signupAdminAM{
+
+
+/* amAdmin.php */
+
+.sAdminAM{
     width: 100%;
     height: 100vh;
     background: white;
@@ -440,58 +512,67 @@ footer p{
     justify-content: center;
 }
 
-.contentAdminAM{
+.cAdminAM{
 
     width: 100%;
     height: 70vh;
+
 }
 
 
-.contentAdminAM h1{
+.cAdminAM h1{
     color: #005555;
 }
 
+/* amadmin  Mchangesessiondetails */
+
+.amAdmintable{
+  overflow-y: auto;
+  max-height: 350px;
+}
 
 /* signupMedInstructor */
 
-.signupMed{
+.sMed{
     width: 100%;
     height: 100vh;
     background: white;
     display: flex;
     align-items: center;
     justify-content: center;
+
+
 }
 
-.contentMed{
-    width: 50%;
+.cMed{
+    width: 60%;
     height: fit-content;
 }
 
 
-.contentMed h1{
+.cMed h1{
     color: #005555;
 }
 
-.contentMed form{
-    margin-top: 10px;
+.cMed form{
+    margin-top: 1px;
     width: 100%;
     height: fit-content;
     background: #005555;
     display: flex;
-    padding: 7% 5%;
+    padding: 1% 5%;
     justify-content: space-around;
     border-radius: 20px;
     font-weight: 500;
     color: aliceblue;
 }
-.contentMed form label,input{
+.cMed form label,input{
     display: flex;
     flex-direction: column;
     margin-top: 10px;
 }
 
-.contentMed form input{
+.cMed form input{
     border: none;
     padding: 3px 5px;
     width: 100%;
@@ -502,9 +583,9 @@ footer p{
     font-weight: 600;
 }
 
-.contentMed form button{
-    width: 100px;
-    margin-top: 110px;
+#cMedCP{
+    width: 200px;
+    margin-top: 40px;
     padding: 5px;
     border: none;
     border-radius: 15px;
@@ -515,15 +596,108 @@ footer p{
     font-weight: 700;
 }
 
-.contentMed form button:hover{
+#cMedCP a{
+  text-decoration: none;
+  color: white;
+}
+
+
+#cMedS{
+    width: 100px;
+    margin-top: 225px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+
+
+.cMed form button:hover{
+    background: white;
+    color: #58BD53;
+}
+
+/* MprofileChangePW.php */
+
+.sMProfileCPW{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.cMProfileCPW{
+    width: 60%;
+    height: fit-content;
+}
+
+
+.cMProfileCPW h1{
+    color: #005555;
+}
+
+.cMProfileCPW form{
+    margin-top: 1px;
+    width: 50%;
+    height: fit-content;
+    background: #005555;
+    display: flex;
+    padding: 1% 5%;
+    justify-content: center;
+    align-items:center;
+    border-radius: 20px;
+    font-weight: 500;
+    color: aliceblue;
+}
+.cMProfileCPW form label,input{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.cMProfileCPW form input{
+    border: none;
+    padding: 3px 5px;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background: white;
+    color: black;
+    font-weight: 600;
+}
+
+.cMProfileCPW form button{
+    width: 200px;
+    margin-top: 40px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+.cMProfileCPW form button:hover{
     background: white;
     color: #58BD53;
 }
 
 
-/* Mcomplaint */
 
-.signupMComplaint{
+/* Mcomplaint.php */
+
+.sMComplaint{
     width: 100%;
     height: 100vh;
     background: white;
@@ -532,17 +706,17 @@ footer p{
     justify-content: center;
 }
 
-.contentMComplaint{
+.cMComplaint{
     width: 50%;
     height: fit-content;
 }
 
 
-.contentMComplaint h1{
+.cMComplaint h1{
     color: #005555;
 }
 
-.contentMComplaint form{
+.cMComplaint form{
     margin-top: 10px;
     width: 100%;
     height: fit-content;
@@ -554,13 +728,13 @@ footer p{
     font-weight: 500;
     color: aliceblue;
 }
-.contentMComplaint form label,input{
+.cMComplaint form label,input{
     display: flex;
     flex-direction: column;
     margin-top: 10px;
 }
 
-.contentMComplaint form input{
+.cMComplaint form input{
     border: none;
     padding: 3px 5px;
     width: 100%;
@@ -571,7 +745,7 @@ footer p{
     font-weight: 600;
 }
 
-.contentMComplaint form button{
+.cMComplaint form button{
     width: 100px;
     margin-top: 30px;
     padding: 5px;
@@ -584,7 +758,7 @@ footer p{
     font-weight: 700;
 }
 
-.contentMComplaint form button:hover{
+.cMComplaint form button:hover{
     background: white;
     color: #58BD53;
 }
@@ -592,7 +766,7 @@ footer p{
 
 /* Signupas */
 
-.signupAS{
+.sAS{
     width: 100%;
     height: 100vh;
     background: white;
@@ -601,17 +775,17 @@ footer p{
     justify-content: center;
 }
 
-.contentAS{
+.cAS{
     width: 50%;
     height: fit-content;
 }
 
 
-.contentAS{
+.cAS{
     color: #005555;
 }
 
-.contentAS form{
+.cAS form{
     margin-top: 10px;
     width: 100%;
     height: fit-content;
@@ -625,7 +799,7 @@ footer p{
 }
 
 
-.contentAS form button{
+.cAS form button{
     width: 300px;
     height: 100px
     margin-top: 30px;
@@ -639,7 +813,115 @@ footer p{
     font-weight: 700;
 }
 
-.contentAS form button:hover{
+.cAS form button:hover{
     background: white;
     color: #58BD53;
+}
+
+/* error */
+
+.error{
+    background: #F2DEDE;
+    color: #A94442;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    margin: 20px auto;
+    flex-direction: column;
+}
+
+.success{
+    background: #F2DEDE;
+    color: Green;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    margin: 20px auto;
+    flex-direction: column;
+}
+
+/* addnewsession.php */
+
+.sMSession{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cMSession{
+    width: 70%;
+    height: fit-content;
+}
+
+
+.cMSession h1{
+    color: #005555;
+}
+
+.cMSession form{
+    margin-top: 1px;
+    width: 100%;
+    height: fit-content;
+    background: #005555;
+    display: flex;
+    padding: 1% 5%;
+    justify-content: space-around;
+    border-radius: 20px;
+    font-weight: 500;
+    color: aliceblue;
+}
+.cMSession form label,input,select,option{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.cMSession form input,select,option{
+    border: none;
+    padding: 3px 5px;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background: white;
+    color: black;
+    font-weight: 600;
+}
+
+.cMSession form button{
+    width: 100px;
+    margin-top: 60px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+.cMSession form button:hover{
+    background: white;
+    color: #58BD53;
+}
+
+#description{
+  resize: none;
+
+}
+
+.logout-btn{
+  border: none;
+  width: 100px;
+  padding: 5px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: 700;
+  background: #004141;
+  color: white;
+
 }

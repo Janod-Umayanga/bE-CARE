@@ -49,8 +49,32 @@ if($row=mysqli_fetch_assoc($resultData)){
 }
 
 
-function createUser($conn,$first_name,$last_name,$nic,$contact_number,$gender,$email,$password,$city,$address,$fee,$bank_name,$account_holder_name,$branch,$account_number,$qualification_file){
-  $sql="INSERT INTO meditation_instructor (first_name,last_name,nic,contact_number,gender,email,password,city,address,fee,bank_name,account_holder_name,branch,account_number,qualification_file) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+function uidExistsRM($conn,$email){
+  $sql="SELECT * FROM requested_meditation_instructor WHERE email=?;";
+  $stmt= mysqli_stmt_init($conn);
+
+  if(!mysqli_stmt_prepare($stmt,$sql)){
+    header("location:../Msignup.php?error=stmtfailed");
+    exit();
+  }
+
+  mysqli_stmt_bind_param($stmt,"s",$email);
+  mysqli_stmt_execute($stmt);
+
+  $resultData=mysqli_stmt_get_result($stmt);
+
+  if($row=mysqli_fetch_assoc($resultData)){
+    return $row;
+  }else{
+    $result=false;
+    return $result;
+  }
+
+   mysqli_stmt_close($stmt);
+}
+
+function createUserRM($conn,$first_name,$last_name,$nic,$contact_number,$gender,$email,$password,$city,$address,$fee,$bank_name,$account_holder_name,$branch,$account_number,$qualification_file){
+  $sql="INSERT INTO requested_meditation_instructor(first_name,last_name,nic,contact_number,gender,email,password,city,address,fee,bank_name,account_holder_name,branch,account_number,qualification_file) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
   $stmt= mysqli_stmt_init($conn);
 
   if(!mysqli_stmt_prepare($stmt,$sql)){
@@ -64,10 +88,41 @@ $hashedPwd=password_hash($password,PASSWORD_DEFAULT);
 mysqli_stmt_bind_param($stmt,"sssssssssssssss",$first_name,$last_name,$nic,$contact_number,$gender,$email,$hashedPwd,$city,$address,$fee,$bank_name,$account_holder_name,$branch,$account_number,$qualification_file);
 mysqli_stmt_execute($stmt);
 mysqli_stmt_close($stmt);
-header("location:../index.php?error=none");
+header("location:../MsignupVerify.php?error=none");
 exit();
 
 }
+
+
+function createUser($conn,$id,$first_name,$last_name,$nic,$contact_number,$gender,$email,$password,$city,$address,$fee,$bank_name,$account_holder_name,$branch,$account_number,$qualification_file){
+  $sql="INSERT INTO meditation_instructor(first_name,last_name,nic,contact_number,gender,email,password,city,address,fee,bank_name,account_holder_name,branch,account_number,qualification_file) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+  $stmt= mysqli_stmt_init($conn);
+
+  if(!mysqli_stmt_prepare($stmt,$sql)){
+    header("location:../rsMeditationInstructor.php?error=stmtfailed");
+    exit();
+  }
+
+
+
+mysqli_stmt_bind_param($stmt,"sssssssssssssss",$first_name,$last_name,$nic,$contact_number,$gender,$email,$password,$city,$address,$fee,$bank_name,$account_holder_name,$branch,$account_number,$qualification_file);
+mysqli_stmt_execute($stmt);
+mysqli_stmt_close($stmt);
+
+$sql="DELETE FROM requested_meditation_instructor WHERE requested_meditation_instructor_id=$id;";
+if (mysqli_query($conn, $sql)) {
+  //echo "Record deleted successfully";
+} else {
+  //echo "Error deleting record: " . mysqli_error($conn);
+}
+
+
+
+header("location:../rsMeditationInstructor.php?error=none");
+exit();
+
+}
+
 
 function createComplaint($conn,$subject,$description){
   $sql="INSERT INTO complaint (subject,description) VALUES (?,?);";
@@ -104,22 +159,22 @@ function loginUser($conn,$email,$password){
   $uidExists=uidExists($conn,$email);
 
   if($uidExists===false){
-    header("location:../Mlogin.php?error=wronglogin");
+    header("location:../index.php?error=Incorrect login information");
     exit();
   }
 
   $pwdHashed=$uidExists["password"];
   $checkPwd=password_verify($password,$pwdHashed);
   if($checkPwd===false){
-    header("location:../Mlogin.php?error=wronglogin");
+    header("location:../index.php?error=Incorrect login information");
     exit();
   }else if($checkPwd===true){
      session_start();
-     $_SESSION["userid"]=$uidExists["meditation_instructor_id"];
-     $_SESSION["useruid"]=$uidExists["first_name"];
+     $_SESSION["userMid"]=$uidExists["meditation_instructor_id"];
+     $_SESSION["userMuid"]=$uidExists["first_name"];
 
      header("location:../indexMeditationInstructor.php");
-     exit();
+     //exit();
   }
 
 }

@@ -1,7 +1,3 @@
-<?php
-  session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +12,7 @@
  <header>
      <div class="left">
        <?php
-         if(isset($_SESSION["useruid"])){  ?>
+         if(isset($_SESSION["userMuid"])){  ?>
            <div>
 
                 <div id="mySidenav" class="sidenav">
@@ -57,18 +53,20 @@
      <div class="right">
          <?php
 
-           if(isset($_SESSION["useruid"])){
-               echo "
+           if(isset($_SESSION["userMuid"])){
+               echo strtoupper("
                <form  action='Mprofile.php' >
-                        <button>".$_SESSION["useruid"]."</button>
+                        <button>".$_SESSION["userMuid"]."</button>
                </form>
-               ";
+               ");
 
                echo "
-               <form  action='includes/Mlogout.inc.php' >
-                        <button>LOGOUT</button>
+               <form method='post' action='includes/Mlogout.inc.php'>
+                 <button type='submit' class='logout-btn'>
+                    LOGOUT
+                 </button>
                </form>
-               ";
+   ";
 
            }
            else{

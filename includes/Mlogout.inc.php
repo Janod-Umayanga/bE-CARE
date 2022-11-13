@@ -1,9 +1,6 @@
 <?php
-
-
 session_start();
-session_unset();
+unset($_SESSION['userMid']);
 session_destroy();
-
 header("location:../index.php");
 exit();
