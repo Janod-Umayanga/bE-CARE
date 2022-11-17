@@ -56,14 +56,21 @@
                 echo "<td>".$row['account_holder_name']."</td>";
                 echo "<td>".$row['branch']."</td>";
                 echo "<td>".$row['account_number']."</td>";
-                echo "<td>".$row['qualification_file']."</td>";
+                ?>
+                <td>
+                        <button class="buttonamDownload button1amDownload"><a download="<?php echo $row['qualification_file'] ?>"  href="uploads/<?php echo $row['qualification_file'] ?>">Download</a></button>
 
-                ?> <td>
+                </td>
+                 <td>
                     <form  action="./includes/verifyMI.inc.php" method="post">
                            <button class="buttonamU button1amU" value="<?php echo $row["requested_meditation_instructor_id"] ?>" name="verifyMI">Verify</button>
                     </form>
                    </td>
-                   <td><button class="buttonamD button1amD"><a href="">Not Verify</a></button></td>
+                   <td>
+                     <form action="./includes/NotverifyMI.inc.php" method="post">
+                           <button class="buttonamD button1amD" value="<?php echo $row["requested_meditation_instructor_id"] ?>" name="NotverifyMI">Not Verify</button>
+                    </form>
+                  </td>
 
                 <?php echo "</tr>";
               }

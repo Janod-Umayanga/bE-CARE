@@ -20,7 +20,7 @@
       <div class="cAdminProfile">
 
               <h1>Account details</h1>
-              <form >
+              <form action="includes/updateProfileA.inc.php" method="post">
                   <div>
                       <label>First name</label>
                       <input type="text" id="first_name" name="first_name" required="true" value="<?php echo $row["first_name"] ?>">
@@ -35,7 +35,7 @@
                       <input type="text" id="contact_number" name="contact_number" required="true" value="<?php echo $row["contact_number"] ?>">
 
                       <label>Email</label>
-                      <input type="email" name="email" id="email" required="true" value="<?php echo $row["email"] ?>">
+                      <input type="email" name="email" id="email" required="true" disabled="true" value="<?php echo $row["email"] ?>">
 
 
                   </div>
@@ -65,7 +65,7 @@
                         <button id="cAdminCP"> <a href="profileChangePW.php">Change Password</a></button>
                          <br>
 
-                         <button type="submit" id="cAdminU" name="submit">Update</button>
+                         <button type="submit" id="cAdminU" name="submit" value="<?php echo $_SESSION["userid"] ?>">Update</button>
 
                   </div>
 
@@ -73,6 +73,17 @@
 
               </form>
 
+              <?php
+                  if(isset($_GET["error"])){
+                    if($_GET["error"]=="errorUpdating"){
+                       echo "<p class='error'>Error Updating !</p>";
+                    }
+                    // else if($_GET["error"]=="none"){
+                    //    echo "<p class='success'>Successfullly Updated</p>";
+                    // }
+
+                  }
+               ?>
 
       </div>
 

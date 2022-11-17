@@ -21,7 +21,7 @@
                       <label>Description</label>
                       <textarea name="description" id="description" rows="6" cols="80"></textarea><br>
 
-                      <button type="submit" name="submit">Submit</button>
+                      <button type="submit" name="submit" value="<?php echo $_SESSION["userMid"] ?>">Submit</button>
 
                   </div>
 

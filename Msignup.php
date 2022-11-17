@@ -8,7 +8,7 @@
       <div class="cMed">
 
               <h1>Signup as a Meditation Instructor</h1>
-              <form action="includes/Msignup.inc.php" method="post">
+              <form action="includes/Msignup.inc.php" method="post" enctype="multipart/form-data">
                   <div>
                       <label>First name</label>
                       <input type="text" id="first_name" name="first_name" required="true" >
@@ -71,7 +71,7 @@
                     <label>Upload portfolio of work or copy of <br>certifiacates or other qualifications as a file</label>
 
 
-                    <button type="submit" name="submit">Sign Up</button>
+                    <button id="cMedButton" type="submit" name="submit">Sign Up</button>
 
                   </div>
 
@@ -99,6 +99,15 @@
                         }
                         else if($_GET["error"]=="none"){
                            echo "<p class='success'>You have signed up!</p>";
+                        }
+                        else if($_GET["error"]=="Your qualification file is too big!"){
+                           echo "<p class='error'>Your qualification file is too big!</p>";
+                        }
+                        else if($_GET["error"]=="There was an error uploading file!"){
+                           echo "<p class='error'>There was an error uploading file!</p>";
+                        }
+                        else if($_GET["error"]=="You cannot upload files of this type!"){
+                           echo "<p class='error'>You cannot upload qualification files of this type!</p>";
                         }
                       }
                    ?>

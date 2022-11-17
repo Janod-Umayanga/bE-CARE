@@ -124,8 +124,9 @@ exit();
 }
 
 
-function createComplaint($conn,$subject,$description){
-  $sql="INSERT INTO complaint (subject,description) VALUES (?,?);";
+function createComplaint($conn,$subject,$description,$Mid)
+{
+  $sql="INSERT INTO complaint (subject,description,meditation_instructor_id) VALUES (?,?,?);";
   $stmt= mysqli_stmt_init($conn);
 
   if(!mysqli_stmt_prepare($stmt,$sql)){
@@ -135,10 +136,30 @@ function createComplaint($conn,$subject,$description){
 
 
 
-mysqli_stmt_bind_param($stmt,"ss",$subject,$description);
+mysqli_stmt_bind_param($stmt,"sss",$subject,$description,$Mid);
 mysqli_stmt_execute($stmt);
 mysqli_stmt_close($stmt);
 header("location:../indexMeditationInstructor.php?error=none");
+exit();
+
+}
+
+function createFeedback($conn,$description,$Mid)
+{
+  $sql="INSERT INTO feedback (description,meditation_instructor_id) VALUES (?,?);";
+  $stmt= mysqli_stmt_init($conn);
+
+  if(!mysqli_stmt_prepare($stmt,$sql)){
+    header("location:../Mfeedback.php?error=stmtfailed");
+    exit();
+  }
+
+
+
+mysqli_stmt_bind_param($stmt,"ss",$description,$Mid);
+mysqli_stmt_execute($stmt);
+mysqli_stmt_close($stmt);
+header("location:../Mfeedback.php?error=none");
 exit();
 
 }
@@ -176,5 +197,97 @@ function loginUser($conn,$email,$password){
      header("location:../indexMeditationInstructor.php");
      //exit();
   }
+
+}
+
+
+
+
+
+function updateUserM($conn,$id,$first_name,$last_name,$nic,$contact_number,$gender,$bank_name,$account_holder_name,$branch,$account_number,$city,$address,$fee)
+{
+  $sql = "UPDATE meditation_instructor SET first_name='$first_name',last_name='$last_name',nic='$nic',contact_number='$contact_number',gender='$gender',bank_name='$bank_name',account_holder_name='$account_holder_name',branch='$branch',account_number='$account_number',city='$city',address='$address',fee='$fee' WHERE meditation_instructor_id=$id";
+
+if (mysqli_query($conn, $sql)) {
+
+  header("location:../Mprofile.php?error=none");
+  exit();
+} else {
+  header("location:../Mprofile.php?error=errorUpdating");
+  exit();
+
+}
+
+ mysqli_close($conn);
+
+}
+
+function updatePW($conn,$id,$currentPW,$password,$passwordRepeat)
+{
+
+  $result = mysqli_query($conn,"SELECT password FROM meditation_instructor WHERE meditation_instructor_id=$id");
+  $row = mysqli_fetch_array($result);
+  $pass=$row["password"];
+
+  $checkPwd=password_verify($currentPW,$pass);
+  if($checkPwd===false){
+    header("location:../MprofileChangePW.php?error=Incorrect current password");
+    exit();
+  }else if($checkPwd===true){
+    if($password==$passwordRepeat){
+
+       $hashedPwd=password_hash($password,PASSWORD_DEFAULT);
+       $sql = "UPDATE meditation_instructor SET password='$hashedPwd' WHERE meditation_instructor_id=$id";
+
+
+       if (mysqli_query($conn, $sql)) {
+
+       header("location:../MprofileChangePW.php?error=none");
+       exit();
+       } else {
+       header("location:../MprofileChangePW.php?error=error Updating Password");
+       exit();
+
+       }
+
+       mysqli_close($conn);
+
+    }else{
+      header("location:../MprofileChangePW.php?error=New password and Re-Type new password are not matching");
+      exit();
+
+    }
+  }
+}
+
+
+function DeleteSessionMI($conn,$id)
+{
+  $sql="DELETE FROM session WHERE session_id=$id;";
+  if (mysqli_query($conn, $sql)) {
+   //echo "Record deleted successfully";
+  } else {
+   //echo "Error deleting record: " . mysqli_error($conn);
+  }
+
+
+
+  header("location:../Mchangesessiondetails.php?error=none");
+  exit();
+}
+
+
+function updateSessionDetails($conn,$id,$title,$date,$starting_time,$ending_time,$address,$fee,$description,$MID)
+{
+  $sql = "UPDATE session SET title='$title',date='$date',starting_time='$starting_time',ending_time='$ending_time',address='$address',fee='$fee',description='$description',meditation_instructor_id=$MID WHERE session_id=$id";
+
+if (mysqli_query($conn, $sql)) {
+  header("location:../Mchangesessiondetails.php?error=none");
+  exit();
+} else {
+  echo "Error Updating record: " . mysqli_error($conn);
+}
+
+ mysqli_close($conn);
 
 }

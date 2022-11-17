@@ -16,6 +16,7 @@ $userid=$_SESSION["userid"];
 $result = mysqli_query($conn,"SELECT * FROM admin WHERE admin_id=$userid");
 $row = mysqli_fetch_array($result);
 $gender=$row['gender'];
+$name=$row['first_name'];
 if($gender=="Male"){
   $g="Mr. ";
 }else if($gender=="Female"){
@@ -72,7 +73,7 @@ if($gender=="Male"){
            if(isset($_SESSION["useruid"])){
                echo strtoupper("
                <form  action='profile.php' >
-                        <button class='one' >".$g.$_SESSION["useruid"]."</button>
+                        <button class='one' >".$g.$name."</button>
                </form>
                ");
 

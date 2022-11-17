@@ -47,7 +47,7 @@ header{
 }
 
 .right button{
-    width: 100px;
+    width:fit-content;;
     padding: 5px;
     border: none;
     border-radius: 15px;
@@ -55,6 +55,7 @@ header{
     font-weight: 700;
     background: #004141;
     color: white;
+    padding: 5px 10px;
 }
 
 .headerprofilebtn{
@@ -261,6 +262,34 @@ footer p{
    color: white;
 }
 
+.buttonamDownload {
+  background-color: #4169e1;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+
+
+}
+
+.button1amDownload {border-radius: 4px;}
+
+
+
+
+
+.button1amDownload a{
+   text-decoration: none;
+   color: white;
+}
+
+
+
 /* Change session details button */
 
 .buttonamU {
@@ -289,6 +318,33 @@ footer p{
    color: white;
 }
 
+/* Mregistered users button */
+
+.buttonamS {
+  background-color: #58BD53;
+  border: none;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 2px 2px;
+  cursor: pointer;
+
+
+}
+
+.button1amS {border-radius: 4px;}
+
+
+
+
+
+.button1amS a{
+   text-decoration: none;
+   color: white;
+}
 
 
 
@@ -463,7 +519,7 @@ footer p{
 
 #cAdminCP{
     width: 150px;
-    margin-top: 40px;
+    margin-top: 240px;
     padding: 5px;
     border: none;
     border-radius: 15px;
@@ -482,7 +538,7 @@ footer p{
 
 #cAdminU{
     width: 100px;
-    margin-top: 235px;
+    margin-top: 35px;
     padding: 5px;
     border: none;
     border-radius: 15px;
@@ -585,7 +641,7 @@ footer p{
 
 #cMedCP{
     width: 200px;
-    margin-top: 40px;
+    margin-top: 240px;
     padding: 5px;
     border: none;
     border-radius: 15px;
@@ -601,10 +657,28 @@ footer p{
   color: white;
 }
 
+#cMedButton{
+    width: 200px;
+    margin-top: 50px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+#cMedButton a{
+  text-decoration: none;
+  color: white;
+}
+
 
 #cMedS{
     width: 100px;
-    margin-top: 225px;
+    margin-top: 35px;
     padding: 5px;
     border: none;
     border-radius: 15px;
@@ -764,6 +838,94 @@ footer p{
 }
 
 
+/* MFeedback.php */
+
+.sMFeedback{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.cMFeedback{
+    width: 40%;
+
+
+}
+
+
+.cMFeedback h1{
+    color: #005555;
+}
+
+.cMFeedbackAA{
+
+    overflow-y: auto;
+    max-height: 360px;
+
+}
+
+
+.cMFeedbackAA h1{
+    color: #005555;
+}
+
+
+.aaaa{
+    margin-top: 5px;
+    width: 90%;
+    height: fit-content;
+    background: #005555;
+    display: flex;
+    padding: 2% 2%;
+    justify-content: flex-start;
+    border-radius: 20px;
+    font-weight: 500;
+    color: aliceblue;
+    flex-direction: column;
+
+
+}
+.aaaa label,input{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+.cMFeedback form input{
+
+    border: none;
+    padding: 3px 5px;
+    width: 100%;
+    height: 20px;
+    border-radius: 5px;
+    background: white;
+    color: black;
+    font-weight: 600;
+}
+
+.newfeedback{
+    width: fit-content;
+    margin-top: 0px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+
+
+.newfeedback a{
+  text-decoration: none;
+  color: white;
+}
+
 /* Signupas */
 
 .sAS{
@@ -840,6 +1002,26 @@ footer p{
     flex-direction: column;
 }
 
+
+.errorPW{
+    background: #F2DEDE;
+    color: #A94442;
+    padding: 10px;
+    width: 59%;
+    border-radius: 5px;
+    margin: 20px 0px;
+    flex-direction: column;
+}
+
+.successPW{
+    background: #F2DEDE;
+    color: Green;
+    padding: 10px;
+    width: 59%;
+    border-radius: 5px;
+    margin: 20px 0px;
+    flex-direction: column;
+}
 /* addnewsession.php */
 
 .sMSession{
@@ -892,7 +1074,7 @@ footer p{
 
 .cMSession form button{
     width: 100px;
-    margin-top: 60px;
+    margin-top: 20px;
     padding: 5px;
     border: none;
     border-radius: 15px;
@@ -904,6 +1086,25 @@ footer p{
 }
 
 .cMSession form button:hover{
+    background: white;
+    color: #58BD53;
+}
+
+
+.updateSessionBtn{
+    width: 100px;
+    margin-top: 20px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+.updateSessionBtn:hover{
     background: white;
     color: #58BD53;
 }
@@ -924,4 +1125,21 @@ footer p{
   background: #004141;
   color: white;
 
+}
+
+#reg{
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#reg td, th {
+  border: 1px solid white;
+  text-align: left;
+  padding: 8px;
+}
+
+#reg tr:nth-child(even) {
+  background-color:  #004141;
+  color:white;
 }

@@ -17,7 +17,6 @@
 
             <table id="customers">
               <tr>
-                <th>Admin Id</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Nic</th>
@@ -38,7 +37,6 @@
               while ($row = mysqli_fetch_array($result))
               {
                 echo "<tr>";
-                echo "<td>".$row['admin_id']."</td>";
                 echo "<td>".$row['first_name']."</td>";
                 echo "<td>".$row['last_name']."</td>";
                 echo "<td>".$row['nic']."</td>";
@@ -49,7 +47,12 @@
                 echo "<td>".$row['account_holder_name']."</td>";
                 echo "<td>".$row['branch']."</td>";
                 echo "<td>".$row['account_number']."</td>";
-                ?> <td><button class="buttonamD button1amD"><a href="">Delete</a></button></td>
+                ?> <td>
+                  <form action="./includes/amDeleteA.inc.php" method="post">
+                        <button class="buttonamD button1amD" value="<?php echo $row["admin_id"] ?>" name="DeleteA">Delete</button>
+                 </form>
+
+                </td>
 
                 <?php echo "</tr>";
               }

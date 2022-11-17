@@ -9,6 +9,22 @@
 </head>
 <body>
 
+  <?php
+  if(isset($_SESSION["userMid"])){
+  require_once "includes/dbh.inc.php";
+  $userid=$_SESSION["userMid"];
+  $result = mysqli_query($conn,"SELECT * FROM meditation_instructor WHERE meditation_instructor_id=$userid");
+  $row = mysqli_fetch_array($result);
+  $gender=$row['gender'];
+  $name=$row['first_name'];
+  if($gender=="Male"){
+    $g="Mr. ";
+  }else if($gender=="Female"){
+    $g="Mrs. ";
+  }
+  }
+   ?>
+
  <header>
      <div class="left">
        <?php
@@ -56,7 +72,7 @@
            if(isset($_SESSION["userMuid"])){
                echo strtoupper("
                <form  action='Mprofile.php' >
-                        <button>".$_SESSION["userMuid"]."</button>
+                        <button>".$g.$name."</button>
                </form>
                ");
 

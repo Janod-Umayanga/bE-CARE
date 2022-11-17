@@ -14,7 +14,7 @@
          <div class="amAdmintable">
 
 
-            <table id="customers">
+            <table id="reg">
               <tr>
                 <th>Session Title</th>
                 <th>Date</th>
@@ -45,9 +45,46 @@
                            <button class="buttonamU button1amU" value="<?php echo $row["session_id"] ?>" name="updateSession">Update</button>
                     </form>
                    </td>
-                   <td><button class="buttonamD button1amD"><a href="">Delete</a></button></td>
+                   <td>
+
+                     <form action="./includes/DeleteSession.inc.php" method="post">
+                           <button class="buttonamD button1amD" value="<?php echo $row["session_id"] ?>" name="DeleteSession">Delete</button>
+                    </form>
+
+
+                   </td>
 
                 <?php echo "</tr>";
+
+                echo "<tr>";
+                echo "<td></td>";
+                echo "<td></td>";
+                echo "<td></td>";
+                echo "<td></td>";
+                echo "<td></td>";
+                echo "<td></td>";
+                echo "<td></td>";
+                ?> <td>
+                    <form >
+
+                    </form>
+                   </td>
+                   <td>
+
+                     <form >
+
+                     </form>
+
+
+                   </td>
+
+                <?php echo "</tr>";
+
+
+
+
+
+
               }
 
 

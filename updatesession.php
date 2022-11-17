@@ -10,7 +10,9 @@
 
  $id=$_POST["updateSession"];
  $result = mysqli_query($conn,"SELECT * FROM session WHERE session_id=$id");
- $row = mysqli_fetch_array($result)
+ $row = mysqli_fetch_array($result);
+
+
 
  ?>
 
@@ -20,7 +22,7 @@
       <div class="cMSession">
 
               <h1>Update Session</h1>
-              <form action="Mchangesessiondetails.php" method="post">
+              <form action="includes/Updatesessiondetails.inc.php" method="post">
                   <div>
                       <label>Title</label>
                       <input type="text" id="title" name="title" required="true" value="<?php echo $row["title"] ?>">
@@ -46,9 +48,10 @@
                       <label>Description</label>
                       <textarea name="description" id="description" required="true" rows="8" cols="80"><?php echo $row["description"] ?></textarea>
                        <br>
-                      <button type="submit" name="submit">Update</button>
+                       <input type="hidden" name="MID" value="<?php echo $_SESSION["userMid"] ?>">
 
-                  </div>
+                      <button type="submit" class="updateSessionBtn" name="submit" value="<?php echo $row["session_id"] ?>">Update</button>
+                      </div>
 
 
 

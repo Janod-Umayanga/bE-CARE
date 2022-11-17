@@ -21,8 +21,8 @@
       <div class="cMed">
 
               <h1>Account details</h1>
-              <form >
-                  <div>
+              <form action="includes/updateProfileM.inc.php" method="post">
+                <div>
                       <label>First name</label>
                       <input type="text" id="first_name" name="first_name" required="true" value="<?php echo $row["first_name"] ?>">
 
@@ -72,15 +72,24 @@
                          <input type="text" name="account_number" id="account_number" required="true" value="<?php echo $row["account_number"] ?>">
 
                          <button id="cMedCP"> <a href="MprofileChangePW.php">Change Password</a></button>
-                          <br> 
+                          <br>
 
-                         <button type="submit" name="submit" id="cMedS">Update</button>
+                         <button type="submit" name="submit" id="cMedS" value="<?php echo $_SESSION["userMid"] ?>">Update</button>
 
                   </div>
 
 
 
               </form>
+
+              <?php
+                  if(isset($_GET["error"])){
+                    if($_GET["error"]=="errorUpdating"){
+                       echo "<p class='error'>Error Updating !</p>";
+                    }
+
+                  }
+               ?>
 
 
       </div>
