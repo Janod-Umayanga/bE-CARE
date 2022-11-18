@@ -1,0 +1,366 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+/* main header */
+
+li{
+   display: inline;
+}
+
+.center_wrapper1 .right1 li a{
+    padding:10px 18px;
+    font-size: 15px;
+    color: #ffffff; 
+    text-decoration: none;
+    border: none;
+    border-radius: 18px;
+    background-color:#005555;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+img{
+    height: 20px;
+    width: 30px;
+}
+.main_header_wrapper .center_wrapper1{
+
+    background-color: #58BD53;
+    
+    /* margin: 0 auto; */
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    position: relative;
+    
+}
+
+.main_header_wrapper .center_wrapper1 .left1 ,
+ .main_header_wrapper .center_wrapper1 .right1{
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    
+}
+
+.main_header_wrapper .center_wrapper1 .right1{
+    padding-left: 300px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main_header_wrapper .center_wrapper1 .left1{
+    width: 60%;
+    padding-left: 20px;
+}
+
+
+#login_btn{
+    color: #FFFFFF;
+    Width : 86px;
+    height: 36px;
+    left: 143px;
+    border: none;
+    border-radius: 36px;
+    background: #58BD53;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    }
+   
+.becare{
+    padding-left: 40px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 800;
+}
+
+.mid{
+    align-items: center;
+}
+
+.center{
+    align-content: center;
+    position: relative;
+    left: auto;
+}
+
+.mid .title{
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    position: relative;
+    top: 30px;
+    color: #005555;
+    
+}
+
+/* doctor/counsellor login form */
+
+.mid .form{
+
+    display: flex;
+    margin: auto;
+    width: 600px;
+    height: 458px;
+    border: 5px solid #005555;
+    border-radius: 10px;
+    background-color: #005555;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    color: #FFFFFF;
+    justify-content: center;
+    position: relative;
+    top: 60px;    
+}
+
+.form .input_main{
+    align-content: center;
+    height: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 500;
+
+}
+
+.mid .center_wrapper_mid .center{
+     padding: 0px;
+}
+
+.mid .form input{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    align-content: center;
+}
+.mid .center_wrapper_mid .center .form input{
+    border-radius: 8px;
+    height: 16px;
+    width: 200px;
+}
+
+/* .form_left , .form_right{
+    
+
+} */
+
+.form_left,.form_right {
+    padding: 12px;
+}
+
+.form_right{
+    padding-left:  40px;
+}
+
+
+.select{
+    width: 110px;
+    border-radius: 5px;
+}
+
+
+#Signup_btn2{
+    Width : 86px;
+    height: 26px;
+    left: 143px;
+    border: none;
+    border-radius: 36px;
+    background:#58BD53;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-size: 14px;
+}
+
+#Signup_btn2:hover{
+ background: #75c571;
+}
+
+.sign_php{
+    padding-left: 100px;
+}
+
+.main_footer_wrapper .center_wrapper2{
+    position: absolute;
+    top: 664px;
+    width: 100%;
+    height: 80px;
+    background:  #58BD53;
+    display: flex;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    
+}
+
+.center_wrapper2 .All_right_recerved{
+    font-size: 10px;
+    padding: 10px 30px 8px 10px ;
+ }  
+
+.fotter li{
+    display: inline;
+}
+
+.center_wrapper2 .footer li a{
+ 
+    padding:4px 80px;
+    font-size: 15px;
+    color: #005555;
+    text-decoration: none;
+
+}
+
+.center_wrapper2 .footer li a:hover{
+    color: bisque;
+}
+
+/* login_form */
+.center .form_login{
+
+    position: relative;
+    top: 60px; 
+    display: flex;
+    margin: auto;
+    width: 500px;
+    height: 400px;
+    border: 5px solid #005555;
+    border-radius: 10px;
+    background-color: #005555;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    color: #FFFFFF;
+    justify-content: center;
+       
+}
+.center .form_login .l_inputs{
+    padding-top:100px;
+    font-size: large;
+    
+}
+
+.center .form_login .l_inputs input{
+    width: 200px;
+    height: 20px;
+    border: none;
+    border-radius: 8px;
+
+}
+
+.center .form_login .l_inputs select option{
+    font-family: Arial, Helvetica, sans-serif;
+    width: 200px;
+    height: 20px;
+    border-radius: 8px;
+    border: none;
+}
+
+/* add time slots */
+
+.mid .form_doctor_add_time{
+
+    display: flex;
+    margin: auto;
+    width: 350px;
+    height: 500px;
+    border: 5px solid #005555;
+    border-radius: 10px;
+    background-color:#005555;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight:200;
+    font-size: 15px;
+    color: #FFFFFF;
+    justify-content: center;
+    position: relative;
+    top: 60px;
+    align-items: center;
+}
+
+.mid .form_doctor_add_time input{
+    
+    height: 25px;
+    width: 220px;
+    border-radius: 8px;
+}
+
+.mid .form_doctor_add_time select {
+        height: 25px;
+        width: 225px;
+        border-radius: 8px;
+}
+
+.input_2 .title{
+    padding-bottom: 60px;
+    color: white;
+}
+
+
+
+/* home page side bar */
+
+
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 250px;
+    background-color:#58BD53;
+    position: fixed;
+    height: 155px;
+    overflow: auto;
+  }
+  
+
+  .sidebar a {
+    display: block;
+    color:#005555;
+    padding: 16px;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    border: #005555;
+  }
+  
+
+  .sidebar a.active {
+    background-color: #04AA6D;
+    color:#04AA6D
+  }
+  
+
+  .sidebar a:hover:not(.active) {
+    background-color: rgb(115, 244, 89);
+    color: rgb(37, 33, 33);
+  }
+  
+
+  div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+  }
+  
+ 
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
