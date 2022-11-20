@@ -11,7 +11,7 @@
 
  <sectionc class="am">
    <br>
-   <h1>Account Management</h1>
+   <h1>User Management</h1>
 
      <div class="amcontent">
             <button class="buttonam button1am"><a href="amPatient.php">Patient</a></button>

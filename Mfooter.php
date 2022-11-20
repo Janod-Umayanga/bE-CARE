@@ -2,10 +2,10 @@
         <p>2022 All Rights reserved</p>
         <ul>
             <li>
-                <a href="#">ABOUT US</a>
+                <a href="aboutusM.php">ABOUT US</a>
             </li>
             <li>
-                <a href="#">CONTACT US</a>
+                <a href="contactusM.php">CONTACT US</a>
             </li>
             <li>
                 <a href="Mfeedback.php">FEED BACKS</a>

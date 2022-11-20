@@ -2,13 +2,13 @@
         <p>2022 All Rights reserved</p>
         <ul>
             <li>
-                <a href="#">ABOUT US</a>
+                <a href="aboutus.php">ABOUT US</a>
             </li>
             <li>
-                <a href="#">CONTACT US</a>
+                <a href="contactus.php">CONTACT US</a>
             </li>
             <li>
-                <a href="#">FEED BACKS</a>
+                <a href="feedback.php">FEED BACKS</a>
             </li>
             <li>
                 <a href="#">COMPLAINTS</a>

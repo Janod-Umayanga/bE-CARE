@@ -33,6 +33,7 @@
 
                 <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="indexMeditationInstructor.php">Dashboard</a>
                 <a href="Mregisteredusers.php">Registered users</a>
                 <a href="Msession.php">Session</a>
                 <a href="Mchangesessiondetails.php">Change Session details</a>

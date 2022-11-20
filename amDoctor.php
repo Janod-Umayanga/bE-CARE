@@ -10,28 +10,21 @@
 
  <sectionc class="sAdminAM">
      <div class="cAdminAM">
-            <h1>Doctor Account Management</h1>
+            <h1>Doctor
+              <button class="buttonam button1am"><a href="addnewdoctor.php">Add New </a></button>
+            </h1>
+
            <div class="amAdmintable">
 
 
-            <table id="customers">
+            <table id="reg">
               <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Nic</th>
-                <th>Contact Number</th>
-                <th>Gender</th>
-                <th>Email</th>
                 <th>Registered date</th>
-                <th>slmc_reg_number</th>
                 <th>type</th>
-                <th>city</th>
                 <th>specialization</th>
-                <th>Bank name</th>
-                <th>Account holder name</th>
-                <th>Branch</th>
-                <th>Account Number</th>
-                <th>Qualification File</th>
+                <th></th>
 
                 <th></th>
 
@@ -45,25 +38,19 @@
                 echo "<tr>";
                 echo "<td>".$row['first_name']."</td>";
                 echo "<td>".$row['last_name']."</td>";
-                echo "<td>".$row['nic']."</td>";
-                echo "<td>".$row['contact_number']."</td>";
-                echo "<td>".$row['gender']."</td>";
-                echo "<td>".$row['email']."</td>";
                 echo "<td>".$row['registered_date']."</td>";
-                echo "<td>".$row['slmc_reg_number']."</td>";
                 echo "<td>".$row['type']."</td>";
-                echo "<td>".$row['city']."</td>";
                 echo "<td>".$row['specialization']."</td>";
-                echo "<td>".$row['bank_name']."</td>";
-                echo "<td>".$row['account_holder_name']."</td>";
-                echo "<td>".$row['branch']."</td>";
-                echo "<td>".$row['account_number']."</td>";
               ?>
 
                <td>
-                   <button class="buttonamDownload button1amDownload"><a download="<?php echo $row['qualification_file'] ?>"  href="uploads/<?php echo $row['qualification_file'] ?>">Download</a></button>
+                 <form  action="viewMoreAMDoc.php" method="post">
+                   <button class="buttonamU button1amU" value="<?php echo $row["doctor_id"] ?>" name="submit">View More</button>
+                </form>
+
 
                </td>
+
 
                 <td>
 
@@ -73,6 +60,20 @@
 
                 </td>
 
+                <?php echo "<tr>";
+                echo "<td></td>";
+                echo "<td></td>";
+                echo "<td></td>";
+                echo "<td></td>";
+                echo "<td></td>";
+                echo "<td></td>";
+                echo "<td></td>";
+
+              ?>
+
+               <td>
+
+               </td>
                 <?php echo "</tr>";
               }
 
@@ -82,6 +83,7 @@
 
 
            </table>
+
          </div>
       </div>
   </section>

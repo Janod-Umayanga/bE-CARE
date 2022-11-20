@@ -118,13 +118,11 @@ function createUserP($conn,$id,$first_name,$last_name,$nic,$contact_number,$gend
     exit();
   }
 
-
-
- mysqli_stmt_bind_param($stmt,"ssssssssssssssss",$id,$first_name,$last_name,$nic,$contact_number,$gender,$email,$password,$slmc_reg_number,$pharmacy_name,$city,$address,$bank_name,$account_holder_name,$branch,$account_number,$qualification_file);
+ mysqli_stmt_bind_param($stmt,"ssssssssssssssss",$first_name,$last_name,$nic,$contact_number,$gender,$email,$password,$slmc_reg_number,$pharmacy_name,$city,$address,$bank_name,$account_holder_name,$branch,$account_number,$qualification_file);
  mysqli_stmt_execute($stmt);
  mysqli_stmt_close($stmt);
 
- $sql="DELETE FROM requested_pharamacist WHERE requested_pharamacist_id=$id;";
+ $sql="DELETE FROM requested_pharmacist WHERE requested_pharmacist_id=$id;";
  if (mysqli_query($conn, $sql)) {
   //echo "Record deleted successfully";
  } else {
@@ -133,7 +131,7 @@ function createUserP($conn,$id,$first_name,$last_name,$nic,$contact_number,$gend
 
 
 
- header("location:../rsPharamcist.php?error=none");
+ header("location:../rsPharmacist.php?error=none");
  exit();
 }
 

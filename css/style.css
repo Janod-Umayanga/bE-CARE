@@ -244,7 +244,7 @@ footer p{
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 13px;
   margin: 4px 2px;
   cursor: pointer;
 
@@ -317,6 +317,36 @@ footer p{
    text-decoration: none;
    color: white;
 }
+
+
+/* Msession.php button */
+
+.buttonamMS {
+  background-color: #58BD53;
+  border: none;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 2px 1px;
+  cursor: pointer;
+
+
+}
+
+.button1amMS {border-radius: 4px;}
+
+
+
+
+
+.button1amMS a{
+   text-decoration: none;
+   color: white;
+}
+
 
 /* Mregistered users button */
 
@@ -570,7 +600,7 @@ footer p{
 
 .cAdminAM{
 
-    width: 100%;
+    width: 55%;
     height: 70vh;
 
 }
@@ -585,6 +615,7 @@ footer p{
 .amAdmintable{
   overflow-y: auto;
   max-height: 350px;
+  max-width: 2000px;
 }
 
 /* signupMedInstructor */
@@ -608,6 +639,7 @@ footer p{
 
 .cMed h1{
     color: #005555;
+
 }
 
 .cMed form{
@@ -882,7 +914,7 @@ footer p{
     display: flex;
     padding: 2% 2%;
     justify-content: flex-start;
-    border-radius: 20px;
+    border-radius: 2px;
     font-weight: 500;
     color: aliceblue;
     flex-direction: column;
@@ -1143,3 +1175,469 @@ footer p{
   background-color:  #004141;
   color:white;
 }
+
+
+* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Change session details button */
+
+.buttonamU {
+  background-color: #58BD53;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  margin: 2px 1px;
+  cursor: pointer;
+
+
+}
+
+.button1amU {border-radius: 4px;}
+
+
+
+
+
+.button1amU a{
+   text-decoration: none;
+   color: white;
+}
+/* View More AM DOCTOR */
+
+.sViewMAMD{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.cViewMAMD{
+    width: 40%;
+
+}
+
+
+.cViewMAMD h1{
+    color: #005555;
+
+}
+
+.cMViewMAMDAA{
+
+
+}
+
+
+.cViewMAMD form{
+  overflow-y: auto;
+  max-height: 360px;
+
+    margin-top: 1px;
+    width: 100%;
+    height: fit-content;
+    background: #005555;
+    display: flex;
+    padding: 1% 5%;
+    justify-content: space-around;
+    border-radius: 4px;
+    font-weight: 500;
+    color: aliceblue;
+}
+.cViewMAMD form label,input{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.cViewMAMD form input{
+    border: none;
+    padding: 3px 5px;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background: white;
+    color: black;
+    font-weight: 600;
+}
+
+#cViewMAMDB{
+    width: 200px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+#cViewMAMDB a{
+  text-decoration: none;
+  color: white;
+}
+
+
+
+#cViewMAMDButton{
+    width: 200px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+#cViewMAMDButton a{
+  text-decoration: none;
+  color: white;
+}
+
+
+#cViewMAMDS{
+    width: 100px;
+    margin-top: 35px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+
+
+.cViewMAMD form button:hover{
+    background: white;
+    color: #58BD53;
+}
+
+
+
+#cBigButton{
+    width: 350px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+#cBigButton a{
+  text-decoration: none;
+  color: white;
+}
+
+
+.buttonamUzz {
+  background-color: #58BD53;
+  border: none;
+  color: white;
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 2px 2px;
+  cursor: pointer;
+  width:fit-content;
+
+}
+
+.button1amUzz {border-radius: 4px;}
+
+
+
+
+
+.button1amUzz a{
+   text-decoration: none;
+   color: white;
+}
+
+.buttonamUxx {
+  background-color: #B22222;;
+  border: none;
+  color: white;
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 2px 2px;
+  cursor: pointer;
+  width:fit-content;
+
+}
+
+.button1amUxx {border-radius: 4px;}
+
+
+
+
+
+.button1amUxx a{
+   text-decoration: none;
+   color: white;
+}
+
+
+
+.smsession{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cmsession{
+
+    width: 100%;
+    height: 70vh;
+
+}
+
+
+.cmsession h1{
+    color: #005555;
+}
+
+/* amadmin  Mchangesessiondetails */
+
+.amAdmintable{
+  overflow-y: auto;
+  max-height: 350px;
+  max-width: 2000px;
+}
+
+
+.buttonamUqq {
+  background-color: #58BD53;
+  border: none;
+  color: white;
+  padding: 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 2px 2px;
+  cursor: pointer;
+  width:fit-content;
+
+}
+
+.button1amUqq {border-radius: 4px;}
+
+
+
+
+
+.button1amUqq a{
+   text-decoration: none;
+   color: white;
+}
+
+.buttonamUll {
+  background-color: #B22222;;
+  border: none;
+  color: white;
+  padding: 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 2px 2px;
+  cursor: pointer;
+  width:fit-content;
+
+}
+
+.button1amUll {border-radius: 4px;}
+
+
+
+
+
+.button1amUll a{
+   text-decoration: none;
+   color: white;
+}
+
+
+.buttonamUyy {
+  background-color:  #4169e1;
+  border: none;
+  color: white;
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 2px 2px;
+  cursor: pointer;
+  width:fit-content;
+
+}
+
+.button1amUyy {border-radius: 4px;}
+
+
+
+
+
+.button1amUyy a{
+   text-decoration: none;
+   color: white;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+
+/* Requested Service ........... */
+
+/*
+.cRS{
+    width: 50%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background: white;
+
+} */
+
+.cRS {
+  display: flex;
+  flex-wrap: nowrap;
+  background: white;
+  align-items: center;
+    justify-content: center;
+    margin: 10px;
+
+}
+
+.cRS > div {
+  background: white;
+  width: 100px;
+  margin: 10px;
+  text-align: center;
+
+}
+
+
+/* .cRStwo{
+    width: 50%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+} */
+
+/* .cRS h1{
+    color: #005555;
+
+} */
+
+/* .ff{
+    margin-top: 1px;
+    width: 100%;
+    height: fit-content;
+    background: #005555;
+    display: flex;
+    padding: 1% 5%;
+    justify-content: space-around;
+    border-radius: 20px;
+    font-weight: 500;
+    color: aliceblue;
+} */
+/* .cRS form label,input{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.cRS form input{
+    border: none;
+    padding: 3px 5px;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background: white;
+    color: black;
+    font-weight: 600;
+} */

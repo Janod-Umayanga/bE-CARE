@@ -11,7 +11,7 @@
       <div class="cMFeedback">
 
         <h1>Feedback</h1>
-        <button type="submit" class="newfeedback" name="submit"><a href="addnewfeedback.php"> Add new Feedback</a></button>
+        <!-- <button type="submit" class="newfeedback" name="submit"><a href="addnewfeedback.php"> Add new Feedback</a></button> -->
 
         <div class="cMFeedbackAA">
               <?php

@@ -5,7 +5,7 @@
 
 
  $id=$_POST["verifyP"];
- $result = mysqli_query($conn,"SELECT * FROM requested_pharamacist WHERE requested_pharamacist_id=$id");
+ $result = mysqli_query($conn,"SELECT * FROM requested_pharmacist WHERE requested_pharmacist_id=$id");
  $row = mysqli_fetch_array($result);
 
  $first_name=$row["first_name"];

@@ -22,12 +22,11 @@
                 <th>Contact Number</th>
                 <th>Gender</th>
                 <th>Registered Date</th>
-                <th></th>
-
+              
               </tr>
 
               <?php
-              $result = mysqli_query($conn,"SELECT * FROM med_ins_register");
+              $result = mysqli_query($conn,"SELECT * FROM med_ins_register WHERE meditation_instructor_id={$_SESSION["userMid"]}");
 
               while ($row = mysqli_fetch_array($result))
               {
@@ -38,12 +37,6 @@
                 echo "<td>".$row['gender']."</td>";
                 echo "<td>".$row['registered_date_and_time']."</td>";
               ?>
-                <td>
-                  <form>
-                        <button class="buttonamS button1amS" name="ss">contact</button>
-                 </form>
-
-                </td>
 
                 <?php echo "</tr>";
 
@@ -52,11 +45,10 @@
                 echo "<td></td>";
                 echo "<td></td>";
                 echo "<td></td>";
-                echo "<td></td>";
               ?>
                 <td>
                   <form>
-                      
+
                  </form>
 
                 </td>

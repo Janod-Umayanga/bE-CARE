@@ -6,21 +6,58 @@
 ?>
 
 
- <sectionc class="am">
-   <br>
-   <h1>Requested Service Providers</h1>
+   <div class="cRS">
 
-     <div class="amcontent">
+            <div class="card">
+               <img src="img/doctor.jpg" alt="Avatar" style="width:100%">
+                   <div class="container">
+                      <h4><b>Requested Doctors</b></h4>
+                      <p>Architect & Engineer</p>
+                  </div>
+            </div>
             <br>
-            <button class="buttonam button1am"><a href="rsDoctor.php">Doctor</a></button>
-            <button class="buttonam button1am"><a href="rsCounsellor.php">Counsellor</a></button>
-            <button class="buttonam button1am"><a href="rsNutritionist.php">Nutritionist</a></button>
-            <button class="buttonam button1am"><a href="rsMeditationInstructor.php">Meditation Instructor</a></button>
-            <button class="buttonam button1am"><a href="rsPharmacist.php">Pharmacist</a></button>
+
+            <div class="card">
+               <img src="img/doctor.jpg" alt="Avatar" style="width:100%">
+                   <div class="container">
+                      <h4><b>Requested Counsellors</b></h4>
+                      <p>Architect & Engineer</p>
+                  </div>
+            </div>
 
 
-      </div>
-  </section>
+    </div>
+
+    <div class="cRS">
+
+           <div class="card">
+              <img src="img/doctor.jpg" alt="Avatar" style="width:100%">
+                  <div class="container">
+                     <h4><b>Requested Doctors</b></h4>
+                     <p>Architect & Engineer</p>
+                 </div>
+           </div>
+           <br>
+
+           <div class="card">
+              <img src="img/doctor.jpg" alt="Avatar" style="width:100%">
+                  <div class="container">
+                     <h4><b>Requested Counsellors</b></h4>
+                     <p>Architect & Engineer</p>
+                 </div>
+           </div>
+
+           <div class="card">
+              <img src="img/doctor.jpg" alt="Avatar" style="width:100%">
+                  <div class="container">
+                     <h4><b>Requested Counsellors</b></h4>
+                     <p>Architect & Engineer</p>
+                 </div>
+           </div>
+
+   </div>
+
+
 
 
 <?php

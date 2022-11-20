@@ -7,8 +7,8 @@
 
 ?>
 
- <sectionc class="sAdminAM">
-     <div class="cAdminAM">
+ <sectionc class="smsession">
+     <div class="cmsession">
             <h1>Update Session Details</h1>
             <button class="buttonam button1am"><a href="addnewsession.php">Add New</a></button>
          <div class="amAdmintable">
@@ -42,13 +42,13 @@
                 echo "<td>".$row['description']."</td>";
                 ?> <td>
                     <form  action="updateSession.php" method="post">
-                           <button class="buttonamU button1amU" value="<?php echo $row["session_id"] ?>" name="updateSession">Update</button>
+                           <button class="buttonamUqq button1amUqq" value="<?php echo $row["session_id"] ?>" name="updateSession">Update</button>
                     </form>
                    </td>
                    <td>
 
                      <form action="./includes/DeleteSession.inc.php" method="post">
-                           <button class="buttonamD button1amD" value="<?php echo $row["session_id"] ?>" name="DeleteSession">Delete</button>
+                           <button class="buttonamUll button1amUll" value="<?php echo $row["session_id"] ?>" name="DeleteSession">Delete</button>
                     </form>
 
 

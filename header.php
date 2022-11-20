@@ -33,8 +33,9 @@ if($gender=="Male"){
 
                 <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="indexAdmin.php">Dashboard</a>
                 <a href="requestedservice.php">Requested service providers</a>
-                <a href="accountManagement.php">Account Management</a>
+                <a href="accountManagement.php">User Management</a>
                 <a href="complaints.php">Complaints</a>
                 <a href="financialreports.php">Financial Reports</a>
                 </div>

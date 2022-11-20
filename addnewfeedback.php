@@ -16,7 +16,7 @@
                   <div>
 
                       <label>Feedback</label>
-                      <textarea name="description" id="description" rows="6" cols="80"></textarea><br>
+                      <textarea name="description" id="description" rows="6" cols="80" required="true"></textarea><br>
 
                       <button type="submit" name="submit" value="<?php echo $_SESSION["userMid"]?>">Submit</button>
 

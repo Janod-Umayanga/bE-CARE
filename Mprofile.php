@@ -53,7 +53,7 @@
                         <label>Address</label>
                         <input type="text" name="address" id="address" required="true" value="<?php echo $row["address"] ?>">
 
-                        <label>Registration Fee</label>
+                        <label>Registration Fee (Rs.)</label>
                         <input type="number" name="fee" id="fee" required="true" value="<?php echo $row["fee"] ?>">
 
                         <label>Bank Name</label>

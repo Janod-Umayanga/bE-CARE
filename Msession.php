@@ -7,8 +7,8 @@
 
 ?>
 
- <sectionc class="sAdminAM">
-     <div class="cAdminAM">
+ <sectionc class="smsession">
+     <div class="cmsession">
             <h1>Sessions</h1>
          <div class="amAdmintable">
 
@@ -41,7 +41,7 @@
                 echo "<td>".$row['description']."</td>";
                 ?> <td>
                     <form  action="regUsersSession.php" method="post">
-                           <button class="buttonamU button1amU" value="<?php echo $row["session_id"] ?>" name="regusersSession">View Registered Users</button>
+                           <button class="buttonamMS button1amMS" value="<?php echo $row["session_id"] ?>" name="regusersSession">View Registered Users</button>
                     </form>
                    </td>
 

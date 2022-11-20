@@ -13,22 +13,13 @@
          <div class="amAdmintable">
 
 
-            <table id="customers">
+            <table id="reg">
               <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Nic</th>
-                <th>Contact Number</th>
-                <th>Gender</th>
-                <th>Email</th>
-                <th>Registered Date</th>
-                <th>slmc_reg_number</th>
+                <th>Requested Date</th>
                 <th>City</th>
-                <th>Bank Name</th>
-                <th>Account Holder Name</th>
-                <th>Branch</th>
-                <th>Account Number</th>
-                <th>Qualification File</th>
+                <th></th>
                 <th></th>
                 <th></th>
 
@@ -43,35 +34,48 @@
                 echo "<tr>";
                 echo "<td>".$row['first_name']."</td>";
                 echo "<td>".$row['last_name']."</td>";
-                echo "<td>".$row['nic']."</td>";
-                echo "<td>".$row['contact_number']."</td>";
-                echo "<td>".$row['gender']."</td>";
-                echo "<td>".$row['email']."</td>";
                 echo "<td>".$row['registered_date']."</td>";
-                echo "<td>".$row['slmc_reg_number']."</td>";
                 echo "<td>".$row['city']."</td>";
-                echo "<td>".$row['bank_name']."</td>";
-                echo "<td>".$row['account_holder_name']."</td>";
-                echo "<td>".$row['branch']."</td>";
-                echo "<td>".$row['account_number']."</td>";
-                echo "<td>".$row['qualification_file']."</td>";
 
-                ?> <td>
-                    <form  action="./includes/verifyC.inc.php" method="post">
-                           <button class="buttonamU button1amU" value="<?php echo $row["requested_counsellor_id"] ?>" name="verifyC">Verify</button>
-                    </form>
-                   </td>
-                   <td>
-                     <form action="./includes/NotverifyC.inc.php" method="post">
-                           <button class="buttonamU button1amU" value="<?php echo $row["requested_counsellor_id"] ?>" name="NotverifyC">Not Verify</button>
-                    </form>
+             ?>
+
+              <td>
+                <form  action="viewMoreRCoun.php" method="post">
+                  <button class="buttonamUyy button1amUyy" value="<?php echo $row["requested_counsellor_id"] ?>" name="submit">View More</button>
+               </form>
+
+             </td>
+
+             <td>
+                   <form  action="./includes/verifyC.inc.php" method="post">
+                          <button class="buttonamUzz button1amUzz" value="<?php echo $row["requested_counsellor_id"] ?>" name="verifyC">Verify</button>
+                   </form>
                   </td>
+                  <td>
+                    <form action="./includes/NotverifyC.inc.php" method="post">
+                          <button class="buttonamUxx button1amUxx" value="<?php echo $row["requested_counsellor_id"] ?>" name="NotverifyC">Not Verify</button>
+                   </form>
+                 </td>
+             <?php echo "<tr>";
+               echo "<td></td>";
+               echo "<td></td>";
+               echo "<td></td>";
+               echo "<td></td>";
+               echo "<td></td>";
+               echo "<td></td>";
+               echo "<td></td>";
 
-                <?php echo "</tr>";
-              }
+             ?>
+
+              <td>
+
+              </td>
+
+              <?php echo "</tr>";
+            }
 
 
-               ?>
+             ?>
 
 
 

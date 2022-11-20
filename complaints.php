@@ -13,7 +13,7 @@
          <div class="amAdmintable">
 
 
-            <table id="customers">
+            <table id="reg">
               <tr>
                 <th>Name</th>
                 <th>User Type</th>
@@ -86,7 +86,21 @@
                    </script>
 
                  </td>
+                 <?php echo "</tr>";?>
 
+
+                 <?php echo "<tr>";
+                 echo "<td></td>";
+                 echo "<td></td>";
+                 echo "<td></td>";
+                 echo "<td></td>";
+
+                 echo "<td></td>";
+                 echo "<td></td>";
+                 ?>
+                  <td>
+
+                  </td>
 
 
                 <?php echo "</tr>";
