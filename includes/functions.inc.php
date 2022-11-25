@@ -85,10 +85,16 @@ function emptyInputLogin($email,$password){
 function loginUser($conn,$email,$password){
   $uidExists=uidExists($conn,$email);
 
+  if($uidExists["delete_flag"]===1){
+    header("location:../index.php?error=Incorrect login information");
+    exit();
+  }
+
   if($uidExists===false){
     header("location:../index.php?error=Incorrect login information");
     exit();
   }
+
 
   $pwdHashed=$uidExists["password"];
   $checkPwd=password_verify($password,$pwdHashed);
@@ -364,15 +370,18 @@ function deleteP($conn,$id){
 }
 
 function AMdeleteMI($conn,$id){
-  $sql="DELETE FROM meditation_instructor WHERE meditation_instructor_id=$id;";
+  $sql = "UPDATE meditation_instructor SET delete_flag=1 WHERE meditation_instructor_id=$id";
+
   if (mysqli_query($conn, $sql)) {
     header("location:../amMeditationInstructor.php?error=none");
     exit();
   } else {
-   header("location:../amMeditationInstructor.php?error=error");
-   exit();
+    header("location:../amMeditationInstructor.php?error=errorUpdating");
+    exit();
+
   }
 
+   mysqli_close($conn);
 
 
 
@@ -381,31 +390,40 @@ function AMdeleteMI($conn,$id){
 
 
 function AMdeleteD($conn,$id){
-  $sql="DELETE FROM doctor WHERE doctor_id=$id;";
+
+  $sql = "UPDATE doctor SET delete_flag=1 WHERE doctor_id=$id";
+
   if (mysqli_query($conn, $sql)) {
-   //echo "Record deleted successfully";
+    header("location:../amDoctor.php?error=none");
+    exit();
   } else {
-   //echo "Error deleting record: " . mysqli_error($conn);
+    header("location:../amDoctor.php?error=errorUpdating");
+    exit();
+
   }
 
+   mysqli_close($conn);
 
 
-  header("location:../amDoctor.php?error=none");
-  exit();
 
 }
 
 
 
 function AMdeleteC($conn,$id){
-  $sql="DELETE FROM counsellor WHERE counsellor_id='$id';";
+
+  $sql = "UPDATE counsellor SET delete_flag=1 WHERE counsellor_id=$id";
+
   if (mysqli_query($conn, $sql)) {
     header("location:../amCounsellor.php?error=none");
     exit();
   } else {
-  echo "Error deleting record: " . mysqli_error($conn);
+    header("location:../amCounsellor.php?error=errorUpdating");
+    exit();
+
   }
 
+   mysqli_close($conn);
 
 
 
@@ -413,64 +431,74 @@ function AMdeleteC($conn,$id){
 
 
 function AMdeleteN($conn,$id){
-  $sql="DELETE FROM nutritionist WHERE nutritionist_id=$id;";
+  $sql = "UPDATE nutritionist SET delete_flag=1 WHERE nutritionist_id=$id";
+
   if (mysqli_query($conn, $sql)) {
-   //echo "Record deleted successfully";
+    header("location:../amNutritionist.php?error=none");
+    exit();
   } else {
-   echo "Error deleting record: " . mysqli_error($conn);
+    header("location:../amNutritionist.php?error=errorUpdating");
+    exit();
+
   }
 
-
-
-  header("location:../amNutritionist.php?error=none");
-  exit();
+   mysqli_close($conn);
 
 }
 
 
 
 function AMdeleteP($conn,$id){
-  $sql="DELETE FROM pharamacist WHERE pharamacist_id=$id;";
+
+  $sql = "UPDATE pharmacist SET delete_flag=1 WHERE pharmacist_id=$id";
+
   if (mysqli_query($conn, $sql)) {
-   //echo "Record deleted successfully";
+    header("location:../amPharmacist.php?error=none");
+    exit();
   } else {
-   //echo "Error deleting record: " . mysqli_error($conn);
+    header("location:../amPharmacist.php?error=errorUpdating");
+    exit();
+
   }
 
-
-
-  header("location:../amPharamcist.php?error=none");
-  exit();
+   mysqli_close($conn);
 
 }
 
 
 function AMdeleteA($conn,$id){
-  $sql="DELETE FROM admin WHERE admin_id=$id;";
+
+  $sql = "UPDATE admin SET delete_flag=1 WHERE admin_id=$id";
+
   if (mysqli_query($conn, $sql)) {
-   //echo "Record deleted successfully";
+    header("location:../amAdmin.php?error=none");
+    exit();
   } else {
-   //echo "Error deleting record: " . mysqli_error($conn);
+    header("location:../amAdmin.php?error=errorUpdating");
+    exit();
+
   }
 
+   mysqli_close($conn);
 
-
-  header("location:../amAdmin.php?error=none");
-  exit();
 
 }
 
 
 
 function AMdeletePatient($conn,$id){
-  $sql="DELETE FROM patient WHERE patient_id=$id;";
+  $sql = "UPDATE patient SET delete_flag=1 WHERE patient_id=$id";
+
   if (mysqli_query($conn, $sql)) {
-    header("location:../amPatient.php?error=none");
+    header("location:../ampatient.php?error=none");
     exit();
-} else {
-    header("location:../amPatient.php?error=error");
+  } else {
+    header("location:../ampatient.php?error=errorUpdating");
     exit();
+
   }
+
+   mysqli_close($conn);
 
 
 

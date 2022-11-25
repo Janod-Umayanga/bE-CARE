@@ -20,15 +20,14 @@
                 <th>Date</th>
                 <th>Email</th>
                 <th>Subject</th>
-                <th>Complaint</th>
-                <th></th>
+                <th>Cpmplaint</th>
 
 
               </tr>
 
               <?php
               $result = mysqli_query($conn,"SELECT * FROM complaint ORDER BY complaint_date DESC");
-
+              $i=1;
               while ($row = mysqli_fetch_array($result))
               {
                 if(!empty($row['patient_id'])){
@@ -68,26 +67,14 @@
                 echo "<td>".$type."</td>";
                 echo "<td>".$row['complaint_date']."</td>";
                 echo "<td>".$cname['email']."</td>";
-
                 echo "<td>".$row['subject']."</td>";
-                echo "<td>".$row['description']."</td>";
+
                 ?>
                  <td>
-                   <input onclick="change()" id="<?php echo $cname['email'] ?>" type="button" class="buttonamDownload button1amDownload" value="Not Solved"></input>
-
-
-                   <script>
-                       function change()
-                       {
-                          var elem = document.getElementById("<?php echo $cname['email'] ?>");
-                          if (elem.value=="Not Solved") elem.value = "Solved";
-                          else elem.value = "Not Solved";
-                       }
-                   </script>
-
-                 </td>
-                 <?php echo "</tr>";?>
-
+                    <form action="viewcomplaint.php" method="post">
+                         <button  name="submit" class="buttonamDownload button1amDownload" value="<?php echo $row["complaint_id"] ?>">View</button>
+                    </form>
+                </td>
 
                  <?php echo "<tr>";
                  echo "<td></td>";
@@ -104,6 +91,7 @@
 
 
                 <?php echo "</tr>";
+
               }
 
 
@@ -115,6 +103,8 @@
      </div>
       </div>
   </section>
+
+
 
 
 <?php

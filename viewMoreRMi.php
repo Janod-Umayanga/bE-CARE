@@ -20,7 +20,7 @@
 
       <div class="cViewMAMD">
 
-              <h1>meditation Instructor Details</h1>
+              <h1>Meditation Instructor Details</h1>
 
       <div class="cViewMAMDAA">
 

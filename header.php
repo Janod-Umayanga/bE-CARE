@@ -36,8 +36,8 @@ if($gender=="Male"){
                 <a href="indexAdmin.php">Dashboard</a>
                 <a href="requestedservice.php">Requested service providers</a>
                 <a href="accountManagement.php">User Management</a>
-                <a href="complaints.php">Complaints</a>
-                <a href="financialreports.php">Financial Reports</a>
+                <a href="complaints.php">Complaint Management</a>
+                <a href="financialreports.php">Payments</a>
                 </div>
 
                 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
