@@ -21,11 +21,11 @@
 
         <div class="right">
             <a href="login.php">LOGIN</a>
-            <a href="signup.html">SIGN UP</a>
+            <a href="signup-form.php">SIGN UP</a>
         </div>
     </header>
 
-    <sectionc class="signup">
+    <section class="signup">
 
         <div class="content">
 
@@ -59,31 +59,36 @@
 
                         <button>Sign Up</button>
                     </div>
-
-                    
-
                 </form>
-
         </div>
-
     </section>
 
     <footer>
-        <p>2022 All Rights reserved</p>
-        <ul>
-            <li>
-                <a href="#">ABOUT US</a>
-            </li>
-            <li>
-                <a href="#">CONTACT US</a>
-            </li>
-            <li>
-                <a href="#">FEED BACKS</a>
-            </li>
-            <li>
-                <a href="#">COMPLAINTS</a>
-            </li>
-        </ul>
-    </footer>
+        <div class="top">
+            <ul>
+                <li>
+                    <a href="#">ABOUT US</a>
+                </li>
+                <li>
+                    <a href="#">CONTACT US</a>
+                </li>
+                <li>
+                    <a href="#">FEEDBACKS</a>
+                </li>
+                <?php if (isset($user)): ?>
+                    <li>
+                        <a href="complaint.php">COMPLAINTS</a>
+                    </li>
+                <?php else: ?>
+                    <li>
+                        <a href="signup-form.php">COMPLAINTS</a>
+                    </li>
+                <?php endif; ?>
+            </ul>
+        </div>
+        <div class="bottom">
+            <p>2022 All Rights reserved</p>
+        </div>
+    </footer> 
 </body>
 </html>

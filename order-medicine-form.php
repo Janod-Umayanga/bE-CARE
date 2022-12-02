@@ -60,12 +60,12 @@ if (isset($_SESSION["user_id"])) {
 
     <?php endif; ?>
 
-    <sectionc class="signup">
+    <section class="signup">
 
         <div class="content">
 
                 <h1>Order Medicine</h1>
-                <form action="order-medicine-form.php" method="post">
+                <form action="order-medicine-form-submit.php" method="post">
                     <div>
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" required="true">
@@ -78,7 +78,7 @@ if (isset($_SESSION["user_id"])) {
                         <input type="text" id="cnumber" name="cnumber" required="true">
 
                         <label for="prescription">Upload Prescription</label>
-                        <input type="text" id="prescription" name="prescription" required="true">
+                        <input type="file" id="prescription" name="prescription" required="true">
 
                         <button>Submit</button>
                     </div>
@@ -92,27 +92,31 @@ if (isset($_SESSION["user_id"])) {
     </section>
 
     <footer>
-        <p>2022 All Rights reserved</p>
-        <ul>
-            <li>
-                <a href="#">ABOUT US</a>
-            </li>
-            <li>
-                <a href="#">CONTACT US</a>
-            </li>
-            <li>
-                <a href="#">FEEDBACKS</a>
-            </li>
-            <?php if (isset($user)): ?>
+        <div class="top">
+            <ul>
                 <li>
-                    <a href="complaint.php">COMPLAINTS</a>
+                    <a href="#">ABOUT US</a>
                 </li>
-            <?php else: ?>
                 <li>
-                    <a href="signup.html">COMPLAINTS</a>
+                    <a href="#">CONTACT US</a>
                 </li>
-            <?php endif; ?>
-        </ul>
-    </footer>
+                <li>
+                    <a href="#">FEEDBACKS</a>
+                </li>
+                <?php if (isset($user)): ?>
+                    <li>
+                        <a href="complaint.php">COMPLAINTS</a>
+                    </li>
+                <?php else: ?>
+                    <li>
+                        <a href="signup-form.php">COMPLAINTS</a>
+                    </li>
+                <?php endif; ?>
+            </ul>
+        </div>
+        <div class="bottom">
+            <p>2022 All Rights reserved</p>
+        </div>
+    </footer> 
 </body>
 </html>

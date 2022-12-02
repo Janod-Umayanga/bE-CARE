@@ -57,13 +57,72 @@ if (isset($_SESSION["user_id"])) {
 
             <div class="right">
                 <a href="login.php">LOGIN</a>
-                <a href="signup.html">SIGN UP</a>
+                <a href="signup-form.php">SIGN UP</a>
             </div>
         </header>
 
     <?php endif; ?>
 
     <section class="patient-approaches">
+        <div class="container">
+                <a href="channel-a-doctor.php">
+                    <div>
+                        <div class="image">
+                            <img src="Images/page1-img1.jpg" alt="">
+                        </div>
+                        <h2>Channel a Doctor</h2>
+                        <p>Select your preferred pharmacy, order your prescription medicine online and have it delivered straight to your home.</p>  
+                    </div>
+                </a>
+                <a href="#">
+                    <div>
+                        <div class="image">
+                            <img src="Images/page1-img2.jpg" alt="">
+                        </div>
+                        <h2>Channel a Counsellor</h2>
+                        <p>Select your preferred pharmacy, order your prescription medicine online and have it delivered straight to your home.</p>  
+                    </div>
+                </a>
+                <a href="order-medicine.php">
+                    <div>
+                        <div class="image">
+                            <img src="Images/page1-img3.png" alt="">
+                        </div>
+                        <h2>Order Medicine</h2>
+                        <p>Select your preferred pharmacy, order your prescription medicine online and have it delivered straight to your home.</p>  
+                    </div>
+                </a>
+                <a href="#">
+                    <div>
+                        <div class="image">
+                            <img src="Images/page1-img4.jpg" alt="">
+                        </div>
+                        <h2>Request a Diet Plan</h2>
+                        <p>Select your preferred pharmacy, order your prescription medicine online and have it delivered straight to your home.</p>  
+                    </div>
+                </a>
+                <a href="#">
+                    <div>
+                        <div class="image">
+                            <img src="Images/page1-img5.jpg" alt="">
+                        </div>
+                        <h2>Register for a Meditation Instructor</h2>
+                        <p>Select your preferred pharmacy, order your prescription medicine online and have it delivered straight to your home.</p>  
+                    </div>
+                </a>
+                <a href="#">
+                    <div>
+                        <div class="image">
+                            <img src="Images/page1-img6.jpg" alt="">
+                        </div>
+                        <h2>Register for a Session</h2>
+                        <p>Select your preferred pharmacy, order your prescription medicine online and have it delivered straight to your home.</p>  
+                    </div>
+                </a>
+        </div>   
+    </section>
+
+    <!--<section class="patient-approaches">
             <ul>
                 <li>
                 <a href="channel-a-doctor.php">Channel a Doctor</a>
@@ -85,29 +144,33 @@ if (isset($_SESSION["user_id"])) {
                 </li>
             </ul>
     </section>
-
+    -->
     <footer>
-        <p>2022 All Rights reserved</p>
-        <ul>
-            <li>
-                <a href="#">ABOUT US</a>
-            </li>
-            <li>
-                <a href="#">CONTACT US</a>
-            </li>
-            <li>
-                <a href="#">FEEDBACKS</a>
-            </li>
-            <?php if (isset($user)): ?>
+        <div class="top">
+            <ul>
                 <li>
-                    <a href="complaint.php">COMPLAINTS</a>
+                    <a href="#">ABOUT US</a>
                 </li>
-            <?php else: ?>
                 <li>
-                    <a href="signup.html">COMPLAINTS</a>
+                    <a href="#">CONTACT US</a>
                 </li>
-            <?php endif; ?>
-        </ul>
-    </footer>
+                <li>
+                    <a href="#">FEEDBACKS</a>
+                </li>
+                <?php if (isset($user)): ?>
+                    <li>
+                        <a href="complaint.php">COMPLAINTS</a>
+                    </li>
+                <?php else: ?>
+                    <li>
+                        <a href="signup-form.php">COMPLAINTS</a>
+                    </li>
+                <?php endif; ?>
+            </ul>
+        </div>
+        <div class="bottom">
+            <p>2022 All Rights reserved</p>
+        </div>
+    </footer> 
 </body>
 </html>

@@ -58,11 +58,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <div class="right">
             <a href="login.php">LOGIN</a>
-            <a href="signup.html">SIGN UP</a>
+            <a href="signup-form.php">SIGN UP</a>
         </div>
     </header>
 
-    <sectionc class="signup">
+    <section class="signup">
 
         <div class="content">
 
@@ -97,27 +97,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </section>
 
     <footer>
-        <p>2022 All Rights reserved</p>
-        <ul>
-            <li>
-                <a href="#">ABOUT US</a>
-            </li>
-            <li>
-                <a href="#">CONTACT US</a>
-            </li>
-            <li>
-                <a href="#">FEEDBACKS</a>
-            </li>
-            <?php if (isset($user)): ?>
+        <div class="top">
+            <ul>
                 <li>
-                    <a href="complaint.php">COMPLAINTS</a>
+                    <a href="#">ABOUT US</a>
                 </li>
-            <?php else: ?>
                 <li>
-                    <a href="signup.html">COMPLAINTS</a>
+                    <a href="#">CONTACT US</a>
                 </li>
-            <?php endif; ?>
-        </ul>
-    </footer>
+                <li>
+                    <a href="#">FEEDBACKS</a>
+                </li>
+                <?php if (isset($user)): ?>
+                    <li>
+                        <a href="complaint.php">COMPLAINTS</a>
+                    </li>
+                <?php else: ?>
+                    <li>
+                        <a href="signup-form.php">COMPLAINTS</a>
+                    </li>
+                <?php endif; ?>
+            </ul>
+        </div>
+        <div class="bottom">
+            <p>2022 All Rights reserved</p>
+        </div>
+    </footer> 
 </body>
 </html>
