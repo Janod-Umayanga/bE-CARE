@@ -9,21 +9,7 @@
 </head>
 <body>
 
-    <header>
-        <div class="left">
-            <div>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <h1>Be-CARE</h1>
-        </div>
-
-        <div class="right">
-            <a href="login.php">LOGIN</a>
-            <a href="signup-form.php">SIGN UP</a>
-        </div>
-    </header>
+<?php include 'header.php'; ?>
 
     <section class="signup">
 
@@ -63,32 +49,6 @@
         </div>
     </section>
 
-    <footer>
-        <div class="top">
-            <ul>
-                <li>
-                    <a href="#">ABOUT US</a>
-                </li>
-                <li>
-                    <a href="#">CONTACT US</a>
-                </li>
-                <li>
-                    <a href="#">FEEDBACKS</a>
-                </li>
-                <?php if (isset($user)): ?>
-                    <li>
-                        <a href="complaint.php">COMPLAINTS</a>
-                    </li>
-                <?php else: ?>
-                    <li>
-                        <a href="signup-form.php">COMPLAINTS</a>
-                    </li>
-                <?php endif; ?>
-            </ul>
-        </div>
-        <div class="bottom">
-            <p>2022 All Rights reserved</p>
-        </div>
-    </footer> 
+    <?php include 'footer.php'; ?>
 </body>
 </html>
