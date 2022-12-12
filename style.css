@@ -131,9 +131,9 @@ header{
     font-size: 20px;
 }
 .patient-approaches .container a div p{
+    margin-top: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #0f2b57;
-    font-weight: 500;
+    color: rgba(104, 255, 124, 0.678);
 }
 
 
