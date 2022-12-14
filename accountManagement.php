@@ -13,25 +13,25 @@
 
 <?php
   require_once "includes/dbh.inc.php";
-  $result = mysqli_query($conn,"SELECT COUNT(email) AS doc FROM doctor");
+  $result = mysqli_query($conn,"SELECT COUNT(email) AS doc FROM doctor WHERE delete_flag=0");
   $row = mysqli_fetch_array($result);
 
-  $result2 = mysqli_query($conn,"SELECT COUNT(email) AS coun FROM counsellor");
+  $result2 = mysqli_query($conn,"SELECT COUNT(email) AS coun FROM counsellor WHERE delete_flag=0");
   $row2 = mysqli_fetch_array($result2);
 
-  $result3 = mysqli_query($conn,"SELECT COUNT(email) AS nut FROM nutritionist");
+  $result3 = mysqli_query($conn,"SELECT COUNT(email) AS nut FROM nutritionist WHERE delete_flag=0");
   $row3 = mysqli_fetch_array($result3);
 
-  $result4 = mysqli_query($conn,"SELECT COUNT(email) AS mi FROM meditation_instructor ");
+  $result4 = mysqli_query($conn,"SELECT COUNT(email) AS mi FROM meditation_instructor WHERE delete_flag=0");
   $row4 = mysqli_fetch_array($result4);
 
-  $result5 = mysqli_query($conn,"SELECT COUNT(email) AS phar FROM pharmacist");
+  $result5 = mysqli_query($conn,"SELECT COUNT(email) AS phar FROM pharmacist WHERE delete_flag=0");
   $row5 = mysqli_fetch_array($result5);
 
-  $result6 = mysqli_query($conn,"SELECT COUNT(email) AS pat FROM patient ");
+  $result6 = mysqli_query($conn,"SELECT COUNT(email) AS pat FROM patient WHERE delete_flag=0");
   $row6 = mysqli_fetch_array($result6);
 
-  $result7 = mysqli_query($conn,"SELECT COUNT(email) AS adm FROM admin");
+  $result7 = mysqli_query($conn,"SELECT COUNT(email) AS adm FROM admin WHERE delete_flag=0");
   $row7 = mysqli_fetch_array($result7);
 
 

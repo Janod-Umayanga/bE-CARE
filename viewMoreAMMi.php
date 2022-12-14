@@ -5,7 +5,7 @@
 <?php
  include_once "header.php";
 ?>
-
+.
 <?php
   if(isset($_POST["submit"])){
     require_once "includes/dbh.inc.php";

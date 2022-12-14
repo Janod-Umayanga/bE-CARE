@@ -35,7 +35,7 @@
               <?php
               if (isset($_GET['search'])) {
                   $se = $_GET['search'];
-                  $sql="SELECT * FROM session WHERE meditation_instructor_id={$_SESSION["userMid"]} AND date>='$current_date' AND CONCAT(title,date,address, fee) LIKE '%$se%'";
+                  $sql="SELECT * FROM session WHERE meditation_instructor_id={$_SESSION["userMid"]} AND date>='$current_date'  AND CONCAT(title,date,address, fee) LIKE '%$se%'";
                   $result = mysqli_query($conn, $sql);
 
 

@@ -10,25 +10,25 @@
   require_once "includes/dbh.inc.php";
   $current_date= date("Y-m-d");
 
-  $result = mysqli_query($conn,"SELECT COUNT(date) AS d1 FROM med_timeslot WHERE date>='$current_date' AND appointment_day='Monday'");
+  $result = mysqli_query($conn,"SELECT COUNT(date) AS d1 FROM med_timeslot WHERE meditation_instructor_id={$_SESSION["userMid"]} AND date>='$current_date' AND appointment_day='Monday'");
   $row = mysqli_fetch_array($result);
 
-  $result2 = mysqli_query($conn,"SELECT COUNT(date) AS d2 FROM med_timeslot WHERE date>='$current_date' AND appointment_day='Tuesday'");
+  $result2 = mysqli_query($conn,"SELECT COUNT(date) AS d2 FROM med_timeslot WHERE meditation_instructor_id={$_SESSION["userMid"]} AND date>='$current_date' AND appointment_day='Tuesday'");
   $row2 = mysqli_fetch_array($result2);
 
-  $result3 = mysqli_query($conn,"SELECT COUNT(date) AS d3 FROM med_timeslot WHERE date>='$current_date' AND appointment_day='Wednesday'");
+  $result3 = mysqli_query($conn,"SELECT COUNT(date) AS d3 FROM med_timeslot WHERE meditation_instructor_id={$_SESSION["userMid"]} AND date>='$current_date' AND appointment_day='Wednesday'");
   $row3 = mysqli_fetch_array($result3);
 
-  $result4 = mysqli_query($conn,"SELECT COUNT(date) AS d4 FROM med_timeslot WHERE date>='$current_date' AND appointment_day='Thursday'");
+  $result4 = mysqli_query($conn,"SELECT COUNT(date) AS d4 FROM med_timeslot WHERE meditation_instructor_id={$_SESSION["userMid"]} AND date>='$current_date' AND appointment_day='Thursday'");
   $row4 = mysqli_fetch_array($result4);
 
-  $result5 = mysqli_query($conn,"SELECT COUNT(date) AS d5 FROM med_timeslot WHERE date>='$current_date' AND appointment_day='Friday'");
+  $result5 = mysqli_query($conn,"SELECT COUNT(date) AS d5 FROM med_timeslot WHERE meditation_instructor_id={$_SESSION["userMid"]} AND date>='$current_date' AND appointment_day='Friday'");
   $row5 = mysqli_fetch_array($result5);
 
-  $result6 = mysqli_query($conn,"SELECT COUNT(date) AS d6 FROM med_timeslot WHERE date>='$current_date' AND appointment_day='Saturday'");
+  $result6 = mysqli_query($conn,"SELECT COUNT(date) AS d6 FROM med_timeslot WHERE meditation_instructor_id={$_SESSION["userMid"]} AND date>='$current_date' AND appointment_day='Saturday'");
   $row6 = mysqli_fetch_array($result6);
 
-  $result7 = mysqli_query($conn,"SELECT COUNT(date) AS d7 FROM med_timeslot WHERE date>='$current_date' AND appointment_day='Sunday'");
+  $result7 = mysqli_query($conn,"SELECT COUNT(date) AS d7 FROM med_timeslot WHERE meditation_instructor_id={$_SESSION["userMid"]} AND date>='$current_date' AND appointment_day='Sunday'");
   $row7 = mysqli_fetch_array($result7);
 
  ?>
@@ -38,7 +38,7 @@
    <div class="cRS">
             <?php if($row["d1"] > 0){?>
             <div class="card">
-               <img src="img/mm8.jpg" alt="Avatar" style="width:70%; height:60%">
+               <img src="img/mm5.jpg" alt="Avatar" style="width:90%; height:60%">
                    <div class="container">
                      <button class="btncard btncard1am"><a href="MregusersMon.php">Monday</a></button>
 
@@ -49,9 +49,9 @@
 
 
             <div class="card">
-               <img src="img/m5.jpg" alt="Avatar" style="width:90%; height:60%">
+               <img src="img/m4.jpg" alt="Avatar" style="width:90%; height:60%">
                    <div class="container">
-                     <button class="btncard btncard1am"><a href="">Tuesday</a></button>
+                     <button class="btncard btncard1am"><a href="MregusersTue.php">Tuesday</a></button>
                   </div>
             </div>
 
@@ -60,7 +60,7 @@
             <div class="card">
                <img src="img/mm3.jpg" alt="Avatar" style="width:70%; height:60%">
                    <div class="container">
-                     <button class="btncard btncard1am"><a href="">Wednesday</a></button>
+                     <button class="btncard btncard1am"><a href="MregusersWed.php">Wednesday</a></button>
 
                   </div>
             </div>
@@ -73,9 +73,9 @@
     <?php }if($row4["d4"]>0) { ?>
 
              <div class="card">
-                <img src="img/mm5.jpg" alt="Avatar" style="width:70%; height:60%">
+                <img src="img/mm8.jpg" alt="Avatar" style="width:70%; height:60%">
                     <div class="container">
-                      <button class="btncard btncard1am"><a href="">Thursday</a></button>
+                      <button class="btncard btncard1am"><a href="MregusersThu.php">Thursday</a></button>
 
                    </div>
              </div>
@@ -83,9 +83,9 @@
         <?php }if($row5["d5"]>0) { ?>
 
              <div class="card">
-                <img src="img/mm6.jpg" alt="Avatar" style="width:70%; height:60%">
+                <img src="img/m5.jpg" alt="Avatar" style="width:90%; height:60%">
                     <div class="container">
-                      <button class="btncard btncard1am"><a href="">Friday</a></button>
+                      <button class="btncard btncard1am"><a href="MregusersFri.php">Friday</a></button>
 
                    </div>
              </div>
@@ -93,9 +93,9 @@
         <?php }if($row6["d6"]>0) { ?>
 
              <div class="card">
-                <img src="img/mm7.jpg" alt="Avatar" style="width:90%; height:60%">
+                <img src="img/m1.jpg" alt="Avatar" style="width:90%; height:60%">
                     <div class="container">
-                      <button class="btncard btncard1am"><a href="">Saturday</a></button>
+                      <button class="btncard btncard1am"><a href="MregusersSat.php">Saturday</a></button>
 
                    </div>
              </div>
@@ -105,12 +105,13 @@
              <div class="card">
                 <img src="img/mm9.jpg" alt="Avatar" style="width:90%; height:60%">
                     <div class="container">
-                      <button class="btncard btncard1am"><a href="">Sunday</a></button>
+                      <button class="btncard btncard1am"><a href="MregusersSun.php">Sunday</a></button>
 
                    </div>
              </div>
+       <?php } if(($row["d1"]==0) &&($row2["d2"]==0) &&($row3["d3"]==0) &&($row4["d4"]==0) &&($row5["d5"]==0) &&($row6["d6"]==0) &&($row7["d7"]==0)){ ?>
+                  <h1>No registered users yet</h1>
        <?php }?>
-
      </div>
 
 

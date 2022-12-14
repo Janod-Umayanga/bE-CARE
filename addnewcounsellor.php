@@ -28,11 +28,7 @@
                       <label>Email</label>
                       <input type="email" name="email" id="email" required="true" >
 
-                      <label>Gender</label>
-                      <select name="gender" id="gender" required="true" >
-                         <option value="Male">Male</option>
-                         <option value="Female">Female</option>
-                      </select>
+
                   </div>
                   <div>
                     <label>City</label>
@@ -67,6 +63,12 @@
 
                     <label>Confirm Password</label>
                     <input type="password" name="passwordRepeat" id="passwordRepeat"  required="true" >
+
+                    <label>Gender</label>
+                    <select name="gender" id="gender" required="true" >
+                       <option value="Male">Male</option>
+                       <option value="Female">Female</option>
+                    </select>
 
                       <button id="cMedButton" type="submit" name="submit">Add</button>
                   </div>

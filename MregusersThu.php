@@ -7,7 +7,7 @@
  $current_date= date("Y-m-d");
 
 
-$result0 = mysqli_query($conn,"SELECT * FROM med_timeslot WHERE date>='$current_date' AND appointment_day='Monday' ORDER BY date ASC ");
+$result0 = mysqli_query($conn,"SELECT * FROM med_timeslot WHERE date>='$current_date' AND appointment_day='Thursday' ORDER BY date ASC ");
 
 if($result0->num_rows>0)
 {  ?>
@@ -24,7 +24,7 @@ if($result0->num_rows>0)
        if (isset($_GET['search']))
        {
            $se = $_GET['search'];
-           $sql="SELECT * FROM med_timeslot WHERE date>='$current_date' AND appointment_day='Monday' AND CONCAT(appointment_day,date,address, fee) LIKE '%$se%'";
+           $sql="SELECT * FROM med_timeslot WHERE date>='$current_date' AND appointment_day='Thursday' AND CONCAT(appointment_day,date,address, fee) LIKE '%$se%'";
 
            $result = mysqli_query($conn, $sql);
 

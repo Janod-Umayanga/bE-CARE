@@ -291,3 +291,88 @@ if (mysqli_query($conn, $sql)) {
  mysqli_close($conn);
 
 }
+
+//,$day,$starting_time,$ending_time,$fee,$address
+
+
+function createTimeslot($conn,$month,$day,$starting_time,$ending_time,$fee,$address,$meditation_instructor_id)
+{
+  $current_month= date("m");
+  $current_year= date("Y");
+
+  $y=date("Y", strtotime("first {$day}.{$month}"));
+  $m=date("m", strtotime("first {$day}.{$month}"));
+
+
+ if($m<=$current_month && $y==$current_year){
+   header("location:../Mregusersadd.php?error=recheck month");
+   exit();
+ }
+
+   $first_rel_day= date("d", strtotime("first {$day}.{$month}"));
+   $last_day= date("d",strtotime("last day of {$month}", time()));
+
+
+
+   while($first_rel_day<=$last_day){
+
+     $sql="INSERT INTO med_timeslot(appointment_day,starting_time,ending_time,date,fee,address,meditation_instructor_id) VALUES (?,?,?,?,?,?,?);";
+     $stmt= mysqli_stmt_init($conn);
+
+     if(!mysqli_stmt_prepare($stmt,$sql)){
+       header("location:../Mregusersadd.php?error=stmtfailed");
+       exit();
+     }
+
+     $newdate=$y."-".$m."-".$first_rel_day;
+
+     mysqli_stmt_bind_param($stmt,"sssssss",$day,$starting_time,$ending_time,$newdate,$fee,$address,$meditation_instructor_id);
+     mysqli_stmt_execute($stmt);
+     mysqli_stmt_close($stmt);
+
+
+     $first_rel_day=$first_rel_day+7;
+     echo $meditation_instructor_id;
+   }
+   header("location:../Mregusersadd.php?error=none");
+   exit();
+
+
+
+}
+
+
+
+function updateTimeslot($conn,$date,$starting_time,$ending_time,$fee,$address,$timeslot_id)
+{
+  $sql = "UPDATE med_timeslot SET starting_time='$starting_time',ending_time='$ending_time',address='$address',fee='$fee' WHERE med_timeslot_id=$timeslot_id";
+
+  if (mysqli_query($conn, $sql)) {
+    header("location:../Mreguserschange.php?error=none");
+    exit();
+  } else {
+    echo "Error Updating record: " . mysqli_error($conn);
+  }
+
+   mysqli_close($conn);
+
+
+}
+
+
+function Deletetimeslot($conn,$id)
+{
+  $sql="DELETE FROM med_timeslot WHERE med_timeslot_id=$id;";
+  if (mysqli_query($conn, $sql)) {
+   //echo "Record deleted successfully";
+  } else {
+   //echo "Error deleting record: " . mysqli_error($conn);
+  }
+
+
+
+  header("location:../Mreguserschange.php?error=none");
+  exit();
+
+
+}

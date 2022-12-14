@@ -20,7 +20,7 @@
 
       <div class="cViewMAMD">
 
-              <h1>Pharmacy Details</h1>
+              <h1>Pharmacist Details</h1>
 
       <div class="cViewMAMDAA">
 

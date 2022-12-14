@@ -37,6 +37,7 @@
                 <a href="Mregusers.php">Registered users for meditation instructions</a>
                 <a href="Mregusershistory.php">Registered users history</a>
                 <a href="Mregusersadd.php">Add timeslot</a>
+                <a href="Mreguserschange.php">Change timeslot</a>
                 <a href="Msessionselect.php">Session</a>
                 <a href="Mchangesessiondetails.php">Change Session details</a>
                 </div>

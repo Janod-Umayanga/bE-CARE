@@ -6,18 +6,18 @@
  require_once "includes/dbh.inc.php";
 
  $current_date= date("Y-m-d");
- $result = mysqli_query($conn,"SELECT * FROM session WHERE meditation_instructor_id={$_SESSION["userMid"]} AND date>='$current_date' AND session_id NOT IN (SELECT session_id from session_register)");
+ $result = mysqli_query($conn,"SELECT * FROM med_timeslot WHERE meditation_instructor_id={$_SESSION["userMid"]} AND date>='$current_date' AND med_timeslot_id NOT IN (SELECT med_timeslot_id from med_channel) ORDER BY date ASC  ");
  if($result->num_rows>0){
+
+
 
 ?>
 
  <sectionc class="sAdminAM">
      <div class="cAdminAM">
-            <h1>Change Session Details
-            <button class="buttonam button1am"><a href="addnewsession.php">Add New</a></button></h1>
-
+            <h1>Change Timeslot</h1>
             <form class="searchform" action="" method="GET">
-                  <input type="text" name="search" placeholder="Filter sessions by title date address fee">&nbsp
+                  <input type="text" name="search" placeholder="Filter timeslot by day date address fee starting time ending time">&nbsp
                   <button type="submit">Search</button>
             </form>
 
@@ -27,42 +27,38 @@
 
             <table id="reg">
               <tr>
-                <th>Session Title</th>
                 <th>Date</th>
                 <th>Starting Time</th>
                 <th>Ending Time</th>
-                <th>Address</th>
+                <th>Day</th>
                 <th></th>
                 <th></th>
               </tr>
 
-
               <?php
               if (isset($_GET['search'])) {
                   $se = $_GET['search'];
-                  $sql="SELECT * FROM session WHERE meditation_instructor_id={$_SESSION["userMid"]} AND date>='$current_date' AND CONCAT(title,date,address, fee) AND session_id NOT IN (SELECT session_id from session_register) LIKE '%$se%'";
+                  $sql="SELECT * FROM med_timeslot WHERE meditation_instructor_id={$_SESSION["userMid"]} AND date>='$current_date' AND med_timeslot_id NOT IN (SELECT med_timeslot_id from med_channel) AND CONCAT(appointment_day,date,address,fee,starting_time,ending_time) LIKE '%$se%'";
                   $result = mysqli_query($conn, $sql);
-
 
                   if ($result->num_rows > 0){
 
               while ($row = mysqli_fetch_array($result))
               {
                 echo "<tr>";
-                echo "<td>".$row['title']."</td>";
                 echo "<td>".$row['date']."</td>";
                 echo "<td>".$row['starting_time']."</td>";
                 echo "<td>".$row['ending_time']."</td>";
-                echo "<td>".$row['address']."</td>";
+                echo "<td>".$row['appointment_day']."</td>";
                 ?> <td>
-                    <form  action="updateSession.php" method="post">
-                           <button class="buttonamUqq button1amUqq" value="<?php echo $row["session_id"] ?>" name="updateSession">Update</button>
+                    <form  action="Mregusersupdate.php" method="post">
+                           <button class="buttonamUqq button1amUqq" value="<?php echo $row["med_timeslot_id"] ?>" name="updatetimeslot">Update</button>
                     </form>
                    </td>
                    <td>
 
-                     <form action="./includes/DeleteSession.inc.php" method="post">
-                           <button class="buttonamUll button1amUll" value="<?php echo $row["session_id"] ?>" name="DeleteSession">Delete</button>
+                     <form action="./includes/Mregusersdelete.inc.php" method="post">
+                           <button class="buttonamUll button1amUll" value="<?php echo $row["med_timeslot_id"] ?>" name="deletetimeslot">Delete</button>
                     </form>
 
 
@@ -75,7 +71,7 @@
                 echo "<td></td>";
                 echo "<td></td>";
                 echo "<td></td>";
-                echo "<td></td>";
+
                 ?> <td>
                     <form >
 
@@ -107,20 +103,21 @@
           while ($row = mysqli_fetch_array($result))
           {
             echo "<tr>";
-            echo "<td>".$row['title']."</td>";
             echo "<td>".$row['date']."</td>";
             echo "<td>".$row['starting_time']."</td>";
             echo "<td>".$row['ending_time']."</td>";
-            echo "<td>".$row['address']."</td>";
-            ?> <td>
-                <form  action="updateSession.php" method="post">
-                       <button class="buttonamUqq button1amUqq" value="<?php echo $row["session_id"] ?>" name="updateSession">Update</button>
+            echo "<td>".$row['appointment_day']."</td>";
+            ?>
+
+            <td>
+                <form  action="Mregusersupdate.php" method="post">
+                       <button class="buttonamUqq button1amUqq" value="<?php echo $row["med_timeslot_id"] ?>" name="updatetimeslot">Update</button>
                 </form>
                </td>
                <td>
 
-                 <form action="./includes/DeleteSession.inc.php" method="post">
-                       <button class="buttonamUll button1amUll" value="<?php echo $row["session_id"] ?>" name="DeleteSession">Delete</button>
+                 <form action="./includes/Mregusersdelete.inc.php" method="post">
+                       <button class="buttonamUll button1amUll" value="<?php echo $row["med_timeslot_id"] ?>" name="deletetimeslot">Delete</button>
                 </form>
 
 
@@ -133,7 +130,7 @@
             echo "<td></td>";
             echo "<td></td>";
             echo "<td></td>";
-            echo "<td></td>";
+
             ?> <td>
                 <form >
 
@@ -169,10 +166,7 @@
   <?php }else{?>
     <sectionc class="sAdminAM">
         <div class="cAdminAM">
-          <h1>Add New Session 
-          <button class="buttonam button1am"><a href="addnewsession.php">Add New</a></button>
-         </h1>
-
+               <h1>No timeslot created yet.</h1>
         </div>
          </div>
      </section>
