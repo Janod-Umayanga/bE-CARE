@@ -58,6 +58,39 @@
                 return false;
             }
         }
+
+        // Get patient by id
+        public function getPatientById($patient_id) {
+            $this->db->query('SELECT * FROM patient WHERE patient_id = :patient_id');
+            $this->db->bind(':patient_id', $patient_id);
+
+            $row = $this->db->single();
+
+            if($this->db->rowCount() > 0) {
+                return $row;
+            }
+            else {
+                return false;
+            }
+        }
+
+        // Update patient details
+        public function update($data, $patient_id) {
+            $this->db->query('UPDATE patient SET first_name = :first_name, last_name = :last_name, nic = :nic, contact_number = :contact_number, gender = :gender WHERE patient_id = :patient_id');
+            $this->db->bind(':first_name', $data['fname']);
+            $this->db->bind(':last_name', $data['lname']);
+            $this->db->bind(':nic', $data['nic']);
+            $this->db->bind(':contact_number', $data['cnumber']);
+            $this->db->bind(':gender', $data['gender']);
+            $this->db->bind(':patient_id', $patient_id);
+
+            if($this->db->execute()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
     }
 
 ?>

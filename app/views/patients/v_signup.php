@@ -14,7 +14,7 @@
     <section class="signup">
         <div class="content">
                 <h1>Signup as a Patient</h1>
-                <form action="<?php echo URLROOT ?>/Patient/signup" method="post">
+                <form action="<?php echo URLROOT ?>/Patient/signup" method="POST">
                     <div>
                         <label for="fname">First name</label>
                         <input type="text" id="fname" name="fname"  value="<?php echo $data['fname'] ?>">
@@ -56,5 +56,6 @@
     </section>
 
 <?php require APPROOT.'/views/inc/components/footer.php'; ?>
+
 </body>
 </html>

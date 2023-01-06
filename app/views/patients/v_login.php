@@ -14,7 +14,7 @@
     <section class="signup">
         <div class="content">
                 <h1>Login as a Patient</h1>
-                <form action="" method="post">
+                <form action="" method="POST">
                     <div>
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" value="<?php echo $data['email'] ?>">
@@ -30,6 +30,7 @@
         </div>
     </section>
 
-<?php require APPROOT.'/views/inc/components/footer.php'; ?> 
+<?php require APPROOT.'/views/inc/components/footer.php'; ?>
+
 </body>
 </html>

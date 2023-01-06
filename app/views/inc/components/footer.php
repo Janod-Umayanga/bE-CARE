@@ -10,12 +10,15 @@
             <li>
                 <a href="#">FEEDBACKS</a>
             </li>
+            <?php if (isset($_SESSION['patient_id'])): ?>
                  <li>
-                    <a href="#">COMPLAINTS</a>
+                    <a href="<?php echo URLROOT ?>/Patient/complaints">COMPLAINTS</a>
                 </li>
+            <?php else: ?>
                  <li>
-                    <a href="#">COMPLAINTS</a>
+                    <a href="<?php echo URLROOT ?>/Patient/login">COMPLAINTS</a>
                  </li>
+            <?php endif; ?>
             </ul>
     </div>
     <div class="bottom">
