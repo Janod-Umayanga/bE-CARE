@@ -7,7 +7,7 @@
             $this->db = new Database;
         }
 
-        // Create complaint patient
+        // Create complaint
         public function createComplaint($data, $patient_id) {
             $this->db->query('INSERT INTO complaint (subject, description, patient_id) VALUES (:subject, :description, :patient_id)');
             $this->db->bind(':subject', $data['subject']);

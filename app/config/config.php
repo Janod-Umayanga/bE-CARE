@@ -15,4 +15,7 @@
     // WEBSITE NAME
     define('SITENAME', 'bE-CARE');
 
+    // PUBLIC ROOT
+    define('PUBROOT', dirname(dirname(dirname(__FILE__))).'/public');
+
 ?>

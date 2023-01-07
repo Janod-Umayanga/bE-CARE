@@ -16,7 +16,7 @@
                 <a href="<?php echo URLROOT ?>/Patient/findDoctor">
                     <div>
                         <div class="image">
-                            <img src="../public/img/page1-img1.jpg" alt="">
+                            <img src="<?php echo URLROOT; ?>/img/page1-img1.jpg" alt="">
                         </div>
                         <h2>Find a Doctor</h2>
                         <p>Find a doctor from a list of available doctors from both western and Ayurvedic medicine practices.</p>
@@ -25,7 +25,7 @@
                 <a href="#">
                     <div>
                         <div class="image">
-                            <img src="../public/img/page1-img2.jpg" alt="">
+                            <img src="<?php echo URLROOT; ?>/img/page1-img2.jpg" alt="">
                         </div>
                         <h2>Find a Counsellor</h2>
                         <p>Find a counsellor to keep you mentally healthy.</p>
@@ -34,7 +34,7 @@
                 <a href="<?php echo URLROOT ?>/Patient/findPharmacy">
                     <div>
                         <div class="image">
-                            <img src="../public/img/page1-img3.png" alt="">
+                            <img src="<?php echo URLROOT; ?>/img/page1-img3.png" alt="">
                         </div>
                         <h2>Find a Pharmacy</h2>
                         <p>Find a pharmacy as you prefer and place your medicine order according to your prescription.</p>
@@ -43,7 +43,7 @@
                 <a href="#">
                     <div>
                         <div class="image">
-                            <img src="../public/img/page1-img4.jpg" alt="">
+                            <img src="<?php echo URLROOT; ?>/img/page1-img4.jpg" alt="">
                         </div>
                         <h2>Find a Nutritionist</h2>
                         <p>Find a nutritionist and get a diet plan for your prefered lifestyle.</p>
@@ -52,7 +52,7 @@
                 <a href="#">
                     <div>
                         <div class="image">
-                            <img src="../public/img/page1-img5.jpg" alt="">
+                            <img src="<?php echo URLROOT; ?>/img/page1-img5.jpg" alt="">
                         </div>
                         <h2>Find a Meditation Instructor</h2>
                         <p>Find a meditation instructor and keep up your wellbeing spiritually healthy.</p>
@@ -61,7 +61,7 @@
                 <a href="#">
                     <div>
                         <div class="image">
-                            <img src="../public/img/page1-img6.jpg" alt="">
+                            <img src="<?php echo URLROOT; ?>/img/page1-img6.jpg" alt="">
                         </div>
                         <h2>Register for a Session</h2>
                         <p>Select your preferred pharmacy, order your prescription medicine online and have it delivered straight to your home.</p>

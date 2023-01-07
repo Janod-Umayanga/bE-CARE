@@ -446,7 +446,8 @@
                         'name' => trim($_POST['name']),
                         'address' => trim($_POST['address']),
                         'cnumber' => trim($_POST['cnumber']),
-                        'prescription' => trim($_POST['prescription']),
+                        'prescription' => $_FILES['prescription'],
+                        'prescription_name' => time().'_'.$_FILES['prescription']['name'],
                         'pharmacist_id' => $pharmacist_id,
     
                         'name_err' => '',
@@ -472,8 +473,11 @@
                         $data['cnumber_err'] = 'Contact number required';
                     }
     
-                    // Validate prescription
-                    if(empty($data['prescription'])) {
+                    // Validate prescription and upload
+                    if(uploadImage($data['prescription']['tmp_name'], $data['prescription_name'], '/img/prescriptions/')) {
+                        // Done
+                    }
+                    else {
                         $data['prescription_err'] = 'Prescription required';
                     }
     
