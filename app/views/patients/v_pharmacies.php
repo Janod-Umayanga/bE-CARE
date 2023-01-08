@@ -14,19 +14,19 @@
     <section class="doctor-cards">
         <div class="left">
             <form action="<?php echo URLROOT ?>/Patient/findPharmacy" method="POST">
-                <input type="text" name="search" placeholder="Filter by pharmacy name or city">
+                <input type="text" name="search" placeholder="Filter by nutritionist name">
                 <button type="submit">Search</button>
             </form>
 
             <?php foreach($data['pharmacists'] as $pharmacist): ?>
             <div class="card">
                 <div class="card-left">
-                     <p><?php  echo $pharmacist->pharmacy_name ?></p>
+                    <p><?php echo $pharmacist->pharmacy_name ?></p>
                 </div>
                 <div class="card-right">
                     <div>
-                        <h3><?php  echo $pharmacist->city ?></h3>
-                        <p>Address : <?php  echo $pharmacist->address ?></p>
+                        <h3><?php echo $pharmacist->city ?></h3>
+                        <p>Address : <?php echo $pharmacist->address ?></p>
                     </div>
                     <form action="<?php echo URLROOT ?>/Patient/getPharmacistId" method="POST">
                         <input type="hidden" name="pharmacist_id" id="pharmacist_id" value="<?php echo $pharmacist->pharmacist_id ?>">

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
-    <title>Find a Doctor</title>
+    <title>Find a Counsellor</title>
 </head>
 <body>
 
@@ -13,20 +13,20 @@
 
     <section class="doctor-cards">
         <div class="left">
-            <form action="<?php echo URLROOT ?>/Patient/findDoctor" method="POST">
-                <input type="text" name="search" placeholder="Filter by doctor name, type, specialization or city">
+            <form action="<?php echo URLROOT ?>/Patient/findCounsellor" method="POST">
+                <input type="text" name="search" placeholder="Filter by counsellor name or city">
                 <button type="submit">Search</button>
             </form>
 
-            <?php foreach($data['doctors'] as $doctor): ?>
+            <?php foreach($data['counsellors'] as $counsellor): ?>
             <div class="card">
                 <div class="card-left">
-                     <p>Dr. <?php  echo $doctor->first_name ?> <?php  echo $doctor->last_name ?><br><?php  echo $doctor->type ?></p>
+                     <p>Dr. <?php  echo $counsellor->first_name ?> <?php  echo $counsellor->last_name ?><br></p>
                 </div>
                 <div class="card-right">
                     <div>
-                        <h3><?php  echo $doctor->specialization ?></h3>
-                        <p>City : <?php  echo $doctor->city ?></p>
+                        <h3>Psychological Counsellor</h3>
+                        <p>City : <?php  echo $counsellor->city ?></p>
                     </div>
                     <a href="">Channel</a>
                 </div>

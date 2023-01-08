@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
-    <title>Find a Doctor</title>
+    <title>Find a Nutritionist</title>
 </head>
 <body>
 
@@ -13,22 +13,25 @@
 
     <section class="doctor-cards">
         <div class="left">
-            <form action="<?php echo URLROOT ?>/Patient/findDoctor" method="POST">
-                <input type="text" name="search" placeholder="Filter by doctor name, type, specialization or city">
+            <form action="<?php echo URLROOT ?>/Patient/findNutritionist" method="POST">
+                <input type="text" name="search" placeholder="Filter by nutritionist name">
                 <button type="submit">Search</button>
             </form>
 
-            <?php foreach($data['doctors'] as $doctor): ?>
+            <?php foreach($data['nutritionists'] as $nutritionist): ?>
             <div class="card">
                 <div class="card-left">
-                     <p>Dr. <?php  echo $doctor->first_name ?> <?php  echo $doctor->last_name ?><br><?php  echo $doctor->type ?></p>
+                    <p>Dr. <?php echo $nutritionist->first_name ?> <?php echo $nutritionist->last_name ?></p>
                 </div>
                 <div class="card-right">
                     <div>
-                        <h3><?php  echo $doctor->specialization ?></h3>
-                        <p>City : <?php  echo $doctor->city ?></p>
+                        <h3>Nutritionist</h3>
+                        <p></p>
                     </div>
-                    <a href="">Channel</a>
+                    <form action="<?php echo URLROOT ?>/Patient/getNutritionistId" method="POST">
+                        <input type="hidden" name="nutritionist_id" id="nutritionist_id" value="<?php echo $nutritionist->nutritionist_id ?>">
+                        <button>Select</button>
+                    </form>
                 </div>
             </div>
             <?php endforeach; ?>

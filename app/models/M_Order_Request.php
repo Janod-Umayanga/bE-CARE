@@ -24,6 +24,14 @@
                 return false;
             }
         }
+
+        // get all order request
+        public function getAllOrderRequests($patient_id) {
+            $this->db->query('SELECT order_request.*, pharmacist.* FROM order_request INNER JOIN pharmacist ON order_request.pharmacist_id = pharmacist.pharmacist_id WHERE order_request.patient_id = :patient_id');
+            $this->db->bind(':patient_id', $patient_id);
+
+            return $this->db->resultSet();
+        }
     }
 
 ?>

@@ -22,7 +22,7 @@
                         <p>Find a doctor from a list of available doctors from both western and Ayurvedic medicine practices.</p>
                     </div>
                 </a>
-                <a href="#">
+                <a href="<?php echo URLROOT ?>/Patient/findCounsellor">
                     <div>
                         <div class="image">
                             <img src="<?php echo URLROOT; ?>/img/page1-img2.jpg" alt="">
@@ -40,7 +40,7 @@
                         <p>Find a pharmacy as you prefer and place your medicine order according to your prescription.</p>
                     </div>
                 </a>
-                <a href="#">
+                <a href="<?php echo URLROOT ?>/Patient/findNutritionist">
                     <div>
                         <div class="image">
                             <img src="<?php echo URLROOT; ?>/img/page1-img4.jpg" alt="">
@@ -61,10 +61,19 @@
                 <a href="#">
                     <div>
                         <div class="image">
-                            <img src="<?php echo URLROOT; ?>/img/page1-img6.jpg" alt="">
+                            <img src="<?php echo URLROOT; ?>/img/page1-img7.jpg" alt="">
                         </div>
                         <h2>Register for a Session</h2>
-                        <p>Select your preferred pharmacy, order your prescription medicine online and have it delivered straight to your home.</p>
+                        <p>Register for a session conducted by a counsellor, nutritionist or a medidation instructor.</p>
+                    </div>
+                </a>
+                <a href="<?php echo URLROOT ?>/Patient/viewOrderRequests">
+                    <div>
+                        <div class="image">
+                            <img src="<?php echo URLROOT; ?>/img/page1-img8.jpg" alt="">
+                        </div>
+                        <h2>Your Orders</h2>
+                        <p>View your medicine orders and check their status.</p>
                     </div>
                 </a>
         </div>   

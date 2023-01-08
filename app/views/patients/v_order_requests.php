@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
-    <title>Find a Doctor</title>
+    <title>View Orders</title>
 </head>
 <body>
 
@@ -13,22 +13,16 @@
 
     <section class="doctor-cards">
         <div class="left">
-            <form action="<?php echo URLROOT ?>/Patient/findDoctor" method="POST">
-                <input type="text" name="search" placeholder="Filter by doctor name, type, specialization or city">
-                <button type="submit">Search</button>
-            </form>
-
-            <?php foreach($data['doctors'] as $doctor): ?>
+            <?php foreach($data['orders'] as $order): ?>
             <div class="card">
                 <div class="card-left">
-                     <p>Dr. <?php  echo $doctor->first_name ?> <?php  echo $doctor->last_name ?><br><?php  echo $doctor->type ?></p>
+                    <p>Ordered on:<br><?php echo $order->ordered_date_and_time ?></p>
                 </div>
                 <div class="card-right">
                     <div>
-                        <h3><?php  echo $doctor->specialization ?></h3>
-                        <p>City : <?php  echo $doctor->city ?></p>
+                        <h3>From: <?php echo $order->pharmacy_name ?></h3>
+                        <p>Address : <?php  echo $order->address ?></p>
                     </div>
-                    <a href="">Channel</a>
                 </div>
             </div>
             <?php endforeach; ?>
