@@ -67,6 +67,15 @@
                         <p>Register for a session conducted by a counsellor, nutritionist or a medidation instructor.</p>
                     </div>
                 </a>
+                <a href="<?php echo URLROOT ?>/Patient/viewDoctorAppointments">
+                    <div>
+                        <div class="image">
+                            <img src="<?php echo URLROOT; ?>/img/page1-img9.jpg" alt="">
+                        </div>
+                        <h2>Your Doctor Appointments</h2>
+                        <p>View your doctor appointments here.</p>
+                    </div>
+                </a>
                 <a href="<?php echo URLROOT ?>/Patient/viewOrderRequests">
                     <div>
                         <div class="image">

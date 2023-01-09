@@ -9,6 +9,7 @@
         private $counsellorModel;
         private $nutritionistModel;
         private $requestDietPlanModel;
+        private $doctorChannelModel;
         public function __construct() {
             $this->patientModel = $this->model('M_Patient');
             $this->complaintModel = $this->model('M_Complaint');
@@ -18,6 +19,7 @@
             $this->counsellorModel = $this->model('M_Counsellor');
             $this->nutritionistModel = $this->model('M_Nutritionist');
             $this->requestDietPlanModel = $this->model('M_Request_Diet_Plan');
+            $this->doctorChannelModel = $this->model('M_Doctor_Channel');
         }
 
         public function signup() {
@@ -404,6 +406,30 @@
             $this->view('patients/v_doctors', $data);
         }
 
+        // View doctor appointments
+        public function viewDoctorAppointments() {
+            if(isset($_SESSION['patient_id'])) {
+                // Get current date and time
+                date_default_timezone_set("Asia/Kolkata");
+                $currentDate = date("Y-m-d");
+                $currentTime = date("h:i:s");
+                // Show all doctor appointments
+                $appointments = $this->doctorChannelModel->getAllDoctorChannels($_SESSION['patient_id']);
+                $data = [
+                    'appointments' => $appointments,
+                    'currentDate' => $currentDate,
+                    'currentTime' => $currentTime
+                ];
+
+                // Load view
+                $this->view('patients/v_doctor_appointments', $data);
+            }
+            else {
+                // Redirect to login
+                redirect('Patient/login');
+            }
+        }
+
         // View and search counsellors
         public function findCounsellor() {
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -449,15 +475,16 @@
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 $nutritionist_id = trim($_POST['nutritionist_id']);
+                $fee = trim($_POST['fee']);
                 $_SERVER['REQUEST_METHOD'] = '';
 
                 // Pass the pharmacist id for order medicine
-                $this->requestDietPlan($nutritionist_id);
+                $this->requestDietPlan($nutritionist_id, $fee);
             }
         }
 
         // Request diet plan
-        public function requestDietPlan($nutritionist_id) {
+        public function requestDietPlan($nutritionist_id, $fee) {
             if(isset($_SESSION['patient_id'])) {
                 $loggedPatient = $this->patientModel->getPatientById($_SESSION['patient_id']);
 
@@ -482,6 +509,7 @@
                         'water_consumption_per_day' => trim($_POST['water_consumption_per_day']),
                         'goal' => trim($_POST['goal']),
                         'nutritionist_id' => $nutritionist_id,
+                        'fee' => $fee,
     
                         'name_err' => '',
                         'age_err' => '',
@@ -589,6 +617,7 @@
                         'water_consumption_per_day' => '',
                         'goal' => '',
                         'nutritionist_id' => $nutritionist_id,
+                        'fee' => $fee,
     
                         'name_err' => '',
                         'age_err' => '',
@@ -738,6 +767,7 @@
             }
         }
 
+        // View order requests
         public function viewOrderRequests() {
             
             // Show all order requests

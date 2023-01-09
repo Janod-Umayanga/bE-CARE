@@ -26,10 +26,11 @@
                 <div class="card-right">
                     <div>
                         <h3>Nutritionist</h3>
-                        <p></p>
+                        <p>Fee: Rs. <?php echo $nutritionist->fee ?></p>
                     </div>
                     <form action="<?php echo URLROOT ?>/Patient/getNutritionistId" method="POST">
                         <input type="hidden" name="nutritionist_id" id="nutritionist_id" value="<?php echo $nutritionist->nutritionist_id ?>">
+                        <input type="hidden" name="fee" id="fee" value="<?php echo $nutritionist->fee?>">
                         <button>Select</button>
                     </form>
                 </div>

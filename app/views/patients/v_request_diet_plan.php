@@ -14,7 +14,7 @@
     <section class="signup">
         <div class="content">
                 <h1>Fill these details to request the diet plan</h1>
-                <form action="<?php echo URLROOT ?>/Patient/requestDietPlan/<?php echo $data['nutritionist_id'] ?>" method="post" enctype="multipart/form-data">
+                <form action="<?php echo URLROOT ?>/Patient/requestDietPlan/<?php echo $data['nutritionist_id'] ?>/<?php echo $data['fee'] ?>" method="post" enctype="multipart/form-data">
                     <div>
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" value="<?php echo $data['name'] ?>">
