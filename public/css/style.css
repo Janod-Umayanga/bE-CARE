@@ -1,0 +1,1898 @@
+
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+/* Header */
+
+header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 65px;
+    background: #58BD53;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+
+
+.right{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-right: 50px;
+}
+.left h1{
+    color: #004141;
+    padding: 2px 5px;
+    cursor: pointer;
+}
+
+.left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    margin-left: 50px;
+}
+
+.left div{
+    display: block;
+    cursor: pointer;
+}
+
+.right button{
+    width:fit-content;;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: 700;
+    background: #004141;
+    color: white;
+    padding: 5px 10px;
+}
+
+.headerprofilebtn{
+    width: 100px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: 700;
+    background: #58BD53;
+    color: white;
+}
+
+/* Section and Div */
+
+.s{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.c{
+    width: 30%;
+    height: fit-content;
+}
+
+
+.c h1{
+    color: #005555;
+}
+
+.c form{
+    margin-top: 20px;
+    width: 100%;
+    height: fit-content;
+    background: #005555;
+    display: flex;
+    padding: 7% 5%;
+    justify-content: space-around;
+    border-radius: 20px;
+    font-weight: 500;
+    color: aliceblue;
+}
+.c form label,input{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.c form input{
+    border: none;
+    padding: 3px 5px;
+    width: 300px;
+    height: 20px;
+    border-radius: 10px;
+    background: white;
+    color: black;
+    font-weight: 600;
+}
+
+.c form button{
+    width: 100px;
+    margin-top: 30px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+.c form button:hover{
+    background: white;
+    color: #58BD53;
+}
+
+/* Footer */
+
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 8vh;
+    background: #58BD53;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+footer ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+footer ul li{
+    list-style: none;
+}
+footer ul li a{
+    text-decoration: none;
+    color: #004141;
+    font-weight: 600;
+    cursor: pointer;
+
+}
+
+footer p{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-weight: 500;
+    color: #005555;
+}
+
+/* header.php Mheader.php  navbar */
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 9.5vh;
+  left: 0;
+  background-color: #58BD53;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 19px;
+  color: #004141;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.buttonam {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+
+
+}
+
+.button1am {border-radius: 4px;}
+
+
+
+/* amAdmin Delete buttons */
+
+.button1am a{
+   text-decoration: none;
+   color: white;
+}
+
+.buttonamD {
+  background-color: #B22222;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  margin: 4px 2px;
+  cursor: pointer;
+
+
+}
+
+.button1amD {border-radius: 4px;}
+
+
+
+
+
+.button1amD a{
+   text-decoration: none;
+   color: white;
+}
+
+.buttonamDownload {
+  background-color: #4169e1;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+
+
+}
+
+.button1amDownload {border-radius: 4px;}
+
+
+
+
+
+.button1amDownload a{
+   text-decoration: none;
+   color: white;
+}
+
+
+
+/* Change session details button */
+
+.buttonamU {
+  background-color: #58BD53;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+
+
+}
+
+.button1amU {border-radius: 4px;}
+
+
+
+
+
+.button1amU a{
+   text-decoration: none;
+   color: white;
+}
+
+
+/* Msession.php button */
+
+.buttonamMS {
+  background-color: #58BD53;
+  border: none;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 2px 1px;
+  cursor: pointer;
+
+
+}
+
+.button1amMS {border-radius: 4px;}
+
+
+
+
+
+.button1amMS a{
+   text-decoration: none;
+   color: white;
+}
+
+
+/* Mregistered users button */
+
+.buttonamS {
+  background-color: #58BD53;
+  border: none;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 2px 2px;
+  cursor: pointer;
+
+
+}
+
+.button1amS {border-radius: 4px;}
+
+
+
+
+
+.button1amS a{
+   text-decoration: none;
+   color: white;
+}
+
+
+
+#customers {
+
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #228B22;
+  color: white;
+}
+
+/* accountManagement.php  indexadmin.php  */
+
+.am{
+
+    width: 100%;
+    margin-top: 65px;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+}
+
+.amcontent{
+    width: 30%;
+    height: fit-content;
+    display: flex;
+    flex-direction:column;
+    gap:5px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.am h1{
+  margin-bottom:4px;
+}
+
+/* addnewadmin.php */
+
+.sAdmin{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cAdmin{
+    width: 50%;
+    height: fit-content;
+}
+
+
+.cAdmin h1{
+    color: #005555;
+}
+
+.cAdmin form{
+    margin-top: 5px;
+    width: 100%;
+    height: fit-content;
+    background: #005555;
+    display: flex;
+    padding: 2% 5%;
+    justify-content: space-around;
+    border-radius: 20px;
+    font-weight: 500;
+    color: aliceblue;
+}
+.cAdmin form label,input,select,option{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.cAdmin form input,select,option{
+    border: none;
+    padding: 3px 5px;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background: white;
+    color: black;
+    font-weight: 600;
+}
+
+.cAdmin form button{
+    width: 100px;
+    margin-top: 30px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+.cAdmin form button:hover{
+    background: white;
+    color: #58BD53;
+}
+
+
+/* profileAdmin */
+
+.sAdminProfile{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cAdminProfile{
+    width: 50%;
+    height: fit-content;
+}
+
+
+.cAdminProfile h1{
+    color: #005555;
+}
+
+.cAdminProfile form{
+    margin-top: 5px;
+    width: 100%;
+    height: fit-content;
+    background: #005555;
+    display: flex;
+    padding: 4% 5%;
+    justify-content: space-around;
+    border-radius: 20px;
+    font-weight: 500;
+    color: aliceblue;
+}
+.cAdminProfile form label,input{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.cAdminProfile form input{
+    border: none;
+    padding: 3px 5px;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background: white;
+    color: black;
+    font-weight: 600;
+}
+
+#cAdminCP{
+    width: 150px;
+    margin-top: 240px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+#cAdminCP a{
+  text-decoration: none;
+  color: white;
+}
+
+
+#cAdminU{
+    width: 100px;
+    margin-top: 35px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+#cAdminU:hover{
+    background: white;
+    color: #58BD53;
+}
+
+
+
+
+/* amAdmin.php */
+
+.sAdminAM{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cAdminAM{
+
+    width: 55%;
+    height: 70vh;
+
+}
+
+
+.cAdminAM h1{
+    color: #005555;
+}
+
+
+/* Search */
+
+
+.searchform{
+    margin-top: 1px;
+    width: 100%;
+    height: fit-content;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    font-weight: 500;
+    color: aliceblue;
+}
+.searchform label,input{
+    display: flex;
+    flex-direction: column;
+    margin-top:1px;
+}
+
+.searchform input{
+    border: ;
+    padding: 3px 5px;
+    width: 80%;
+    height: 20px;
+    border-radius: 10px;
+    background: white;
+    color: black;
+    font-weight: 600;
+}
+
+.searchform button{
+    width: 20%;
+    margin-top: 1px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #4169e1;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+/*
+.searchform button:hover{
+    background: white;
+    color: #58BD53;
+} */
+
+
+
+/* amadmin  Mchangesessiondetails */
+
+.amAdmintable{
+  overflow-y: auto;
+  max-height: 350px;
+  max-width: 2000px;
+}
+
+/* signupMedInstructor */
+
+.sMed{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.cMed{
+    width: 60%;
+    height: fit-content;
+}
+
+
+.cMed h1{
+    color: #005555;
+
+}
+
+.cMed form{
+    margin-top: 1px;
+    width: 100%;
+    height: fit-content;
+    background: #005555;
+    display: flex;
+    padding: 1% 5%;
+    justify-content: space-around;
+    border-radius: 20px;
+    font-weight: 500;
+    color: aliceblue;
+}
+.cMed form label,input{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.cMed form input{
+    border: none;
+    padding: 3px 5px;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background: white;
+    color: black;
+    font-weight: 600;
+}
+
+#cMedCP{
+    width: 200px;
+    margin-top: 240px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+#cMedCP a{
+  text-decoration: none;
+  color: white;
+}
+
+#cMedButton{
+    width: 200px;
+    margin-top: 50px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+#cMedButton a{
+  text-decoration: none;
+  color: white;
+}
+
+
+#cMedS{
+    width: 100px;
+    margin-top: 35px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+
+
+.cMed form button:hover{
+    background: white;
+    color: #58BD53;
+}
+
+/* MprofileChangePW.php */
+
+.sMProfileCPW{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.cMProfileCPW{
+    width: 60%;
+    height: fit-content;
+}
+
+
+.cMProfileCPW h1{
+    color: #005555;
+}
+
+.cMProfileCPW form{
+    margin-top: 1px;
+    width: 50%;
+    height: fit-content;
+    background: #005555;
+    display: flex;
+    padding: 1% 5%;
+    justify-content: center;
+    align-items:center;
+    border-radius: 20px;
+    font-weight: 500;
+    color: aliceblue;
+}
+.cMProfileCPW form label,input{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.cMProfileCPW form input{
+    border: none;
+    padding: 3px 5px;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background: white;
+    color: black;
+    font-weight: 600;
+}
+
+.cMProfileCPW form button{
+    width: 200px;
+    margin-top: 40px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+.cMProfileCPW form button:hover{
+    background: white;
+    color: #58BD53;
+}
+
+
+
+/* Mcomplaint.php */
+
+.sMComplaint{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cMComplaint{
+    width: 50%;
+    height: fit-content;
+}
+
+
+.cMComplaint h1{
+    color: #005555;
+}
+
+.cMComplaint form{
+    margin-top: 10px;
+    width: 100%;
+    height: fit-content;
+    background: #005555;
+    display: flex;
+    padding: 7% 5%;
+    justify-content: space-around;
+    border-radius: 20px;
+    font-weight: 500;
+    color: aliceblue;
+}
+.cMComplaint form label,input{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.cMComplaint form input{
+    border: none;
+    padding: 3px 5px;
+    width: 100%;
+    height: 20px;
+    border-radius: 5px;
+    background: white;
+    color: black;
+    font-weight: 600;
+}
+
+.cMComplaint form button{
+    width: 100px;
+    margin-top: 30px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+.cMComplaint form button:hover{
+    background: white;
+    color: #58BD53;
+}
+
+
+/* MFeedback.php */
+
+.sMFeedback{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.cMFeedback{
+    width: 40%;
+
+
+}
+
+
+.cMFeedback h1{
+    color: #005555;
+}
+
+.cMFeedbackAA{
+
+    overflow-y: auto;
+    max-height: 360px;
+
+}
+
+
+.cMFeedbackAA h1{
+    color: #005555;
+}
+
+
+.aaaa{
+    margin-top: 5px;
+    width: 90%;
+    height: fit-content;
+    background: #005555;
+    display: flex;
+    padding: 2% 2%;
+    justify-content: flex-start;
+    border-radius: 2px;
+    font-weight: 500;
+    color: aliceblue;
+    flex-direction: column;
+
+
+}
+.aaaa label,input{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+.cMFeedback form input{
+
+    border: none;
+    padding: 3px 5px;
+    width: 100%;
+    height: 20px;
+    border-radius: 5px;
+    background: white;
+    color: black;
+    font-weight: 600;
+}
+
+.newfeedback{
+    width: fit-content;
+    margin-top: 0px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+
+
+.newfeedback a{
+  text-decoration: none;
+  color: white;
+}
+
+/* Signupas */
+
+.sAS{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cAS{
+    width: 50%;
+    height: fit-content;
+}
+
+
+.cAS{
+    color: #005555;
+}
+
+.cAS form{
+    margin-top: 10px;
+    width: 100%;
+    height: fit-content;
+    background: #005555;
+    display: flex;
+    padding: 7% 5%;
+    justify-content: space-around;
+    border-radius: 20px;
+    font-weight: 500;
+    color: aliceblue;
+}
+
+
+.cAS form button{
+    width: 300px;
+    height: 100px
+    margin-top: 30px;
+    padding: 20px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+.cAS form button:hover{
+    background: white;
+    color: #58BD53;
+}
+
+/* error */
+
+.error{
+    background: #F2DEDE;
+    color: #A94442;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    margin: 20px auto;
+    flex-direction: column;
+}
+
+.success{
+    background: #F2DEDE;
+    color: Green;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    margin: 20px auto;
+    flex-direction: column;
+}
+
+
+.errorPW{
+    background: #F2DEDE;
+    color: #A94442;
+    padding: 10px;
+    width: 59%;
+    border-radius: 5px;
+    margin: 20px 0px;
+    flex-direction: column;
+}
+
+.successPW{
+    background: #F2DEDE;
+    color: Green;
+    padding: 10px;
+    width: 59%;
+    border-radius: 5px;
+    margin: 20px 0px;
+    flex-direction: column;
+}
+/* addnewsession.php */
+
+.sMSession{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cMSession{
+    width: 70%;
+    height: fit-content;
+}
+
+
+.cMSession h1{
+    color: #005555;
+}
+
+.cMSession form{
+    margin-top: 1px;
+    width: 100%;
+    height: fit-content;
+    background: #005555;
+    display: flex;
+    padding: 1% 5%;
+    justify-content: space-around;
+    border-radius: 20px;
+    font-weight: 500;
+    color: aliceblue;
+}
+.cMSession form label,input,select,option{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.cMSession form input,select,option{
+    border: none;
+    padding: 3px 5px;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background: white;
+    color: black;
+    font-weight: 600;
+}
+
+.cMSession form button{
+    width: 100px;
+    margin-top: 20px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+.cMSession form button:hover{
+    background: white;
+    color: #58BD53;
+}
+
+
+.updateSessionBtn{
+    width: 100px;
+    margin-top: 20px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+.updateSessionBtn:hover{
+    background: white;
+    color: #58BD53;
+}
+
+#description{
+  resize: none;
+
+}
+
+.logout-btn{
+  border: none;
+  width: 100px;
+  padding: 5px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: 700;
+  background: #004141;
+  color: white;
+
+}
+
+#reg{
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#reg td, th {
+  border: 1px solid white;
+  text-align: left;
+  padding: 8px;
+}
+
+#reg tr:nth-child(even) {
+  background-color:  #004141;
+  color:white;
+}
+
+
+* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Change session details button */
+
+.buttonamU {
+  background-color: #58BD53;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  margin: 2px 1px;
+  cursor: pointer;
+
+
+}
+
+.button1amU {border-radius: 4px;}
+
+
+
+
+
+.button1amU a{
+   text-decoration: none;
+   color: white;
+}
+/* View More AM DOCTOR */
+
+.sViewMAMD{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.cViewMAMD{
+    width: 40%;
+
+}
+
+
+.cViewMAMD h1{
+    color: #005555;
+
+}
+
+.cMViewMAMDAA{
+
+
+}
+
+
+.cViewMAMD form{
+  overflow-y: auto;
+  max-height: 360px;
+
+    margin-top: 1px;
+    width: 100%;
+    height: fit-content;
+    background: #005555;
+    display: flex;
+    padding: 1% 5%;
+    justify-content: space-around;
+    border-radius: 4px;
+    font-weight: 500;
+    color: aliceblue;
+}
+.cViewMAMD form label,input,textarea{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.cViewMAMD form input{
+    border: none;
+    padding: 3px 5px;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background: white;
+    color: black;
+    font-weight: 600;
+}
+
+#cViewMAMDB{
+    width: 200px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+#cViewMAMDB a{
+  text-decoration: none;
+  color: white;
+}
+
+
+
+#cViewMAMDButton{
+    width: 200px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+#cViewMAMDButton a{
+  text-decoration: none;
+  color: white;
+}
+
+
+#cViewMAMDS{
+    width: 100px;
+    margin-top: 35px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+
+
+/* .cViewMAMD form button:hover{
+    background: white;
+    color: #58BD53;
+} */
+
+
+
+#cBigButton{
+    width: 350px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    background: #58BD53;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 700;
+}
+
+#cBigButton a{
+  text-decoration: none;
+  color: white;
+}
+
+
+.buttonamUzz {
+  background-color: #58BD53;
+  border: none;
+  color: white;
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 2px 2px;
+  cursor: pointer;
+  width:fit-content;
+
+}
+
+.button1amUzz {border-radius: 4px;}
+
+
+
+
+
+.button1amUzz a{
+   text-decoration: none;
+   color: white;
+}
+
+.buttonamUxx {
+  background-color: #B22222;;
+  border: none;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 2px 1px;
+  cursor: pointer;
+  width:fit-content;
+
+}
+
+.button1amUxx {border-radius: 4px;}
+
+
+
+
+
+.button1amUxx a{
+   text-decoration: none;
+   color: white;
+}
+
+
+
+.smsession{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cmsession{
+
+    width: 100%;
+    height: 70vh;
+
+}
+
+
+.cmsession h1{
+    color: #005555;
+}
+
+/* amadmin  Mchangesessiondetails */
+
+.amAdmintable{
+  overflow-y: auto;
+  max-height: 350px;
+  max-width: 2000px;
+}
+
+
+.buttonamUqq {
+  background-color: #58BD53;
+  border: none;
+  color: white;
+  padding: 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 2px 2px;
+  cursor: pointer;
+  width:fit-content;
+
+}
+
+.button1amUqq {border-radius: 4px;}
+
+
+
+
+
+.button1amUqq a{
+   text-decoration: none;
+   color: white;
+}
+
+.buttonamUll {
+  background-color: #B22222;;
+  border: none;
+  color: white;
+  padding: 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 2px 2px;
+  cursor: pointer;
+  width:fit-content;
+
+}
+
+.button1amUll {border-radius: 4px;}
+
+
+
+
+
+.button1amUll a{
+   text-decoration: none;
+   color: white;
+}
+
+
+.buttonamUyy {
+  background-color:  #4169e1;
+  border: none;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 2px 1px;
+  cursor: pointer;
+  width:fit-content;
+
+}
+
+.button1amUyy {border-radius: 4px;}
+
+
+
+
+
+.button1amUyy a{
+   text-decoration: none;
+   color: white;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+
+/* Requested Service ........... */
+
+/*
+.cRS{
+    width: 50%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background: white;
+
+} */
+
+.cRS {
+  margin-top: 100px;
+  display: flex;
+  flex-wrap: nowrap;
+  background: white;
+  align-items: center;
+  justify-content: center;
+
+
+}
+
+.card {
+  background: white;
+  width: 190px;
+  height: 190px;
+  margin: 10px;
+  text-align: center;
+
+}
+
+
+.cRS2 {
+  display: flex;
+  flex-wrap: nowrap;
+  background: white;
+  align-items: center;
+    justify-content: center;
+
+
+}
+
+.card2 {
+  background: white;
+  width: 190px;
+  height: 190px;
+  margin: 10px;
+  text-align: center;
+
+}
+
+
+.card2 {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+
+}
+
+.card2:hover {
+  box-shadow: 0 10px 20px 0 rgba(0,0,0,0.2);
+}
+/* .cRStwo{
+    width: 50%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+} */
+
+/* .cRS h1{
+    color: #005555;
+
+} */
+
+/* .ff{
+    margin-top: 1px;
+    width: 100%;
+    height: fit-content;
+    background: #005555;
+    display: flex;
+    padding: 1% 5%;
+    justify-content: space-around;
+    border-radius: 20px;
+    font-weight: 500;
+    color: aliceblue;
+} */
+/* .cRS form label,input{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.cRS form input{
+    border: none;
+    padding: 3px 5px;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background: white;
+    color: black;
+    font-weight: 600;
+} */
+
+
+
+.btncard {
+  background-color: #4169e1;
+  border: none;
+  color: white;
+  padding: 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+
+
+}
+
+.btncard1am {border-radius: 4px;}
+
+
+
+/* amAdmin Delete buttons */
+
+.btncard1am a{
+   text-decoration: none;
+   color: white;
+}
+
+
+#viewmoresessiontxtarea{
+  resize: none;
+}
+
+/* MregusersMon */
+/*
+.sMreg{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cMreg{
+
+    width: 55%;
+    height: 70vh;
+
+}
+
+
+.cMreg h1{
+    color: #005555;
+} */
+
+
+
+.sMAdminAM{
+    margin-top: 40px;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    max-height: 480px;
+    max-width: 2000px;
+
+}
+
+.cMAdminAM{
+
+    width: 55%;
+    height: 70vh;
+
+}
+
+
+.cMAdminAM h1{
+    color: #005555;
+}
+
+
+
+
+#Mreg{
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#Mreg td, th {
+  border: 1px solid white;
+  text-align: left;
+  padding: 8px;
+}
+
+#Mreg tr:nth-child(even) {
+  background-color:  #004141;
+  color:white;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 60;
+  right: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #005555;
+  margin-left: 1060px;
+  margin-right:100px;
+  width: 257px;
+  padding: 20px;
+  border: 1px solid #888;
+  margin-top: 2px;
+
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modeldiv label,input,textarea{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.modeldiv input{
+  border: none;
+  padding: 3px 5px;
+  width: 100%;
+  height: 20px;
+  border-radius: 10px;
+  background: white;
+  color: black;
+  font-weight: 600;
+}
+
+.modeldiv label{
+ color: white;
+}
+
