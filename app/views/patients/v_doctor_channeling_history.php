@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
-    <title>View Doctor Appointments</title>
+    <title>View Doctor Channeling History</title>
 </head>
 <body>
 
@@ -13,18 +13,18 @@
 
     <section class="doctor-cards">
         <div class="left">
-        <h1>Doctor Appointments</h1>
+            <h1>Channeling History</h1>
             <?php foreach($data['appointments'] as $appointment): ?>
-                <?php if($appointment->date > $data['currentDate'] || ($appointment->date == $data['currentDate'] && $appointment->time >= $data['currentTime'])): ?>
+                <?php if($appointment->date < $data['currentDate'] || ($appointment->date == $data['currentDate'] && $appointment->time < $data['currentTime'])): ?>
                 <div class="card">
                     <div class="card-left">
-                        <p>Appontment On<br><?php echo $appointment->date ?></p><br>
+                        <p><br><?php echo $appointment->date ?></p><br>
                     </div>
                     <div class="card-right">
                         <div>
-                            <h3>For Dr. <?php echo $appointment->first_name ?> <?php echo $appointment->last_name ?></h3>
+                            <h3>By Dr. <?php echo $appointment->first_name ?> <?php echo $appointment->last_name ?></h3>
                             <p>Address : <?php  echo $appointment->address ?></p>
-                            <p>Appointment time:<br><?php echo $appointment->time ?></p>
+                            <p>Time:<br><?php echo $appointment->time ?></p>
                         </div>
                     </div>
                 </div>

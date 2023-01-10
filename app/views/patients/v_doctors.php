@@ -28,7 +28,10 @@
                         <h3><?php  echo $doctor->specialization ?></h3>
                         <p>City : <?php  echo $doctor->city ?></p>
                     </div>
-                    <a href="">Channel</a>
+                    <form action="<?php echo URLROOT ?>/Patient/getDoctorId" method="POST">
+                        <input type="hidden" name="doctor_id" id="doctor_id" value="<?php echo $doctor->doctor_id ?>">
+                        <button>Channel</button>
+                    </form>
                 </div>
             </div>
             <?php endforeach; ?>

@@ -10,6 +10,7 @@
         private $nutritionistModel;
         private $requestDietPlanModel;
         private $doctorChannelModel;
+        private $doctorTimeslotModel;
         public function __construct() {
             $this->patientModel = $this->model('M_Patient');
             $this->complaintModel = $this->model('M_Complaint');
@@ -20,6 +21,7 @@
             $this->nutritionistModel = $this->model('M_Nutritionist');
             $this->requestDietPlanModel = $this->model('M_Request_Diet_Plan');
             $this->doctorChannelModel = $this->model('M_Doctor_Channel');
+            $this->doctorTimeslotModel = $this->model('M_Doctor_Timeslot');
         }
 
         public function signup() {
@@ -406,13 +408,37 @@
             $this->view('patients/v_doctors', $data);
         }
 
+        // Get doctor id needed for viewing doctor timeslots
+        public function getDoctorId(){
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                $doctor_id = trim($_POST['doctor_id']);
+                $_SERVER['REQUEST_METHOD'] = '';
+
+                // Pass the pharmacist id for order medicine
+                $this->viewDoctorTimeslots($doctor_id);
+            }
+        }
+
+        // View doctor timeslots
+        public function viewDoctorTimeslots($doctor_id) {
+            $timeslots = $this->doctorTimeslotModel->getAllDoctorTimeslots($doctor_id);
+            $data = [
+                'timeslots' => $timeslots,
+                'doctor_id' => $doctor_id
+            ];
+
+            // Load view
+            $this->view('patients/v_doctor_timeslots', $data);
+        }
+
         // View doctor appointments
         public function viewDoctorAppointments() {
             if(isset($_SESSION['patient_id'])) {
                 // Get current date and time
                 date_default_timezone_set("Asia/Kolkata");
                 $currentDate = date("Y-m-d");
-                $currentTime = date("h:i:s");
+                $currentTime = date("H:i:s");
                 // Show all doctor appointments
                 $appointments = $this->doctorChannelModel->getAllDoctorChannels($_SESSION['patient_id']);
                 $data = [
@@ -423,6 +449,30 @@
 
                 // Load view
                 $this->view('patients/v_doctor_appointments', $data);
+            }
+            else {
+                // Redirect to login
+                redirect('Patient/login');
+            }
+        }
+
+        // View doctor channeling history
+        public function viewDoctorChannelingHistory() {
+            if(isset($_SESSION['patient_id'])) {
+                // Get current date and time
+                date_default_timezone_set("Asia/Kolkata");
+                $currentDate = date("Y-m-d");
+                $currentTime = date("H:i:s");
+                // Show all doctor appointments
+                $appointments = $this->doctorChannelModel->getAllDoctorChannels($_SESSION['patient_id']);
+                $data = [
+                    'appointments' => $appointments,
+                    'currentDate' => $currentDate,
+                    'currentTime' => $currentTime
+                ];
+
+                // Load view
+                $this->view('patients/v_doctor_channeling_history', $data);
             }
             else {
                 // Redirect to login
@@ -769,7 +819,7 @@
 
         // View order requests
         public function viewOrderRequests() {
-            
+            if(isset($_SESSION['patient_id'])) {
             // Show all order requests
             $orders = $this->orderRequestModel->getAllOrderRequests($_SESSION['patient_id']);
             $data = [
@@ -778,6 +828,11 @@
 
             // Load view
             $this->view('patients/v_order_requests', $data);
+            }
+            else {
+                // Redirect to login
+                redirect('Patient/login');
+            }
         }
 
     }

@@ -76,6 +76,15 @@
                         <p>View your doctor appointments here.</p>
                     </div>
                 </a>
+                <a href="<?php echo URLROOT ?>/Patient/viewDoctorChannelingHistory">
+                    <div>
+                        <div class="image">
+                            <img src="<?php echo URLROOT; ?>/img/page1-img10.jpg" alt="">
+                        </div>
+                        <h2>Your Doctor Chenneling History</h2>
+                        <p>View your channeling history here.</p>
+                    </div>
+                </a>
                 <a href="<?php echo URLROOT ?>/Patient/viewOrderRequests">
                     <div>
                         <div class="image">

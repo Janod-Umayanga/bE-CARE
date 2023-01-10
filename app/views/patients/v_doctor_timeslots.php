@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
-    <title>View Orders</title>
+    <title>Doctor Timeslots</title>
 </head>
 <body>
 
@@ -13,17 +13,19 @@
 
     <section class="doctor-cards">
         <div class="left">
-            <h1>Pending Orders</h1>
-            <?php foreach($data['orders'] as $order): ?>
+            <?php foreach($data['timeslots'] as $timeslot): ?>
             <div class="card">
                 <div class="card-left">
-                    <p>Ordered on:<br><?php echo $order->ordered_date_and_time ?></p>
+                     <p>Day</p>
                 </div>
                 <div class="card-right">
                     <div>
-                        <h3>From: <?php echo $order->pharmacy_name ?></h3>
-                        <p>Address : <?php  echo $order->address ?></p>
+                        <h3><?php  echo $timeslot->channeling_day ?></h3>
+                        <p><?php  echo $timeslot->starting_time ?> - <?php  echo $timeslot->ending_time ?></p>
+                        <p>At <?php  echo $timeslot->address ?></p>
+                        <p>Channeling fee: Rs.<?php  echo $timeslot->fee ?></p>
                     </div>
+                    <a href="">Channel</a>
                 </div>
             </div>
             <?php endforeach; ?>
