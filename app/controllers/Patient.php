@@ -11,6 +11,7 @@
         private $requestDietPlanModel;
         private $doctorChannelModel;
         private $doctorTimeslotModel;
+        private $sessionModel;
         public function __construct() {
             $this->patientModel = $this->model('M_Patient');
             $this->complaintModel = $this->model('M_Complaint');
@@ -22,6 +23,7 @@
             $this->requestDietPlanModel = $this->model('M_Request_Diet_Plan');
             $this->doctorChannelModel = $this->model('M_Doctor_Channel');
             $this->doctorTimeslotModel = $this->model('M_Doctor_Timeslot');
+            $this->sessionModel = $this->model('M_Session');
         }
 
         public function signup() {
@@ -154,6 +156,7 @@
                 
                 // Inserted form
                 $data = [
+                    'usertype' => trim($_POST['usertype']),
                     'email' => trim($_POST['email']),
                     'password' => trim($_POST['password']),
 
@@ -161,46 +164,48 @@
                     'password_err' => ''
                 ];
 
-                // Validate email
-                if(empty($data['email'])) {
-                    $data['email_err'] = 'Email required';
-                }
-                else {
-                    //check for existing emails
-                    if($this->patientModel->findPatientByEmail($data['email'])) {
-                        // Patient found
+                if($data['usertype'] == 'patient') {
+                    // Validate email
+                    if(empty($data['email'])) {
+                        $data['email_err'] = 'Email required';
                     }
                     else {
-                        // Patient not found
-                        $data['email_err'] = 'Invalid email';
+                        //check for existing emails
+                        if($this->patientModel->findPatientByEmail($data['email'])) {
+                            // Patient found
+                        }
+                        else {
+                            // Patient not found
+                            $data['email_err'] = 'Invalid email';
+                        }
                     }
-                }
 
-                // Validate password
-                if(empty($data['password'])) {
-                    $data['password_err'] = 'Password required';
-                }
-
-                // Login patient after validation
-                if(empty($data['email_err']) && empty($data['password_err'])) {
-                    // Log the patient
-                    $loggedPatient = $this->patientModel->login($data['email'], $data['password']);
-                
-                    if($loggedPatient) {
-                        // Patient is authenticated
-                        // Create patient session
-                        $this->createPatientSession($loggedPatient);
+                    // Validate password
+                    if(empty($data['password'])) {
+                        $data['password_err'] = 'Password required';
                     }
-                    else {
-                        $data['password_err'] = 'Invalid password';
+
+                    // Login patient after validation
+                    if(empty($data['email_err']) && empty($data['password_err'])) {
+                        // Log the patient
+                        $loggedPatient = $this->patientModel->login($data['email'], $data['password']);
                     
+                        if($loggedPatient) {
+                            // Patient is authenticated
+                            // Create patient session
+                            $this->createPatientSession($loggedPatient);
+                        }
+                        else {
+                            $data['password_err'] = 'Invalid password';
+                        
+                            // Load view
+                            $this->view('patients/v_login', $data);
+                        }
+                    }
+                    else {
                         // Load view
                         $this->view('patients/v_login', $data);
                     }
-                }
-                else {
-                    // Load view
-                    $this->view('patients/v_login', $data);
                 }
             }
             else {
@@ -489,7 +494,7 @@
                 $counsellors = $this->counsellorModel->getCounsellors(trim($_POST['search']));
             }
             else {
-                // Show all doctors
+                // Show all counsellors
                 $counsellors = $this->counsellorModel->getAllCounsellors();
             }
             $data = [
@@ -639,13 +644,34 @@
     
                     // Create order after validation
                     if(empty($data['name_err']) && empty($data['age_err']) && empty($data['gender_err']) && empty($data['cnumber_err']) && empty($data['weight_err']) && empty($data['height_err']) && empty($data['marital_status_err']) && empty($data['medical_details_err']) && empty($data['allergies_err']) && empty($data['sleeping_hours_err']) && empty($data['water_consumption_per_day_err']) && empty($data['goal_err'])) {
-                        // Create order
-                        if($this->requestDietPlanModel->createDietPlanRequest($data, $_SESSION['patient_id'])) {
-                            redirect('Pages/index');
-                        }
-                        else {
-                            die('Something went wrong');
-                        }
+                        
+                        $merchant_id = 1221976;
+                        $order_id = 1;
+                        $amount = 200;
+                        $currency = 'LKR';
+                        $payhere_secret = 'MzQwOTcwMTQ1MDc0NDQzMTAwMDE0MDQ4MzU4MjUzMjI0NzQ1NTcx';
+                        $hash = $merchant_id;
+                        $hash .= $order_id;
+                        $hash .= number_format($amount, 2, '.', '');
+                        $hash .= $currency;
+                        $hash .= strtoupper(md5($payhere_secret));
+                        $hash = strtoupper(md5($hash));
+
+                        $data = [
+                            'order_id' => $order_id,
+                            'amount' => $amount,
+                            'currency' => $currency,
+                            'hash' => $hash
+                        ];
+
+                        $this->view('patients/v_payment_gateway', $data);
+                        // // Create order
+                        // if($this->requestDietPlanModel->createDietPlanRequest($data, $_SESSION['patient_id'])) {
+                        //     redirect('Pages/index');
+                        // }
+                        // else {
+                        //     die('Something went wrong');
+                        // }
                     }
                     else {
                         // Load view
@@ -833,6 +859,19 @@
                 // Redirect to login
                 redirect('Patient/login');
             }
+        }
+
+        // View sessions
+        public function findSession() {
+            // Show all sessions
+            $sessions = $this->sessionModel->getAllSessions();
+            
+            $data = [
+                'sessions' => $sessions
+            ];
+
+            // Load view
+            $this->view('patients/v_sessions', $data);
         }
 
     }

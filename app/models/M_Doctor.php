@@ -16,7 +16,7 @@
 
         // Get doctors by a filter
         public function getDoctors($filter) {
-            $this->db->query("SELECT * FROM doctor WHERE CONCAT(first_name,last_name,city,type,specialization) LIKE '%$filter%'");
+            $this->db->query("SELECT * FROM doctor WHERE CONCAT(first_name,last_name,specialization) LIKE '%$filter%'");
 
             return $this->db->resultSet();
         }

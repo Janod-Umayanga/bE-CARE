@@ -3,34 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=\, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
-    <title>Patient-Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c4a594ff55.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style1.css">
+    <title>Document</title>
 </head>
 <body>
+    <section class="login-section">
+        <div class="login-page-leftside">
+            <div class="left-side-container">
+                <a href="<?php echo URLROOT ?>/Pages/index" class="page-change-button"><i class="fa-solid fa-arrow-left"></i>Back to Homepage</a>
+                <div>
+                    <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
+                    <h2>Enter your login details to get into the application</h2>
+                    <p>This service is for assistance in monitoring COVID 19 positive asymptomatic and mildly symptomatic patients, who have been deemed fit for home quarantine by the government healthcare services.</p>
+                </div>
+            </div>
+        </div>
+        <div class="login-page-rightside">
+            <form action="" method="POST">
+                <div class="topic-of-form">
+                    <h1>Login..</h1>
+                    <p>Don't have an account <a href="#">Sign Up</a></p>
+                </div>
 
-<?php require APPROOT.'/views/inc/components/header.php'; ?>
-
-    <section class="signup">
-        <div class="content">
-                <h1>Login as a Patient</h1>
-                <form action="" method="POST">
-                    <div>
-                        <label for="email">Email</label>
+                <div class="form-inputs-and-buttons">
+                    <label for="usertype">User Type:</label>
+                        <select id="usertype" name="usertype">
+                        <option value="patient">Patient</option>
+                        <option value="doctor">Doctor</option>
+                        <option value="counsellor">Counsellor</option>
+                        <option value="pharmacist">Pharmacist</option>
+                        <option value="nutritionist">Nutritionist</option>
+                        <option value="meditation_instructor">Meditation Instructor</option>
+                        <option value="admin">Admin</option>
+                        </select>
+                    <label for="email">Email</label>
                         <input type="email" id="email" name="email" value="<?php echo $data['email'] ?>">
                         <span class="form-invalid"><?php echo $data['email_err'] ?></span>
-
-                        <label for="password">Password</label>
+                    <label for="password">Password</label>
                         <input type="password" id="password" name="password" value="<?php echo $data['password'] ?>">
                         <span class="form-invalid"><?php echo $data['password_err'] ?></span>
-
-                        <button>Log In</button>    
-                    </div>
-                </form>
+                    <a href="#">Forgot password?</a>
+                    <button>Log In</button>
+                </div>
+            </form>
         </div>
-    </section>
-
-<?php require APPROOT.'/views/inc/components/footer.php'; ?>
-
+    </section>  
 </body>
 </html>

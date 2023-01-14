@@ -16,7 +16,7 @@
 
         // Get counsellors by a filter
         public function getCounsellors($filter) {
-            $this->db->query("SELECT * FROM counsellor WHERE CONCAT(first_name,last_name,city) LIKE '%$filter%'");
+            $this->db->query("SELECT * FROM counsellor WHERE CONCAT(first_name,last_name) LIKE '%$filter%'");
 
             return $this->db->resultSet();
         }
