@@ -84,7 +84,8 @@ class MedInstrSession extends Controller{
    $regUser= $this->medInstrSessionModel->viewRegUsersSession($session_id);
    $_SESSION['session_id']=$session_id;
    $data=[                      
-     'regUser'=>$regUser
+     'regUser'=>$regUser,
+     'search'=>''
      
      
    ];

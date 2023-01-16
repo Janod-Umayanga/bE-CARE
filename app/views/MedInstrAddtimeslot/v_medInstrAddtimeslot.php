@@ -36,11 +36,11 @@
                       <input type="time" name="ending_time"  required="true" >
 
                       <label>Fee</label>
-                      <input type="number" name="fee"  required="true" >
+                      <input type="number" name="fee"  required="true" value="<?php echo $data["fee"]?>" >
 
 
                     <label>Address</label>
-                    <input type="text" name="address"  required="true"">
+                    <input type="text" name="address"  required="true" value="<?php echo $data["address"]?>" >
 
 
                       <button id="cBigButton" type="submit" name="submit">Submit</button>

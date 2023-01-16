@@ -257,6 +257,9 @@ class MedInstr extends Controller{
      $_SESSION['MedInstr_id']=$user->meditation_instructor_id;
      $_SESSION['MedInstr_name']=$user->first_name;
      $_SESSION['MedInstr_email']=$user->email; 
+     $_SESSION['MedInstr_address']=$user->address;
+     $_SESSION['MedInstr_fee']=$user->fee; 
+     
      if($user->gender=='Male'){
         $_SESSION['MedInstr_gender']='Mr.';
      }else if($user->gender=='Female'){
@@ -272,6 +275,9 @@ class MedInstr extends Controller{
      unset($_SESSION['MedInstr_name']);
      unset($_SESSION['MedInstr_email']);
      unset($_SESSION['MedInstr_gender']);
+     unset($_SESSION['MedInstr_address']);
+     unset($_SESSION['MedInstr_fee']);
+     
      session_destroy();
      redirect('MedInstr/login');
      

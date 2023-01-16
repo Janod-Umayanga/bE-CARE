@@ -25,8 +25,13 @@ class MedInstrAddtimeslot extends Controller{
 
           
           'month_err'=>'',
-          'day_err'=>''
-         ];      
+          'day_err'=>'',
+          'starting_time_err'=>'',
+          'ending_time_err'=>'',
+          'fee_err'=>'',
+          'address_err'=>''
+
+        ];      
          
         if(empty($data['month'])){
           $data['month_err']='Please select a month';
@@ -34,6 +39,22 @@ class MedInstrAddtimeslot extends Controller{
 
         if(empty($data['day'])){
            $data['day_err']='Please enter a day';
+        } 
+
+        if(empty($data['starting_time'])){
+          $data['starting_time_err']='Please select a starting time';
+        }
+
+        if(empty($data['ending_time'])){
+           $data['ending_time_err']='Please select ending time';
+        } 
+
+        if(empty($data['fee'])){
+          $data['fee_err']='Please enyer a fee';
+        }
+
+        if(empty($data['address'])){
+           $data['address_err']='Please enter a address';
         } 
         
         $month=trim($_POST['month']);
@@ -75,8 +96,8 @@ class MedInstrAddtimeslot extends Controller{
         'day'=>'',      
         'starting_time'=>'',
         'ending_time'=>'',      
-        'fee'=>'',
-        'address'=>'',      
+        'fee'=>$_SESSION['MedInstr_fee'],
+        'address'=>$_SESSION['MedInstr_address'],      
         'meditation_instructor_id'=>'',      
       
 
