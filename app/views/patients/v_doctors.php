@@ -30,6 +30,11 @@
         </div>
         <div class="pharmacy-search-section theme">
             <form action="" class="search-form-pharmacy" method="POST">
+                <select name="day" id="day">
+                    <option value="">Find doctors for today</option>
+                    <option value="Today">Today</option>
+                    <option value="Tommorow">Tommorow</option>
+                </select>
                 <select name="specialization" id="specialization">
                     <option value="">Specialization</option>
                     <option value="Cardiologist">Cardiologist</option>
