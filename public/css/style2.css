@@ -853,6 +853,35 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 }
 /* nutritionist page ends */
 
+/* For time slot page */
+.time-slot-main-picture-container{
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../img/Timeslot-page-pictures/time-slot-main.jpg);
+    background-size: cover;
+    overflow: hidden;
+}
+
+.time-slot-main-picture-container .tittle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 40px;
+    color: var(--hue-white);
+    line-height: 40px;
+    margin-bottom: 50px;
+}
+
+.time-slot-main-picture-container .tittle i{
+    font-size: 4.5rem;
+}
+/* time slot page ends */
+
 .pharmacy-search-section{
     position: absolute;
     bottom: 0;
@@ -977,6 +1006,94 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     align-items: flex-start;
     justify-content: center;
 }
+
+/* time slot card design starts */
+
+.time-slot-main-container{
+    width: 70%;
+    height: 900px;
+    margin-top: 40px;
+    overflow: hidden;
+}
+
+.time-slot-main-container.active{
+    height: fit-content;
+    overflow: auto;
+}
+
+.time-slot-sub{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.time-slot-sub .card{
+    width: 80%;
+    height: 38vh;
+    background-color: rgb(244, 230, 230);
+    padding: 0px 11%;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.time-slot-sub .card .bottom{
+    position: absolute;
+    z-index: 10;
+    bottom: 60px;
+}
+
+.time-slot-sub .card .bottom p{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 20px;
+    font-size: 14px;
+    color: #1d242bd7;
+}
+
+.time-slot-sub .card .top{
+    position: absolute;
+    z-index: 10;
+    top: 20px;
+    color: #fafafacb;
+}
+
+.time-slot-sub .top-box{
+    position: absolute;
+    top: -30px;
+    left: -90px;
+    width: 80%;
+    height: 20vh;
+    border-radius: 200px 0;
+    background-color: #263747;
+}
+
+.time-slot-sub .bottom-box{
+    width: 50%;
+    height: 20vh;
+    background-color: var(--hue-dark-blue);
+    position: absolute;
+    bottom: -50px;
+    right: -100px;
+    border-radius: 100px;
+}
+
+.time-slot-sub .card .main-button{
+    position: absolute;
+    bottom: 20px;
+    right: 5%;
+    border-radius: 20px;
+    background-color: #e7e4e4;
+    border: none;
+    color: #1D242B;
+}
+
+/* time slot card design ends */
 
 .pharmacy-sub .card{
     width: 340px;
@@ -1396,6 +1513,25 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
         width: 100%;
         padding: 40px 20px;
     }
+    .time-slot-sub .top-box{
+        position: absolute;
+        top: -30px;
+        left: -90px;
+        width: 100%;
+        height: 20vh;
+        border-radius: 200px 0;
+        background-color: #263747;
+    }
+    
+    .time-slot-sub .bottom-box{
+        width: 70%;
+        height: 20vh;
+        background-color: var(--hue-dark-blue);
+        position: absolute;
+        bottom: -50px;
+        right: -100px;
+        border-radius: 100px;
+    }
 }
 
 @media (max-width: 914px) {
@@ -1481,6 +1617,9 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
         font-size: 24px;
     }
     .pharmacy-main-picture-container .tittle i{
+        display: none;
+    }
+    .time-slot-main-picture-container .tittle i{
         display: none;
     }
 }
@@ -1639,6 +1778,90 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
         align-items: center;
         justify-content: center;
         margin-top: 40px;
+    }
+    .time-slot-main-container{
+        width: 70%;
+        height: 940px;
+        margin-top: 40px;
+        overflow: hidden;
+    }
+    
+    .time-slot-main-container.active{
+        height: fit-content;
+        overflow: auto;
+    }
+    
+    .time-slot-sub{
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .time-slot-sub .card{
+        width: 100%;
+        height: 70vh;
+        background-color: rgb(244, 230, 230);
+        padding: 0px 11%;
+        text-align: left;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .time-slot-sub .card .bottom{
+        position: absolute;
+        z-index: 10;
+        bottom: 140px;
+    }
+    
+    .time-slot-sub .card .bottom p{
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        gap: 20px;
+        font-size: 14px;
+        color: #1d242bd7;
+    }
+    
+    .time-slot-sub .card .top{
+        position: absolute;
+        z-index: 10;
+        top: 50px;
+        color: #fafafacb;
+    }
+    
+    .time-slot-sub .top-box{
+        position: absolute;
+        top: 0px;
+        left: 0;
+        width: 100%;
+        height: 30vh;
+        border-radius: 0;
+        background-color: #263747;
+    }
+    
+    .time-slot-sub .bottom-box{
+        width: 50%;
+        height: 20vh;
+        background-color: var(--hue-dark-blue);
+        position: absolute;
+        bottom: -50px;
+        right: -100px;
+        border-radius: 100px;
+        display: none;
+    }
+    
+    .time-slot-sub .card .main-button{
+        position: absolute;
+        bottom: 30px;
+        left: 11%;
+        border-radius: 20px;
+        background-color: #1d242bdb;
+        border: none;
+        color: var(--hue-white);
     }
 }
 
