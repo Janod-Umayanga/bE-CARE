@@ -11,7 +11,7 @@
                 <a href="<?php echo URLROOT ?>/Pages/feedback">FEED BACKS</a>
             </li>
             <li>
-                <a href="">COMPLAINTS</a>
+                <a href="<?php echo URLROOT ?>/Complaint/complaint">COMPLAINTS</a>
             </li>
         </ul>
     </footer>
