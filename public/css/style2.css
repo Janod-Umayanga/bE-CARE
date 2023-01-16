@@ -208,8 +208,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 
 .main-button:hover{
     background-color: var(--hue-white);
-    --hue: var(--hue-black);
-    border: none;
+    color: #1D242B;
 }
 
 /* Main section ends here */
@@ -482,6 +481,14 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 }
 
 .form-inputs-and-buttons input{
+    margin-top: 5px;
+    padding: 8px;
+    background-color: var(--hue-white);
+    border-radius: 5px;
+    border: 1px solid #ccc9c9;
+}
+
+.form-inputs-and-buttons select{
     margin-top: 5px;
     padding: 8px;
     background-color: var(--hue-white);
@@ -1617,6 +1624,15 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
         font-size: 24px;
     }
     .pharmacy-main-picture-container .tittle i{
+        display: none;
+    }
+    .doctor-main-picture-container .tittle i{
+        display: none;
+    }
+    .counsellor-main-picture-container .tittle i{
+        display: none;
+    }
+    .nutritionist-main-picture-container .tittle i{
         display: none;
     }
     .time-slot-main-picture-container .tittle i{

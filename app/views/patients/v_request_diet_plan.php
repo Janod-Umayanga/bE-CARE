@@ -20,7 +20,7 @@
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
                     <h2>Fill these details to request the diet plan</h2>
-                    <p>This service is for assistance in monitoring COVID 19 positive asymptomatic and mildly symptomatic patients, who have been deemed fit for home quarantine by the government healthcare services.</p>
+                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
                 </div>
             </div>
         </div>
