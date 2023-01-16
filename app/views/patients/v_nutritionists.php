@@ -17,7 +17,22 @@
     
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <div class="search-container-for-doctors" id="search-container-for-doctors">
+    <div class="nutritionist-main-picture-container">
+        <div class="tittle">
+            <i class="fa-solid fa-seedling"></i>
+            <h1>Get a Diet Plan from a<br>Nutritionist!</h1>
+        </div>
+        <div class="pharmacy-search-section theme">
+            <form action="" class="search-form-pharmacy" method="POST">
+                <div class="main-search">
+                    <input type="text" name="search" placeholder="Search nutritionist by name..">
+                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- <div class="search-container-for-doctors" id="search-container-for-doctors">
         <form action="" class="main-form" method="POST">
             <div class="filter-by">
                 
@@ -31,7 +46,7 @@
                 </div>
             </div>
         </form>
-    </div>
+    </div> -->
 
     <section class="doctor-cards-container theme">
         <div class="doctor-cards-topic">

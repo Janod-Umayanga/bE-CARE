@@ -17,7 +17,29 @@
     
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <div class="search-container-for-doctors" id="search-container-for-doctors">
+    <div class="pharmacy-main-picture-container">
+        <div class="tittle">
+            <i class="fa-solid fa-hand-holding-heart"></i>
+            <h1>Find Your Counsellor<br>to talk with!</h1>
+        </div>
+        <div class="pharmacy-search-section theme">
+            <form action="" class="search-form-pharmacy" method="POST">
+                <select name="city" id="city">
+                    <option value="">City</option>
+                    <option value="">Colombo</option>
+                    <option value="">Galle</option>
+                    <option value="">Kandy</option>
+                    <option value="Malabe">Malabe</option>
+                </select>
+                <div class="main-search">
+                    <input type="text" name="search" placeholder="Search counsellor by name..">
+                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- <div class="search-container-for-doctors" id="search-container-for-doctors">
         <form action="" class="main-form" method="POST">
             <div class="filter-by">
                 
@@ -37,7 +59,7 @@
                 </div>
             </div>
         </form>
-    </div>
+    </div> -->
 
     <section class="doctor-cards-container theme">
         <div class="doctor-cards-topic">

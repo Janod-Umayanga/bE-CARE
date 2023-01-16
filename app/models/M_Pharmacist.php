@@ -15,8 +15,8 @@
         }
 
         // Get pharmacists by a filter
-        public function getPharmacists($filter) {
-            $this->db->query("SELECT * FROM pharmacist WHERE CONCAT(pharmacy_name,city) LIKE '%$filter%'");
+        public function getPharmacists($name, $city) {
+            $this->db->query("SELECT * FROM pharmacist WHERE CONCAT(pharmacy_name) LIKE '%$name%' AND city LIKE '%$city%'");
 
             return $this->db->resultSet();
         }

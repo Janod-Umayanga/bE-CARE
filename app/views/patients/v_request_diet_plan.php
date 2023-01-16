@@ -3,19 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=\, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
-    <title>Patient-Diet-Plan-Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c4a594ff55.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
+    <title>Document</title>
 </head>
 <body>
-
-<?php require APPROOT.'/views/inc/components/header.php'; ?>
-
-    <section class="signup">
-        <div class="content">
-                <h1>Fill these details to request the diet plan</h1>
-                <form action="<?php echo URLROOT ?>/Patient/requestDietPlan/<?php echo $data['nutritionist_id'] ?>/<?php echo $data['fee'] ?>" method="post" enctype="multipart/form-data">
-                    <div>
+    <section class="diet-plan-section">
+        <div class="diet-plan-leftside">
+            <div class="diet-left-side-container">
+                <a href="<?php echo URLROOT ?>/Patient/findNutritionist" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Find a Nutritionist</a>
+                <div>
+                    <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
+                    <h2>Fill these details to request the diet plan</h2>
+                    <p>This service is for assistance in monitoring COVID 19 positive asymptomatic and mildly symptomatic patients, who have been deemed fit for home quarantine by the government healthcare services.</p>
+                </div>
+            </div>
+        </div>
+        <div class="diet-plan-rightside">
+            <form action="<?php echo URLROOT ?>/Patient/requestDietPlan/<?php echo $data['nutritionist_id'] ?>/<?php echo $data['fee'] ?>" method="POST">
+                <div class="diet-form-inputs-and-buttons">
+                    <div class="left">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" value="<?php echo $data['name'] ?>">
                         <span class="form-invalid"><?php echo $data['name_err'] ?></span>
@@ -25,25 +37,31 @@
                         <span class="form-invalid"><?php echo $data['age_err'] ?></span>
 
                         <label for="gender">Gender</label>
-                        <input type="text" id="gender" name="gender" value="<?php echo $data['gender'] ?>">
-                        <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
+                        <select name="gender" id="gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
 
                         <label for="cnumber">Contact number</label>
-                        <input type="text" id="cnumber" name="cnumber" value="<?php echo $data['cnumber'] ?>">
+                        <input type="number" id="cnumber" name="cnumber" value="<?php echo $data['cnumber'] ?>">
                         <span class="form-invalid"><?php echo $data['cnumber_err'] ?></span>
 
                         <label for="weight">Weight (Kg)</label>
-                        <input type="text" id="weight" name="weight" value="<?php echo $data['weight'] ?>">
+                        <input type="number" id="weight" name="weight" value="<?php echo $data['weight'] ?>">
                         <span class="form-invalid"><?php echo $data['weight_err'] ?></span>
 
                         <label for="height">Height (cm)</label>
-                        <input type="text" id="height" name="height" value="<?php echo $data['height'] ?>">
+                        <input type="number" id="height" name="height" value="<?php echo $data['height'] ?>">
                         <span class="form-invalid"><?php echo $data['height_err'] ?></span>
+
+                        <button>Submit</button>
                     </div>
-                    <div>
+                    <div class="right">
                         <label for="marital_status">Marital status</label>
-                        <input type="text" id="marital_status" name="marital_status" value="<?php echo $data['marital_status'] ?>">
-                        <span class="form-invalid"><?php echo $data['marital_status_err'] ?></span>
+                        <select name="marital_status" id="marital_status">
+                            <option value="married">Married</option>
+                            <option value="unmarried">Unmarried</option>
+                        </select>
 
                         <label for="medical_details">Medical details</label>
                         <input type="text" id="medical_details" name="medical_details" value="<?php echo $data['medical_details'] ?>">
@@ -54,24 +72,20 @@
                         <span class="form-invalid"><?php echo $data['allergies_err'] ?></span>
 
                         <label for="sleeping_hours">Sleeping hours per day</label>
-                        <input type="text" id="sleeping_hours" name="sleeping_hours" value="<?php echo $data['sleeping_hours'] ?>">
+                        <input type="number" id="sleeping_hours" name="sleeping_hours" value="<?php echo $data['sleeping_hours'] ?>">
                         <span class="form-invalid"><?php echo $data['sleeping_hours_err'] ?></span>
 
                         <label for="water_consumption_per_day">Water consumption per day (ml)</label>
-                        <input type="text" id="water_consumption_per_day" name="water_consumption_per_day" value="<?php echo $data['water_consumption_per_day'] ?>">
+                        <input type="number" id="water_consumption_per_day" name="water_consumption_per_day" value="<?php echo $data['water_consumption_per_day'] ?>">
                         <span class="form-invalid"><?php echo $data['water_consumption_per_day_err'] ?></span>
 
                         <label for="goal">Goal</label>
-                        <input type="text" id="goal" name="goal" value="<?php echo $data['goal'] ?>">
+                        <textarea name="goal" id="goal" cols="30" rows="10" value="<?php echo $data['goal'] ?>"></textarea>
                         <span class="form-invalid"><?php echo $data['goal_err'] ?></span>
-
-                        <button>Submit</button>
-                    </div>     
-                </form>
+                    </div>
+                </div>
+            </form>
         </div>
-    </section>
-
-<?php require APPROOT.'/views/inc/components/footer.php'; ?>
-
+    </section>  
 </body>
 </html>

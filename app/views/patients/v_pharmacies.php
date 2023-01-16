@@ -26,8 +26,8 @@
                 <select name="city" id="city">
                     <option value="">City</option>
                     <option value="">Colombo</option>
-                    <option value="">Galle</option>
-                    <option value="">Kandy</option>
+                    <option value="Malabe">Malabe</option>
+                    <option value="Matara">Matara</option>
                 </select>
                 <div class="main-search">
                     <input type="text" name="search" placeholder="Search pharmacy by name..">

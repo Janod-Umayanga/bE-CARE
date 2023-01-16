@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/c4a594ff55.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style1.css">
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
     <title>Document</title>
 </head>
 <body>
@@ -20,7 +20,7 @@
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
                     <h2>Enter your login details to get into the application</h2>
-                    <p>This service is for assistance in monitoring COVID 19 positive asymptomatic and mildly symptomatic patients, who have been deemed fit for home quarantine by the government healthcare services.</p>
+                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
             <form action="" method="POST">
                 <div class="topic-of-form">
                     <h1>Login..</h1>
-                    <p>Don't have an account <a href="#">Sign Up</a></p>
+                    <p>Don't have an account <a href="<?php echo URLROOT ?>/Patient/signup">Sign Up</a></p>
                 </div>
 
                 <div class="form-inputs-and-buttons">

@@ -489,6 +489,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     border: 1px solid #ccc9c9;
 }
 
+.form-invalid{
+    font-size: 12px;
+    color: #ff0b03;
+}
+
 .form-inputs-and-buttons button{
     margin-top: 40px;
     background-color: var(--hue-dark-blue);
@@ -790,6 +795,64 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     font-size: 4.5rem;
 }
 
+/* For doctor page */
+.doctor-main-picture-container{
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../img/doctor-page-pictures/doctor-main-image.jpg);
+    background-size: cover;
+    overflow: hidden;
+}
+
+.doctor-main-picture-container .tittle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 40px;
+    color: var(--hue-white);
+    line-height: 40px;
+    margin-bottom: 50px;
+}
+
+.doctor-main-picture-container .tittle i{
+    font-size: 4.5rem;
+}
+/* doctor page ends */
+
+/* For nutritionist page */
+.nutritionist-main-picture-container{
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../img/nutritionist-page-pictures/nutritionist-maiin.jpg);
+    background-size: cover;
+    overflow: hidden;
+}
+
+.nutritionist-main-picture-container .tittle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 40px;
+    color: var(--hue-white);
+    line-height: 40px;
+    margin-bottom: 50px;
+}
+
+.nutritionist-main-picture-container .tittle i{
+    font-size: 4.5rem;
+}
+/* nutritionist page ends */
+
 .pharmacy-search-section{
     position: absolute;
     bottom: 0;
@@ -986,6 +1049,211 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 }
 
 /************************************************** Pharmacy Page style ends ****************************************************/
+
+/* Diet plan page style stars here */
+
+.diet-plan-section{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.diet-plan-leftside{
+    width: 40%;
+    height: 100%;
+    background-color: var(--hue-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.diet-left-side-container{
+    max-width: 60%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.diet-left-side-container div h1{
+    color: var(--hue-white);
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+.diet-left-side-container div h2{
+    line-height: 35px;
+    color: #fafafabf
+}
+
+.diet-left-side-container div p{
+    color: #fafafac2;
+    font-size: 13px;
+    margin-top: 20px;
+}
+
+.page-change-button-from-diet{
+    position: absolute;
+    top: 17%;
+    left: 0;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--hue-white);
+}
+
+.diet-plan-rightside{
+    width: 60%;
+    height: 100%;
+    background-color: var(--hue-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.diet-plan-rightside .form-topic{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.diet-plan-rightside .form-topic h2{
+    color: var(--hue-black);
+}
+
+.diet-plan-rightside .form-topic button{
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #b9b3b3;
+}
+
+.diet-plan-rightside .form-container{
+    width: 85%;
+    height: 90vh;
+}
+
+.diet-plan-rightside form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    animation: anim 0.3s linear forwards;
+    flex-direction: column;
+}
+
+.diet-plan-rightside form .topic-of-form{
+    width: 80%;
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    margin-bottom: 60px;
+}
+
+.diet-form-inputs-and-buttons{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: fit-content;
+    position: relative;
+}
+
+.diet-form-inputs-and-buttons .left{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.diet-form-inputs-and-buttons .right{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.diet-form-inputs-and-buttons label{
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.diet-form-inputs-and-buttons input{
+    margin-top: 10px;
+    height: 30px;
+    background-color: var(--hue-white);
+    border-radius: 5px;
+    border: 1px solid #d1c9c9;
+    padding: 0px 10px;
+}
+
+.diet-form-inputs-and-buttons input:focus{
+    border: 2px solid #b8bdbe;
+    outline: none;
+}
+
+.diet-form-inputs-and-buttons select{
+    outline: none;
+    margin-top: 10px;
+    height: 30px;
+    background-color: var(--hue-white);
+    border-radius: 5px;
+    border: 1px solid #aca8a8;
+    padding: 0px 10px;
+    color: #0077C0;
+}
+
+.diet-form-inputs-and-buttons select:focus{
+    border: 2px solid #b8bdbe;
+    outline: none;
+}
+
+.diet-form-inputs-and-buttons textarea{
+    margin-top: 10px;
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    resize: none;
+    border: 1px solid #aca8a8;
+    background-color: var(--hue-white);
+}
+
+.diet-form-inputs-and-buttons textarea:focus{
+    border: 2px solid #b8bdbe;
+    outline: none;
+}
+
+.diet-form-inputs-and-buttons button{
+    width: 100%;
+    margin-top: 50px;
+    background-color: var(--hue-dark-blue);
+    padding: 8px;
+    color: var(--hue-white);
+    font-size: 17px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#doctor-form, #admin-form{
+    display: none;
+}
+
+@keyframes anim {
+    100%{
+        opacity: 1;
+    }
+}
+
+/* Diet plan page style ends here */
 
 /* Responsive precess starts here */
 
@@ -1227,6 +1495,160 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     }
     .pharmacy-sub .card .name{
         right: 30px;
+    }
+}
+
+@media (max-width: 1219px) {
+    .diet-plan-section{
+        height: fit-content;
+        display: grid;
+    }
+    
+    .diet-plan-leftside{
+        width: 100%;
+        height: fit-content;
+        padding: 5vh 0px;
+    }
+    
+    .diet-left-side-container{
+        max-width: 80%;
+        padding: 8vh 0px;
+    }
+    
+    .diet-left-side-container div h1{
+        color: var(--hue-white);
+        font-size: 3rem;
+        font-weight: 900;
+    }
+    
+    .diet-left-side-container div h2{
+        line-height: 35px;
+        color: #fafafabf
+    }
+    
+    .diet-left-side-container div p{
+        color: #fafafac2;
+        font-size: 13px;
+        margin-top: 20px;
+    }
+    
+    .page-change-button-from-diet{
+        top: 0;
+    }
+    
+    .diet-plan-rightside{
+        padding: 40px 30px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .diet-plan-rightside form{
+        width: 100%;
+    }
+    
+    .diet-form-inputs-and-buttons{
+        flex-wrap: wrap;
+        height: fit-content;
+    }
+    
+    .diet-form-inputs-and-buttons .left{
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .diet-form-inputs-and-buttons .right{
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .diet-form-inputs-and-buttons label{
+        margin-top: 10px;
+        font-size: 14px;
+    }
+    
+    .diet-form-inputs-and-buttons input{
+        margin-top: 10px;
+        height: 30px;
+        background-color: var(--hue-white);
+        border-radius: 5px;
+        border: 1px solid #aca8a8;
+        padding: 0px 10px;
+    }
+    
+    
+    
+    .diet-form-inputs-and-buttons select{
+        outline: none;
+        margin-top: 10px;
+        height: 30px;
+        background-color: var(--hue-white);
+        border-radius: 5px;
+        border: 1px solid #aca8a8;
+        padding: 0px 10px;
+        color: #0077C0;
+    }
+    
+    .diet-form-inputs-and-buttons textarea{
+        margin-top: 10px;
+        width: 100%;
+        height: 200px;
+        padding: 10px;
+        resize: none;
+        border: 1px solid #aca8a8;
+        background-color: var(--hue-white)
+    }
+    
+    .diet-form-inputs-and-buttons button{
+        width: 100%;
+        margin-top: 50px;
+        background-color: var(--hue-dark-blue);
+        padding: 8px;
+        color: var(--hue-white);
+        font-size: 17px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 766px) {
+    .diet-form-inputs-and-buttons button{
+        width: 300px;
+        position: absolute;
+        bottom: 0;
+        margin-top: 0px;
+    }
+    .diet-form-inputs-and-buttons{
+        flex-wrap: wrap;
+        height: fit-content;
+        justify-content: center;
+        position: relative;
+        padding-bottom: 80px;
+    }
+    .diet-plan-rightside .form-container{
+        height: fit-content;
+    }
+    .diet-plan-rightside form .topic-of-form{
+        margin-bottom: 20px;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 411px) {
+    .diet-form-inputs-and-buttons button{
+        width: 100%;
+    }
+    .diet-form-inputs-and-buttons .left,
+    .diet-form-inputs-and-buttons .right{
+        width: 100%;
     }
 }
 /* Responsive precess ends here */

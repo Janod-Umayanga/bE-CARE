@@ -399,7 +399,7 @@
                 // Search using the given keyword
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-                $doctors = $this->doctorModel->getDoctors(trim($_POST['search']));
+                $doctors = $this->doctorModel->getDoctors(trim($_POST['search']), trim($_POST['specialization']), trim($_POST['city']));
             }
             else {
                 // Show all doctors
@@ -644,27 +644,8 @@
     
                     // Create order after validation
                     if(empty($data['name_err']) && empty($data['age_err']) && empty($data['gender_err']) && empty($data['cnumber_err']) && empty($data['weight_err']) && empty($data['height_err']) && empty($data['marital_status_err']) && empty($data['medical_details_err']) && empty($data['allergies_err']) && empty($data['sleeping_hours_err']) && empty($data['water_consumption_per_day_err']) && empty($data['goal_err'])) {
-                        
-                        $merchant_id = 1221976;
-                        $order_id = 1;
-                        $amount = 200;
-                        $currency = 'LKR';
-                        $payhere_secret = 'MzQwOTcwMTQ1MDc0NDQzMTAwMDE0MDQ4MzU4MjUzMjI0NzQ1NTcx';
-                        $hash = $merchant_id;
-                        $hash .= $order_id;
-                        $hash .= number_format($amount, 2, '.', '');
-                        $hash .= $currency;
-                        $hash .= strtoupper(md5($payhere_secret));
-                        $hash = strtoupper(md5($hash));
-
-                        $data = [
-                            'order_id' => $order_id,
-                            'amount' => $amount,
-                            'currency' => $currency,
-                            'hash' => $hash
-                        ];
-
-                        $this->view('patients/v_payment_gateway', $data);
+                        // Load payment information view
+                        $this->view('patients/v_payment_diet_plan', $data);
                         // // Create order
                         // if($this->requestDietPlanModel->createDietPlanRequest($data, $_SESSION['patient_id'])) {
                         //     redirect('Pages/index');
@@ -726,7 +707,7 @@
                 // Search using the given keyword
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-                $pharmacists = $this->pharmacistModel->getpharmacists(trim($_POST['search']));
+                $pharmacists = $this->pharmacistModel->getpharmacists(trim($_POST['search']), trim($_POST['city']));
             }
             else {
                 // Show all pharmacies

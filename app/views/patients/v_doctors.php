@@ -23,7 +23,32 @@
     
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <div class="search-container-for-doctors" id="search-container-for-doctors">
+    <div class="doctor-main-picture-container">
+        <div class="tittle">
+            <i class="fa-solid fa-stethoscope"></i>
+            <h1>Find Your Doctor<br>for Channeling!</h1>
+        </div>
+        <div class="pharmacy-search-section theme">
+            <form action="" class="search-form-pharmacy" method="POST">
+                <select name="specialization" id="specialization">
+                    <option value="">Specialization</option>
+                    <option value="Cardiologist">Cardiologist</option>
+                </select>
+                <select name="city" id="city">
+                    <option value="">City</option>
+                    <option value="">Colombo</option>
+                    <option value="">Galle</option>
+                    <option value="">Kandy</option>
+                    <option value="Malabe">Malabe</option>
+                </select>
+                <div class="main-search">
+                    <input type="text" name="search" placeholder="Search doctor by name..">
+                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- <div class="search-container-for-doctors" id="search-container-for-doctors">
         <form action="" class="main-form" method="POST">
             <div class="filter-by">
                 <select name="doctorType" id="doctorType">
@@ -50,7 +75,7 @@
                 </div>
             </div>
         </form>
-    </div>
+    </div> -->
 
     <section class="doctor-cards-container theme">
         <div class="doctor-cards-topic">
