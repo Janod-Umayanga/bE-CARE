@@ -1377,6 +1377,122 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     }
 }
 
+/************************************************** View profile Page style starts ****************************************************/
+
+.view-profile-container{
+    width: 100%;
+    height: fit-content;
+    padding: 10vh 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dedede;
+    overflow: hidden;
+}
+
+.view-profile-container.dark{
+    background-color: var(--hue-black);
+}
+
+.view-profile-container .card{
+    width: 50%;
+    height: fit-content;
+    background-color: var(--hue-white);
+    overflow: hidden;
+    position: relative;
+}
+
+.view-profile-container .card .main-image{
+    width: 100%;
+    height: 250px;
+    position: relative;
+    padding: 7% 10%;
+    text-align: right;
+    background-image: url(../img/view-profile-pictures/view-profile-image.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: var(--hue-white);
+}
+
+.view-profile-container .card .main-image p{
+    font-size: 14px;
+}
+
+.view-profile-container .card .main-image .profile-icon{
+    position: absolute;
+    bottom: 10px;
+    left: 2%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    background-color: #1D242B;
+    cursor: pointer;
+}
+
+.view-profile-container .card .main-image .social-media-icons{
+    position: absolute;
+    bottom: 15px;
+    right: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--hue-black);
+}
+
+.view-profile-container .card .main-image .social-media-icons i{
+    cursor: pointer;
+}
+
+.view-profile-container .card .bottom{
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    position: relative;
+}
+
+.view-profile-container .card .bottom ul{
+    width: 100%;
+}
+
+.view-profile-container .card .bottom ul li{
+    list-style: none;
+    margin-top: 20px;
+    border-bottom: 1px solid #d8d3d3;
+    font-weight: 700;
+    color: #1d242bb6;
+}
+
+.view-profile-container .card .bottom ul li a{
+    text-decoration: none;
+    color: #1d242bb6;
+}
+
+.view-profile-container .card .bottom .bottom-line{
+    width: 100%;
+    height: 20px;
+    background-color: #0d5f84;
+    margin-top: 30px;
+}
+
+.view-profile-container .card .main-image .backto-doctors{
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: #fafafacd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    gap: 10px;
+}
+
+/************************************************** View profile Page style ends ****************************************************/
+
 /* Diet plan page style ends here */
 
 /* Responsive precess starts here */
@@ -1888,6 +2004,26 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     .diet-form-inputs-and-buttons .left,
     .diet-form-inputs-and-buttons .right{
         width: 100%;
+    }
+}
+
+@media (max-width: 727px) {
+    .view-profile-container .card{
+        width: 80%;
+        padding-bottom: 0;
+    }
+    .view-profile-container .card .main-image{
+        padding-top: 60px
+    }
+    .view-profile-container .card .bottom{
+        text-align: left;
+        margin-top: 0;
+        height: fit-content;
+        font-size: 14px;
+    }
+    .view-profile-container .card .bottom ul{
+        padding: 0 20px;
+        overflow: auto;
     }
 }
 /* Responsive precess ends here */

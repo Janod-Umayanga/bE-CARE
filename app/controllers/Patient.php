@@ -437,6 +437,17 @@
             $this->view('patients/v_doctor_timeslots', $data);
         }
 
+        // View doctor profile
+        public function viewDoctorProfile($doctor_id) {
+            $doctor = $this->doctorModel->getDoctorById($doctor_id);
+            $data = [
+                'doctor' => $doctor
+            ];
+
+            // Load view
+            $this->view('patients/v_doctor_profile', $data);
+        }
+
         // View doctor appointments
         public function viewDoctorAppointments() {
             if(isset($_SESSION['patient_id'])) {

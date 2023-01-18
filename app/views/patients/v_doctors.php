@@ -94,7 +94,7 @@
                     <div class="left theme">
                         <p><?php  echo $doctor->type ?></p>
                         <h2>Dr. <?php  echo $doctor->first_name ?> <?php  echo $doctor->last_name ?></h2>
-                        <a href="">View profile <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="<?php echo URLROOT ?>/Patient/viewDoctorProfile/<?php echo $doctor->doctor_id ?>">View profile <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                     <div class="right">
                         <p>City : <?php  echo $doctor->city ?></p>

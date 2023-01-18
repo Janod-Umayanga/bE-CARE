@@ -31,6 +31,15 @@
             return $this->db->resultSet();
         }
 
+        // Get doctor by id
+        // Get doctors by a filter
+        public function getDoctorbyId($doctor_id) {
+            $this->db->query("SELECT * FROM doctor WHERE doctor_id = :doctor_id");
+            $this->db->bind(':doctor_id', $doctor_id);
+            
+            return $this->db->single();
+        }
+
         // // Get doctors for today
         // public function getDoctorsForToday() {
         //     $today = date("Y-m-d");
