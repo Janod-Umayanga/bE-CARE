@@ -7,13 +7,17 @@ class AdminPayments extends Controller{
 
   public function adminPayments()
   {
-//    $user= $this->userModel->findUserByID();
-   $data=[                      
-     'user'=>''
-   ];
-   $this->view('AdminPayments/v_adminPayments',$data);
+      if(isset($_SESSION['admin_id'])) {  
+    
+  //    $user= $this->userModel->findUserByID();
+    $data=[                      
+      'user'=>''
+    ];
+    $this->view('AdminPayments/v_adminPayments',$data);
 
-
+    }else{
+      redirect('Admin/login');  
+    }
   }
 
   

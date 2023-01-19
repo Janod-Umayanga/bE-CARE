@@ -7,6 +7,8 @@ class MedInstrRegisteredUsers extends Controller{
 
   public function medInstrRegisteredUsers()
   {
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
     $monday= $this->medInstrRegisteredUsersModel->findRegUsersMonday($_SESSION['MedInstr_id']);
     $tuesday= $this->medInstrRegisteredUsersModel->findRegUsersTuesday($_SESSION['MedInstr_id']);
     $wednesday= $this->medInstrRegisteredUsersModel->findRegUsersWednesday($_SESSION['MedInstr_id']);
@@ -26,13 +28,17 @@ class MedInstrRegisteredUsers extends Controller{
 
    ];
    $this->view('MedInstrRegisteredUsers/v_medInstrRegisteredUsers',$data);
-
+  }else{
+    redirect('MedInstr/login');  
+  }
 
   }
 
   
   public function mondayRegisteredUsers()
   {
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
     $monday= $this->medInstrRegisteredUsersModel->findAllRegUsersMonday($_SESSION['MedInstr_id']);
     $medChannel= $this->medInstrRegisteredUsersModel->findmedChannelDetails();
     $data=[                      
@@ -42,11 +48,15 @@ class MedInstrRegisteredUsers extends Controller{
    ];
    $this->view('MedInstrRegisteredUsers/Monday/v_medInstrRegisteredUsersMonday',$data);
 
-
+  }else{
+    redirect('MedInstr/login');  
+  }
   }
   
   public function tuesdayRegisteredUsers()
   {
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
     $tuesday= $this->medInstrRegisteredUsersModel->findAllRegUsersTuesday($_SESSION['MedInstr_id']);
     $medChannel= $this->medInstrRegisteredUsersModel->findmedChannelDetails();
     $data=[                      
@@ -55,12 +65,16 @@ class MedInstrRegisteredUsers extends Controller{
      'search'=>''
    ];
    $this->view('MedInstrRegisteredUsers/Tuesday/v_medInstrRegisteredUsersTuesday',$data);
-
+  }else{
+    redirect('MedInstr/login');  
+  }
 
   }
 
   public function wednesdayRegisteredUsers()
   {
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
     $wednesday= $this->medInstrRegisteredUsersModel->findAllRegUsersWednesday($_SESSION['MedInstr_id']);
     $medChannel= $this->medInstrRegisteredUsersModel->findmedChannelDetails();
     $data=[                      
@@ -69,13 +83,17 @@ class MedInstrRegisteredUsers extends Controller{
      'search'=>''
    ];
    $this->view('MedInstrRegisteredUsers/Wednesday/v_medInstrRegisteredUsersWednesday',$data);
-
+  }else{
+    redirect('MedInstr/login');  
+  }
 
   }
 
 
   public function thursdayRegisteredUsers()
   {
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
     $thursday= $this->medInstrRegisteredUsersModel->findAllRegUsersThursday($_SESSION['MedInstr_id']);
     $medChannel= $this->medInstrRegisteredUsersModel->findmedChannelDetails();
     $data=[                      
@@ -85,11 +103,15 @@ class MedInstrRegisteredUsers extends Controller{
    ];
    $this->view('MedInstrRegisteredUsers/Thursday/v_medInstrRegisteredUsersThursday',$data);
 
-
+  }else{
+    redirect('MedInstr/login');  
+  }
   }
 
   public function fridayRegisteredUsers()
   {
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
     $friday= $this->medInstrRegisteredUsersModel->findAllRegUsersFriday($_SESSION['MedInstr_id']);
     $medChannel= $this->medInstrRegisteredUsersModel->findmedChannelDetails();
     $data=[                      
@@ -98,12 +120,16 @@ class MedInstrRegisteredUsers extends Controller{
      'search'=>''
    ];
    $this->view('MedInstrRegisteredUsers/Friday/v_medInstrRegisteredUsersFriday',$data);
-
+  }else{
+    redirect('MedInstr/login');  
+  }
 
   }
 
   public function saturdayRegisteredUsers()
   {
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
     $saturday= $this->medInstrRegisteredUsersModel->findAllRegUsersSaturday($_SESSION['MedInstr_id']);
     $medChannel= $this->medInstrRegisteredUsersModel->findmedChannelDetails();
     $data=[                      
@@ -113,12 +139,16 @@ class MedInstrRegisteredUsers extends Controller{
    ];
    $this->view('MedInstrRegisteredUsers/Saturday/v_medInstrRegisteredUsersSaturday',$data);
 
-
+  }else{
+    redirect('MedInstr/login');  
+  }
   }
 
 
   public function sundayRegisteredUsers()
   {
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
     $sunday= $this->medInstrRegisteredUsersModel->findAllRegUsersSunday($_SESSION['MedInstr_id']);
     $medChannel= $this->medInstrRegisteredUsersModel->findmedChannelDetails();
     $data=[                      
@@ -127,12 +157,16 @@ class MedInstrRegisteredUsers extends Controller{
      'search'=>''
    ];
    $this->view('MedInstrRegisteredUsers/Sunday/v_medInstrRegisteredUsersSunday',$data);
-
+  }else{
+    redirect('MedInstr/login');  
+  }
 
   }
 
   public function  searchMedInstrRegisteredUsersMonday()
   {
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
     if($_SERVER['REQUEST_METHOD']=='GET'){
       $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
   
@@ -156,12 +190,16 @@ class MedInstrRegisteredUsers extends Controller{
           ];
           $this->view('MedInstrRegisteredUsers/Monday/v_medInstrRegisteredUsersMonday',$data);
   }
-  
+}else{
+  redirect('MedInstr/login');  
+}
   }
 
 
   public function  searchMedInstrRegisteredUsersTuesday()
   {
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
     if($_SERVER['REQUEST_METHOD']=='GET'){
       $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
   
@@ -185,11 +223,15 @@ class MedInstrRegisteredUsers extends Controller{
           ];
           $this->view('MedInstrRegisteredUsers/Tuesday/v_medInstrRegisteredUsersTuesday',$data);
   }
-  
+}else{
+  redirect('MedInstr/login');  
+} 
   }
 
   public function  searchMedInstrRegisteredUsersWedneasday()
   {
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
     if($_SERVER['REQUEST_METHOD']=='GET'){
       $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
   
@@ -213,11 +255,15 @@ class MedInstrRegisteredUsers extends Controller{
           ];
           $this->view('MedInstrRegisteredUsers/Wedneasday/v_medInstrRegisteredUsersWedneasday',$data);
   }
-  
+}else{
+  redirect('MedInstr/login');  
+} 
   }
 
   public function  searchMedInstrRegisteredUsersThursday()
   {
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
     if($_SERVER['REQUEST_METHOD']=='GET'){
       $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
   
@@ -241,11 +287,15 @@ class MedInstrRegisteredUsers extends Controller{
           ];
           $this->view('MedInstrRegisteredUsers/Thursday/v_medInstrRegisteredUsersThursday',$data);
   }
-  
+}else{
+  redirect('MedInstr/login');  
+} 
   }
 
   public function  searchMedInstrRegisteredUsersFriday()
   {
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
     if($_SERVER['REQUEST_METHOD']=='GET'){
       $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
   
@@ -269,11 +319,15 @@ class MedInstrRegisteredUsers extends Controller{
           ];
           $this->view('MedInstrRegisteredUsers/Friday/v_medInstrRegisteredUsersFriday',$data);
   }
-  
+}else{
+  redirect('MedInstr/login');  
+} 
   }
 
   public function  searchMedInstrRegisteredUsersSaturday()
   {
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
     if($_SERVER['REQUEST_METHOD']=='GET'){
       $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
   
@@ -297,12 +351,16 @@ class MedInstrRegisteredUsers extends Controller{
           ];
           $this->view('MedInstrRegisteredUsers/Saturday/v_medInstrRegisteredUsersSaturday',$data);
   }
-  
+}else{
+  redirect('MedInstr/login');  
+} 
   }
 
 
   public function  searchMedInstrRegisteredUsersSunday()
   {
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
     if($_SERVER['REQUEST_METHOD']=='GET'){
       $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
   
@@ -326,7 +384,9 @@ class MedInstrRegisteredUsers extends Controller{
           ];
           $this->view('MedInstrRegisteredUsers/Sunday/v_medInstrRegisteredUsersSunday',$data);
   }
-  
+}else{
+  redirect('MedInstr/login');  
+}  
   }
 
 }

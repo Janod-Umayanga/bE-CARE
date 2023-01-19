@@ -94,7 +94,8 @@
             
 
         if($this->db->execute()){
-           return true;
+          $_SESSION['admin_name']=$data['first_name'];
+            return true;
         }else{
             return false;
         } 

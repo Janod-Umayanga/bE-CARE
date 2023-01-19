@@ -8,6 +8,8 @@ class AdminUserMgmt extends Controller{
 
   public function adminUserMgmt()
   {
+   if(isset($_SESSION['admin_id'])) {  
+   
    $doctor= $this->adminUserMgmtModel->getNoOfDoctors();
    $counsellor= $this->adminUserMgmtModel->getNoOfCounsellors();
    $nutritionist= $this->adminUserMgmtModel->getNoOfNutritionist();
@@ -28,12 +30,18 @@ class AdminUserMgmt extends Controller{
    ];
    $this->view('AdminUserMgmt/v_userMgmt',$data);
 
+   
+  }else{
+    redirect('Admin/login');  
+  }
 
   }
 
   public function Patient()
   {
-   $patient= $this->adminUserMgmtModel->getPatients();
+    if(isset($_SESSION['admin_id'])) {  
+  
+    $patient= $this->adminUserMgmtModel->getPatients();
    
    $data=[                      
      'patient'=>$patient,
@@ -42,12 +50,17 @@ class AdminUserMgmt extends Controller{
    $this->view('AdminUserMgmt/Patient/v_patientUserMgmt',$data);
 
 
+  }else{
+    redirect('Admin/login');  
+  }
   }
 
 
   public function Doctor()
   {
-   $doctor= $this->adminUserMgmtModel->getDoctors();
+    if(isset($_SESSION['admin_id'])) {  
+  
+    $doctor= $this->adminUserMgmtModel->getDoctors();
    
    $data=[                      
      'doctor'=>$doctor,
@@ -55,12 +68,17 @@ class AdminUserMgmt extends Controller{
    ];
    $this->view('AdminUserMgmt/Doctor/v_doctorUserMgmt',$data);
 
+  }else{
+    redirect('Admin/login');  
+  }
 
   }
 
   public function Counsellor()
   {
-   $counsellor= $this->adminUserMgmtModel->getCounsellors();
+    if(isset($_SESSION['admin_id'])) {  
+  
+    $counsellor= $this->adminUserMgmtModel->getCounsellors();
    
    $data=[                      
      'counsellor'=>$counsellor,
@@ -69,12 +87,17 @@ class AdminUserMgmt extends Controller{
    $this->view('AdminUserMgmt/Counsellor/v_counsellorUserMgmt',$data);
 
 
+  }else{
+    redirect('Admin/login');  
+  }
   }
 
   
   public function Nutritionist()
   {
-   $nutritionist= $this->adminUserMgmtModel->getNutritionists();
+    if(isset($_SESSION['admin_id'])) {  
+  
+    $nutritionist= $this->adminUserMgmtModel->getNutritionists();
    
    $data=[                      
      'nutritionist'=>$nutritionist,
@@ -83,11 +106,16 @@ class AdminUserMgmt extends Controller{
    $this->view('AdminUserMgmt/Nutritionist/v_nutritionistUserMgmt',$data);
 
 
+  }else{
+    redirect('Admin/login');  
+  }
   }
   
   public function MeditationInstructor()
   {
-   $meditationInstructor= $this->adminUserMgmtModel->getMeditationInstructors();
+    if(isset($_SESSION['admin_id'])) {  
+  
+    $meditationInstructor= $this->adminUserMgmtModel->getMeditationInstructors();
                                                             
    $data=[                      
      'meditationInstructor'=>$meditationInstructor,
@@ -96,12 +124,17 @@ class AdminUserMgmt extends Controller{
    $this->view('AdminUserMgmt/MeditationInstructor/v_medInstrUserMgmt',$data);
 
 
+  }else{
+    redirect('Admin/login');  
+  }
   }
   
 
   public function Pharmacist()
   {
-   $pharmacist= $this->adminUserMgmtModel->getPharmacists();
+    if(isset($_SESSION['admin_id'])) {  
+  
+    $pharmacist= $this->adminUserMgmtModel->getPharmacists();
    
    $data=[                      
      'pharmacist'=>$pharmacist,
@@ -109,12 +142,17 @@ class AdminUserMgmt extends Controller{
    ];
    $this->view('adminUserMgmt/Pharmacist/v_pharmacistUserMgmt',$data);
 
+  }else{
+    redirect('Admin/login');  
+  }
 
   }
 
   public function Admin()
   {
-   $admin= $this->adminUserMgmtModel->getAdmins();
+    if(isset($_SESSION['admin_id'])) {  
+  
+    $admin= $this->adminUserMgmtModel->getAdmins();
    
    $data=[                      
      'admin'=>$admin,
@@ -123,6 +161,9 @@ class AdminUserMgmt extends Controller{
    $this->view('adminUserMgmt/Admin/v_adminUserMgmt',$data);
 
 
+  }else{
+    redirect('Admin/login');  
+  }
   }
 
 
@@ -131,6 +172,8 @@ class AdminUserMgmt extends Controller{
 
   public function  adminSearchDoctor()
   {
+    if(isset($_SESSION['admin_id'])) {  
+  
     if($_SERVER['REQUEST_METHOD']=='GET'){
       $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
 
@@ -151,11 +194,16 @@ class AdminUserMgmt extends Controller{
           $this->view('AdminUserMgmt/Doctor/v_doctorUserMgmt',$data);
      }
 
+    }else{
+      redirect('Admin/login');  
+    }
   }
 
 
   public function  adminViewMoreDoctor($doctor_id)
   {
+    if(isset($_SESSION['admin_id'])) {  
+  
     $doctor= $this->adminUserMgmtModel->getDoctorDetails($doctor_id);
    
    $data=[                      
@@ -164,6 +212,9 @@ class AdminUserMgmt extends Controller{
    ];
    $this->view('AdminUserMgmt/Doctor/v_doctorViewMore',$data);
 
+  }else{
+    redirect('Admin/login');  
+  }
   }
 
   
@@ -172,6 +223,8 @@ class AdminUserMgmt extends Controller{
   
 public function  adminSearchPharmacist()
 {
+  if(isset($_SESSION['admin_id'])) {  
+  
   if($_SERVER['REQUEST_METHOD']=='GET'){
     $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
 
@@ -192,11 +245,16 @@ public function  adminSearchPharmacist()
         $this->view('AdminUserMgmt/Pharmacist/v_pharmacistUserMgmt',$data);
    }
 
+  }else{
+    redirect('Admin/login');  
+  }
 }
 
 
 public function  adminViewMorePharmacist($pharmacist_id)
 {
+  if(isset($_SESSION['admin_id'])) {  
+  
   $pharmacist= $this->adminUserMgmtModel->getPharmacistDetails($pharmacist_id);
  
  $data=[                      
@@ -205,6 +263,9 @@ public function  adminViewMorePharmacist($pharmacist_id)
  ];
  $this->view('AdminUserMgmt/Pharmacist/v_pharmacistViewMore',$data);
 
+}else{
+  redirect('Admin/login');  
+}
 }
 
   
@@ -213,6 +274,8 @@ public function  adminViewMorePharmacist($pharmacist_id)
 
 public function  adminSearchCounsellor()
 {
+  if(isset($_SESSION['admin_id'])) {  
+  
   if($_SERVER['REQUEST_METHOD']=='GET'){
     $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
 
@@ -233,19 +296,27 @@ public function  adminSearchCounsellor()
         $this->view('AdminUserMgmt/Counsellor/v_counsellorUserMgmt',$data);
    }
 
+  }else{
+    redirect('Admin/login');  
+  }
 }
 
 
 public function  adminViewMoreCounsellor($counsellor_id)
 {
+  if(isset($_SESSION['admin_id'])) {  
+  
   $counsellor= $this->adminUserMgmtModel->getCounsellorDetails($counsellor_id);
- 
+   
  $data=[                      
    'counsellor'=>$counsellor
    
  ];
  $this->view('AdminUserMgmt/Counsellor/v_counsellorViewMore',$data);
 
+}else{
+  redirect('Admin/login');  
+}
 }
 
 
@@ -254,6 +325,8 @@ public function  adminViewMoreCounsellor($counsellor_id)
 
 public function  adminSearchNutritionist()
 {
+  if(isset($_SESSION['admin_id'])) {  
+  
   if($_SERVER['REQUEST_METHOD']=='GET'){
     $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
 
@@ -274,11 +347,16 @@ public function  adminSearchNutritionist()
         $this->view('AdminUserMgmt/Nutritionist/v_nutritionistUserMgmt',$data);
    }
 
+  }else{
+    redirect('Admin/login');  
+  }
 }
 
 
 public function  adminViewMoreNutritionist($nutritionist_id)
 {
+  if(isset($_SESSION['admin_id'])) {  
+  
   $nutritionist= $this->adminUserMgmtModel->getNutritionistDetails($nutritionist_id);
  
  $data=[                      
@@ -287,6 +365,9 @@ public function  adminViewMoreNutritionist($nutritionist_id)
  ];
  $this->view('AdminUserMgmt/Nutritionist/v_nutritionistViewMore',$data);
 
+}else{
+  redirect('Admin/login');  
+}
 }
 
 
@@ -297,6 +378,8 @@ public function  adminViewMoreNutritionist($nutritionist_id)
 
 public function  adminSearchMeditationInstructor()
 {
+  if(isset($_SESSION['admin_id'])) {  
+  
   if($_SERVER['REQUEST_METHOD']=='GET'){
     $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
 
@@ -317,11 +400,16 @@ public function  adminSearchMeditationInstructor()
         $this->view('AdminUserMgmt/MeditationInstructor/v_medInstrUserMgmt',$data);
    }
 
+  }else{
+    redirect('Admin/login');  
+  }
 }
 
                 
 public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
 {
+  if(isset($_SESSION['admin_id'])) {  
+  
   $meditationInstructor= $this->adminUserMgmtModel->getMeditationInstructorDetails($meditationInstructor_id);
  
  $data=[                      
@@ -330,6 +418,9 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
  ];
  $this->view('AdminUserMgmt/MeditationInstructor/v_medInstrViewMore',$data);
 
+}else{
+  redirect('Admin/login');  
+}
 }
 
   
@@ -341,6 +432,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
 
   public function  adminSearchPatient()
   {
+    if(isset($_SESSION['admin_id'])) {  
+  
     if($_SERVER['REQUEST_METHOD']=='GET'){
       $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
 
@@ -361,11 +454,16 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
           $this->view('AdminUserMgmt/patient/v_patientUserMgmt',$data);
      }
 
+    }else{
+      redirect('Admin/login');  
+    }
   }
 
 
   public function  adminViewMorePatient($patient_id)
   {
+    if(isset($_SESSION['admin_id'])) {  
+  
     $patient= $this->adminUserMgmtModel->getpatientDetails($patient_id);
    
    $data=[                      
@@ -374,6 +472,9 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
    ];
    $this->view('AdminUserMgmt/Patient/v_patientViewMore',$data);
 
+  }else{
+    redirect('Admin/login');  
+  }
   }
 
 
@@ -384,6 +485,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
 
   public function  adminSearchAdmin()
   {
+    if(isset($_SESSION['admin_id'])) {  
+  
     if($_SERVER['REQUEST_METHOD']=='GET'){
       $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
 
@@ -404,11 +507,16 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
           $this->view('AdminUserMgmt/Admin/v_adminUserMgmt',$data);
      }
 
+    }else{
+      redirect('Admin/login');  
+    }
   }
 
 
   public function  adminViewMoreAdmin($admin_id)
   {
+    if(isset($_SESSION['admin_id'])) {  
+  
     $admin= $this->adminUserMgmtModel->getadminDetails($admin_id);
    
    $data=[                      
@@ -417,6 +525,9 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
    ];
    $this->view('AdminUserMgmt/Admin/v_adminViewMore',$data);
 
+  }else{
+    redirect('Admin/login');  
+  }
   }
 
 
@@ -424,6 +535,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
 
   public function  adminDeletePatient($patient_id)
   {
+    if(isset($_SESSION['admin_id'])) {  
+  
     $deleteStatus= $this->adminUserMgmtModel->deletePatient($patient_id);
     $patient= $this->adminUserMgmtModel->getPatients();
    
@@ -435,6 +548,9 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
     ];
    $this->view('AdminUserMgmt/Patient/v_patientUserMgmt',$data);
 
+  }else{
+    redirect('Admin/login');  
+  }
   }
 
   
@@ -442,6 +558,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
 
   public function  adminDeleteDoctor($doctor_id)
   {
+    if(isset($_SESSION['admin_id'])) {  
+  
     $deleteStatus= $this->adminUserMgmtModel->deleteDoctor($doctor_id);
     $doctor= $this->adminUserMgmtModel->getDoctors();
    
@@ -453,6 +571,9 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
     ];
    $this->view('AdminUserMgmt/Doctor/v_DoctorUserMgmt',$data);
 
+  }else{
+    redirect('Admin/login');  
+  }
   }
 
 
@@ -460,6 +581,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
 
   public function  adminDeleteCounsellor($counsellor_id)
   {
+    if(isset($_SESSION['admin_id'])) {  
+  
     $deleteStatus= $this->adminUserMgmtModel->deleteCounsellor($counsellor_id);
     $counsellor= $this->adminUserMgmtModel->getCounsellors();
    
@@ -471,6 +594,9 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
     ];
    $this->view('AdminUserMgmt/Counsellor/v_CounsellorUserMgmt',$data);
 
+  }else{
+    redirect('Admin/login');  
+  }
   }
 
 
@@ -478,6 +604,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
 
     public function  adminDeleteAdmin($admin_id)
     {
+      if(isset($_SESSION['admin_id'])) {  
+  
       $deleteStatus= $this->adminUserMgmtModel->deleteAdmin($admin_id);
       $admin= $this->adminUserMgmtModel->getAdmins();
      
@@ -489,6 +617,9 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
       ];
      $this->view('AdminUserMgmt/Admin/v_AdminUserMgmt',$data);
   
+    }else{
+      redirect('Admin/login');  
+    }
     }
   
 
@@ -496,6 +627,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
 
   public function  adminDeleteMeditationInstructor($meditationInstructor_id)
   {
+    if(isset($_SESSION['admin_id'])) {  
+  
     $deleteStatus= $this->adminUserMgmtModel->deleteMeditationInstructor($meditationInstructor_id);
     $meditationInstructor= $this->adminUserMgmtModel->getMeditationInstructors();
    
@@ -507,6 +640,9 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
     ];
    $this->view('AdminUserMgmt/MeditationInstructor/v_MedInstrUserMgmt',$data);
 
+  }else{
+    redirect('Admin/login');  
+  }
   }
 
 
@@ -514,6 +650,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
 
     public function  adminDeletePharmacist($pharmacist_id)
     {
+      if(isset($_SESSION['admin_id'])) {  
+  
       $deleteStatus= $this->adminUserMgmtModel->deletePharmacist($pharmacist_id);
       $pharmacist= $this->adminUserMgmtModel->getPharmacists();
      
@@ -525,6 +663,9 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
       ];
      $this->view('AdminUserMgmt/Pharmacist/v_PharmacistUserMgmt',$data);
   
+    }else{
+      redirect('Admin/login');  
+    }
     }
 
     
@@ -532,6 +673,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
 
   public function  adminDeleteNutritionist($nutritionist_id)
   {
+    if(isset($_SESSION['admin_id'])) {  
+  
     $deleteStatus= $this->adminUserMgmtModel->deleteNutritionist($nutritionist_id);
     $nutritionist= $this->adminUserMgmtModel->getNutritionists();
    
@@ -543,6 +686,9 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
     ];
    $this->view('AdminUserMgmt/Nutritionist/v_NutritionistUserMgmt',$data);
 
+  }else{
+    redirect('Admin/login');  
+  }
   }
 
 
@@ -550,6 +696,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
 
      public function  addnewPatient()
     {
+      if(isset($_SESSION['admin_id'])) {  
+  
       if($_SERVER['REQUEST_METHOD']=='POST'){
         $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
       
@@ -566,9 +714,15 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
       
           'first_name_err'=>'',
           'last_name_err'=>'',
-          'passwordnotmatch_err'=>'',
-          'email_err'=>'' 
-       ];
+          'nic_err'=>'',
+          'contact_number_err'=>'',
+          'email_err'=>'',
+          'password_err'=>'',
+          'confirm_password_err'=>'',
+          'gender_err'=>''
+      
+
+        ];
       
        if($this->adminUserMgmtModel->findPatientByEmail($data['email'])){
         $data['email_err']='Email is already registered';
@@ -582,13 +736,32 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
           $data['last_name_err']='last name can not be empty';
        }
     
-       if($data['password']!=$data['confirm_password']){
-        $data['passwordnotmatch_err']='password not match';
-     }
+       if(empty($data['nic'])){
+        $data['nic_err']='nic can not be empty';
+       }
     
+        if(empty($data['contact_number'])){
+          $data['contact_number_err']='contact number can not be empty';
+        }
+    
+        if(empty($data['email'])){
+          $data['email_err']='email can not be empty';
+      }
+      
+      if(empty($data['password'])){
+          $data['password_err']='password can not be empty';
+      }
+    
+      if(empty($data['confirm_password'])){
+        $data['confirm_password_err']='confirm password can not be empty';
+      }
+    
+      if(empty($data['gender'])){
+        $data['gender_err']='gender can not be empty';
+      }
 
 
-       if(empty($data['first_name_err']) && empty($data['last_name_err']) && empty($data['passwordnotmatch_err'])&& empty($data['email_err'])){
+       if(empty($data['first_name_err']) && empty($data['last_name_err']) && empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])&& empty($data['gender_err'])){
             if($this->adminUserMgmtModel->addPatient($data)){
                 flash('post_msg', 'add new patient successfully');
                      redirect('AdminUserMgmt/patient'); 
@@ -607,27 +780,25 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
  
         $data=[
  
-         'first_name'=>'',
-         'last_name'=>'',
-         'nic'=>'',
-         'contact_number'=>'',
-         'email'=>'',
-         'password'=>'',
-         'confirm_password'=>'',
-         'gender'=>'',
- 
- 
          'first_name_err'=>'',
          'last_name_err'=>'',
+         'nic_err'=>'',
+         'contact_number_err'=>'',
          'email_err'=>'',
-         'passwordnotmatch_err'=>'',
-         
+         'password_err'=>'',
+         'confirm_password_err'=>'',
+         'gender_err'=>'',
+ 
+
        
         ];
  
         $this->view('AdminUserMgmt/Patient/v_patientAddNew',$data);
 
   }
+}else{
+  redirect('Admin/login');  
+}
  
         
     }
@@ -638,7 +809,9 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
 
        public function  addnewDoctor()
        {
-         if($_SERVER['REQUEST_METHOD']=='POST'){
+        if(isset($_SESSION['admin_id'])) {  
+  
+        if($_SERVER['REQUEST_METHOD']=='POST'){
            $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
          
            $data=[
@@ -762,9 +935,12 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
            ];
     
            $this->view('AdminUserMgmt/Doctor/v_doctorAddNew',$data);
-   
+       
      }
-    
+     
+     }else{
+        redirect('Admin/login');  
+     }
            
        }
        
@@ -773,7 +949,9 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
 
              public function  addnewCounsellor()
              {
-               if($_SERVER['REQUEST_METHOD']=='POST'){
+              if(isset($_SESSION['admin_id'])) {  
+  
+              if($_SERVER['REQUEST_METHOD']=='POST'){
                  $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                
                  $data=[
@@ -895,7 +1073,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                  $this->view('AdminUserMgmt/Counsellor/v_counsellorAddNew',$data);
          
            }
-          
+     
+  }else{
+    redirect('Admin/login');  
+  }     
                  
              }
 
@@ -904,7 +1085,9 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
 
        public function  addnewAdmin()
        {
-         if($_SERVER['REQUEST_METHOD']=='POST'){
+        if(isset($_SESSION['admin_id'])) {  
+  
+        if($_SERVER['REQUEST_METHOD']=='POST'){
            $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
          
            $data=[
@@ -992,7 +1175,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
            $this->view('AdminUserMgmt/Admin/v_adminAddNew',$data);
    
      }
-    
+   
+  }else{
+    redirect('Admin/login');  
+  } 
            
        }
 
@@ -1002,7 +1188,9 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
 
        public function  addnewMeditationInstructor()
        {
-         if($_SERVER['REQUEST_METHOD']=='POST'){
+        if(isset($_SESSION['admin_id'])) {  
+  
+        if($_SERVER['REQUEST_METHOD']=='POST'){
            $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
          
            $data=[
@@ -1126,7 +1314,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
            $this->view('AdminUserMgmt/MeditationInstructor/v_medInstrAddNew',$data);
    
      }
-    
+   
+  }else{
+    redirect('Admin/login');  
+  } 
            
        }
 
@@ -1134,7 +1325,9 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
 
        public function  addnewPharmacist()
        {
-         if($_SERVER['REQUEST_METHOD']=='POST'){
+        if(isset($_SESSION['admin_id'])) {  
+  
+        if($_SERVER['REQUEST_METHOD']=='POST'){
            $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
          
            $data=[
@@ -1261,7 +1454,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
    
      }
     
-           
+   
+  }else{
+    redirect('Admin/login');  
+  }        
        }
 
 
@@ -1269,7 +1465,9 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
 
        public function  addnewNutritionist()
        {
-         if($_SERVER['REQUEST_METHOD']=='POST'){
+        if(isset($_SESSION['admin_id'])) {  
+  
+        if($_SERVER['REQUEST_METHOD']=='POST'){
            $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
          
            $data=[
@@ -1389,9 +1587,12 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
            ];
     
            $this->view('AdminUserMgmt/Nutritionist/v_nutritionistAddNew',$data);
-   
+             
      }
     
+  }else{
+    redirect('Admin/login');  
+  }
            
        }
 }

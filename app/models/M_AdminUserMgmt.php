@@ -825,7 +825,7 @@ if($this->db->rowCount() >0){
     
     public function findPatientByEmail($email)
     {
-      $this->db->query('SELECT * FROM requested_patient WHERE email= :email');
+      $this->db->query('SELECT * FROM patient WHERE email= :email');
       $this->db->bind(':email',$email);  
 
       $row= $this->db->single();

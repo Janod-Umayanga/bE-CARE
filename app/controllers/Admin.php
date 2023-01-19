@@ -7,30 +7,44 @@ class Admin extends Controller{
 
   public function profile()
   {
-   $user= $this->userModel->findUserByID($_SESSION['admin_id']);
-   $data=[                      
-     'user'=>$user
-   ];
-   $this->view('Admin/v_profile',$data);
-
+   if(isset($_SESSION['admin_id'])) {
+           
+      $user= $this->userModel->findUserByID($_SESSION['admin_id']);
+      $data=[                      
+        'user'=>$user
+      ];
+      $this->view('Admin/v_profile',$data);
+  
+    }else{
+      redirect('Admin/login');  
+    }
 
   }
 
   public function changePW()
   {
-  //  $user= $this->userModel->changeUserPW($_SESSION['admin_id']);
-   $data=[                      
-    'current_password_err'=>'',
-    'retype_new_password_err'=>'' ,
-    'new_password_err'=>''
-   ];
-   $this->view('Admin/v_changePW',$data);
+  
+    if(isset($_SESSION['admin_id'])) {
+  
+     //  $user= $this->userModel->changeUserPW($_SESSION['admin_id']);
+      $data=[                      
+        'current_password_err'=>'',
+        'retype_new_password_err'=>'' ,
+        'new_password_err'=>''
+      ];
+      $this->view('Admin/v_changePW',$data);
+
+  }else{
+      redirect('Admin/login');  
+  }
 
 
   }
 
   public function updatePW($id){
-    if($_SERVER["REQUEST_METHOD"] == 'POST'){
+  
+    if(isset($_SESSION['admin_id'])) {
+      if($_SERVER["REQUEST_METHOD"] == 'POST'){
        $_POST=filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
  
        $data = [
@@ -94,7 +108,11 @@ class Admin extends Controller{
       'new_password_err'=>''    
      ];
       $this->view('Admin/v_changePW',$data);     
-   } 
+   }
+  }else{
+    redirect('Admin/login');  
+  }
+
 }
 
   
@@ -230,8 +248,8 @@ class Admin extends Controller{
 
              if($loggedUser){
                 $this->createAdminSession($loggedUser);
-                redirect('pages/index');    
-               
+                redirect('AdminDashboard/adminDashBoard');    
+                
              }
              else{
               $data['password_err']='Password incorrect';
@@ -262,7 +280,7 @@ class Admin extends Controller{
          $_SESSION['admin_gender']='Ms.';
      }  
     
-    redirect('Pages/index');
+    redirect('AdminDashboard/index');
       
   }
 
@@ -286,6 +304,8 @@ class Admin extends Controller{
   }
   
   public function editProfile($userId){
+    if(isset($_SESSION['admin_id'])) {
+  
     if($_SERVER['REQUEST_METHOD']=='POST'){
         $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
@@ -304,6 +324,14 @@ class Admin extends Controller{
 
           'first_name_err'=>'',
           'last_name_err'=>'',
+          'nic_err'=>'',
+          'contact_number_err'=>'',
+          'bank_name_err'=>'',
+          'account_holder_name_err'=>'',
+          'branch_err'=>'',
+          'account_number_err'=>'',
+          'gender_err'=>''
+          
          
        ];
 
@@ -316,7 +344,35 @@ class Admin extends Controller{
           $data['last_name_err']='last name can not be empty';
        }
 
-       if(empty($data['first_name_err']) && empty($data['last_name_err'])){
+       if(empty($data['nic'])){
+        $data['nic_err']='nic can not be empty';
+        }
+
+        if(empty($data['contact_number'])){
+            $data['contact_number_err']='contact_number can not be empty';
+        }
+
+        if(empty($data['bank_name'])){
+          $data['bank_name_err']='bank name can not be empty';
+      }
+
+      if(empty($data['account_holder_name'])){
+          $data['account_holder_name_err']='account_holder_name can not be empty';
+      }
+
+        if(empty($data['branch'])){
+          $data['branch_err']='branch name can not be empty';
+      }
+
+      if(empty($data['account_number'])){
+          $data['account_number_err']='account_number can not be empty';
+      }
+     
+      if(empty($data['gender'])){
+        $data['gender_err']='gender can not be empty';
+      }
+
+       if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['gender_err'])){
             if($this->userModel->editUser($data)){
                 flash('post_msg', 'User account is updated successfully');
                      redirect('Admin/profile'); 
@@ -354,10 +410,21 @@ class Admin extends Controller{
 
         'first_name_err'=>'',
         'last_name_err'=>'',
+        'nic_err'=>'',
+        'contact_number_err'=>'',
+        'bank_name_err'=>'',
+        'account_holder_name_err'=>'',
+        'branch_err'=>'',
+        'account_number_err'=>'',
+        'gender_err'=>''
       
        ];
 
        redirect('Admin/profile'); 
+    }
+  
+    }else{
+      redirect('Admin/login');  
     }
  }
 

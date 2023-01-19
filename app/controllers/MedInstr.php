@@ -4,21 +4,39 @@ class MedInstr extends Controller{
   public function __construct(){
     $this->userModel = $this->model('M_MedInstr');
   }
-
   public function profile()
   {
+   if(isset($_SESSION['MedInstr_id'])) {  
+  
    $user= $this->userModel->findUserByID($_SESSION['MedInstr_id']);
-   $data=[                      
-     'user'=>$user
+   $data=[ 
+    'email' => $user->email,                
+    'first_name'=>$user->first_name,
+    'last_name'=>$user->last_name,
+    'nic'=>$user->nic,
+    'contact_number'=>$user->contact_number,
+    'bank_name'=>$user->bank_name,
+    'account_holder_name'=>$user->account_holder_name,
+    'branch'=>$user->branch,
+    'account_number'=>$user->account_number,
+    'gender'=>$user->gender,
+    'city'=>$user->city,
+    'address'=>$user->address,
+    'fee'=>$user->fee,
    ];
    $this->view('MedInstr/v_profile',$data);
 
+}else{
+   redirect('MedInstr/login');  
+ }
 
   }
 
   public function changePW()
   {
-  //  $user= $this->userModel->changeUserPW($_SESSION['MedInstr_id']);
+   if(isset($_SESSION['MedInstr_id'])) {  
+  
+   //  $user= $this->userModel->changeUserPW($_SESSION['MedInstr_id']);
    $data=[                      
     'current_password_err'=>'',
     'retype_new_password_err'=>'' ,
@@ -26,11 +44,17 @@ class MedInstr extends Controller{
    ];
    $this->view('MedInstr/v_changePW',$data);
 
+}else{
+   redirect('MedInstr/login');  
+ }
 
   }
 
   public function updatePW($id){
-    if($_SERVER["REQUEST_METHOD"] == 'POST'){
+  
+   if(isset($_SESSION['MedInstr_id'])) {  
+  
+   if($_SERVER["REQUEST_METHOD"] == 'POST'){
        $_POST=filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
  
        $data = [
@@ -96,6 +120,10 @@ class MedInstr extends Controller{
      ];
       $this->view('MedInstr/v_changePW',$data);     
    } 
+}else{
+   redirect('MedInstr/login');  
+ }
+
 }
 
   
@@ -293,10 +321,14 @@ class MedInstr extends Controller{
   }
   
   public function editProfile($userId){
-    if($_SERVER['REQUEST_METHOD']=='POST'){
+  
+   if(isset($_SESSION['MedInstr_id'])) {  
+  
+   if($_SERVER['REQUEST_METHOD']=='POST'){
         $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
         $data=[
+          'email'=>$_POST['email'],
           'meditation_instructor_id'=>$userId,
           'first_name'=>trim($_POST['first_name']),
           'last_name'=>trim($_POST['last_name']),
@@ -314,6 +346,16 @@ class MedInstr extends Controller{
 
           'first_name_err'=>'',
           'last_name_err'=>'',
+          'nic_err'=>'',
+          'contact_number_err'=>'',
+          'bank_err'=>'',
+          'account_holder_name_err'=>'',
+          'branch_err'=>'',
+          'account_number_err'=>'',
+          'gender_err'=>'',
+          'city_err'=>'',
+          'address_err'=>'',
+          'fee_err'=>''
          
        ];
 
@@ -326,17 +368,57 @@ class MedInstr extends Controller{
           $data['last_name_err']='last name can not be empty';
        }
 
-       if(empty($data['first_name_err']) && empty($data['last_name_err'])){
+       if(empty($data['nic'])){
+          $data['nic_err']='nic can not be empty';
+       }
+
+       if(empty($data['contact_number'])){
+          $data['contact_number_err']='contact number can not be empty';
+       }
+
+       if(empty($data['bank_name'])){
+        $data['bank_err']='bank name can not be empty';
+     }
+
+      if(empty($data['account_holder_name'])){
+          $data['account_holder_name_err']='account holder name can not be empty';
+      }
+
+      if(empty($data['branch'])){
+          $data['branch_err']='branch name can not be empty';
+      }
+
+      if(empty($data['gender'])){
+          $data['gender_err']='gender can not be empty';
+      }
+
+       if(empty($data['account_number'])){
+          $data['account_number_err']='account number can not be empty';
+       }
+
+       if(empty($data['city'])){
+          $data['city_err']='city can not be empty';
+       }
+
+       if(empty($data['address'])){
+          $data['address_err']='address can not be empty';
+       }
+
+       if(empty($data['fee'])){
+          $data['fee_err']='fee can not be empty';
+       }
+
+      if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['gender_err'])  && empty($data['city_err'])&& empty($data['address_err'])&& empty($data['fee_err'])&& empty($data['bank_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])){
             if($this->userModel->editUser($data)){
                 flash('post_msg', 'User account is updated successfully');
-                     redirect('MedInstr/profile'); 
+                  $this->view('MedInstr/v_profile',$data);    
             }else{
-                die('Error creating');
+              $this->view('MedInstr/v_profile',$data);    
             }  
        
-       }else{
-           redirect('MedInstr/profile'); 
-       }
+      }else{
+        $this->view('MedInstr/v_profile',$data);     
+      }
 
 
 
@@ -344,13 +426,8 @@ class MedInstr extends Controller{
        $user= $this->userModel->findUserByID($userId);
 
        
-       if($user->MedInstr_id != $_SESSION['MedInstr_id']){
-           redirect('MedInstr/login'); 
-       }
-       
-
-       $data=[
-
+      $data=[
+        'email' => $user->email, 
         'first_name'=>$user->first_name,
         'last_name'=>$user->last_name,
         'nic'=>$user->nic,
@@ -365,13 +442,27 @@ class MedInstr extends Controller{
         'fee'=>$user->fee,
         
 
-        'first_name_err'=>'',
-        'last_name_err'=>''
+          'first_name_err'=>'',
+          'last_name_err'=>'',
+          'nic_err'=>'',
+          'contact_number_err'=>'',
+          'bank_err'=>'',
+          'account_holder_name_err'=>'',
+          'branch_err'=>'',
+          'account_number_err'=>'',
+          'gender_err'=>'',
+          'city_err'=>'',
+          'address_err'=>'',
+          'fee_err'=>''
+         
       
        ];
 
        redirect('MedInstr/profile'); 
+    }}else{
+      redirect('MedInstr/login');  
     }
+   
  }
 
 

@@ -8,6 +8,8 @@ class MedInstrRegisteredUsersHistory extends Controller{
   
   public function medInstrRegisteredUsersHistory()
   {
+    if(isset($_SESSION['MedInstr_id'])) {  
+   
     $medChannel= $this->medInstrRegisteredUsersHistoryModel->findmedInstrRegisteredUsersHistory($_SESSION['MedInstr_id']);
 
     $data=[                      
@@ -16,12 +18,17 @@ class MedInstrRegisteredUsersHistory extends Controller{
      'search'=>''
    ];
    $this->view('MedInstrRegisteredUsersHistory/v_medInstrRegisteredUsersHistory',$data);
-
+  
+  }else{
+    redirect('MedInstr/login');  
+  }
 
   }
   
  public function  searchMedInstrRegisteredUsersHistory()
   {
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
     if($_SERVER['REQUEST_METHOD']=='GET'){
       $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
   
@@ -43,13 +50,18 @@ class MedInstrRegisteredUsersHistory extends Controller{
           ];
           $this->view('MedInstrRegisteredUsersHistory/v_medInstrRegisteredUsersHistory',$data);
   }
-  
+    
+}else{
+  redirect('MedInstr/login');  
+}
   }
 
 
 
   public function viewMoreMedInstrRegisteredUsersHistory($med_timeslot_id)
   {
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
     $medChannel= $this->medInstrRegisteredUsersHistoryModel->viewMoremedInstrRegisteredUserHistory($med_timeslot_id);
 
     $data=[                      
@@ -58,7 +70,10 @@ class MedInstrRegisteredUsersHistory extends Controller{
      
    ];
    $this->view('MedInstrRegisteredUsersHistory/v_medInstrRegisteredUsersHistoryViewMore',$data);
-
+  
+  }else{
+    redirect('MedInstr/login');  
+  }
 
   }
 

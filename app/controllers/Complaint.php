@@ -14,41 +14,52 @@ class Complaint extends Controller{
     $data=[                      
      'subject'=>trim($_POST['subject']),
      'description'=>trim($_POST['description']),
-     'meditation_instructor_id'=>$_SESSION['MedInstr_id']
+     'meditation_instructor_id'=>$_SESSION['MedInstr_id'],
+
+     'subject_err'=>'',
+     'description_err'=>''
+     
      
    ];
 
-    $addcomplaint=$this->complaintModel->addComplaint($data);
+   if(empty($data['subject_err']) && empty($data['description_err'])){
 
-    if($addcomplaint){
-         flash('reg_flash', 'Complaint added successfully!');
-         
-         if(isset($_SESSION['MedInstr_id'])){
-          $this->view('MedInstrDashBoard/v_medInstrDashBoard',$data);    
-         
-         }
+     $addcomplaint=$this->complaintModel->addComplaint($data);
+
+      if($addcomplaint){
+          flash('reg_flash', 'Complaint added successfully!');
+            $this->view('MedInstrDashBoard/v_medInstrDashBoard',$data);    
+                    
             
-    }else{
-      $this->view('pages/v_complaint',$data);    
-        
-    }
+     }else{
+         $this->view('pages/v_complaint',$data);    
+     }
+   }else{
+      $this->view('pages/v_complaint',$data);  
     
-   }
+   }  
    
-  else{
+  }else{
     $data=[                      
       'subject'=>'',
       'description'=>'',
-      'meditation_instructor_id'=>''
+      'meditation_instructor_id'=>'',
+
+      
+     'subject_err'=>'',
+     'description_err'=>''
+     
     ];
     
     $this->view('pages/v_complaint',$data);    
     
   }  
 
-  }
+  
 
   
+}
+
 }
 
  ?>

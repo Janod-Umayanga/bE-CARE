@@ -10,11 +10,12 @@
 
       <div class="cViewMAMDAA">
 
-
               <form  action="<?php echo URLROOT;?>/MedInstrChangeTimeslot/updateMedInstrChangeTimeslot/<?php echo  $data["timeslot_id"] ?>" method="post" >
-                  <div>
+                <input type="hidden" name="date" value="<?php echo $data["date"] ?>">
+           
+               <div>
                       <label>Date</label>
-                      <input type="text"  name="date" disabled="true" value="<?php echo $data["date"] ?>">
+                      <input type="text"  name="dat" disabled="true" value="<?php echo $data["date"] ?>">
 
                       <label>Starting Time</label>
                       <input type="time"  name="starting_time" required="true" value="<?php echo $data["starting_time"] ?>" >

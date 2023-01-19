@@ -98,6 +98,7 @@
        
         
         if($this->db->execute()){
+           $_SESSION['MedInstr_name']=$data['first_name'];
            return true;
         }else{
             return false;

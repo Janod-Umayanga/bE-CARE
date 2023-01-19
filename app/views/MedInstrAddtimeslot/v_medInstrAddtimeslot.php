@@ -14,10 +14,11 @@
               <form  action="<?php echo URLROOT;?>/MedInstrAddtimeslot/medInstrAddtimeslot" method="post" >
                   <div>
                       <label>Month</label>
-                      <input type="month"  name="month" required="true" >
-
+                      <input type="month"  name="month"  >
+                      <span class="form-invalid"><?php echo $data['month_err'] ?></span>
+                    
                       <label>Day</label>
-                     <select name="day" id="day" required="true">
+                     <select name="day" id="day" >
                          <option value="Monday">Monday</option>
                          <option value="Tuesday">Tuesday</option>
                          <option value="Wednesday">Wednesday</option>
@@ -30,17 +31,17 @@
 
 
                       <label>Starting Time</label>
-                      <input type="time"  name="starting_time" required="true"  >
+                      <input type="time"  name="starting_time"   >
 
                       <label>Ending time</label>
-                      <input type="time" name="ending_time"  required="true" >
+                      <input type="time" name="ending_time"   >
 
                       <label>Fee</label>
-                      <input type="number" name="fee"  required="true" value="<?php echo $data["fee"]?>" >
+                      <input type="number" name="fee"   value="<?php echo $data["fee"]?>" >
 
 
                     <label>Address</label>
-                    <input type="text" name="address"  required="true" value="<?php echo $data["address"]?>" >
+                    <input type="text" name="address"   value="<?php echo $data["address"]?>" >
 
 
                       <button id="cBigButton" type="submit" name="submit">Submit</button>

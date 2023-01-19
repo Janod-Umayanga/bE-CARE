@@ -11,6 +11,8 @@ class MedInstrAddtimeslot extends Controller{
 
   public function medInstrAddtimeslot()
   {
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
     if($_SERVER["REQUEST_METHOD"] == 'POST'){
         $_POST=filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
   
@@ -75,7 +77,7 @@ class MedInstrAddtimeslot extends Controller{
          $first_rel_day= date("d", strtotime("first {$day}.{$month}"));
          $last_day= date("d",strtotime("last day of {$month}", time()));
       
-         if(empty($data['month_err']) && empty($data['day_err'])){
+         if(empty($data['month_err']) && empty($data['day_err']) && empty($data['starting_time_err']) && empty($data['ending_time_err']) && empty($data['fee_err']) && empty($data['address_err'])){
  
             $addmedTimeslot=$this->medInstrAddtimeslotModel->medInstraddtimeslot($_SESSION['MedInstr_id'],$first_rel_day,$last_day,$y,$m,$data);
 
@@ -98,18 +100,28 @@ class MedInstrAddtimeslot extends Controller{
         'ending_time'=>'',      
         'fee'=>$_SESSION['MedInstr_fee'],
         'address'=>$_SESSION['MedInstr_address'],      
-        'meditation_instructor_id'=>'',      
       
 
         
         'month_err'=>'',
-        'day_err'=>''
+        'day_err'=>'',
+        'starting_time_err'=>'',
+        'ending_time_err'=>'',
+        'fee_err'=>'',
+        'address_err'=>''
+
       
       ];
        $this->view('MedInstrAddtimeslot/v_medInstrAddtimeslot',$data);     
-    } 
+    }
+    
+  }else{
+    redirect('MedInstr/login');  
+  }
+  
   }
 
+  
 
 }
 

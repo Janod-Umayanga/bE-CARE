@@ -8,6 +8,8 @@ class MedInstrSession extends Controller{
 
   public function medInstrSession()
   {
+    if(isset($_SESSION['MedInstr_id'])) {  
+   
    $noOfoldSession= $this->medInstrSessionModel->findNoOfOldSession($_SESSION["MedInstr_id"]);
    $noOfnewSession= $this->medInstrSessionModel->findNoOfNewSession($_SESSION["MedInstr_id"]);
    
@@ -17,13 +19,17 @@ class MedInstrSession extends Controller{
      
    ];
    $this->view('MedInstrSession/v_medInstrSession',$data);
-
+  }else{
+    redirect('MedInstr/login');  
+  }
 
   }
 
   public function medInstrOldSession()
   {
-   $oldSession= $this->medInstrSessionModel->findOldSession($_SESSION["MedInstr_id"]);
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
+    $oldSession= $this->medInstrSessionModel->findOldSession($_SESSION["MedInstr_id"]);
    
    $data=[                      
      'oldSession'=>$oldSession,
@@ -32,13 +38,17 @@ class MedInstrSession extends Controller{
    ];
    $this->view('MedInstrSession/MedInstrCompletedSession/v_medInstrCompletedSession',$data);
 
-
+  }else{
+    redirect('MedInstr/login');  
+  }
   }
 
   
   public function searchMedInstrOldSession()
   {
-        if($_SERVER['REQUEST_METHOD']=='GET'){
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
+    if($_SERVER['REQUEST_METHOD']=='GET'){
         $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
     
             $search=trim($_GET['search']);
@@ -62,11 +72,16 @@ class MedInstrSession extends Controller{
         ];
         $this->view('MedInstrSession/MedInstrCompletedSession/v_medInstrCompletedSession',$data);
         }
+      }else{
+        redirect('MedInstr/login');  
+      }
   }
 
   public function viewMoreMedInstrOldSession($session_id)
   {
-   $oldSession= $this->medInstrSessionModel->viewMoreSession($session_id);
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
+    $oldSession= $this->medInstrSessionModel->viewMoreSession($session_id);
    
    $data=[                      
      'oldSession'=>$oldSession
@@ -75,13 +90,17 @@ class MedInstrSession extends Controller{
    ];
    $this->view('MedInstrSession/MedInstrCompletedSession/v_medInstrCompletedSessionViewMore',$data);
 
-
+  }else{
+    redirect('MedInstr/login');  
+  }
   }
 
   
   public function viewRegUsersMedInstrOldSession($session_id)
   {
-   $regUser= $this->medInstrSessionModel->viewRegUsersSession($session_id);
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
+    $regUser= $this->medInstrSessionModel->viewRegUsersSession($session_id);
    $_SESSION['session_id']=$session_id;
    $data=[                      
      'regUser'=>$regUser,
@@ -90,14 +109,18 @@ class MedInstrSession extends Controller{
      
    ];
    $this->view('MedInstrSession/MedInstrCompletedSession/v_medInstrCompletedSessionRegUsers',$data);
-
+  }else{
+    redirect('MedInstr/login');  
+  }
 
   }
 
  
   public function searchMedInstrCompletedSessionRegUsers()
   {
-  if($_SERVER['REQUEST_METHOD']=='GET'){
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
+    if($_SERVER['REQUEST_METHOD']=='GET'){
     $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
 
         $search=trim($_GET['search']);
@@ -120,6 +143,9 @@ class MedInstrSession extends Controller{
     ];
     $this->view('MedInstrSession/MedInstrCompletedSession/v_medInstrCompletedSessionRegUsers',$data);
     }
+  }else{
+    redirect('MedInstr/login');  
+  }
   }
 
 // new
@@ -127,6 +153,8 @@ class MedInstrSession extends Controller{
 
 public function medInstrNewSession()
 {
+  if(isset($_SESSION['MedInstr_id'])) {  
+  
   $newSession= $this->medInstrSessionModel->findNewSession($_SESSION["MedInstr_id"]);
  
   $data=[                      
@@ -134,14 +162,18 @@ public function medInstrNewSession()
     'search'=>''
   ];
   $this->view('MedInstrSession/MedInstrNewSession/v_medInstrNewSession',$data);
-
+}else{
+  redirect('MedInstr/login');  
+}
 
 }
 
 
   public function searchMedInstrNewSession()
   {
-        if($_SERVER['REQUEST_METHOD']=='GET'){
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
+    if($_SERVER['REQUEST_METHOD']=='GET'){
         $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
     
             $search=trim($_GET['search']);
@@ -165,11 +197,16 @@ public function medInstrNewSession()
         ];
         $this->view('MedInstrSession/MedInstrNewSession/v_medInstrNewSession',$data);
         }
+      }else{
+        redirect('MedInstr/login');  
+      }
   }
 
   public function viewMoreMedInstrNewSession($session_id)
   {
-   $newSession= $this->medInstrSessionModel->viewMoreSession($session_id);
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
+    $newSession= $this->medInstrSessionModel->viewMoreSession($session_id);
    
    $data=[                      
      'newSession'=>$newSession
@@ -178,13 +215,17 @@ public function medInstrNewSession()
    ];
    $this->view('MedInstrSession/MedInstrNewSession/v_medInstrNewSessionViewMore',$data);
 
-
+  }else{
+    redirect('MedInstr/login');  
+  }
   }
 
   
   public function viewRegUsersMedInstrNewSession($session_id)
   {
-   $regUser= $this->medInstrSessionModel->viewRegUsersSession($session_id);
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
+    $regUser= $this->medInstrSessionModel->viewRegUsersSession($session_id);
    $_SESSION['session_id']=$session_id;
    $data=[                      
      'regUser'=>$regUser,
@@ -193,14 +234,18 @@ public function medInstrNewSession()
      
    ];
    $this->view('MedInstrSession/MedInstrNewSession/v_medInstrNewSessionRegUsers',$data);
-
+  }else{
+    redirect('MedInstr/login');  
+  }
 
   }
 
  
   public function searchMedInstrNewSessionRegUsers()
   {
-  if($_SERVER['REQUEST_METHOD']=='GET'){
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
+    if($_SERVER['REQUEST_METHOD']=='GET'){
     $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
 
         $search=trim($_GET['search']);
@@ -223,7 +268,11 @@ public function medInstrNewSession()
     ];
     $this->view('MedInstrSession/MedInstrNewSession/v_medInstrNewSessionRegUsers',$data);
     }
+  }else{
+    redirect('MedInstr/login');  
   }
+ 
+}
 
 
 

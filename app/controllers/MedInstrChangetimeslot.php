@@ -9,18 +9,25 @@ class MedInstrChangetimeslot extends Controller{
   
   public function medInstrChangetimeslot()
   {
+  
+   if(isset($_SESSION['MedInstr_id'])) {  
+   
    $timeslot= $this->medInstrChangetimeslotModel->medInstrtimeslot($_SESSION['MedInstr_id']);
    $data=[                      
      'timeslot'=>$timeslot,
      'search'=>''
    ];
    $this->view('MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);
-
+  }else{
+    redirect('MedInstr/login');  
+  }
 
   }
 
   public function  searchMedInstrChangeTimeslot()
   {
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
     if($_SERVER['REQUEST_METHOD']=='GET'){
       $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
   
@@ -41,11 +48,15 @@ class MedInstrChangetimeslot extends Controller{
           ];
           $this->view('MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);
         }
-  
+      }else{
+        redirect('MedInstr/login');  
+      }
   }
 
   public function updateMedInstrChangeTimeslot($timeslot_id)
   {
+    if(isset($_SESSION['MedInstr_id'])) {  
+  
     if($_SERVER["REQUEST_METHOD"] == 'POST'){
         $_POST=filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
   
@@ -59,22 +70,34 @@ class MedInstrChangetimeslot extends Controller{
           'timeslot_id'=>$_SESSION['Med_Instr_timeslot_id'],          
 
           
+          'starting_time_err'=>'',
+          'ending_time_err'=>'',
           'fee_err'=>'',
           'address_err'=>''
          ];      
          
+         
+
+        if(empty($data['starting_time'])){
+          $data['starting_time_err']='Please select a starting time';
+        }
+
+        if(empty($data['ending_time'])){
+           $data['ending_time_err']='Please select ending time';
+        } 
+
         if(empty($data['fee'])){
-          $data['fee_err']='Please enter a fee amount';
+          $data['fee_err']='Please enyer a fee';
         }
 
         if(empty($data['address'])){
            $data['address_err']='Please enter a address';
         } 
         
-         if(empty($data['fee_err']) && empty($data['address_err'])){
+        if( empty($data['starting_time_err']) && empty($data['ending_time_err']) && empty($data['fee_err']) && empty($data['address_err']) ){
  
             $updateTimeslot=$this->medInstrChangetimeslotModel->updatetimeslot($data,$timeslot_id);
-
+       
          if($updateTimeslot){
              $this->view('MedInstrChangetimeslot/v_medInstrUpdatetimeslot',$data); 
            }
@@ -82,7 +105,7 @@ class MedInstrChangetimeslot extends Controller{
             $this->view('MedInstrChangetimeslot/v_medInstrUpdatetimeslot',$data);
            }   
         }else{
-          $this->view('MedInstrUpdatetimeslot/v_medInstrUpdatetimeslot',$data);
+          $this->view('MedInstrChangetimeslot/v_medInstrUpdatetimeslot',$data);
         } 
       }else{
       
@@ -96,19 +119,28 @@ class MedInstrChangetimeslot extends Controller{
         'timeslot_id'=>$_SESSION['Med_Instr_timeslot_id'],
 
         
+        'month_err'=>'',
+        'day_err'=>'',
+        'starting_time_err'=>'',
+        'ending_time_err'=>'',
         'fee_err'=>'',
         'address_err'=>''
     
       ];
        $this->view('MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);     
     } 
+  }else{
+    redirect('MedInstr/login');  
+  }
   }
 
  
 
     public function medInstrViewtimeslot($timeslot_id)
     {
-            $timeslot=$this->medInstrChangetimeslotModel->viewtimeslot($timeslot_id);
+      if(isset($_SESSION['MedInstr_id'])) {  
+  
+      $timeslot=$this->medInstrChangetimeslotModel->viewtimeslot($timeslot_id);
             $_SESSION['Med_Instr_timeslot_id']=$timeslot_id;
             
             $data = [
@@ -123,13 +155,17 @@ class MedInstrChangetimeslot extends Controller{
             ];
             $this->view('MedInstrChangetimeslot/v_medInstrUpdatetimeslot',$data);
         
-
+          }else{
+            redirect('MedInstr/login');  
+          }
     } 
         
     
     public function deleteMedInstrChangeTimeslot($timeslot_id)
     {
-            $deletetimeslot=$this->medInstrChangetimeslotModel->deleteMedInstrChangeTimeslot($timeslot_id);
+      if(isset($_SESSION['MedInstr_id'])) {  
+  
+         $deletetimeslot=$this->medInstrChangetimeslotModel->deleteMedInstrChangeTimeslot($timeslot_id);
             $timeslot= $this->medInstrChangetimeslotModel->medInstrtimeslot($_SESSION['MedInstr_id']);
 
             $data = [
@@ -140,7 +176,9 @@ class MedInstrChangetimeslot extends Controller{
             if($deletetimeslot==true){
                 $this->view('MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);
             }
-          
+          }else{
+            redirect('MedInstr/login');  
+          }          
 
     } 
 
