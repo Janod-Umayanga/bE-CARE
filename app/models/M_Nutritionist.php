@@ -20,6 +20,14 @@
 
             return $this->db->resultSet();
         }
+
+        // Get doctor by id
+        public function getNutritionistbyId($nutritionist_id) {
+            $this->db->query("SELECT * FROM nutritionist WHERE nutritionist_id = :nutritionist_id");
+            $this->db->bind(':nutritionist_id', $nutritionist_id);
+            
+            return $this->db->single();
+        }
     }
 
 ?>

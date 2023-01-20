@@ -516,6 +516,17 @@
             $this->view('patients/v_counsellors', $data);
         }
 
+        // View counsellor profile
+        public function viewCounsellorProfile($counsellor_id) {
+            $counsellor = $this->counsellorModel->getCounsellorById($counsellor_id);
+            $data = [
+                'counsellor' => $counsellor
+            ];
+
+            // Load view
+            $this->view('patients/v_counsellor_profile', $data);
+        }
+
         // View and search nutritionists
         public function findNutritionist() {
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -710,6 +721,17 @@
                 // Redirect to login
                 redirect('Patient/login');
             }
+        }
+
+        // View counsellor profile
+        public function viewNutritionistProfile($nutritionist_id) {
+            $nutritionist = $this->nutritionistModel->getNutritionistById($nutritionist_id);
+            $data = [
+                'nutritionist' => $nutritionist
+            ];
+
+            // Load view
+            $this->view('patients/v_nutritionist_profile', $data);
         }
 
         // View pharmacies

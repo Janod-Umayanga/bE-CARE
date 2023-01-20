@@ -60,10 +60,10 @@
                     <div class="left theme">
                         <p></p>
                         <h2>Dr. <?php  echo $nutritionist->first_name ?> <?php  echo $nutritionist->last_name ?></h2>
-                        <a href="">View profile <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="<?php echo URLROOT ?>/Patient/viewNutritionistProfile/<?php echo $nutritionist->nutritionist_id ?>">View profile <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                     <div class="right">
-                        <p>Fee: Rs <?php  echo $nutritionist->fee ?></p>
+                        <p>Fee: Rs. <?php  echo $nutritionist->fee ?></p>
                         <h2>Nutritionist</h2>
                         <form action="<?php echo URLROOT ?>/Patient/getNutritionistId" method="POST">
                             <input type="hidden" name="nutritionist_id" id="nutritionist_id" value="<?php echo $nutritionist->nutritionist_id ?>">

@@ -32,7 +32,6 @@
         }
 
         // Get doctor by id
-        // Get doctors by a filter
         public function getDoctorbyId($doctor_id) {
             $this->db->query("SELECT * FROM doctor WHERE doctor_id = :doctor_id");
             $this->db->bind(':doctor_id', $doctor_id);

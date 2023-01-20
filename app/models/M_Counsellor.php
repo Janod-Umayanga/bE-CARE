@@ -20,6 +20,14 @@
 
             return $this->db->resultSet();
         }
+
+        // Get counsellor by id
+        public function getCounsellorbyId($counsellor_id) {
+            $this->db->query("SELECT * FROM counsellor WHERE counsellor_id = :counsellor_id");
+            $this->db->bind(':counsellor_id', $counsellor_id);
+            
+            return $this->db->single();
+        }
     }
 
 ?>

@@ -37,7 +37,7 @@
                         <p><?php  echo $timeslot->address ?></p>
                     </div>
                     <div class="bottom">
-                        <p><i class="fa-solid fa-clock"></i> <?php  echo $timeslot->day ?></p>
+                        <p><i class="fa-solid fa-calendar-days"></i> <?php  echo $timeslot->day ?></p>
                         <p><i class="fa-solid fa-clock"></i> <?php  echo $timeslot->starting_time ?> - <?php  echo $timeslot->ending_time ?></p>
                         <p><i class="fa-solid fa-phone-volume"></i><?php  echo $timeslot->contact_number ?></p>
                         <p><i class="fa-solid fa-circle-dollar-to-slot"></i>Rs. <?php  echo $timeslot->fee ?></p>

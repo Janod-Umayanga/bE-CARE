@@ -73,7 +73,7 @@
                     <div class="left theme">
                         <p></p>
                         <h2>Dr. <?php  echo $counsellor->first_name ?> <?php  echo $counsellor->last_name ?></h2>
-                        <a href="">View profile <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="<?php echo URLROOT ?>/Patient/viewCounsellorProfile/<?php echo $counsellor->counsellor_id ?>">View profile <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                     <div class="right">
                         <p>City : <?php  echo $counsellor->city ?></p>

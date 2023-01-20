@@ -38,7 +38,7 @@
                             <p><?php  echo $appointment->address ?></p>
                         </div>
                         <div class="bottom">
-                            <p><i class="fa-solid fa-clock"></i> <?php  echo $appointment->date ?></p>
+                            <p><i class="fa-solid fa-calendar-days"></i> <?php  echo $appointment->date ?></p>
                             <p><i class="fa-solid fa-clock"></i> <?php  echo $appointment->time ?></p>
                         </div>
                         <div class="top-box"></div>
