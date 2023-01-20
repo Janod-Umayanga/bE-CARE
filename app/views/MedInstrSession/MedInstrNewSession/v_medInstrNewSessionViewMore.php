@@ -19,16 +19,16 @@
     <section class="view-profile-container theme">
         <div class="card">
             <div class="main-image">
-                <a href="<?php echo URLROOT ?>/MedInstrSession/medInstrOldSession" class="backto-doctors"><i class="fa-solid fa-arrow-left"></i>Back to Completed Sessions</a>
-                <h1> <?php echo $data['oldSession']->title ?> <br> <?php echo $data['oldSession']->date ?></h1>
+                <a href="<?php echo URLROOT ?>/MedInstrSession/medInstrNewSession" class="backto-doctors"><i class="fa-solid fa-arrow-left"></i>Back to New Sessions</a>
+                <h1> <?php echo $data['newSession']->title ?> <br> <?php echo $data['newSession']->date ?></h1>
              
             </div>
             <div class="bottom">
                 <ul>
-                    <li>Starting Time - <?php echo $data['oldSession']->starting_time ?></li>
-                    <li>Ending Time - <?php echo $data['oldSession']->ending_time ?></li>
-                    <li>Fee - <?php echo $data['oldSession']->fee ?></li>
-                    <li>Address - <?php echo $data['oldSession']->address ?></li>
+                    <li>Starting Time - <?php echo $data['newSession']->starting_time ?></li>
+                    <li>Ending Time - <?php echo $data['newSession']->ending_time ?></li>
+                    <li>Fee - <?php echo $data['newSession']->fee ?></li>
+                    <li>Address - <?php echo $data['newSession']->address ?></li>
                    
                 </ul>
                 <div class="bottom-line"></div>
