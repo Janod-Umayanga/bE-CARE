@@ -122,7 +122,12 @@
 
                  <td>
                     <form action="<?php echo URLROOT ?>/AdminComplaintMgmt/viewMore/<?php echo  $complaint->complaint_id ?>" method="post">
-                         <button  name="submit" class="buttonamDownload button1amDownload">View</button>
+                         <input type="hidden" name="first_name" value="<?php echo $firstname ?>">
+                         <input type="hidden" name="last_name" value="<?php echo $lastname ?>">
+                         <input type="hidden" name="type" value="<?php echo $type ?>">
+                         <input type="hidden" name="email" value="<?php echo $email ?>">
+                         
+                        <button  name="submit" class="buttonamDownload button1amDownload">View</button>
                     </form>
                 </td>
 

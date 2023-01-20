@@ -38,15 +38,24 @@ class AdminComplaintMgmt extends Controller{
 
     if(isset($_SESSION['admin_id'])) {
   
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+     
+      $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+      
         $complaint= $this->adminComplaintMgmtModel->getComplaint($complaintId);
         
       $data=[                      
-        'complaint'=>$complaint
-        
+        'complaint'=>$complaint,
+        'first_name'=>$_POST['first_name'],
+        'last_name'=>$_POST['last_name'],
+        'type'=>$_POST['type'],
+        'email'=>$_POST['email']   
         
       ];
       $this->view('AdminComplaintMgmt/v_complaintMgmtViewMore',$data);
-   }else{
+   
+    }
+    }else{
         redirect('Admin/login');  
     }
    

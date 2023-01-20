@@ -79,12 +79,31 @@ class MedInstrChangeSessionDetails extends Controller{
     if(isset($_SESSION['MedInstr_id'])) {  
   
     $data=[
-       ];
 
-         $this->view('MedInstrChangeSessionDetails/v_medInstrAddNewSession',$data);
-        }else{
-          redirect('MedInstr/login');  
-        }
+      'title'=>'',
+      'date'=>'',
+      'starting_time'=>'',
+      'ending_time'=>'',
+      'fee'=>'',
+      'address'=>'',
+      'description'=>'',
+
+
+      'title_err'=>'',
+      'date_err'=>'',
+      'starting_time_err'=>'',
+      'ending_time_err'=>'',
+      'fee_err'=>'',
+      'address_err'=>'',
+      'description_err'=>''
+
+    ];
+
+    $this->view('MedInstrChangeSessionDetails/v_medInstrAddNewSession',$data);
+    
+  }else{
+       redirect('MedInstr/login');  
+  }
         
   }
 
@@ -116,7 +135,8 @@ class MedInstrChangeSessionDetails extends Controller{
           'starting_time_err'=>'',
           'ending_time_err'=>'',
           'fee_err'=>'',
-          'address_err'=>''
+          'address_err'=>'',
+          'description_err'=>''
          ];
 
          if(empty($data['title'])){
@@ -140,11 +160,15 @@ class MedInstrChangeSessionDetails extends Controller{
         }
 
         if(empty($data['address'])){
-           $data['addres_err']='Please enter a addres';
+           $data['address_err']='Please enter a address';
         }
 
+        if(empty($data['description'])){
+          $data['description_err']='Please enter a description';
+       }
 
-        if(empty($data['title_err']) && empty($data['date_err']) && empty($data['starting_time_err'])&& empty($data['ending_time_err'])&& empty($data['fee_err'])&& empty($data['address_err'])){
+
+        if(empty($data['title_err']) && empty($data['date_err']) && empty($data['starting_time_err'])&& empty($data['ending_time_err'])&& empty($data['fee_err'])&& empty($data['address_err']) && empty($data['description_err'])){
 
             $addnewSession=$this->medInstrChangeSessionDetailsModel->medInstraddNewSession($_SESSION['MedInstr_id'],$data);
 
@@ -172,7 +196,12 @@ class MedInstrChangeSessionDetails extends Controller{
 
 
         'title_err'=>'',
-        'address_err'=>''
+        'date_err'=>'',
+        'starting_time_err'=>'',
+        'ending_time_err'=>'',
+        'fee_err'=>'',
+        'address_err'=>'',
+        'description_err'=>''
 
       ];
        $this->view('MedInstrChangeSessionDetails/v_medInstrChangeSessionDetails',$data);
@@ -199,7 +228,17 @@ class MedInstrChangeSessionDetails extends Controller{
     'fee'=>$sessionDetail->fee,
     'address'=>$sessionDetail->address,
     'description'=>$sessionDetail->description,
-    'session_id'=>$_SESSION['Med_SESSION_ID']
+    'session_id'=>$_SESSION['Med_SESSION_ID'],
+
+    
+
+    'title_err'=>'',
+    'date_err'=>'',
+    'starting_time_err'=>'',
+    'ending_time_err'=>'',
+    'fee_err'=>'',
+    'address_err'=>'',
+    'description_err'=>''
 
     ];
 
@@ -236,8 +275,8 @@ class MedInstrChangeSessionDetails extends Controller{
               'starting_time_err'=>'',
               'ending_time_err'=>'',
               'fee_err'=>'',
-              'address_err'=>''
-
+              'address_err'=>'',
+              'description_err'=>''
              ];
 
             if(empty($data['title'])){
@@ -264,8 +303,12 @@ class MedInstrChangeSessionDetails extends Controller{
                $data['addres_err']='Please enter a addres';
             }
 
+             
+            if(empty($data['description'])){
+               $data['description_err']='Please enter a description';
+            }
 
-            if(empty($data['title_err']) && empty($data['date_err']) && empty($data['starting_time_err'])&& empty($data['ending_time_err'])&& empty($data['fee_err'])&& empty($data['address_err'])){
+            if(empty($data['title_err']) && empty($data['date_err']) && empty($data['starting_time_err'])&& empty($data['ending_time_err'])&& empty($data['fee_err'])&& empty($data['address_err']) && empty($data['description_err'])){
 
                 $updateSession=$this->medInstrChangeSessionDetailsModel->medInstrupdateSession($_SESSION['MedInstr_id'],$sessionId,$data);
 
@@ -293,7 +336,12 @@ class MedInstrChangeSessionDetails extends Controller{
 
 
             'title_err'=>'',
-            'address_err'=>''
+            'date_err'=>'',
+            'starting_time_err'=>'',
+            'ending_time_err'=>'',
+            'fee_err'=>'',
+            'address_err'=>'',
+            'description_err'=>''
 
           ];
            $this->view('MedInstrChangeSessionDetails/v_medInstrChangeSessionDetails',$data);

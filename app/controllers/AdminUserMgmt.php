@@ -837,9 +837,22 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
          
              'first_name_err'=>'',
              'last_name_err'=>'',
-             'passwordnotmatch_err'=>'',
+             'nic_err'=>'',
+             'contact_number_err'=>'',
+             'email_err'=>'',
+             'password_err'=>'',
+             'confirm_password_err'=>'',
+             'city_err'=>'',
+             'bank_name_err'=>'',
+             'account_holder_name_err'=>'',
+             'branch_err'=>'',
+             'account_number_err'=>'',
+             'slmc_reg_number_err'=>'',
+             'type_err'=>'',
+             'specialization_err'=>'',
+             'gender_err'=>'',
              'qualification_file_err'=>'',
-             'email_err'=>''
+             
           ];
           $fileExt=explode('.',$_FILES['qualification_file']['name']);
           $fileActualExt=strtolower(end($fileExt));
@@ -872,8 +885,69 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
              $data['last_name_err']='last name can not be empty';
           }
        
+          if(empty($data['nic'])){
+            $data['nic_err']='nic can not be empty';
+         }
+        
+         if(empty($data['contact_number'])){
+            $data['contact_number_err']='contact number can not be empty';
+         }
+          
+            if(empty($data['email'])){
+              $data['email_err']='email can not be empty';
+          }
+          
+          if(empty($data['password'])){
+              $data['password_err']='password can not be empty';
+          }
+        
+          if(empty($data['confirm_password'])){
+            $data['confirm_password_err']='confirm password  can not be empty';
+          }
+        
+          if(empty($data['city'])){
+            $data['city_err']='city can not be empty';
+          }
+
+            if(empty($data['bank_name'])){
+              $data['bank_name_err']='bank name can not be empty';
+          }
+          
+          if(empty($data['acount_holder_name'])){
+              $data['acount_holder_name_err']='acount_holder name can not be empty';
+          }
+        
+          if(empty($data['branch'])){
+            $data['branch_err']='branch name can not be empty';
+          }
+        
+          if(empty($data['account_number'])){
+            $data['account_number_err']='last name can not be empty';
+          }
+
+          if(empty($data['slmc_reg_number'])){
+            $data['slmc_reg_number_err']='slmc reg number can not be empty';
+         }
+        
+          if(empty($data['type'])){
+              $data['type_err']='type can not be empty';
+          }
+        
+          if(empty($data['specialization'])){
+            $data['specialization_err']='specialization can not be empty';
+          }
+          
+          if(empty($data['gender'])){
+            $data['gender_err']='gender can not be empty';
+          }
+          
+          if(empty($data['qualification_file'])){
+            $data['qualification_file_err']='qualification_file can not be empty';
+          }
+
+          
           if($data['password']!=$data['confirm_password']){
-           $data['passwordnotmatch_err']='password not match';
+           $data['password_err']='password not match';
           }
 
           if($this->adminUserMgmtModel->findDoctorByEmail($data['email'])){
@@ -887,7 +961,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
        
    
    
-          if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['passwordnotmatch_err'])&& empty($data['qualification_file_err'])&& empty($data['email_err'])){
+          if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['city_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['slmc_reg_number_err'])&& empty($data['type_err'])&& empty($data['specialization_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
                
             $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
              if($this->adminUserMgmtModel->addDoctor($data)){
@@ -927,11 +1001,23 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
             'type'=>'',
             'specialization'=>'',
     
-            'first_name_err'=>'',
-            'last_name_err'=>'',
-            'passwordnotmatch_err'=>'',
-            'qualification_file_err'=>'',
-            'email_err'=>''
+             'first_name_err'=>'',
+             'last_name_err'=>'',
+             'nic_err'=>'',
+             'contact_number_err'=>'',
+             'email_err'=>'',
+             'password_err'=>'',
+             'confirm_password_err'=>'',
+             'city_err'=>'',
+             'bank_name_err'=>'',
+             'account_holder_name_err'=>'',
+             'branch_err'=>'',
+             'account_number_err'=>'',
+             'slmc_reg_number_err'=>'',
+             'type_err'=>'',
+             'specialization_err'=>'',
+             'gender_err'=>'',
+             'qualification_file_err'=>'',
            ];
     
            $this->view('AdminUserMgmt/Doctor/v_doctorAddNew',$data);
@@ -973,12 +1059,24 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                    'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
                    
                
-                   'first_name_err'=>'',
-                   'last_name_err'=>'',
-                   'passwordnotmatch_err'=>'',
-                   'qualification_file_err'=>'',
-                   'email_err'=>''
-                ];
+                                       
+                    'first_name_err'=>'',
+                    'last_name_err'=>'',
+                    'nic_err'=>'',
+                    'contact_number_err'=>'',
+                    'email_err'=>'',
+                    'password_err'=>'',
+                    'confirm_password_err'=>'',
+                    'city_err'=>'',
+                    'bank_name_err'=>'',
+                    'account_holder_name_err'=>'',
+                    'branch_err'=>'',
+                    'account_number_err'=>'',
+                    'slmc_reg_number_err'=>'',
+                    'gender_err'=>'',
+                    'qualification_file_err'=>'',
+                        
+            ];
                 $fileExt=explode('.',$_FILES['qualification_file']['name']);
                 $fileActualExt=strtolower(end($fileExt));
                 $allowed=array('jpg','jpeg','png','pdf','zip','rar');
@@ -1003,13 +1101,68 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                 }
        
                 if(empty($data['first_name'])){
-                   $data['first_name_err']='first name can not be empty';
-                }
-               
-                if(empty($data['last_name'])){
-                   $data['last_name_err']='last name can not be empty';
-                }
+                  $data['first_name_err']='first name can not be empty';
+               }
+              
+               if(empty($data['last_name'])){
+                  $data['last_name_err']='last name can not be empty';
+               }
+            
+               if(empty($data['nic'])){
+                 $data['nic_err']='nic can not be empty';
+              }
              
+              if(empty($data['contact_number'])){
+                 $data['contact_number_err']='contact number can not be empty';
+              }
+               
+                 if(empty($data['email'])){
+                   $data['email_err']='email can not be empty';
+               }
+               
+               if(empty($data['password'])){
+                   $data['password_err']='password can not be empty';
+               }
+             
+               if(empty($data['confirm_password'])){
+                 $data['confirm_password_err']='confirm password  can not be empty';
+               }
+             
+               if(empty($data['city'])){
+                 $data['city_err']='city can not be empty';
+               }
+     
+                 if(empty($data['bank_name'])){
+                   $data['bank_name_err']='bank name can not be empty';
+               }
+               
+               if(empty($data['acount_holder_name'])){
+                   $data['acount_holder_name_err']='acount_holder name can not be empty';
+               }
+             
+               if(empty($data['branch'])){
+                 $data['branch_err']='branch name can not be empty';
+               }
+             
+               if(empty($data['account_number'])){
+                 $data['account_number_err']='last name can not be empty';
+               }
+     
+               if(empty($data['slmc_reg_number'])){
+                 $data['slmc_reg_number_err']='slmc reg number can not be empty';
+              }
+             
+               
+               if(empty($data['gender'])){
+                 $data['gender_err']='gender can not be empty';
+               }
+               
+               if(empty($data['qualification_file'])){
+                 $data['qualification_file_err']='qualification_file can not be empty';
+               }
+     
+     
+
                 if($data['password']!=$data['confirm_password']){
                  $data['passwordnotmatch_err']='password not match';
                 }
@@ -1025,8 +1178,9 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
              
          
          
-                if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['passwordnotmatch_err'])&& empty($data['qualification_file_err'])&& empty($data['email_err'])){
-                     
+                if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['city_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['slmc_reg_number_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
+               
+                  
                   $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
                    if($this->adminUserMgmtModel->addCounsellor($data)){
                          flash('post_msg', 'add new counsellor successfully');
@@ -1065,9 +1219,19 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                   
                   'first_name_err'=>'',
                   'last_name_err'=>'',
-                  'passwordnotmatch_err'=>'',
+                  'nic_err'=>'',
+                  'contact_number_err'=>'',
+                  'email_err'=>'',
+                  'password_err'=>'',
+                  'confirm_password_err'=>'',
+                  'city_err'=>'',
+                  'bank_name_err'=>'',
+                  'account_holder_name_err'=>'',
+                  'branch_err'=>'',
+                  'account_number_err'=>'',
+                  'slmc_reg_number_err'=>'',
+                  'gender_err'=>'',
                   'qualification_file_err'=>'',
-                  'email_err'=>''
                  ];
           
                  $this->view('AdminUserMgmt/Counsellor/v_counsellorAddNew',$data);
@@ -1107,17 +1271,68 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
          
              'first_name_err'=>'',
              'last_name_err'=>'',
-             'passwordnotmatch_err'=>'',
-             'email_err'=>''
+             'nic_err'=>'',
+             'contact_number_err'=>'',
+             'email_err'=>'',
+             'password_err'=>'',
+             'confirm_password_err'=>'',
+             'bank_name_err'=>'',
+             'account_holder_name_err'=>'',
+             'branch_err'=>'',
+             'account_number_err'=>'',
+             'gender_err'=>'',
+            
           ];
          
           if(empty($data['first_name'])){
-             $data['first_name_err']='first name can not be empty';
-          }
+            $data['first_name_err']='first name can not be empty';
+         }
+        
+         if(empty($data['last_name'])){
+            $data['last_name_err']='last name can not be empty';
+         }
+      
+         if(empty($data['nic'])){
+           $data['nic_err']='nic can not be empty';
+        }
+       
+        if(empty($data['contact_number'])){
+           $data['contact_number_err']='contact number can not be empty';
+        }
          
-          if(empty($data['last_name'])){
-             $data['last_name_err']='last name can not be empty';
-          }
+           if(empty($data['email'])){
+             $data['email_err']='email can not be empty';
+         }
+         
+         if(empty($data['password'])){
+             $data['password_err']='password can not be empty';
+         }
+       
+         if(empty($data['confirm_password'])){
+           $data['confirm_password_err']='confirm password  can not be empty';
+         }
+       
+         if(empty($data['bank_name'])){
+             $data['bank_name_err']='bank name can not be empty';
+         }
+         
+         if(empty($data['acount_holder_name'])){
+             $data['acount_holder_name_err']='acount_holder name can not be empty';
+         }
+       
+         if(empty($data['branch'])){
+           $data['branch_err']='branch name can not be empty';
+         }
+       
+         if(empty($data['account_number'])){
+           $data['account_number_err']='account_number can not be empty';
+         }
+
+         if(empty($data['gender'])){
+           $data['gender_err']='gender can not be empty';
+         }
+         
+      
        
           if($data['password']!=$data['confirm_password']){
            $data['passwordnotmatch_err']='password not match';
@@ -1130,9 +1345,9 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
           
        
    
-   
-          if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['passwordnotmatch_err'])&& empty($data['qualification_file_err'])&& empty($data['email_err'])){
-               
+          if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err']) && empty($data['gender_err'])){
+     
+            
             $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
              if($this->adminUserMgmtModel->addAdmin($data)){
                    flash('post_msg', 'add new admin successfully');
@@ -1166,11 +1381,20 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
             'branch'=>'',
             'account_number'=>'',
     
+            
             'first_name_err'=>'',
             'last_name_err'=>'',
-            'passwordnotmatch_err'=>'',
-            'email_err'=>''
-           ];
+            'nic_err'=>'',
+            'contact_number_err'=>'',
+            'email_err'=>'',
+            'password_err'=>'',
+            'confirm_password_err'=>'',
+            'bank_name_err'=>'',
+            'account_holder_name_err'=>'',
+            'branch_err'=>'',
+            'account_number_err'=>'',
+            'gender_err'=>'',
+            ];
     
            $this->view('AdminUserMgmt/Admin/v_adminAddNew',$data);
    
@@ -1215,9 +1439,20 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
          
              'first_name_err'=>'',
              'last_name_err'=>'',
-             'passwordnotmatch_err'=>'',
+             'nic_err'=>'',
+             'contact_number_err'=>'',
+             'email_err'=>'',
+             'password_err'=>'',
+             'confirm_password_err'=>'',
+             'city_err'=>'',
+             'bank_name_err'=>'',
+             'account_holder_name_err'=>'',
+             'branch_err'=>'',
+             'account_number_err'=>'',
+             'address_err'=>'',
+             'fee_err'=>'',
+             'gender_err'=>'',
              'qualification_file_err'=>'',
-             'email_err'=>''
           ];
           $fileExt=explode('.',$_FILES['qualification_file']['name']);
           $fileActualExt=strtolower(end($fileExt));
@@ -1243,13 +1478,73 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
           }
  
           if(empty($data['first_name'])){
-             $data['first_name_err']='first name can not be empty';
-          }
-         
-          if(empty($data['last_name'])){
-             $data['last_name_err']='last name can not be empty';
-          }
+            $data['first_name_err']='first name can not be empty';
+         }
+        
+         if(empty($data['last_name'])){
+            $data['last_name_err']='last name can not be empty';
+         }
+      
+         if(empty($data['nic'])){
+           $data['nic_err']='nic can not be empty';
+        }
        
+        if(empty($data['contact_number'])){
+           $data['contact_number_err']='contact number can not be empty';
+        }
+         
+           if(empty($data['email'])){
+             $data['email_err']='email can not be empty';
+         }
+         
+         if(empty($data['password'])){
+             $data['password_err']='password can not be empty';
+         }
+       
+         if(empty($data['confirm_password'])){
+           $data['confirm_password_err']='confirm password  can not be empty';
+         }
+       
+         if(empty($data['city'])){
+           $data['city_err']='city can not be empty';
+         }
+
+           if(empty($data['bank_name'])){
+             $data['bank_name_err']='bank name can not be empty';
+         }
+         
+         if(empty($data['acount_holder_name'])){
+             $data['acount_holder_name_err']='acount_holder name can not be empty';
+         }
+       
+         if(empty($data['branch'])){
+           $data['branch_err']='branch name can not be empty';
+         }
+       
+         if(empty($data['account_number'])){
+           $data['account_number_err']='account_number can not be empty';
+         }
+
+         if(empty($data['address'])){
+           $data['address_err']='address can not be empty';
+        }
+       
+         if(empty($data['fee'])){
+             $data['fee_err']='fee can not be empty';
+         }
+       
+        
+         if(empty($data['gender'])){
+           $data['gender_err']='gender can not be empty';
+         }
+         
+         if(empty($data['qualification_file'])){
+           $data['qualification_file_err']='qualification_file can not be empty';
+         }
+
+
+
+
           if($data['password']!=$data['confirm_password']){
            $data['passwordnotmatch_err']='password not match';
           }
@@ -1265,7 +1560,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
        
    
    
-          if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['passwordnotmatch_err'])&& empty($data['qualification_file_err'])&& empty($data['email_err'])){
+          
+          if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['city_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['address_err'])&& empty($data['fee_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
+               
+        
                
             $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
              if($this->adminUserMgmtModel->addMeditationInstructor($data)){
@@ -1306,10 +1604,21 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
     
             'first_name_err'=>'',
             'last_name_err'=>'',
-            'passwordnotmatch_err'=>'',
+            'nic_err'=>'',
+            'contact_number_err'=>'',
+            'email_err'=>'',
+            'password_err'=>'',
+            'confirm_password_err'=>'',
+            'city_err'=>'',
+            'bank_name_err'=>'',
+            'account_holder_name_err'=>'',
+            'branch_err'=>'',
+            'account_number_err'=>'',
+            'address_err'=>'',
+            'fee_err'=>'',
+            'gender_err'=>'',
             'qualification_file_err'=>'',
-            'email_err'=>''
-           ];
+          ];
     
            $this->view('AdminUserMgmt/MeditationInstructor/v_medInstrAddNew',$data);
    
@@ -1353,9 +1662,21 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
          
              'first_name_err'=>'',
              'last_name_err'=>'',
-             'passwordnotmatch_err'=>'',
-             'qualification_file_err'=>'',
-             'email_err'=>''
+             'nic_err'=>'',
+             'contact_number_err'=>'',
+             'email_err'=>'',
+             'password_err'=>'',
+             'confirm_password_err'=>'',
+             'city_err'=>'',
+             'bank_name_err'=>'',
+             'account_holder_name_err'=>'',
+             'branch_err'=>'',
+             'account_number_err'=>'',
+             'slmc_reg_number_err'=>'',
+             'pharmacy_name_err'=>'',
+             'address_err'=>'',
+             'gender_err'=>'',
+             'qualification_file_err'=>''
           ];
           $fileExt=explode('.',$_FILES['qualification_file']['name']);
           $fileActualExt=strtolower(end($fileExt));
@@ -1381,12 +1702,73 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
           }
  
           if(empty($data['first_name'])){
-             $data['first_name_err']='first name can not be empty';
-          }
+            $data['first_name_err']='first name can not be empty';
+         }
+        
+         if(empty($data['last_name'])){
+            $data['last_name_err']='last name can not be empty';
+         }
+      
+         if(empty($data['nic'])){
+           $data['nic_err']='nic can not be empty';
+        }
+       
+        if(empty($data['contact_number'])){
+           $data['contact_number_err']='contact number can not be empty';
+        }
          
-          if(empty($data['last_name'])){
-             $data['last_name_err']='last name can not be empty';
-          }
+           if(empty($data['email'])){
+             $data['email_err']='email can not be empty';
+         }
+         
+         if(empty($data['password'])){
+             $data['password_err']='password can not be empty';
+         }
+       
+         if(empty($data['confirm_password'])){
+           $data['confirm_password_err']='confirm password  can not be empty';
+         }
+       
+         if(empty($data['city'])){
+           $data['city_err']='city can not be empty';
+         }
+
+           if(empty($data['bank_name'])){
+             $data['bank_name_err']='bank name can not be empty';
+         }
+         
+         if(empty($data['acount_holder_name'])){
+             $data['acount_holder_name_err']='acount_holder name can not be empty';
+         }
+       
+         if(empty($data['branch'])){
+           $data['branch_err']='branch name can not be empty';
+         }
+       
+         if(empty($data['account_number'])){
+           $data['account_number_err']='last name can not be empty';
+         }
+
+         if(empty($data['slmc_reg_number'])){
+           $data['slmc_reg_number_err']='slmc reg number can not be empty';
+        }
+       
+         if(empty($data['pharmacy_name'])){
+             $data['pharmacy_name_err']='pharmacy name can not be empty';
+         }
+       
+         if(empty($data['address'])){
+           $data['address_err']='address can not be empty';
+         }
+         
+         if(empty($data['gender'])){
+           $data['gender_err']='gender can not be empty';
+         }
+         
+         if(empty($data['qualification_file'])){
+           $data['qualification_file_err']='qualification_file can not be empty';
+         }
+
        
           if($data['password']!=$data['confirm_password']){
            $data['passwordnotmatch_err']='password not match';
@@ -1401,10 +1783,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
  
           }
        
-   
-   
-          if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['passwordnotmatch_err'])&& empty($data['qualification_file_err'])&& empty($data['email_err'])){
+             
+          if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['city_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['slmc_reg_number_err'])&& empty($data['pharmacy_name_err'])&& empty($data['address_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
                
+                 
             $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
              if($this->adminUserMgmtModel->addPharmacist($data)){
                    flash('post_msg', 'add new pharmacist successfully');
@@ -1442,12 +1824,24 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
             'qualification_file'=>'',
             'pharmacy_name'=>'',
             'address'=>'',
-    
+
             'first_name_err'=>'',
             'last_name_err'=>'',
-            'passwordnotmatch_err'=>'',
-            'qualification_file_err'=>'',
-            'email_err'=>''
+            'nic_err'=>'',
+            'contact_number_err'=>'',
+            'email_err'=>'',
+            'password_err'=>'',
+            'confirm_password_err'=>'',
+            'city_err'=>'',
+            'bank_name_err'=>'',
+            'account_holder_name_err'=>'',
+            'branch_err'=>'',
+            'account_number_err'=>'',
+            'slmc_reg_number_err'=>'',
+            'pharmacy_name_err'=>'',
+            'address_err'=>'',
+            'gender_err'=>'',
+            'qualification_file_err'=>''
            ];
     
            $this->view('AdminUserMgmt/Pharmacist/v_pharmacistAddNew',$data);
@@ -1489,11 +1883,22 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
              'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
              
          
+            
              'first_name_err'=>'',
              'last_name_err'=>'',
-             'passwordnotmatch_err'=>'',
-             'qualification_file_err'=>'',
-             'email_err'=>''
+             'nic_err'=>'',
+             'contact_number_err'=>'',
+             'email_err'=>'',
+             'password_err'=>'',
+             'confirm_password_err'=>'',
+             'bank_name_err'=>'',
+             'account_holder_name_err'=>'',
+             'branch_err'=>'',
+             'account_number_err'=>'',
+             'slmc_reg_number_err'=>'',
+             'fee_err'=>'',
+             'gender_err'=>'',
+             'qualification_file_err'=>''
           ];
           $fileExt=explode('.',$_FILES['qualification_file']['name']);
           $fileActualExt=strtolower(end($fileExt));
@@ -1519,12 +1924,66 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
           }
  
           if(empty($data['first_name'])){
-             $data['first_name_err']='first name can not be empty';
-          }
+            $data['first_name_err']='first name can not be empty';
+         }
+        
+         if(empty($data['last_name'])){
+            $data['last_name_err']='last name can not be empty';
+         }
+      
+         if(empty($data['nic'])){
+           $data['nic_err']='nic can not be empty';
+        }
+       
+        if(empty($data['contact_number'])){
+           $data['contact_number_err']='contact number can not be empty';
+        }
          
-          if(empty($data['last_name'])){
-             $data['last_name_err']='last name can not be empty';
-          }
+           if(empty($data['email'])){
+             $data['email_err']='email can not be empty';
+         }
+         
+         if(empty($data['password'])){
+             $data['password_err']='password can not be empty';
+         }
+       
+         if(empty($data['confirm_password'])){
+           $data['confirm_password_err']='confirm password  can not be empty';
+         }
+       
+         if(empty($data['bank_name'])){
+             $data['bank_name_err']='bank name can not be empty';
+         }
+         
+         if(empty($data['acount_holder_name'])){
+             $data['acount_holder_name_err']='acount_holder name can not be empty';
+         }
+       
+         if(empty($data['branch'])){
+           $data['branch_err']='branch name can not be empty';
+         }
+       
+         if(empty($data['account_number'])){
+           $data['account_number_err']='last name can not be empty';
+         }
+
+         if(empty($data['slmc_reg_number'])){
+           $data['slmc_reg_number_err']='slmc reg number can not be empty';
+        }
+       
+         if(empty($data['fee'])){
+             $data['fee_err']='fee can not be empty';
+         }
+       
+         
+         if(empty($data['gender'])){
+           $data['gender_err']='gender can not be empty';
+         }
+         
+         if(empty($data['qualification_file'])){
+           $data['qualification_file_err']='qualification_file can not be empty';
+         }
+
        
           if($data['password']!=$data['confirm_password']){
            $data['passwordnotmatch_err']='password not match';
@@ -1541,8 +2000,9 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
        
    
    
-          if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['passwordnotmatch_err'])&& empty($data['qualification_file_err'])&& empty($data['email_err'])){
-               
+        
+          if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['slmc_reg_number_err'])&& empty($data['fee_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
+              
             $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
              if($this->adminUserMgmtModel->addNutritionist($data)){
                    flash('post_msg', 'add new nutritionist successfully');
@@ -1579,12 +2039,23 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
             'qualification_file'=>'',
             'fee'=>'',
             
+
             'first_name_err'=>'',
             'last_name_err'=>'',
-            'passwordnotmatch_err'=>'',
-            'qualification_file_err'=>'',
-            'email_err'=>''
-           ];
+            'nic_err'=>'',
+            'contact_number_err'=>'',
+            'email_err'=>'',
+            'password_err'=>'',
+            'confirm_password_err'=>'',
+            'bank_name_err'=>'',
+            'account_holder_name_err'=>'',
+            'branch_err'=>'',
+            'account_number_err'=>'',
+            'slmc_reg_number_err'=>'',
+            'fee_err'=>'',
+            'gender_err'=>'',
+            'qualification_file_err'=>''
+          ];
     
            $this->view('AdminUserMgmt/Nutritionist/v_nutritionistAddNew',$data);
              

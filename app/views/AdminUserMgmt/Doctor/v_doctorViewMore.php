@@ -1,87 +1,62 @@
-<?php require APPROOT.'/views/inc/header.php'; ?>
-<?php require APPROOT.'/views/inc/components/topnavbar.php'; ?>
-<?php $doctor=$data['doctor']  ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c4a594ff55.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
+    <script defer src="<?php echo URLROOT; ?>/js/script.js"></script>
+    <title>View Doctor </title>
+</head>
+<body>
+    <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-
-<sectionc class="sViewMAMD">
-
-      <div class="cViewMAMD">
-
-              <h1>Doctor Details</h1>
-
-      <div class="cViewMAMDAA">
-
-
-              <form >
-                  <div>
-                      <label>First name</label>
-                      <input type="text" id="first_name" name="first_name" disabled="true" value="<?php echo $doctor->first_name ?>">
-
-                      <label>Last name</label>
-                      <input type="text" id="last_name" name="last_name" disabled="true" value="<?php echo $doctor->last_name ?>">
-
-                      <label>NIC</label>
-                      <input type="text" id="nic" name="nic" disabled="true" value="<?php echo $doctor->nic ?>">
-
-                      <label>Contact number</label>
-                      <input type="text" id="contact_number" name="contact_number" disabled="true" value="<?php echo $doctor->contact_number ?>" >
-
-                      <label>Email</label>
-                      <input type="email" name="email" id="email" disabled="true" value="<?php echo $doctor->email ?>">
-
-                      <label>Gender</label>
-                      <input type="text" name="gender" id="gender" disabled="true" value="<?php echo $doctor->gender ?>">
-
-                    <label>City</label>
-                    <input type="text" name="city" disabled="true" value="<?php echo $doctor->city ?>"  >
-
-                    <label>Bank Name</label>
-                    <input type="text" name="bank_name" id="bank_name"  disabled="true" value="<?php echo $doctor->bank_name ?>">
-
-                    <label>Account holder Name</label>
-                    <input type="text" name="account_holder_name" id="account_holder_name" disabled="true" value="<?php echo $doctor->account_holder_name ?>">
-
-                    <label>Branch</label>
-                    <input type="text" name="branch" id="branch" disabled="true" value="<?php echo $doctor->branch ?>" >
-
-                    <label>Account Number</label>
-                    <input type="text" name="account_number" id="account_number" disabled="true" value="<?php echo $doctor->account_number ?>">
-
-
-                    <label>SLMC registration Number</label>
-                    <input type="text" name="slmc" id="slmc"  disabled="true" value="<?php echo $doctor->slmc_reg_number ?>" >
-
-
-
-                    <label>Qualification File</label>
-                    <button class="buttonamDownload button1amDownload"><a download="<?php echo $doctor->qualification_file ?>"  href="<?php echo URLROOT?>/upload/doctor_qualification/<?php echo $doctor->qualification_file ?>">Download</a></button>
-
-
-                    <label>Type</label>
-                    <input type="text" name="type" id="type"  disabled="true" value="<?php echo $doctor->type ?>">
-
-                    <label>Specialization</label>
-                    <input type="text" name="specialization" id="specialization"  disabled="true" value="<?php echo $doctor->specialization ?>">
+    <section class="view-profile-container theme">
+        <div class="card">
             
-                    <label>registration Date</label>
-                    <input type="text" name="registered_date" id="registered_date"  disabled="true" value="<?php echo $doctor->registered_date ?>">
+            <div class="main-image">
+                <a href="<?php echo URLROOT ?>/AdminUserMgmt/Doctor" class="backto-doctors"><i class="fa-solid fa-arrow-left"></i>Back to Doctors</a>
+                <h1>Dr. <?php echo $data['doctor']->first_name ?> <br> <?php echo $data['doctor']->last_name ?></h1>
+                <p><?php echo $data['doctor']->specialization ?></p>
+                <div class="profile-icon"><?php echo substr($data['doctor']->first_name, 0,1) ?><?php echo substr($data['doctor']->last_name, 0,1) ?></div>
+                <div class="social-media-icons">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-linkedin"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                </div>
+            </div>
 
+            <div class="bottom">
+                <ul>
+                    <li>Email - <a href="mailto:<?php echo $data['doctor']->email ?>"><?php echo $data['doctor']->email ?></a></li>
+                    <li>Contact number - <?php echo $data['doctor']->contact_number ?></li>
+                    <li>Registered date - <?php echo $data['doctor']->registered_date ?></li>
+                    <li>SLMC number - <?php echo $data['doctor']->slmc_reg_number ?></li>
+                   
+                    <li>NIC - <?php echo $data['doctor']->nic ?></li>
+                    <li>Gender - <?php echo $data['doctor']->gender ?></li>
+                    <li>City - <?php echo $data['doctor']->city ?></li>
+                   
+                    <li>Bank Name - <?php echo $data['doctor']->bank_name ?></li>
+                    <li>Account holder Name - <?php echo $data['doctor']->account_holder_name ?></li>
+                    <li>Branch - <?php echo $data['doctor']->branch ?></li>
+                   
+                    <li>Account Number - <?php echo $data['doctor']->account_number ?></li>
+                    <li>Type - <?php echo $data['doctor']->type ?></li>
+                    <li>Qualification File -   <button class=""><a download="<?php echo $data['doctor']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/doctor_qualification/<?php echo  $data['doctor']->qualification_file ?>">Download</a></button>
+               </li>
+                   
+                </ul>
+                <div class="bottom-line"></div>
+            </div>
+        </div>
+    </section>
 
-                    <button id="cBigButton" onclick="location.href='<?php echo URLROOT;?>/AdminUserMgmt/Doctor'" type="button">Go back</button>
-                    
-                  </div>
-
-
-
-
-              </form>
-
-      </div>
-
-
-      </div>
-
-  </section>
-
-
-<?php require APPROOT.'/views/inc/footer.php'; ?>
+    <?php require APPROOT.'/views/inc/components/footer1.php'; ?>
+</body>
+</html>

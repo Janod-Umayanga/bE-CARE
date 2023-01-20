@@ -1,64 +1,41 @@
-<?php require APPROOT.'/views/inc/header.php'; ?>
-<?php require APPROOT.'/views/inc/components/topnavbar.php'; ?>
-<?php  $newSession=$data['newSession']  ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c4a594ff55.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
+    <script defer src="<?php echo URLROOT; ?>/js/script.js"></script>
+    <title>View To be Done Session Details</title>
+</head>
+<body>
+    <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
+    <section class="view-profile-container theme">
+        <div class="card">
+            <div class="main-image">
+                <a href="<?php echo URLROOT ?>/MedInstrSession/medInstrOldSession" class="backto-doctors"><i class="fa-solid fa-arrow-left"></i>Back to Completed Sessions</a>
+                <h1> <?php echo $data['oldSession']->title ?> <br> <?php echo $data['oldSession']->date ?></h1>
+             
+            </div>
+            <div class="bottom">
+                <ul>
+                    <li>Starting Time - <?php echo $data['oldSession']->starting_time ?></li>
+                    <li>Ending Time - <?php echo $data['oldSession']->ending_time ?></li>
+                    <li>Fee - <?php echo $data['oldSession']->fee ?></li>
+                    <li>Address - <?php echo $data['oldSession']->address ?></li>
+                   
+                </ul>
+                <div class="bottom-line"></div>
+            </div>
+        </div>
+    </section>
 
-<sectionc class="sViewMAMD">
-
-      <div class="cViewMAMD">
-
-              <h1>Session Details</h1>
-
-      <div class="cViewMAMDAA">
-
-
-              <form >
-                  <div>
-                      <label>Title</label>
-                      <input type="text"  disabled="true" value="<?php echo $newSession->title ?>">
-
-                      <label>Date</label>
-                      <input type="text"  disabled="true" value="<?php echo $newSession->date ?>">
-
-                      <label>Starting Time</label>
-                      <input type="text"  disabled="true" value="<?php echo $newSession->starting_time ?>">
-
-                      <label>Ending Time</label>
-                      <input type="text"  disabled="true" value="<?php echo $newSession->ending_time ?>" >
-
-                      <label>Address</label>
-                      <input type="email"  disabled="true" value="<?php echo $newSession->address ?>">
-
-                      <label>Fee</label>
-                      <input type="text"  disabled="true" value="<?php echo $newSession->fee ?>">
-
-
-                      <label>Description</label>
-
-                      <textarea rows="8" cols="71" id="viewmoresessiontxtarea" ><?php echo $newSession->description ?></textarea>
-
-                      <button id="cBigButton" onclick="location.href='<?php echo URLROOT;?>/MedInstrSession/medInstrNewSession'" type="button">Go back</button>
-
-
-
-                  </div>
-
-
-
-
-              </form>
-
-      </div>
-
-
-      </div>
-
-  </section>
-
-
-
-
-
-<?php require APPROOT.'/views/inc/footer.php'; ?>
-
-
+    <?php require APPROOT.'/views/inc/components/footer1.php'; ?>
+</body>
+</html>

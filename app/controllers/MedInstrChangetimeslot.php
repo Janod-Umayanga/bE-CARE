@@ -69,7 +69,7 @@ class MedInstrChangetimeslot extends Controller{
           'meditation_instructor_id'=>$_SESSION['MedInstr_id'],      
           'timeslot_id'=>$_SESSION['Med_Instr_timeslot_id'],          
 
-          
+          'date_err'=>'',  
           'starting_time_err'=>'',
           'ending_time_err'=>'',
           'fee_err'=>'',
@@ -93,8 +93,13 @@ class MedInstrChangetimeslot extends Controller{
         if(empty($data['address'])){
            $data['address_err']='Please enter a address';
         } 
-        
-        if( empty($data['starting_time_err']) && empty($data['ending_time_err']) && empty($data['fee_err']) && empty($data['address_err']) ){
+       
+        if(empty($data['date'])){
+          $data['date_err']='Please enter a date';
+       } 
+       
+
+        if( empty($data['starting_time_err']) && empty($data['ending_time_err']) && empty($data['fee_err']) && empty($data['address_err']) && empty($data['date_err']) ){
  
             $updateTimeslot=$this->medInstrChangetimeslotModel->updatetimeslot($data,$timeslot_id);
        
@@ -119,8 +124,7 @@ class MedInstrChangetimeslot extends Controller{
         'timeslot_id'=>$_SESSION['Med_Instr_timeslot_id'],
 
         
-        'month_err'=>'',
-        'day_err'=>'',
+        'date_err'=>'',
         'starting_time_err'=>'',
         'ending_time_err'=>'',
         'fee_err'=>'',
@@ -150,7 +154,13 @@ class MedInstrChangetimeslot extends Controller{
               'fee'=>$timeslot->fee,
               'address'=>$timeslot->address,      
               'meditation_instructor_id'=>$_SESSION['MedInstr_id'],      
-              'timeslot_id'=>$timeslot_id  
+              'timeslot_id'=>$timeslot_id,
+              
+              'date_err'=>'',
+              'starting_time_err'=>'',
+              'ending_time_err'=>'',
+              'fee_err'=>'',
+              'address_err'=>''
             
             ];
             $this->view('MedInstrChangetimeslot/v_medInstrUpdatetimeslot',$data);
