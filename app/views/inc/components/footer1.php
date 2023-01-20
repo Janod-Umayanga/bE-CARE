@@ -1,7 +1,7 @@
 <footer class="footer">
         <div class="about-becare">
             <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-            <p>This is a web platform build by CS Group 11 of UCSC batch 20/21 for the second year group project. This would provide an opportunity for service providers in local healchcare sector to provide their service more effectively as well as for people in the country to get their service at the time they need.</p>
+            <p>This is a web platform build by CS Group 11 of UCSC batch 19/20 for the second year group project. This would provide an opportunity for service providers in local healchcare sector to provide their service more effectively as well as for people in the country to get their service at the time they need.</p>
         </div>
         <div class="footer-links">
             <div>

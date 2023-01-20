@@ -18,7 +18,7 @@
 
     <section class="main-content-container">
         <div class="main-content">
-            <p>From UCSC batch 20/21 CS Group 11</p>
+            <p>From UCSC batch 19/20 CS Group 11</p>
             <h1>Local Healthcare <br> Platform</h1>
             <div class="main-two-buttons-container">
                 <a href="#our-services-container" class="main-button">Services</a>
