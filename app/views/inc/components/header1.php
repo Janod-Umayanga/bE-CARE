@@ -30,7 +30,7 @@
                         
                         <?php if(isset($_SESSION['patient_id'])): ?>
                             <a href="<?php echo URLROOT ?>/Patient/details" class="nav-buttons"><?php echo $_SESSION['patient_name'] ?></a>
-                            <a href="<?php echo URLROOT ?>/Patient/logout" class="nav-buttons register-button">LOG OUT</a>
+                            <a href="<?php echo URLROOT ?>/Login/logout" class="nav-buttons register-button">LOG OUT</a>
                         <?php elseif(isset($_SESSION['admin_id'])): ?>
                             <a href="<?php echo URLROOT ?>/Admin/profile" class="nav-buttons"><?php echo strtoupper($_SESSION["admin_gender"].$_SESSION['admin_name']) ?></a>
                             <a href="<?php echo URLROOT ?>/Admin/logout" class="nav-buttons register-button">LOG OUT</a>  
@@ -38,7 +38,7 @@
                             <a href="<?php echo URLROOT ?>/MedInstr/profile" class="nav-buttons"><?php echo strtoupper($_SESSION["MedInstr_gender"].$_SESSION['MedInstr_name']) ?></a>
                             <a href="<?php echo URLROOT ?>/MedInstr/logout" class="nav-buttons register-button">LOG OUT</a>
                         <?php else: ?>
-                            <a href="<?php echo URLROOT ?>/Patient/login" class="nav-buttons">LOGIN</a>
+                            <a href="<?php echo URLROOT ?>/Login/login" class="nav-buttons">LOGIN</a>
                             <a href="<?php echo URLROOT ?>/Patient/signup" class="nav-buttons register-button">SIGN UP</a>
                         <?php endif; ?>
                     </div>

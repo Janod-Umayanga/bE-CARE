@@ -35,7 +35,7 @@
             <form action="<?php echo URLROOT ?>/Patient/signup" method="POST" id="patient-form">
                 <div class="topic-of-form">
                     <h1>Signup..</h1>
-                    <p>Already have an account <a href="<?php echo URLROOT ?>/Patient/login">Login</a></p>
+                    <p>Already have an account <a href="<?php echo URLROOT ?>/Login/login">Login</a></p>
                 </div>
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left">
@@ -176,7 +176,7 @@
             <form action="" id="counsellor-form">
                <div class="topic-of-form">
                     <h1>Signup..</h1>
-                    <p>Already have an account <a href="<?php echo URLROOT ?>/Patient/login">Login</a></p>
+                    <p>Already have an counsellor account <a href="<?php echo URLROOT ?>/Patient/login">Login</a></p>
                 </div>
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left">
@@ -257,13 +257,12 @@
                         <span class="form-invalid"><?php #echo $data['account_number_err'] ?></span>
 
                     </div>
-
             </form>
 
-            <form action="" id="meditationInstructor-form">
+            <form action="" id="meditation-instructor-form">
                <div class="topic-of-form">
                     <h1>Signup..</h1>
-                    <p>Already have an account <a href="<?php echo URLROOT ?>/Patient/login">Login</a></p>
+                    <p>Already have a meditation instructor account <a href="<?php echo URLROOT ?>/Patient/login">Login</a></p>
                 </div>
              
                 <div class="diet-form-inputs-and-buttons">
@@ -352,7 +351,7 @@
             <form action="" id="nutritionist-form">
                <div class="topic-of-form">
                     <h1>Signup..</h1>
-                    <p>Already have an account <a href="<?php echo URLROOT ?>/Patient/login">Login</a></p>
+                    <p>Already have a nutritionist account <a href="<?php echo URLROOT ?>/Patient/login">Login</a></p>
                 </div>
              
                 <div class="diet-form-inputs-and-buttons">
@@ -437,7 +436,7 @@
             <form action="" id="pharmacist-form">
                <div class="topic-of-form">
                     <h1>Signup..</h1>
-                    <p>Already have an account <a href="<?php echo URLROOT ?>/Patient/login">Login</a></p>
+                    <p>Already have a pharmacist account <a href="<?php echo URLROOT ?>/Patient/login">Login</a></p>
                 </div>
              
                 <div class="diet-form-inputs-and-buttons">

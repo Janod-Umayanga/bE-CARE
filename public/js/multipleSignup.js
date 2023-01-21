@@ -13,8 +13,20 @@ const forms = [
         element: document.getElementById('doctor-form')
     },
     {
-        text: 'Admin',
-        element: document.getElementById('admin-form')
+        text: 'Counsellor',
+        element: document.getElementById('counsellor-form')
+    },
+    {
+        text: 'Meditation Instructor',
+        element: document.getElementById('meditation-instructor-form')
+    },
+    {
+        text: 'Nutritionist',
+        element: document.getElementById('nutritionist-form')
+    },
+    {
+        text: 'Pharmacist',
+        element: document.getElementById('pharmacist-form')
     }
 ]
 let setFormElement = forms

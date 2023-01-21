@@ -1396,9 +1396,10 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
 }
 
-#doctor-form, #admin-form{
+#doctor-form, #nutritionist-form, #meditation-instructor-form, #pharmacist-form{
     display: none;
 }
+
 
 @keyframes anim {
     100%{
