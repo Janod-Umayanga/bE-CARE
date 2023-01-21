@@ -13,6 +13,20 @@
             $this->view('pages/v_index_patient');
         }
 
+        public function feedback()
+          {
+            $feedback= $this->pagesModel->getAllfeedBack();
+            $patient= $this->pagesModel->getPatientDetails();
+            
+            $data=[                      
+              'feedback'=>$feedback,
+              'patient'=>$patient
+              
+            ];
+            $this->view('pages/v_feedback',$data);
+        
+          }
+
         public function about() {
             $users = $this->pagesModel->getUsers();
 
