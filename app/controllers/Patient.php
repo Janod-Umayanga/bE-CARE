@@ -453,7 +453,7 @@
             }
             else {
                 // Redirect to login
-                redirect('Patient/login');
+                redirect('Login/login');
             }
         }
 
@@ -477,7 +477,7 @@
             }
             else {
                 // Redirect to login
-                redirect('Patient/login');
+                redirect('Login/login');
             }
         }
 
@@ -704,7 +704,7 @@
             }
             else {
                 // Redirect to login
-                redirect('Patient/login');
+                redirect('Login/login');
             }
         }
 
@@ -838,7 +838,7 @@
             }
             else {
                 // Redirect to login
-                redirect('Patient/login');
+                redirect('Login/login');
             }
         }
 
@@ -856,7 +856,7 @@
             }
             else {
                 // Redirect to login
-                redirect('Patient/login');
+                redirect('Login/login');
             }
         }
 
