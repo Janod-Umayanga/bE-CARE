@@ -17,7 +17,7 @@
     
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <div class="pharmacy-main-picture-container">
+    <div class="counsellor-main-picture-container">
         <div class="tittle">
             <i class="fa-solid fa-hand-holding-heart"></i>
             <h1>Find Your Counsellor<br>to talk with!</h1>

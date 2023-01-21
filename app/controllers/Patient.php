@@ -338,6 +338,80 @@
             }
         }
 
+        // Update password
+        public function changePW() {
+            $loggedPatient = $this->patientModel->getPatientById($_SESSION['patient_id']);
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // Form is submitting
+
+                // Data validation
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                // Inserted form
+                $data = [
+                    'expw' => trim($_POST['expw']),
+                    'newpw' => trim($_POST['newpw']),
+                    'password_confirmation' => trim($_POST['password_confirmation']),
+
+                    'expw_err' => '',
+                    'newpw_err' => '',
+                    'password_confirmation_err' => ''
+                ];
+
+                // Validate each input
+
+                // Validate password
+                if(empty($data['expw'])) {
+                    $data['expw_err'] = 'Current password required';
+                }
+                elseif(!$this->patientModel->verifyPW($_SESSION['patient_id'], $data['expw'])){
+                    $data['expw_err'] = 'Invalid password';
+                }
+                if(empty($data['newpw'])) {
+                    $data['newpw_err'] = 'Enter a new password';
+                }
+                else if(empty($data['password_confirmation'])) {
+                    $data['password_confirmation_err'] = 'Password confirmation required';
+                }
+                else {
+                    if($data['newpw'] != $data['password_confirmation']) {
+                        $data['password_confirmation_err'] = 'Password did not match';
+                    }
+                }
+
+                // Update patient password after validation
+                if(empty($data['expw_err']) && empty($data['newpw_err']) && empty($data['password_confirmation_err'])) {
+                    // Hashing new password
+                    $data['newpw'] = password_hash($data['newpw'], PASSWORD_DEFAULT);
+                    // Update patient
+                    if($this->patientModel->updatePW($data, $_SESSION['patient_id'])) {
+                        redirect('Pages/index');
+                    }
+                    else {
+                        die('Something went wrong');
+                    }
+                }
+                else {
+                    // Load view
+                     $this->view('patients/v_change_password', $data);
+                }
+            }
+            else {
+                $data = [
+                    'expw' => '',
+                    'newpw' => '',
+                    'password_confirmation' => '',
+
+                    'expw_err' => '',
+                    'newpw_err' => '',
+                    'password_confirmation_err' => ''
+                ];
+
+                // Load view
+                $this->view('patients/v_change_password', $data);
+            }
+        }
+
         // Report complaints
         public function complaints() {
             if($_SERVER['REQUEST_METHOD'] == 'POST') {

@@ -91,6 +91,37 @@
                 return false;
             }
         }
+
+        // Update patient password
+        public function updatePW($data, $patient_id) {
+            $this->db->query('UPDATE patient SET password = :password WHERE patient_id = :patient_id');
+            $this->db->bind(':password', $data['newpw']);
+            $this->db->bind(':patient_id', $patient_id);
+
+            if($this->db->execute()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        // verify current password of patient
+        public function verifyPW($patient_id, $password) {
+            $this->db->query('SELECT * FROM patient WHERE patient_id = :patient_id');
+            $this->db->bind(':patient_id', $patient_id);
+
+            $row = $this->db->single();
+
+            // Verify password
+            $hashed_pw = $row->password;
+            if(password_verify($password, $hashed_pw)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
     }
 
 ?>
