@@ -766,12 +766,13 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                 flash('post_msg', 'add new patient successfully');
                      redirect('AdminUserMgmt/patient'); 
             }else{
-                die('Error creating');
+              $this->view('AdminUserMgmt/Patient/v_patientAddNew',$data);
             }  
        
        }else{
-           redirect('AdminUserMgmt/patient'); 
-       }
+            $this->view('AdminUserMgmt/Patient/v_patientAddNew',$data);
+
+        }
       
            
       }else{
@@ -780,6 +781,19 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
  
         $data=[
  
+         
+
+          'first_name'=>'',
+          'last_name'=>'',
+          'nic'=>'',
+          'contact_number'=>'',
+          'email'=>'',
+          'password'=>'',
+          'confirm_password'=>'',
+          'gender'=>'',
+  
+          
+
          'first_name_err'=>'',
          'last_name_err'=>'',
          'nic_err'=>'',
@@ -854,29 +868,34 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
              'qualification_file_err'=>'',
              
           ];
-          $fileExt=explode('.',$_FILES['qualification_file']['name']);
-          $fileActualExt=strtolower(end($fileExt));
-          $allowed=array('jpg','jpeg','png','pdf','zip','rar');
-
-         
-          if(!in_array($fileActualExt,$allowed)){
-            $data['qualification_file_err']='You cannot upload files of this type';
-
-          }
-    
-
-          if($data['qualification_file']['size']>0){
-            if(uploadFile($data['qualification_file']['tmp_name'],$data['qualification_file_name'],'/upload/doctor_qualification/')){
-                       
-            }else{  
-             $data['qualification_file_err']='Unsuccessful qualification_file uploading';
-             
-            }
+       
+          if(empty($data['qualification_file'])){
+            $data['qualification_file_err']='qualification file can not be empty';
           }else{
-             $data[ 'qualification_file_err'] ="qualification file size is empty";
-           
+              $fileExt=explode('.',$_FILES['qualification_file']['name']);
+              $fileActualExt=strtolower(end($fileExt));
+              $allowed=array('jpg','jpeg','png','pdf','zip','rar');
+
+            
+              if(!in_array($fileActualExt,$allowed)){
+                $data['qualification_file_err']='You cannot upload files of this type';
+
+              }
+        
+
+              if($data['qualification_file']['size']>0){
+                if(uploadFile($data['qualification_file']['tmp_name'],$data['qualification_file_name'],'/upload/doctor_qualification/')){
+                          
+                }else{  
+                $data['qualification_file_err']='Unsuccessful qualification_file uploading';
+                
+                }
+              }else{
+                $data[ 'qualification_file_err'] ="qualification file size is empty";
+              
+              }
+    
           }
- 
           if(empty($data['first_name'])){
              $data['first_name_err']='first name can not be empty';
           }
@@ -914,7 +933,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
           }
           
           if(empty($data['acount_holder_name'])){
-              $data['acount_holder_name_err']='acount_holder name can not be empty';
+              $data['account_holder_name_err']='acount holder name can not be empty';
           }
         
           if(empty($data['branch'])){
@@ -922,7 +941,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
           }
         
           if(empty($data['account_number'])){
-            $data['account_number_err']='last name can not be empty';
+            $data['account_number_err']='account number can not be empty';
           }
 
           if(empty($data['slmc_reg_number'])){
@@ -941,9 +960,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
             $data['gender_err']='gender can not be empty';
           }
           
-          if(empty($data['qualification_file'])){
-            $data['qualification_file_err']='qualification_file can not be empty';
-          }
+       
 
           
           if($data['password']!=$data['confirm_password']){
@@ -1652,7 +1669,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
              'account_holder_name'=>trim($_POST['account_holder_name']),
              'branch'=>trim($_POST['branch']),
              'account_number'=>trim($_POST['account_number']),
-             'slmc_reg_number'=>trim($_POST['slmc_reg_number']),
+             'slmc_reg_number'=>trim($_POST['slmc']),
              'pharmacy_name'=>trim($_POST['pharmacy_name']),
              'address'=>trim($_POST['address']),
              'gender'=>trim($_POST['gender']),
@@ -1956,7 +1973,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
          }
          
          if(empty($data['acount_holder_name'])){
-             $data['acount_holder_name_err']='acount_holder name can not be empty';
+             $data['account_holder_name_err']='acount holder name can not be empty';
          }
        
          if(empty($data['branch'])){
