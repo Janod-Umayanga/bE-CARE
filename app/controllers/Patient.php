@@ -7,6 +7,7 @@
         private $pharmacistModel;
         private $orderRequestModel;
         private $counsellorModel;
+        private $counsellorTimeslotModel;
         private $nutritionistModel;
         private $requestDietPlanModel;
         private $doctorChannelModel;
@@ -19,6 +20,7 @@
             $this->pharmacistModel = $this->model('M_Pharmacist');
             $this->orderRequestModel = $this->model('M_Order_Request');
             $this->counsellorModel = $this->model('M_Counsellor');
+            $this->counsellorTimeslotModel = $this->model('M_Counsellor_Timeslot');
             $this->nutritionistModel = $this->model('M_Nutritionist');
             $this->requestDietPlanModel = $this->model('M_Request_Diet_Plan');
             $this->doctorChannelModel = $this->model('M_Doctor_Channel');
@@ -499,6 +501,30 @@
 
             // Load view
             $this->view('patients/v_counsellors', $data);
+        }
+
+        // Get counsellor id needed for viewing counsellor timeslots
+        public function getCounsellorId(){
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                $counsellor_id = trim($_POST['counsellor_id']);
+                $_SERVER['REQUEST_METHOD'] = '';
+
+                // Pass the pharmacist id for order medicine
+                $this->viewCounsellorTimeslots($counsellor_id);
+            }
+        }
+
+        // View doctor timeslots
+        public function viewCounsellorTimeslots($counsellor_id) {
+            $timeslots = $this->counsellorTimeslotModel->getAllCounsellorTimeslots($counsellor_id);
+            $data = [
+                'timeslots' => $timeslots,
+                'counsellor_id' => $counsellor_id
+            ];
+
+            // Load view
+            $this->view('patients/v_counsellor_timeslots', $data);
         }
 
         // View counsellor profile

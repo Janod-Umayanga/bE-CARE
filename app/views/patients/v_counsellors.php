@@ -78,7 +78,7 @@
                     <div class="right">
                         <p>City : <?php  echo $counsellor->city ?></p>
                         <h2>Psychological Counsellor</h2>
-                        <form action="" method="POST">
+                        <form action="<?php echo URLROOT ?>/Patient/getCounsellorId" method="POST">
                             <input type="hidden" name="counsellor_id" id="counsellor_id" value="<?php echo $counsellor->counsellor_id ?>">
                             <button class="channel-butten">Channel</button>
                         </form>
