@@ -834,6 +834,7 @@
                     if(empty($data['name_err']) && empty($data['address_err']) && empty($data['cnumber_err']) && empty($data['prescription_err'])) {
                         // Create order
                         if($this->orderRequestModel->createOrderRequest($data, $_SESSION['patient_id'])) {
+                            $_SESSION['order_sent'] = true;
                             redirect('Pages/index');
                         }
                         else {
@@ -933,8 +934,8 @@
         }
 
         // View doctor profile
-        public function viewMedidationInstructorProfile($meditation_instructor_id) {
-            $meditation_instructor = $this->doctorModel->getMeditationInstructorById($meditation_instructor_id);
+        public function viewMeditationInstructorProfile($meditation_instructor_id) {
+            $meditation_instructor = $this->meditationInstructorModel->getMeditationInstructorById($meditation_instructor_id);
             $data = [
                 'meditation_instructor' => $meditation_instructor
             ];

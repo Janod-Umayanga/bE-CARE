@@ -22,7 +22,7 @@
         }
 
         // Get meditation instructor by id
-        public function getDoctorbyId($meditation_instructor_id) {
+        public function getMeditationInstructorById($meditation_instructor_id) {
             $this->db->query("SELECT * FROM meditation_instructor WHERE meditation_instructor_id = :meditation_instructor_id");
             $this->db->bind(':meditation_instructor_id', $meditation_instructor_id);
             
