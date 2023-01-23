@@ -1529,6 +1529,60 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 
 /* Diet plan page style ends here */
 
+/* notification style */
+#notification-container{
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    overflow: hidden;
+}
+.notification{
+    width: 300px;
+    height: 50px;
+    background-color: white;
+    color: var(--hue-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0px;
+    gap: 10px;
+    position: relative;
+    transform: translateX(100%);
+    animation: notify 0.3s linear forwards;
+    opacity: 0;
+}
+.notification i{
+    font-size: 20px;
+    color: var(--hue-dark-blue);
+}
+.notification::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 5px;
+    background-color: var(--hue-dark-blue);
+    animation: reduceWidth 5s linear forwards;
+}
+
+@keyframes notify {
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes reduceWidth {
+    100% {
+        width: 0;
+    }
+}
+/* notification style ends */
+
 /* Responsive precess starts here */
 
 @media (max-width: 956px){

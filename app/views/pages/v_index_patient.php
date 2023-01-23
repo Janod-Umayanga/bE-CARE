@@ -11,11 +11,13 @@
     <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
     <script defer src="<?php echo URLROOT; ?>/js/script.js"></script>
+    <script defer src="<?php echo URLROOT; ?>/js/pushNotification.js"></script>
     <title>BeCare</title>
 </head>
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
+    <div id="notification-container"></div>
     <section class="main-content-container">
         <div class="main-content">
             <p>From UCSC batch 19/20 CS Group 11</p>
@@ -75,12 +77,5 @@
 
     <span id="isPatientLoggedIn"><?php if(isset($_SESSION['first_time_logged'])){echo $_SESSION['first_time_logged']; unset($_SESSION['first_time_logged']);}?></span>
     <?php require APPROOT.'/views/inc/components/footer1.php'; ?>
-    <script>
-        let loggedInMessage = document.getElementById('isPatientLoggedIn');
-        if (loggedInMessage.innerText){
-            alert("Logged In");
-            loggedInMessage.innerText = "";
-        }
-    </script>
 </body>
 </html>

@@ -19,8 +19,8 @@
 
     <div class="doctor-main-picture-container">
         <div class="tittle">
-            <i class="fa-solid fa-stethoscope"></i>
-            <h1>Find Your Instructor<br>for Medicating!</h1>
+            <i class="fa-solid fa-hands-praying"></i>
+            <h1>Find Your Instructor<br>for Meditating!</h1>
         </div>
         <div class="pharmacy-search-section theme">
             <form action="" class="search-form-pharmacy" method="POST">
@@ -50,7 +50,8 @@
             <?php foreach($data['meditation_instructors'] as $meditation_instructor): ?>
                 <div class="card theme theme">
                     <div class="left theme">
-                        <h2><?php echo $meditation_instructor->first_name ?> <?php  echo $meditation_instructor->first_name ?> <?php  echo $meditation_instructor->last_name ?></h2>
+                        <p></p>
+                        <h2><?php echo $meditation_instructor->gender ?>. <?php  echo $meditation_instructor->first_name ?> <?php  echo $meditation_instructor->last_name ?></h2>
                         <a href="<?php echo URLROOT ?>/Patient/viewMeditationInstructorProfile/<?php echo $meditation_instructor->meditation_instructor_id ?>">View profile <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                     <div class="right">
