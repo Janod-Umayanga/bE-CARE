@@ -49,7 +49,7 @@
                 <img src="<?php echo URLROOT; ?>/img/sevices-images/find-a-nutritionist.jpg" alt="">
                 <p>******<br>Find a Nutritionist</p>
             </a>
-            <a href="#" class="card">
+            <a href="<?php echo URLROOT ?>/Patient/findMedidationInstructor" class="card">
                 <img src="<?php echo URLROOT; ?>/img/sevices-images/find-a-meditation-instructor.jpg" alt="">
                 <p>******<br>Find a Meditation Instructor</p>
             </a>
@@ -73,6 +73,14 @@
         <button id="show-button" class="show-button" onclick="showMore()"><span id="show-text">Show More</span><i class="fa-solid fa-angle-down" id="icon-more-orless"></i></button>
     </section>
 
+    <span id="isPatientLoggedIn"><?php if(isset($_SESSION['first_time_logged'])){echo $_SESSION['first_time_logged']; unset($_SESSION['first_time_logged']);}?></span>
     <?php require APPROOT.'/views/inc/components/footer1.php'; ?>
+    <script>
+        let loggedInMessage = document.getElementById('isPatientLoggedIn');
+        if (loggedInMessage.innerText){
+            alert("Logged In");
+            loggedInMessage.innerText = "";
+        }
+    </script>
 </body>
 </html>

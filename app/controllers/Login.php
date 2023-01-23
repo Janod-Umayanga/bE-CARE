@@ -174,6 +174,7 @@
             $_SESSION['patient_id'] = $patient->patient_id;
             $_SESSION['patient_email'] = $patient->email;
             $_SESSION['patient_name'] = $patient->first_name;
+            $_SESSION['first_time_logged'] = true;
         
             redirect('Pages/index');
         }

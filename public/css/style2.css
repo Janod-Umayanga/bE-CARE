@@ -1521,6 +1521,10 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     gap: 10px;
 }
 
+/* #isPatientLoggedIn{
+    display: none;
+} */
+
 /************************************************** View profile Page style ends ****************************************************/
 
 /* Diet plan page style ends here */

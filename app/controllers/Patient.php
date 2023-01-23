@@ -13,6 +13,7 @@
         private $doctorChannelModel;
         private $doctorTimeslotModel;
         private $sessionModel;
+        private $meditationInstructorModel;
         public function __construct() {
             $this->patientModel = $this->model('M_Patient');
             $this->complaintModel = $this->model('M_Complaint');
@@ -26,6 +27,7 @@
             $this->doctorChannelModel = $this->model('M_Doctor_Channel');
             $this->doctorTimeslotModel = $this->model('M_Doctor_Timeslot');
             $this->sessionModel = $this->model('M_Session');
+            $this->meditationInstructorModel = $this->model('M_Meditation_Instructor');
         }
 
         public function signup() {
@@ -884,6 +886,61 @@
                 // Redirect to login
                 redirect('Login/login');
             }
+        }
+
+         // View and search meditation instructors
+         public function findMedidationInstructor() {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // Search using the given keyword
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $meditation_instructors = $this->meditationInstructorModel->getMeditationInstructors(trim($_POST['search']), trim($_POST['city']));
+            }
+            else {
+                // Show all doctors
+                $meditation_instructors = $this->meditationInstructorModel->getAllMeditationInstructors();
+            }
+            $data = [
+                'meditation_instructors' => $meditation_instructors
+            ];
+
+            // Load view
+            $this->view('patients/v_meditation_instructors', $data);
+        }
+
+        // Get doctor id needed for viewing doctor timeslots
+        public function getMedidationInstructorId(){
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                $meditation_instructor_id = trim($_POST['meditation_instructor_id']);
+                $_SERVER['REQUEST_METHOD'] = '';
+
+                // Pass the pharmacist id for order medicine
+                $this->viewMeditationInstructorTimeslots($meditation_instructor_id);
+            }
+        }
+
+        // View doctor timeslots
+        public function viewMeditationInstructorTimeslots($doctor_id) {
+            $timeslots = $this->doctorTimeslotModel->getAllDoctorTimeslots($doctor_id);
+            $data = [
+                'timeslots' => $timeslots,
+                'doctor_id' => $doctor_id
+            ];
+
+            // Load view
+            $this->view('patients/v_doctor_timeslots', $data);
+        }
+
+        // View doctor profile
+        public function viewMedidationInstructorProfile($meditation_instructor_id) {
+            $meditation_instructor = $this->doctorModel->getMeditationInstructorById($meditation_instructor_id);
+            $data = [
+                'meditation_instructor' => $meditation_instructor
+            ];
+
+            // Load view
+            $this->view('patients/v_meditation_instructor_profile', $data);
         }
 
         // View sessions
