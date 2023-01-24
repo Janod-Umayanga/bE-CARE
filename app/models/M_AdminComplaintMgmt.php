@@ -66,6 +66,61 @@
         }
       }
 
+
+
+      public function getnoOfSolvedComplaint()
+      
+      {
+        $this->db->query('SELECT count(complaint_id) as solvedComplaint_count FROM complaint WHERE complaint_flag=1');
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return $row;
+        }else{
+              return false;
+        }
+      }
+      public function getnoOfUnsolvedComplaint()
+      
+      
+      {
+        $this->db->query('SELECT count(complaint_id) as unsolvedComplaint_count FROM complaint WHERE complaint_flag=0');
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return $row;
+        }else{
+              return false;
+        }
+      }
+
+      public function getSolvedComplaint()
+
+      {
+        $this->db->query('SELECT * FROM complaint WHERE complaint_flag=1');
+        return $this->db->resultSet();
+      }
+
+      public function  getUnsolvedComplaint()
+      {
+        $this->db->query('SELECT * FROM complaint WHERE complaint_flag=0');
+        return $this->db->resultSet();
+      }
+
+      
+      public function  setSolved($id)
+ 
+      {
+          $this->db->query('UPDATE complaint set complaint_flag=1 WHERE complaint_id = :id');
+          $this->db->bind(':id',$id);
+  
+          if($this->db->execute()){
+             return true;
+          }else{
+              return false;
+          } 
+      } 
+
    }
 
 

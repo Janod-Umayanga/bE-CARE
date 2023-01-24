@@ -16,7 +16,7 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <section class="view-profile-container theme">
+    <section class="view-profile-container-requestedSP theme">
         <div class="card">
             <div class="main-image">
                 <a href="<?php echo URLROOT ?>/AdminReqSerProviders/adminReqDoctor" class="backto-doctors"><i class="fa-solid fa-arrow-left"></i>Back to Requested Doctors</a>
@@ -46,7 +46,7 @@
                    
                     <li>Account Number - <?php echo $data['doctor']->account_number ?></li>
                     <li>Type - <?php echo $data['doctor']->type ?></li>
-                    <li>Qualification File -  <button class=""><a download="<?php echo $data['doctor']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/doctor_qualification/<?php echo $meditationInstructor->qualification_file ?>">Download</a></button>
+                    <li>Qualification File   <button class="download"><a download="<?php echo $data['doctor']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/doctor_qualification/<?php echo $meditationInstructor->qualification_file ?>">Download</a></button>
 
                     </li>
                    

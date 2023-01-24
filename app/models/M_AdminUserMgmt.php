@@ -10,7 +10,7 @@
 
       public function getNoOfDoctors()
       {
-        $this->db->query('SELECT COUNT(doctor_id) as doctor_count FROM doctor WHERE delete_flag=0');
+        $this->db->query('SELECT COUNT(doctor_id) as doctor_count FROM doctor ');
        
         $row= $this->db->single();
 
@@ -24,7 +24,7 @@
       
       public function getNoOfCounsellors()
       {
-        $this->db->query('SELECT COUNT(counsellor_id) as counsellor_count FROM counsellor WHERE delete_flag=0');
+        $this->db->query('SELECT COUNT(counsellor_id) as counsellor_count FROM counsellor ');
        
         $row= $this->db->single();
 
@@ -38,7 +38,7 @@
       
       public function getNoOfNutritionist()
       {
-        $this->db->query('SELECT COUNT(nutritionist_id) as nutritionist_count FROM nutritionist WHERE delete_flag=0');
+        $this->db->query('SELECT COUNT(nutritionist_id) as nutritionist_count FROM nutritionist ');
        
         $row= $this->db->single();
 
@@ -53,7 +53,7 @@
       
       public function getNoOfMeditationInstr()
       {
-        $this->db->query('SELECT COUNT(meditation_instructor_id) as meditation_instructor_count FROM meditation_instructor WHERE delete_flag=0');
+        $this->db->query('SELECT COUNT(meditation_instructor_id) as meditation_instructor_count FROM meditation_instructor ');
        
         $row= $this->db->single();
 
@@ -67,7 +67,7 @@
       
       public function getNoOfPharmacist()
       {
-        $this->db->query('SELECT COUNT(pharmacist_id) as pharmacist_count FROM pharmacist WHERE delete_flag=0');
+        $this->db->query('SELECT COUNT(pharmacist_id) as pharmacist_count FROM pharmacist ');
        
         $row= $this->db->single();
 
@@ -81,7 +81,7 @@
 
       public function getNoOfPatient()
       {
-        $this->db->query('SELECT COUNT(patient_id) as patient_count FROM patient WHERE delete_flag=0');
+        $this->db->query('SELECT COUNT(patient_id) as patient_count FROM patient ');
        
         $row= $this->db->single();
 
@@ -92,10 +92,36 @@
         }
       } 
 
+      
+      public function getNoOfActivePatient()
+      {
+        $this->db->query('SELECT COUNT(patient_id) as patient_active_count FROM patient WHERE delete_flag=0');
+       
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return $row;
+        }else{
+              return false;
+        }
+      } 
+
+      public function getNoOfDeactivePatient()
+      {
+        $this->db->query('SELECT COUNT(patient_id) as patient_deactive_count FROM patient WHERE delete_flag=1');
+       
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return $row;
+        }else{
+              return false;
+        }
+      } 
 
       public function getNoOfAdmin()
       {
-        $this->db->query('SELECT COUNT(admin_id) as admin_count FROM admin WHERE delete_flag=0');
+        $this->db->query('SELECT COUNT(admin_id) as admin_count FROM admin ');
        
         $row= $this->db->single();
 
@@ -112,7 +138,7 @@
 
       public function getPatients()
       {
-        $this->db->query('SELECT *  FROM patient WHERE delete_flag=0');
+        $this->db->query('SELECT *  FROM patient ');
        
         $result=$this->db->resultSet();
          return $result;
@@ -120,7 +146,7 @@
 
       public function getSearchPatients($search)
       {
-        $this->db->query("SELECT * FROM patient WHERE CONCAT(first_name,last_name) LIKE '%$search%' AND delete_flag=0");
+        $this->db->query("SELECT * FROM patient WHERE CONCAT(first_name,last_name) LIKE '%$search%' ");
         $result=$this->db->resultSet();
          return $result;
       } 
@@ -147,7 +173,7 @@
 
       public function getDoctors()
       {
-        $this->db->query('SELECT *  FROM doctor WHERE delete_flag=0');
+        $this->db->query('SELECT *  FROM doctor ');
        
         $result=$this->db->resultSet();
          return $result;
@@ -155,7 +181,7 @@
 
       public function getSearchDoctors($search)
       {
-        $this->db->query("SELECT * FROM doctor WHERE CONCAT(first_name,last_name,city,type,specialization) LIKE '%$search%' AND delete_flag=0");
+        $this->db->query("SELECT * FROM doctor WHERE CONCAT(first_name,last_name,city,type,specialization) LIKE '%$search%' ");
         $result=$this->db->resultSet();
          return $result;
       } 
@@ -182,7 +208,7 @@
 
       public function getCounsellors()
       {
-        $this->db->query('SELECT *  FROM counsellor WHERE delete_flag=0');
+        $this->db->query('SELECT *  FROM counsellor ');
        
         $result=$this->db->resultSet();
          return $result;
@@ -190,7 +216,7 @@
 
       public function getSearchCounsellors($search)
       {
-        $this->db->query("SELECT * FROM counsellor WHERE CONCAT(first_name,last_name,city) LIKE '%$search%' AND delete_flag=0");
+        $this->db->query("SELECT * FROM counsellor WHERE CONCAT(first_name,last_name,city) LIKE '%$search%' ");
         $result=$this->db->resultSet();
          return $result;
       } 
@@ -217,7 +243,7 @@
 
       public function getAdmins()
       {
-        $this->db->query('SELECT *  FROM admin WHERE delete_flag=0');
+        $this->db->query('SELECT *  FROM admin ');
        
         $result=$this->db->resultSet();
          return $result;
@@ -225,7 +251,7 @@
 
       public function getSearchAdmins($search)
       {
-        $this->db->query("SELECT * FROM admin WHERE CONCAT(first_name,last_name) LIKE '%$search%' AND delete_flag=0");
+        $this->db->query("SELECT * FROM admin WHERE CONCAT(first_name,last_name) LIKE '%$search%' ");
         $result=$this->db->resultSet();
          return $result;
       } 
@@ -252,7 +278,7 @@
 
       public function getMeditationInstructors()
       {
-        $this->db->query('SELECT *  FROM meditation_instructor WHERE delete_flag=0');
+        $this->db->query('SELECT *  FROM meditation_instructor ');
        
         $result=$this->db->resultSet();
          return $result;
@@ -260,7 +286,7 @@
 
       public function getSearchMeditationInstructors($search)
       {
-        $this->db->query("SELECT * FROM meditation_instructor WHERE CONCAT(first_name,last_name,city,address) LIKE '%$search%' AND delete_flag=0");
+        $this->db->query("SELECT * FROM meditation_instructor WHERE CONCAT(first_name,last_name,city,address) LIKE '%$search%' ");
         $result=$this->db->resultSet();
          return $result;
       } 
@@ -287,7 +313,7 @@
 
       public function getPharmacists()
       {
-        $this->db->query('SELECT *  FROM pharmacist WHERE delete_flag=0');
+        $this->db->query('SELECT *  FROM pharmacist ');
        
         $result=$this->db->resultSet();
          return $result;
@@ -295,7 +321,7 @@
 
       public function getSearchPharmacists($search)
       {
-        $this->db->query("SELECT * FROM pharmacist WHERE CONCAT(first_name,last_name,city,pharmacy_name,address) LIKE '%$search%' AND delete_flag=0");
+        $this->db->query("SELECT * FROM pharmacist WHERE CONCAT(first_name,last_name,city,pharmacy_name,address) LIKE '%$search%' ");
         $result=$this->db->resultSet();
          return $result;
       } 
@@ -323,7 +349,7 @@
 
       public function getNutritionists()
       { 
-        $this->db->query('SELECT *  FROM nutritionist WHERE delete_flag=0');
+        $this->db->query('SELECT *  FROM nutritionist ');
        
         $result=$this->db->resultSet();
          return $result;
@@ -331,7 +357,7 @@
 
       public function getSearchNutritionists($search)
       {
-        $this->db->query("SELECT * FROM nutritionist WHERE CONCAT(first_name,last_name) LIKE '%$search%' AND delete_flag=0");
+        $this->db->query("SELECT * FROM nutritionist WHERE CONCAT(first_name,last_name) LIKE '%$search%' ");
         $result=$this->db->resultSet();
          return $result;
       } 
@@ -355,13 +381,13 @@
       } 
 
 
-        // Delete a Patient
+        // Deactivated a Patient
 
        
-        public function  deletePatient($patient_id)
+        public function  deactivatedPatient($id)
         {
             $this->db->query('UPDATE patient set delete_flag=1 WHERE patient_id = :id');
-            $this->db->bind(':id',$patient_id);
+            $this->db->bind(':id',$id);
     
             if($this->db->execute()){
                return true;
@@ -370,6 +396,22 @@
             } 
         } 
         
+            // Activated a Patient
+
+                  
+            public function  activatedPatient($id)
+            {
+            $this->db->query('UPDATE patient set delete_flag=0 WHERE patient_id = :id');
+            $this->db->bind(':id',$id);
+
+            if($this->db->execute()){
+                  return true;
+            }else{
+                  return false;
+            } 
+            } 
+
+
        // Delete a Doctor
 
        
@@ -852,7 +894,9 @@ if($this->db->rowCount() >0){
         }else{
               return false;
         }
-    }
+      }
+
+     
 
 
    }

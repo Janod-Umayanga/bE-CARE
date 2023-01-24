@@ -1,7 +1,8 @@
 <?php
 
 class MedInstrSession extends Controller{
-  
+    private $medInstrSessionModel;
+ 
     public function __construct(){
     $this->medInstrSessionModel = $this->model('M_MedInstrSession');
   }

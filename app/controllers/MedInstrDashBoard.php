@@ -1,6 +1,8 @@
 <?php
 
 class MedInstrDashBoard extends Controller{
+  private $medInstrDashBoardModel;
+    
   public function __construct(){
     $this->medInstrDashBoardModel = $this->model('M_MedInstrDashBoard');
   }

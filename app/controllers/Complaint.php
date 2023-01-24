@@ -1,6 +1,8 @@
 <?php
 
 class Complaint extends Controller{
+  private $complaintModel; 
+
   public function __construct(){
     $this->complaintModel = $this->model('M_Complaint');
   }

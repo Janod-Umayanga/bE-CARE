@@ -296,6 +296,93 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 
 /* Service section ends here */
 
+
+
+/* Service section Complaint Mgmt starts here */
+
+.our-services-container-complaint{
+    --hue: var(--hue-white);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 0px;
+    background-color: var(--hue);
+    color: var(--hue-black);
+}
+
+.our-services-container-complaint.dark{
+    --hue: var(--hue-black);
+    color: var(--hue-white);
+}
+
+.our-services-container-complaint .service-topic{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.our-services-container-complaint .service-topic .line{
+    width: 55px;
+    height: 4px;
+    border-radius: 5px;
+    background-color: #0076c098;
+}
+
+.our-services-container-complaint .card-container-forservices{
+    width: 70vw;
+    display: flex;
+    height: 275px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 30px;
+    overflow: hidden;
+}
+
+.our-services-container-complaint .card-container-forservices.active{
+    height: fit-content;
+    overflow: auto;
+}
+
+.our-services-container-complaint .card-container-forservices .card{
+    width: 340px;
+    height: 275px;
+    background-color: #f1eaea;
+    color: var(--hue-black);
+    font-weight: 800;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+.our-services-container-complaint .card-container-forservices .card img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.our-services-container-complaint .show-button{
+    --hue: var(--hue-black);
+    padding: 5px 20px;
+    outline: none;
+    border-radius: 20px;
+    border: 1px solid var(--hue);
+    margin-top: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Service section ends here */
+
+
+
 /* Footer starts here */
 
 .footer{
@@ -830,6 +917,46 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     font-size: 4.5rem;
 }
 /* doctor page ends */
+
+
+/* For Complaint page */
+.doctor-main-picture-container-complaint{
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../img/doctor-page-pictures/doctor-main-image.jpg);
+    background-size: cover;
+    overflow: hidden;
+}
+
+.doctor-main-picture-container-complaint .tittle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 40px;
+    color: var(--hue-white);
+    line-height: 40px;
+    margin-bottom: 50px;
+}
+
+.doctor-main-picture-container-complaint .tittle i{
+    font-size: 4.5rem;
+}
+/* complaint page ends */
+
+
+
+
+
+
+
+
+
+
 
 /* For counsellor page */
 .counsellor-main-picture-container{
@@ -1524,6 +1651,408 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 
 /************************************************** View profile Page style ends ****************************************************/
 
+
+/************************************************** View profile requestedSP  Page style starts ****************************************************/
+
+.view-profile-container-requestedSP{
+    width: 100%;
+    height: fit-content;
+    padding: 10vh 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dedede;
+    overflow: hidden;
+}
+
+.view-profile-container-requestedSP.dark{
+    background-color: var(--hue-black);
+}
+
+.view-profile-container-requestedSP .card{
+    width: 50%;
+    height: fit-content;
+    background-color: var(--hue-white);
+    overflow: hidden;
+    position: relative;
+}
+
+.view-profile-container-requestedSP .card .main-image{
+    width: 100%;
+    height: 250px;
+    position: relative;
+    padding: 7% 10%;
+    text-align: right;
+    background-image: url(../img/view-profile-pictures/view-profile-image.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: var(--hue-white);
+}
+
+.view-profile-container-requestedSP .card .main-image p{
+    font-size: 14px;
+}
+
+.view-profile-container-requestedSP .card .main-image .profile-icon{
+    position: absolute;
+    bottom: 10px;
+    left: 2%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    background-color: #1D242B;
+    cursor: pointer;
+}
+
+.view-profile-container-requestedSP .card .main-image .social-media-icons{
+    position: absolute;
+    bottom: 15px;
+    right: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--hue-black);
+}
+
+.view-profile-container-requestedSP .card .main-image .social-media-icons i{
+    cursor: pointer;
+}
+
+.view-profile-container-requestedSP .card .bottom{
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    position: relative;
+}
+
+.view-profile-container-requestedSP .card .bottom ul{
+    width: 100%;
+}
+
+.view-profile-container-requestedSP .card .bottom ul li{
+    list-style: none;
+    margin-top: 20px;
+    border-bottom: 1px solid #d8d3d3;
+    font-weight: 700;
+    color: #1d242bb6;
+}
+
+
+.view-profile-container-requestedSP .card .bottom ul li .download{
+    padding: 8px 20px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+    margin-bottom:20px;
+}
+
+
+.view-profile-container-requestedSP .card .bottom ul li .download a{
+    color: var(--hue-white);
+   
+}
+.view-profile-container-requestedSP .card .bottom ul li a{
+    text-decoration: none;
+    color: #1d242bb6;
+}
+
+.view-profile-container-requestedSP .card .bottom .bottom-line{
+    width: 100%;
+    height: 20px;
+    background-color: #0d5f84;
+    margin-top: 30px;
+}
+
+.view-profile-container-requestedSP .card .main-image .backto-doctors{
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: #fafafacd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    gap: 10px;
+}
+
+/************************************************** View profile Page style ends ****************************************************/
+
+
+
+/************************************************** view-profile-container-complaintMgmtViewMore style starts ****************************************************/
+
+.view-profile-container-complaintMgmtViewMore{
+    width: 100%;
+    height: fit-content;
+    padding: 10vh 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dedede;
+    overflow: hidden;
+}
+
+.view-profile-container-complaintMgmtViewMore.dark{
+    background-color: var(--hue-black);
+}
+
+.view-profile-container-complaintMgmtViewMore .card{
+    width: 50%;
+    height: fit-content;
+    background-color: var(--hue-white);
+    overflow: hidden;
+    position: relative;
+}
+
+.view-profile-container-complaintMgmtViewMore .card .main-image{
+    width: 100%;
+    height: 250px;
+    position: relative;
+    padding: 7% 10%;
+    text-align: right;
+    background-image: url(../img/view-profile-pictures/view-profile-image.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: var(--hue-white);
+}
+
+.view-profile-container-complaintMgmtViewMore .card .main-image p{
+    font-size: 14px;
+}
+
+.view-profile-container-complaintMgmtViewMore .card .main-image .profile-icon{
+    position: absolute;
+    bottom: 10px;
+    left: 2%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    background-color: #1D242B;
+    cursor: pointer;
+}
+
+.view-profile-container-complaintMgmtViewMore .card .main-image .social-media-icons{
+    position: absolute;
+    bottom: 15px;
+    right: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--hue-black);
+}
+
+.view-profile-container-complaintMgmtViewMore .card .main-image .social-media-icons i{
+    cursor: pointer;
+}
+
+.view-profile-container-complaintMgmtViewMore .card .bottom{
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    position: relative;
+}
+
+.view-profile-container-complaintMgmtViewMore .card .bottom ul{
+    width: 100%;
+}
+
+.view-profile-container-complaintMgmtViewMore .card .bottom ul li{
+    list-style: none;
+    margin-top: 20px;
+    border-bottom: 1px solid #d8d3d3;
+    font-weight: 700;
+    color: #1d242bb6;
+}
+
+.view-profile-container-complaintMgmtViewMore .card .bottom ul li a{
+    text-decoration: none;
+    color: #1d242bb6;
+}
+
+.view-profile-container-complaintMgmtViewMore .card .bottom ul .solvedForm button{
+    padding: 8px 20px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+    margin-bottom:20px;
+    margin-top:20px;
+    cursor: pointer;
+}
+
+
+
+.view-profile-container-complaintMgmtViewMore .card .bottom .bottom-line{
+    width: 100%;
+    height: 20px;
+    background-color: #0d5f84;
+    margin-top: 30px;
+}
+
+.view-profile-container-complaintMgmtViewMore .card .main-image .backto-doctors{
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: #fafafacd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    gap: 10px;
+}
+
+/************************************************** View profile userMgmt style ends ****************************************************/
+
+
+
+
+/************************************************** view-profile-container-userMgmt style starts ****************************************************/
+
+.view-profile-container-userMgmt{
+    width: 100%;
+    height: fit-content;
+    padding: 10vh 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dedede;
+    overflow: hidden;
+}
+
+.view-profile-container-userMgmt.dark{
+    background-color: var(--hue-black);
+}
+
+.view-profile-container-userMgmt .card{
+    width: 50%;
+    height: fit-content;
+    background-color: var(--hue-white);
+    overflow: hidden;
+    position: relative;
+}
+
+.view-profile-container-userMgmt .card .main-image{
+    width: 100%;
+    height: 250px;
+    position: relative;
+    padding: 7% 10%;
+    text-align: right;
+    background-image: url(../img/view-profile-pictures/view-profile-image.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: var(--hue-white);
+}
+
+.view-profile-container-userMgmt .card .main-image p{
+    font-size: 14px;
+}
+
+.view-profile-container-userMgmt .card .main-image .profile-icon{
+    position: absolute;
+    bottom: 10px;
+    left: 2%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    background-color: #1D242B;
+    cursor: pointer;
+}
+
+.view-profile-container-userMgmt .card .main-image .social-media-icons{
+    position: absolute;
+    bottom: 15px;
+    right: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--hue-black);
+}
+
+.view-profile-container-userMgmt .card .main-image .social-media-icons i{
+    cursor: pointer;
+}
+
+.view-profile-container-userMgmt .card .bottom{
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    position: relative;
+}
+
+.view-profile-container-userMgmt .card .bottom ul{
+    width: 100%;
+}
+
+.view-profile-container-userMgmt .card .bottom ul li{
+    list-style: none;
+    margin-top: 20px;
+    border-bottom: 1px solid #d8d3d3;
+    font-weight: 700;
+    color: #1d242bb6;
+}
+
+.view-profile-container-userMgmt .card .bottom ul li a{
+    text-decoration: none;
+    color: #1d242bb6;
+}
+
+.view-profile-container-userMgmt .card .bottom ul .deactiveForm button{
+    padding: 8px 30px;
+    background-color: red;
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+
+
+.view-profile-container-userMgmt .card .bottom ul .activeForm button{
+    padding: 8px 30px;
+    background-color: green;
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+
+.view-profile-container-userMgmt .card .bottom .bottom-line{
+    width: 100%;
+    height: 20px;
+    background-color: #0d5f84;
+    margin-top: 30px;
+}
+
+.view-profile-container-userMgmt .card .main-image .backto-doctors{
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: #fafafacd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    gap: 10px;
+}
+
+/************************************************** View profile userMgmt style ends ****************************************************/
+
+
 /************************************************** Table Page style starts *********************************************************/
 
 .table-section{
@@ -1659,6 +2188,783 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 
 /************************************************** Table Page style ends *********************************************************/
 
+
+/************************************************** table-section-MIregUsers style starts *********************************************************/
+
+
+.table-section-MIRegUsers{
+    width: 100%;
+    height: fit-content;
+    background-color: #ebecee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.table-section-MIRegUsers.dark{
+    background-color: var(--hue-black);
+}
+
+.table-section-MIRegUsers .table-container{
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #c7c5c5;
+    padding: 30px 0;
+}
+
+
+.table-section-MIRegUsers .table-container h1,h4{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    color: var(--hue-black);
+}
+.table-section-MIRegUsers .table-container.dark{
+    box-shadow: none;
+}
+
+.table-section-MIRegUsers .table-container .table-topic-main{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0%;
+    color: var(--hue-black);
+}
+
+.table-section-MIRegUsers .table-container .table-topic-main button{
+    padding: 8px 30px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+}
+
+
+.table-section-MIRegUsers .table-container .table-topic-main button a{
+ text-decoration:none;
+ color:var(--hue-white);
+}
+.table-section-MIRegUsers .table-container .search-section{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.table-section-MIRegUsers .table-container .search-section .search-bar .searchForm{
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+    margin-bottom: 20px;
+}
+
+.table-section-MIRegUsers .table-container .search-section .search-bar input{
+    width: 95%;
+}
+
+.table-section-MIRegUsers .table-container .search-section .search-bar button{
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-section-MIRegUsers .table-container .table{
+    width: 100%;
+    padding: 0 3%;
+    margin-top: 30px;
+    overflow: auto;
+    margin-bottom: 20px;
+}
+
+.table-section-MIRegUsers .table-container .table table{
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: none;
+}
+
+.table-section-MIRegUsers .table-container .table table th,
+.table-section-MIRegUsers .table-container .table table td{
+    width: calc(100% / 5);
+    padding: 10px 15px;
+}
+
+.table-section-MIRegUsers .table-container .table table th{
+    font-weight: 300;
+}
+
+.table-section-MIRegUsers .table-container .table table tr:nth-child(1){
+    background-color: #1D242B;
+    color: #f0ecec;
+}
+
+.table-section-MIRegUsers .table-container .table table tr:nth-child(even){
+    background-color: #f5f2f2;
+}
+
+.table-section-MIRegUsers .table-container .table table tr td:nth-child(5){
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+
+.table-section-MIRegUsers  .table-container .table table tr td:nth-child(5)   form .viewMore{
+    width: 60px;
+    height: fit-content;
+    background-color:  var(--hue-dark-blue);;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+.table-section-MIRegUsers  .table-container .table table tr td:nth-child(5)  form .viewRegUsers{
+    width: 110px;
+    height: fit-content;
+    background-color:  green;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/************************************************** Table Page style ends *********************************************************/
+
+
+/************************************************** Table-section-MISessionRegUsers style starts *********************************************************/
+
+
+.table-section-MISessionRegUsers{
+    width: 100%;
+    height: fit-content;
+    background-color: #ebecee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.table-section-MISessionRegUsers.dark{
+    background-color: var(--hue-black);
+}
+
+.table-section-MISessionRegUsers .table-container{
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #c7c5c5;
+    padding: 30px 0;
+}
+
+.table-section-MISessionRegUsers .table-container.dark{
+    box-shadow: none;
+}
+
+.table-section-MISessionRegUsers .table-container .table-topic-main{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    color: var(--hue-black);
+}
+
+.table-section-MISessionRegUsers .table-container .table-topic-main button{
+    padding: 8px 30px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+}
+
+
+.table-section-MISessionRegUsers .table-container .table-topic-main button a{
+ text-decoration:none;
+ color:var(--hue-white);
+}
+.table-section-MISessionRegUsers .table-container .search-section{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.table-section-MISessionRegUsers .table-container .search-section .search-bar .searchform{
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+
+.table-section-MISessionRegUsers .table-container .search-section .search-bar input{
+    width: 95%;
+}
+
+.table-section-MISessionRegUsers .table-container .search-section .search-bar button{
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-section-MISessionRegUsers .table-container .table{
+    width: 100%;
+    padding: 0 3%;
+    height: 50vh;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.table-section-MISessionRegUsers .table-container .table table{
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: none;
+}
+
+.table-section-MISessionRegUsers .table-container .table table th,
+.table-section-MISessionRegUsers .table-container .table table td{
+    width: calc(100% / 5);
+    padding: 10px 15px;
+}
+
+.table-section-MISessionRegUsers .table-container .table table th{
+    font-weight: 300;
+}
+
+.table-section-MISessionRegUsers .table-container .table table tr:nth-child(1){
+    background-color: #1D242B;
+    color: #f0ecec;
+}
+
+.table-section-MISessionRegUsers .table-container .table table tr:nth-child(even){
+    background-color: #f5f2f2;
+}
+
+.table-section-MISessionRegUsers .table-container .table table tr td:nth-child(5){
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+
+.table-section-MISessionRegUsers  .table-container .table table tr td:nth-child(5)   form .viewMore{
+    width: 60px;
+    height: fit-content;
+    background-color:  var(--hue-dark-blue);;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+.table-section-MISessionRegUsers  .table-container .table table tr td:nth-child(5)  form .viewRegUsers{
+    width: 110px;
+    height: fit-content;
+    background-color:  green;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/************************************************** Table Page style ends *********************************************************/
+
+
+
+/************************************************** Table-section-MISession  style starts *********************************************************/
+
+
+.table-section-MISession{
+    width: 100%;
+    height: fit-content;
+    background-color: #ebecee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.table-section-MISession.dark{
+    background-color: var(--hue-black);
+}
+
+.table-section-MISession .table-container{
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #c7c5c5;
+    padding: 30px 0;
+}
+
+.table-section-MISession .table-container.dark{
+    box-shadow: none;
+}
+
+.table-section-MISession .table-container .table-topic-main{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    color: var(--hue-black);
+}
+
+.table-section-MISession .table-container .table-topic-main button{
+    padding: 8px 30px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+}
+
+
+.table-section-MISession .table-container .table-topic-main button a{
+ text-decoration:none;
+ color:var(--hue-white);
+}
+.table-section-MISession .table-container .search-section{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.table-section-MISession .table-container .search-section .search-bar .searchform{
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+
+.table-section-MISession .table-container .search-section .search-bar input{
+    width: 95%;
+}
+
+.table-section-MISession .table-container .search-section .search-bar button{
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-section-MISession .table-container .table{
+    width: 100%;
+    padding: 0 3%;
+    height: 50vh;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.table-section-MISession .table-container .table table{
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: none;
+}
+
+.table-section-MISession .table-container .table table th,
+.table-section-MISession .table-container .table table td{
+    width: calc(100% / 3);
+    padding: 10px 15px;
+}
+
+.table-section-MISession .table-container .table table th{
+    font-weight: 300;
+}
+
+.table-section-MISession .table-container .table table tr:nth-child(1){
+    background-color: #1D242B;
+    color: #f0ecec;
+}
+
+.table-section-MISession .table-container .table table tr:nth-child(even){
+    background-color: #f5f2f2;
+}
+
+.table-section-MISession .table-container .table table tr td:nth-child(5){
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+
+.table-section-MISession  .table-container .table table tr td:nth-child(5)   form .viewMore{
+    width: 60px;
+    height: fit-content;
+    background-color:  var(--hue-dark-blue);;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+.table-section-MISession  .table-container .table table tr td:nth-child(5)  form .viewRegUsers{
+    width: 110px;
+    height: fit-content;
+    background-color:  green;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/************************************************** Table Page style ends *********************************************************/
+
+
+/************************************************** Table-section-MIChangeSession style starts *********************************************************/
+
+
+.table-section-MIChangeSession{
+    width: 100%;
+    height: fit-content;
+    background-color: #ebecee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.table-section-MIChangeSession.dark{
+    background-color: var(--hue-black);
+}
+
+.table-section-MIChangeSession .table-container{
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #c7c5c5;
+    padding: 30px 0;
+}
+
+.table-section-MIChangeSession .table-container.dark{
+    box-shadow: none;
+}
+
+.table-section-MIChangeSession .table-container .table-topic-main{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    color: var(--hue-black);
+}
+
+.table-section-MIChangeSession .table-container .table-topic-main button{
+    padding: 8px 30px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+}
+
+
+.table-section-MIChangeSession .table-container .table-topic-main button a{
+ text-decoration:none;
+ color:var(--hue-white);
+}
+.table-section-MIChangeSession .table-container .search-section{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.table-section-MIChangeSession .table-container .search-section .search-bar .searchform{
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+
+.table-section-MIChangeSession .table-container .search-section .search-bar input{
+    width: 95%;
+}
+
+.table-section-MIChangeSession .table-container .search-section .search-bar button{
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-section-MIChangeSession .table-container .table{
+    width: 100%;
+    padding: 0 3%;
+    height: 50vh;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.table-section-MIChangeSession .table-container .table table{
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: none;
+}
+
+.table-section-MIChangeSession .table-container .table table th,
+.table-section-MIChangeSession .table-container .table table td{
+    width: calc(100% / 6);
+    padding: 10px 15px;
+}
+
+.table-section-MIChangeSession .table-container .table table th{
+    font-weight: 300;
+}
+
+.table-section-MIChangeSession .table-container .table table tr:nth-child(1){
+    background-color: #1D242B;
+    color: #f0ecec;
+}
+
+.table-section-MIChangeSession .table-container .table table tr:nth-child(even){
+    background-color: #f5f2f2;
+}
+
+.table-section-MIChangeSession .table-container .table table tr td:nth-child(6){
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+
+
+.table-section-MIChangeSession .table-container .table table tr td:nth-child(6)   form .update{
+    width: 60px;
+    height: fit-content;
+    background-color:  green;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+.table-section-MIChangeSession .table-container .table table tr td:nth-child(6)  form .delete{
+    width: 60px;
+    height: fit-content;
+    background-color:  #ed4d4d;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/************************************************** Table Page style ends *********************************************************/
+
+
+
+/************************************************** Table-section-MIChangeTimeslot style starts *********************************************************/
+
+
+.table-section-MIChangeTimeslot{
+    width: 100%;
+    height: fit-content;
+    background-color: #ebecee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.table-section-MIChangeTimeslot.dark{
+    background-color: var(--hue-black);
+}
+
+.table-section-MIChangeTimeslot .table-container{
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #c7c5c5;
+    padding: 30px 0;
+}
+
+.table-section-MIChangeTimeslot .table-container.dark{
+    box-shadow: none;
+}
+
+.table-section-MIChangeTimeslot .table-container .table-topic-main{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    color: var(--hue-black);
+}
+
+.table-section-MIChangeTimeslot .table-container .table-topic-main button{
+    padding: 8px 30px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+}
+
+
+.table-section-MIChangeTimeslot .table-container .table-topic-main button a{
+ text-decoration:none;
+ color:var(--hue-white);
+}
+.table-section-MIChangeTimeslot .table-container .search-section{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.table-section-MIChangeTimeslot .table-container .search-section .search-bar .searchform{
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+
+.table-section-MIChangeTimeslot .table-container .search-section .search-bar input{
+    width: 95%;
+}
+
+.table-section-MIChangeTimeslot .table-container .search-section .search-bar button{
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-section-MIChangeTimeslot .table-container .table{
+    width: 100%;
+    padding: 0 3%;
+    height: 50vh;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.table-section-MIChangeTimeslot .table-container .table table{
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: none;
+}
+
+.table-section-MIChangeTimeslot .table-container .table table th,
+.table-section-MIChangeTimeslot .table-container .table table td{
+    width: calc(100% / 5);
+    padding: 10px 15px;
+}
+
+.table-section-MIChangeTimeslot .table-container .table table th{
+    font-weight: 300;
+}
+
+.table-section-MIChangeTimeslot .table-container .table table tr:nth-child(1){
+    background-color: #1D242B;
+    color: #f0ecec;
+}
+
+.table-section-MIChangeTimeslot .table-container .table table tr:nth-child(even){
+    background-color: #f5f2f2;
+}
+
+.table-section-MIChangeTimeslot .table-container .table table tr td:nth-child(5){
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+
+
+.table-section-MIChangeTimeslot .table-container .table table tr td:nth-child(5)   form .update{
+    width: 60px;
+    height: fit-content;
+    background-color:  green;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+.table-section-MIChangeTimeslot .table-container .table table tr td:nth-child(5)  form .delete{
+    width: 60px;
+    height: fit-content;
+    background-color:  #ed4d4d;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/************************************************** Table Page style ends *********************************************************/
+
+
 /* notification style */
 #notification-container{
     position: absolute;
@@ -1698,6 +3004,308 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     background-color: var(--hue-dark-blue);
     animation: reduceWidth 5s linear forwards;
 }
+
+
+/************************************************** Table 2 Page style starts *********************************************************/
+
+.table-section-2{
+    width: 100%;
+    height: fit-content;
+    background-color: #ebecee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.table-section-2.dark{
+    background-color: var(--hue-black);
+}
+
+.table-section-2 .table-container{
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #c7c5c5;
+    padding: 30px 0;
+}
+
+.table-section-2 .table-container.dark{
+    box-shadow: none;
+}
+
+.table-section-2 .table-container .table-topic-main{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    color: var(--hue-black);
+}
+
+.table-section-2 .table-container .table-topic-main button{
+    padding: 8px 30px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+}
+
+
+.table-section-2 .table-container .table-topic-main button a{
+ text-decoration:none;
+ color:var(--hue-white);
+}
+.table-section-2 .table-container .search-section{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.table-section-2 .table-container .search-section .search-bar .searchform{
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+
+.table-section-2 .table-container .search-section .search-bar input{
+    width: 95%;
+}
+
+.table-section-2 .table-container .search-section .search-bar button{
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-section-2 .table-container .table{
+    width: 100%;
+    padding: 0 3%;
+    height: 50vh;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.table-section-2 .table-container .table table{
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: none;
+}
+
+.table-section-2 .table-container .table table th,
+.table-section-2 .table-container .table table td{
+    width: calc(100% / 6);
+    padding: 10px 15px;
+}
+
+.table-section-2 .table-container .table table th{
+    font-weight: 300;
+}
+
+.table-section-2 .table-container .table table tr:nth-child(1){
+    background-color: #1D242B;
+    color: #f0ecec;
+}
+
+.table-section-2 .table-container .table table tr:nth-child(even){
+    background-color: #f5f2f2;
+}
+
+.table-section-2 .table-container .table table tr td:nth-child(6){
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.table-section-2 .table-container .table table tr td:nth-child(6) button{
+    width: 40px;
+    height: fit-content;
+    background-color: #0077C0;
+    border: none;
+    color: var(--hue-white);
+    padding: 4px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.table-section-2 .table-container .table table tr td:nth-child(6) button:nth-child(2){
+    background-color: #ed4d4d;
+}
+
+/************************************************** Table Page style ends *********************************************************/
+
+
+
+
+/************************************************** Table 2 Page style starts *********************************************************/
+
+.table-section-requested{
+    width: 100%;
+    height: fit-content;
+    background-color: #ebecee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.table-section-requested.dark{
+    background-color: var(--hue-black);
+}
+
+.table-section-requested .table-container{
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #c7c5c5;
+    padding: 30px 0;
+}
+
+.table-section-requested .table-container.dark{
+    box-shadow: none;
+}
+
+.table-section-requested .table-container .table-topic-main{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    color: var(--hue-black);
+}
+
+
+.table-section-requested .table-container .search-section{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.table-section-requested .table-container .search-section .search-bar .searchForm{
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+
+.table-section-requested .table-container .search-section .search-bar .searchForm input{
+    width: 95%;
+}
+
+.table-section-requested .table-container .search-section .search-bar .searchForm button{
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-section-requested .table-container .table{
+    width: 100%;
+    padding: 0 3%;
+    height: 50vh;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.table-section-requested .table-container .table table{
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: none;
+}
+
+.table-section-requested .table-container .table table th,
+.table-section-requested .table-container .table table td{
+    width: calc(100% / 4);
+    padding: 10px 15px;
+}
+
+.table-section-requested .table-container .table table th{
+    font-weight: 300;
+}
+
+.table-section-requested .table-container .table table tr:nth-child(1){
+    background-color: #1D242B;
+    color: #f0ecec;
+}
+
+.table-section-requested .table-container .table table tr:nth-child(even){
+    background-color: #f5f2f2;
+}
+
+.table-section-requested .table-container .table table tr td:nth-child(6){
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.table-section-requested .table-container .table table tr td:nth-child(6) button{
+    width: 40px;
+    height: fit-content;
+    background-color: #0077C0;
+    border: none;
+    color: var(--hue-white);
+    padding: 4px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.table-section-requested .table-container .table table tr td:nth-child(7) button{
+    width: 50px;
+    height: fit-content;
+    background-color: green;
+    border: none;
+    color: var(--hue-white);
+    padding: 4px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.table-section-requested .table-container .table table tr td:nth-child(8) button{
+    width: 80px;
+    height: fit-content;
+    background-color:red;
+    border: none;
+    color: var(--hue-white);
+    padding: 4px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.table-section-requested .table-container .table table tr td:nth-child(6) button:nth-child(2){
+    background-color: #ed4d4d;
+}
+
+/************************************************** Table Page style ends *********************************************************/
+
+
+
+
+
+
 
 @keyframes notify {
     100% {

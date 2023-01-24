@@ -17,50 +17,33 @@
     
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <div class="doctor-main-picture-container">
+    <div class="doctor-main-picture-container-complaint">
         <div class="tittle">
             <i class="fa-solid fa-stethoscope"></i>
             <h1>Meditation Instructor<br>Session!</h1>
         </div>
     </div>
 
-    <section class="doctor-cards-container theme">
-        <div class="doctor-cards-topic">
+    <section class="our-services-container-complaint theme" id="our-services-container">
+        <div class="service-topic">
             <span class="line"></span>
             <h2>Sessions</h2>
         </div>
-        <div class="card-content-fordoctors" id="to-be-show-more">
-            <div class="card-page">
-                
 
-              <div class="card theme theme">
-                    <div class="left theme">
-                        <p>No Of</p>
-                        <h2>Completed Sessions</h2>
-                       
-                    </div>
-                    <div class="right"><br><br>
-                        <h2> <b><?php echo $data["noOfoldSession"]->oldSession_count ?></b></h2>
-                          <button class="channel-butten"><a href="<?php echo URLROOT;?>/MedInstrSession/medInstrOldSession">View </a></button>
-                    </div>
-                </div>
-
-
-               <div class="card theme theme">
-                    <div class="left theme">
-                        <p>No Of </p>
-                        <h2> Sessions To be Done </h2>
-                       
-                    </div>
-                    <div class="right"><br><br>
-                        <h2> <b><?php echo $data["noOfnewSession"]->newSession_count ?></b></h2>
-                          <button class="channel-butten"><a href="<?php echo URLROOT;?>/MedInstrSession/medInstrNewSession">View </a></button>
-                    </div>
-                </div>
-
-              
+        <div class="card-container-forservices" id="to-be-show-more">
              
-            </div>
+            
+            <a href="<?php echo URLROOT;?>/MedInstrSession/medInstrOldSession" class="card">
+                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
+                <h3>Completed Sessions - <?php echo  $data["noOfoldSession"]->oldSession_count ?> </h3>
+            </a>
+            
+            <a href="<?php echo URLROOT;?>/MedInstrSession/medInstrNewSession" class="card">
+                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
+                <h3> Sessions To be Done  - <?php echo$data["noOfnewSession"]->newSession_count ?> </h3>     
+            </a>
+            
+            
         </div>
         <button id="show-button" class="show-button" onclick="showMore()"><span id="show-text">Show More</span><i class="fa-solid fa-angle-down" id="icon-more-orless"></i></button>
     </section>

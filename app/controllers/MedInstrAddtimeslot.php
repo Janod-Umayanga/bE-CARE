@@ -1,7 +1,7 @@
 <?php
 
 class MedInstrAddtimeslot extends Controller{
-
+    private $medInstrAddtimeslotModel; 
     public function __construct(){
     $this->medInstrAddtimeslotModel = $this->model('M_MedInstrAddtimeslot');
   }

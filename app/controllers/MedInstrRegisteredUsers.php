@@ -1,6 +1,8 @@
 <?php
 
 class MedInstrRegisteredUsers extends Controller{
+  private $medInstrRegisteredUsersModel;
+ 
   public function __construct(){
     $this->medInstrRegisteredUsersModel = $this->model('M_MedInstrRegisteredUsers');
   }

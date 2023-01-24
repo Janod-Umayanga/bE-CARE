@@ -1,165 +1,53 @@
-<?php require APPROOT.'/views/inc/header.php'; ?>
-<?php require APPROOT.'/views/inc/components/topnavbar.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c4a594ff55.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
+    <script defer src="<?php echo URLROOT; ?>/js/script.js"></script>
+    <title>Complaint Mangement</title>
+</head>
+<body>
+    
+    <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
+    <div class="doctor-main-picture-container-complaint">
+        <div class="tittle">
+            <i class="fa-solid fa-stethoscope"></i>
+            <h1>Complaint<br>Management!</h1>
+        </div>
+    </div>
 
+    <section class="our-services-container-complaint theme" id="our-services-container">
+        <dev class="service-topic">
+            <span class="line"></span>
+            <h2>Complaints</h2>
+        </dev>
 
- <sectionc class="sAdminAM">
-     <div class="cAdminAM">
-            <h1>Complaints</h1>
-         <div class="amAdmintable">
-
-
-            <table id="reg">
-              <tr>
-                <th>Name</th>
-                <th>User Type</th>
-                <th>Date</th>
-                <th>Email</th>
-                <th>Subject</th>
-                <th>Cpmplaint</th>
-
-
-              </tr>
-
-              <?php foreach($data['complaint'] as $complaint): ?>
-         
-                   <?php if($complaint->patient_id != NULL):
-                        
-                            foreach($data['patient'] as $patient): 
-                              
-                               if($complaint->patient_id==$patient->patient_id):
-                                   $firstname = $patient->first_name;
-                                   $lastname = $patient->last_name;
-                                   $email=$patient->email;
-                                   $type="Patient";
-                               endif;
-                            
-                          endforeach; 
-                 
-                  
-                    elseif($complaint->doctor_id != NULL):
-                        
-                        foreach($data['doctor'] as $doctor): 
-                          
-                           if($complaint->doctor_id==$doctor->doctor_id):
-                               $firstname = $doctor->first_name;
-                               $lastname = $doctor->last_name;
-                               $email=$doctor->email;
-                               $type="Doctor";
-                           endif;
-                        
-                       endforeach; 
+        <div class="card-container-forservices" id="to-be-show-more">
              
-                       elseif($complaint->counsellor_id != NULL):
-                        
-                        foreach($data['counsellor'] as $counsellor): 
-                          
-                           if($complaint->counsellor_id==$counsellor->counsellor_id):
-                               $firstname = $counsellor->first_name;
-                               $lastname = $counsellor->last_name;
-                               $email=$counsellor->email;
-                               $type="Counsellor";
-                           endif;
+            
+            <a href="<?php echo URLROOT;?>/AdminComplaintMgmt/solvedComplaint" class="card">
+                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
+                <h2>Solved - <?php echo $data["solvedComplaint"]->solvedComplaint_count ?> </h2>
+            </a>
+            
+            <a href="<?php echo URLROOT;?>/AdminComplaintMgmt/unsolvedComplaint" class="card">
+                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
+                <h2>Unsolved - <?php echo $data["unsolvedComplaint"]->unsolvedComplaint_count ?> </h2>     
+            </a>
+            
+            
+        </div>
+        <button id="show-button" class="show-button" onclick="showMore()"><span id="show-text">Show More</span><i class="fa-solid fa-angle-down" id="icon-more-orless"></i></button>
+    </section>
 
-                             
-                       endforeach; 
-                   
-                       elseif($complaint->nutritionist_id != NULL):
-                        
-                        foreach($data['nutritionist'] as $nutritionist): 
-                          
-                           if($complaint->nutritionist_id==$nutritionist->nutritionist_id):
-                               $firstname = $nutritionist->first_name;
-                               $lastname = $nutritionist->last_name;
-                               $email=$nutritionist->email;
-                               $type="Nutritionist";
-                           endif;
-
-                             
-                       endforeach;
-                       
-                       
-                       elseif($complaint->pharmacist_id != NULL):
-                        
-                        foreach($data['pharmacist'] as $pharmacist): 
-                          
-                           if($complaint->pharmacist_id==$pharmacist->pharmacist_id):
-                               $firstname = $pharmacist->first_name;
-                               $lastname = $pharmacist->last_name;
-                               $email=$pharmacist->email;
-                               $type="Pharmacist";
-                           endif;
-
-                             
-                       endforeach; 
-
-                       elseif($complaint->meditation_instructor_id != NULL):
-                        
-                        foreach($data['meditationInstr'] as $meditation_instructor): 
-                          
-                           if($complaint->meditation_instructor_id==$meditation_instructor->meditation_instructor_id):
-                               $firstname = $meditation_instructor->first_name;
-                               $lastname = $meditation_instructor->last_name;
-                               $email=$meditation_instructor->email;
-                               $type="Meditation Instructor";
-                           endif;
-
-                             
-                       endforeach; 
-                   
-                    
-                   
-                       endif;?>
-
-          
-
-                 <tr>
-                <td><?php echo $firstname ?> <?php echo $lastname ?></td>
-                <td><?php echo $type ?></td>
-                <td><?php echo $complaint->complaint_date ?></td>
-                <td><?php echo $email ?></td>
-                <td><?php echo $complaint->subject ?></td>
-
-                 <td>
-                    <form action="<?php echo URLROOT ?>/AdminComplaintMgmt/viewMore/<?php echo  $complaint->complaint_id ?>" method="post">
-                         <input type="hidden" name="first_name" value="<?php echo $firstname ?>">
-                         <input type="hidden" name="last_name" value="<?php echo $lastname ?>">
-                         <input type="hidden" name="type" value="<?php echo $type ?>">
-                         <input type="hidden" name="email" value="<?php echo $email ?>">
-                         
-                        <button  name="submit" class="buttonamDownload button1amDownload">View</button>
-                    </form>
-                </td>
-
-                  <tr>
-                 <td></td>
-                 <td></td>
-                 <td></td>
-                 <td></td>
-
-                 <td></td>
-                 <td></td>
-                 
-                  <td>
-
-                  </td>
-
-
-                 </tr>
-
-              
-
-                 <?php endforeach; ?> 
-         
-               
-
-
-           </table>
-     </div>
-      </div>
-  </section>
-
-
-
-
-<?php require APPROOT.'/views/inc/footer.php'; ?>
+    <?php require APPROOT.'/views/inc/components/footer1.php'; ?>
+</body>
+</html>
