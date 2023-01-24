@@ -2,6 +2,8 @@
 <?php
 
 class AdminUserMgmt extends Controller{
+  private $adminUserMgmtModel; 
+
   public function __construct(){
     $this->adminUserMgmtModel = $this->model('M_AdminUserMgmt');
   }
@@ -16,6 +18,9 @@ class AdminUserMgmt extends Controller{
    $meditationInstr= $this->adminUserMgmtModel->getNoOfMeditationInstr();
    $pharmacist= $this->adminUserMgmtModel->getNoOfPharmacist();
    $patient= $this->adminUserMgmtModel->getNoOfPatient();
+   $patient_active= $this->adminUserMgmtModel->getNoOfActivePatient();
+   $patient_deactive=$this->adminUserMgmtModel->getNoOfDeactivePatient();
+   
    $admin= $this->adminUserMgmtModel->getNoOfAdmin();
 
    $data=[                      
@@ -26,6 +31,9 @@ class AdminUserMgmt extends Controller{
      'pharmacist'=>$pharmacist,
      'patient'=>$patient,
      'admin'=>$admin,
+     'patient_active'=>$patient_active,
+     'patient_deactive'=>$patient_deactive,
+     
    
    ];
    $this->view('AdminUserMgmt/v_userMgmt',$data);
@@ -2083,6 +2091,66 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
   }
            
        }
+
+
+       //admin Deactivated Patient
+
+       public function adminDeactivatedPatient($id)
+        {
+           if(isset($_SESSION['admin_id'])) {  
+  
+                if($_SERVER['REQUEST_METHOD']=='GET'){
+                  $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
+            
+                     
+                      $patient= $this->adminUserMgmtModel->deactivatedPatient($id);
+        
+                      $data=[                      
+                        
+                      ];
+                     
+                      if($patient==true){
+                           redirect('AdminUserMgmt/Patient');
+                      }
+                } 
+            
+                }else{
+                  redirect('Admin/login');  
+                }
+        }
+
+  
+     //admin Activated Patient
+     
+
+       public function adminActivatedPatient($id)
+       {
+
+        if(isset($_SESSION['admin_id'])) {  
+  
+              if($_SERVER['REQUEST_METHOD']=='GET'){
+                $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
+          
+                   
+                $patient= $this->adminUserMgmtModel->activatedPatient($id);
+      
+                    $data=[                      
+                      
+                    ];
+                   
+                    if($patient==true){
+                         redirect('AdminUserMgmt/Patient');
+                    }
+              } 
+          
+        }else{
+             redirect('Admin/login');  
+        }
+
+
+
+       }
+
 }
 
 

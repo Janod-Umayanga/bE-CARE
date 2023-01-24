@@ -24,80 +24,43 @@
         </div>
     </div>
 
-    <section class="doctor-cards-container theme">
-        <div class="doctor-cards-topic">
+    <section class="our-services-container theme" id="our-services-container">
+        <dev class="service-topic">
             <span class="line"></span>
             <h2>Requested Service Providers</h2>
-        </div>
-        <div class="card-content-fordoctors" id="to-be-show-more">
-            <div class="card-page">
-                <div class="card theme theme">
-                    <div class="left theme">
-                        <p>No Of Requested</p>
-                        <h2> Doctors </h2>
-                       
-                    </div>
-                    <div class="right"><br><br>
-                        <h2> <b><?php echo $data["doctor"]->doctor_count ?></b></h2>
-                          <button class="channel-butten"><a href="<?php echo URLROOT;?>/AdminReqSerProviders/adminReqDoctor">View </a></button>
-                    </div>
-                </div>
-
-                
-
-                <div class="card theme theme">
-                    <div class="left theme">
-                        <p>No Of Requested</p>
-                        <h2> Counsellors </h2>
-                       
-                    </div>
-                    <div class="right"><br><br>
-                        <h2> <b><?php echo $data["counsellor"]->counsellor_count ?></b></h2>
-                          <button class="channel-butten"><a href="<?php echo URLROOT;?>/AdminReqSerProviders/adminReqCounsellor">View </a></button>
-                    </div>
-                </div>
-
-                <div class="card theme theme">
-                    <div class="left theme">
-                        <p>No Of Requested</p>
-                        <h2> Nutritionist </h2>
-                       
-                    </div>
-                    <div class="right"><br><br>
-                        <h2> <b><?php echo $data["nutritionist"]->nutritionist_count ?></b></h2>
-                          <button class="channel-butten"><a href="<?php echo URLROOT;?>/AdminReqSerProviders/adminReqNutritionist">View </a></button>
-                    </div>
-                </div>
-
-                <div class="card theme theme">
-                    <div class="left theme">
-                        <p>No Of Requested</p>
-                        <h2> Meditation Instructors </h2>
-                       
-                    </div>
-                    <div class="right"><br><br>
-                        <h2> <b><?php echo $data["meditationInstr"]->meditation_instructor_count ?></b></h2>
-                          <button class="channel-butten"><a href="<?php echo URLROOT;?>/AdminReqSerProviders/adminReqMeditationInstructor">View </a></button>
-                    </div>
-                </div>
-
-                <div class="card theme theme">
-                    <div class="left theme">
-                        <p>No Of Requested</p>
-                        <h2> Pharmacists </h2>
-                       
-                    </div>
-                    <div class="right"><br><br>
-                        <h2> <b><?php echo $data["pharmacist"]->pharmacist_count ?></b></h2>
-                          <button class="channel-butten"><a href="<?php echo URLROOT;?>/AdminReqSerProviders/adminReqPharmacist">View </a></button>
-                    </div>
-                </div>
-
-            </div>
+        </dev>
+        <div class="card-container-forservices" id="to-be-show-more">
+            
+            
+            <a href="<?php echo URLROOT;?>/AdminReqSerProviders/adminReqDoctor" class="card">
+                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
+                <p><b><?php echo $data["doctor"]->doctor_count ?></b><br>Doctor</p>
+            </a>
+            
+            <a href="<?php echo URLROOT;?>/AdminReqSerProviders/adminReqCounsellor" class="card">
+                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
+                <p><b><?php echo $data["counsellor"]->counsellor_count ?></b><br>Counsellor</p>
+            </a>
+            
+            
+            <a href="<?php echo URLROOT;?>/AdminReqSerProviders/adminReqMeditationInstructor" class="card">
+                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
+                <p><b><?php echo $data["meditationInstr"]->meditation_instructor_count ?></b><br>Meditation Instructor</p>
+            </a>
+            
+            <a href="<?php echo URLROOT;?>/AdminReqSerProviders/adminReqPharmacist" class="card">
+                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
+                <p><b><?php echo $data["pharmacist"]->pharmacist_count?></b><br>Pharmacist</p>
+            </a>
+            
+            <a href="<?php echo URLROOT;?>/AdminReqSerProviders/adminReqNutritionist" class="card">
+                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
+                <p><b><?php echo $data["nutritionist"]->nutritionist_count ?></b><br>Nutritionist</p>
+            </a>
+            
         </div>
         <button id="show-button" class="show-button" onclick="showMore()"><span id="show-text">Show More</span><i class="fa-solid fa-angle-down" id="icon-more-orless"></i></button>
     </section>
-
     <?php require APPROOT.'/views/inc/components/footer1.php'; ?>
 </body>
 </html>

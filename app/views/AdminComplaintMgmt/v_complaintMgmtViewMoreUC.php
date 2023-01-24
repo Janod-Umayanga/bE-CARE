@@ -16,10 +16,10 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <section class="view-profile-container theme">
+    <section class="view-profile-container-complaintMgmtViewMore theme">
         <div class="card">
             <div class="main-image">
-                <a href="<?php echo URLROOT ?>/AdminComplaintMgmt/adminComplaintMgmt" class="backto-doctors"><i class="fa-solid fa-arrow-left"></i>Back to Complaints</a>
+                <a href="<?php echo URLROOT ?>/AdminComplaintMgmt/unsolvedComplaint" class="backto-doctors"><i class="fa-solid fa-arrow-left"></i>Back to Unsolved Complaints</a>
                 <h1><?php echo $data['first_name'] ?> <br> <?php echo $data['last_name'] ?></h1>
                 <div class="profile-icon"><?php echo substr($data['first_name'], 0,1) ?><?php echo substr($data['last_name'], 0,1) ?></div>
                 
@@ -29,9 +29,11 @@
                     <li>Subject - <?php echo $data['complaint']->subject ?></a></li>
                     <li>Date - <?php echo $data['complaint']->complaint_date ?></a></li>
                     <li>Email - <a href="mailto:<?php echo $data['email'] ?>"><?php echo $data['email'] ?></a></li>
-                    <li>Complaint - <?php echo $data['complaint']->description ?></a></li>
+                    <li>Complaint <br><br> <?php echo $data['complaint']->description ?></a></li>
                               
-                
+                    <form class="solvedForm" action="<?php echo URLROOT;?>/AdminComplaintMgmt/solved/<?php echo $data['complaint']->complaint_id ?>" method="GET">
+                             <button type="submit">Solved</button>
+                       </form>  
                 
                    
                 </ul>

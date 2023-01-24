@@ -1,6 +1,8 @@
 <?php
 
 class AdminPayments extends Controller{
+  private $adminPaymentsModel;
+  
   public function __construct(){
     $this->adminPaymentsModel = $this->model('M_AdminPayments');
   }

@@ -2,7 +2,7 @@
 
 
 class AdminReqSerProviders extends Controller{
-  
+  private $adminReqSerProvidersModel;
  
   public function __construct(){
     $this->adminReqSerProvidersModel = $this->model('M_AdminReqSerProviders');
@@ -137,7 +137,7 @@ class AdminReqSerProviders extends Controller{
       $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
 
           $search=trim($_GET['search']);
-          echo $search; 
+         
           $doctor= $this->adminReqSerProvidersModel->getSearchReqDoctors($search);
           
           $data=[                      
@@ -185,7 +185,7 @@ class AdminReqSerProviders extends Controller{
     $data=[                      
       'doctor'=>$doctor,
       'search'=>'',
-      'verifydoctor'=>verifydoctor
+      'verifydoctor'=>$verifydoctor
     ];
     $this->view('AdminReqSerProviders/ReqDoctor/v_reqDoctor',$data);
   }else{
@@ -205,7 +205,7 @@ class AdminReqSerProviders extends Controller{
     $data=[                      
       'doctor'=>$doctor,
       'search'=>'',
-      'notverifydoctor'=>notverifydoctor
+      'notverifydoctor'=>$notverifydoctor
     ];
     $this->view('AdminReqSerProviders/ReqDoctor/v_reqDoctor',$data);
   }else{
@@ -271,7 +271,7 @@ public function  adminVerifyReqPharmacist($pharmacist_id)
   $data=[                      
     'pharmacist'=>$pharmacist,
     'search'=>'',
-    'verifypharmacist'=>verifypharmacist
+    'verifypharmacist'=>$verifypharmacist
   ];
   $this->view('AdminReqSerProviders/ReqPharmacist/v_reqPharmacist',$data);
 }else{
@@ -290,7 +290,7 @@ public function  adminNotVerifyReqPharmacist($pharmacist_id)
     $data=[                      
       'pharmacist'=>$pharmacist,
       'search'=>'',
-      'notverifypharmacist'=>notverifypharmacist
+      'notverifypharmacist'=>$notverifypharmacist
     ];
     $this->view('AdminReqSerProviders/ReqPharmacist/v_reqPharmacist',$data);
   }else{
@@ -359,7 +359,7 @@ public function  adminVerifyReqCounsellor($counsellor_id)
   $data=[                      
     'counsellor'=>$counsellor,
     'search'=>'',
-    'verifycounsellor'=>verifycounsellor
+    'verifycounsellor'=>$verifycounsellor
   ];
   $this->view('AdminReqSerProviders/ReqCounsellor/v_reqCounsellor',$data);
 }else{
@@ -378,7 +378,7 @@ public function  adminNotVerifyReqCounsellor($counsellor_id)
     $data=[                      
       'counsellor'=>$counsellor,
       'search'=>'',
-      'notverifycounsellor'=>notverifycounsellor
+      'notverifycounsellor'=>$notverifycounsellor
     ];
     $this->view('AdminReqSerProviders/ReqCounsellor/v_reqCounsellor',$data);
   }else{
@@ -446,7 +446,7 @@ public function  adminVerifyReqNutritionist($nutritionist_id)
   $data=[                      
     'nutritionist'=>$nutritionist,
     'search'=>'',
-    'verifynutritionist'=>verifynutritionist
+    'verifynutritionist'=>$verifynutritionist
   ];
   $this->view('AdminReqSerProviders/ReqNutritionist/v_reqNutritionist',$data);
 }else{
@@ -465,7 +465,7 @@ public function  adminNotVerifyReqNutritionist($nutritionist_id)
     $data=[                      
       'nutritionist'=>$nutritionist,
       'search'=>'',
-      'notverifynutritionist'=>notverifynutritionist
+      'notverifynutritionist'=>$notverifynutritionist
     ];
     $this->view('AdminReqSerProviders/ReqNutritionist/v_reqNutritionist',$data);
   }else{
@@ -555,7 +555,7 @@ public function  adminNotVerifyReqMeditationInstructor($meditationInstructor_id)
     $data=[                      
       'meditationInstructor'=>$meditationInstructor,
       'search'=>'',
-      'notverifymeditationInstructor'=>notverifymeditationInstructor
+      'notverifymeditationInstructor'=>$notverifymeditationInstructor
     ];
     $this->view('AdminReqSerProviders/ReqmeditationInstr/v_reqmeditationInstr',$data);
   }else{

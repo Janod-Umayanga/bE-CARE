@@ -13,7 +13,19 @@
                 <ul>
                     <div class="links-container">
                         <li>
+
+                         <?php if(isset($_SESSION['admin_id'])): ?>
+                            <a id="navigation-link" class="navigation-link theme" href="<?php echo URLROOT ?>/AdminDashboard/adminDashBoard">Home</a>
+                              
+                         <?php elseif(isset($_SESSION['MedInstr_id'])): ?>
+                            <a id="navigation-link" class="navigation-link theme" href="<?php echo URLROOT ?>/MedInstrDashBoard/medInstrDashBoard">Home</a>
+                            
+                         <?php else: ?>
                             <a id="navigation-link" class="navigation-link theme" href="<?php echo URLROOT ?>/Pages/index">Home</a>
+                         
+                         <?php endif; ?>   
+                           
+                        
                         </li>
                         <li>
                             <a id="navigation-link" class="navigation-link theme" href="#">About</a>

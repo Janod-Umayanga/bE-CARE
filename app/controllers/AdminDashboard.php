@@ -1,6 +1,7 @@
 <?php
 
 class AdminDashboard extends Controller{
+  private $adminDashboardModel;
   public function __construct(){
     $this->adminDashboardModel = $this->model('M_AdminDashboard');
   }

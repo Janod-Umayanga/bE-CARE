@@ -3,6 +3,8 @@
     class Login extends Controller {
         private $patientModel;
         private $adminModel;
+        private $medInstrModel;
+        
         public function __construct(){
             $this->patientModel = $this->model('M_Patient');
             $this->adminModel = $this->model('M_Admin');

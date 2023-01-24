@@ -173,11 +173,14 @@
                 </div>
             </form>
 
+
+<!-- 
             <form action="" id="counsellor-form">
                <div class="topic-of-form">
                     <h1>Signup..</h1>
-                    <p>Already have an counsellor account <a href="<?php echo URLROOT ?>/Patient/login">Login</a></p>
+                    <p>Already have an account <a href="<?php echo URLROOT ?>/Login/login">Login</a></p>
                 </div>
+             
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left">
                    
@@ -214,11 +217,10 @@
                         <input type="text" id="city" name="city" value="<?php #echo $data['city'] ?>">
                         <span class="form-invalid"><?php #echo $data['city_err'] ?></span>
 
-                
                         <button>Submit</button>
                     </div>
                     <div class="right">
-                      
+                   
                         <label for="slmc">SLMC registration Number</label>
                         <input type="text" id="slmc" name="slmc" value="<?php #echo $data['slmc_reg_number'] ?>">
                         <span class="form-invalid"><?php #echo $data['slmc_reg_number_err'] ?></span>
@@ -228,7 +230,7 @@
                         <input type="file" id="qualification_file" name="qualification_file" value="<?php #echo $data['qualification_file'] ?>">
                         <span class="form-invalid"><?php #echo $data['qualification_file_err'] ?></span>
 
-                       
+    
                         <label for="password">Password</label>
                         <input type="password" id="password" name="password">
                         <span class="form-invalid"><?php #echo $data['password_err'] ?></span>
@@ -257,7 +259,8 @@
                         <span class="form-invalid"><?php #echo $data['account_number_err'] ?></span>
 
                     </div>
-            </form>
+                </div>
+            </form> -->
 
             <form action="" id="meditation-instructor-form">
                <div class="topic-of-form">
