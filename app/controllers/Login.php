@@ -215,8 +215,9 @@
                 unset($_SESSION['patient_id']);
                 unset($_SESSION['patient_email']);
                 unset($_SESSION['patient_name']);
-                session_destroy();
+                // session_destroy();
 
+                $_SESSION['logout'] = true;
                 redirect('Pages/index');
 
             }elseif(isset($_SESSION['admin_id'])){

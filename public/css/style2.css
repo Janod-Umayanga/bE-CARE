@@ -1171,6 +1171,13 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: #1d242b79;
 }
 
+.pharmacy-sub .card .description p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
 .card-main-button{
     position: absolute;
     bottom: 20px;
@@ -1670,8 +1677,9 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 .notification{
-    width: 300px;
-    height: 50px;
+    width: fit-content;
+    height: fit-content;
+    padding: 15px 20px;
     background-color: white;
     color: var(--hue-black);
     display: flex;
@@ -1697,6 +1705,14 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     height: 5px;
     background-color: var(--hue-dark-blue);
     animation: reduceWidth 5s linear forwards;
+}
+
+.notification.warning i{
+    color: red;
+}
+
+.notification.warning::after{
+    background-color: red;
 }
 
 @keyframes notify {

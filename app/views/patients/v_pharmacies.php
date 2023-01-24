@@ -52,7 +52,8 @@
                     </div>
                     <div class="description">
                         <h2><?php echo $pharmacist->city ?></h2>
-                        <p>Address: <?php echo $pharmacist->address ?></p>
+                        <p><i class="fa-solid fa-location-dot"></i><?php echo $pharmacist->address ?></p>
+                        <p><i class="fa-solid fa-phone-volume"></i><?php echo $pharmacist->contact_number ?></p>
                     </div>
                     <form action="<?php echo URLROOT ?>/Patient/getPharmacistId" method="POST" class="card-main-button">
                         <input type="hidden" name="pharmacist_id" id="pharmacist_id" value="<?php echo $pharmacist->pharmacist_id ?>">

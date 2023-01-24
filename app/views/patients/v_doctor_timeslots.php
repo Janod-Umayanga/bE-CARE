@@ -34,11 +34,12 @@
                 <div class="card">
                     <div class="top">
                         <h1><?php  echo $timeslot->channeling_day ?></h1>
-                        <p><?php  echo $timeslot->address ?></p>
+                        <p>Dr. <?php  echo $timeslot->first_name ?> <?php  echo $timeslot->last_name ?></p>
                     </div>
                     <div class="bottom">
                         <p><i class="fa-solid fa-calendar-days"></i> <?php  echo $timeslot->day ?></p>
                         <p><i class="fa-solid fa-clock"></i> <?php  echo $timeslot->starting_time ?> - <?php  echo $timeslot->ending_time ?></p>
+                        <p><i class="fa-solid fa-location-dot"></i><?php echo $timeslot->address ?></p>
                         <p><i class="fa-solid fa-phone-volume"></i><?php  echo $timeslot->contact_number ?></p>
                         <p><i class="fa-solid fa-circle-dollar-to-slot"></i>Rs. <?php  echo $timeslot->fee ?></p>
                     </div>

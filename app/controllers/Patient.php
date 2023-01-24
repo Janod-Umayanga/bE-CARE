@@ -114,7 +114,8 @@
 
                     // Register patient
                     if($this->patientModel->register($data)) {
-                        redirect('Patient/login');
+                        $_SESSION['signed_up'] = true;
+                        redirect('Login/login');
                     }
                     else {
                         die('Something went wrong');
@@ -456,6 +457,7 @@
                 $this->view('patients/v_doctor_appointments', $data);
             }
             else {
+                $_SESSION['need_login'] = true;
                 // Redirect to login
                 redirect('Login/login');
             }
@@ -480,6 +482,7 @@
                 $this->view('patients/v_doctor_channeling_history', $data);
             }
             else {
+                $_SESSION['need_login'] = true;
                 // Redirect to login
                 redirect('Login/login');
             }
@@ -731,6 +734,7 @@
                 $data = [];
             }
             else {
+                $_SESSION['need_login'] = true;
                 // Redirect to login
                 redirect('Login/login');
             }
@@ -866,6 +870,7 @@
                 $data = [];
             }
             else {
+                $_SESSION['need_login'] = true;
                 // Redirect to login
                 redirect('Login/login');
             }
@@ -884,6 +889,7 @@
             $this->view('patients/v_order_requests', $data);
             }
             else {
+                $_SESSION['need_login'] = true;
                 // Redirect to login
                 redirect('Login/login');
             }

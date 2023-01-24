@@ -10,9 +10,11 @@
     <script src="https://kit.fontawesome.com/c4a594ff55.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
+    <script defer src="<?php echo URLROOT; ?>/js/pushNotificationforLogin.js"></script>
     <title>Document</title>
 </head>
 <body>
+    <div id="notification-container"></div>
     <section class="login-section">
         <div class="login-page-leftside">
             <div class="left-side-container">
@@ -53,6 +55,9 @@
                 </div>
             </form>
         </div>
-    </section>  
+    </section>
+    <!-- For push notifications -->
+    <span id="needLogin"><?php if(isset($_SESSION['need_login'])){echo $_SESSION['need_login']; unset($_SESSION['need_login']);}?></span>
+    <span id="isSignedUp"><?php if(isset($_SESSION['signed_up'])){echo $_SESSION['signed_up']; unset($_SESSION['signed_up']);}?></span>
 </body>
 </html>
