@@ -21,16 +21,11 @@
         <div class="table-container theme">
             <div class="table-topic-main">
                 <h1>Payments</h1>
-                <!-- <button><a href="<?php echo URLROOT;?>/AdminUserMgmt/addnewPatient">Add New </a></button>
-            </div> -->
+                 
+            </div>
             <div class="search-section">
                 <div class="search-bar">
                  
-                    <form class="searchform" action="<?php echo URLROOT;?>/AdminUserMgmt/adminSearchPatient" method="GET">
-                       <input type="text" name="search"   placeholder="">
-                       <button  type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </form>
-
                 </div>
             </div>
           

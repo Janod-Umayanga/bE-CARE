@@ -13,7 +13,28 @@ class Admin extends Controller{
            
       $user= $this->userModel->findUserByID($_SESSION['admin_id']);
       $data=[                      
-        'user'=>$user
+        'admin_id'=>$user->admin_id,
+        'first_name'=>$user->first_name,
+        'last_name'=>$user->last_name,
+        'nic'=>$user->nic,
+        'contact_number'=>$user->contact_number,
+        'bank_name'=>$user->bank_name,
+        'account_holder_name'=>$user->account_holder_name,
+        'branch'=>$user->branch,
+        'account_number'=>$user->account_number,
+        'gender'=>$user->gender,
+        'email'=>$user->email,
+
+        'first_name_err'=>'',
+        'last_name_err'=>'',
+        'nic_err'=>'',
+        'contact_number_err'=>'',
+        'bank_name_err'=>'',
+        'account_holder_name_err'=>'',
+        'branch_err'=>'',
+        'account_number_err'=>'',
+        'gender_err'=>''
+
       ];
       $this->view('Admin/v_profile',$data);
   
@@ -218,59 +239,6 @@ class Admin extends Controller{
 
 //   }
 
-  public function login(){
-       if($_SERVER["REQUEST_METHOD"] == 'POST'){
-          $_POST=filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
-    
-          $data = [
-            'email'=>trim($_POST['email']),
-            'password'=>trim($_POST['password']),      
-          
-            'email_err'=>'',
-            'password_err'=>'' ];      
-           
-          if(empty($data['email'])){
-            $data['email_err']='Please enter a email';
-          }else{
-             if($this->userModel->findUserByEmail($data['email'])){
-        
-            }else{
-                   $data['email_err']='User not found';
-             }  
-           
-          }
-
-
-          if(empty($data['password'])){
-             $data['password_err']='Please enter a password';
-          } 
-          
-          if(empty($data['email_err']) && empty($data['password_err'])){
-             $loggedUser=$this->userModel->login($data['email'],$data['password']);
-
-             if($loggedUser){
-                $this->createAdminSession($loggedUser);
-                redirect('AdminDashboard/adminDashBoard');    
-                
-             }
-             else{
-              $data['password_err']='Password incorrect';
-              $this->view('Admin/v_login',$data);
-             }   
-          }else{
-            $this->view('Admin/v_login',$data);
-          } 
-        }else{
-        $data = [
-          'email'=>'',
-          'password'=>'',
-          
-          'email_err'=>'',
-          'password_err'=>''
-        ];
-         $this->view('Admin/v_login',$data);     
-      } 
-  }
 
   public function createAdminSession($user){
      $_SESSION['admin_id']=$user->admin_id;

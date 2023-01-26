@@ -53,7 +53,7 @@
                     
                      <?php endif?>
                        
-               </li>
+              
                    
                 </ul>
                 <div class="bottom-line"></div>

@@ -17,7 +17,7 @@
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
 
-    <section class="table-section-2 theme">
+    <section class="table-section-userMgmt theme">
         <div class="table-container theme">
             <div class="table-topic-main">
                 <h1>Patient</h1>
@@ -26,7 +26,7 @@
             <div class="search-section">
                 <div class="search-bar">
                  
-                    <form class="searchform" action="<?php echo URLROOT;?>/AdminUserMgmt/adminSearchPatient" method="GET">
+                    <form class="searchForm" action="<?php echo URLROOT;?>/AdminUserMgmt/adminSearchPatient" method="GET">
                        <input type="text" name="search" value="<?php echo $data['search'] ?>"  placeholder="Filter patient by first name,last name">
                        <button  type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>

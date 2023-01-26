@@ -16,7 +16,7 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <section class="view-profile-container theme">
+    <section class="view-profile-container-userMgmtDoctorVM theme">
         <div class="card">
             
             <div class="main-image">
@@ -49,9 +49,20 @@
                     <li>Branch - <?php echo $data['meditationInstructor']->branch ?></li>
                    
                     <li>Account Number - <?php echo $data['meditationInstructor']->account_number ?></li>
-                     <li>Qualification File -   <button class=""><a download="<?php echo $data['meditationInstructor']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/meditationInstructor_qualification/<?php echo  $data['meditationInstructor']->qualification_file ?>">Download</a></button>
+                     <li>Qualification File -   <button class="qualification"><a download="<?php echo $data['meditationInstructor']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/meditationInstructor_qualification/<?php echo  $data['meditationInstructor']->qualification_file ?>">Download</a></button>
                </li>
-                   
+                          
+                    <?php if($data['meditationInstructor']->delete_flag==0): ?>
+                        <form class="deactiveForm" action="<?php echo URLROOT;?>/AdminUserMgmt/adminDeactivatedMeditationInstructor/<?php echo $data['meditationInstructor']->meditation_instructor_id ?>" method="GET">
+                             <button type="submit">Deactivate</button>
+                       </form>  
+                       
+                    <?php elseif($data['meditationInstructor']->delete_flag==1):?>
+                        <form class="activeForm" action="<?php echo URLROOT;?>/AdminUserMgmt/adminActivatedMeditationInstructor/<?php echo $data['meditationInstructor']->meditation_instructor_id ?>" method="GET">
+                             <button type="submit">Activate</button>
+                       </form>  
+                    <?php endif?>
+            
                 </ul>
                 <div class="bottom-line"></div>
             </div>

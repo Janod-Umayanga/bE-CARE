@@ -1,44 +1,63 @@
-<?php require APPROOT.'/views/inc/header.php'; ?>
-<?php require APPROOT.'/views/inc/components/topnavbar.php'; ?>
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c4a594ff55.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
+    <script defer src="script.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
- 
-    <sectionc class="sMAdminAM">
-           <div class="cMAdminAM">
-              <br>
-             <form class="searchform" action="<?php echo URLROOT;?>/MedInstrRegisteredUsers/searchMedInstrRegisteredUsersSaturday" method="GET">
-                   <input type="text" name="search" value="<?php echo $data['search'] ?>" placeholder="Filter by date address fee ">&nbsp
-                   <button type="submit">Search</button>
-             </form><br>
 
-           <?php foreach($data['saturday'] as $saturday): ?>
+    <section class="table-section-MIRegUsers theme">
+        <div class="table-container theme">
+            <div class="table-topic-main">
+                <h1>Saturday Registered Users</h1>
+            </div>
+            <div class="search-section">
+                <div class="search-bar">
+                 
+                    <form class="searchForm" action="<?php echo URLROOT;?>/MedInstrRegisteredUsers/searchMedInstrRegisteredUsersSaturday" method="GET">
+                       <input type="text" name="search" value="<?php echo $data['search'] ?>"  placeholder="Filter by date address fee">
+                       <button  type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+
+                </div>
+            </div>
+          
+
+            <?php foreach($data['saturday'] as $saturday): ?>
                      
-            <h1><?php echo $saturday->date; ?> | <?php echo $saturday->appointment_day; ?></h1>
-                  <h4 style="color:Green;"><?php echo $saturday->address; ?> | Rs.<?php echo $saturday->fee; ?></h4>
+               <h1><?php echo $saturday->date; ?> | <?php echo $saturday->appointment_day; ?></h1>
+                   <h4 style="color:Green;"><?php echo $saturday->address; ?> | Rs.<?php echo $saturday->fee; ?></h4>
+          
 
-
-                  <div class="aMmAdmintable">
-               
-
-                     <table id="Mreg">
-                        <?php $gg=1; ?>
-                        <?php foreach($data['medChannel'] as $medChannel): ?>
-                          <?php if($saturday->med_timeslot_id==$medChannel->med_timeslot_id){ ?>
-                       
-                           <?php if($gg==1){ ?> 
-                            <tr>
-                              <th>Starting time</th>
-                              <th>Ending time</th>
-                              <th>Name</th>
-                              <th>Age</th>
-                              <th>Contact number</th>
-                              <th>Gender</th>
-
-                            </tr>
-                            <?php $gg=0;?>
-                            <?php } ?>
-                   
-                           <tr>
+            <div class="table">
+                <table cellspacing="0" cellpadding="0">
+                <?php $gg=1; ?>
+                    <?php foreach($data['medChannel'] as $medChannel): ?>
+                     <?php if($saturday->med_timeslot_id==$medChannel->med_timeslot_id){ ?>
+                        <?php if($gg==1){ ?> 
+                    <tr>
+                        <th>Starting time</th>
+                        <th>Ending time</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Contact number</th>
+                        <th>Gender</th>
+                    </tr>
+                    <?php $gg=0;?>
+                    <?php } ?>
+                     
+                    <tr>
                             <td><?php echo $saturday->starting_time ?></td>
                             <td><?php echo $saturday->ending_time ?></td>
                             <td><?php echo $medChannel->name ?></td>
@@ -46,28 +65,19 @@
                             <td><?php echo $medChannel->contact_number ?></td>
                             <td><?php echo $medChannel->gender ?></td>
                           </tr>
-                      
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-                       
-                           <?php }?>
+                              
+                
+                          <?php }?>
                         <?php endforeach?> 
-    
-                    </table>
-              </div>
-              <?php endforeach;?>
-    
-          </div>
-      </section>
 
+                  </table>
 
+                
+            </div>
+            <?php endforeach;?>
+        </div>
+    </section>
 
-
-
-<?php require APPROOT.'/views/inc/footer.php'; ?>
+    <?php require APPROOT.'/views/inc/components/footer1.php'; ?>
+</body>
+</html>

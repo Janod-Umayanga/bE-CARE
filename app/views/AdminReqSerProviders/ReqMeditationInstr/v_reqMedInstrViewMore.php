@@ -16,7 +16,7 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <section class="view-profile-container theme">
+    <section class="view-profile-container-requestedSP  theme">
         <div class="card">
             
             <div class="main-image">
@@ -49,7 +49,7 @@
                     <li>Branch - <?php echo $data['meditationInstructor']->branch ?></li>
                    
                     <li>Account Number - <?php echo $data['meditationInstructor']->account_number ?></li>
-                     <li>Qualification File -   <button class=""><a download="<?php echo $data['meditationInstructor']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/meditationInstructor_qualification/<?php echo  $data['meditationInstructor']->qualification_file ?>">Download</a></button>
+                     <li>Qualification File -   <button class="download"><a download="<?php echo $data['meditationInstructor']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/meditationInstructor_qualification/<?php echo  $data['meditationInstructor']->qualification_file ?>">Download</a></button>
                </li>
                    
                 </ul>

@@ -18,22 +18,54 @@ class AdminUserMgmt extends Controller{
    $meditationInstr= $this->adminUserMgmtModel->getNoOfMeditationInstr();
    $pharmacist= $this->adminUserMgmtModel->getNoOfPharmacist();
    $patient= $this->adminUserMgmtModel->getNoOfPatient();
+   
    $patient_active= $this->adminUserMgmtModel->getNoOfActivePatient();
    $patient_deactive=$this->adminUserMgmtModel->getNoOfDeactivePatient();
    
+   $doctor_active= $this->adminUserMgmtModel->getNoOfActiveDoctor();
+   $doctor_deactive=$this->adminUserMgmtModel->getNoOfDeactiveDoctor();
+   
+   $counsellor_active= $this->adminUserMgmtModel->getNoOfActiveCounsellor();
+   $counsellor_deactive=$this->adminUserMgmtModel->getNoOfDeactiveCounsellor();
+   
+   $nutritionist_active= $this->adminUserMgmtModel->getNoOfActiveNutritionist();
+   $nutritionist_deactive=$this->adminUserMgmtModel->getNoOfDeactiveNutritionist();
+   
+   $meditationInstr_active= $this->adminUserMgmtModel->getNoOfActiveMeditationInstr();
+   $meditationInstr_deactive=$this->adminUserMgmtModel->getNoOfDeactiveMeditationInstr();
+   
+   $pharmacist_active= $this->adminUserMgmtModel->getNoOfActivePharmacist();
+   $pharmacist_deactive=$this->adminUserMgmtModel->getNoOfDeactivePharmacist();
+   
    $admin= $this->adminUserMgmtModel->getNoOfAdmin();
 
+   $admin_active= $this->adminUserMgmtModel->getNoOfActiveAdmin();
+   $admin_deactive=$this->adminUserMgmtModel->getNoOfDeactiveAdmin();
+   
    $data=[                      
      'doctor'=>$doctor,
      'counsellor'=>$counsellor,
      'nutritionist'=>$nutritionist,
-     'meditationInstr'=>$meditationInstr,
+     'meditationInstructor'=>$meditationInstr,
      'pharmacist'=>$pharmacist,
      'patient'=>$patient,
      'admin'=>$admin,
      'patient_active'=>$patient_active,
      'patient_deactive'=>$patient_deactive,
-     
+   
+     'doctor_active'=>$doctor_active,
+     'doctor_deactive'=>$doctor_deactive,
+     'counsellor_active'=>$counsellor_active,
+     'counsellor_deactive'=>$counsellor_deactive,
+     'nutritionist_active'=>$nutritionist_active,
+     'nutritionist_deactive'=>$nutritionist_deactive,
+     'meditationInstructor_active'=>$meditationInstr_active,
+     'meditationInstructor_deactive'=>$meditationInstr_deactive,
+     'pharmacist_active'=>$pharmacist_active,
+     'pharmacist_deactive'=>$pharmacist_deactive,
+     'admin_active'=>$admin_active,
+     'admin_deactive'=>$admin_deactive,
+   
    
    ];
    $this->view('AdminUserMgmt/v_userMgmt',$data);
@@ -1989,7 +2021,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
          }
        
          if(empty($data['account_number'])){
-           $data['account_number_err']='last name can not be empty';
+           $data['account_number_err']='account number can not be empty';
          }
 
          if(empty($data['slmc_reg_number'])){
@@ -2145,6 +2177,364 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
           
         }else{
              redirect('Admin/login');  
+        }
+
+
+
+       }
+
+
+
+        //admin Deactivated Admin
+
+        public function adminDeactivatedAdmin($id)
+        {
+           if(isset($_SESSION['admin_id'])) {  
+  
+                if($_SERVER['REQUEST_METHOD']=='GET'){
+                  $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
+            
+                     
+                      $admin= $this->adminUserMgmtModel->deactivatedAdmin($id);
+        
+                      $data=[                      
+                        
+                      ];
+                     
+                      if($admin==true){
+                           redirect('AdminUserMgmt/admin');
+                      }
+                } 
+            
+                }else{
+                  redirect('Admin/login');  
+                }
+        }
+
+  
+     //admin Activated Admin
+     
+
+       public function adminActivatedAdmin($id)
+       {
+
+        if(isset($_SESSION['admin_id'])) {  
+  
+              if($_SERVER['REQUEST_METHOD']=='GET'){
+                $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
+          
+                   
+                $admin= $this->adminUserMgmtModel->activatedAdmin($id);
+      
+                    $data=[                      
+                      
+                    ];
+                   
+                    if($admin==true){
+                         redirect('AdminUserMgmt/admin');
+                    }
+              } 
+          
+        }else{
+             redirect('Admin/login');  
+        }
+
+
+
+       }
+
+
+
+
+
+       //admin Deactivated Doctor
+
+       public function adminDeactivatedDoctor($id)
+        {
+           if(isset($_SESSION['admin_id'])) {  
+  
+                if($_SERVER['REQUEST_METHOD']=='GET'){
+                  $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
+            
+                     
+                      $doctor= $this->adminUserMgmtModel->deactivatedDoctor($id);
+        
+                      $data=[                      
+                        
+                      ];
+                     
+                      if($doctor==true){
+                           redirect('AdminUserMgmt/doctor');
+                      }
+                } 
+            
+                }else{
+                  redirect('Admin/login');  
+                }
+        }
+
+  
+     //admin Activated Doctor
+     
+
+       public function adminActivatedDoctor($id)
+       {
+
+        if(isset($_SESSION['admin_id'])) {  
+  
+              if($_SERVER['REQUEST_METHOD']=='GET'){
+                $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
+          
+                   
+                $doctor= $this->adminUserMgmtModel->activatedDoctor($id);
+      
+                    $data=[                      
+                      
+                    ];
+                   
+                    if($doctor==true){
+                         redirect('AdminUserMgmt/doctor');
+                    }
+              } 
+          
+        }else{
+             redirect('Admin/login');  
+        }
+
+
+
+       }
+
+
+       //admin Deactivated Counsellor
+
+       public function adminDeactivatedCounsellor($id)
+        {
+           if(isset($_SESSION['admin_id'])) {  
+  
+                if($_SERVER['REQUEST_METHOD']=='GET'){
+                  $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
+            
+                     
+                      $counsellor= $this->adminUserMgmtModel->deactivatedCounsellor($id);
+        
+                      $data=[                      
+                        
+                      ];
+                     
+                      if($counsellor==true){
+                           redirect('AdminUserMgmt/counsellor');
+                      }
+                } 
+            
+                }else{
+                  redirect('Login/login');  
+                }
+        }
+
+  
+     //admin Activated Counsellor
+     
+
+       public function adminActivatedCounsellor($id)
+       {
+
+        if(isset($_SESSION['admin_id'])) {  
+  
+              if($_SERVER['REQUEST_METHOD']=='GET'){
+                $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
+          
+                   
+                $counsellor= $this->adminUserMgmtModel->activatedCounsellor($id);
+      
+                    $data=[                      
+                      
+                    ];
+                   
+                    if($counsellor==true){
+                         redirect('AdminUserMgmt/counsellor');
+                    }
+              } 
+          
+        }else{
+             redirect('Login/login');  
+        }
+
+
+
+       }
+
+
+         //admin Deactivated Nutritionist
+
+       public function adminDeactivatedNutritionist($id)
+       {
+          if(isset($_SESSION['admin_id'])) {  
+ 
+               if($_SERVER['REQUEST_METHOD']=='GET'){
+                 $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
+           
+                    
+                     $nutritionist= $this->adminUserMgmtModel->deactivatedNutritionist($id);
+       
+                     $data=[                      
+                       
+                     ];
+                    
+                     if($nutritionist==true){
+                          redirect('AdminUserMgmt/nutritionist');
+                     }
+               } 
+           
+               }else{
+                 redirect('Login/login');  
+               }
+       }
+
+ 
+    //admin Activated Nutritionist
+    
+
+      public function adminActivatedNutritionist($id)
+      {
+
+       if(isset($_SESSION['admin_id'])) {  
+ 
+             if($_SERVER['REQUEST_METHOD']=='GET'){
+               $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
+         
+                  
+               $nutritionist= $this->adminUserMgmtModel->activatedNutritionist($id);
+     
+                   $data=[                      
+                     
+                   ];
+                  
+                   if($nutritionist==true){
+                        redirect('AdminUserMgmt/nutritionist');
+                   }
+             } 
+         
+       }else{
+            redirect('Login/login');  
+       }
+
+
+
+      }
+
+
+       //admin Deactivated Pharmacist
+
+       public function adminDeactivatedPharmacist($id)
+        {
+           if(isset($_SESSION['admin_id'])) {  
+  
+                if($_SERVER['REQUEST_METHOD']=='GET'){
+                  $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
+            
+                     
+                      $pharmacist= $this->adminUserMgmtModel->deactivatedPharmacist($id);
+        
+                      $data=[                      
+                        
+                      ];
+                     
+                      if($pharmacist==true){
+                           redirect('AdminUserMgmt/pharmacist');
+                      }
+                } 
+            
+                }else{
+                  redirect('Login/login');  
+                }
+        }
+
+  
+     //admin Activated Pharmacist
+     
+
+       public function adminActivatedPharmacist($id)
+       {
+
+        if(isset($_SESSION['admin_id'])) {  
+  
+              if($_SERVER['REQUEST_METHOD']=='GET'){
+                $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
+          
+                   
+                $pharmacist= $this->adminUserMgmtModel->activatedPharmacist($id);
+      
+                    $data=[                      
+                      
+                    ];
+                   
+                    if($pharmacist==true){
+                         redirect('AdminUserMgmt/pharmacist');
+                    }
+              } 
+          
+        }else{
+             redirect('Login/login');  
+        }
+
+
+
+       }
+
+
+        //admin Deactivated MeditationInstructor
+
+        public function adminDeactivatedMeditationInstructor($id)
+        {
+           if(isset($_SESSION['admin_id'])) {  
+  
+                if($_SERVER['REQUEST_METHOD']=='GET'){
+                  $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
+            
+                     
+                      $meditationInstructor= $this->adminUserMgmtModel->deactivatedMeditationInstructor($id);
+        
+                      $data=[                      
+                        
+                      ];
+                     
+                      if($meditationInstructor==true){
+                           redirect('AdminUserMgmt/meditationInstructor');
+                      }
+                } 
+            
+                }else{
+                  redirect('Login/login');  
+                }
+        }
+
+  
+     //admin Activated MeditationInstructor
+     
+
+       public function adminActivatedMeditationInstructor($id)
+       {
+
+        if(isset($_SESSION['admin_id'])) {  
+  
+              if($_SERVER['REQUEST_METHOD']=='GET'){
+                $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
+          
+                   
+                $meditationInstructor= $this->adminUserMgmtModel->activatedMeditationInstructor($id);
+      
+                    $data=[                      
+                      
+                    ];
+                   
+                    if($meditationInstructor==true){
+                         redirect('AdminUserMgmt/meditationInstructor');
+                    }
+              } 
+          
+        }else{
+             redirect('Login/login');  
         }
 
 

@@ -17,55 +17,74 @@
     
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <div class="doctor-main-picture-container">
+    <div class="doctor-main-picture-container-userMgmt">
         <div class="tittle">
-            <i class="fa-solid fa-stethoscope"></i>
-            <h1>User<br>Management!</h1>
+           <i class="fa-solid fa-users"></i>
+           <h1>User<br>Management!</h1>
         </div>
     </div>
 
     <section class="our-services-container theme" id="our-services-container">
-        <dev class="service-topic">
+        <div class="service-topic">
             <span class="line"></span>
             <h2>Users</h2>
-        </dev>
-        <div class="card-container-forservices" id="to-be-show-more">
-             <a href="<?php echo URLROOT;?>/AdminUserMgmt/Patient" class="card">
-                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
-                <h2>Patient - <?php echo $data["patient"]->patient_count ?> </h2>
+        </div>
+        <div class="card-container-forUserMgmt" id="to-be-show-more">
+            
+           <a href="<?php echo URLROOT;?>/AdminUserMgmt/Patient" class="card">
+                <img src="<?php echo URLROOT;?>/img/adminUserManagement/patient.jpg" alt="">
+                <h3>Patient - <?php echo $data["patient"]->patient_count ?> </h3>
                 <p><b style="color:green">Active <?php echo $data["patient_active"]->patient_active_count ?> | </b>
                 <b style="color: red;">Deactive <?php echo $data["patient_deactive"]->patient_deactive_count ?></b></p><br>
                 
             </a>
             
             <a href="<?php echo URLROOT;?>/AdminUserMgmt/Doctor" class="card">
-                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
-                <p><b><?php echo$data["doctor"]->doctor_count ?></b><br>Doctor</p>
+                <img src="<?php echo URLROOT;?>/img/adminUserManagement/doctor.jpg" alt="">
+                <h3>Doctor - <?php echo $data["doctor"]->doctor_count ?> </h3>
+                <p><b style="color:green">Active <?php echo $data["doctor_active"]->doctor_active_count ?> | </b>
+                <b style="color: red;">Deactive <?php echo $data["doctor_deactive"]->doctor_deactive_count ?></b></p><br>
+         
             </a>
             
             <a href="<?php echo URLROOT;?>/AdminUserMgmt/Counsellor" class="card">
-                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
-                <p><b><?php echo $data["counsellor"]->counsellor_count ?></b><br>Counsellor</p>
+                <img src="<?php echo URLROOT;?>/img/adminUserManagement/counsellor.jpg" alt="">
+                <h3>Counsellor - <?php echo $data["counsellor"]->counsellor_count ?> </h3>
+                <p><b style="color:green">Active <?php echo $data["counsellor_active"]->counsellor_active_count ?> | </b>
+                <b style="color: red;">Deactive <?php echo $data["counsellor_deactive"]->counsellor_deactive_count ?></b></p><br>
+         
             </a>
             
             <a href="<?php echo URLROOT;?>/AdminUserMgmt/admin" class="card">
-                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
-                <p><b><?php echo $data["admin"]->admin_count ?></b><br>Admin</p>
+                <img src="<?php echo URLROOT;?>/img/adminUserManagement/admin.jpg" alt="">
+                <h3>Admin - <?php echo $data["admin"]->admin_count ?> </h3>
+                <p><b style="color:green">Active <?php echo $data["admin_active"]->admin_active_count ?> | </b>
+                <b style="color: red;">Deactive <?php echo $data["admin_deactive"]->admin_deactive_count ?></b></p><br>
+         
             </a>
             
             <a href="<?php echo URLROOT;?>/AdminUserMgmt/meditationInstructor" class="card">
-                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
-                <p><b><?php echo $data["meditationInstr"]->meditation_instructor_count ?></b><br>Meditation Instructor</p>
+                <img src="<?php echo URLROOT;?>/img/adminUserManagement/meditationInstructor.jpg" alt="">
+                <h3>Meditation Instructor - <?php echo $data["meditationInstructor"]->meditation_instructor_count ?> </h3>
+                <p><b style="color:green">Active <?php echo $data["meditationInstructor_active"]->meditationInstructor_active_count ?> | </b>
+                <b style="color: red;">Deactive <?php echo $data["meditationInstructor_deactive"]->meditationInstructor_deactive_count ?></b></p><br>
+         
             </a>
             
             <a href="<?php echo URLROOT;?>/AdminUserMgmt/pharmacist" class="card">
-                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
-                <p><b><?php echo $data["pharmacist"]->pharmacist_count?></b><br>Pharmacist</p>
+                <img src="<?php echo URLROOT;?>/img/adminUserManagement/pharmacist.jpg" alt="">
+                <h3>Pharmacist - <?php echo $data["pharmacist"]->pharmacist_count ?> </h3>
+                <p><b style="color:green">Active <?php echo $data["pharmacist_active"]->pharmacist_active_count ?> | </b>
+                <b style="color: red;">Deactive <?php echo $data["pharmacist_deactive"]->pharmacist_deactive_count ?></b></p><br>
+         
             </a>
             
             <a href="<?php echo URLROOT;?>/AdminUserMgmt/nutritionist" class="card">
-                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
-                <p><b><?php echo $data["nutritionist"]->nutritionist_count ?></b><br>Nutritionist</p>
+                <img src="<?php echo URLROOT;?>/img/adminUserManagement/nutritionist.jpg" alt="">
+                <h3>Nutritionist - <?php echo $data["nutritionist"]->nutritionist_count ?> </h3>
+                <p><b style="color:green">Active <?php echo $data["nutritionist_active"]->nutritionist_active_count ?> | </b>
+                <b style="color: red;">Deactive <?php echo $data["nutritionist_deactive"]->nutritionist_deactive_count ?></b></p><br>
+         
             </a>
             
         </div>

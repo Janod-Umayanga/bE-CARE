@@ -35,7 +35,7 @@
 
             <a href="<?php echo URLROOT;?>/MedInstrRegisteredUsers/mondayRegisteredUsers" class="card">
               <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
-              <h2>Monday</h2>
+              <h3>Monday</h3>
             </a>
 
 
@@ -44,7 +44,7 @@
 
             <a href="<?php echo URLROOT;?>/MedInstrRegisteredUsers/tuesdayRegisteredUsers" class="card">
               <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
-              <h2>Tuesday</h2>
+              <h3>Tuesday</h3>
             </a>
 
         <?php }if($data['wednesday']->d3 >0) { ?>
@@ -52,7 +52,7 @@
         
             <a href="<?php echo URLROOT;?>/MedInstrRegisteredUsers/wednesdayRegisteredUsers" class="card">
               <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
-              <h2>Wednesday</h2>
+              <h3>Wednesday</h3>
             </a>
 
 
@@ -61,7 +61,7 @@
         
             <a href="<?php echo URLROOT;?>/MedInstrRegisteredUsers/thursdayRegisteredUsers" class="card">
               <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
-              <h2>Thursday</h2>
+              <h3>Thursday</h3>
             </a>
 
         <?php }if($data['friday']->d5 >0) { ?>
@@ -69,7 +69,7 @@
 
             <a href="<?php echo URLROOT;?>/MedInstrRegisteredUsers/fridayRegisteredUsers" class="card">
               <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
-              <h2>Friday</h2>
+              <h3>Friday</h3>
             </a>
 
 
@@ -78,7 +78,7 @@
 
             <a href="<?php echo URLROOT;?>/MedInstrRegisteredUsers/saturdayRegisteredUsers" class="card">
                 <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
-                <h2>Saturday</h2>
+                <h3>Saturday</h3>
             </a>
 
         
@@ -88,7 +88,7 @@
 
             <a href="<?php echo URLROOT;?>/MedInstrRegisteredUsers/sundayRegisteredUsers" class="card">
                 <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
-                <h2>Sunday</h2>
+                <h3>Sunday</h3>
             </a>
 
 

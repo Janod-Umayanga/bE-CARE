@@ -19,7 +19,7 @@
 
     <div class="doctor-main-picture-container-complaint">
         <div class="tittle">
-            <i class="fa-solid fa-stethoscope"></i>
+            <i class="fa-solid fa-exclamation"></i>
             <h1>Complaint<br>Management!</h1>
         </div>
     </div>
@@ -34,12 +34,12 @@
              
             
             <a href="<?php echo URLROOT;?>/AdminComplaintMgmt/solvedComplaint" class="card">
-                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/adminComplaintManagement/solved.jpg" alt="">
                 <h2>Solved - <?php echo $data["solvedComplaint"]->solvedComplaint_count ?> </h2>
             </a>
             
             <a href="<?php echo URLROOT;?>/AdminComplaintMgmt/unsolvedComplaint" class="card">
-                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/adminComplaintManagement/unsolved.jpg" alt="">
                 <h2>Unsolved - <?php echo $data["unsolvedComplaint"]->unsolvedComplaint_count ?> </h2>     
             </a>
             

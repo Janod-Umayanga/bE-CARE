@@ -107,6 +107,9 @@
                             // Load view
                             $this->view('pages/v_login', $data);
                         }
+                    }else {
+                        // Load view
+                        $this->view('pages/v_login', $data);
                     }
                 }
                
