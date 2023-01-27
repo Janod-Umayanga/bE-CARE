@@ -48,6 +48,38 @@
         // public function getDoctorsForTommorow() {
         //     $tommorow = date("Y-m-d", strtotime('tomorrow'));
         // }
+
+        // Find doctor by email
+        public function findDoctorByEmail($email) {
+            $this->db->query('SELECT * FROM doctor WHERE email = :email');
+            $this->db->bind(':email', $email);
+
+            $row = $this->db->single();
+
+            if($this->db->rowCount() > 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        // Login doctor
+        public function login($email, $password) {
+            $this->db->query('SELECT * FROM doctor WHERE email = :email');
+            $this->db->bind(':email', $email);
+
+            $row = $this->db->single();
+
+            // Verify password
+            $hashed_pw = $row->password;
+            if(password_verify($password, $hashed_pw)) {
+                return $row;
+            }
+            else {
+                return false;
+            }
+        }
     }
 
 ?>

@@ -28,6 +28,38 @@
             
             return $this->db->single();
         }
+
+        // Find counsellor by email
+        public function findCounsellorByEmail($email) {
+            $this->db->query('SELECT * FROM counsellor WHERE email = :email');
+            $this->db->bind(':email', $email);
+
+            $row = $this->db->single();
+
+            if($this->db->rowCount() > 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        // Login counsellor
+        public function login($email, $password) {
+            $this->db->query('SELECT * FROM counsellor WHERE email = :email');
+            $this->db->bind(':email', $email);
+
+            $row = $this->db->single();
+
+            // Verify password
+            $hashed_pw = $row->password;
+            if(password_verify($password, $hashed_pw)) {
+                return $row;
+            }
+            else {
+                return false;
+            }
+        }
     }
 
 ?>

@@ -586,6 +586,21 @@
     
                     // Data validation
                     $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                    $merchant_id = "1221976";
+                    $order_id = "ItemNo12345";
+                    $amount = $fee;
+                    $currency = "LKR";
+                    $merchant_secret = 'NDA0MzQyMjc0NzQxMjQ5NjY4MTUxNTU5NjIzMjc4OTE3NjE4MTIx';
+                    $hash = strtoupper(
+                        md5(
+                            $merchant_id . 
+                            $order_id . 
+                            number_format($amount, 2, '.', '') . 
+                            $currency .  
+                            strtoupper(md5($merchant_secret)) 
+                        ) 
+                    );
     
                     // Inserted form
                     $data = [
@@ -603,6 +618,8 @@
                         'goal' => trim($_POST['goal']),
                         'nutritionist_id' => $nutritionist_id,
                         'fee' => $fee,
+                        'hash' => $hash,
+                        'order_id' => $order_id,
     
                         'name_err' => '',
                         'age_err' => '',
@@ -682,6 +699,9 @@
     
                     // Create order after validation
                     if(empty($data['name_err']) && empty($data['age_err']) && empty($data['gender_err']) && empty($data['cnumber_err']) && empty($data['weight_err']) && empty($data['height_err']) && empty($data['marital_status_err']) && empty($data['medical_details_err']) && empty($data['allergies_err']) && empty($data['sleeping_hours_err']) && empty($data['water_consumption_per_day_err']) && empty($data['goal_err'])) {
+                        
+                        
+
                         // Load payment information view
                         $this->view('patients/v_payment_diet_plan', $data);
                         // // Create order
@@ -713,6 +733,8 @@
                         'goal' => '',
                         'nutritionist_id' => $nutritionist_id,
                         'fee' => $fee,
+                        'hash' => '',
+                        'order_id' => '',
     
                         'name_err' => '',
                         'age_err' => '',
@@ -881,8 +903,10 @@
             if(isset($_SESSION['patient_id'])) {
             // Show all order requests
             $orders = $this->orderRequestModel->getAllOrderRequests($_SESSION['patient_id']);
+            $accepted_orders = $this->orderRequestModel->getAllAcceptedOrders($_SESSION['patient_id']);
             $data = [
-                'orders' => $orders
+                'orders' => $orders,
+                'acccepted_orders' => $accepted_orders
             ];
 
             // Load view

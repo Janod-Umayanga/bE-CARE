@@ -32,6 +32,14 @@
 
             return $this->db->resultSet();
         }
+
+        // get all order request
+        public function getAllAcceptedOrders($patient_id) {
+            $this->db->query('SELECT accept_order.*, pharmacist.* FROM accept_order INNER JOIN pharmacist ON accept_order.pharmacist_id = pharmacist.pharmacist_id WHERE accept_order.patient_id = :patient_id');
+            $this->db->bind(':patient_id', $patient_id);
+
+            return $this->db->resultSet();
+        }
     }
 
 ?>

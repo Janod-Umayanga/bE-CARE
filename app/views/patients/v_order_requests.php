@@ -19,7 +19,7 @@
     <section class="table-section theme">
         <div class="table-container theme">
             <div class="table-topic-main">
-                <h1>Your Pending Orders</h1>
+                <h1>Pending Orders</h1>
             </div>
             <div class="table">
                 <table cellspacing="0" cellpadding="0">
@@ -44,47 +44,39 @@
         </div>
     </section>
 
-    <?php require APPROOT.'/views/inc/components/footer1.php'; ?>
-</body>
-</html>
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
-    <title>View Orders</title>
-</head>
-<body>
-
-<?php require APPROOT.'/views/inc/components/header.php'; ?>
-
-    <section class="doctor-cards">
-        <div class="left">
-            <h1>Pending Orders</h1>
-            <?php foreach($data['orders'] as $order): ?>
-            <div class="card">
-                <div class="card-left">
-                    <p>Ordered on:<br><?php echo $order->ordered_date_and_time ?></p>
-                </div>
-                <div class="card-right">
-                    <div>
-                        <h3>From: <?php echo $order->pharmacy_name ?></h3>
-                        <p>Address : <?php  echo $order->address ?></p>
-                    </div>
-                </div>
+    <section class="table-section theme">
+        <div class="table-container theme">
+            <div class="table-topic-main">
+                <h1>Accepted Orders</h1>
+            <div class="table">
+                <table cellspacing="0" cellpadding="0">
+                    <tr>
+                        <th>Pharmacy Name</th>
+                        <th>Pharmacy Address</th>
+                        <th>Pharmacy Contact Number</th>
+                        <th>Delivery Address</th>
+                        <th>Ordered Date and Time</th>
+                        <!-- <th>Accepted Date and Time</th> -->
+                        <th></th>
+                    </tr>
+                    <?php foreach($data['acccepted_orders'] as $accepted_order): ?>
+                    <tr>
+                        <td><?php echo $accepted_order->pharmacy_name ?></td>
+                        <td><?php echo $accepted_order->address ?></td>
+                        <td><?php echo $accepted_order->contact_number ?></td>
+                        <td><?php echo $accepted_order->delivery_address ?></td>
+                        <td><?php echo $accepted_order->ordered_date_and_time ?></td>
+                        <!-- <td><?php echo $accepted_order->ordered_date_and_time ?></td> -->
+                        <td>
+                            <button class="delete"><i class="fa-solid fa-credit-card"></i> Pay!</button>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </table>
             </div>
-            <?php endforeach; ?>
-        </div>
-
-        <div class="right">
-            <img src="../public/img/doctor-cards.png" alt="">
         </div>
     </section>
 
-<?php require APPROOT.'/views/inc/components/footer.php'; ?>
-
+    <?php require APPROOT.'/views/inc/components/footer1.php'; ?>
 </body>
-</html> -->
+</html>
