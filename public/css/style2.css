@@ -1060,6 +1060,37 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 }
 /* doctor page ends */
 
+
+/* For meditation instructor reg users page */
+.doctor-main-picture-container-meditationInstructorRegisteredUsers{
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../img/meditationInstructorRegisteredUsers/registeredUsers.jpg);
+    background-size: cover;
+    overflow: hidden;
+}
+
+.doctor-main-picture-container-meditationInstructorRegisteredUsers .tittle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 40px;
+    color: var(--hue-white);
+    line-height: 40px;
+    margin-bottom: 50px;
+}
+
+.doctor-main-picture-container-meditationInstructorRegisteredUsers .tittle i{
+    font-size: 4.5rem;
+}
+/* meditation instructor reg users page ends */
+
+
 /* Admin UserMgmt */
 
 .doctor-main-picture-container-userMgmt{
@@ -1123,6 +1154,34 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 
 
 
+/* For Meditation Instructor session page */
+.doctor-main-picture-container-meditationInstructorSession{
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../img/meditationInstructorSession/session.jpg);
+    background-size: cover;
+    overflow: hidden;
+}
+
+.doctor-main-picture-container-meditationInstructorSession .tittle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 40px;
+    color: var(--hue-white);
+    line-height: 40px;
+    margin-bottom: 50px;
+}
+
+.doctor-main-picture-container-meditationInstructorSession .tittle i{
+    font-size: 4.5rem;
+}
+/* Meditation Instructor session page ends */
 
 
 

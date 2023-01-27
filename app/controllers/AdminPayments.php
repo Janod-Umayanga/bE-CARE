@@ -15,10 +15,10 @@ class AdminPayments extends Controller{
     $data=[                      
       'user'=>''
     ];
-    $this->view('AdminPayments/v_adminPayments',$data);
+    $this->view('Admin/AdminPayments/v_adminPayments',$data);
 
     }else{
-      redirect('Admin/login');  
+      redirect('Login/login');  
     }
   }
 

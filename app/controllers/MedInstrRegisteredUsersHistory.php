@@ -19,10 +19,10 @@ class MedInstrRegisteredUsersHistory extends Controller{
      'medChannel'=>$medChannel,
      'search'=>''
    ];
-   $this->view('MedInstrRegisteredUsersHistory/v_medInstrRegisteredUsersHistory',$data);
+   $this->view('MedInstr/MedInstrRegisteredUsersHistory/v_medInstrRegisteredUsersHistory',$data);
   
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
 
   }
@@ -42,7 +42,7 @@ class MedInstrRegisteredUsersHistory extends Controller{
            'medChannel'=>$medChannel,
            'search'=>$search
          ];
-         $this->view('MedInstrRegisteredUsersHistory/v_medInstrRegisteredUsersHistory',$data);
+         $this->view('MedInstr/MedInstrRegisteredUsersHistory/v_medInstrRegisteredUsersHistory',$data);
       
       
      }else{
@@ -50,11 +50,11 @@ class MedInstrRegisteredUsersHistory extends Controller{
             'medChannel'=>'',
             'search'=>''
           ];
-          $this->view('MedInstrRegisteredUsersHistory/v_medInstrRegisteredUsersHistory',$data);
+          $this->view('MedInstr/MedInstrRegisteredUsersHistory/v_medInstrRegisteredUsersHistory',$data);
   }
     
 }else{
-  redirect('MedInstr/login');  
+  redirect('Login/login');  
 }
   }
 
@@ -71,10 +71,10 @@ class MedInstrRegisteredUsersHistory extends Controller{
      'medChannel'=>$medChannel
      
    ];
-   $this->view('MedInstrRegisteredUsersHistory/v_medInstrRegisteredUsersHistoryViewMore',$data);
+   $this->view('MedInstr/MedInstrRegisteredUsersHistory/v_medInstrRegisteredUsersHistoryViewMore',$data);
   
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
 
   }

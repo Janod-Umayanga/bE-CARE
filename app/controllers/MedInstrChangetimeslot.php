@@ -18,9 +18,9 @@ class MedInstrChangetimeslot extends Controller{
      'timeslot'=>$timeslot,
      'search'=>''
    ];
-   $this->view('MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);
+   $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
 
   }
@@ -39,7 +39,7 @@ class MedInstrChangetimeslot extends Controller{
             'timeslot'=>$timeslot,
             'search'=>$search
          ];
-         $this->view('MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);
+         $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);
    
       
      }else{
@@ -47,10 +47,10 @@ class MedInstrChangetimeslot extends Controller{
             'timeslot'=>'',
             'search'=>''
           ];
-          $this->view('MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);
+          $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);
         }
       }else{
-        redirect('MedInstr/login');  
+        redirect('Login/login');  
       }
   }
 
@@ -105,13 +105,13 @@ class MedInstrChangetimeslot extends Controller{
             $updateTimeslot=$this->medInstrChangetimeslotModel->updatetimeslot($data,$timeslot_id);
        
          if($updateTimeslot){
-             $this->view('MedInstrChangetimeslot/v_medInstrUpdatetimeslot',$data); 
+             $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrUpdatetimeslot',$data); 
            }
            else{
-            $this->view('MedInstrChangetimeslot/v_medInstrUpdatetimeslot',$data);
+            $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrUpdatetimeslot',$data);
            }   
         }else{
-          $this->view('MedInstrChangetimeslot/v_medInstrUpdatetimeslot',$data);
+          $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrUpdatetimeslot',$data);
         } 
       }else{
       
@@ -132,10 +132,10 @@ class MedInstrChangetimeslot extends Controller{
         'address_err'=>''
     
       ];
-       $this->view('MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);     
+       $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);     
     } 
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
   }
 
@@ -164,10 +164,10 @@ class MedInstrChangetimeslot extends Controller{
               'address_err'=>''
             
             ];
-            $this->view('MedInstrChangetimeslot/v_medInstrUpdatetimeslot',$data);
+            $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrUpdatetimeslot',$data);
         
           }else{
-            redirect('MedInstr/login');  
+            redirect('Login/login');  
           }
     } 
         
@@ -185,10 +185,10 @@ class MedInstrChangetimeslot extends Controller{
             ];
         
             if($deletetimeslot==true){
-                $this->view('MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);
+                $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);
             }
           }else{
-            redirect('MedInstr/login');  
+            redirect('Login/login');  
           }          
 
     } 

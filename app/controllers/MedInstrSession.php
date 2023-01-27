@@ -19,9 +19,9 @@ class MedInstrSession extends Controller{
      'noOfnewSession'=>$noOfnewSession
      
    ];
-   $this->view('MedInstrSession/v_medInstrSession',$data);
+   $this->view('MedInstr/MedInstrSession/v_medInstrSession',$data);
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
 
   }
@@ -37,10 +37,10 @@ class MedInstrSession extends Controller{
      'search'=>''
      
    ];
-   $this->view('MedInstrSession/MedInstrCompletedSession/v_medInstrCompletedSession',$data);
+   $this->view('MedInstr/MedInstrSession/MedInstrCompletedSession/v_medInstrCompletedSession',$data);
 
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
   }
 
@@ -61,7 +61,7 @@ class MedInstrSession extends Controller{
               'search'=>$search
               
             ];
-            $this->view('MedInstrSession/MedInstrCompletedSession/v_medInstrCompletedSession',$data);
+            $this->view('MedInstr/MedInstrSession/MedInstrCompletedSession/v_medInstrCompletedSession',$data);
               
         
        }else{
@@ -71,10 +71,10 @@ class MedInstrSession extends Controller{
           'search'=>''
           
         ];
-        $this->view('MedInstrSession/MedInstrCompletedSession/v_medInstrCompletedSession',$data);
+        $this->view('MedInstr/MedInstrSession/MedInstrCompletedSession/v_medInstrCompletedSession',$data);
         }
       }else{
-        redirect('MedInstr/login');  
+        redirect('Login/login');  
       }
   }
 
@@ -89,10 +89,10 @@ class MedInstrSession extends Controller{
      
      
    ];
-   $this->view('MedInstrSession/MedInstrCompletedSession/v_medInstrCompletedSessionViewMore',$data);
+   $this->view('MedInstr/MedInstrSession/MedInstrCompletedSession/v_medInstrCompletedSessionViewMore',$data);
 
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
   }
 
@@ -109,9 +109,9 @@ class MedInstrSession extends Controller{
      
      
    ];
-   $this->view('MedInstrSession/MedInstrCompletedSession/v_medInstrCompletedSessionRegUsers',$data);
+   $this->view('MedInstr/MedInstrSession/MedInstrCompletedSession/v_medInstrCompletedSessionRegUsers',$data);
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
 
   }
@@ -132,7 +132,7 @@ class MedInstrSession extends Controller{
           'search'=>$search
           
         ];
-        $this->view('MedInstrSession/MedInstrCompletedSession/v_medInstrCompletedSessionRegUsers',$data);
+        $this->view('MedInstr/MedInstrSession/MedInstrCompletedSession/v_medInstrCompletedSessionRegUsers',$data);
              
     
    }else{
@@ -142,10 +142,10 @@ class MedInstrSession extends Controller{
       'search'=>''
       
     ];
-    $this->view('MedInstrSession/MedInstrCompletedSession/v_medInstrCompletedSessionRegUsers',$data);
+    $this->view('MedInstr/MedInstrSession/MedInstrCompletedSession/v_medInstrCompletedSessionRegUsers',$data);
     }
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
   }
 
@@ -162,9 +162,9 @@ public function medInstrNewSession()
     'newSession'=>$newSession,
     'search'=>''
   ];
-  $this->view('MedInstrSession/MedInstrNewSession/v_medInstrNewSession',$data);
+  $this->view('MedInstr/MedInstrSession/MedInstrNewSession/v_medInstrNewSession',$data);
 }else{
-  redirect('MedInstr/login');  
+  redirect('Login/login');  
 }
 
 }
@@ -186,7 +186,7 @@ public function medInstrNewSession()
               'search'=>$search
               
             ];
-            $this->view('MedInstrSession/MedInstrNewSession/v_medInstrNewSession',$data);
+            $this->view('MedInstr/MedInstrSession/MedInstrNewSession/v_medInstrNewSession',$data);
               
         
        }else{
@@ -196,10 +196,10 @@ public function medInstrNewSession()
           'search'=>''
           
         ];
-        $this->view('MedInstrSession/MedInstrNewSession/v_medInstrNewSession',$data);
+        $this->view('MedInstr/MedInstrSession/MedInstrNewSession/v_medInstrNewSession',$data);
         }
       }else{
-        redirect('MedInstr/login');  
+        redirect('Login/login');  
       }
   }
 
@@ -214,10 +214,10 @@ public function medInstrNewSession()
      
      
    ];
-   $this->view('MedInstrSession/MedInstrNewSession/v_medInstrNewSessionViewMore',$data);
+   $this->view('MedInstr/MedInstrSession/MedInstrNewSession/v_medInstrNewSessionViewMore',$data);
 
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
   }
 
@@ -234,9 +234,9 @@ public function medInstrNewSession()
      
      
    ];
-   $this->view('MedInstrSession/MedInstrNewSession/v_medInstrNewSessionRegUsers',$data);
+   $this->view('MedInstr/MedInstrSession/MedInstrNewSession/v_medInstrNewSessionRegUsers',$data);
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
 
   }
@@ -257,7 +257,7 @@ public function medInstrNewSession()
           'search'=>$search
           
         ];
-        $this->view('MedInstrSession/MedInstrNewSession/v_medInstrNewSessionRegUsers',$data);
+        $this->view('MedInstr/MedInstrSession/MedInstrNewSession/v_medInstrNewSessionRegUsers',$data);
              
     
    }else{
@@ -267,10 +267,10 @@ public function medInstrNewSession()
       'search'=>''
       
     ];
-    $this->view('MedInstrSession/MedInstrNewSession/v_medInstrNewSessionRegUsers',$data);
+    $this->view('MedInstr/MedInstrSession/MedInstrNewSession/v_medInstrNewSessionRegUsers',$data);
     }
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
  
 }

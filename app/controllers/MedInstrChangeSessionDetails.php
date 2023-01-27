@@ -15,9 +15,9 @@ class MedInstrChangeSessionDetails extends Controller{
      'sessionDetail'=> $sessionDetail,
      'search'=> ''
    ];
-   $this->view('MedInstrChangeSessionDetails/v_MedInstrChangeSessionDetails',$data);
+   $this->view('MedInstr/MedInstrChangeSessionDetails/v_MedInstrChangeSessionDetails',$data);
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
 
   }
@@ -37,7 +37,7 @@ class MedInstrChangeSessionDetails extends Controller{
           'sessionDetail'=> $sessionDetail,
           'search'=> $search
         ];
-        $this->view('MedInstrChangeSessionDetails/v_MedInstrChangeSessionDetails',$data);
+        $this->view('MedInstr/MedInstrChangeSessionDetails/v_MedInstrChangeSessionDetails',$data);
 
 
    }else{
@@ -45,10 +45,10 @@ class MedInstrChangeSessionDetails extends Controller{
           'sessionDetail'=>'',
           'search'=>''
         ];
-        $this->view('MedInstrChangeSessionDetails/v_MedInstrChangeSessionDetails',$data);
+        $this->view('MedInstr/MedInstrChangeSessionDetails/v_MedInstrChangeSessionDetails',$data);
     }
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
   }
 
@@ -66,11 +66,11 @@ class MedInstrChangeSessionDetails extends Controller{
     ];
 
     if($deletesession==true){
-        $this->view('MedInstrChangeSessionDetails/v_MedInstrChangeSessionDetails',$data);
+        $this->view('MedInstr/MedInstrChangeSessionDetails/v_MedInstrChangeSessionDetails',$data);
     }
 
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
 
   }
@@ -100,10 +100,10 @@ class MedInstrChangeSessionDetails extends Controller{
 
     ];
 
-    $this->view('MedInstrChangeSessionDetails/v_medInstrAddNewSession',$data);
+    $this->view('MedInstr/MedInstrChangeSessionDetails/v_medInstrAddNewSession',$data);
     
   }else{
-       redirect('MedInstr/login');  
+       redirect('Login/login');  
   }
         
   }
@@ -178,10 +178,10 @@ class MedInstrChangeSessionDetails extends Controller{
 
            }
            else{
-            $this->view('MedInstrChangeSessionDetails/v_medInstrAddNewSession',$data);
+            $this->view('MedInstr/MedInstrChangeSessionDetails/v_medInstrAddNewSession',$data);
            }
         }else{
-            $this->view('MedInstrChangeSessionDetails/v_medInstrAddNewSession',$data);
+            $this->view('MedInstr/MedInstrChangeSessionDetails/v_medInstrAddNewSession',$data);
         }
       }else{
 
@@ -205,10 +205,10 @@ class MedInstrChangeSessionDetails extends Controller{
         'description_err'=>''
 
       ];
-       $this->view('MedInstrChangeSessionDetails/v_medInstrChangeSessionDetails',$data);
+       $this->view('MedInstr/MedInstrChangeSessionDetails/v_medInstrChangeSessionDetails',$data);
     }
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
  }
 
@@ -243,10 +243,10 @@ class MedInstrChangeSessionDetails extends Controller{
 
     ];
 
-      $this->view('MedInstrChangeSessionDetails/v_medInstrUpdateSessionDetails',$data);
+      $this->view('MedInstr/MedInstrChangeSessionDetails/v_medInstrUpdateSessionDetails',$data);
 
     }else{
-      redirect('MedInstr/login');  
+      redirect('Login/login');  
     }
   
 
@@ -314,14 +314,14 @@ class MedInstrChangeSessionDetails extends Controller{
                 $updateSession=$this->medInstrChangeSessionDetailsModel->medInstrupdateSession($_SESSION['MedInstr_id'],$sessionId,$data);
 
                if($updateSession){
-                  $this->view('MedInstrChangeSessionDetails/v_medInstrUpdateSessionDetails',$data);
+                  $this->view('MedInstr/MedInstrChangeSessionDetails/v_medInstrUpdateSessionDetails',$data);
 
                }
                else{
-                   $this->view('MedInstrChangeSessionDetails/v_medInstrUpdateSessionDetails',$data);
+                   $this->view('MedInstr/MedInstrChangeSessionDetails/v_medInstrUpdateSessionDetails',$data);
                 }
             }else{
-                $this->view('MedInstrChangeSessionDetails/v_medInstrUpdateSessionDetails',$data);
+                $this->view('MedInstr/MedInstrChangeSessionDetails/v_medInstrUpdateSessionDetails',$data);
             }
           }else{
 
@@ -345,7 +345,7 @@ class MedInstrChangeSessionDetails extends Controller{
             'description_err'=>''
 
           ];
-           $this->view('MedInstrChangeSessionDetails/v_medInstrChangeSessionDetails',$data);
+           $this->view('MedInstr/MedInstrChangeSessionDetails/v_medInstrChangeSessionDetails',$data);
         }
 
       }else{

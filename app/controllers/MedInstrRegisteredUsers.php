@@ -29,9 +29,9 @@ class MedInstrRegisteredUsers extends Controller{
      'sunday'=>$sunday
 
    ];
-   $this->view('MedInstrRegisteredUsers/v_medInstrRegisteredUsers',$data);
+   $this->view('MedInstr/MedInstrRegisteredUsers/v_medInstrRegisteredUsers',$data);
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
 
   }
@@ -48,10 +48,10 @@ class MedInstrRegisteredUsers extends Controller{
      'medChannel'=>$medChannel,
      'search'=>''
    ];
-   $this->view('MedInstrRegisteredUsers/Monday/v_medInstrRegisteredUsersMonday',$data);
+   $this->view('MedInstr/MedInstrRegisteredUsers/Monday/v_medInstrRegisteredUsersMonday',$data);
 
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
   }
   
@@ -66,9 +66,9 @@ class MedInstrRegisteredUsers extends Controller{
      'medChannel'=>$medChannel,
      'search'=>''
    ];
-   $this->view('MedInstrRegisteredUsers/Tuesday/v_medInstrRegisteredUsersTuesday',$data);
+   $this->view('MedInstr/MedInstrRegisteredUsers/Tuesday/v_medInstrRegisteredUsersTuesday',$data);
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
 
   }
@@ -84,9 +84,9 @@ class MedInstrRegisteredUsers extends Controller{
      'medChannel'=>$medChannel,
      'search'=>''
    ];
-   $this->view('MedInstrRegisteredUsers/Wednesday/v_medInstrRegisteredUsersWednesday',$data);
+   $this->view('MedInstr/MedInstrRegisteredUsers/Wednesday/v_medInstrRegisteredUsersWednesday',$data);
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
 
   }
@@ -103,10 +103,10 @@ class MedInstrRegisteredUsers extends Controller{
      'medChannel'=>$medChannel,
      'search'=>''
    ];
-   $this->view('MedInstrRegisteredUsers/Thursday/v_medInstrRegisteredUsersThursday',$data);
+   $this->view('MedInstr/MedInstrRegisteredUsers/Thursday/v_medInstrRegisteredUsersThursday',$data);
 
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
   }
 
@@ -121,9 +121,9 @@ class MedInstrRegisteredUsers extends Controller{
      'medChannel'=>$medChannel,
      'search'=>''
    ];
-   $this->view('MedInstrRegisteredUsers/Friday/v_medInstrRegisteredUsersFriday',$data);
+   $this->view('MedInstr/MedInstrRegisteredUsers/Friday/v_medInstrRegisteredUsersFriday',$data);
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
 
   }
@@ -139,10 +139,10 @@ class MedInstrRegisteredUsers extends Controller{
      'medChannel'=>$medChannel,
      'search'=>''
    ];
-   $this->view('MedInstrRegisteredUsers/Saturday/v_medInstrRegisteredUsersSaturday',$data);
+   $this->view('MedInstr/MedInstrRegisteredUsers/Saturday/v_medInstrRegisteredUsersSaturday',$data);
 
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
   }
 
@@ -158,9 +158,9 @@ class MedInstrRegisteredUsers extends Controller{
      'medChannel'=>$medChannel,
      'search'=>''
    ];
-   $this->view('MedInstrRegisteredUsers/Sunday/v_medInstrRegisteredUsersSunday',$data);
+   $this->view('MedInstr/MedInstrRegisteredUsers/Sunday/v_medInstrRegisteredUsersSunday',$data);
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
 
   }
@@ -181,7 +181,7 @@ class MedInstrRegisteredUsers extends Controller{
            'medChannel'=>$medChannel,
            'search'=>$search
          ];
-         $this->view('MedInstrRegisteredUsers/Monday/v_medInstrRegisteredUsersMonday',$data);
+         $this->view('MedInstr/MedInstrRegisteredUsers/Monday/v_medInstrRegisteredUsersMonday',$data);
       
       
      }else{
@@ -190,10 +190,10 @@ class MedInstrRegisteredUsers extends Controller{
             'medChannel'=>'',
             'search'=>''
           ];
-          $this->view('MedInstrRegisteredUsers/Monday/v_medInstrRegisteredUsersMonday',$data);
+          $this->view('MedInstr/MedInstrRegisteredUsers/Monday/v_medInstrRegisteredUsersMonday',$data);
   }
 }else{
-  redirect('MedInstr/login');  
+  redirect('Login/login');  
 }
   }
 
@@ -214,7 +214,7 @@ class MedInstrRegisteredUsers extends Controller{
            'medChannel'=>$medChannel,
            'search'=>$search
          ];
-         $this->view('MedInstrRegisteredUsers/Tuesday/v_medInstrRegisteredUsersTuesday',$data);
+         $this->view('MedInstr/MedInstrRegisteredUsers/Tuesday/v_medInstrRegisteredUsersTuesday',$data);
       
       
      }else{
@@ -223,10 +223,10 @@ class MedInstrRegisteredUsers extends Controller{
             'medChannel'=>'',
             'search'=>''
           ];
-          $this->view('MedInstrRegisteredUsers/Tuesday/v_medInstrRegisteredUsersTuesday',$data);
+          $this->view('MedInstr/MedInstrRegisteredUsers/Tuesday/v_medInstrRegisteredUsersTuesday',$data);
   }
 }else{
-  redirect('MedInstr/login');  
+  redirect('Login/login');  
 } 
   }
 
@@ -246,7 +246,7 @@ class MedInstrRegisteredUsers extends Controller{
            'medChannel'=>$medChannel,
            'search'=>$search
          ];
-         $this->view('MedInstrRegisteredUsers/Wedneasday/v_medInstrRegisteredUsersWedneasday',$data);
+         $this->view('MedInstr/MedInstrRegisteredUsers/Wedneasday/v_medInstrRegisteredUsersWedneasday',$data);
       
       
      }else{
@@ -255,10 +255,10 @@ class MedInstrRegisteredUsers extends Controller{
             'medChannel'=>'',
             'search'=>''
           ];
-          $this->view('MedInstrRegisteredUsers/Wedneasday/v_medInstrRegisteredUsersWedneasday',$data);
+          $this->view('MedInstr/MedInstrRegisteredUsers/Wedneasday/v_medInstrRegisteredUsersWedneasday',$data);
   }
 }else{
-  redirect('MedInstr/login');  
+  redirect('Login/login');  
 } 
   }
 
@@ -278,7 +278,7 @@ class MedInstrRegisteredUsers extends Controller{
            'medChannel'=>$medChannel,
            'search'=>$search
          ];
-         $this->view('MedInstrRegisteredUsers/Thursday/v_medInstrRegisteredUsersThursday',$data);
+         $this->view('MedInstr/MedInstrRegisteredUsers/Thursday/v_medInstrRegisteredUsersThursday',$data);
       
       
      }else{
@@ -287,10 +287,10 @@ class MedInstrRegisteredUsers extends Controller{
             'medChannel'=>'',
             'search'=>''
           ];
-          $this->view('MedInstrRegisteredUsers/Thursday/v_medInstrRegisteredUsersThursday',$data);
+          $this->view('MedInstr/MedInstrRegisteredUsers/Thursday/v_medInstrRegisteredUsersThursday',$data);
   }
 }else{
-  redirect('MedInstr/login');  
+  redirect('Login/login');  
 } 
   }
 
@@ -310,7 +310,7 @@ class MedInstrRegisteredUsers extends Controller{
            'medChannel'=>$medChannel,
            'search'=>$search
          ];
-         $this->view('MedInstrRegisteredUsers/Friday/v_medInstrRegisteredUsersFriday',$data);
+         $this->view('MedInstr/MedInstrRegisteredUsers/Friday/v_medInstrRegisteredUsersFriday',$data);
       
       
      }else{
@@ -319,10 +319,10 @@ class MedInstrRegisteredUsers extends Controller{
             'medChannel'=>'',
             'search'=>''
           ];
-          $this->view('MedInstrRegisteredUsers/Friday/v_medInstrRegisteredUsersFriday',$data);
+          $this->view('MedInstr/MedInstrRegisteredUsers/Friday/v_medInstrRegisteredUsersFriday',$data);
   }
 }else{
-  redirect('MedInstr/login');  
+  redirect('Login/login');  
 } 
   }
 
@@ -342,7 +342,7 @@ class MedInstrRegisteredUsers extends Controller{
            'medChannel'=>$medChannel,
            'search'=>$search
          ];
-         $this->view('MedInstrRegisteredUsers/Saturday/v_medInstrRegisteredUsersSaturday',$data);
+         $this->view('MedInstr/MedInstrRegisteredUsers/Saturday/v_medInstrRegisteredUsersSaturday',$data);
       
       
      }else{
@@ -351,10 +351,10 @@ class MedInstrRegisteredUsers extends Controller{
             'medChannel'=>'',
             'search'=>''
           ];
-          $this->view('MedInstrRegisteredUsers/Saturday/v_medInstrRegisteredUsersSaturday',$data);
+          $this->view('MedInstr/MedInstrRegisteredUsers/Saturday/v_medInstrRegisteredUsersSaturday',$data);
   }
 }else{
-  redirect('MedInstr/login');  
+  redirect('Login/login');  
 } 
   }
 
@@ -375,7 +375,7 @@ class MedInstrRegisteredUsers extends Controller{
            'medChannel'=>$medChannel,
            'search'=>$search
          ];
-         $this->view('MedInstrRegisteredUsers/Sunday/v_medInstrRegisteredUsersSunday',$data);
+         $this->view('MedInstr/MedInstrRegisteredUsers/Sunday/v_medInstrRegisteredUsersSunday',$data);
       
       
      }else{
@@ -384,10 +384,10 @@ class MedInstrRegisteredUsers extends Controller{
             'medChannel'=>'',
             'search'=>''
           ];
-          $this->view('MedInstrRegisteredUsers/Sunday/v_medInstrRegisteredUsersSunday',$data);
+          $this->view('MedInstr/MedInstrRegisteredUsers/Sunday/v_medInstrRegisteredUsersSunday',$data);
   }
 }else{
-  redirect('MedInstr/login');  
+  redirect('Login/login');  
 }  
   }
 
