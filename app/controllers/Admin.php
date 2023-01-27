@@ -36,10 +36,10 @@ class Admin extends Controller{
         'gender_err'=>''
 
       ];
-      $this->view('Admin/v_profile',$data);
+      $this->view('Admin/Admin/v_profile',$data);
   
     }else{
-      redirect('Admin/login');  
+      redirect('Login/login');  
     }
 
   }
@@ -55,10 +55,10 @@ class Admin extends Controller{
         'retype_new_password_err'=>'' ,
         'new_password_err'=>''
       ];
-      $this->view('Admin/v_changePW',$data);
+      $this->view('Admin/Admin/v_changePW',$data);
 
   }else{
-      redirect('Admin/login');  
+      redirect('Login/login');  
   }
 
 
@@ -115,10 +115,10 @@ class Admin extends Controller{
           }
           else{
            $data['retype_new_password_err']='something wrong';
-           $this->view('Admin/v_changePW',$data);
+           $this->view('Admin/Admin/v_changePW',$data);
           }   
        }else{
-         $this->view('Admin/v_changePW',$data);
+         $this->view('Admin/Admin/v_changePW',$data);
        } 
      }else{
      $data = [
@@ -130,141 +130,15 @@ class Admin extends Controller{
       'retype_new_password_err'=>'' ,
       'new_password_err'=>''    
      ];
-      $this->view('Admin/v_changePW',$data);     
+      $this->view('Admin/Admin/v_changePW',$data);     
    }
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
 
 }
 
-  
-
-//   public function register(){
-//     if($_SERVER['REQUEST_METHOD']=='POST'){
-        
-//       $_POST=filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
-  
-//       $data = [
-//         'profile_image' =>$_FILES['profile_image'],
-//         'profile_image_name' =>time().'_'.$_FILES['profile_image']['name'],  
-//         'name'=>trim($_POST['name']),
-//         'email'=>trim($_POST['email']),
-//         'password'=>trim($_POST['password']),      
-//         'confirm_password'=>trim($_POST['confirm_password']),
-        
-//         'profile_image_err'=>'', 
-//         'name_err'=>'',
-//         'email_err'=>'',
-//         'password_err'=>'',
-//         'confirm_password_err'=>''
-
-//       ];
-
-       
-//       if(uploadImage($data['profile_image']['tmp_name'],$data['profile_image_name'],'/img/profileImgs/')){
-
-//       } else{
-//            $data['profile_image_err']='profile picture uploaded unsuccessfully';
-           
-//       }
-
-
-//       if(empty($data['name'])){
-//         $data['name_err']='Please enter a name';
-//       }
-
-//       if(empty($data['email'])){
-//         $data['email_err']='Please enter a email';
-
-//       }else{
-//          if($this->userModel->findUserByEmail($data['email'])){
-//            $data['email_err']='Email is already registered';
-
-//          } 
-//       }
-  
-//       if(empty($data['password'])){
-//         $data['password_err']='Please enter a password';
-    
-//       }else if(empty($data['confirm_password']))
-//       {
-//         $data['confirm_password_err']='Please confirm the password';
-        
-//       }     
-      
-//       else{
-//         if($data['password']!=$data['confirm_password']){
-//           $data['confirm_password_err']='Passwords are not matching';
-          
-//         }
-//       }
-      
-//       if(empty($data['name_err']) && empty($data['email_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['profile_image_err']))
-//       {
-//          $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
-//          if($this->userModel->register($data))
-//          {
-//             flash('reg_flash', 'You are succesfully registered!');
-//             redirect('Admin/login');
-//          }else{
-//             die('Something went wrong');
-//          }
-    
-//       }else{
-//         $this->view('Admin/v_register',$data);
-//       }  
-       
-  
-//     }else{
-       
-//       $data =[
-//         'profile_image' =>'',
-//         'profile_image_name' =>'',
-//         'name'=>'',
-//         'email'=>'',
-//         'password'=>'',
-//         'confirm_password'=>'',
-        
-//         'profile_image_err'=>'',
-//         'name_err'=>'',
-//         'email_err'=>'',
-//         'password_err'=>'',
-//         'confirm_password_err'=>''
-
-//       ];
-       
-//       $this->view('Admin/v_register',$data);
-//     }
-
-//   }
-
-
-  public function createAdminSession($user){
-     $_SESSION['admin_id']=$user->admin_id;
-     $_SESSION['admin_name']=$user->first_name;
-     $_SESSION['admin_email']=$user->email; 
-     if($user->gender=='Male'){
-        $_SESSION['admin_gender']='Mr.';
-     }else if($user->gender=='Female'){
-         $_SESSION['admin_gender']='Ms.';
-     }  
-    
-    redirect('AdminDashboard/index');
-      
-  }
-
-  public function logout(){
-     unset($_SESSION['admin_id']);
-     unset($_SESSION['admin_name']);
-     unset($_SESSION['admin_email']);
-     unset($_SESSION['admin_gender']);
-     session_destroy();
-     redirect('Admin/login');
-     
-     
-  }  
-  
+ 
   public function isLoggedIn(){
     if(isset($_SESSION['admin_id'])){
       return true;
@@ -361,7 +235,7 @@ class Admin extends Controller{
 
        
        if($user->admin_id != $_SESSION['admin_id']){
-           redirect('Admin/login'); 
+           redirect('Login/login'); 
        }
        
 
@@ -394,7 +268,7 @@ class Admin extends Controller{
     }
   
     }else{
-      redirect('Admin/login');  
+      redirect('Login/login');  
     }
  }
 

@@ -25,10 +25,10 @@ class AdminReqSerProviders extends Controller{
      'meditationInstr'=>$meditationInstr,
      'pharmacist'=>$pharmacist,
    ];
-   $this->view('AdminReqSerProviders/v_reqSerProviders',$data);
+   $this->view('Admin/AdminReqSerProviders/v_reqSerProviders',$data);
 
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   } 
 
   }
@@ -45,10 +45,10 @@ class AdminReqSerProviders extends Controller{
      'doctor'=>$doctor,
      'search'=>''
    ];
-   $this->view('AdminReqSerProviders/ReqDoctor/v_reqDoctor',$data);
+   $this->view('Admin/AdminReqSerProviders/ReqDoctor/v_reqDoctor',$data);
 
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
   }
 
@@ -63,9 +63,9 @@ class AdminReqSerProviders extends Controller{
      'counsellor'=>$counsellor,
      'search'=>''
    ];
-   $this->view('AdminReqSerProviders/ReqCounsellor/v_reqCounsellor',$data);
+   $this->view('Admin/AdminReqSerProviders/ReqCounsellor/v_reqCounsellor',$data);
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
 
   }
@@ -82,9 +82,9 @@ class AdminReqSerProviders extends Controller{
      'nutritionist'=>$nutritionist,
      'search'=>''
    ];
-   $this->view('AdminReqSerProviders/ReqNutritionist/v_reqNutritionist',$data);
+   $this->view('Admin/AdminReqSerProviders/ReqNutritionist/v_reqNutritionist',$data);
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
 
   }
@@ -100,9 +100,9 @@ class AdminReqSerProviders extends Controller{
      'meditationInstructor'=>$meditationInstructor,
      'search'=>''
    ];
-   $this->view('AdminReqSerProviders/ReqMeditationInstr/v_reqMeditationInstr',$data);
+   $this->view('Admin/AdminReqSerProviders/ReqMeditationInstr/v_reqMeditationInstr',$data);
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
 
   }
@@ -118,9 +118,9 @@ class AdminReqSerProviders extends Controller{
      'pharmacist'=>$pharmacist,
      'search'=>''
    ];
-   $this->view('AdminReqSerProviders/ReqPharmacist/v_reqPharmacist',$data);
+   $this->view('Admin/AdminReqSerProviders/ReqPharmacist/v_reqPharmacist',$data);
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
 
   }
@@ -144,16 +144,16 @@ class AdminReqSerProviders extends Controller{
             'doctor'=>$doctor,
             'search'=>$search
           ];
-          $this->view('AdminReqSerProviders/ReqDoctor/v_reqDoctor',$data);
+          $this->view('Admin/AdminReqSerProviders/ReqDoctor/v_reqDoctor',$data);
      }else{
           $data=[                      
             'doctor'=>'',
             'search'=>''
           ];
-          $this->view('AdminReqSerProviders/ReqDoctor/v_reqDoctor',$data);
+          $this->view('Admin/AdminReqSerProviders/ReqDoctor/v_reqDoctor',$data);
      }
     }else{
-      redirect('Admin/login');  
+      redirect('Login/login');  
     }
   }
 
@@ -168,9 +168,9 @@ class AdminReqSerProviders extends Controller{
      'doctor'=>$doctor
      
    ];
-   $this->view('AdminReqSerProviders/ReqDoctor/v_reqDoctorViewMore',$data);
+   $this->view('Admin/AdminReqSerProviders/ReqDoctor/v_reqDoctorViewMore',$data);
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
   }
 
@@ -187,9 +187,9 @@ class AdminReqSerProviders extends Controller{
       'search'=>'',
       'verifydoctor'=>$verifydoctor
     ];
-    $this->view('AdminReqSerProviders/ReqDoctor/v_reqDoctor',$data);
+    $this->view('Admin/AdminReqSerProviders/ReqDoctor/v_reqDoctor',$data);
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
   }
 
@@ -207,9 +207,9 @@ class AdminReqSerProviders extends Controller{
       'search'=>'',
       'notverifydoctor'=>$notverifydoctor
     ];
-    $this->view('AdminReqSerProviders/ReqDoctor/v_reqDoctor',$data);
+    $this->view('Admin/AdminReqSerProviders/ReqDoctor/v_reqDoctor',$data);
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
   }
 
@@ -230,16 +230,16 @@ public function  adminSearchReqPharmacist()
           'pharmacist'=>$pharmacist,
           'search'=>$search
         ];
-        $this->view('AdminReqSerProviders/ReqPharmacist/v_reqPharmacist',$data);
+        $this->view('Admin/AdminReqSerProviders/ReqPharmacist/v_reqPharmacist',$data);
    }else{
         $data=[                      
           'pharmacist'=>'',
           'search'=>''
         ];
-        $this->view('AdminReqSerProviders/ReqPharmacist/v_reqPharmacist',$data);
+        $this->view('Admin/AdminReqSerProviders/ReqPharmacist/v_reqPharmacist',$data);
    }
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
 }
 
@@ -254,9 +254,9 @@ public function  adminViewMoreReqPharmacist($pharmacist_id)
    'pharmacist'=>$pharmacist
    
  ];
- $this->view('AdminReqSerProviders/ReqPharmacist/v_reqPharmacistViewMore',$data);
+ $this->view('Admin/AdminReqSerProviders/ReqPharmacist/v_reqPharmacistViewMore',$data);
 }else{
-  redirect('Admin/login');  
+  redirect('Login/login');  
 }
 }
 
@@ -273,9 +273,9 @@ public function  adminVerifyReqPharmacist($pharmacist_id)
     'search'=>'',
     'verifypharmacist'=>$verifypharmacist
   ];
-  $this->view('AdminReqSerProviders/ReqPharmacist/v_reqPharmacist',$data);
+  $this->view('Admin/AdminReqSerProviders/ReqPharmacist/v_reqPharmacist',$data);
 }else{
-  redirect('Admin/login');  
+  redirect('Login/login');  
 }
 }
 
@@ -292,9 +292,9 @@ public function  adminNotVerifyReqPharmacist($pharmacist_id)
       'search'=>'',
       'notverifypharmacist'=>$notverifypharmacist
     ];
-    $this->view('AdminReqSerProviders/ReqPharmacist/v_reqPharmacist',$data);
+    $this->view('Admin/AdminReqSerProviders/ReqPharmacist/v_reqPharmacist',$data);
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
 }
 
@@ -318,16 +318,16 @@ public function  adminSearchReqCounsellor()
           'counsellor'=>$counsellor,
           'search'=>$search
         ];
-        $this->view('AdminReqSerProviders/ReqCounsellor/v_reqCounsellor',$data);
+        $this->view('Admin/AdminReqSerProviders/ReqCounsellor/v_reqCounsellor',$data);
    }else{
         $data=[                      
           'counsellor'=>'',
           'search'=>''
         ];
-        $this->view('AdminReqSerProviders/ReqCounsellor/v_reqCounsellor',$data);
+        $this->view('Admin/AdminReqSerProviders/ReqCounsellor/v_reqCounsellor',$data);
    }
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
 }
 
@@ -342,9 +342,9 @@ public function  adminViewMoreReqCounsellor($counsellor_id)
    'counsellor'=>$counsellor
    
  ];
- $this->view('AdminReqSerProviders/ReqCounsellor/v_reqCounsellorViewMore',$data);
+ $this->view('Admin/AdminReqSerProviders/ReqCounsellor/v_reqCounsellorViewMore',$data);
 }else{
-  redirect('Admin/login');  
+  redirect('Login/login');  
 }
 }
 
@@ -361,9 +361,9 @@ public function  adminVerifyReqCounsellor($counsellor_id)
     'search'=>'',
     'verifycounsellor'=>$verifycounsellor
   ];
-  $this->view('AdminReqSerProviders/ReqCounsellor/v_reqCounsellor',$data);
+  $this->view('Admin/AdminReqSerProviders/ReqCounsellor/v_reqCounsellor',$data);
 }else{
-  redirect('Admin/login');  
+  redirect('Login/login');  
 }
 }
 
@@ -380,9 +380,9 @@ public function  adminNotVerifyReqCounsellor($counsellor_id)
       'search'=>'',
       'notverifycounsellor'=>$notverifycounsellor
     ];
-    $this->view('AdminReqSerProviders/ReqCounsellor/v_reqCounsellor',$data);
+    $this->view('Admin/AdminReqSerProviders/ReqCounsellor/v_reqCounsellor',$data);
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
 }
 
@@ -405,16 +405,16 @@ public function  adminSearchReqNutritionist()
           'nutritionist'=>$nutritionist,
           'search'=>$search
         ];
-        $this->view('AdminReqSerProviders/ReqNutritionist/v_reqNutritionist',$data);
+        $this->view('Admin/AdminReqSerProviders/ReqNutritionist/v_reqNutritionist',$data);
    }else{
         $data=[                      
           'nutritionist'=>'',
           'search'=>''
         ];
-        $this->view('AdminReqSerProviders/ReqNutritionist/v_reqNutritionist',$data);
+        $this->view('Admin/AdminReqSerProviders/ReqNutritionist/v_reqNutritionist',$data);
    }
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
 }
 
@@ -429,9 +429,9 @@ public function  adminViewMoreReqNutritionist($nutritionist_id)
    'nutritionist'=>$nutritionist
    
  ];
- $this->view('AdminReqSerProviders/ReqNutritionist/v_reqNutritionistViewMore',$data);
+ $this->view('Admin/AdminReqSerProviders/ReqNutritionist/v_reqNutritionistViewMore',$data);
 }else{
-  redirect('Admin/login');  
+  redirect('Login/login');  
 }
 }
 
@@ -448,9 +448,9 @@ public function  adminVerifyReqNutritionist($nutritionist_id)
     'search'=>'',
     'verifynutritionist'=>$verifynutritionist
   ];
-  $this->view('AdminReqSerProviders/ReqNutritionist/v_reqNutritionist',$data);
+  $this->view('Admin/AdminReqSerProviders/ReqNutritionist/v_reqNutritionist',$data);
 }else{
-  redirect('Admin/login');  
+  redirect('Login/login');  
 }
 }
 
@@ -467,9 +467,9 @@ public function  adminNotVerifyReqNutritionist($nutritionist_id)
       'search'=>'',
       'notverifynutritionist'=>$notverifynutritionist
     ];
-    $this->view('AdminReqSerProviders/ReqNutritionist/v_reqNutritionist',$data);
+    $this->view('Admin/AdminReqSerProviders/ReqNutritionist/v_reqNutritionist',$data);
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
 }
 
@@ -492,16 +492,16 @@ public function  adminSearchReqMeditationInstructor()
           'meditationInstructor'=>$meditationInstructor,
           'search'=>$search
         ];
-        $this->view('AdminReqSerProviders/ReqMeditationInstr/v_reqMeditationInstr',$data);
+        $this->view('Admin/AdminReqSerProviders/ReqMeditationInstr/v_reqMeditationInstr',$data);
    }else{
         $data=[                      
           'meditationInstructor'=>'',
           'search'=>''
         ];
-        $this->view('AdminReqSerProviders/ReqMeditation_Instr/v_reqMeditation_Instr',$data);
+        $this->view('Admin/AdminReqSerProviders/ReqMeditation_Instr/v_reqMeditation_Instr',$data);
    }
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
 }
 
@@ -516,9 +516,9 @@ public function  adminViewMoreReqMeditationInstructor($meditationInstructor_id)
    'meditationInstructor'=>$meditationInstructor
    
  ];
- $this->view('AdminReqSerProviders/ReqMeditationInstr/v_reqMedInstrViewMore',$data);
+ $this->view('Admin/AdminReqSerProviders/ReqMeditationInstr/v_reqMedInstrViewMore',$data);
 }else{
-  redirect('Admin/login');  
+  redirect('Login/login');  
 }
 }
 
@@ -536,9 +536,9 @@ public function  adminVerifyReqMeditationInstructor($meditationInstructor_id)
     'search'=>'',
     'verifymeditationInstructor'=>$verifymeditationInstructor
   ];
-  $this->view('AdminReqSerProviders/ReqMeditationInstr/v_reqmeditationInstr',$data);
+  $this->view('Admin/AdminReqSerProviders/ReqMeditationInstr/v_reqmeditationInstr',$data);
 }else{
-  redirect('Admin/login');  
+  redirect('Login/login');  
 }
 }
 
@@ -557,9 +557,9 @@ public function  adminNotVerifyReqMeditationInstructor($meditationInstructor_id)
       'search'=>'',
       'notverifymeditationInstructor'=>$notverifymeditationInstructor
     ];
-    $this->view('AdminReqSerProviders/ReqmeditationInstr/v_reqmeditationInstr',$data);
+    $this->view('Admin/AdminReqSerProviders/ReqmeditationInstr/v_reqmeditationInstr',$data);
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   } 
 }
 

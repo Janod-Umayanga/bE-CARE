@@ -15,10 +15,10 @@ class MedInstrDashBoard extends Controller{
    $data=[                      
      'user'=>''
    ];
-   $this->view('MedInstrDashBoard/v_medInstrDashBoard',$data);
+   $this->view('MedInstr/MedInstrDashBoard/v_medInstrDashBoard',$data);
 
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }  
   }
 

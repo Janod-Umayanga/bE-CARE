@@ -15,10 +15,10 @@ class AdminDashboard extends Controller{
    $data=[                      
      'user'=>''
    ];
-   $this->view('AdminDashBoard/v_adminDashBoard',$data);
+   $this->view('Admin/AdminDashBoard/v_adminDashBoard',$data);
 
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
   
   }

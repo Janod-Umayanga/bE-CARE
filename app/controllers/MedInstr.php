@@ -25,10 +25,10 @@ class MedInstr extends Controller{
     'address'=>$user->address,
     'fee'=>$user->fee,
    ];
-   $this->view('MedInstr/v_profile',$data);
+   $this->view('MedInstr/MedInstr/v_profile',$data);
 
 }else{
-   redirect('MedInstr/login');  
+   redirect('Login/login');  
  }
 
   }
@@ -43,10 +43,10 @@ class MedInstr extends Controller{
     'retype_new_password_err'=>'' ,
     'new_password_err'=>''
    ];
-   $this->view('MedInstr/v_changePW',$data);
+   $this->view('MedInstr/MedInstr/v_changePW',$data);
 
 }else{
-   redirect('MedInstr/login');  
+   redirect('Login/login');  
  }
 
   }
@@ -104,10 +104,10 @@ class MedInstr extends Controller{
           }
           else{
            $data['retype_new_password_err']='something wrong';
-           $this->view('MedInstr/v_changePW',$data);
+           $this->view('MedInstr/MedInstr/v_changePW',$data);
           }   
        }else{
-         $this->view('MedInstr/v_changePW',$data);
+         $this->view('MedInstr/MedInstr/v_changePW',$data);
        } 
      }else{
      $data = [
@@ -119,199 +119,16 @@ class MedInstr extends Controller{
       'retype_new_password_err'=>'' ,
       'new_password_err'=>''    
      ];
-      $this->view('MedInstr/v_changePW',$data);     
+      $this->view('MedInstr/MedInstr/v_changePW',$data);     
    } 
 }else{
-   redirect('MedInstr/login');  
+   redirect('Login/login');  
  }
 
 }
 
   
 
-//   public function register(){
-//     if($_SERVER['REQUEST_METHOD']=='POST'){
-        
-//       $_POST=filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
-  
-//       $data = [
-//         'profile_image' =>$_FILES['profile_image'],
-//         'profile_image_name' =>time().'_'.$_FILES['profile_image']['name'],  
-//         'name'=>trim($_POST['name']),
-//         'email'=>trim($_POST['email']),
-//         'password'=>trim($_POST['password']),      
-//         'confirm_password'=>trim($_POST['confirm_password']),
-        
-//         'profile_image_err'=>'', 
-//         'name_err'=>'',
-//         'email_err'=>'',
-//         'password_err'=>'',
-//         'confirm_password_err'=>''
-
-//       ];
-
-       
-//       if(uploadImage($data['profile_image']['tmp_name'],$data['profile_image_name'],'/img/profileImgs/')){
-
-//       } else{
-//            $data['profile_image_err']='profile picture uploaded unsuccessfully';
-           
-//       }
-
-
-//       if(empty($data['name'])){
-//         $data['name_err']='Please enter a name';
-//       }
-
-//       if(empty($data['email'])){
-//         $data['email_err']='Please enter a email';
-
-//       }else{
-//          if($this->userModel->findUserByEmail($data['email'])){
-//            $data['email_err']='Email is already registered';
-
-//          } 
-//       }
-  
-//       if(empty($data['password'])){
-//         $data['password_err']='Please enter a password';
-    
-//       }else if(empty($data['confirm_password']))
-//       {
-//         $data['confirm_password_err']='Please confirm the password';
-        
-//       }     
-      
-//       else{
-//         if($data['password']!=$data['confirm_password']){
-//           $data['confirm_password_err']='Passwords are not matching';
-          
-//         }
-//       }
-      
-//       if(empty($data['name_err']) && empty($data['email_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['profile_image_err']))
-//       {
-//          $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
-//          if($this->userModel->register($data))
-//          {
-//             flash('reg_flash', 'You are succesfully registered!');
-//             redirect('MedInstr/login');
-//          }else{
-//             die('Something went wrong');
-//          }
-    
-//       }else{
-//         $this->view('MedInstr/v_register',$data);
-//       }  
-       
-  
-//     }else{
-       
-//       $data =[
-//         'profile_image' =>'',
-//         'profile_image_name' =>'',
-//         'name'=>'',
-//         'email'=>'',
-//         'password'=>'',
-//         'confirm_password'=>'',
-        
-//         'profile_image_err'=>'',
-//         'name_err'=>'',
-//         'email_err'=>'',
-//         'password_err'=>'',
-//         'confirm_password_err'=>''
-
-//       ];
-       
-//       $this->view('MedInstr/v_register',$data);
-//     }
-
-//   }
-
-  public function login(){
-       if($_SERVER["REQUEST_METHOD"] == 'POST'){
-          $_POST=filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
-    
-          $data = [
-            'email'=>trim($_POST['email']),
-            'password'=>trim($_POST['password']),      
-          
-            'email_err'=>'',
-            'password_err'=>'' ];      
-           
-          if(empty($data['email'])){
-            $data['email_err']='Please enter a email';
-          }else{
-             if($this->userModel->findUserByEmail($data['email'])){
-        
-            }else{
-                   $data['email_err']='User not found';
-             }  
-           
-          }
-
-
-          if(empty($data['password'])){
-             $data['password_err']='Please enter a password';
-          } 
-          
-          if(empty($data['email_err']) && empty($data['password_err'])){
-             $loggedUser=$this->userModel->login($data['email'],$data['password']);
-
-             if($loggedUser){
-                $this->createMedInstrSession($loggedUser);
-                redirect('MedInstrDashboard/medInstrDashBoard');    
-               
-             }
-             else{
-              $data['password_err']='Password incorrect';
-              $this->view('MedInstr/v_login',$data);
-             }   
-          }else{
-            $this->view('MedInstr/v_login',$data);
-          } 
-        }else{
-        $data = [
-          'email'=>'',
-          'password'=>'',
-          
-          'email_err'=>'',
-          'password_err'=>''
-        ];
-         $this->view('MedInstr/v_login',$data);     
-      } 
-  }
-
-  public function createMedInstrSession($user){
-     $_SESSION['MedInstr_id']=$user->meditation_instructor_id;
-     $_SESSION['MedInstr_name']=$user->first_name;
-     $_SESSION['MedInstr_email']=$user->email; 
-     $_SESSION['MedInstr_address']=$user->address;
-     $_SESSION['MedInstr_fee']=$user->fee; 
-     
-     if($user->gender=='Male'){
-        $_SESSION['MedInstr_gender']='Mr.';
-     }else if($user->gender=='Female'){
-         $_SESSION['MedInstr_gender']='Ms.';
-     }  
-    
-    redirect('MedInstrDashBoard/medInstrDashBoard');
-      
-  }
-
-  public function logout(){
-     unset($_SESSION['MedInstr_id']);
-     unset($_SESSION['MedInstr_name']);
-     unset($_SESSION['MedInstr_email']);
-     unset($_SESSION['MedInstr_gender']);
-     unset($_SESSION['MedInstr_address']);
-     unset($_SESSION['MedInstr_fee']);
-     
-     session_destroy();
-     redirect('MedInstr/login');
-     
-     
-  }  
   
   public function isLoggedIn(){
     if(isset($_SESSION['MedInstr_id'])){
@@ -412,13 +229,13 @@ class MedInstr extends Controller{
       if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['gender_err'])  && empty($data['city_err'])&& empty($data['address_err'])&& empty($data['fee_err'])&& empty($data['bank_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])){
             if($this->userModel->editUser($data)){
                 flash('post_msg', 'User account is updated successfully');
-                  $this->view('MedInstr/v_profile',$data);    
+                  $this->view('MedInstr/MedInstr/v_profile',$data);    
             }else{
-              $this->view('MedInstr/v_profile',$data);    
+              $this->view('MedInstr/MedInstr/v_profile',$data);    
             }  
        
       }else{
-        $this->view('MedInstr/v_profile',$data);     
+        $this->view('MedInstr/MedInstr/v_profile',$data);     
       }
 
 
@@ -461,7 +278,7 @@ class MedInstr extends Controller{
 
        redirect('MedInstr/profile'); 
     }}else{
-      redirect('MedInstr/login');  
+      redirect('Login/login');  
     }
    
  }

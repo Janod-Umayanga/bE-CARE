@@ -82,14 +82,14 @@ class MedInstrAddtimeslot extends Controller{
             $addmedTimeslot=$this->medInstrAddtimeslotModel->medInstraddtimeslot($_SESSION['MedInstr_id'],$first_rel_day,$last_day,$y,$m,$data);
 
          if($addmedTimeslot){
-             $this->view('MedInstrAddtimeslot/v_medInstrAddtimeslot',$data);    
+             $this->view('MedInstr/MedInstrAddtimeslot/v_medInstrAddtimeslot',$data);    
              
            }
            else{
-            $this->view('MedInstrAddtimeslot/v_medInstrAddtimeslot',$data);
+            $this->view('MedInstr/MedInstrAddtimeslot/v_medInstrAddtimeslot',$data);
            }   
         }else{
-          $this->view('MedInstrAddtimeslot/v_medInstrAddtimeslot',$data);
+          $this->view('MedInstr/MedInstrAddtimeslot/v_medInstrAddtimeslot',$data);
         } 
       }else{
 
@@ -112,11 +112,11 @@ class MedInstrAddtimeslot extends Controller{
 
       
       ];
-       $this->view('MedInstrAddtimeslot/v_medInstrAddtimeslot',$data);     
+       $this->view('MedInstr/MedInstrAddtimeslot/v_medInstrAddtimeslot',$data);     
     }
     
   }else{
-    redirect('MedInstr/login');  
+    redirect('Login/login');  
   }
   
   }

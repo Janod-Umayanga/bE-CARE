@@ -19,9 +19,9 @@ class AdminComplaintMgmt extends Controller{
          'unsolvedComplaint'=>$unsolvedComplaint,
           
        ];
-       $this->view('AdminComplaintMgmt/v_complaintMgmt',$data);
+       $this->view('Admin/AdminComplaintMgmt/v_complaintMgmt',$data);
      }else{
-        redirect('Admin/login');  
+        redirect('Login/login');  
      }
     }
 
@@ -47,9 +47,9 @@ class AdminComplaintMgmt extends Controller{
           'pharmacist'=>$pharmacist,
           
         ];
-        $this->view('AdminComplaintMgmt/v_complaintMgmtSolved',$data);
+        $this->view('Admin/AdminComplaintMgmt/v_complaintMgmtSolved',$data);
       }else{
-         redirect('Admin/login');  
+         redirect('Login/login');  
       }
      }
   
@@ -75,9 +75,9 @@ class AdminComplaintMgmt extends Controller{
           'pharmacist'=>$pharmacist,
           
         ];
-        $this->view('AdminComplaintMgmt/v_complaintMgmtUnsolved',$data);
+        $this->view('Admin/AdminComplaintMgmt/v_complaintMgmtUnsolved',$data);
       }else{
-         redirect('Admin/login');  
+         redirect('Login/login');  
       }
      }
   
@@ -99,11 +99,11 @@ class AdminComplaintMgmt extends Controller{
         'email'=>$_POST['email']   
         
       ];
-      $this->view('AdminComplaintMgmt/v_complaintMgmtViewMoreS',$data);
+      $this->view('Admin/AdminComplaintMgmt/v_complaintMgmtViewMoreS',$data);
    
     }
     }else{
-        redirect('Admin/login');  
+        redirect('Login/login');  
     }
    
    } 
@@ -126,11 +126,11 @@ class AdminComplaintMgmt extends Controller{
         'email'=>$_POST['email']   
         
       ];
-      $this->view('AdminComplaintMgmt/v_complaintMgmtViewMoreUC',$data);
+      $this->view('Admin/AdminComplaintMgmt/v_complaintMgmtViewMoreUC',$data);
    
     }
     }else{
-        redirect('Admin/login');  
+        redirect('Login/login');  
     }
    
    } 
@@ -155,7 +155,7 @@ class AdminComplaintMgmt extends Controller{
            } 
        
            }else{
-             redirect('Admin/login');  
+             redirect('Login/login');  
            }
    }
 }

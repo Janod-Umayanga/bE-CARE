@@ -68,11 +68,11 @@ class AdminUserMgmt extends Controller{
    
    
    ];
-   $this->view('AdminUserMgmt/v_userMgmt',$data);
+   $this->view('Admin/AdminUserMgmt/v_userMgmt',$data);
 
    
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
 
   }
@@ -87,11 +87,11 @@ class AdminUserMgmt extends Controller{
      'patient'=>$patient,
      'search'=>''
    ];
-   $this->view('AdminUserMgmt/Patient/v_patientUserMgmt',$data);
+   $this->view('Admin/AdminUserMgmt/Patient/v_patientUserMgmt',$data);
 
 
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
   }
 
@@ -106,10 +106,10 @@ class AdminUserMgmt extends Controller{
      'doctor'=>$doctor,
      'search'=>''
    ];
-   $this->view('AdminUserMgmt/Doctor/v_doctorUserMgmt',$data);
+   $this->view('Admin/AdminUserMgmt/Doctor/v_doctorUserMgmt',$data);
 
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
 
   }
@@ -124,11 +124,11 @@ class AdminUserMgmt extends Controller{
      'counsellor'=>$counsellor,
      'search'=>''
    ];
-   $this->view('AdminUserMgmt/Counsellor/v_counsellorUserMgmt',$data);
+   $this->view('Admin/AdminUserMgmt/Counsellor/v_counsellorUserMgmt',$data);
 
 
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
   }
 
@@ -143,11 +143,11 @@ class AdminUserMgmt extends Controller{
      'nutritionist'=>$nutritionist,
      'search'=>''
    ];
-   $this->view('AdminUserMgmt/Nutritionist/v_nutritionistUserMgmt',$data);
+   $this->view('Admin/AdminUserMgmt/Nutritionist/v_nutritionistUserMgmt',$data);
 
 
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
   }
   
@@ -161,11 +161,11 @@ class AdminUserMgmt extends Controller{
      'meditationInstructor'=>$meditationInstructor,
      'search'=>''
    ];
-   $this->view('AdminUserMgmt/MeditationInstructor/v_medInstrUserMgmt',$data);
+   $this->view('Admin/AdminUserMgmt/MeditationInstructor/v_medInstrUserMgmt',$data);
 
 
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
   }
   
@@ -180,10 +180,10 @@ class AdminUserMgmt extends Controller{
      'pharmacist'=>$pharmacist,
      'search'=>''
    ];
-   $this->view('adminUserMgmt/Pharmacist/v_pharmacistUserMgmt',$data);
+   $this->view('Admin/adminUserMgmt/Pharmacist/v_pharmacistUserMgmt',$data);
 
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
 
   }
@@ -198,11 +198,11 @@ class AdminUserMgmt extends Controller{
      'admin'=>$admin,
      'search'=>''
    ];
-   $this->view('adminUserMgmt/Admin/v_adminUserMgmt',$data);
+   $this->view('Admin/adminUserMgmt/Admin/v_adminUserMgmt',$data);
 
 
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
   }
 
@@ -225,17 +225,17 @@ class AdminUserMgmt extends Controller{
             'doctor'=>$doctor,
             'search'=>$search
           ];
-          $this->view('AdminUserMgmt/Doctor/v_doctorUserMgmt',$data);
+          $this->view('Admin/AdminUserMgmt/Doctor/v_doctorUserMgmt',$data);
      }else{
           $data=[                      
             'doctor'=>'',
             'search'=>''
           ];
-          $this->view('AdminUserMgmt/Doctor/v_doctorUserMgmt',$data);
+          $this->view('Admin/AdminUserMgmt/Doctor/v_doctorUserMgmt',$data);
      }
 
     }else{
-      redirect('Admin/login');  
+      redirect('Login/login');  
     }
   }
 
@@ -250,10 +250,10 @@ class AdminUserMgmt extends Controller{
      'doctor'=>$doctor
      
    ];
-   $this->view('AdminUserMgmt/Doctor/v_doctorViewMore',$data);
+   $this->view('Admin/AdminUserMgmt/Doctor/v_doctorViewMore',$data);
 
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
   }
 
@@ -276,17 +276,17 @@ public function  adminSearchPharmacist()
           'pharmacist'=>$pharmacist,
           'search'=>$search
         ];
-        $this->view('AdminUserMgmt/Pharmacist/v_pharmacistUserMgmt',$data);
+        $this->view('Admin/AdminUserMgmt/Pharmacist/v_pharmacistUserMgmt',$data);
    }else{
         $data=[                      
           'pharmacist'=>'',
           'search'=>''
         ];
-        $this->view('AdminUserMgmt/Pharmacist/v_pharmacistUserMgmt',$data);
+        $this->view('Admin/AdminUserMgmt/Pharmacist/v_pharmacistUserMgmt',$data);
    }
 
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
 }
 
@@ -301,10 +301,10 @@ public function  adminViewMorePharmacist($pharmacist_id)
    'pharmacist'=>$pharmacist
    
  ];
- $this->view('AdminUserMgmt/Pharmacist/v_pharmacistViewMore',$data);
+ $this->view('Admin/AdminUserMgmt/Pharmacist/v_pharmacistViewMore',$data);
 
 }else{
-  redirect('Admin/login');  
+  redirect('Login/login');  
 }
 }
 
@@ -327,17 +327,17 @@ public function  adminSearchCounsellor()
           'counsellor'=>$counsellor,
           'search'=>$search
         ];
-        $this->view('AdminUserMgmt/Counsellor/v_counsellorUserMgmt',$data);
+        $this->view('Admin/AdminUserMgmt/Counsellor/v_counsellorUserMgmt',$data);
    }else{
         $data=[                      
           'counsellor'=>'',
           'search'=>''
         ];
-        $this->view('AdminUserMgmt/Counsellor/v_counsellorUserMgmt',$data);
+        $this->view('Admin/AdminUserMgmt/Counsellor/v_counsellorUserMgmt',$data);
    }
 
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
 }
 
@@ -352,10 +352,10 @@ public function  adminViewMoreCounsellor($counsellor_id)
    'counsellor'=>$counsellor
    
  ];
- $this->view('AdminUserMgmt/Counsellor/v_counsellorViewMore',$data);
+ $this->view('Admin/AdminUserMgmt/Counsellor/v_counsellorViewMore',$data);
 
 }else{
-  redirect('Admin/login');  
+  redirect('Login/login');  
 }
 }
 
@@ -378,17 +378,17 @@ public function  adminSearchNutritionist()
           'nutritionist'=>$nutritionist,
           'search'=>$search
         ];
-        $this->view('AdminUserMgmt/Nutritionist/v_nutritionistUserMgmt',$data);
+        $this->view('Admin/AdminUserMgmt/Nutritionist/v_nutritionistUserMgmt',$data);
    }else{
         $data=[                      
           'nutritionist'=>'',
           'search'=>''
         ];
-        $this->view('AdminUserMgmt/Nutritionist/v_nutritionistUserMgmt',$data);
+        $this->view('Admin/AdminUserMgmt/Nutritionist/v_nutritionistUserMgmt',$data);
    }
 
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
 }
 
@@ -403,10 +403,10 @@ public function  adminViewMoreNutritionist($nutritionist_id)
    'nutritionist'=>$nutritionist
    
  ];
- $this->view('AdminUserMgmt/Nutritionist/v_nutritionistViewMore',$data);
+ $this->view('Admin/AdminUserMgmt/Nutritionist/v_nutritionistViewMore',$data);
 
 }else{
-  redirect('Admin/login');  
+  redirect('Login/login');  
 }
 }
 
@@ -431,17 +431,17 @@ public function  adminSearchMeditationInstructor()
           'meditationInstructor'=>$meditationInstructor,
           'search'=>$search
         ];
-        $this->view('AdminUserMgmt/MeditationInstructor/v_medInstrUserMgmt',$data);
+        $this->view('Admin/AdminUserMgmt/MeditationInstructor/v_medInstrUserMgmt',$data);
    }else{
         $data=[                      
           'meditationInstructor'=>'',
           'search'=>''
         ];
-        $this->view('AdminUserMgmt/MeditationInstructor/v_medInstrUserMgmt',$data);
+        $this->view('Admin/AdminUserMgmt/MeditationInstructor/v_medInstrUserMgmt',$data);
    }
 
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
 }
 
@@ -456,10 +456,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
    'meditationInstructor'=>$meditationInstructor
    
  ];
- $this->view('AdminUserMgmt/MeditationInstructor/v_medInstrViewMore',$data);
+ $this->view('Admin/AdminUserMgmt/MeditationInstructor/v_medInstrViewMore',$data);
 
 }else{
-  redirect('Admin/login');  
+  redirect('Login/login');  
 }
 }
 
@@ -485,17 +485,17 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
             'patient'=>$patient,
             'search'=>$search
           ];
-          $this->view('AdminUserMgmt/Patient/v_patientUserMgmt',$data);
+          $this->view('Admin/AdminUserMgmt/Patient/v_patientUserMgmt',$data);
      }else{
           $data=[                      
             'patient'=>'',
             'search'=>''
           ];
-          $this->view('AdminUserMgmt/patient/v_patientUserMgmt',$data);
+          $this->view('Admin/AdminUserMgmt/patient/v_patientUserMgmt',$data);
      }
 
     }else{
-      redirect('Admin/login');  
+      redirect('Login/login');  
     }
   }
 
@@ -510,10 +510,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
      'patient'=>$patient
      
    ];
-   $this->view('AdminUserMgmt/Patient/v_patientViewMore',$data);
+   $this->view('Admin/AdminUserMgmt/Patient/v_patientViewMore',$data);
 
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
   }
 
@@ -538,17 +538,17 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
             'admin'=>$admin,
             'search'=>$search
           ];
-          $this->view('AdminUserMgmt/Admin/v_adminUserMgmt',$data);
+          $this->view('Admin/AdminUserMgmt/Admin/v_adminUserMgmt',$data);
      }else{
           $data=[                      
             'admin'=>'',
             'search'=>''
           ];
-          $this->view('AdminUserMgmt/Admin/v_adminUserMgmt',$data);
+          $this->view('Admin/AdminUserMgmt/Admin/v_adminUserMgmt',$data);
      }
 
     }else{
-      redirect('Admin/login');  
+      redirect('Login/login');  
     }
   }
 
@@ -563,10 +563,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
      'admin'=>$admin
      
    ];
-   $this->view('AdminUserMgmt/Admin/v_adminViewMore',$data);
+   $this->view('Admin/AdminUserMgmt/Admin/v_adminViewMore',$data);
 
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
   }
 
@@ -586,10 +586,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
      'search'=>''
   
     ];
-   $this->view('AdminUserMgmt/Patient/v_patientUserMgmt',$data);
+   $this->view('Admin/AdminUserMgmt/Patient/v_patientUserMgmt',$data);
 
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
   }
 
@@ -609,10 +609,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
      'search'=>''
   
     ];
-   $this->view('AdminUserMgmt/Doctor/v_DoctorUserMgmt',$data);
+   $this->view('Admin/AdminUserMgmt/Doctor/v_DoctorUserMgmt',$data);
 
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
   }
 
@@ -632,10 +632,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
      'search'=>''
   
     ];
-   $this->view('AdminUserMgmt/Counsellor/v_CounsellorUserMgmt',$data);
+   $this->view('Admin/AdminUserMgmt/Counsellor/v_CounsellorUserMgmt',$data);
 
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
   }
 
@@ -655,10 +655,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
        'search'=>''
     
       ];
-     $this->view('AdminUserMgmt/Admin/v_AdminUserMgmt',$data);
+     $this->view('Admin/AdminUserMgmt/Admin/v_AdminUserMgmt',$data);
   
     }else{
-      redirect('Admin/login');  
+      redirect('Login/login');  
     }
     }
   
@@ -678,10 +678,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
      'search'=>''
   
     ];
-   $this->view('AdminUserMgmt/MeditationInstructor/v_MedInstrUserMgmt',$data);
+   $this->view('Admin/AdminUserMgmt/MeditationInstructor/v_MedInstrUserMgmt',$data);
 
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
   }
 
@@ -701,10 +701,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
        'search'=>''
     
       ];
-     $this->view('AdminUserMgmt/Pharmacist/v_PharmacistUserMgmt',$data);
+     $this->view('Admin/AdminUserMgmt/Pharmacist/v_PharmacistUserMgmt',$data);
   
     }else{
-      redirect('Admin/login');  
+      redirect('Login/login');  
     }
     }
 
@@ -724,10 +724,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
      'search'=>''
   
     ];
-   $this->view('AdminUserMgmt/Nutritionist/v_NutritionistUserMgmt',$data);
+   $this->view('Admin/AdminUserMgmt/Nutritionist/v_NutritionistUserMgmt',$data);
 
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
   }
 
@@ -806,11 +806,11 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                 flash('post_msg', 'add new patient successfully');
                      redirect('AdminUserMgmt/patient'); 
             }else{
-              $this->view('AdminUserMgmt/Patient/v_patientAddNew',$data);
+              $this->view('Admin/AdminUserMgmt/Patient/v_patientAddNew',$data);
             }  
        
        }else{
-            $this->view('AdminUserMgmt/Patient/v_patientAddNew',$data);
+            $this->view('Admin/AdminUserMgmt/Patient/v_patientAddNew',$data);
 
         }
       
@@ -847,11 +847,11 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
        
         ];
  
-        $this->view('AdminUserMgmt/Patient/v_patientAddNew',$data);
+        $this->view('Admin/AdminUserMgmt/Patient/v_patientAddNew',$data);
 
   }
 }else{
-  redirect('Admin/login');  
+  redirect('Login/login');  
 }
  
         
@@ -1029,7 +1029,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                }  
           
           }else{
-              $this->view('AdminUserMgmt/Doctor/v_doctorAddNew',$data);
+              $this->view('Admin/AdminUserMgmt/Doctor/v_doctorAddNew',$data);
    
           }
          
@@ -1077,12 +1077,12 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
              'qualification_file_err'=>'',
            ];
     
-           $this->view('AdminUserMgmt/Doctor/v_doctorAddNew',$data);
+           $this->view('Admin/AdminUserMgmt/Doctor/v_doctorAddNew',$data);
        
      }
      
      }else{
-        redirect('Admin/login');  
+        redirect('Login/login');  
      }
            
        }
@@ -1247,7 +1247,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                      }  
                 
                 }else{
-                    $this->view('AdminUserMgmt/Counsellor/v_counsellorAddNew',$data);
+                    $this->view('Admin/AdminUserMgmt/Counsellor/v_counsellorAddNew',$data);
          
                 }
                
@@ -1291,12 +1291,12 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                   'qualification_file_err'=>'',
                  ];
           
-                 $this->view('AdminUserMgmt/Counsellor/v_counsellorAddNew',$data);
+                 $this->view('Admin/AdminUserMgmt/Counsellor/v_counsellorAddNew',$data);
          
            }
      
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }     
                  
              }
@@ -1414,7 +1414,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                }  
           
           }else{
-              $this->view('AdminUserMgmt/Admin/v_adminAddNew',$data);
+              $this->view('Admin/AdminUserMgmt/Admin/v_adminAddNew',$data);
    
           }
          
@@ -1453,12 +1453,12 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
             'gender_err'=>'',
             ];
     
-           $this->view('AdminUserMgmt/Admin/v_adminAddNew',$data);
+           $this->view('Admin/AdminUserMgmt/Admin/v_adminAddNew',$data);
    
      }
    
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   } 
            
        }
@@ -1631,7 +1631,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                }  
           
           }else{
-              $this->view('AdminUserMgmt/MeditationInstructor/v_medInstrAddNew',$data);
+              $this->view('Admin/AdminUserMgmt/MeditationInstructor/v_medInstrAddNew',$data);
    
           }
          
@@ -1677,12 +1677,12 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
             'qualification_file_err'=>'',
           ];
     
-           $this->view('AdminUserMgmt/MeditationInstructor/v_medInstrAddNew',$data);
+           $this->view('Admin/AdminUserMgmt/MeditationInstructor/v_medInstrAddNew',$data);
    
      }
    
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   } 
            
        }
@@ -1853,7 +1853,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                }  
           
           }else{
-              $this->view('AdminUserMgmt/Pharmacist/v_pharmacistAddNew',$data);
+              $this->view('Admin/AdminUserMgmt/Pharmacist/v_pharmacistAddNew',$data);
    
           }
          
@@ -1901,13 +1901,13 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
             'qualification_file_err'=>''
            ];
     
-           $this->view('AdminUserMgmt/Pharmacist/v_pharmacistAddNew',$data);
+           $this->view('Admin/AdminUserMgmt/Pharmacist/v_pharmacistAddNew',$data);
    
      }
     
    
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }        
        }
 
@@ -2069,7 +2069,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                }  
           
           }else{
-              $this->view('AdminUserMgmt/Nutritionist/v_nutritionistAddNew',$data);
+              $this->view('Admin/AdminUserMgmt/Nutritionist/v_nutritionistAddNew',$data);
    
           }
          
@@ -2114,12 +2114,12 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
             'qualification_file_err'=>''
           ];
     
-           $this->view('AdminUserMgmt/Nutritionist/v_nutritionistAddNew',$data);
+           $this->view('Admin/AdminUserMgmt/Nutritionist/v_nutritionistAddNew',$data);
              
      }
     
   }else{
-    redirect('Admin/login');  
+    redirect('Login/login');  
   }
            
        }
@@ -2147,7 +2147,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                 } 
             
                 }else{
-                  redirect('Admin/login');  
+                  redirect('Login/login');  
                 }
         }
 
@@ -2176,7 +2176,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
               } 
           
         }else{
-             redirect('Admin/login');  
+             redirect('Login/login');  
         }
 
 
@@ -2207,7 +2207,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                 } 
             
                 }else{
-                  redirect('Admin/login');  
+                  redirect('Login/login');  
                 }
         }
 
@@ -2236,7 +2236,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
               } 
           
         }else{
-             redirect('Admin/login');  
+             redirect('Login/login');  
         }
 
 
@@ -2269,7 +2269,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                 } 
             
                 }else{
-                  redirect('Admin/login');  
+                  redirect('Login/login');  
                 }
         }
 
@@ -2298,7 +2298,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
               } 
           
         }else{
-             redirect('Admin/login');  
+             redirect('Login/login');  
         }
 
 
