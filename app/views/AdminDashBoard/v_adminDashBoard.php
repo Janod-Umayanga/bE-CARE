@@ -18,10 +18,10 @@
 
     <section class="main-content-container">
         <div class="main-content">
-            <p>From UCSC batch 20/21 CS Group 11</p>
-            <h1>Admin <br> Dashboard</h1>
+            <p>From UCSC batch 19/20 CS Group 11</p>
+            <h1>Local Healthcare <br> Platform</h1>
             <div class="main-two-buttons-container">
-                <a href="#our-services-container" class="main-button">Services</a>
+                <a href="#our-services-container" class="main-button">DashBoard</a>
                 <a class="main-button">About</a>
             </div>
         </div>
@@ -34,19 +34,19 @@
         </dev>
         <div class="card-container-forservices" id="to-be-show-more">
              <a href="<?php echo URLROOT;?>/AdminReqSerProviders/adminReqSerProviders" class="card">
-                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/adminDashBoard/reqServiceProviders.jpg" alt="">
                 <p>******<br>Requested Service Providers</p>
             </a>
             <a href="<?php echo URLROOT;?>/AdminComplaintMgmt/adminComplaintMgmt" class="card">
-                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/c4.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/adminDashBoard/complaintManagement.jpg" alt="">
                 <p>******<br>Complaint Management</p>
             </a>
             <a href="<?php echo URLROOT;?>/AdminUserMgmt/adminUserMgmt" class="card">
-                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/n1.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/adminDashBoard/userManagement.jpg" alt="">
                 <p>******<br>User Management</p>
             </a>
             <a href="<?php echo URLROOT;?>/AdminPayments/adminPayments" class="card">
-                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/m2.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/adminDashBoard/payments.jpg" alt="">
                 <p>******<br>Payments</p>
             </a>
         

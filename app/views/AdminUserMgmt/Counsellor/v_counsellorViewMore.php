@@ -16,7 +16,7 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <section class="view-profile-container theme">
+    <section class="view-profile-container-userMgmtDoctorVM theme">
         <div class="card">
             
             <div class="main-image">
@@ -46,8 +46,21 @@
                     <li>Branch - <?php echo $data['counsellor']->branch ?></li>
                    
                     <li>Account Number - <?php echo $data['counsellor']->account_number ?></li>
-                     <li>Qualification File -   <button class=""><a download="<?php echo $data['counsellor']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/counsellor_qualification/<?php echo  $data['counsellor']->qualification_file ?>">Download</a></button>
-               </li>
+                     <li>Qualification File -   <button class="qualification"><a download="<?php echo $data['counsellor']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/counsellor_qualification/<?php echo  $data['counsellor']->qualification_file ?>">Download</a></button>
+                    </li>
+
+                    
+                           
+                    <?php if($data['counsellor']->delete_flag==0): ?>
+                        <form class="deactiveForm" action="<?php echo URLROOT;?>/AdminUserMgmt/adminDeactivatedCounsellor/<?php echo $data['counsellor']->counsellor_id ?>" method="GET">
+                             <button type="submit">Deactivate</button>
+                       </form>  
+                       
+                    <?php elseif($data['counsellor']->delete_flag==1):?>
+                        <form class="activeForm" action="<?php echo URLROOT;?>/AdminUserMgmt/adminActivatedCounsellor/<?php echo $data['counsellor']->counsellor_id ?>" method="GET">
+                             <button type="submit">Activate</button>
+                       </form>  
+                    <?php endif?>
                    
                 </ul>
                 <div class="bottom-line"></div>

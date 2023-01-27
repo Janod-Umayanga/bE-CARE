@@ -25,7 +25,7 @@
             <div class="search-section">
                 <div class="search-bar">
                  
-                    <form class="searchform" action="<?php echo URLROOT;?>/MedInstrRegisteredUsersHistory/searchMedInstrRegisteredUsersHistory" method="GET">
+                    <form class="searchForm" action="<?php echo URLROOT;?>/MedInstrRegisteredUsersHistory/searchMedInstrRegisteredUsersHistory" method="GET">
                        <input type="text" name="search" value="<?php echo $data['search'] ?>"  placeholder="Filter registered users history by day date starting time ending time name, address">
                        <button  type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>

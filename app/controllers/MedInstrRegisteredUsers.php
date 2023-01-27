@@ -368,7 +368,7 @@ class MedInstrRegisteredUsers extends Controller{
   
           $search=trim($_GET['search']);
           
-          $sunday= $this->medInstrRegisteredUserModels->searchAllRegUsersSunday($search,$_SESSION['MedInstr_id']);
+          $sunday= $this->medInstrRegisteredUsersModel->searchAllRegUsersSunday($search,$_SESSION['MedInstr_id']);
           $medChannel= $this->medInstrRegisteredUsersModel->findmedChannelDetails();
           $data=[                      
            'sunday'=>$sunday,

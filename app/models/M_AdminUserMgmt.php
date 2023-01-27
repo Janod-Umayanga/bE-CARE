@@ -119,6 +119,166 @@
         }
       } 
 
+
+      public function getNoOfActiveDoctor()
+      {
+        $this->db->query('SELECT COUNT(doctor_id) as doctor_active_count FROM doctor WHERE delete_flag=0');
+       
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return $row;
+        }else{
+              return false;
+        }
+      } 
+
+      public function getNoOfDeactiveDoctor()
+      {
+        $this->db->query('SELECT COUNT(doctor_id) as doctor_deactive_count FROM doctor WHERE delete_flag=1');
+       
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return $row;
+        }else{
+              return false;
+        }
+      } 
+
+
+      public function getNoOfActiveCounsellor()
+      {
+        $this->db->query('SELECT COUNT(counsellor_id) as counsellor_active_count FROM counsellor WHERE delete_flag=0');
+       
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return $row;
+        }else{
+              return false;
+        }
+      } 
+
+      public function getNoOfDeactiveCounsellor()
+      {
+        $this->db->query('SELECT COUNT(counsellor_id) as counsellor_deactive_count FROM counsellor WHERE delete_flag=1');
+       
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return $row;
+        }else{
+              return false;
+        }
+      } 
+
+
+      public function getNoOfActivePharmacist()
+      {
+        $this->db->query('SELECT COUNT(pharmacist_id) as pharmacist_active_count FROM pharmacist WHERE delete_flag=0');
+       
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return $row;
+        }else{
+              return false;
+        }
+      } 
+
+      public function getNoOfDeactivePharmacist()
+      {
+        $this->db->query('SELECT COUNT(pharmacist_id) as pharmacist_deactive_count FROM pharmacist WHERE delete_flag=1');
+       
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return $row;
+        }else{
+              return false;
+        }
+      } 
+
+      public function getNoOfActiveNutritionist()
+      {
+        $this->db->query('SELECT COUNT(nutritionist_id) as nutritionist_active_count FROM nutritionist WHERE delete_flag=0');
+       
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return $row;
+        }else{
+              return false;
+        }
+      } 
+
+      public function getNoOfDeactiveNutritionist()
+      {
+        $this->db->query('SELECT COUNT(nutritionist_id) as nutritionist_deactive_count FROM nutritionist WHERE delete_flag=1');
+       
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return $row;
+        }else{
+              return false;
+        }
+      } 
+
+      public function getNoOfActiveAdmin()
+      {
+        $this->db->query('SELECT COUNT(admin_id) as admin_active_count FROM admin WHERE delete_flag=0');
+       
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return $row;
+        }else{
+              return false;
+        }
+      } 
+
+      public function getNoOfDeactiveAdmin()
+      {
+        $this->db->query('SELECT COUNT(admin_id) as admin_deactive_count FROM admin WHERE delete_flag=1');
+       
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return $row;
+        }else{
+              return false;
+        }
+      } 
+
+      
+      public function getNoOfActiveMeditationInstr()
+      {
+        $this->db->query('SELECT COUNT(meditation_instructor_id) as meditationInstructor_active_count FROM meditation_instructor WHERE delete_flag=0');
+       
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return $row;
+        }else{
+              return false;
+        }
+      } 
+
+      public function getNoOfDeactiveMeditationInstr()
+      {
+        $this->db->query('SELECT COUNT(meditation_instructor_id) as meditationInstructor_deactive_count FROM meditation_instructor WHERE delete_flag=1');
+       
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return $row;
+        }else{
+              return false;
+        }
+      } 
+      
       public function getNoOfAdmin()
       {
         $this->db->query('SELECT COUNT(admin_id) as admin_count FROM admin ');
@@ -411,6 +571,192 @@
             } 
             } 
 
+
+              // Deactivated a Doctor
+
+       
+        public function  deactivatedDoctor($id)
+        {
+            $this->db->query('UPDATE doctor set delete_flag=1 WHERE doctor_id = :id');
+            $this->db->bind(':id',$id);
+    
+            if($this->db->execute()){
+               return true;
+            }else{
+                return false;
+            } 
+        } 
+        
+            // Activated a Doctor
+
+                  
+            public function  activatedDoctor($id)
+            {
+            $this->db->query('UPDATE doctor set delete_flag=0 WHERE doctor_id = :id');
+            $this->db->bind(':id',$id);
+
+            if($this->db->execute()){
+                  return true;
+            }else{
+                  return false;
+            } 
+            } 
+
+
+              // Deactivated a Counsellor
+
+       
+        public function  deactivatedCounsellor($id)
+        {
+            $this->db->query('UPDATE counsellor set delete_flag=1 WHERE counsellor_id = :id');
+            $this->db->bind(':id',$id);
+    
+            if($this->db->execute()){
+               return true;
+            }else{
+                return false;
+            } 
+        } 
+        
+            // Activated a Counsellor
+
+                  
+            public function  activatedCounsellor($id)
+            {
+            $this->db->query('UPDATE counsellor set delete_flag=0 WHERE counsellor_id = :id');
+            $this->db->bind(':id',$id);
+
+            if($this->db->execute()){
+                  return true;
+            }else{
+                  return false;
+            } 
+            } 
+
+              // Deactivated a Nutritionist
+
+       
+        public function  deactivatedNutritionist($id)
+        {
+            $this->db->query('UPDATE nutritionist set delete_flag=1 WHERE nutritionist_id = :id');
+            $this->db->bind(':id',$id);
+    
+            if($this->db->execute()){
+               return true;
+            }else{
+                return false;
+            } 
+        } 
+        
+            // Activated a Nutritionist
+
+                  
+            public function  activatedNutritionist($id)
+            {
+            $this->db->query('UPDATE nutritionist set delete_flag=0 WHERE nutritionist_id = :id');
+            $this->db->bind(':id',$id);
+
+            if($this->db->execute()){
+                  return true;
+            }else{
+                  return false;
+            } 
+            } 
+
+        
+              // Deactivated a Pharmacist
+
+       
+        public function  deactivatedPharmacist($id)
+        {
+            $this->db->query('UPDATE pharmacist set delete_flag=1 WHERE pharmacist_id = :id');
+            $this->db->bind(':id',$id);
+    
+            if($this->db->execute()){
+               return true;
+            }else{
+                return false;
+            } 
+        } 
+        
+            // Activated a Pharmacist
+
+                  
+            public function  activatedPharmacist($id)
+            {
+            $this->db->query('UPDATE pharmacist set delete_flag=0 WHERE pharmacist_id = :id');
+            $this->db->bind(':id',$id);
+
+            if($this->db->execute()){
+                  return true;
+            }else{
+                  return false;
+            } 
+            } 
+
+
+              // Deactivated a Admin
+
+       
+              public function  deactivatedAdmin($id)
+              {
+                  $this->db->query('UPDATE admin set delete_flag=1 WHERE admin_id = :id');
+                  $this->db->bind(':id',$id);
+          
+                  if($this->db->execute()){
+                     return true;
+                  }else{
+                      return false;
+                  } 
+              } 
+              
+                  // Activated a Admin
+      
+                        
+                  public function  activatedAdmin($id)
+                  {
+                  $this->db->query('UPDATE admin set delete_flag=0 WHERE admin_id = :id');
+                  $this->db->bind(':id',$id);
+      
+                  if($this->db->execute()){
+                        return true;
+                  }else{
+                        return false;
+                  } 
+                  } 
+      
+
+          // Deactivated a meditation_instructor
+
+       
+          public function  deactivatedMeditationInstructor($id)
+          {
+              $this->db->query('UPDATE meditation_instructor set delete_flag=1 WHERE meditation_instructor_id = :id');
+              $this->db->bind(':id',$id);
+      
+              if($this->db->execute()){
+                 return true;
+              }else{
+                  return false;
+              } 
+          } 
+          
+              // Activated a meditation_instructor
+  
+                    
+              public function  activatedMeditationInstructor($id)
+              {
+              $this->db->query('UPDATE meditation_instructor set delete_flag=0 WHERE meditation_instructor_id = :id');
+              $this->db->bind(':id',$id);
+  
+              if($this->db->execute()){
+                    return true;
+              }else{
+                    return false;
+              } 
+              } 
+  
+  
 
        // Delete a Doctor
 

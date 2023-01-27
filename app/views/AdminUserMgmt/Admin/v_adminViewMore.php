@@ -16,7 +16,7 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <section class="view-profile-container theme">
+    <section class="view-profile-container-userMgmt theme">
         <div class="card">
             
             <div class="main-image">
@@ -45,7 +45,19 @@
                     <li>Account Number - <?php echo $data['admin']->account_number ?></li>
                 
                     
-               </li>
+                      
+                    <?php if($data['admin']->delete_flag==0): ?>
+                        <form class="deactiveForm" action="<?php echo URLROOT;?>/AdminUserMgmt/adminDeactivatedAdmin/<?php echo $data['admin']->admin_id ?>" method="GET">
+                             <button type="submit">Deactivate</button>
+                       </form>  
+                       
+                    <?php elseif($data['admin']->delete_flag==1):?>
+                        <form class="activeForm" action="<?php echo URLROOT;?>/AdminUserMgmt/adminActivatedAdmin/<?php echo $data['admin']->admin_id ?>" method="GET">
+                             <button type="submit">Activate</button>
+                       </form>  
+                    
+                    
+                     <?php endif?> 
                    
                 </ul>
                 <div class="bottom-line"></div>

@@ -42,8 +42,7 @@
                         <th>Type</th>
                         <th>Specialization</th>
                         <th></th>
-                        <th></th>
-                        <th></th>
+                        
                     </tr>
                    
                      
@@ -60,17 +59,11 @@
                           <form class="viewMoreForm" action="<?php echo URLROOT;?>/AdminReqSerProviders/adminViewMoreReqDoctor/<?php echo $doctor->requested_doctor_id ?>">
                               <button class="viewMore"><i class="fa-solid fa-circle-info"></i></button>
                           </form>
-                        </td>
-
-
-                        
-                        <td>
+                       
                           <form class="verifyForm" action="<?php echo URLROOT;?>/AdminReqSerProviders/adminVerifyReqDoctor/<?php echo $doctor->requested_doctor_id ?>" method="post">
                                 <button class="verify">Verify</button>
                           </form>
-                        </td>
-
-                        <td>
+                        
                           <form class="notVerifyForm" action="<?php echo URLROOT;?>/AdminReqSerProviders/adminNotVerifyReqDoctor/<?php echo $doctor->requested_doctor_id ?>" method="post">
                                 <button class="notVerify">Not Verify</button>
                           </form>
