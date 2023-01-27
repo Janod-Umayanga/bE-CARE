@@ -4235,6 +4235,114 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 }
 /* notification style ends */
 
+/************************************************** Session Page style starts *********************************************************/
+
+.session-container{
+    width: 100%;
+    height: fit-content;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 40px;
+    padding: 70px 0px;
+    background-color: #ebecee;
+}
+
+.session-container.dark{
+    background-color: var(--hue-black);
+}
+
+.session-card{
+    width: 700px;
+    height: fit-content;
+    background-color: var(--hue-black);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    justify-content: right;
+    padding: 20px 20px;
+}
+
+.session-card.dark{
+    background-color: var(--hue-white);
+}
+
+.session-card .top-box{
+    width: 600px;
+    height: 260px;
+    background-image: url(../img/Sessions-page-pictures/session--background.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+}
+
+.session-card .top-box .top-box-inner{
+    position: relative;
+    width: 80%;
+    height: 168px;
+    background-color: #1d242bef;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.session-card .top-box .top-box-inner h2{
+    color: #fafafac1;
+}
+
+.session-card .top-box .top-box-inner p{
+    color: #fafafaa0;
+    font-size: 14px;
+}
+
+.session-card .bottom{
+    width: 600px;
+    margin-top: -30px;
+    text-align: right;
+    background-color: #b4bdce;
+    padding: 10px;
+}
+
+.session-card .bottom h3{
+    color: #1d242be4;
+    font-size: 14px;
+}
+
+.session-card .icon-container{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: #fafafab2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.session-card .icon-container i{
+    cursor: pointer;
+}
+
+.inner-circle-for-initials{
+    position: absolute;
+    top: 30px;
+    left: -50px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fafafadc;
+    background-color: var(--hue-dark-blue);
+}
+
+/************************************************** Session Page style ends *********************************************************/
+
 /* Responsive precess starts here */
 
 @media (max-width: 956px){

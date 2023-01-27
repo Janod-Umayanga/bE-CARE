@@ -977,10 +977,21 @@
         // View sessions
         public function findSession() {
             // Show all sessions
-            $sessions = $this->sessionModel->getAllSessions();
+            $counsellor_sessions = $this->sessionModel->getAllSessionsByCounsellor();
+            $nutritionist_sessions = $this->sessionModel->getAllSessionsByNutritionist();
+            $meditation_instructor_sessions = $this->sessionModel->getAllSessionsByMeditationInstructor();
+
+            // Get current date and time
+            date_default_timezone_set("Asia/Kolkata");
+            $currentDate = date("Y-m-d");
+            $currentTime = date("H:i:s");
             
             $data = [
-                'sessions' => $sessions
+                'counsellor_sessions' => $counsellor_sessions,
+                'nutritionist_sessions' => $nutritionist_sessions,
+                'meditation_instructor_sessions' => $meditation_instructor_sessions,
+                'currentDate' => $currentDate,
+                'currentTime' => $currentTime
             ];
 
             // Load view
