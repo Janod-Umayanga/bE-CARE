@@ -36,32 +36,32 @@
         <div class="card-container-forservices" id="to-be-show-more">
           
             <a href="<?php echo URLROOT;?>/MedInstrRegisteredUsers/medInstrRegisteredUsers" class="card">
-                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/registeredUsers.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/registeredUsers.jpeg" alt="">
                 <p>******<br>Registered Users for Med Instructions</p>
             </a>
             
             <a href="<?php echo URLROOT;?>/MedInstrRegisteredUsersHistory/medInstrRegisteredUsersHistory" class="card">
-                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/registeredUsersHistory.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/registeredUsersHistory.jpeg" alt="">
                 <p>******<br>Registered Users History</p>
             </a>
             
             <a href="<?php echo URLROOT;?>/MedInstrChangeSessionDetails/medInstrChangeSessionDetails" class="card">
-                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/changeSessionDetails.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/changeSessionDetails.jpeg" alt="">
                 <p>******<br>Change Session Details  </p>
             </a>
             
             <a href="<?php echo URLROOT;?>/MedInstrChangetimeslot/medInstrChangetimeslot" class="card">
-                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/changeTimeslot.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/changeTimeslot.jpeg" alt="">
                 <p>******<br>Change Timeslot</p>
             </a>
         
             <a href="<?php echo URLROOT;?>/MedInstrSession/medInstrSession" class="card">
-                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/session.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/session.jpeg" alt="">
                 <p>******<br>Session</p>
             </a>
             
             <a href="<?php echo URLROOT;?>/MedInstrAddtimeslot/medInstrAddtimeslot" class="card">
-                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/addTimeslot.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/addTimeslot.jpeg" alt="">
                 <p>******<br>Add timeslot</p>
             </a>
         

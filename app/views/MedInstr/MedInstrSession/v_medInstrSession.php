@@ -34,12 +34,12 @@
              
             
             <a href="<?php echo URLROOT;?>/medInstrSession/medInstrOldSession" class="card">
-                <img src="<?php echo URLROOT;?>/img/meditationInstructorSession/completed.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/meditationInstructorSession/completed.jpeg" alt="">
                 <h3>Completed Sessions - <?php echo  $data["noOfoldSession"]->oldSession_count ?> </h3>
             </a>
             
             <a href="<?php echo URLROOT;?>/MedInstrSession/medInstrNewSession" class="card">
-                <img src="<?php echo URLROOT;?>/img/meditationInstructorSession/toBeDone.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/meditationInstructorSession/toBeDone.jpeg" alt="">
                 <h3> Sessions To be Done  - <?php echo$data["noOfnewSession"]->newSession_count ?> </h3>     
             </a>
             

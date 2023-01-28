@@ -1069,7 +1069,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     position: relative;
     align-items: center;
     justify-content: center;
-    background-image: url(../img/meditationInstructorRegisteredUsers/registeredUsers.jpg);
+    background-image: url(../img/meditationInstructorRegisteredUsers/registeredUsers.jpeg);
     background-size: cover;
     overflow: hidden;
 }
@@ -1100,7 +1100,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     position: relative;
     align-items: center;
     justify-content: center;
-    background-image: url(../img/adminUserManagement/adminUserManagement.jpg);
+    background-image: url(../img/adminUserManagement/adminUserManagement.jpeg);
     background-size: cover;
     overflow: hidden;
 }
@@ -1129,7 +1129,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     position: relative;
     align-items: center;
     justify-content: center;
-    background-image: url(../img/adminComplaintManagement/complaint.jpg);
+    background-image: url(../img/adminComplaintManagement/complaint.jpeg);
     background-size: cover;
     overflow: hidden;
 }
@@ -1162,7 +1162,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     position: relative;
     align-items: center;
     justify-content: center;
-    background-image: url(../img/meditationInstructorSession/session.jpg);
+    background-image: url(../img/meditationInstructorSession/session.jpeg);
     background-size: cover;
     overflow: hidden;
 }

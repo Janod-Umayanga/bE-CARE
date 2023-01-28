@@ -34,19 +34,19 @@
         </dev>
         <div class="card-container-forservices" id="to-be-show-more">
              <a href="<?php echo URLROOT;?>/AdminReqSerProviders/adminReqSerProviders" class="card">
-                <img src="<?php echo URLROOT;?>/img/adminDashBoard/reqServiceProviders.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/adminDashBoard/reqServiceProviders.jpeg" alt="">
                 <p>******<br>Requested Service Providers</p>
             </a>
             <a href="<?php echo URLROOT;?>/AdminComplaintMgmt/adminComplaintMgmt" class="card">
-                <img src="<?php echo URLROOT;?>/img/adminDashBoard/complaintManagement.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/adminDashBoard/complaintManagement.jpeg" alt="">
                 <p>******<br>Complaint Management</p>
             </a>
             <a href="<?php echo URLROOT;?>/AdminUserMgmt/adminUserMgmt" class="card">
-                <img src="<?php echo URLROOT;?>/img/adminDashBoard/userManagement.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/adminDashBoard/userManagement.jpeg" alt="">
                 <p>******<br>User Management</p>
             </a>
             <a href="<?php echo URLROOT;?>/AdminPayments/adminPayments" class="card">
-                <img src="<?php echo URLROOT;?>/img/adminDashBoard/payments.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/adminDashBoard/payments.jpeg" alt="">
                 <p>******<br>Payments</p>
             </a>
         
