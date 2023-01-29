@@ -37,6 +37,7 @@
             <div class="bottom">
                 <p>*******</p>
                 <h3>This session will be conducted by Dr. <?php echo $session->first_name ?> <?php echo $session->last_name ?> on <?php echo $session->date ?> during <?php echo $session->starting_time ?> to <?php echo $session->ending_time ?> at <?php echo $session->address ?></h3>
+                <button>Register</button>
             </div>
         </div>
         <?php endif; ?>
@@ -62,6 +63,7 @@
             <div class="bottom">
                 <p>*******</p>
                 <h3>This session will be conducted by Dr. <?php echo $session->first_name ?> <?php echo $session->last_name ?> on <?php echo $session->date ?> during <?php echo $session->starting_time ?> to <?php echo $session->ending_time ?> at <?php echo $session->address ?></h3>
+                <button>Register</button>
             </div>
         </div>
         <?php endif; ?>
@@ -87,6 +89,7 @@
             <div class="bottom">
                 <p>*******</p>
                 <h3>This session will be conducted by <?php echo $session->gender ?>. <?php echo $session->first_name ?> <?php echo $session->last_name ?> on <?php echo $session->date ?> during <?php echo $session->starting_time ?> to <?php echo $session->ending_time ?> at <?php echo $session->address ?></h3>
+                <button>Register</button>
             </div>
         </div>
         <?php endif; ?>
