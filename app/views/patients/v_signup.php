@@ -165,9 +165,7 @@
 
                       
 
-                        <label for="account_number">Account Number</label>
-                        <input type="text" id="account_number" name="account_number" value="<?php #echo $data['account_number'] ?>">
-                        <span class="form-invalid"><?php #echo $data['account_number_err'] ?></span>
+                        <label for="account_number">Account Number</label>                        <span class="form-invalid"><?php #echo $data['account_number_err'] ?></span>
 
                     </div>
                 </div>
