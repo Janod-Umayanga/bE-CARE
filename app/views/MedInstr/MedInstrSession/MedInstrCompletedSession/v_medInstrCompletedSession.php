@@ -53,16 +53,16 @@
                               
                     
                         <td>
-                        <form  action="<?php echo URLROOT;?>/MedInstrSession/viewMoreMedInstrOldSession/<?php echo $oldSession->session_id?>" method="post">
+                        <form  action="<?php echo URLROOT;?>/MedInstrSession/viewMoreMedInstrOldSession/<?php echo $oldSession->session_id?>" method="POST">
                            <button class="viewMore"  name="submit">View</button>
                         </form>
                         
-
-                        <form  action="<?php echo URLROOT;?>/MedInstrSession/viewRegUsersMedInstrOldSession/<?php echo $oldSession->session_id?>" method="post">
-                          <button class="viewRegUsers"  name="regusersSession">Registered Users</button>
+                     
+                        <form  action="<?php echo URLROOT;?>/MedInstrSession/viewRegUsersMedInstrOldSession/<?php echo $oldSession->session_id?>" method="POST">
+                          <button class="viewRegUsers"  value="<?php echo $oldSession->session_id?>" name="regusersSession">Registered Users</button>
                         </form>
 
-
+                        
                         </td>
 
                     </tr>

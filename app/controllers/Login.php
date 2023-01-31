@@ -278,7 +278,8 @@
             $_SESSION['admin_id'] = $admin->admin_id;
             $_SESSION['admin_email'] = $admin->email;
             $_SESSION['admin_name'] = $admin->first_name;
-        
+            $_SESSION['first_time_logged_Admin'] = true;
+
             if($admin->gender=='Male'){
                 $_SESSION['admin_gender']='Mr.';
             }else if($admin->gender=='Female'){
@@ -293,7 +294,8 @@
             $_SESSION['MedInstr_name']=$medInstr->first_name;
             $_SESSION['MedInstr_email']=$medInstr->email; 
             $_SESSION['MedInstr_address']=$medInstr->address;
-            $_SESSION['MedInstr_fee']=$medInstr->fee; 
+            $_SESSION['MedInstr_fee']=$medInstr->fee;
+            $_SESSION['first_time_logged_MedInstr'] = true; 
             
             if($medInstr->gender=='Male'){
                $_SESSION['MedInstr_gender']='Mr.';
@@ -338,8 +340,9 @@
                 unset($_SESSION['admin_name']);
                 unset($_SESSION['admin_email']);
                 unset($_SESSION['admin_gender']);
-                session_destroy();
-                
+               // session_destroy();
+          
+                $_SESSION['logout'] = true;
                 redirect('pages/v_login');  
             }
             elseif(isset($_SESSION['MedInstr_id'])){
@@ -349,7 +352,10 @@
                 unset($_SESSION['MedInstr_gender']);
                 unset($_SESSION['MedInstr_address']);
                 unset($_SESSION['MedInstr_fee']);
-                session_destroy();
+                unset($_SESSION['medInstrsession_id']);
+                //session_destroy();
+              
+                $_SESSION['logout'] = true;
                 
                 redirect('pages/v_login');
             }

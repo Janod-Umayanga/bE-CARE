@@ -100,9 +100,13 @@ class MedInstrSession extends Controller{
   public function viewRegUsersMedInstrOldSession($session_id)
   {
     if(isset($_SESSION['MedInstr_id'])) {  
-  
-    $regUser= $this->medInstrSessionModel->viewRegUsersSession($session_id);
-   $_SESSION['session_id']=$session_id;
+    
+        $regUser= $this->medInstrSessionModel->viewRegUsersSession($session_id);
+       
+        if(isset($_POST['regusersSession'])){
+          $_SESSION['medInstrsession_id'] = $_POST['regusersSession'];
+        }
+
    $data=[                      
      'regUser'=>$regUser,
      'search'=>''
@@ -114,6 +118,8 @@ class MedInstrSession extends Controller{
     redirect('Login/login');  
   }
 
+
+
   }
 
  
@@ -122,11 +128,11 @@ class MedInstrSession extends Controller{
     if(isset($_SESSION['MedInstr_id'])) {  
   
     if($_SERVER['REQUEST_METHOD']=='GET'){
-    $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
-
+      $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
+      
         $search=trim($_GET['search']);
-        $regUser= $this->medInstrSessionModel->searchMedInstrSessionRegUsers($_SESSION['session_id'],$search);
-   
+        $regUser= $this->medInstrSessionModel->searchMedInstrSessionRegUsers($_SESSION['medInstrsession_id'],$search);
+      
         $data=[                      
           'regUser'=>$regUser,
           'search'=>$search
@@ -143,6 +149,7 @@ class MedInstrSession extends Controller{
       
     ];
     $this->view('MedInstr/MedInstrSession/MedInstrCompletedSession/v_medInstrCompletedSessionRegUsers',$data);
+    
     }
   }else{
     redirect('Login/login');  
@@ -215,6 +222,9 @@ public function medInstrNewSession()
      
    ];
    $this->view('MedInstr/MedInstrSession/MedInstrNewSession/v_medInstrNewSessionViewMore',$data);
+   if(isset($_POST['regusersSession'])){
+    $_SESSION['medInstrsession_id'] = $_POST['regusersSession'];
+   }
 
   }else{
     redirect('Login/login');  
@@ -227,7 +237,12 @@ public function medInstrNewSession()
     if(isset($_SESSION['MedInstr_id'])) {  
   
     $regUser= $this->medInstrSessionModel->viewRegUsersSession($session_id);
-   $_SESSION['session_id']=$session_id;
+    
+    if(isset($_POST['regusersSession'])){
+      $_SESSION['medInstrsession_id'] = $_POST['regusersSession'];
+    }
+
+
    $data=[                      
      'regUser'=>$regUser,
      'search'=>''
@@ -250,7 +265,7 @@ public function medInstrNewSession()
     $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
 
         $search=trim($_GET['search']);
-        $regUser= $this->medInstrSessionModel->searchMedInstrSessionRegUsers($_SESSION['session_id'],$search);
+        $regUser= $this->medInstrSessionModel->searchMedInstrSessionRegUsers($_SESSION['medInstrsession_id'],$search);
    
         $data=[                      
           'regUser'=>$regUser,

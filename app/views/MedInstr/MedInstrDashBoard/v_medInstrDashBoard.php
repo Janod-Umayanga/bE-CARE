@@ -11,11 +11,13 @@
     <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
     <script defer src="<?php echo URLROOT; ?>/js/script.js"></script>
+    <script defer src="<?php echo URLROOT; ?>/js/pushNotificationMedInstrLogin.js"></script>
     <title>BeCare</title>
 </head>
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
-
+    
+    <div id="notification-container"></div>
     <section class="main-content-container">
         <div class="main-content">
             <p>From UCSC batch 19/20 CS Group 11</p>
@@ -68,7 +70,9 @@
         </div>
         <button id="show-button" class="show-button" onclick="showMore()"><span id="show-text">Show More</span><i class="fa-solid fa-angle-down" id="icon-more-orless"></i></button>
     </section>
-
+  
+    <!-- For push notifications -->
+    <span id="isMedInstrLoggedIn"><?php if(isset($_SESSION['first_time_logged_MedInstr'])){echo $_SESSION['first_time_logged_MedInstr']; unset($_SESSION['first_time_logged_MedInstr']);}?></span>
     <?php require APPROOT.'/views/inc/components/footer1.php'; ?>
 </body>
 </html>

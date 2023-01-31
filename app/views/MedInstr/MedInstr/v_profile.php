@@ -1,77 +1,120 @@
-<?php require APPROOT.'/views/inc/header.php'; ?>
-<?php require APPROOT.'/views/inc/components/topnavbar.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c4a594ff55.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
+    <script defer src="<?php echo URLROOT; ?>/js/pushNotificationProfile.js"></script>
+  
+    <title>Meditation Instructor Details</title>
+</head>
+<body>
+   <div id="notification-container"></div>
+    
+    <section class="diet-plan-section">
+        <div class="diet-plan-leftside">
+            <div class="diet-left-side-container">
+                <a href="<?php echo URLROOT ?>/MedInstrDashBoard/medInstrDashBoard" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Home page</a>
+                <div>
+                    <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
+                    <h2>Enter your login details to get into the application</h2>
+                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                </div>
+            </div>
+        </div>
+        <div class="diet-plan-rightside">
+           
+           <form action="<?php echo URLROOT ?>/MedInstr/editProfile/<?php echo $_SESSION['MedInstr_id'];?>" method="POST">
+                
+                <div class="">
+                    <h1>Your Details</h1>
+                    <p>Change Password<a href="<?php echo URLROOT ?>/MedInstr/changePW/"> Here</a></p>
+                </div>
+                
+                  <div class="diet-form-inputs-and-buttons">
+                    
+                    <div class="left"> 
 
-<sectionc class="sAdminProfile">
+                        <label for="first_name">First Name</label>
+                        <input type="text" id="first_name" name="first_name" value="<?php echo $data['first_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['first_name_err'] ?></span>
 
-      <div class="cAdminProfile">
+                       
+                        <label for="last_name">Last Name</label>
+                        <input type="text" id="last_name" name="last_name" value="<?php echo $data['last_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['last_name_err'] ?></span>
 
-              <h1>Account details</h1>
-              <form action="<?php echo URLROOT;?>/MedInstr/editProfile/<?php echo $_SESSION['MedInstr_id'];?>" method="post">
-                   <input type="hidden" name="email" value="<?php echo $data['email'] ?>">
-                   <div>
-                      <label>First name</label>
-                      <input type="text" id="first_name" name="first_name" required="true" value="<?php echo $data['first_name'] ?>">
+                        <label for="nic">NIC</label>
+                        <input type="text" id="nic" name="nic" value="<?php echo $data['nic'] ?>">
+                        <span class="form-invalid"><?php echo $data['nic_err'] ?></span>
 
-                      <label>Last name</label>
-                      <input type="text" id="last_name" name="last_name" required="true" value="<?php echo $data['last_name'] ?>">
+                        <label for="contact_number">contact Number</label>
+                        <input type="text" id="contact_number" name="contact_number" value="<?php echo $data['contact_number'] ?>">
+                        <span class="form-invalid"><?php echo $data['contact_number_err'] ?></span>
 
-                      <label>NIC</label>
-                      <input type="text" id="nic" name="nic" required="true" value="<?php echo $data['nic'] ?>">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" disabled="true" value="<?php echo $data['email'] ?>">
+                        
+            
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" value="<?php echo $data['city'] ?>">
+                        <span class="form-invalid"><?php echo $data['city_err'] ?></span>
 
-                      <label>Contact number</label>
-                      <input type="text" id="contact_number" name="contact_number" required="true" value="<?php echo $data['contact_number'] ?>">
 
-                      <label>Gender</label>
-                        <select name="gender" id="gender" required="true" value="<?php echo $data['gender'] ?>" >
-                           <option value="Male">Male</option>
-                           <option value="Female">Female</option>
+                        <button type="submit" >Submit</button> 
+                    </div>
+    
+                    <div class="right">
+                      
+       
+                        
+                        <label for="gender">Gender</label>
+                        <select name="gender" id="gender" >
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
                         </select>
+                        <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
 
-                      <label>Email</label>
-                      <input type="email" name="emal" id="email" required="true" disabled="true" value="<?php echo $data['email'] ?>">
+                        <label for="bank_name">Bank Name</label>
+                        <input type="text" id="bank_name" name="bank_name" value="<?php echo $data['bank_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['bank_name_err'] ?></span>
 
+                        <label for="account_holder_name">Account Holder Name</label>
+                        <input type="text" id="account_holder_name" name="account_holder_name" value="<?php echo $data['account_holder_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['account_holder_name_err'] ?></span>
 
-                  </div>
-                  <div>
-                        <label>City</label>
-                        <input type="text" name="city" required="true"  value="<?php echo $data['city'] ?>">
+                        <label for="branch">Branch</label>
+                        <input type="text" id="branch" name="branch" value="<?php echo $data['branch'] ?>">
+                        <span class="form-invalid"><?php echo $data['branch_err'] ?></span>
 
-                        <label>Address</label>
-                        <input type="text" name="address" id="address" required="true" value="<?php echo $data['address'] ?>">
+                      
 
-                        <label>Registration Fee (Rs.)</label>
-                        <input type="number" name="fee" id="fee" required="true" value="<?php echo $data['fee'] ?>">
+                        <label for="account_number">Account Number</label>
+                        <input type="text" id="account_number" name="account_number" value="<?php echo $data['account_number'] ?>">
+                        <span class="form-invalid"><?php echo $data['account_number_err'] ?></span>
 
-                        <label>Bank Name</label>
-                        <input type="text" name="bank_name" id="bank_name"  required="true" value="<?php echo $data['bank_name'] ?>">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" value="<?php echo $data['address'] ?>">
+                        <span class="form-invalid"><?php echo $data['address_err'] ?></span>
 
-                        <label>Account holder Name</label>
-                        <input type="text" name="account_holder_name" id="account_holder_name" required="true" value="<?php echo $data['account_holder_name'] ?>">
+                        <label for="fee">Fee</label>
+                        <input type="text" id="fee" name="fee" value="<?php echo $data['fee'] ?>">
+                        <span class="form-invalid"><?php echo $data['fee_err'] ?></span>
 
-                        <label>Branch</label>
-                        <input type="text" name="branch" id="branch" required="true" value="<?php echo $data['branch'] ?>">
-
-                  </div>
-
-                  <div>
-                        <label>Account Number</label>
-                        <input type="text" name="account_number" id="account_number" required="true" value="<?php echo $data['account_number'] ?>">
-
-                        <button id="cAdminCP"> <a href="<?php echo URLROOT?>/MedInstr/changePW/">Change Password</a></button>
-                         <br>
-
-                         <button type="submit" id="cAdminU" name="submit" >Update</button>
-
-                  </div>
-
-
-              </form>
-
-              
-
-      </div>
-
-  </section>
-
-
-  <?php require APPROOT.'/views/inc/footer.php'; ?>
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>  
+      <!-- For push notifications -->
+      <span id="isUpdated"><?php if(isset($_SESSION['profile_update'])){echo $_SESSION['profile_update']; unset($_SESSION['profile_update']);}?></span>
+    
+</body>
+</html>

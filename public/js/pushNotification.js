@@ -15,6 +15,8 @@ if (loggedInMessage.innerText) {
     loggedInMessage.innerText = ""
 }
 
+
+
 // Order sent notification for patient
 if (orderSentMessage.innerText) {
     const notification = document.createElement('div')

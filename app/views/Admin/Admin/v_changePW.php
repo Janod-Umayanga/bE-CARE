@@ -32,7 +32,7 @@
                     <h1>Change Password</h1>
                 </div>
                   <div class="diet-form-inputs-and-buttons">
-                    <div class="left"> <br><br><br>
+                    <div class="left"> <br><br>
 
                          <label>Current Password</label>
                          <input type="password" name="current_password" id="password"  >
