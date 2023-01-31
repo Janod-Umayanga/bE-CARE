@@ -313,7 +313,7 @@
             $_SESSION['doctor_name'] = $doctor->first_name;
             $_SESSION['first_time_logged'] = true;
         
-            redirect('Pages/index');
+            redirect('Doctor/dashboard');
         }
 
         public function createCounsellorSession($counsellor) {

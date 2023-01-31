@@ -2632,6 +2632,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-white);
     border: none;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .table-section .table-container .search-section{
@@ -4398,9 +4399,9 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 
 .session-card .top-box{
     width: 600px;
-    height: 260px;
+    height: fit-content;
     background-image: url(../img/Sessions-page-pictures/session--background.jpg);
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -4410,11 +4411,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 .session-card .top-box .top-box-inner{
     position: relative;
     width: 80%;
-    height: 168px;
+    height: fit-content;
     background-color: #1d242bef;
     padding-left: 30px;
     padding-top: 10px;
     padding-right: 10px;
+    padding-bottom: 30px;
 }
 
 .session-card .top-box .top-box-inner h2{
@@ -4428,7 +4430,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 
 .session-card .bottom{
     width: 600px;
-    margin-top: -30px;
+    margin-top: 20px;
     text-align: right;
     background-color: #b4bdce;
     padding: 10px;
@@ -4437,6 +4439,15 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 .session-card .bottom h3{
     color: #1d242be4;
     font-size: 14px;
+}
+
+.session-card .bottom button{
+    padding: 4px 20px;
+    border: none;
+    color: var(--hue-white);
+    background-color: var(--hue-dark-blue);
+    cursor: pointer;
+    margin-top: 10px;
 }
 
 .session-card .icon-container{
@@ -4976,6 +4987,40 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
         border: none;
         color: var(--hue-white);
     }
+
+    .session-card{
+        width: 95%;
+        height: fit-content;
+        padding: 20px 20px;
+    }
+    
+    .session-card.dark{
+        background-color: var(--hue-white);
+    }
+    
+    .session-card .top-box{
+        width: 90%;
+        height: fit-content;
+        background-size: cover;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 30px;
+    }
+    
+    .session-card .top-box .top-box-inner{
+        width: 90%;
+        height: fit-content;
+        padding-left: 30px;
+        padding-top: 10px;
+        padding-right: 10px;
+        padding-bottom: 40px;
+    }
+    
+    .session-card .bottom{
+        width: 90%;
+        margin-top: 20px
+    }
+    
 }
 
 @media (max-width: 411px) {

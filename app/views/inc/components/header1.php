@@ -14,16 +14,19 @@
                     <div class="links-container">
                         <li>
 
-                         <?php if(isset($_SESSION['admin_id'])): ?>
+                        <?php if(isset($_SESSION['admin_id'])): ?>
                             <a id="navigation-link" class="navigation-link theme" href="<?php echo URLROOT ?>/AdminDashboard/adminDashBoard">Home</a>
                               
-                         <?php elseif(isset($_SESSION['MedInstr_id'])): ?>
+                        <?php elseif(isset($_SESSION['MedInstr_id'])): ?>
                             <a id="navigation-link" class="navigation-link theme" href="<?php echo URLROOT ?>/MedInstrDashBoard/medInstrDashBoard">Home</a>
+
+                        <?php elseif(isset($_SESSION['doctor_id'])): ?>
+                            <a id="navigation-link" class="navigation-link theme" href="<?php echo URLROOT ?>/Doctor/dashboard">Home</a>
                             
-                         <?php else: ?>
+                        <?php else: ?>
                             <a id="navigation-link" class="navigation-link theme" href="<?php echo URLROOT ?>/Pages/index">Home</a>
                          
-                         <?php endif; ?>   
+                        <?php endif; ?>   
                            
                         
                         </li>
@@ -50,10 +53,10 @@
                             <a href="<?php echo URLROOT ?>/MedInstr/profile" class="nav-buttons"><?php echo strtoupper($_SESSION["MedInstr_gender"].$_SESSION['MedInstr_name']) ?></a>
                             <a href="<?php echo URLROOT ?>/Login/logout" class="nav-buttons register-button">LOG OUT</a>
                         <?php elseif(isset($_SESSION['doctor_id'])): ?>
-                            <a href="<?php echo URLROOT ?>/Doctor/details" class="nav-buttons">Dr.<?php echo $_SESSION['doctor_name'] ?></a>
+                            <a href="<?php echo URLROOT ?>/Doctor/details" class="nav-buttons">Dr. <?php echo $_SESSION['doctor_name'] ?></a>
                             <a href="<?php echo URLROOT ?>/Login/logout" class="nav-buttons register-button">LOG OUT</a>
                         <?php elseif(isset($_SESSION['counsellor_id'])): ?>
-                            <a href="<?php echo URLROOT ?>/Counsellor/details" class="nav-buttons">Dr.<?php echo $_SESSION['counsellor_name'] ?></a>
+                            <a href="<?php echo URLROOT ?>/Counsellor/details" class="nav-buttons">Dr. <?php echo $_SESSION['counsellor_name'] ?></a>
                             <a href="<?php echo URLROOT ?>/Login/logout" class="nav-buttons register-button">LOG OUT</a>
                         <?php else: ?>
                             <a href="<?php echo URLROOT ?>/Login/login" class="nav-buttons">LOGIN</a>
