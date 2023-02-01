@@ -40,7 +40,7 @@
             
             <a href="<?php echo URLROOT;?>/MedInstrSession/medInstrNewSession" class="card">
                 <img src="<?php echo URLROOT;?>/img/meditationInstructorSession/toBeDone.jpeg" alt="">
-                <h3> Sessions To be Done  - <?php echo$data["noOfnewSession"]->newSession_count ?> </h3>     
+                <h3> Upcomming Sessions   - <?php echo$data["noOfnewSession"]->newSession_count ?> </h3>     
             </a>
             
             

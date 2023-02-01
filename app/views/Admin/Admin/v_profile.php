@@ -101,7 +101,8 @@
         </div>
     </section>  
      <!-- For push notifications -->
-     <span id="isUpdated"><?php if(isset($_SESSION['profile_update'])){echo $_SESSION['profile_update']; unset($_SESSION['profile_update']);}?></span>
+     <span id="isUpdated"><?php if(isset($_SESSION['profile_updateAdmin'])){echo $_SESSION['profile_updateAdmin']; unset($_SESSION['profile_updateAdmin']);}?></span>
+     <span id="isUpdatedPassword"><?php if(isset($_SESSION['profile_updatePasswordAdmin'])){echo $_SESSION['profile_updatePasswordAdmin']; unset($_SESSION['profile_updatePasswordAdmin']);}?></span>
    
 </body>
 </html>

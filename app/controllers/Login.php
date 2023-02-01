@@ -6,6 +6,9 @@
         private $medInstrModel;
         private $doctorModel;
         private $counsellorModel;
+        private $nutritionistModel;
+        private $pharmacistModel;
+        
         
         public function __construct(){
             $this->patientModel = $this->model('M_Patient');
@@ -13,6 +16,8 @@
             $this->medInstrModel = $this->model('M_MedInstr');
             $this->doctorModel = $this->model('M_Doctor');
             $this->counsellorModel = $this->model('M_Counsellor');
+            $this->nutritionistModel = $this->model('M_Nutritionist');
+            $this->pharmacistModel = $this->model('M_Pharmacist');
             
         }
 
@@ -234,6 +239,95 @@
                             // Doctor is authenticated
                             // Create doctor session
                             $this->createCounsellorSession($loggedCounsellor);
+                        }
+                        else {
+                            $data['password_err'] = 'Invalid password';
+                        
+                            // Load view
+                            $this->view('pages/v_login', $data);
+                        }
+                    }
+                    else {
+                        // Load view
+                        $this->view('pages/v_login', $data);
+                    }
+                }
+
+                elseif($data['usertype'] == 'nutritionist') {
+                    // Validate email
+                    if(empty($data['email'])) {
+                        $data['email_err'] = 'Email required';
+                    }
+                    else {
+                        //check for existing emails
+                        if($this->nutritionistModel->findNutritionistByEmail($data['email'])) {
+                            // Nutritionist found
+                        }
+                        else {
+                            // Nutritionist not found
+                            $data['email_err'] = 'Invalid email';
+                        }
+                    }
+
+                    // Validate password
+                    if(empty($data['password'])) {
+                        $data['password_err'] = 'Password required';
+                    }
+
+                    // Login nutritionist after validation
+                    if(empty($data['email_err']) && empty($data['password_err'])) {
+                        // Log the Nutritionist
+                        $loggedNutritionist = $this->nutritionistModel->login($data['email'], $data['password']);
+                    
+                        if($loggedNutritionist) {
+                            // Doctor is authenticated
+                            // Create doctor session
+                            $this->createNutritionistSession($loggedNutritionist);
+                        }
+                        else {
+                            $data['password_err'] = 'Invalid password';
+                        
+                            // Load view
+                            $this->view('pages/v_login', $data);
+                        }
+                    }
+                    else {
+                        // Load view
+                        $this->view('pages/v_login', $data);
+                    }
+                }
+
+
+                elseif($data['usertype'] == 'pharmacist') {
+                    // Validate email
+                    if(empty($data['email'])) {
+                        $data['email_err'] = 'Email required';
+                    }
+                    else {
+                        //check for existing emails
+                        if($this->pharmacistModel->findPharmacistByEmail($data['email'])) {
+                            // Pharmacist found
+                        }
+                        else {
+                            // Pharmacist not found
+                            $data['email_err'] = 'Invalid email';
+                        }
+                    }
+
+                    // Validate password
+                    if(empty($data['password'])) {
+                        $data['password_err'] = 'Password required';
+                    }
+
+                    // Login pharmacist after validation
+                    if(empty($data['email_err']) && empty($data['password_err'])) {
+                        // Log the patient
+                        $loggedPharmacist = $this->pharmacistModel->login($data['email'], $data['password']);
+                    
+                        if($loggedPharmacist) {
+                            // Doctor is authenticated
+                            // Create doctor session
+                            $this->createPharmacistSession($loggedPharmacist);
                         }
                         else {
                             $data['password_err'] = 'Invalid password';

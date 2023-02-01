@@ -10,9 +10,12 @@
     <script src="https://kit.fontawesome.com/c4a594ff55.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
+    <script defer src="<?php echo URLROOT; ?>/js/pushNotificationProfile.js"></script>
+  
     <title>Admin Details</title>
 </head>
 <body>
+    <div id="notification-container"></div>
     <section class="diet-plan-section">
         <div class="diet-plan-leftside">
             <div class="diet-left-side-container">
@@ -57,5 +60,10 @@
             </form>
         </div>
     </section>  
+
+     <!-- For push notifications -->
+     <span id="isUpdated"><?php if(isset($_SESSION['profile_updateAdmin'])){echo $_SESSION['profile_updateAdmin']; unset($_SESSION['profile_updateAdmin']);}?></span>
+     <span id="isUpdatedPassword"><?php if(isset($_SESSION['profile_updatePasswordAdmin'])){echo $_SESSION['profile_updatePasswordAdmin']; unset($_SESSION['profile_updatePasswordAdmin']);}?></span>
+   
 </body>
 </html>
