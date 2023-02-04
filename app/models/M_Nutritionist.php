@@ -28,6 +28,8 @@
             
             return $this->db->single();
         }
+
+        
     }
 
 ?>

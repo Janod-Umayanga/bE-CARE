@@ -368,6 +368,7 @@
             redirect('Pages/index');
         }
 
+      
         public function createAdminSession($admin) {
             $_SESSION['admin_id'] = $admin->admin_id;
             $_SESSION['admin_email'] = $admin->email;
@@ -419,6 +420,31 @@
             redirect('Pages/index');
         }
 
+        public function createNutritionistSession($nutritionist) {
+            $_SESSION['nutritionist_id'] = $nutritionist->nutritionist_id;
+            $_SESSION['nutritionist_email'] = $nutritionist->email;
+            $_SESSION['nutritionist_name'] = $nutritionist->first_name;
+            $_SESSION['first_time_logged'] = true;
+
+            // $data=[];
+        
+            // //redirect('Nutritionist/dashboard');
+            // $this->view('nutritionist/v_dashboard',$data);
+
+            redirect('Nutritionist/nutritionistDashBoard');
+        }
+
+        public function createPharmacistSession($pharmacist) {
+            $_SESSION['pharmacist_id'] = $pharmacist->pharmacist_id;
+            $_SESSION['pharmacist_email'] = $pharmacist->email;
+            $_SESSION['pharmacist_name'] = $pharmacist->first_name;
+            $_SESSION['first_time_logged'] = true;
+        
+            redirect('Pages/index');
+        }
+
+
+
         public function logout() {
            if(isset($_SESSION['patient_id'])){  
                 unset($_SESSION['patient_id']);
@@ -466,6 +492,24 @@
                 unset($_SESSION['counsellor_id']);
                 unset($_SESSION['counsellor_email']);
                 unset($_SESSION['counsellor_name']);
+                // session_destroy();
+
+                $_SESSION['logout'] = true;
+                redirect('Pages/index');
+            } 
+            elseif(isset($_SESSION['nutritionist_id'])){  
+                unset($_SESSION['nutritionist_id']);
+                unset($_SESSION['nutritionist_email']);
+                unset($_SESSION['nutritionist_name']);
+                // session_destroy();
+
+                $_SESSION['logout'] = true;
+                redirect('Pages/index');
+            }
+            elseif(isset($_SESSION['pharmacist_id'])){  
+                unset($_SESSION['pharmacist_id']);
+                unset($_SESSION['pharmacist_email']);
+                unset($_SESSION['pharmacist_name']);
                 // session_destroy();
 
                 $_SESSION['logout'] = true;
