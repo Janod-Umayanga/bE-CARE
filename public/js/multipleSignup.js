@@ -17,16 +17,16 @@ const forms = [
         element: document.getElementById('counsellor-form')
     },
     {
-        text: 'Meditation Instructor',
-        element: document.getElementById('meditation-instructor-form')
+        text: 'Pharmacist',
+        element: document.getElementById('pharmacist-form')
     },
     {
         text: 'Nutritionist',
         element: document.getElementById('nutritionist-form')
     },
     {
-        text: 'Pharmacist',
-        element: document.getElementById('pharmacist-form')
+        text: 'Meditation Instructor',
+        element: document.getElementById('meditation-instructor-form')
     }
 ]
 let setFormElement = forms
