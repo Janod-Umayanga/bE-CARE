@@ -9,12 +9,15 @@
 
         // Create doctor channel
         public function createDoctorChannel($data, $patient_id) {
-            $this->db->query('INSERT INTO order_request (name, contact_number, delivery_address, prescription, pharmacist_id, patient_id) VALUES (:name, :contact_number, :delivery_address, :prescription, :pharmacist_id, :patient_id)');
+            $this->db->query('INSERT INTO doctor_channel (name, age, contact_number, gender, date, time, doctor_id, doctor_channel_day_id, patient_id) VALUES (:name, :age, :contact_number, :gender, :date, :time, :doctor_id, :doctor_channel_day_id, :patient_id)');
             $this->db->bind(':name', $data['name']);
+            $this->db->bind(':age', $data['age']);
             $this->db->bind(':contact_number', $data['cnumber']);
-            $this->db->bind(':delivery_address', $data['address']);
-            $this->db->bind(':prescription', $data['prescription_name']);
-            $this->db->bind(':pharmacist_id', $data['pharmacist_id']);
+            $this->db->bind(':gender', $data['gender']);
+            $this->db->bind(':date', $data['date']);
+            $this->db->bind(':time', $data['time']);
+            $this->db->bind(':doctor_id', $data['doctor_id']);
+            $this->db->bind(':doctor_channel_day_id', $data['channel_day_id']);
             $this->db->bind(':patient_id', $patient_id);
 
             if($this->db->execute()) {
@@ -27,7 +30,7 @@
 
         // get all doctor channels
         public function getAllDoctorChannels($patient_id) {
-            $this->db->query('SELECT doctor_channel.*, doctor_timeslot.*, doctor.* FROM doctor_channel INNER JOIN doctor_timeslot ON doctor_channel.doctor_timeslot_id = doctor_timeslot.doctor_timeslot_id INNER JOIN doctor ON doctor_timeslot.doctor_id = doctor.doctor_id WHERE doctor_channel.patient_id = :patient_id');
+            $this->db->query('SELECT doctor_channel.*, doctor.* FROM doctor_channel INNER JOIN doctor ON doctor_channel.doctor_id = doctor.doctor_id WHERE doctor_channel.patient_id = :patient_id');
             $this->db->bind(':patient_id', $patient_id);
 
             return $this->db->resultSet();

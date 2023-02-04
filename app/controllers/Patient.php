@@ -438,6 +438,101 @@
             $this->view('patients/v_doctor_profile', $data);
         }
 
+        // Channel doctor
+        public function channelDoctor($doctor_id, $channel_day_id, $date, $time) {
+            if(isset($_SESSION['patient_id'])) {
+                $loggedPatient = $this->patientModel->getPatientById($_SESSION['patient_id']);
+
+                if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    // Form is submitting
+    
+                    // Data validation
+                    $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    
+                    // Inserted form
+                    $data = [
+                        'name' => trim($_POST['name']),
+                        'age' => trim($_POST['age']),
+                        'cnumber' => trim($_POST['cnumber']),
+                        'gender' => trim($_POST['gender']),
+                        'doctor_id' => $doctor_id,
+                        'channel_day_id' => $channel_day_id,
+                        'date' => $date,
+                        'time' => $time,
+    
+                        'name_err' => '',
+                        'age_err' => '',
+                        'cnumber_err' => '',
+                        'gender_err' => ''
+                    ];
+    
+                    // Validate each input
+    
+                    // Validate name
+                    if(empty($data['name'])) {
+                        $data['name_err'] = 'Name required';
+                    }
+    
+                    // Validate address
+                    if(empty($data['age'])) {
+                        $data['age_err'] = 'Age required';
+                    }
+    
+                    // Validate contact number
+                    if(empty($data['cnumber'])) {
+                        $data['cnumber_err'] = 'Contact number required';
+                    }
+    
+                    // Validate gneder
+                    if(empty($data['gender'])) {
+                        $data['gender_err'] = 'Gender required';
+                    }
+    
+                    // Create order after validation
+                    if(empty($data['name_err']) && empty($data['age_err']) && empty($data['cnumber_err']) && empty($data['gender_err'])) {
+                        // Create order
+                        if($this->doctorChannelModel->createDoctorChannel($data, $_SESSION['patient_id'])) {
+                            $_SESSION['channel_created'] = true;
+                            redirect('Pages/index');
+                        }
+                        else {
+                            die('Something went wrong');
+                        }
+                    }
+                    else {
+                        // Load view
+                         $this->view('patients/v_channel_doctor', $data);
+                    }
+                }
+                else {
+                    $data = [
+                        'name' => $loggedPatient->first_name,
+                        'age' => '',
+                        'cnumber' => $loggedPatient->contact_number,
+                        'gender' => '',
+                        'doctor_id' => $doctor_id,
+                        'channel_day_id' => $channel_day_id,
+                        'date' => $date,
+                        'time' => $time,
+    
+                        'name_err' => '',
+                        'age_err' => '',
+                        'cnumber_err' => '',
+                        'gender_err' => ''
+                    ];
+    
+                    // Load view
+                    $this->view('patients/v_channel_doctor', $data);
+                }
+                $data = [];
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
+
         // View doctor appointments
         public function viewDoctorAppointments() {
             if(isset($_SESSION['patient_id'])) {
