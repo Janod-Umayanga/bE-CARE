@@ -65,15 +65,9 @@
             $this->db->query('SELECT * FROM  WHERE pharmacist_id= :pharmacist_id');
             $this->db->bind(':pharmacist_id',$pharmacist_id);  
     
-            $row= $this->db->single();
-    
-            if($this->db->rowCount() >0){
-                 return true;
-            }else{
-                 return false;
-            }
+             return $this->db->resultSet();
         }
     }
-    }
+  
 
 ?>
