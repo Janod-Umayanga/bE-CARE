@@ -12,7 +12,7 @@
             // print_r($this->getURL());
             $url = $this->getURL();
 
-            if(file_exists('../app/controllers/'.ucwords($url[0]).'.php')) {
+           if(file_exists('../app/controllers/'.ucwords($url[0]).'.php')) {
                 // Load the controller if exists
                 $this->currentController = ucwords($url[0]);
 

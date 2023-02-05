@@ -6,6 +6,9 @@
         private $medInstrModel;
         private $doctorModel;
         private $counsellorModel;
+        private $nutritionistModel;
+        private $pharmacistModel;
+        
         
         public function __construct(){
             $this->patientModel = $this->model('M_Patient');
@@ -13,6 +16,8 @@
             $this->medInstrModel = $this->model('M_MedInstr');
             $this->doctorModel = $this->model('M_Doctor');
             $this->counsellorModel = $this->model('M_Counsellor');
+            $this->nutritionistModel = $this->model('M_Nutritionist');
+            $this->pharmacistModel = $this->model('M_Pharmacist');
             
         }
 
@@ -247,6 +252,95 @@
                         $this->view('pages/v_login', $data);
                     }
                 }
+
+                elseif($data['usertype'] == 'nutritionist') {
+                    // Validate email
+                    if(empty($data['email'])) {
+                        $data['email_err'] = 'Email required';
+                    }
+                    else {
+                        //check for existing emails
+                        if($this->nutritionistModel->findNutritionistByEmail($data['email'])) {
+                            // Nutritionist found
+                        }
+                        else {
+                            // Nutritionist not found
+                            $data['email_err'] = 'Invalid email';
+                        }
+                    }
+
+                    // Validate password
+                    if(empty($data['password'])) {
+                        $data['password_err'] = 'Password required';
+                    }
+
+                    // Login nutritionist after validation
+                    if(empty($data['email_err']) && empty($data['password_err'])) {
+                        // Log the Nutritionist
+                        $loggedNutritionist = $this->nutritionistModel->login($data['email'], $data['password']);
+                    
+                        if($loggedNutritionist) {
+                            // Doctor is authenticated
+                            // Create doctor session
+                            $this->createNutritionistSession($loggedNutritionist);
+                        }
+                        else {
+                            $data['password_err'] = 'Invalid password';
+                        
+                            // Load view
+                            $this->view('pages/v_login', $data);
+                        }
+                    }
+                    else {
+                        // Load view
+                        $this->view('pages/v_login', $data);
+                    }
+                }
+
+
+                elseif($data['usertype'] == 'pharmacist') {
+                    // Validate email
+                    if(empty($data['email'])) {
+                        $data['email_err'] = 'Email required';
+                    }
+                    else {
+                        //check for existing emails
+                        if($this->pharmacistModel->findPharmacistByEmail($data['email'])) {
+                            // Pharmacist found
+                        }
+                        else {
+                            // Pharmacist not found
+                            $data['email_err'] = 'Invalid email';
+                        }
+                    }
+
+                    // Validate password
+                    if(empty($data['password'])) {
+                        $data['password_err'] = 'Password required';
+                    }
+
+                    // Login pharmacist after validation
+                    if(empty($data['email_err']) && empty($data['password_err'])) {
+                        // Log the patient
+                        $loggedPharmacist = $this->pharmacistModel->login($data['email'], $data['password']);
+                    
+                        if($loggedPharmacist) {
+                            // Doctor is authenticated
+                            // Create doctor session
+                            $this->createPharmacistSession($loggedPharmacist);
+                        }
+                        else {
+                            $data['password_err'] = 'Invalid password';
+                        
+                            // Load view
+                            $this->view('pages/v_login', $data);
+                        }
+                    }
+                    else {
+                        // Load view
+                        $this->view('pages/v_login', $data);
+                    }
+                }
             }
             
             
@@ -274,11 +368,13 @@
             redirect('Pages/index');
         }
 
+      
         public function createAdminSession($admin) {
             $_SESSION['admin_id'] = $admin->admin_id;
             $_SESSION['admin_email'] = $admin->email;
             $_SESSION['admin_name'] = $admin->first_name;
-        
+            $_SESSION['first_time_logged_Admin'] = true;
+
             if($admin->gender=='Male'){
                 $_SESSION['admin_gender']='Mr.';
             }else if($admin->gender=='Female'){
@@ -293,7 +389,8 @@
             $_SESSION['MedInstr_name']=$medInstr->first_name;
             $_SESSION['MedInstr_email']=$medInstr->email; 
             $_SESSION['MedInstr_address']=$medInstr->address;
-            $_SESSION['MedInstr_fee']=$medInstr->fee; 
+            $_SESSION['MedInstr_fee']=$medInstr->fee;
+            $_SESSION['first_time_logged_MedInstr'] = true; 
             
             if($medInstr->gender=='Male'){
                $_SESSION['MedInstr_gender']='Mr.';
@@ -323,6 +420,32 @@
             redirect('Pages/index');
         }
 
+        public function createNutritionistSession($nutritionist) {
+            $_SESSION['nutritionist_id'] = $nutritionist->nutritionist_id;
+            $_SESSION['nutritionist_email'] = $nutritionist->email;
+            $_SESSION['nutritionist_name'] = $nutritionist->first_name;
+            $_SESSION['nutritionist_gender'] = $nutritionist->gender;
+            $_SESSION['first_time_logged'] = true;
+
+            // $data=[];
+        
+            // //redirect('Nutritionist/dashboard');
+            // $this->view('nutritionist/v_dashboard',$data);
+
+            redirect('Nutritionist/nutritionistDashBoard');
+        }
+
+        public function createPharmacistSession($pharmacist) {
+            $_SESSION['pharmacist_id'] = $pharmacist->pharmacist_id;
+            $_SESSION['pharmacist_email'] = $pharmacist->email;
+            $_SESSION['pharmacist_name'] = $pharmacist->first_name;
+            $_SESSION['first_time_logged'] = true;
+        
+            redirect('Pharmacist/pharmacistDashBoard');
+        }
+
+
+
         public function logout() {
            if(isset($_SESSION['patient_id'])){  
                 unset($_SESSION['patient_id']);
@@ -338,8 +461,9 @@
                 unset($_SESSION['admin_name']);
                 unset($_SESSION['admin_email']);
                 unset($_SESSION['admin_gender']);
-                session_destroy();
-                
+               // session_destroy();
+          
+                $_SESSION['logout'] = true;
                 redirect('pages/v_login');  
             }
             elseif(isset($_SESSION['MedInstr_id'])){
@@ -349,7 +473,10 @@
                 unset($_SESSION['MedInstr_gender']);
                 unset($_SESSION['MedInstr_address']);
                 unset($_SESSION['MedInstr_fee']);
-                session_destroy();
+                unset($_SESSION['medInstrsession_id']);
+                //session_destroy();
+              
+                $_SESSION['logout'] = true;
                 
                 redirect('pages/v_login');
             }
@@ -370,6 +497,24 @@
 
                 $_SESSION['logout'] = true;
                 redirect('Pages/index');
+            } 
+            elseif(isset($_SESSION['nutritionist_id'])){  
+                unset($_SESSION['nutritionist_id']);
+                unset($_SESSION['nutritionist_email']);
+                unset($_SESSION['nutritionist_name']);
+                // session_destroy();
+
+                $_SESSION['logout'] = true;
+                redirect('Pages/v_login');
+            }
+            elseif(isset($_SESSION['pharmacist_id'])){  
+                unset($_SESSION['pharmacist_id']);
+                unset($_SESSION['pharmacist_email']);
+                unset($_SESSION['pharmacist_name']);
+                // session_destroy();
+
+                $_SESSION['logout'] = true;
+                redirect('Pages/v_login');
             }
 
         }    

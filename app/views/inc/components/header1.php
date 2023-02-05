@@ -22,7 +22,13 @@
 
                         <?php elseif(isset($_SESSION['doctor_id'])): ?>
                             <a id="navigation-link" class="navigation-link theme" href="<?php echo URLROOT ?>/Doctor/dashboard">Home</a>
-                            
+
+                        <?php elseif(isset($_SESSION['nutritionist_id'])): ?>
+                            <a id="navigation-link" class="navigation-link theme" href="<?php echo URLROOT ?>/Nutritionist/nutritionistDashBoard">Home</a>
+                        
+                        <?php elseif(isset($_SESSION['pharmacist_id'])): ?>
+                            <a id="navigation-link" class="navigation-link theme" href="<?php echo URLROOT ?>/Pharmacist/pharmacistDashBoard">Home</a>
+
                         <?php else: ?>
                             <a id="navigation-link" class="navigation-link theme" href="<?php echo URLROOT ?>/Pages/index">Home</a>
                          
@@ -57,6 +63,12 @@
                             <a href="<?php echo URLROOT ?>/Login/logout" class="nav-buttons register-button">LOG OUT</a>
                         <?php elseif(isset($_SESSION['counsellor_id'])): ?>
                             <a href="<?php echo URLROOT ?>/Counsellor/details" class="nav-buttons">Dr. <?php echo $_SESSION['counsellor_name'] ?></a>
+                            <a href="<?php echo URLROOT ?>/Login/logout" class="nav-buttons register-button">LOG OUT</a>
+                        <?php elseif(isset($_SESSION['nutritionist_id'])): ?>
+                            <a href="<?php echo URLROOT ?>#" class="nav-buttons">Dr. <?php echo $_SESSION['nutritionist_name'] ?></a>
+                            <a href="<?php echo URLROOT ?>/Login/logout" class="nav-buttons register-button">LOG OUT</a>
+                        <?php elseif(isset($_SESSION['pharmacist_id'])): ?>
+                            <a href="<?php echo URLROOT ?>#" class="nav-buttons">Dr. <?php echo $_SESSION['pharmacist_name'] ?></a>
                             <a href="<?php echo URLROOT ?>/Login/logout" class="nav-buttons register-button">LOG OUT</a>
                         <?php else: ?>
                             <a href="<?php echo URLROOT ?>/Login/login" class="nav-buttons">LOGIN</a>

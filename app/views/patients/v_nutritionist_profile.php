@@ -26,7 +26,7 @@
                 <div class="social-media-icons">
                     <i class="fa-brands fa-facebook"></i>
                     <i class="fa-brands fa-linkedin"></i>
-                    <i class="fa-brands fa-twitter"></i>
+                     <i class="fa-brands fa-twitter"></i>
                 </div>
             </div>
             <div class="bottom">

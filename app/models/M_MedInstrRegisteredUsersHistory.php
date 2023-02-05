@@ -1,5 +1,5 @@
 <?php
-
+ 
    class M_MedInstrRegisteredUsersHistory{
       private $db;
 
