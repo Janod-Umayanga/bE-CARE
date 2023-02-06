@@ -4481,7 +4481,114 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 
 /************************************************** Session Page style ends *********************************************************/
 
+/************************************************** Invoice Page style starts *********************************************************/
+
+.pay-section{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    overflow: hidden;
+}
+
+.pay-section.dark{
+    background-color: var(--hue-black);
+}
+
+.pay-card{
+    width: 500px;
+    height: fit-content;
+    background-color: rgb(240, 240, 240);
+    padding: 70px 20px;
+    border-top: 10px solid var(--hue-black);
+    border-bottom: 10px solid var(--hue-black);
+    text-align: center;
+    position: relative;
+}
+
+.pay-card.dark{
+    border-top: 10px solid var(--hue-dark-blue);
+    border-bottom: 10px solid var(--hue-dark-blue);
+}
+
+#pay-icon{
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-size: 2.3rem;
+    color: #2a3138;
+}
+
+.main-topic{
+    margin-top: 30px;
+    color: var(--hue-black);
+}
+
+.pay-card .content{
+    width: 100%;
+    padding: 20px 30px;
+    margin-top: 20px;
+}
+
+.pay-card .content .topic{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.description-and-amount-container{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.description-and-amount-container li{
+    list-style: none;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #b2b4b56c;
+    padding: 10px 0px;
+
+}
+
+.content .total{
+    width: 100%;
+    text-align: right;
+    margin-top: 20px;
+    color: var(--hue-black);
+}
+
+.pay-card button{
+    width: 70%;
+    margin-top: 30px;
+    padding: 5px 20px;
+    background-color: var(--hue-dark-blue);
+    border: none;
+    border-radius: px;
+    color: var(--hue-white);
+    cursor: pointer;
+}
+
+/************************************************** Invoice Page style ends *********************************************************/
+
 /* Responsive precess starts here */
+
+@media(max-width:474px){
+    .pay-card .content{
+        width: 100%;
+        padding: 20px 0px;
+    }
+
+    .pay-card button{
+        width: 100%;
+    }
+
+    .pay-section{
+        padding: 40px 10px;
+    }
+}
 
 @media (max-width: 956px){
     .aside-menu{

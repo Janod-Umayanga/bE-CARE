@@ -439,7 +439,7 @@
         }
 
         // Channel doctor
-        public function channelDoctor($doctor_id, $channel_day_id, $date, $time) {
+        public function channelDoctor($doctor_id, $channel_day_id, $date, $time, $fee) {
             if(isset($_SESSION['patient_id'])) {
                 $loggedPatient = $this->patientModel->getPatientById($_SESSION['patient_id']);
 
@@ -459,6 +459,7 @@
                         'channel_day_id' => $channel_day_id,
                         'date' => $date,
                         'time' => $time,
+                        'fee' => $fee,
     
                         'name_err' => '',
                         'age_err' => '',
@@ -490,14 +491,16 @@
     
                     // Create order after validation
                     if(empty($data['name_err']) && empty($data['age_err']) && empty($data['cnumber_err']) && empty($data['gender_err'])) {
-                        // Create order
-                        if($this->doctorChannelModel->createDoctorChannel($data, $_SESSION['patient_id'])) {
-                            $_SESSION['channel_created'] = true;
-                            redirect('Pages/index');
-                        }
-                        else {
-                            die('Something went wrong');
-                        }
+                        // Load invoice view
+                        $this->view('patients/v_channel_doctor_invoice', $data);
+                        // // Create order
+                        // if($this->doctorChannelModel->createDoctorChannel($data, $_SESSION['patient_id'])) {
+                        //     $_SESSION['channel_created'] = true;
+                        //     redirect('Pages/index');
+                        // }
+                        // else {
+                        //     die('Something went wrong');
+                        // }
                     }
                     else {
                         // Load view
@@ -514,6 +517,7 @@
                         'channel_day_id' => $channel_day_id,
                         'date' => $date,
                         'time' => $time,
+                        'fee' => $fee,
     
                         'name_err' => '',
                         'age_err' => '',

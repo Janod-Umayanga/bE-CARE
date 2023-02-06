@@ -11,8 +11,14 @@
 
         // get all doctor timeslots
         public function getAllDoctorTimeslots($doctor_id) {
-            $this->db->query('SELECT doctor_timeslot.*, doctor.*, doctor_channel_day.* FROM doctor_channel_day INNER JOIN doctor_timeslot ON doctor_channel_day.doctor_timeslot_id = doctor_timeslot.doctor_timeslot_id INNER JOIN doctor ON doctor_channel_day.doctor_id = doctor.doctor_id WHERE doctor_channel_day.doctor_id = :doctor_id');
+            date_default_timezone_set("Asia/Kolkata");
+            $currentDate = date("Y-m-d");
+            $currentTime = date("H:i:s");
+
+            $this->db->query('SELECT doctor_timeslot.*, doctor.*, doctor_channel_day.* FROM doctor_channel_day INNER JOIN doctor_timeslot ON doctor_channel_day.doctor_timeslot_id = doctor_timeslot.doctor_timeslot_id INNER JOIN doctor ON doctor_channel_day.doctor_id = doctor.doctor_id WHERE doctor_channel_day.doctor_id = :doctor_id AND (doctor_channel_day.day > :today OR (doctor_channel_day.day = :today AND doctor_channel_day.current_channel_time >= :time)) ORDER BY doctor_channel_day.day ASC');
             $this->db->bind(':doctor_id', $doctor_id);
+            $this->db->bind(':today', $currentDate);
+            $this->db->bind(':time', $currentTime);
 
             return $this->db->resultSet();
         }
@@ -37,7 +43,7 @@
 
             if($this->db->execute()) {
                 $timeslot = $this->getTheLatestTimeslot($doctor_id);
-                return $this->createChannelDays($data['day'], $doctor_id, $timeslot->doctor_timeslot_id);
+                return $this->createChannelDays($data['day'],$data['starting_time'] , $doctor_id, $timeslot->doctor_timeslot_id);
             }
             else {
                 return false;
@@ -45,7 +51,7 @@
         }
 
         // create channel days
-        public function createChannelDays($day,$doctor_id,$timeslot_id) {
+        public function createChannelDays($day, $time, $doctor_id,$timeslot_id) {
             $count = 0;
             foreach (range(1, 4) as $i) {
                 if($i==1) {
@@ -62,13 +68,15 @@
                 }
                 $channel_day = new DateTime();
                 $channel_day->modify($mod_string);
-                $this->db->query('INSERT INTO doctor_channel_day (day, active, doctor_timeslot_id, doctor_id) VALUES (:day, :active, :doctor_timeslot_id, :doctor_id)');
+                $this->db->query('INSERT INTO doctor_channel_day (day, current_channel_time, active, doctor_timeslot_id, doctor_id) VALUES (:day, :current_channel_time, :active, :doctor_timeslot_id, :doctor_id)');
                 $this->db->bind(':day', $channel_day->format('Y-m-d'));
+                $this->db->bind(':current_channel_time', $time);
                 $this->db->bind(':active', 1);
                 $this->db->bind(':doctor_timeslot_id', $timeslot_id);
                 $this->db->bind(':doctor_id', $doctor_id);
-                $this->db->execute();
-                $count = $count + 1;
+                if($this->db->execute()) {
+                    $count = $count + 1;
+                }
             }
             if($count == 4) {
                 return true;

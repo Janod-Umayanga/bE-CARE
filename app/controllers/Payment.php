@@ -52,15 +52,42 @@
             }
         }
 
-        public function create($data) {
-            
-            // Create order
-            if($this->paymentModel->createDietPlanRequest($data, $_SESSION['patient_id'])) {
-                redirect('Pages/index');
-           }
-           else {
-               die('Something went wrong');
-           }
+        // Channel doctor
+        public function createDoctorChannel() {
+            if(isset($_SESSION['patient_id'])) {
+                if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    // Form is submitting
+    
+                    $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    
+                    // Inserted form
+                    $data = [
+                        'name' => trim($_POST['name']),
+                        'age' => trim($_POST['age']),
+                        'cnumber' => trim($_POST['cnumber']),
+                        'gender' => trim($_POST['gender']),
+                        'doctor_id' =>trim($_POST['doctor_id']),
+                        'channel_day_id' => trim($_POST['channel_day_id']),
+                        'date' => trim($_POST['date']),
+                        'time' => trim($_POST['time']),
+                        'fee' => trim($_POST['fee']),
+                    ];
+    
+                    // Create apppointment
+                    if($this->paymentModel->createDoctorChannel($data, $_SESSION['patient_id'])) {
+                        $_SESSION['channel_created'] = true;
+                        redirect('Pages/index');
+                    }
+                    else {
+                        die('Something went wrong');
+                    }   
+                }
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
         }
 
     }

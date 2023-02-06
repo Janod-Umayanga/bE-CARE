@@ -37,15 +37,15 @@
                         <p>Dr. <?php  echo $timeslot->first_name ?> <?php  echo $timeslot->last_name ?></p>
                     </div>
                     <div class="bottom">
-                        <p><i class="fa-solid fa-calendar-days"></i> <?php  echo $timeslot->day ?></p>
+                        <p><i class="fa-solid fa-calendar-days"></i> <?php echo $timeslot->day ?></p>
                         <p><i class="fa-solid fa-clock"></i> <?php echo $timeslot->starting_time ?> - <?php  echo $timeslot->ending_time ?></p>
                         <p><i class="fa-solid fa-location-dot"></i><?php echo $timeslot->address ?></p>
                         <p><i class="fa-solid fa-phone-volume"></i><?php echo $timeslot->contact_number ?></p>
-                        <p><i class="fa-solid fa-circle-dollar-to-slot"></i>Rs. <?php  echo $timeslot->fee ?></p>
+                        <p><i class="fa-solid fa-circle-dollar-to-slot"></i>Rs. <?php echo $timeslot->fee ?></p>
                     </div>
                     <div class="top-box"></div>
                     <div class="bottom-box"></div>
-                    <form action="<?php echo URLROOT ?>/Patient/channelDoctor/<?php echo $timeslot->doctor_id ?>/<?php  echo $timeslot->doctor_channel_day_id ?>/<?php  echo $timeslot->day ?>/<?php  echo $timeslot->starting_time ?>">
+                    <form action="<?php echo URLROOT ?>/Patient/channelDoctor/<?php echo $timeslot->doctor_id ?>/<?php echo $timeslot->doctor_channel_day_id ?>/<?php echo $timeslot->day ?>/<?php echo $timeslot->current_channel_time ?>/<?php echo $timeslot->fee ?>">
                         <button class="main-button">Channel</button>
                     </form>
                 </div>
