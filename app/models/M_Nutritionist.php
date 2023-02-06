@@ -64,13 +64,14 @@
             return $this->db->resultSet();
             }
 
-        // get all issued diet plans history of nutritionist
+       // get all issued diet plans history of nutritionist
         public function viewHistoryPage($nutritionist_id){
-            $this->db->query('SELECT * FROM diet_plan
-            WHERE nutritionist_id = :nutritionist_id');
+            $this->db->query('SELECT * FROM diet_plan INNER JOIN nutritionist ON
+            nutritionist.nutritionist_id = diet_plan.nutritionist_id
+            WHERE nutritionist.nutritionist_id = :nutritionist_id');
             $this->db->bind(':nutritionist_id',$nutritionist_id);  
     
-            return $this->db->single();
+            return $this->db->resultSet();
          }
              
         // Login nutritionist
