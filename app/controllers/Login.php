@@ -440,7 +440,7 @@
             $_SESSION['pharmacist_name'] = $pharmacist->first_name;
             $_SESSION['first_time_logged'] = true;
         
-            redirect('Pages/index');
+             redirect('Pharmacist/pharmacistDashBoard');
         }
 
 
@@ -504,7 +504,7 @@
                 // session_destroy();
 
                 $_SESSION['logout'] = true;
-                redirect('Pages/index');
+                redirect('Pages/v_login');
             }
             elseif(isset($_SESSION['pharmacist_id'])){  
                 unset($_SESSION['pharmacist_id']);
@@ -513,7 +513,7 @@
                 // session_destroy();
 
                 $_SESSION['logout'] = true;
-                redirect('Pages/index');
+                redirect('Pages/v_login');
             }
 
         }    
