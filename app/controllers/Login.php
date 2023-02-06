@@ -430,6 +430,11 @@
         
             // //redirect('Nutritionist/dashboard');
             // $this->view('nutritionist/v_dashboard',$data);
+             if($nutritionist->gender=='Male'){
+                $_SESSION['nutritionist_gender']='Mr.';
+             }else if($nutritionist->gender=='Female'){
+                 $_SESSION['nutritionist_gender']='Ms.';
+             }  
 
             redirect('Nutritionist/nutritionistDashBoard');
         }
@@ -439,6 +444,13 @@
             $_SESSION['pharmacist_email'] = $pharmacist->email;
             $_SESSION['pharmacist_name'] = $pharmacist->first_name;
             $_SESSION['first_time_logged'] = true;
+            
+            if($pharmacist->gender=='Male'){
+                $_SESSION['pharmacist_gender']='Mr.';
+             }else if($pharmacist->gender=='Female'){
+                 $_SESSION['pharmacist_gender']='Ms.';
+             } 
+            
         
              redirect('Pharmacist/pharmacistDashBoard');
         }
