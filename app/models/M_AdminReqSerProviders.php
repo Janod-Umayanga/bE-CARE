@@ -432,7 +432,8 @@
       public function VerifyReqPharmacist($pharmacist_id)
       {
             $data=$this->getReqPharmacistDetails($pharmacist_id);
-            $this->db->query('INSERT INTO pharmacist(first_name,last_name,nic,contact_number,gender,email,password,slmc_reg_number,pharmacy_name,city,address,bank_name,account_holder_name,branch,account_number,qualification_file) VALUES (:first_name,:last_name,:nic,:contact_number,:gender,:email,:password,:slmc_reg_number,:pharmacy_name,:city,:bank_name,:account_holder_name,:branch,:account_number,:qualification_file)');
+            $this->db->query('INSERT INTO pharmacist(first_name,last_name,nic,contact_number,gender,email,password,slmc_reg_number,pharmacy_name,city,address,bank_name,account_holder_name,branch,account_number,qualification_file) VALUES (:first_name,:last_name,:nic,:contact_number,:gender,:email,:password,:slmc_reg_number,:pharmacy_name,:city,:address,:bank_name,:account_holder_name,:branch,:account_number,:qualification_file)');
+
             $this->db->bind(':first_name',$data->first_name);
             $this->db->bind(':last_name', $data->last_name);
             $this->db->bind(':nic', $data->nic);
@@ -441,9 +442,9 @@
             $this->db->bind(':email', $data->email);
             $this->db->bind(':password',$data->password);
             $this->db->bind(':slmc_reg_number', $data->slmc_reg_number);
-            $this->db->bind(':type', $data->type);
+            $this->db->bind(':pharmacy_name', $data->pharmacy_name);
             $this->db->bind(':city',$data->city);
-            $this->db->bind(':specialization', $data->specialization);
+            $this->db->bind(':address', $data->address);
             $this->db->bind(':bank_name', $data->bank_name);
             $this->db->bind(':account_holder_name',$data->account_holder_name);
             $this->db->bind(':account_number', $data->account_number);

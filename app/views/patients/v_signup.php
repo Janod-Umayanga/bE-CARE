@@ -77,235 +77,425 @@
                 </div>
             </form>
 
-            <form action="" id="doctor-form">
+            <form action="<?php echo URLROOT ?>/ServiceProviderSignup/signupDoctor" id="doctor-form" method="POST" enctype="multipart/form-data">
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left">
 
-                        <label for="">Age</label>
-                        <input type="number">
+                        <label for="first_name">First Name</label>
+                        <input type="text" id="first_name" name="first_name" value="<?php echo $data['first_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['first_name_err'] ?></span>
+                       
+                        <label for="last_name">Last Name</label>
+                        <input type="text" id="last_name" name="last_name" value="<?php echo $data['last_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['last_name_err'] ?></span>
 
-                        <label for="">Gender</label>
-                        <select name="gender" id="gender">
-                            <option value="male">Male</option>
+                        <label for="nic">NIC</label>
+                        <input type="text" id="nic" name="nic" value="<?php echo $data['nic'] ?>">
+                        <span class="form-invalid"><?php echo $data['nic_err'] ?></span>
+
+                        <label for="contact_number">contact Number</label>
+                        <input type="text" id="contact_number" name="contact_number" value="<?php echo $data['contact_number'] ?>">
+                        <span class="form-invalid"><?php echo $data['contact_number_err'] ?></span>
+
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" value="<?php echo $data['email'] ?>">
+                        <span class="form-invalid"><?php echo $data['email_err'] ?></span>
+
+                        
+                        <label for="gender">Gender</label>
+                        <select name="gender" id="gender" >
+                            <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
+                        <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
 
-                        <label for="">Contact number</label>
-                        <input type="number">
 
-                        <label for="">Weight</label>
-                        <input type="number">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" value="<?php echo $data['city'] ?>">
+                        <span class="form-invalid"><?php echo $data['city_err'] ?></span>
 
-                        <label for="">Height</label>
-                        <input type="number">
+                        <label for="slmc">SLMC registration Number</label>
+                        <input type="text" id="slmc" name="slmc" value="<?php echo $data['slmc_reg_number'] ?>">
+                        <span class="form-invalid"><?php echo $data['slmc_reg_number_err'] ?></span>
 
                         <button>Submit</button>
                     </div>
                     <div class="right">
-                        <label for="">Marital status</label>
-                        <select name="marital-status" id="marital-status">
-                            <option value="married">Married</option>
-                            <option value="unmarried">Unmarried</option>
+                       
+                        <label for="type">Type</label>
+                        <select name="type" id="type" value="<?php echo $data['type'] ?>" >
+                            <option value="MBBS">MBBS</option>
+                            <option value="BAMS">BAMS</option>
                         </select>
+                        <span class="form-invalid"><?php echo $data['type_err'] ?></span>
 
-                        <label for="">Medical details</label>
-                        <input type="text">
+                       
+                        <label for="qualification_file">Qualification File</label>
+                        <input type="file" id="qualification_file" name="qualification_file" value="<?php echo $data['qualification_file'] ?>">
+                        <span class="form-invalid"><?php echo $data['qualification_file_err'] ?></span>
 
-                        <label for="">Allergies</label>
-                        <input type="text">
+                        <label for="specialization">Specialization</label>
+                        <input type="text" id="specialization" name="specialization" value="<?php echo $data['specialization'] ?>">
+                        <span class="form-invalid"><?php echo $data['specialization_err'] ?></span>
 
-                        <label for="">Sleeping hours per day</label>
-                        <input type="number">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password">
+                        <span class="form-invalid"><?php echo $data['password_err'] ?></span>
 
-                        <label for="">Water consumption per day (ml)</label>
-                        <input type="number">
 
-                        <label for="">Goal</label>
-                        <textarea name="goal" id="goal" cols="30" rows="10"></textarea>
+                        <label for="confirm_password">Confirm Password</label>
+                        <input type="password" id="confirm_password" name="confirm_password">
+                        <span class="form-invalid"><?php echo $data['confirm_password_err'] ?></span>
+
+                        <label for="bank_name">Bank Name</label>
+                        <input type="text" id="bank_name" name="bank_name" value="<?php echo $data['bank_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['bank_name_err'] ?></span>
+
+                        <label for="account_holder_name">Account Holder Name</label>
+                        <input type="text" id="account_holder_name" name="account_holder_name" value="<?php echo $data['account_holder_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['account_holder_name_err'] ?></span>
+
+                        <label for="branch">Branch</label>
+                        <input type="text" id="branch" name="branch" value="<?php echo $data['branch'] ?>">
+                        <span class="form-invalid"><?php echo $data['branch_err'] ?></span>
+
+                      
+
+                        <label for="account_number">Account Number</label>   
+                        <input type="text" id="account_number" name="account_number" value="<?php echo $data['account_number'] ?>">
+                        <span class="form-invalid"><?php echo $data['account_number_err'] ?></span>
+
                     </div>
                 </div>
             </form>
 
-            <form action="" id="counsellor-form">
+            <form action="<?php echo URLROOT ?>/ServiceProviderSignup/signupCounsellor" id="counsellor-form" method="POST" enctype="multipart/form-data">
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left">
 
-                        <label for="">Age</label>
-                        <input type="number">
+                    <label for="first_name">First Name</label>
+                        <input type="text" id="first_name" name="first_name" value="<?php echo $data['first_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['first_name_err'] ?></span>
+                       
+                        <label for="last_name">Last Name</label>
+                        <input type="text" id="last_name" name="last_name" value="<?php echo $data['last_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['last_name_err'] ?></span>
 
-                        <label for="">Gender</label>
-                        <select name="gender" id="gender">
-                            <option value="male">Male</option>
+                        <label for="nic">NIC</label>
+                        <input type="text" id="nic" name="nic" value="<?php echo $data['nic'] ?>">
+                        <span class="form-invalid"><?php echo $data['nic_err'] ?></span>
+
+                        <label for="contact_number">contact Number</label>
+                        <input type="text" id="contact_number" name="contact_number" value="<?php echo $data['contact_number'] ?>">
+                        <span class="form-invalid"><?php echo $data['contact_number_err'] ?></span>
+
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" value="<?php echo $data['email'] ?>">
+                        <span class="form-invalid"><?php echo $data['email_err'] ?></span>
+
+                        
+                        <label for="gender">Gender</label>
+                        <select name="gender" id="gender" >
+                            <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
+                        <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
 
-                        <label for="">Contact number</label>
-                        <input type="number">
 
-                        <label for="">Weight</label>
-                        <input type="number">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" value="<?php echo $data['city'] ?>">
+                        <span class="form-invalid"><?php echo $data['city_err'] ?></span>
 
-                        <label for="">Height</label>
-                        <input type="number">
 
                         <button>Submit</button>
                     </div>
                     <div class="right">
-                        <label for="">Marital status</label>
-                        <select name="marital-status" id="marital-status">
-                            <option value="married">Married</option>
-                            <option value="unmarried">Unmarried</option>
-                        </select>
+                    <label for="slmc">SLMC registration Number</label>
+                        <input type="text" id="slmc" name="slmc" value="<?php echo $data['slmc_reg_number'] ?>">
+                        <span class="form-invalid"><?php echo $data['slmc_reg_number_err'] ?></span>
 
-                        <label for="">Medical details</label>
-                        <input type="text">
+                       
+                        <label for="qualification_file">Qualification File</label>
+                        <input type="file" id="qualification_file" name="qualification_file" value="<?php echo $data['qualification_file'] ?>">
+                        <span class="form-invalid"><?php echo $data['qualification_file_err'] ?></span>
 
-                        <label for="">Allergies</label>
-                        <input type="text">
+    
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password">
+                        <span class="form-invalid"><?php echo $data['password_err'] ?></span>
 
-                        <label for="">Sleeping hours per day</label>
-                        <input type="number">
 
-                        <label for="">Water consumption per day (ml)</label>
-                        <input type="number">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input type="password" id="confirm_password" name="confirm_password">
+                        <span class="form-invalid"><?php echo $data['confirm_password_err'] ?></span>
+
+                        <label for="bank_name">Bank Name</label>
+                        <input type="text" id="bank_name" name="bank_name" value="<?php echo $data['bank_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['bank_name_err'] ?></span>
+
+                        <label for="account_holder_name">Account Holder Name</label>
+                        <input type="text" id="account_holder_name" name="account_holder_name" value="<?php echo $data['account_holder_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['account_holder_name_err'] ?></span>
+
+                        <label for="branch">Branch</label>
+                        <input type="text" id="branch" name="branch" value="<?php echo $data['branch'] ?>">
+                        <span class="form-invalid"><?php echo $data['branch_err'] ?></span>
+
+                      
+
+                        <label for="account_number">Account Number</label>
+                        <input type="text" id="account_number" name="account_number" value="<?php echo $data['account_number'] ?>">
+                        <span class="form-invalid"><?php echo $data['account_number_err'] ?></span>
                     </div>
                 </div>
             </form>
 
-            <form action="" id="pharmacist-form">
+            <form action="<?php echo URLROOT ?>/ServiceProviderSignup/signupPharmacist" id="pharmacist-form" method="POST" enctype="multipart/form-data">
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left">
 
-                        <label for="">Age</label>
-                        <input type="number">
+                    <label for="first_name">First Name</label>
+                        <input type="text" id="first_name" name="first_name" value="<?php echo $data['first_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['first_name_err'] ?></span>
+                       
+                        <label for="last_name">Last Name</label>
+                        <input type="text" id="last_name" name="last_name" value="<?php echo $data['last_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['last_name_err'] ?></span>
 
-                        <label for="">Gender</label>
-                        <select name="gender" id="gender">
-                            <option value="male">Male</option>
+                        <label for="nic">NIC</label>
+                        <input type="text" id="nic" name="nic" value="<?php echo $data['nic'] ?>">
+                        <span class="form-invalid"><?php echo $data['nic_err'] ?></span>
+
+                        <label for="contact_number">contact Number</label>
+                        <input type="text" id="contact_number" name="contact_number" value="<?php echo $data['contact_number'] ?>">
+                        <span class="form-invalid"><?php echo $data['contact_number_err'] ?></span>
+
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" value="<?php echo $data['email'] ?>">
+                        <span class="form-invalid"><?php echo $data['email_err'] ?></span>
+
+                        
+                        <label for="gender">Gender</label>
+                        <select name="gender" id="gender" >
+                            <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
+                        <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
 
-                        <label for="">Contact number</label>
-                        <input type="number">
 
-                        <label for="">Weight</label>
-                        <input type="number">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" value="<?php echo $data['city'] ?>">
+                        <span class="form-invalid"><?php echo $data['city_err'] ?></span>
 
-                        <label for="">Height</label>
-                        <input type="number">
+                        <label for="pharmacy_name">contact Number</label>
+                        <input type="text" id="pharmacy_name" name="pharmacy_name" value="<?php echo $data['pharmacy_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['pharmacy_name_err'] ?></span>
+
 
                         <button>Submit</button>
                     </div>
                     <div class="right">
-                        <label for="">Marital status</label>
-                        <select name="marital-status" id="marital-status">
-                            <option value="married">Married</option>
-                            <option value="unmarried">Unmarried</option>
-                        </select>
+                    <label for="address">address</label>
+                        <input type="text" id="address" name="address" value="<?php echo $data['address'] ?>">
+                        <span class="form-invalid"><?php echo $data['address_err'] ?></span>
 
-                        <label for="">Medical details</label>
-                        <input type="text">
+            
+                        <label for="slmc">SLMC registration Number</label>
+                        <input type="text" id="slmc" name="slmc" value="<?php echo $data['slmc_reg_number'] ?>">
+                        <span class="form-invalid"><?php echo $data['slmc_reg_number_err'] ?></span>
+        
+                       
+                        <label for="qualification_file">Qualification File</label>
+                        <input type="file" id="qualification_file" name="qualification_file" value="<?php echo $data['qualification_file'] ?>">
+                        <span class="form-invalid"><?php echo $data['qualification_file_err'] ?></span>
 
-                        <label for="">Allergies</label>
-                        <input type="text">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password">
+                        <span class="form-invalid"><?php echo $data['password_err'] ?></span>
 
-                        <label for="">Sleeping hours per day</label>
-                        <input type="number">
 
-                        <label for="">Water consumption per day (ml)</label>
-                        <input type="number">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input type="password" id="confirm_password" name="confirm_password">
+                        <span class="form-invalid"><?php echo $data['confirm_password_err'] ?></span>
+
+                        <label for="bank_name">Bank Name</label>
+                        <input type="text" id="bank_name" name="bank_name" value="<?php echo $data['bank_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['bank_name_err'] ?></span>
+
+                        <label for="account_holder_name">Account Holder Name</label>
+                        <input type="text" id="account_holder_name" name="account_holder_name" value="<?php echo $data['account_holder_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['account_holder_name_err'] ?></span>
+
+                        <label for="branch">Branch</label>
+                        <input type="text" id="branch" name="branch" value="<?php echo $data['branch'] ?>">
+                        <span class="form-invalid"><?php echo $data['branch_err'] ?></span>
+
+                      
+                        <label for="account_number">Account Number</label>
+                        <input type="text" id="account_number" name="account_number" value="<?php echo $data['account_number'] ?>">
+                        <span class="form-invalid"><?php echo $data['account_number_err'] ?></span>
+
                     </div>
                 </div>
             </form>
 
-            <form action="" id="nutritionist-form">
+            <form action="<?php echo URLROOT ?>/ServiceProviderSignup/signupNutritionist" id="nutritionist-form" method="POST" enctype="multipart/form-data">
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left">
 
-                        <label for="">Age</label>
-                        <input type="number">
+                    <label for="first_name">First Name</label>
+                        <input type="text" id="first_name" name="first_name" value="<?php echo $data['first_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['first_name_err'] ?></span>
+                       
+                        <label for="last_name">Last Name</label>
+                        <input type="text" id="last_name" name="last_name" value="<?php echo $data['last_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['last_name_err'] ?></span>
 
-                        <label for="">Gender</label>
-                        <select name="gender" id="gender">
-                            <option value="male">Male</option>
+                        <label for="nic">NIC</label>
+                        <input type="text" id="nic" name="nic" value="<?php echo $data['nic'] ?>">
+                        <span class="form-invalid"><?php echo $data['nic_err'] ?></span>
+
+                        <label for="contact_number">contact Number</label>
+                        <input type="text" id="contact_number" name="contact_number" value="<?php echo $data['contact_number'] ?>">
+                        <span class="form-invalid"><?php echo $data['contact_number_err'] ?></span>
+
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" value="<?php echo $data['email'] ?>">
+                        <span class="form-invalid"><?php echo $data['email_err'] ?></span>
+
+                        
+                        <label for="gender">Gender</label>
+                        <select name="gender" id="gender" >
+                            <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
-
-                        <label for="">Contact number</label>
-                        <input type="number">
-
-                        <label for="">Weight</label>
-                        <input type="number">
-
-                        <label for="">Height</label>
-                        <input type="number">
+                        <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
 
                         <button>Submit</button>
                     </div>
                     <div class="right">
-                        <label for="">Marital status</label>
-                        <select name="marital-status" id="marital-status">
-                            <option value="married">Married</option>
-                            <option value="unmarried">Unmarried</option>
-                        </select>
+                    <label for="fee">fee</label>
+                        <input type="text" id="fee" name="fee" value="<?php echo $data['fee'] ?>">
+                        <span class="form-invalid"><?php echo $data['fee_err'] ?></span>
+ 
+                        <label for="slmc">SLMC registration Number</label>
+                        <input type="text" id="slmc" name="slmc" value="<?php echo $data['slmc_reg_number'] ?>">
+                        <span class="form-invalid"><?php echo $data['slmc_reg_number_err'] ?></span>
+        
+                  
+                        <label for="qualification_file">Qualification File</label>
+                        <input type="file" id="qualification_file" name="qualification_file" value="<?php echo $data['qualification_file'] ?>">
+                        <span class="form-invalid"><?php echo $data['qualification_file_err'] ?></span>
 
-                        <label for="">Medical details</label>
-                        <input type="text">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password">
+                        <span class="form-invalid"><?php echo $data['password_err'] ?></span>
 
-                        <label for="">Allergies</label>
-                        <input type="text">
 
-                        <label for="">Sleeping hours per day</label>
-                        <input type="number">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input type="password" id="confirm_password" name="confirm_password">
+                        <span class="form-invalid"><?php echo $data['confirm_password_err'] ?></span>
 
-                        <label for="">Water consumption per day (ml)</label>
-                        <input type="number">
+                        <label for="bank_name">Bank Name</label>
+                        <input type="text" id="bank_name" name="bank_name" value="<?php echo $data['bank_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['bank_name_err'] ?></span>
+
+                        <label for="account_holder_name">Account Holder Name</label>
+                        <input type="text" id="account_holder_name" name="account_holder_name" value="<?php echo $data['account_holder_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['account_holder_name_err'] ?></span>
+
+                        <label for="branch">Branch</label>
+                        <input type="text" id="branch" name="branch" value="<?php echo $data['branch'] ?>">
+                        <span class="form-invalid"><?php echo $data['branch_err'] ?></span>
+
+                      
+                        <label for="account_number">Account Number</label>
+                        <input type="text" id="account_number" name="account_number" value="<?php echo $data['account_number'] ?>">
+                        <span class="form-invalid"><?php echo $data['account_number_err'] ?></span>
                     </div>
                 </div>
             </form>
 
-            <form action="" id="meditation-instructor-form">
+            <form action="<?php echo URLROOT ?>/ServiceProviderSignup/signupMeditationInstructor" id="meditation-instructor-form" method="POST" enctype="multipart/form-data">
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left">
 
-                        <label for="">Age</label>
-                        <input type="number">
+                       
+                    <label for="first_name">First Name</label>
+                        <input type="text" id="first_name" name="first_name" value="<?php echo $data['first_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['first_name_err'] ?></span>
+                       
+                        <label for="last_name">Last Name</label>
+                        <input type="text" id="last_name" name="last_name" value="<?php echo $data['last_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['last_name_err'] ?></span>
 
-                        <label for="">Gender</label>
-                        <select name="gender" id="gender">
-                            <option value="male">Male</option>
+                        <label for="nic">NIC</label>
+                        <input type="text" id="nic" name="nic" value="<?php echo $data['nic'] ?>">
+                        <span class="form-invalid"><?php echo $data['nic_err'] ?></span>
+
+                        <label for="contact_number">contact Number</label>
+                        <input type="text" id="contact_number" name="contact_number" value="<?php echo $data['contact_number'] ?>">
+                        <span class="form-invalid"><?php echo $data['contact_number_err'] ?></span>
+
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" value="<?php echo $data['email'] ?>">
+                        <span class="form-invalid"><?php echo $data['email_err'] ?></span>
+
+                        
+                        <label for="gender">Gender</label>
+                        <select name="gender" id="gender" >
+                            <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
+                        <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
 
-                        <label for="">Contact number</label>
-                        <input type="number">
 
-                        <label for="">Weight</label>
-                        <input type="number">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" value="<?php echo $data['city'] ?>">
+                        <span class="form-invalid"><?php echo $data['city_err'] ?></span>
 
-                        <label for="">Height</label>
-                        <input type="number">
+                        <label for="address">address</label>
+                        <input type="text" id="address" name="address" value="<?php echo $data['address'] ?>">
+                        <span class="form-invalid"><?php echo $data['address_err'] ?></span>
+
 
                         <button>Submit</button>
                     </div>
                     <div class="right">
-                        <label for="">Marital status</label>
-                        <select name="marital-status" id="marital-status">
-                            <option value="married">Married</option>
-                            <option value="unmarried">Unmarried</option>
-                        </select>
+                    <label for="fee">fee</label>
+                        <input type="text" id="fee" name="fee" value="<?php echo $data['fee'] ?>">
+                        <span class="form-invalid"><?php echo $data['fee_err'] ?></span>
+ 
+                       
+                        <label for="qualification_file">Qualification File</label>
+                        <input type="file" id="qualification_file" name="qualification_file" value="<?php echo $data['qualification_file'] ?>">
+                        <span class="form-invalid"><?php echo $data['qualification_file_err'] ?></span>
 
-                        <label for="">Medical details</label>
-                        <input type="text">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password">
+                        <span class="form-invalid"><?php echo $data['password_err'] ?></span>
 
-                        <label for="">Allergies</label>
-                        <input type="text">
 
-                        <label for="">Sleeping hours per day</label>
-                        <input type="number">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input type="password" id="confirm_password" name="confirm_password">
+                        <span class="form-invalid"><?php echo $data['confirm_password_err'] ?></span>
 
-                        <label for="">Water consumption per day (ml)</label>
-                        <input type="number">
+                        <label for="bank_name">Bank Name</label>
+                        <input type="text" id="bank_name" name="bank_name" value="<?php echo $data['bank_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['bank_name_err'] ?></span>
+
+                        <label for="account_holder_name">Account Holder Name</label>
+                        <input type="text" id="account_holder_name" name="account_holder_name" value="<?php echo $data['account_holder_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['account_holder_name_err'] ?></span>
+
+                        <label for="branch">Branch</label>
+                        <input type="text" id="branch" name="branch" value="<?php echo $data['branch'] ?>">
+                        <span class="form-invalid"><?php echo $data['branch_err'] ?></span>
+
+                      
+                        <label for="account_number">Account Number</label>
+                        <input type="text" id="account_number" name="account_number" value="<?php echo $data['account_number'] ?>">
+                        <span class="form-invalid"><?php echo $data['account_number_err'] ?></span>
                     </div>
                 </div>
             </form>

@@ -121,8 +121,8 @@ class ServiceProviderSignup extends Controller{
            $data['bank_name_err']='bank name can not be empty';
        }
        
-       if(empty($data['acount_holder_name'])){
-           $data['account_holder_name_err']='acount holder name can not be empty';
+       if(empty($data['account_holder_name'])){
+           $data['account_holder_name_err']='account holder name can not be empty';
        }
      
        if(empty($data['branch'])){
@@ -171,14 +171,13 @@ class ServiceProviderSignup extends Controller{
             
          $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
           if($this->serviceProviderSignupModel->signupDoctor($data)){
-                flash('post_msg', 'add new doctor successfully');
-                //     redirect('AdminUserMgmt/doctor'); 
+                  $this->view('inc/v_pending',$data); 
             }else{
                 die('Error creating');
             }  
        
        }else{
-         //  $this->view('AdminUserMgmt/Doctor/v_doctorAddNew',$data);
+           $this->view('patients/v_signup',$data);
 
        }
       
@@ -227,7 +226,8 @@ class ServiceProviderSignup extends Controller{
         ];
  
     //    $this->view('AdminUserMgmt/Doctor/v_doctorAddNew',$data);
-    
+    $this->view('patients/v_signup',$data);
+
   }
   
         
@@ -338,8 +338,8 @@ class ServiceProviderSignup extends Controller{
                 $data['bank_name_err']='bank name can not be empty';
             }
             
-            if(empty($data['acount_holder_name'])){
-                $data['acount_holder_name_err']='acount_holder name can not be empty';
+            if(empty($data['account_holder_name'])){
+                $data['account_holder_name_err']='account_holder name can not be empty';
             }
           
             if(empty($data['branch'])){
@@ -381,18 +381,16 @@ class ServiceProviderSignup extends Controller{
       
       
              if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['city_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['slmc_reg_number_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
-            
                
                $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
-                if($this->adminUserMgmtModel->signupCounsellor($data)){
-                      flash('post_msg', 'add new counsellor successfully');
-          //                 redirect('AdminUserMgmt/counsellor'); 
+                if($this->serviceProviderSignupModel->signupCounsellor($data)){
+                        $this->view('inc/v_pending',$data); 
                   }else{
                       die('Error creating');
                   }  
              
              }else{
-            //     $this->view('AdminUserMgmt/Counsellor/v_counsellorAddNew',$data);
+                  $this->view('patients/v_signup',$data);
       
              }
             
@@ -436,7 +434,7 @@ class ServiceProviderSignup extends Controller{
                'qualification_file_err'=>'',
               ];
        
-            //  $this->view('AdminUserMgmt/Counsellor/v_counsellorAddNew',$data);
+              $this->view('patients/v_signup',$data);
       
         }
   
@@ -547,8 +545,8 @@ class ServiceProviderSignup extends Controller{
              $data['bank_name_err']='bank name can not be empty';
          }
          
-         if(empty($data['acount_holder_name'])){
-             $data['acount_holder_name_err']='acount_holder name can not be empty';
+         if(empty($data['account_holder_name'])){
+             $data['account_holder_name_err']='account_holder name can not be empty';
          }
        
          if(empty($data['branch'])){
@@ -600,16 +598,14 @@ class ServiceProviderSignup extends Controller{
         
                
             $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
-             if($this->adminUserMgmtModel->signupMeditationInstructor($data)){
-                   flash('post_msg', 'add new meditationInstructor successfully');
-//                        redirect('AdminUserMgmt/meditationInstructor'); 
+             if($this->serviceProviderSignupModel->signupMeditationInstructor($data)){
+                     $this->view('inc/v_pending',$data);  
                }else{
   //                 die('Error creating');
                }  
           
           }else{
-    //          $this->view('AdminUserMgmt/MeditationInstructor/v_medInstrAddNew',$data);
-   
+                $this->view('patients/v_signup',$data);
           }
          
               
@@ -654,7 +650,7 @@ class ServiceProviderSignup extends Controller{
             'qualification_file_err'=>'',
           ];
     
-      //     $this->view('AdminUserMgmt/MeditationInstructor/v_medInstrAddNew',$data);
+          $this->view('patients/v_signup',$data);
    
      }
    
@@ -768,8 +764,8 @@ class ServiceProviderSignup extends Controller{
              $data['bank_name_err']='bank name can not be empty';
          }
          
-         if(empty($data['acount_holder_name'])){
-             $data['acount_holder_name_err']='acount_holder name can not be empty';
+         if(empty($data['account_holder_name'])){
+             $data['account_holder_name_err']='account_holder name can not be empty';
          }
        
          if(empty($data['branch'])){
@@ -819,16 +815,15 @@ class ServiceProviderSignup extends Controller{
                
                  
             $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
-             if($this->adminUserMgmtModel->signupPharmacist($data)){
-                   flash('post_msg', 'add new pharmacist successfully');
-       //                 redirect('AdminUserMgmt/pharmacist'); 
+             if($this->serviceProviderSignupModel->signupPharmacist($data)){
+                  $this->view('inc/v_pending',$data);
                }else{
                    die('Error creating');
                }  
           
           }else{
-         //     $this->view('AdminUserMgmt/Pharmacist/v_pharmacistAddNew',$data);
-   
+              $this->view('patients/v_signup',$data);
+
           }
          
               
@@ -875,8 +870,8 @@ class ServiceProviderSignup extends Controller{
             'qualification_file_err'=>''
            ];
     
-           //$this->view('AdminUserMgmt/Pharmacist/v_pharmacistAddNew',$data);
-   
+           $this->view('patients/v_signup',$data);
+
      }
     
    
@@ -982,8 +977,8 @@ class ServiceProviderSignup extends Controller{
              $data['bank_name_err']='bank name can not be empty';
          }
          
-         if(empty($data['acount_holder_name'])){
-             $data['account_holder_name_err']='acount holder name can not be empty';
+         if(empty($data['account_holder_name'])){
+             $data['account_holder_name_err']='account holder name can not be empty';
          }
        
          if(empty($data['branch'])){
@@ -1031,16 +1026,15 @@ class ServiceProviderSignup extends Controller{
           if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['slmc_reg_number_err'])&& empty($data['fee_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
               
             $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
-             if($this->adminUserMgmtModel->addNutritionist($data)){
-                   flash('post_msg', 'add new nutritionist successfully');
-   //                     redirect('AdminUserMgmt/nutritionist'); 
+             if($this->serviceProviderSignupModel->signupNutritionist($data)){
+                   $this->view('inc/v_pending',$data);  
                }else{
                    die('Error creating');
                }  
           
           }else{
-     //         $this->view('AdminUserMgmt/Nutritionist/v_nutritionistAddNew',$data);
-   
+             $this->view('patients/v_signup',$data);
+
           }
          
               
@@ -1084,8 +1078,8 @@ class ServiceProviderSignup extends Controller{
             'qualification_file_err'=>''
           ];
     
-    //       $this->view('AdminUserMgmt/Nutritionist/v_nutritionistAddNew',$data);
-             
+          $this->view('patients/v_signup',$data);
+
      }
     
            

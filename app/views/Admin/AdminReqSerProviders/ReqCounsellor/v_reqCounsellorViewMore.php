@@ -19,9 +19,8 @@
     <section class="view-profile-container-requestedSP  theme">
         <div class="card">
             <div class="main-image">
-                <a href="<?php echo URLROOT ?>/AdminReqSerProviders/adminReqCounsellor" class="backto-counsellors"><i class="fa-solid fa-arrow-left"></i>Back to Requested Counsellors</a>
+                <a href="<?php echo URLROOT ?>/AdminReqSerProviders/adminReqCounsellor" class="backto-doctors"><i class="fa-solid fa-arrow-left"></i>Back to Requested Counsellors</a>
                 <h1><?php echo $data['counsellor']->first_name ?> <br> <?php echo $data['counsellor']->last_name ?></h1>
-                <p><?php echo $data['counsellor']->specialization ?></p>
                 <div class="profile-icon"><?php echo substr($data['counsellor']->first_name, 0,1) ?><?php echo substr($data['counsellor']->last_name, 0,1) ?></div>
                 <div class="social-media-icons">
                     <i class="fa-brands fa-facebook"></i>
@@ -45,7 +44,6 @@
                     <li>Branch - <?php echo $data['counsellor']->branch ?></li>
                    
                     <li>Account Number - <?php echo $data['counsellor']->account_number ?></li>
-                    <li>Type - <?php echo $data['counsellor']->type ?></li>
                     <li>Qualification File -  <button class="download"><a download="<?php echo $data['counsellor']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/counsellor_qualification/<?php echo $meditationInstructor->qualification_file ?>">Download</a></button>
 
                     </li>
