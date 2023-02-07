@@ -36,17 +36,14 @@
         </dev>
         <div class="card-container-forservices" id="to-be-show-more">
             <a href="<?php echo URLROOT ?>/Doctor/timeslots" class="card">
-                <img src="<?php echo URLROOT; ?>/img/sevices-images/Your Doctor Appointments.jpg" alt="">
+                <img src="<?php echo URLROOT; ?>/img/doctor-reg-user-img/4.jpg" alt="">
                 <p>******<br>Timeslots</p>
             </a>
-            <a href="<?php echo URLROOT ?>/Patient/viewDoctorChannelingHistory" class="card">
-                <img src="<?php echo URLROOT; ?>/img/sevices-images/Your Doctor Channeling History.jpg" alt="">
-                <p>******<br>Your Doctor Channeling History</p>
+            <a href="<?php echo URLROOT ?>/DoctorAppoinments/DoctorAppoinments" class="card">
+                <img src="<?php echo URLROOT; ?>/img/doctor-reg-user-img/5.jpg" alt="">
+                <p>******<br>Appointments</p>
             </a>
-            <a href="<?php echo URLROOT ?>/Patient/viewOrderRequests" class="card">
-                <img src="<?php echo URLROOT; ?>/img/sevices-images/Your Orders.jpg" alt="">
-                <p>******<br>Your Orders</p>
-            </a>
+            
         </div>
         <button id="show-button" class="show-button" onclick="showMore()"><span id="show-text">Show More</span><i class="fa-solid fa-angle-down" id="icon-more-orless"></i></button>
     </section>

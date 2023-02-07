@@ -80,6 +80,20 @@
                 return false;
             }
         }
+
+
+        public function updatePW($data, $doctor_id) {
+            $this->db->query('UPDATE doctor SET password = :password WHERE doctor_id = :doctor_id');
+            $this->db->bind(':password', $data['newpw']);
+            $this->db->bind(':doctor_id', $doctor_id);
+
+            if($this->db->execute()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
     }
 
 ?>

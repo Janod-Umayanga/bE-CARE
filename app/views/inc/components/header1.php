@@ -22,6 +22,9 @@
 
                         <?php elseif(isset($_SESSION['doctor_id'])): ?>
                             <a id="navigation-link" class="navigation-link theme" href="<?php echo URLROOT ?>/Doctor/dashboard">Home</a>
+
+                        <?php elseif(isset($_SESSION['counsellor_id'])): ?>
+                            <a id="navigation-link" class="navigation-link theme" href="<?php echo URLROOT ?>/Counsellor/dashboard">Home</a>    
                             
                         <?php else: ?>
                             <a id="navigation-link" class="navigation-link theme" href="<?php echo URLROOT ?>/Pages/index">Home</a>
