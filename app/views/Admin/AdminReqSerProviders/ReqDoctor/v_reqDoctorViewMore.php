@@ -46,8 +46,8 @@
                    
                     <li>Account Number - <?php echo $data['doctor']->account_number ?></li>
                     <li>Type - <?php echo $data['doctor']->type ?></li>
-                    <li>Qualification File   <button class="download"><a download="<?php echo $data['doctor']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/doctor_qualification/<?php echo $meditationInstructor->qualification_file ?>">Download</a></button>
-
+                    <li>Qualification File   <button class="download"><a download="<?php echo $data['doctor']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/doctor_qualification/<?php echo  $data['doctor']->qualification_file ?>">Download</a></button>
+                   
                     </li>
                    
                 </ul>

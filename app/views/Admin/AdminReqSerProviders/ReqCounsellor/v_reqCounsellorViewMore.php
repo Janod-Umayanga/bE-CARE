@@ -44,7 +44,7 @@
                     <li>Branch - <?php echo $data['counsellor']->branch ?></li>
                    
                     <li>Account Number - <?php echo $data['counsellor']->account_number ?></li>
-                    <li>Qualification File -  <button class="download"><a download="<?php echo $data['counsellor']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/counsellor_qualification/<?php echo $meditationInstructor->qualification_file ?>">Download</a></button>
+                    <li>Qualification File -  <button class="download"><a download="<?php echo $data['counsellor']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/counsellor_qualification/<?php echo $data['counsellor']->qualification_file ?>">Download</a></button>
 
                     </li>
                    

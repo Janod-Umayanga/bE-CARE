@@ -50,7 +50,8 @@
                    
                     <li>Account Number - <?php echo $data['meditationInstructor']->account_number ?></li>
                      <li>Qualification File -   <button class="download"><a download="<?php echo $data['meditationInstructor']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/meditationInstructor_qualification/<?php echo  $data['meditationInstructor']->qualification_file ?>">Download</a></button>
-               </li>
+              
+                    </li>
                    
                 </ul>
                 <div class="bottom-line"></div>
