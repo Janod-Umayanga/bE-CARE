@@ -13,7 +13,7 @@
     <script defer src="<?php echo URLROOT; ?>/js/multipleSignup.js"></script>
     <title>Signup</title>
 </head>
-<body>
+<body onload="setFormNumber()">
     <section class="diet-plan-section"> <!--In this page, the classes are the same that exists in dietPlan-->
         <div class="diet-plan-leftside">
             <div class="diet-left-side-container">
@@ -31,6 +31,7 @@
                 <h2 id="form-status">patient</h2>
                 <button id="next-button-status"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
+            <span id="formNumber" ><?php if(isset($_SESSION['signup_form_number'])){echo $_SESSION['signup_form_number'];}else{echo 0;} ?></span>
             <div class="form-container" id="form-container">
             <form action="<?php echo URLROOT ?>/Patient/signup" method="POST" id="patient-form">
                 <div class="topic-of-form">
@@ -40,39 +41,39 @@
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left">
                         <label for="fname">First name</label>
-                        <input type="text" id="fname" name="fname"  value="<?php echo $data['fname'] ?>">
-                        <span class="form-invalid"><?php echo $data['fname_err'] ?></span>
+                        <input type="text" id="fname" name="fname"  value="<?php if(isset($data['fname'])){echo $data['fname'];} ?>">
+                        <span class="form-invalid"><?php if(isset($data['fname_err'])){echo $data['fname_err'];} ?></span>
 
                         <label for="lname">Last name</label>
-                        <input type="text" id="lname" name="lname"  value="<?php echo $data['lname'] ?>">
-                        <span class="form-invalid"><?php echo $data['lname_err'] ?></span>
+                        <input type="text" id="lname" name="lname"  value="<?php if(isset($data['lname'])){echo $data['lname'];} ?>">
+                        <span class="form-invalid"><?php if(isset($data['lname_err'])){echo $data['lname_err'];} ?></span>
 
                         <label for="nic">NIC</label>
-                        <input type="text" id="nic" name="nic"  value="<?php echo $data['nic'] ?>">
-                        <span class="form-invalid"><?php echo $data['nic_err'] ?></span>
+                        <input type="text" id="nic" name="nic"  value="<?php if(isset($data['nic'])){echo $data['nic'];} ?>">
+                        <span class="form-invalid"><?php if(isset($data['nic_err'])){echo $data['nic_err'];} ?></span>
 
                         <label for="cnumber">Contact number</label>
-                        <input type="text" id="cnumber" name="cnumber"  value="<?php echo $data['cnumber'] ?>">
-                        <span class="form-invalid"><?php echo $data['cnumber_err'] ?></span>
+                        <input type="text" id="cnumber" name="cnumber"  value="<?php if(isset($data['cnumber'])){echo $data['cnumber'];} ?>">
+                        <span class="form-invalid"><?php if(isset($data['cnumber_err'])){echo $data['cnumber_err'];} ?></span>
 
                         <button>Submit</button>
                     </div>
                     <div class="right">
                         <label for="gender">Gender</label>
-                        <input type="text" id="gender" name="gender"  value="<?php echo $data['gender'] ?>">
-                        <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
+                        <input type="text" id="gender" name="gender"  value="<?php if(isset($data['gender'])){echo $data['gender'];} ?>">
+                        <span class="form-invalid"><?php if(isset($data['gender_err'])){echo $data['gender_err'];} ?></span>
 
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email"  value="<?php echo $data['email'] ?>">
-                        <span class="form-invalid"><?php echo $data['email_err'] ?></span>
+                        <input type="email" id="email" name="email"  value="<?php if(isset($data['email'])){echo $data['email'];} ?>">
+                        <span class="form-invalid"><?php if(isset($data['email_err'])){echo $data['email_err'];} ?></span>
 
                         <label for="password">Password</label>
-                        <input type="password" id="password" name="password"  value="<?php echo $data['password'] ?>">
-                        <span class="form-invalid"><?php echo $data['password_err'] ?></span>
+                        <input type="password" id="password" name="password"  value="<?php if(isset($data['password'])){echo $data['password'];} ?>">
+                        <span class="form-invalid"><?php if(isset($data['password_err'])){echo $data['password_err'];} ?></span>
 
                         <label for="password_confirmation">Confirm Password</label>
-                        <input type="password" id="password_confirmation" name="password_confirmation"  value="<?php echo $data['password_confirmation'] ?>">
-                        <span class="form-invalid"><?php echo $data['password_confirmation_err'] ?></span>
+                        <input type="password" id="password_confirmation" name="password_confirmation"  value="<?php if(isset($data['password_confirmation'])){echo $data['password_confirmation'];} ?>">
+                        <span class="form-invalid"><?php if(isset($data['password_confirmation_err'])){echo $data['password_confirmation_err'];} ?></span>
                     </div>
                 </div>
             </form>
@@ -82,24 +83,24 @@
                     <div class="left">
 
                         <label for="first_name">First Name</label>
-                        <input type="text" id="first_name" name="first_name" value="<?php echo $data['first_name'] ?>">
-                        <span class="form-invalid"><?php echo $data['first_name_err'] ?></span>
+                        <input type="text" id="first_name" name="first_name" value="<?php if(isset($data['first_name'])){echo $data['first_name'];} ?>">
+                        <span class="form-invalid"><?php if(isset($data['first_name_err'])){echo $data['first_name_err'];} ?></span>
                        
                         <label for="last_name">Last Name</label>
-                        <input type="text" id="last_name" name="last_name" value="<?php echo $data['last_name'] ?>">
-                        <span class="form-invalid"><?php echo $data['last_name_err'] ?></span>
+                        <input type="text" id="last_name" name="last_name" value="<?php if(isset($data['last_name'])){echo $data['last_name'];} ?>">
+                        <span class="form-invalid"><?php if(isset($data['last_name_err'])){echo $data['last_name_err'];} ?></span>
 
                         <label for="nic">NIC</label>
-                        <input type="text" id="nic" name="nic" value="<?php echo $data['nic'] ?>">
-                        <span class="form-invalid"><?php echo $data['nic_err'] ?></span>
+                        <input type="text" id="nic" name="nic" value="<?php if(isset($data['nic'])){echo $data['nic'];} ?>">
+                        <span class="form-invalid"><?php if(isset($data['nic_err'])){echo $data['nic_err'];} ?></span>
 
                         <label for="contact_number">contact Number</label>
-                        <input type="text" id="contact_number" name="contact_number" value="<?php echo $data['contact_number'] ?>">
-                        <span class="form-invalid"><?php echo $data['contact_number_err'] ?></span>
+                        <input type="text" id="contact_number" name="contact_number" value="<?php if(isset($data['contact_number'])){echo $data['contact_number'];} ?>">
+                        <span class="form-invalid"><?php if(isset($data['contact_number_err'])){echo $data['contact_number_err'];} ?></span>
 
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" value="<?php echo $data['email'] ?>">
-                        <span class="form-invalid"><?php echo $data['email_err'] ?></span>
+                        <input type="email" id="email" name="email" value="<?php if(isset($data['email'])){echo $data['email'];} ?>">
+                        <span class="form-invalid"><?php if(isset($data['email_err'])){echo $data['email_err'];} ?></span>
 
                         
                         <label for="gender">Gender</label>
@@ -107,63 +108,61 @@
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
-                        <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
+                        <span class="form-invalid"><?php if(isset($data['gender_err'])){echo $data['gender_err'];} ?></span>
 
 
                         <label for="city">City</label>
-                        <input type="text" id="city" name="city" value="<?php echo $data['city'] ?>">
-                        <span class="form-invalid"><?php echo $data['city_err'] ?></span>
+                        <input type="text" id="city" name="city" value="<?php if(isset($data['city'])){echo $data['city'];} ?>">
+                        <span class="form-invalid"><?php if(isset($data['city_err'])){echo $data['city_err'];} ?></span>
 
                         <label for="slmc">SLMC registration Number</label>
-                        <input type="text" id="slmc" name="slmc" value="<?php echo $data['slmc_reg_number'] ?>">
-                        <span class="form-invalid"><?php echo $data['slmc_reg_number_err'] ?></span>
+                        <input type="text" id="slmc" name="slmc" value="<?php if(isset($data['slmc_reg_number'])){echo $data['slmc_reg_number'];} ?>">
+                        <span class="form-invalid"><?php if(isset($data['slmc_reg_number_err'])){echo $data['slmc_reg_number_err'];} ?></span>
 
                         <button>Submit</button>
                     </div>
                     <div class="right">
                        
                         <label for="type">Type</label>
-                        <select name="type" id="type" value="<?php echo $data['type'] ?>" >
+                        <select name="type" id="type" value="" >
                             <option value="MBBS">MBBS</option>
                             <option value="BAMS">BAMS</option>
                         </select>
-                        <span class="form-invalid"><?php echo $data['type_err'] ?></span>
+                        <span class="form-invalid"><?php if(isset($data['type_err'])){echo $data['type_err'];} ?></span>
 
                        
                         <label for="qualification_file">Qualification File</label>
-                        <input type="file" id="qualification_file" name="qualification_file" value="<?php echo $data['qualification_file'] ?>">
-                        <span class="form-invalid"><?php echo $data['qualification_file_err'] ?></span>
+                        <input type="file" id="qualification_file" name="qualification_file" value="<?php if(isset($data['qualification_file'])){echo $data['qualification_file'];} ?>">
+                        <span class="form-invalid"><?php if(isset($data['qualification_file_err'])){echo $data['qualification_file_err'];} ?></span>
 
                         <label for="specialization">Specialization</label>
-                        <input type="text" id="specialization" name="specialization" value="<?php echo $data['specialization'] ?>">
-                        <span class="form-invalid"><?php echo $data['specialization_err'] ?></span>
+                        <input type="text" id="specialization" name="specialization" value="<?php if(isset($data['specialization'])){echo $data['specialization'];} ?>">
+                        <span class="form-invalid"><?php if(isset($data['specialization_err'])){echo $data['specialization_err'];} ?></span>
 
                         <label for="password">Password</label>
                         <input type="password" id="password" name="password">
-                        <span class="form-invalid"><?php echo $data['password_err'] ?></span>
+                        <span class="form-invalid"><?php if(isset($data['password_err'])){echo $data['password_err'];} ?></span>
 
 
                         <label for="confirm_password">Confirm Password</label>
                         <input type="password" id="confirm_password" name="confirm_password">
-                        <span class="form-invalid"><?php echo $data['confirm_password_err'] ?></span>
+                        <span class="form-invalid"><?php if(isset($data['confirm_password_err'])){echo $data['confirm_password_err'];} ?></span>
 
                         <label for="bank_name">Bank Name</label>
-                        <input type="text" id="bank_name" name="bank_name" value="<?php echo $data['bank_name'] ?>">
-                        <span class="form-invalid"><?php echo $data['bank_name_err'] ?></span>
+                        <input type="text" id="bank_name" name="bank_name" value="<?php if(isset($data['bank_name'])){echo $data['bank_name'];} ?>">
+                        <span class="form-invalid"><?php if(isset($data['bank_name_err'])){echo $data['bank_name_err'];} ?></span>
 
                         <label for="account_holder_name">Account Holder Name</label>
-                        <input type="text" id="account_holder_name" name="account_holder_name" value="<?php echo $data['account_holder_name'] ?>">
-                        <span class="form-invalid"><?php echo $data['account_holder_name_err'] ?></span>
+                        <input type="text" id="account_holder_name" name="account_holder_name" value="<?php if(isset($data['account_holder_name'])){echo $data['account_holder_name'];} ?>">
+                        <span class="form-invalid"><?php if(isset($data['account_holder_name_err'])){echo $data['account_holder_name_err'];} ?></span>
 
                         <label for="branch">Branch</label>
-                        <input type="text" id="branch" name="branch" value="<?php echo $data['branch'] ?>">
-                        <span class="form-invalid"><?php echo $data['branch_err'] ?></span>
-
-                      
+                        <input type="text" id="branch" name="branch" value="<?php if(isset($data['branch'])){echo $data['branch'];} ?>">
+                        <span class="form-invalid"><?php if(isset($data['branch_err'])){echo $data['branch_err'];} ?></span>
 
                         <label for="account_number">Account Number</label>   
-                        <input type="text" id="account_number" name="account_number" value="<?php echo $data['account_number'] ?>">
-                        <span class="form-invalid"><?php echo $data['account_number_err'] ?></span>
+                        <input type="text" id="account_number" name="account_number" value="<?php if(isset($data['account_number'])){echo $data['account_number'];} ?>">
+                        <span class="form-invalid"><?php if(isset($data['account_number_err'])){echo $data['account_number_err'];} ?></span>
 
                     </div>
                 </div>
@@ -173,7 +172,7 @@
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left">
 
-                    <label for="first_name">First Name</label>
+                    <!-- <label for="first_name">First Name</label>
                         <input type="text" id="first_name" name="first_name" value="<?php echo $data['first_name'] ?>">
                         <span class="form-invalid"><?php echo $data['first_name_err'] ?></span>
                        
@@ -204,13 +203,13 @@
 
                         <label for="city">City</label>
                         <input type="text" id="city" name="city" value="<?php echo $data['city'] ?>">
-                        <span class="form-invalid"><?php echo $data['city_err'] ?></span>
+                        <span class="form-invalid"><?php echo $data['city_err'] ?></span> -->
 
 
                         <button>Submit</button>
                     </div>
                     <div class="right">
-                    <label for="slmc">SLMC registration Number</label>
+                    <!-- <label for="slmc">SLMC registration Number</label>
                         <input type="text" id="slmc" name="slmc" value="<?php echo $data['slmc_reg_number'] ?>">
                         <span class="form-invalid"><?php echo $data['slmc_reg_number_err'] ?></span>
 
@@ -245,7 +244,7 @@
 
                         <label for="account_number">Account Number</label>
                         <input type="text" id="account_number" name="account_number" value="<?php echo $data['account_number'] ?>">
-                        <span class="form-invalid"><?php echo $data['account_number_err'] ?></span>
+                        <span class="form-invalid"><?php echo $data['account_number_err'] ?></span> -->
                     </div>
                 </div>
             </form>
@@ -254,7 +253,7 @@
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left">
 
-                    <label for="first_name">First Name</label>
+                    <!-- <label for="first_name">First Name</label>
                         <input type="text" id="first_name" name="first_name" value="<?php echo $data['first_name'] ?>">
                         <span class="form-invalid"><?php echo $data['first_name_err'] ?></span>
                        
@@ -289,14 +288,14 @@
 
                         <label for="pharmacy_name">contact Number</label>
                         <input type="text" id="pharmacy_name" name="pharmacy_name" value="<?php echo $data['pharmacy_name'] ?>">
-                        <span class="form-invalid"><?php echo $data['pharmacy_name_err'] ?></span>
+                        <span class="form-invalid"><?php echo $data['pharmacy_name_err'] ?></span> -->
 
 
                         <button>Submit</button>
                     </div>
                     <div class="right">
                     <label for="address">address</label>
-                        <input type="text" id="address" name="address" value="<?php echo $data['address'] ?>">
+                        <!-- <input type="text" id="address" name="address" value="<?php echo $data['address'] ?>">
                         <span class="form-invalid"><?php echo $data['address_err'] ?></span>
 
             
@@ -333,7 +332,7 @@
                       
                         <label for="account_number">Account Number</label>
                         <input type="text" id="account_number" name="account_number" value="<?php echo $data['account_number'] ?>">
-                        <span class="form-invalid"><?php echo $data['account_number_err'] ?></span>
+                        <span class="form-invalid"><?php echo $data['account_number_err'] ?></span> -->
 
                     </div>
                 </div>
@@ -343,7 +342,7 @@
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left">
 
-                    <label for="first_name">First Name</label>
+                    <!-- <label for="first_name">First Name</label>
                         <input type="text" id="first_name" name="first_name" value="<?php echo $data['first_name'] ?>">
                         <span class="form-invalid"><?php echo $data['first_name_err'] ?></span>
                        
@@ -369,12 +368,12 @@
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
-                        <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
+                        <span class="form-invalid"><?php echo $data['gender_err'] ?></span> -->
 
                         <button>Submit</button>
                     </div>
                     <div class="right">
-                    <label for="fee">fee</label>
+                    <!-- <label for="fee">fee</label>
                         <input type="text" id="fee" name="fee" value="<?php echo $data['fee'] ?>">
                         <span class="form-invalid"><?php echo $data['fee_err'] ?></span>
  
@@ -411,7 +410,7 @@
                       
                         <label for="account_number">Account Number</label>
                         <input type="text" id="account_number" name="account_number" value="<?php echo $data['account_number'] ?>">
-                        <span class="form-invalid"><?php echo $data['account_number_err'] ?></span>
+                        <span class="form-invalid"><?php echo $data['account_number_err'] ?></span> -->
                     </div>
                 </div>
             </form>
@@ -421,7 +420,7 @@
                     <div class="left">
 
                        
-                    <label for="first_name">First Name</label>
+                    <!-- <label for="first_name">First Name</label>
                         <input type="text" id="first_name" name="first_name" value="<?php echo $data['first_name'] ?>">
                         <span class="form-invalid"><?php echo $data['first_name_err'] ?></span>
                        
@@ -456,14 +455,14 @@
 
                         <label for="address">address</label>
                         <input type="text" id="address" name="address" value="<?php echo $data['address'] ?>">
-                        <span class="form-invalid"><?php echo $data['address_err'] ?></span>
+                        <span class="form-invalid"><?php echo $data['address_err'] ?></span> -->
 
 
                         <button>Submit</button>
                     </div>
                     <div class="right">
-                    <label for="fee">fee</label>
-                        <input type="text" id="fee" name="fee" value="<?php echo $data['fee'] ?>">
+                     <label for="fee">fee</label>
+                        <!-- <input type="text" id="fee" name="fee" value="<?php echo $data['fee'] ?>">
                         <span class="form-invalid"><?php echo $data['fee_err'] ?></span>
  
                        
@@ -495,7 +494,7 @@
                       
                         <label for="account_number">Account Number</label>
                         <input type="text" id="account_number" name="account_number" value="<?php echo $data['account_number'] ?>">
-                        <span class="form-invalid"><?php echo $data['account_number_err'] ?></span>
+                        <span class="form-invalid"><?php echo $data['account_number_err'] ?></span> -->
                     </div>
                 </div>
             </form>

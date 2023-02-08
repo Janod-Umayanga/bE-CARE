@@ -31,9 +31,11 @@
         }
 
         public function signup() {
+            $_SESSION['signup_form_number'] = 0;
+            
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Form is submitting
-
+                $_SESSION['signup_form_number'] = 0;
                 // Data validation
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
@@ -129,60 +131,23 @@
             else {
                 // Initial form
                 $data = [
-                    // 'fname' => '',
-                    // 'lname' => '',
-                    // 'nic' => '',
-                    // 'cnumber' => '',
-                    // 'gender' => '',
-                    // 'email' => '',
-                    // 'password' => '',
-                    // 'password_confirmation' => '',
+                    'fname' => '',
+                    'lname' => '',
+                    'nic' => '',
+                    'cnumber' => '',
+                    'gender' => '',
+                    'email' => '',
+                    'password' => '',
+                    'password_confirmation' => '',
 
-                    // 'fname_err' => '',
-                    // 'lname_err' => '',
-                    // 'nic_err' => '',
-                    // 'cnumber_err' => '',
-                    // 'gender_err' => '',
-                    // 'email_err' => '',
-                    // 'password_err' => '',
-                    // 'password_confirmation_err' => ''
-
-
-                    'first_name'=>'',
-                    'last_name'=>'',
-                    'nic'=>'',
-                    'contact_number'=>'',
-                    'email'=>'',
-                    'password'=>'',
-                    'confirm_password'=>'',
-                    'gender'=>'',
-                    'city'=>'',
-                    'bank_name'=>'',
-                    'account_holder_name'=>'',
-                    'branch'=>'',
-                    'account_number'=>'',
-                    'slmc_reg_number'=>'',
-                    'qualification_file'=>'',
-                    'type'=>'',
-                    'specialization'=>'',
-
-                    'first_name_err'=>'',
-                    'last_name_err'=>'',
-                    'nic_err'=>'',
-                    'contact_number_err'=>'',
-                    'email_err'=>'',
-                    'password_err'=>'',
-                    'confirm_password_err'=>'',
-                    'city_err'=>'',
-                    'bank_name_err'=>'',
-                    'account_holder_name_err'=>'',
-                    'branch_err'=>'',
-                    'account_number_err'=>'',
-                    'slmc_reg_number_err'=>'',
-                    'type_err'=>'',
-                    'specialization_err'=>'',
-                    'gender_err'=>'',
-                    'qualification_file_err'=>'',
+                    'fname_err' => '',
+                    'lname_err' => '',
+                    'nic_err' => '',
+                    'cnumber_err' => '',
+                    'gender_err' => '',
+                    'email_err' => '',
+                    'password_err' => '',
+                    'password_confirmation_err' => ''
                 ];
 
                 // Load view

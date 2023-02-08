@@ -13,10 +13,11 @@ class ServiceProviderSignup extends Controller{
 
     public function  signupDoctor()
     {
+      
   
      if($_SERVER['REQUEST_METHOD']=='POST'){
         $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-      
+        $_SESSION['signup_form_number'] = 1;
         $data=[
           'first_name'=>trim($_POST['first_name']),
           'last_name'=>trim($_POST['last_name']),
@@ -241,7 +242,7 @@ class ServiceProviderSignup extends Controller{
 
            if($_SERVER['REQUEST_METHOD']=='POST'){
               $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            
+              $_SESSION['signup_form_number'] = 2;
               $data=[
                 'first_name'=>trim($_POST['first_name']),
                 'last_name'=>trim($_POST['last_name']),
@@ -448,7 +449,7 @@ class ServiceProviderSignup extends Controller{
   
         if($_SERVER['REQUEST_METHOD']=='POST'){
            $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-         
+           $_SESSION['signup_form_number'] = 5;
            $data=[
              'first_name'=>trim($_POST['first_name']),
              'last_name'=>trim($_POST['last_name']),
@@ -665,7 +666,7 @@ class ServiceProviderSignup extends Controller{
        
         if($_SERVER['REQUEST_METHOD']=='POST'){
            $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-         
+           $_SESSION['signup_form_number'] = 3;
            $data=[
              'first_name'=>trim($_POST['first_name']),
              'last_name'=>trim($_POST['last_name']),
@@ -885,7 +886,7 @@ class ServiceProviderSignup extends Controller{
    
         if($_SERVER['REQUEST_METHOD']=='POST'){
            $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-         
+           $_SESSION['signup_form_number'] = 4;
            $data=[
              'first_name'=>trim($_POST['first_name']),
              'last_name'=>trim($_POST['last_name']),

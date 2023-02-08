@@ -2,7 +2,16 @@ const formContainerElement = document.getElementById('form-container')
 const statusElement = document.getElementById('form-status')
 const nextButtonElement = document.getElementById('next-button-status')
 const previousButtonElement = document.getElementById('previous-button-status')
+const formNumber = document.getElementById('formNumber')
 let currentIndex = 0
+function setFormNumber() {
+    if (formNumber){
+        currentIndex = formNumber.innerText
+        resetState()
+        showForm(setFormElement[currentIndex])
+    }
+    
+}
 const forms = [
     {
         text: 'Patient',
@@ -66,5 +75,8 @@ function showForm(form) {
     statusElement.innerHTML = form.text
     form.element.style.display = 'flex'
 }
+
+
+
 
 /* Multiple login page process ends */
