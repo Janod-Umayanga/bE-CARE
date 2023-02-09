@@ -63,10 +63,10 @@
                             <a href="<?php echo URLROOT ?>/MedInstr/profile" class="nav-buttons"><?php echo strtoupper($_SESSION["MedInstr_gender"].$_SESSION['MedInstr_name']) ?></a>
                             <a href="<?php echo URLROOT ?>/Login/logout" class="nav-buttons register-button">LOG OUT</a>
                         <?php elseif(isset($_SESSION['doctor_id'])): ?>
-                            <a href="<?php echo URLROOT ?>/Doctor/details" class="nav-buttons">Dr. <?php echo $_SESSION['doctor_name'] ?></a>
+                            <a href="<?php echo URLROOT ?>/Doctor/profile" class="nav-buttons">Dr. <?php echo $_SESSION['doctor_name'] ?></a>
                             <a href="<?php echo URLROOT ?>/Login/logout" class="nav-buttons register-button">LOG OUT</a>
                         <?php elseif(isset($_SESSION['counsellor_id'])): ?>
-                            <a href="<?php echo URLROOT ?>/Counsellor/details" class="nav-buttons">Dr. <?php echo $_SESSION['counsellor_name'] ?></a>
+                            <a href="<?php echo URLROOT ?>/Counsellor/profile" class="nav-buttons">Dr. <?php echo $_SESSION['counsellor_name'] ?></a>
                             <a href="<?php echo URLROOT ?>/Login/logout" class="nav-buttons register-button">LOG OUT</a>
                        
                         <?php elseif(isset($_SESSION['nutritionist_id'])): ?>

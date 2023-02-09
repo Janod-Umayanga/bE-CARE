@@ -25,7 +25,6 @@
             <div class="table">
                 <table cellspacing="0" cellpadding="0">
                     <tr>
-                        <th>Patient ID</th>
                         <th>Name</th>
                         <th>Age</th>
                         <th>Contact Number</th>
@@ -37,7 +36,6 @@
                     </tr>
                     <?php foreach($data['appoinments'] as $appoinments): ?>
                     <tr>
-                        <td><?php echo $appoinments->patient_id ?></td>
                         <td><?php echo $appoinments->name ?></td>
                         <td><?php echo $appoinments->age ?></td>
                         <td><?php echo $appoinments->contact_number ?></td>

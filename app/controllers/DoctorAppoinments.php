@@ -11,7 +11,7 @@ class DoctorAppoinments extends Controller{
     if(isset($_SESSION['doctor_id'])) {
 
         //get all doctor appoinments        
-        $appoinments = $this->DoctorAppoinmentModel->getDoctorAppoinments($_SESSION['doctor_timeslot_id']);
+        $appoinments = $this->DoctorAppoinmentModel->getDoctorAppoinments($_SESSION['doctor_id']);
 
         $data = [
             'appoinments' => $appoinments

@@ -16,85 +16,36 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <div class="time-slot-main-picture-container">
-        <div class="tittle">
-            <i class="fa-solid fa-stopwatch"></i>
-            <h1>Keep in touch with Your<br>Channeling History!</h1>
-        </div>
-    </div>
-
-    <section class="pharmacy-card-container theme">
-        <div class="pharmacy-cards-topic">
-            <span class="line"></span>
-            <h2>Channeling History</h2>
-        </div>
-        <div class="time-slot-main-container" id="to-be-show-more">
-            <div class="time-slot-sub">
-            <?php foreach($data['appointments'] as $appointment): ?>
-                <?php if($appointment->date < $data['currentDate'] || ($appointment->date == $data['currentDate'] && $appointment->time < $data['currentTime'])): ?>
-                    <div class="card">
-                        <div class="top">
-                            <h1>Dr. <?php echo $appointment->first_name ?> <?php echo $appointment->last_name ?></h1>
-                            <p><?php  echo $appointment->address ?></p>
-                        </div>
-                        <div class="bottom">
-                            <p><i class="fa-solid fa-calendar-days"></i> <?php  echo $appointment->date ?></p>
-                            <p><i class="fa-solid fa-clock"></i> <?php  echo $appointment->time ?></p>
-                        </div>
-                        <div class="top-box"></div>
-                        <div class="bottom-box"></div>
-                    </div>
-                <?php endif; ?>
-            <?php endforeach; ?>
+    <section class="table-section theme">
+        <div class="table-container theme">
+            <div class="table-topic-main">
+                <h1>Pending Orders</h1>
+            </div>
+            <div class="table">
+                <table cellspacing="0" cellpadding="0">
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Paid Amount</th>
+                        <th>Doctor's Name</th>
+                        <th>Venue</th>
+                    </tr>
+                    <?php foreach($data['appointments'] as $appointment): ?>
+                        <?php if($appointment->date < $data['currentDate'] || ($appointment->date == $data['currentDate'] && $appointment->time < $data['currentTime'])): ?>
+                    <tr>
+                        <td><?php echo $appointment->date ?></td>
+                        <td><?php echo $appointment->time ?></td>
+                        <td>Rs. <?php echo $appointment->paid_amount ?></td>
+                        <td>Dr. <?php echo $appointment->first_name ?> <?php echo $appointment->last_name ?></td>
+                        <td><?php echo $appointment->address ?></td>
+                    </tr>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </table>
             </div>
         </div>
-        <button id="show-button" class="show-button" onclick="showMore()"><span id="show-text">Show More</span><i class="fa-solid fa-angle-down" id="icon-more-orless"></i></button>
     </section>
 
     <?php require APPROOT.'/views/inc/components/footer1.php'; ?>
 </body>
 </html>
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
-    <title>View Doctor Channeling History</title>
-</head>
-<body>
-
-<?php require APPROOT.'/views/inc/components/header.php'; ?>
-
-    <section class="doctor-cards">
-        <div class="left">
-            <h1>Channeling History</h1>
-            <?php foreach($data['appointments'] as $appointment): ?>
-                <?php if($appointment->date < $data['currentDate'] || ($appointment->date == $data['currentDate'] && $appointment->time < $data['currentTime'])): ?>
-                <div class="card">
-                    <div class="card-left">
-                        <p><br><?php echo $appointment->date ?></p><br>
-                    </div>
-                    <div class="card-right">
-                        <div>
-                            <h3>By Dr. <?php echo $appointment->first_name ?> <?php echo $appointment->last_name ?></h3>
-                            <p>Address : <?php  echo $appointment->address ?></p>
-                            <p>Time:<br><?php echo $appointment->time ?></p>
-                        </div>
-                    </div>
-                </div>
-                <?php endif; ?>
-            <?php endforeach; ?>
-        </div>
-
-        <div class="right">
-            <img src="../public/img/doctor-cards.png" alt="">
-        </div>
-    </section>
-
-<?php require APPROOT.'/views/inc/components/footer.php'; ?>
-
-</body>
-</html> -->
