@@ -5251,6 +5251,158 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     font-size: 12px;
 }
 
+/************************************************** Table-section-counsellorChangeSession style starts *********************************************************/
+
+
+.table-section-counsellorChangeSession{
+    width: 100%;
+    height: fit-content;
+    background-color: #ebecee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.table-section-counsellorChangeSession.dark{
+    background-color: var(--hue-black);
+}
+
+.table-section-counsellorChangeSession .table-container{
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #c7c5c5;
+    padding: 30px 0;
+}
+
+.table-section-counsellorChangeSession .table-container.dark{
+    box-shadow: none;
+}
+
+.table-section-counsellorChangeSession .table-container .table-topic-main{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    color: var(--hue-black);
+}
+
+.table-section-counsellorChangeSession .table-container .table-topic-main button{
+    padding: 8px 30px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+}
+
+
+.table-section-counsellorChangeSession .table-container .table-topic-main button a{
+ text-decoration:none;
+ color:var(--hue-white);
+}
+.table-section-counsellorChangeSession .table-container .search-section{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.table-section-counsellorChangeSession .table-container .search-section .search-bar .searchform{
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+
+.table-section-counsellorChangeSession .table-container .search-section .search-bar input{
+    width: 95%;
+}
+
+.table-section-counsellorChangeSession .table-container .search-section .search-bar button{
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-section-counsellorChangeSession .table-container .table{
+    width: 100%;
+    padding: 0 3%;
+    height: 50vh;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.table-section-counsellorChangeSession .table-container .table table{
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: none;
+}
+
+.table-section-counsellorChangeSession .table-container .table table th,
+.table-section-counsellorChangeSession .table-container .table table td{
+    width: calc(100% / 6);
+    padding: 10px 15px;
+}
+
+.table-section-counsellorChangeSession .table-container .table table th{
+    font-weight: 300;
+}
+
+.table-section-counsellorChangeSession .table-container .table table tr:nth-child(1){
+    background-color: #1D242B;
+    color: #f0ecec;
+}
+
+.table-section-counsellorChangeSession .table-container .table table tr:nth-child(even){
+    background-color: #f5f2f2;
+}
+
+.table-section-counsellorChangeSession .table-container .table table tr td:nth-child(6){
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+
+
+.table-section-counsellorChangeSession .table-container .table table tr td:nth-child(6)   form .update{
+    width: 60px;
+    height: fit-content;
+    background-color:  green;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+.table-section-counsellorChangeSession .table-container .table table tr td:nth-child(6)  form .delete{
+    width: 60px;
+    height: fit-content;
+    background-color:  #ed4d4d;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/************************************************** Table Page style ends *********************************************************/
+
 /************************************************** Table Page style ends *********************************************************/
 
 
