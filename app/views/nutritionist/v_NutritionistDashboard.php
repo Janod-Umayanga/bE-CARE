@@ -39,12 +39,12 @@
                 <img src="<?php echo URLROOT; ?>/img/nutritionist-page-pictures/n-issue.jpg" alt="">
                 <p>******<br>Diet Plan Requests</p>
             </a>
-            <a href="<?php echo URLROOT ?>/Nutritionist/nutritionistHistory" class="card">
+            <a href="<?php echo URLROOT ?>/Nutritionist/nutritionistViewHistory" class="card">
                 <img src="<?php echo URLROOT; ?>/img/nutritionist-page-pictures/n-history.jpg" alt="">
                 <p>******<br>Issued Diet plans History</p>
             </a>
             <a href="<?php echo URLROOT ?>/NutritionistSession/nutritionistSession" class="card">
-                <img src="<?php echo URLROOT; ?>/img/nutritionist-page-pictures/n-dashboard.jpg" alt="">
+                <img src="<?php echo URLROOT; ?>/img/nutritionist-page-pictures/nSessions.jpg" alt="">
                 <p>******<br>Sessions</p>
             </a>
             <a href="<?php echo URLROOT ?>/NutritionistChangeSessionDetails/nutritionistChangeSessionDetails" class="card">

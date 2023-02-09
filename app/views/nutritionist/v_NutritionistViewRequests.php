@@ -17,53 +17,37 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <div id="notification-container"></div>
-    <section class="main-content-container">
-        <div class="main-content">
-            <p>From UCSC batch 19/20 CS Group 11</p>
-            <h1>Local Healthcare <br> Platform</h1>
-            <div class="main-two-buttons-container">
-                <a href="#our-services-container" class="main-button">Dashboard</a>
-                <a class="main-button">About</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="our-services-container theme" id="our-services-container">
-        <dev class="service-topic">
-            <span class="line"></span>
-            <h2>Diet Plans List</h2>
-        </dev>
-
-    <section class="table-section theme">
+    
+    <section class="table-section-Nutritionistreq theme">
         <div class="table-container theme">
             <div class="table-topic-main">
-                <h1>Requested Diet Plans Details</h1>
+                <h1>   Requested Diet Plans Details</h1>
             </div>
+
             <div class="table">
-                
                 <table cellspacing="0" cellpadding="0">
                     <tr>
-                        <th>Diet Plan ID</th>
+                        
                         <th>Name of patient</th> 
+                        <th>Age</th>
                         <th></th>
                         
                     </tr>
                     <?php foreach($data['plans'] as $plans): ?>
                     <tr>
-                        <td><?php echo $plans->request_diet_plan_id?></td>
+                        
                         <td><?php echo $plans->name?></td>
-
+                        <td><?php echo $plans->age?></td>
                         <td>
-                            <form class="viewMoreForm" action="<?php echo URLROOT;?>/Nutritionist/nutritionistViewRequestsMore<?php echo $plans->requested_diet_plan_id ?>">
-                              <button class="view-more"><i class="fa-solid fa-circle-info"></i></button>
-                          </form>
+                        <form  action="<?php echo URLROOT;?>/Nutritionist/nutritionistViewRequestsMore/<?php echo  $plans->request_diet_plan_id ?>" method="post">
+                                    <button class="view "  name="submit">View</button>
+                        </form>  
+                        
+                        <form  action="<?php echo URLROOT;?>/Nutritionist/nutritionistIssueDietPlans/<?php echo  $plans->request_diet_plan_id ?>" method="post">
+                                    <button class="accept "  name="submit">Issue</button>
+                        </form>                   
+                        
                        
-                          <form class="acceptForm" action="<?php echo URLROOT;?>/Nutritionist/nutritionistAcceptRequest<?php echo $plans->requested_diet_plan_id ?>" method="post">
-                                <button class="nav-buttons">Accept</button>
-                          </form>
-                        
-                        
                         </td>
                     </tr>
                   
@@ -73,13 +57,6 @@
         </div>
     </section>
        
-        <button id="show-button" class="show-button" onclick="showMore()"><span id="show-text">Show More</span><i class="fa-solid fa-angle-down" id="icon-more-orless"></i></button>
-    </section>
-
-    <!-- For push notifications -->
-    <span id="isPatientLoggedIn"><?php if(isset($_SESSION['first_time_logged'])){echo $_SESSION['first_time_logged']; unset($_SESSION['first_time_logged']);}?></span>
-    <span id="isOrderSent"><?php if(isset($_SESSION['order_sent'])){echo $_SESSION['order_sent']; unset($_SESSION['order_sent']);}?></span>
-    <span id="isLoggedOut"><?php if(isset($_SESSION['logout'])){echo $_SESSION['logout']; unset($_SESSION['logout']);}?></span>
     <?php require APPROOT.'/views/inc/components/footer1.php'; ?>
 </body>
 </html>

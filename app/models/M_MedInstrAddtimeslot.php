@@ -16,7 +16,8 @@
    
         while($first_rel_day<=$last_day){
             $newdate=$y."-".$m."-".$first_rel_day;
-            $this->db->query('INSERT INTO med_timeslot(appointment_day,starting_time,ending_time,date,fee,address,meditation_instructor_id) VALUES (:appointment_day,:starting_time,:ending_time,:date,:fee,:address,:meditation_instructor_id)');
+            $this->db->query('INSERT INTO med_timeslot(appointment_day,starting_time,ending_time,date,fee,address,meditation_instructor_id) 
+            VALUES (:appointment_day,:starting_time,:ending_time,:date,:fee,:address,:meditation_instructor_id)');
             $this->db->bind(':appointment_day', $data['day']);
             $this->db->bind(':starting_time', $data['starting_time']);
             $this->db->bind(':ending_time', $data['ending_time']);

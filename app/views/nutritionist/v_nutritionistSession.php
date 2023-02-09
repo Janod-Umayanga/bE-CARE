@@ -20,10 +20,10 @@
     <div class="doctor-main-picture-container-nutritionistSession">
         <div class="tittle">
             <i class="fa-solid fa-microphone"></i>
-            <h1>Nutritionist Session</h1>
+            <h1>Nutritionist<br>Session!</h1>
         </div>
     </div>
-
+    
     <section class="our-services-container-complaint theme" id="our-services-container">
         <div class="service-topic">
             <span class="line"></span>
@@ -34,7 +34,7 @@
              
             
             <a href="<?php echo URLROOT;?>/NutritionistSession/nutritionistOldSession" class="card">
-                <img src="<?php echo URLROOT;?>/img/nutritionis-page-pictures/n-completed.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/nutritionist-page-pictures/n-completed.jpg" alt="">
                 <h3>Completed Sessions - <?php echo  $data["noOfoldNutritionistSession"]->oldSession_count ?> </h3>
             </a>
             

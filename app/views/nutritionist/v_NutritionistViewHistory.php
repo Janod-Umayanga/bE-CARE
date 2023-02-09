@@ -18,44 +18,28 @@
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
     <div id="notification-container"></div>
-    <section class="main-content-container">
-        <div class="main-content">
-            <p>From UCSC batch 19/20 CS Group 11</p>
-            <h1>Local Healthcare <br> Platform</h1>
-            <div class="main-two-buttons-container">
-                <a href="#our-services-container" class="main-button">History</a>
-                <a class="main-button">About</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="our-services-container theme" id="our-services-container">
-        <dev class="service-topic">
-            <span class="line"></span>
-            <h2>History</h2>
-        </dev>
-
-    <section class="table-section theme">
+  
+        <section class="table-section-Nutritionistreq theme">
         <div class="table-container theme">
             <div class="table-topic-main">
                 <h1>History</h1>
             </div>
+
             <div class="table">
                 <table cellspacing="0" cellpadding="0">
                     <tr>
-                        <th>Diet Plan ID</th>
-                        <th>Issued Date and Time</th>
-                        <th>Request Diet Plan ID</th>
-                       
+                    <th>Diet Plan ID</th> 
+                        <th>Issued Date and Time</th> 
                         <th></th>
                     </tr>
                     <?php foreach($data['his'] as $his): ?>
                     <tr>
                         <td><?php echo $his->diet_plan_id;?></td>
                         <td><?php echo $his->issued_date_and_time;?></td>
-                        <td><?php echo $his->request_diet_plan_id;?></td>
                         <td>
-                            <button class="nav-buttons">View More</button>
+                        <form  action="<?php echo URLROOT;?>/Nutritionist/nutritionistViewHistoryMore/<?php echo  $his->diet_plan_id ?>" method="post">
+                                    <button class="view "  name="submit">View</button>
+                        </form>    
                         </td>
                     </tr>
                     <?php endforeach; ?>
@@ -63,14 +47,6 @@
             </div>
         </div>
     </section>
-       
-        <button id="show-button" class="show-button" onclick="showMore()"><span id="show-text">Show More</span><i class="fa-solid fa-angle-down" id="icon-more-orless"></i></button>
-    </section>
-
-    <!-- For push notifications -->
-    <span id="isPatientLoggedIn"><?php if(isset($_SESSION['first_time_logged'])){echo $_SESSION['first_time_logged']; unset($_SESSION['first_time_logged']);}?></span>
-    <span id="isOrderSent"><?php if(isset($_SESSION['order_sent'])){echo $_SESSION['order_sent']; unset($_SESSION['order_sent']);}?></span>
-    <span id="isLoggedOut"><?php if(isset($_SESSION['logout'])){echo $_SESSION['logout']; unset($_SESSION['logout']);}?></span>
     <?php require APPROOT.'/views/inc/components/footer1.php'; ?>
 </body>
 </html>
