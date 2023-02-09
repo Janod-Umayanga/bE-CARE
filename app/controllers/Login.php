@@ -417,7 +417,7 @@
             $_SESSION['counsellor_name'] = $counsellor->first_name;
             $_SESSION['first_time_logged'] = true;
         
-            redirect('Pages/index');
+            redirect('Counsellor/dashboard');
         }
 
         public function createNutritionistSession($nutritionist) {
