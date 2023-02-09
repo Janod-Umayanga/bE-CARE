@@ -16,7 +16,7 @@
     <section class="login-section-p-and-n">
         <div class="login-page-leftside">
             <div class="left-side-container">
-                <a href="<?php echo URLROOT ?>/Nutritionist/v_NutritionistDashboard" class="page-change-button"><i class="fa-solid fa-arrow-left"></i>Back to Homepage</a>
+                <a href="<?php echo URLROOT ?>/Nutritionist/nutritionistDashboard" class="page-change-button"><i class="fa-solid fa-arrow-left"></i>Back to Homepage</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
                     <h2>Enter your login details to get into the application</h2>
