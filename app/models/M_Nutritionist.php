@@ -73,6 +73,21 @@
     
             return $this->db->resultSet();
          }
+        
+        
+        // insert data to diet_plan table(issue a diet plan)
+        public function issueDietPlans($nutritionist_id,$data){
+        $this->db->query('INSERT INTO diet_plan (diet_plan_id,description,diet_plan_file,issued_date_and_time,
+        nutritionist_id,request_diet_plan_id) 
+        VALUES( :diet_plan_id, :description,:diet_plan_file,:issued_date_and_time,
+        :nutritionist_id,:request_diet_plan_id)');
+        
+        $this->db->bind(':diet_plan_id',$data['diet_plan_id']);
+        $this->db->bind(':description',$data['description']);
+        $this->db->bind(':diet_plan_file',$data['diet_plan_file']);      
+        $this->db->bind(':issued_date_and_time',$data['issued_date_and_time']);
+        $this->db->bind(':nutritionist_id',$data['nutritionist_id']);
+        $this->db->bind(':request_diet_plan_id',$data['request_diet_plan_id']);
              
         // Login nutritionist
         public function login($email, $password) {
@@ -91,6 +106,22 @@
             }
         }
         
+         public function update($data, $nutritionist_id) {
+            $this->db->query('UPDATE nutritionist SET first_name = :first_name, last_name = :last_name, nic = :nic, contact_number = :contact_number, gender = :gender WHERE patient_id = :patient_id');
+            $this->db->bind(':first_name', $data['fname']);
+            $this->db->bind(':last_name', $data['lname']);
+            $this->db->bind(':nic', $data['nic']);
+            $this->db->bind(':contact_number', $data['cnumber']);
+            $this->db->bind(':gender', $data['gender']);
+            $this->db->bind(':patient_id', $nutritionist_id);
+
+            if($this->db->execute()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
         
         
 
