@@ -11,7 +11,7 @@ class CounsellorAppoinments extends Controller{
     if(isset($_SESSION['counsellor_id'])) {
 
         //get all Counsellor appoinments        
-        $appoinments = $this->CounsellorAppoinmentModel->getCounsellorAppoinments($_SESSION['counsellor_timeslot_id']);
+        $appoinments = $this->CounsellorAppoinmentModel->getCounsellorAppoinments($_SESSION['counsellor_id']);
 
         $data = [
             'appoinments' => $appoinments

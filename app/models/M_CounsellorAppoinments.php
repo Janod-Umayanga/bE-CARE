@@ -9,9 +9,9 @@
 
       }
 
-      public function getCounsellorAppoinments($counsellor_timeslot_id) {
-        $this->db->query('SELECT * FROM counsellor_channel WHERE counsellor_timeslot_id=:counsellor_timeslot_id');
-        $this->db->bind(':counsellor_timeslot_id', $counsellor_timeslot_id);
+      public function getCounsellorAppoinments($counsellor_id) {
+        $this->db->query('SELECT * FROM counsellor_channel WHERE counsellor_id=:counsellor_id');
+        $this->db->bind(':counsellor_id', $counsellor_id);
 
         $result=$this->db->resultSet();
 
