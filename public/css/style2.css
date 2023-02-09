@@ -623,6 +623,15 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     align-items: center;
     justify-content: center;
 }
+/*styles for Nutritionist and */
+
+.login-section-p-and-n {
+    width: 100%;
+    height: 120vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .login-page-leftside{
     width: 50%;
@@ -4362,6 +4371,619 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 .notification.success::after{
     background-color: green;
 }
+
+/*Nutritionist*/
+
+
+/*****************Nutritionist view requested Diet plans details********************/
+
+.table-section-Nutritionistreq {
+    width: 100%;
+    height: fit-content;
+    background-color: #ebecee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.table-section-Nutritionistreq.dark {
+    background-color: var(--hue-black);
+}
+
+.table-section-Nutritionistreq .table-container {
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #c7c5c5;
+    padding: 30px 0;
+}
+
+.table-section-Nutritionistreq .table-container.dark {
+    box-shadow: none;
+}
+
+.table-section-Nutritionistreq.dark .table-container .table-topic-main {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    color: var(--hue-black);
+}
+
+.table-section-Nutritionistreq .table-container .table-topic-main button {
+    padding: 8px 30px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+}
+
+.table-section-Nutritionistreq .table-container .table-topic-main button a {
+    text-decoration: none;
+    color: var(--hue-white);
+}
+
+.table-section-Nutritionistreq .table-container .search-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.table-section-Nutritionistreq .table-container .search-section .search-bar .searchform {
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+
+.table-section-Nutritionistreq .table-container .search-section .search-bar input {
+    width: 95%;
+}
+
+.table-section-Nutritionistreq .table-container .search-section .search-bar button {
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-section-Nutritionistreq .table-container .table {
+    width: 100%;
+    padding: 0 3%;
+    height: 50vh;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.table-section-Nutritionistreq .table-container .table table {
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: none;
+}
+
+.table-section-Nutritionistreq .table-container .table table th,
+.table-section-Nutritionistreq .table-container .table table td {
+    width: calc(100% / 3);
+    padding: 10px 15px;
+}
+
+.table-section-Nutritionistreq .table-container .table table th {
+    font-weight: 300;
+}
+
+.table-section-Nutritionistreq .table-container .table table tr:nth-child(1) {
+    background-color: #1D242B;
+    color: #f0ecec;
+}
+
+.table-section-Nutritionistreq .table-container .table table tr:nth-child(even) {
+    background-color: #f5f2f2;
+}
+
+.table-section-Nutritionistreq .table-container .table table tr td:nth-child(3) {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.table-section-Nutritionistreq .table-container .table table tr td:nth-child(3) form .view {
+    width: 60px;
+    height: fit-content;
+    background-color: var(--hue-dark-blue);
+    ;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.table-section-Nutritionistreq .table-container .table table tr td:nth-child(3) form .accept {
+    width: 110px;
+    height: fit-content;
+    background-color: green;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.table-section-Nutritionistreq .table-container .table table tr td:nth-child(3) form .reject {
+    width: 110px;
+    height: fit-content;
+    background-color: rgb(220, 66, 74);
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.table-section-Nutritionistreq .table-container .table table tr td:nth-child(3) form .prescription {
+    width: 110px;
+    height: fit-content;
+    background-color: rgb(138, 189, 209);
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+/******************Table section nutritionist view history styless starts******************/
+
+.table-section-Nutritionisthistory {
+    width: 100%;
+    height: fit-content;
+    background-color: #ebecee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.table-section-Nutritionisthistory.dark {
+    background-color: var(--hue-black);
+}
+
+.table-section-Nutritionisthistory .table-container {
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #c7c5c5;
+    padding: 30px 0;
+}
+
+.table-section-Nutritionisthistory .table-container.dark {
+    box-shadow: none;
+}
+
+.table-section-Nutritionisthistory.dark .table-container .table-topic-main {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    color: var(--hue-black);
+}
+
+.table-section-Nutritionisthistory .table-container .table-topic-main button {
+    padding: 8px 30px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+}
+
+.table-section-Nutritionisthistory .table-container .table-topic-main button a {
+    text-decoration: none;
+    color: var(--hue-white);
+}
+
+.table-section-Nutritionisthistory .table-container .search-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.table-section-Nutritionisthistory .table-container .search-section .search-bar .searchform {
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+
+.table-section-Nutritionisthistory .table-container .search-section .search-bar input {
+    width: 95%;
+}
+
+.table-section-Nutritionisthistory .table-container .search-section .search-bar button {
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-section-Nutritionisthistory .table-container .table {
+    width: 100%;
+    padding: 0 3%;
+    height: 50vh;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.table-section-Nutritionisthistory .table-container .table table {
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: none;
+}
+
+.table-section-Nutritionisthistory .table-container .table table th,
+.table-section-Nutritionisthistory .table-container .table table td {
+    width: calc(100% / 3);
+    padding: 10px 15px;
+}
+
+.table-section-Nutritionisthistory .table-container .table table th {
+    font-weight: 300;
+}
+
+.table-section-Nutritionisthistory .table-container .table table tr:nth-child(1) {
+    background-color: #1D242B;
+    color: #f0ecec;
+}
+
+.table-section-Nutritionisthistory .table-container .table table tr:nth-child(even) {
+    background-color: #f5f2f2;
+}
+
+.table-section-Nutritionisthistory .table-container .table table tr td:nth-child(2) {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.table-section-Nutritionishistory .table-container .table table tr td:nth-child(2) form .view {
+    width: 60px;
+    height: fit-content;
+    background-color: var(--hue-dark-blue);
+    ;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+/************************************************** Table-section-NutritionistSession  style starts *********************************************************/
+
+.table-section-NutritionistSession {
+    width: 100%;
+    height: fit-content;
+    background-color: #ebecee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.table-section-NutritionistSession.dark {
+    background-color: var(--hue-black);
+}
+
+.table-section-NutritionistSession .table-container {
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #c7c5c5;
+    padding: 30px 0;
+}
+
+.table-section-NutritionistSession .table-container.dark {
+    box-shadow: none;
+}
+
+.table-section-NutritionistSession .table-container .table-topic-main {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    color: var(--hue-black);
+}
+
+.table-section-NutritionistSession .table-container .table-topic-main button {
+    padding: 8px 30px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+}
+
+.table-section-NutritionistSession .table-container .table-topic-main button a {
+    text-decoration: none;
+    color: var(--hue-white);
+}
+
+.table-section-NutritionistSession .table-container .search-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.table-section-NutritionistSession .table-container .search-section .search-bar .searchform {
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+
+.table-section-NutritionistSession .table-container .search-section .search-bar input {
+    width: 95%;
+}
+
+.table-section-NutritionistSession .table-container .search-section .search-bar button {
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-section-NutritionistSession .table-container .table {
+    width: 100%;
+    padding: 0 3%;
+    height: 50vh;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.table-section-NutritionistSession .table-container .table table {
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: none;
+}
+
+.table-section-NutritionistSession .table-container .table table th,
+.table-section-NutritionistSession .table-container .table table td {
+    width: calc(100% / 3);
+    padding: 10px 15px;
+}
+
+.table-section-NutritionistSession .table-container .table table th {
+    font-weight: 300;
+}
+
+.table-section-NutritionistSession .table-container .table table tr:nth-child(1) {
+    background-color: #1D242B;
+    color: #f0ecec;
+}
+
+.table-section-NutritionistSession .table-container .table table tr:nth-child(even) {
+    background-color: #f5f2f2;
+}
+
+.table-section-NutritionistSession .table-container .table table tr td:nth-child(5) {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.table-section-NutritionistSession .table-container .table table tr td:nth-child(5) form .viewMore {
+    width: 60px;
+    height: fit-content;
+    background-color: var(--hue-dark-blue);
+    ;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.table-section-NutritionistSession .table-container .table table tr td:nth-child(5) form .viewRegUsers {
+    width: 110px;
+    height: fit-content;
+    background-color: green;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+/************************************************** Table Page style ends *********************************************************/
+
+
+/************************************************** Table-section-NutritionistSessionRegUsers style starts *********************************************************/
+
+.table-section-NutritionistSessionRegUsers {
+    width: 100%;
+    height: fit-content;
+    background-color: #ebecee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.table-section-NutritionistSessionRegUsers.dark {
+    background-color: var(--hue-black);
+}
+
+.table-section-NutritionistSessionRegUsers .table-container {
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #c7c5c5;
+    padding: 30px 0;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container.dark {
+    box-shadow: none;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table-topic-main {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    color: var(--hue-black);
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table-topic-main button {
+    padding: 8px 30px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table-topic-main button a {
+    text-decoration: none;
+    color: var(--hue-white);
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .search-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .search-section .search-bar .searchform {
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .search-section .search-bar input {
+    width: 95%;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .search-section .search-bar button {
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table {
+    width: 100%;
+    padding: 0 3%;
+    height: 50vh;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table table {
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: none;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table table th,
+.table-section-NutritionistSessionRegUsers .table-container .table table td {
+    width: calc(100% / 5);
+    padding: 10px 15px;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table table th {
+    font-weight: 300;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table table tr:nth-child(1) {
+    background-color: #1D242B;
+    color: #f0ecec;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table table tr:nth-child(even) {
+    background-color: #f5f2f2;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table table tr td:nth-child(5) {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table table tr td:nth-child(5) form .viewMore {
+    width: 60px;
+    height: fit-content;
+    background-color: var(--hue-dark-blue);
+    ;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table table tr td:nth-child(5) form .viewRegUsers {
+    width: 110px;
+    height: fit-content;
+    background-color: green;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+
+
 
 /************************************************** Session Page style starts *********************************************************/
 
