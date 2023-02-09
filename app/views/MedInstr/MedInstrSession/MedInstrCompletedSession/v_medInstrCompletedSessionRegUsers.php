@@ -41,6 +41,7 @@
                       <th>Age</th>
                       <th>Gender</th>
                       <th>Registered Date and Time</th>
+                      
                     </tr>
                    
                     <?php foreach($data['regUser'] as $regUser): ?>

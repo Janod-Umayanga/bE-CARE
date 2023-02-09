@@ -33,28 +33,28 @@
             
             
             <a href="<?php echo URLROOT;?>/AdminReqSerProviders/adminReqDoctor" class="card">
-                <img src="<?php echo URLROOT;?>/img/adminRequestedServiceProviders/doctor.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/adminRequestedServiceProviders/doctor.jpeg" alt="">
                 <p><b><?php echo $data["doctor"]->doctor_count ?></b><br>Doctor</p>
             </a>
             
             <a href="<?php echo URLROOT;?>/AdminReqSerProviders/adminReqCounsellor" class="card">
-                <img src="<?php echo URLROOT;?>/img/adminRequestedServiceProviders/counsellor.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/adminRequestedServiceProviders/counsellor.jpeg" alt="">
                 <p><b><?php echo $data["counsellor"]->counsellor_count ?></b><br>Counsellor</p>
             </a>
             
             
             <a href="<?php echo URLROOT;?>/AdminReqSerProviders/adminReqMeditationInstructor" class="card">
-                <img src="<?php echo URLROOT;?>/img/adminRequestedServiceProviders/meditationInstructor.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/adminRequestedServiceProviders/meditationInstructor.jpeg" alt="">
                 <p><b><?php echo $data["meditationInstr"]->meditation_instructor_count ?></b><br>Meditation Instructor</p>
             </a>
             
             <a href="<?php echo URLROOT;?>/AdminReqSerProviders/adminReqPharmacist" class="card">
-                <img src="<?php echo URLROOT;?>/img/adminRequestedServiceProviders/pharmacist.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/adminRequestedServiceProviders/pharmacist.jpeg" alt="">
                 <p><b><?php echo $data["pharmacist"]->pharmacist_count?></b><br>Pharmacist</p>
             </a>
             
             <a href="<?php echo URLROOT;?>/AdminReqSerProviders/adminReqNutritionist" class="card">
-                <img src="<?php echo URLROOT;?>/img/adminRequestedServiceProviders/nutritionist.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/adminRequestedServiceProviders/nutritionist.jpeg" alt="">
                 <p><b><?php echo $data["nutritionist"]->nutritionist_count ?></b><br>Nutritionist</p>
             </a>
             

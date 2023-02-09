@@ -11,11 +11,13 @@
     <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
     <script defer src="<?php echo URLROOT; ?>/js/script.js"></script>
+    <script defer src="<?php echo URLROOT; ?>/js/pushNotificationMedInstrLogin.js"></script>
     <title>BeCare</title>
 </head>
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
-
+    
+    <div id="notification-container"></div>
     <section class="main-content-container">
         <div class="main-content">
             <p>From UCSC batch 19/20 CS Group 11</p>
@@ -36,39 +38,41 @@
         <div class="card-container-forservices" id="to-be-show-more">
           
             <a href="<?php echo URLROOT;?>/MedInstrRegisteredUsers/medInstrRegisteredUsers" class="card">
-                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/registeredUsers.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/registeredUsers.jpeg" alt="">
                 <p>******<br>Registered Users for Med Instructions</p>
             </a>
             
             <a href="<?php echo URLROOT;?>/MedInstrRegisteredUsersHistory/medInstrRegisteredUsersHistory" class="card">
-                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/registeredUsersHistory.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/registeredUsersHistory.jpeg" alt="">
                 <p>******<br>Registered Users History</p>
             </a>
             
             <a href="<?php echo URLROOT;?>/MedInstrChangeSessionDetails/medInstrChangeSessionDetails" class="card">
-                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/changeSessionDetails.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/changeSessionDetails.jpeg" alt="">
                 <p>******<br>Change Session Details  </p>
             </a>
             
             <a href="<?php echo URLROOT;?>/MedInstrChangetimeslot/medInstrChangetimeslot" class="card">
-                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/changeTimeslot.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/changeTimeslot.jpeg" alt="">
                 <p>******<br>Change Timeslot</p>
             </a>
         
             <a href="<?php echo URLROOT;?>/MedInstrSession/medInstrSession" class="card">
-                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/session.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/session.jpeg" alt="">
                 <p>******<br>Session</p>
             </a>
             
             <a href="<?php echo URLROOT;?>/MedInstrAddtimeslot/medInstrAddtimeslot" class="card">
-                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/addTimeslot.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/meditationInstructorDashBoard/addTimeslot.jpeg" alt="">
                 <p>******<br>Add timeslot</p>
             </a>
         
         </div>
         <button id="show-button" class="show-button" onclick="showMore()"><span id="show-text">Show More</span><i class="fa-solid fa-angle-down" id="icon-more-orless"></i></button>
     </section>
-
+  
+    <!-- For push notifications -->
+    <span id="isMedInstrLoggedIn"><?php if(isset($_SESSION['first_time_logged_MedInstr'])){echo $_SESSION['first_time_logged_MedInstr']; unset($_SESSION['first_time_logged_MedInstr']);}?></span>
     <?php require APPROOT.'/views/inc/components/footer1.php'; ?>
 </body>
 </html>

@@ -34,12 +34,12 @@
              
             
             <a href="<?php echo URLROOT;?>/AdminComplaintMgmt/solvedComplaint" class="card">
-                <img src="<?php echo URLROOT;?>/img/adminComplaintManagement/solved.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/adminComplaintManagement/solved.jpeg" alt="">
                 <h2>Solved - <?php echo $data["solvedComplaint"]->solvedComplaint_count ?> </h2>
             </a>
             
             <a href="<?php echo URLROOT;?>/AdminComplaintMgmt/unsolvedComplaint" class="card">
-                <img src="<?php echo URLROOT;?>/img/adminComplaintManagement/unsolved.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/adminComplaintManagement/unsolved.jpeg" alt="">
                 <h2>Unsolved - <?php echo $data["unsolvedComplaint"]->unsolvedComplaint_count ?> </h2>     
             </a>
             

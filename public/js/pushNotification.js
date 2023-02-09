@@ -1,6 +1,7 @@
 const notificationContainer = document.getElementById('notification-container')
 let loggedInMessage = document.getElementById('isPatientLoggedIn')
 let orderSentMessage = document.getElementById('isOrderSent')
+let channelCreatedMessage = document.getElementById('isChannelCreated')
 let loggedOutMessage = document.getElementById('isLoggedOut')
 
 // Logged in notification for patient
@@ -15,11 +16,25 @@ if (loggedInMessage.innerText) {
     loggedInMessage.innerText = ""
 }
 
+
+
 // Order sent notification for patient
 if (orderSentMessage.innerText) {
     const notification = document.createElement('div')
     notification.classList.add('notification')
     notification.innerHTML = '<i class="fa-solid fa-circle-check"></i> Order sent to pharmacy'
+    notificationContainer.appendChild(notification)
+    setTimeout(() => {
+        notification.remove()
+    }, 6000)
+    orderSentMessage.innerText = ""
+}
+
+// Channel created notification for patient
+if (channelCreatedMessage.innerText) {
+    const notification = document.createElement('div')
+    notification.classList.add('notification')
+    notification.innerHTML = '<i class="fa-solid fa-circle-check"></i> Appointment made successfully'
     notificationContainer.appendChild(notification)
     setTimeout(() => {
         notification.remove()

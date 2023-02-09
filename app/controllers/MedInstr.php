@@ -24,6 +24,19 @@ class MedInstr extends Controller{
     'city'=>$user->city,
     'address'=>$user->address,
     'fee'=>$user->fee,
+
+    'first_name_err'=>'',
+    'last_name_err'=>'',
+    'nic_err'=>'',
+    'contact_number_err'=>'',
+    'bank_name_err'=>'',
+    'account_holder_name_err'=>'',
+    'branch_err'=>'',
+    'account_number_err'=>'',
+    'gender_err'=>'',
+    'city_err'=>'',
+    'address_err'=>'',
+    'fee_err'=>''
    ];
    $this->view('MedInstr/MedInstr/v_profile',$data);
 
@@ -146,7 +159,7 @@ class MedInstr extends Controller{
         $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
         $data=[
-          'email'=>$_POST['email'],
+          'email'=>$_SESSION['MedInstr_email'],
           'meditation_instructor_id'=>$userId,
           'first_name'=>trim($_POST['first_name']),
           'last_name'=>trim($_POST['last_name']),
@@ -166,7 +179,7 @@ class MedInstr extends Controller{
           'last_name_err'=>'',
           'nic_err'=>'',
           'contact_number_err'=>'',
-          'bank_err'=>'',
+          'bank_name_err'=>'',
           'account_holder_name_err'=>'',
           'branch_err'=>'',
           'account_number_err'=>'',
@@ -195,7 +208,7 @@ class MedInstr extends Controller{
        }
 
        if(empty($data['bank_name'])){
-        $data['bank_err']='bank name can not be empty';
+        $data['bank_name_err']='bank name can not be empty';
      }
 
       if(empty($data['account_holder_name'])){
@@ -228,7 +241,7 @@ class MedInstr extends Controller{
 
       if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['gender_err'])  && empty($data['city_err'])&& empty($data['address_err'])&& empty($data['fee_err'])&& empty($data['bank_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])){
             if($this->userModel->editUser($data)){
-                flash('post_msg', 'User account is updated successfully');
+                  $_SESSION['profile_update']="true";
                   $this->view('MedInstr/MedInstr/v_profile',$data);    
             }else{
               $this->view('MedInstr/MedInstr/v_profile',$data);    

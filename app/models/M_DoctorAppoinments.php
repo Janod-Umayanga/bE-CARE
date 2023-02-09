@@ -8,5 +8,17 @@
        
 
       }
-   }
+
+      public function getDoctorAppoinments($doctor_id) {
+        $this->db->query('SELECT * FROM doctor_channel WHERE doctor_id=:doctor_id');
+        $this->db->bind(':doctor_id', $doctor_id);
+
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+  }
+
+      
+      
 ?>

@@ -972,8 +972,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
               $data['bank_name_err']='bank name can not be empty';
           }
           
-          if(empty($data['acount_holder_name'])){
-              $data['account_holder_name_err']='acount holder name can not be empty';
+          if(empty($data['account_holder_name'])){
+              $data['account_holder_name_err']='account holder name can not be empty';
           }
         
           if(empty($data['branch'])){
@@ -1193,8 +1193,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                    $data['bank_name_err']='bank name can not be empty';
                }
                
-               if(empty($data['acount_holder_name'])){
-                   $data['acount_holder_name_err']='acount_holder name can not be empty';
+               if(empty($data['account_holder_name'])){
+                   $data['account_holder_name_err']='account_holder name can not be empty';
                }
              
                if(empty($data['branch'])){
@@ -1373,8 +1373,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
              $data['bank_name_err']='bank name can not be empty';
          }
          
-         if(empty($data['acount_holder_name'])){
-             $data['acount_holder_name_err']='acount_holder name can not be empty';
+         if(empty($data['account_holder_name'])){
+             $data['account_holder_name_err']='account_holder name can not be empty';
          }
        
          if(empty($data['branch'])){
@@ -1570,8 +1570,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
              $data['bank_name_err']='bank name can not be empty';
          }
          
-         if(empty($data['acount_holder_name'])){
-             $data['acount_holder_name_err']='acount_holder name can not be empty';
+         if(empty($data['account_holder_name'])){
+             $data['account_holder_name_err']='account_holder name can not be empty';
          }
        
          if(empty($data['branch'])){
@@ -1794,8 +1794,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
              $data['bank_name_err']='bank name can not be empty';
          }
          
-         if(empty($data['acount_holder_name'])){
-             $data['acount_holder_name_err']='acount_holder name can not be empty';
+         if(empty($data['account_holder_name'])){
+             $data['account_holder_name_err']='account_holder name can not be empty';
          }
        
          if(empty($data['branch'])){
@@ -2012,8 +2012,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
              $data['bank_name_err']='bank name can not be empty';
          }
          
-         if(empty($data['acount_holder_name'])){
-             $data['account_holder_name_err']='acount holder name can not be empty';
+         if(empty($data['account_holder_name'])){
+             $data['account_holder_name_err']='account holder name can not be empty';
          }
        
          if(empty($data['branch'])){

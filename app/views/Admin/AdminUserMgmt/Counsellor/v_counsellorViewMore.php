@@ -20,7 +20,7 @@
         <div class="card">
             
             <div class="main-image">
-                <a href="<?php echo URLROOT ?>/AdminReqSerProviders/adminReqCounsellor" class="backto-doctors"><i class="fa-solid fa-arrow-left"></i>Back to Counsellors</a>
+                <a href="<?php echo URLROOT ?>/AdminUserMgmt/counsellor" class="backto-doctors"><i class="fa-solid fa-arrow-left"></i>Back to Counsellors</a>
                 <h1><?php echo $data['counsellor']->first_name ?> <br> <?php echo $data['counsellor']->last_name ?></h1>
                 <div class="profile-icon"><?php echo substr($data['counsellor']->first_name, 0,1) ?><?php echo substr($data['counsellor']->last_name, 0,1) ?></div>
                 <div class="social-media-icons">

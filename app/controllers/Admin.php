@@ -109,7 +109,7 @@ class Admin extends Controller{
         $changeUserPW=$this->userModel->changePW($data);
 
           if($changeUserPW){
-            flash('reg_flash', 'You are succesfully changed Password!');
+            $_SESSION['profile_updatePasswordAdmin']="true";
             redirect('Admin/changePW');    
             
           }
@@ -164,7 +164,7 @@ class Admin extends Controller{
           'branch'=>trim($_POST['branch']),
           'account_number'=>trim($_POST['account_number']),
           'gender'=>trim($_POST['gender']),
-
+          'email'=>$_SESSION['admin_email'],
 
           'first_name_err'=>'',
           'last_name_err'=>'',
@@ -218,14 +218,14 @@ class Admin extends Controller{
 
        if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['gender_err'])){
             if($this->userModel->editUser($data)){
-                flash('post_msg', 'User account is updated successfully');
-                     redirect('Admin/profile'); 
+                  $_SESSION['profile_updateAdmin']="true";
+                  redirect('Admin/profile'); 
             }else{
                 die('Error creating');
             }  
        
        }else{
-           redirect('Admin/profile'); 
+        $this->view('Admin/Admin/v_profile',$data);  
        }
 
 

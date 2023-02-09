@@ -56,7 +56,7 @@
               
 
                             <form  action="<?php echo URLROOT;?>/MedInstrSession/viewRegUsersMedInstrNewSession/<?php echo $newSession->session_id?>" method="post">
-                                    <button class="viewRegUsers"  name="regusersSession">Registered Users</button>
+                                    <button class="viewRegUsers" value="<?php echo $newSession->session_id?>"  name="regusersSession">Registered Users</button>
                             </form>
                           </td>
 

@@ -623,6 +623,15 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     align-items: center;
     justify-content: center;
 }
+/*styles for Nutritionist and */
+
+.login-section-p-and-n {
+    width: 100%;
+    height: 120vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .login-page-leftside{
     width: 50%;
@@ -1069,7 +1078,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     position: relative;
     align-items: center;
     justify-content: center;
-    background-image: url(../img/meditationInstructorRegisteredUsers/registeredUsers.jpg);
+    background-image: url(../img/meditationInstructorRegisteredUsers/registeredUsers.jpeg);
     background-size: cover;
     overflow: hidden;
 }
@@ -1100,7 +1109,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     position: relative;
     align-items: center;
     justify-content: center;
-    background-image: url(../img/adminUserManagement/adminUserManagement.jpg);
+    background-image: url(../img/adminUserManagement/adminUserManagement.jpeg);
     background-size: cover;
     overflow: hidden;
 }
@@ -1129,7 +1138,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     position: relative;
     align-items: center;
     justify-content: center;
-    background-image: url(../img/adminComplaintManagement/complaint.jpg);
+    background-image: url(../img/adminComplaintManagement/complaint.jpeg);
     background-size: cover;
     overflow: hidden;
 }
@@ -1162,7 +1171,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     position: relative;
     align-items: center;
     justify-content: center;
-    background-image: url(../img/meditationInstructorSession/session.jpg);
+    background-image: url(../img/meditationInstructorSession/session.jpeg);
     background-size: cover;
     overflow: hidden;
 }
@@ -4281,6 +4290,14 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     background-color: red;
 }
 
+.notification.success i{
+    color: green;
+}
+
+.notification.success::after{
+    background-color: green;
+}
+
 @keyframes notify {
     100% {
         transform: translateX(0);
@@ -4294,6 +4311,679 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     }
 }
 /* notification style ends */
+
+
+
+/* notification style MedInstructor profile */
+
+#notification-container-MedInstrProfile{
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    overflow: hidden;
+}
+.notification{
+    width: fit-content;
+    height: fit-content;
+    padding: 15px 20px;
+    background-color: white;
+    color: var(--hue-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0px;
+    gap: 10px;
+    position: relative;
+    transform: translateX(100%);
+    animation: notify 0.3s linear forwards;
+    opacity: 0;
+}
+.notification i{
+    font-size: 20px;
+    color: var(--hue-dark-blue);
+}
+.notification::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 5px;
+    background-color: var(--hue-dark-blue);
+    animation: reduceWidth 5s linear forwards;
+}
+
+.notification.warning i{
+    color: red;
+}
+
+.notification.warning::after{
+    background-color: red;
+}
+
+.notification.success i{
+    color: green;
+}
+
+.notification.success::after{
+    background-color: green;
+}
+
+/*Nutritionist*/
+
+
+/*****************Nutritionist view requested Diet plans details********************/
+
+.table-section-Nutritionistreq {
+    width: 100%;
+    height: fit-content;
+    background-color: #ebecee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.table-section-Nutritionistreq.dark {
+    background-color: var(--hue-black);
+}
+
+.table-section-Nutritionistreq .table-container {
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #c7c5c5;
+    padding: 30px 0;
+}
+
+.table-section-Nutritionistreq .table-container.dark {
+    box-shadow: none;
+}
+
+.table-section-Nutritionistreq.dark .table-container .table-topic-main {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    color: var(--hue-black);
+}
+
+.table-section-Nutritionistreq .table-container .table-topic-main button {
+    padding: 8px 30px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+}
+
+.table-section-Nutritionistreq .table-container .table-topic-main button a {
+    text-decoration: none;
+    color: var(--hue-white);
+}
+
+.table-section-Nutritionistreq .table-container .search-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.table-section-Nutritionistreq .table-container .search-section .search-bar .searchform {
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+
+.table-section-Nutritionistreq .table-container .search-section .search-bar input {
+    width: 95%;
+}
+
+.table-section-Nutritionistreq .table-container .search-section .search-bar button {
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-section-Nutritionistreq .table-container .table {
+    width: 100%;
+    padding: 0 3%;
+    height: 50vh;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.table-section-Nutritionistreq .table-container .table table {
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: none;
+}
+
+.table-section-Nutritionistreq .table-container .table table th,
+.table-section-Nutritionistreq .table-container .table table td {
+    width: calc(100% / 3);
+    padding: 10px 15px;
+}
+
+.table-section-Nutritionistreq .table-container .table table th {
+    font-weight: 300;
+}
+
+.table-section-Nutritionistreq .table-container .table table tr:nth-child(1) {
+    background-color: #1D242B;
+    color: #f0ecec;
+}
+
+.table-section-Nutritionistreq .table-container .table table tr:nth-child(even) {
+    background-color: #f5f2f2;
+}
+
+.table-section-Nutritionistreq .table-container .table table tr td:nth-child(3) {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.table-section-Nutritionistreq .table-container .table table tr td:nth-child(3) form .view {
+    width: 60px;
+    height: fit-content;
+    background-color: var(--hue-dark-blue);
+    ;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.table-section-Nutritionistreq .table-container .table table tr td:nth-child(3) form .accept {
+    width: 110px;
+    height: fit-content;
+    background-color: green;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.table-section-Nutritionistreq .table-container .table table tr td:nth-child(3) form .reject {
+    width: 110px;
+    height: fit-content;
+    background-color: rgb(220, 66, 74);
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.table-section-Nutritionistreq .table-container .table table tr td:nth-child(3) form .prescription {
+    width: 110px;
+    height: fit-content;
+    background-color: rgb(138, 189, 209);
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+/******************Table section nutritionist view history styless starts******************/
+
+.table-section-Nutritionisthistory {
+    width: 100%;
+    height: fit-content;
+    background-color: #ebecee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.table-section-Nutritionisthistory.dark {
+    background-color: var(--hue-black);
+}
+
+.table-section-Nutritionisthistory .table-container {
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #c7c5c5;
+    padding: 30px 0;
+}
+
+.table-section-Nutritionisthistory .table-container.dark {
+    box-shadow: none;
+}
+
+.table-section-Nutritionisthistory.dark .table-container .table-topic-main {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    color: var(--hue-black);
+}
+
+.table-section-Nutritionisthistory .table-container .table-topic-main button {
+    padding: 8px 30px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+}
+
+.table-section-Nutritionisthistory .table-container .table-topic-main button a {
+    text-decoration: none;
+    color: var(--hue-white);
+}
+
+.table-section-Nutritionisthistory .table-container .search-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.table-section-Nutritionisthistory .table-container .search-section .search-bar .searchform {
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+
+.table-section-Nutritionisthistory .table-container .search-section .search-bar input {
+    width: 95%;
+}
+
+.table-section-Nutritionisthistory .table-container .search-section .search-bar button {
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-section-Nutritionisthistory .table-container .table {
+    width: 100%;
+    padding: 0 3%;
+    height: 50vh;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.table-section-Nutritionisthistory .table-container .table table {
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: none;
+}
+
+.table-section-Nutritionisthistory .table-container .table table th,
+.table-section-Nutritionisthistory .table-container .table table td {
+    width: calc(100% / 3);
+    padding: 10px 15px;
+}
+
+.table-section-Nutritionisthistory .table-container .table table th {
+    font-weight: 300;
+}
+
+.table-section-Nutritionisthistory .table-container .table table tr:nth-child(1) {
+    background-color: #1D242B;
+    color: #f0ecec;
+}
+
+.table-section-Nutritionisthistory .table-container .table table tr:nth-child(even) {
+    background-color: #f5f2f2;
+}
+
+.table-section-Nutritionisthistory .table-container .table table tr td:nth-child(2) {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.table-section-Nutritionishistory .table-container .table table tr td:nth-child(2) form .view {
+    width: 60px;
+    height: fit-content;
+    background-color: var(--hue-dark-blue);
+    ;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+/************************************************** Table-section-NutritionistSession  style starts *********************************************************/
+
+.table-section-NutritionistSession {
+    width: 100%;
+    height: fit-content;
+    background-color: #ebecee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.table-section-NutritionistSession.dark {
+    background-color: var(--hue-black);
+}
+
+.table-section-NutritionistSession .table-container {
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #c7c5c5;
+    padding: 30px 0;
+}
+
+.table-section-NutritionistSession .table-container.dark {
+    box-shadow: none;
+}
+
+.table-section-NutritionistSession .table-container .table-topic-main {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    color: var(--hue-black);
+}
+
+.table-section-NutritionistSession .table-container .table-topic-main button {
+    padding: 8px 30px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+}
+
+.table-section-NutritionistSession .table-container .table-topic-main button a {
+    text-decoration: none;
+    color: var(--hue-white);
+}
+
+.table-section-NutritionistSession .table-container .search-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.table-section-NutritionistSession .table-container .search-section .search-bar .searchform {
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+
+.table-section-NutritionistSession .table-container .search-section .search-bar input {
+    width: 95%;
+}
+
+.table-section-NutritionistSession .table-container .search-section .search-bar button {
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-section-NutritionistSession .table-container .table {
+    width: 100%;
+    padding: 0 3%;
+    height: 50vh;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.table-section-NutritionistSession .table-container .table table {
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: none;
+}
+
+.table-section-NutritionistSession .table-container .table table th,
+.table-section-NutritionistSession .table-container .table table td {
+    width: calc(100% / 3);
+    padding: 10px 15px;
+}
+
+.table-section-NutritionistSession .table-container .table table th {
+    font-weight: 300;
+}
+
+.table-section-NutritionistSession .table-container .table table tr:nth-child(1) {
+    background-color: #1D242B;
+    color: #f0ecec;
+}
+
+.table-section-NutritionistSession .table-container .table table tr:nth-child(even) {
+    background-color: #f5f2f2;
+}
+
+.table-section-NutritionistSession .table-container .table table tr td:nth-child(5) {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.table-section-NutritionistSession .table-container .table table tr td:nth-child(5) form .viewMore {
+    width: 60px;
+    height: fit-content;
+    background-color: var(--hue-dark-blue);
+    ;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.table-section-NutritionistSession .table-container .table table tr td:nth-child(5) form .viewRegUsers {
+    width: 110px;
+    height: fit-content;
+    background-color: green;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+/************************************************** Table Page style ends *********************************************************/
+
+
+/************************************************** Table-section-NutritionistSessionRegUsers style starts *********************************************************/
+
+.table-section-NutritionistSessionRegUsers {
+    width: 100%;
+    height: fit-content;
+    background-color: #ebecee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.table-section-NutritionistSessionRegUsers.dark {
+    background-color: var(--hue-black);
+}
+
+.table-section-NutritionistSessionRegUsers .table-container {
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #c7c5c5;
+    padding: 30px 0;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container.dark {
+    box-shadow: none;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table-topic-main {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    color: var(--hue-black);
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table-topic-main button {
+    padding: 8px 30px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table-topic-main button a {
+    text-decoration: none;
+    color: var(--hue-white);
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .search-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .search-section .search-bar .searchform {
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .search-section .search-bar input {
+    width: 95%;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .search-section .search-bar button {
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table {
+    width: 100%;
+    padding: 0 3%;
+    height: 50vh;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table table {
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: none;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table table th,
+.table-section-NutritionistSessionRegUsers .table-container .table table td {
+    width: calc(100% / 5);
+    padding: 10px 15px;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table table th {
+    font-weight: 300;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table table tr:nth-child(1) {
+    background-color: #1D242B;
+    color: #f0ecec;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table table tr:nth-child(even) {
+    background-color: #f5f2f2;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table table tr td:nth-child(5) {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table table tr td:nth-child(5) form .viewMore {
+    width: 60px;
+    height: fit-content;
+    background-color: var(--hue-dark-blue);
+    ;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.table-section-NutritionistSessionRegUsers .table-container .table table tr td:nth-child(5) form .viewRegUsers {
+    width: 110px;
+    height: fit-content;
+    background-color: green;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+
+
 
 /************************************************** Session Page style starts *********************************************************/
 
@@ -4411,9 +5101,723 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     background-color: var(--hue-dark-blue);
 }
 
+
+/************************************************** Table-section-CounsellorSession  style starts *********************************************************/
+
+
+.table-section-CounsellorSession{
+    width: 100%;
+    height: fit-content;
+    background-color: #ebecee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.table-section-CounsellorSession.dark{
+    background-color: var(--hue-black);
+}
+
+.table-section-CounsellorSession .table-container{
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #c7c5c5;
+    padding: 30px 0;
+}
+
+.table-section-CounsellorSession .table-container.dark{
+    box-shadow: none;
+}
+
+.table-section-CounsellorSession .table-container .table-topic-main{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    color: var(--hue-black);
+}
+
+.table-section-CounsellorSession .table-container .table-topic-main button{
+    padding: 8px 30px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+}
+
+
+.table-section-CounsellorSession .table-container .table-topic-main button a{
+ text-decoration:none;
+ color:var(--hue-white);
+}
+.table-section-CounsellorSession .table-container .search-section{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.table-section-CounsellorSession .table-container .search-section .search-bar .searchform{
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+
+.table-section-CounsellorSession .table-container .search-section .search-bar input{
+    width: 95%;
+}
+
+.table-section-CounsellorSession .table-container .search-section .search-bar button{
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-section-CounsellorSession .table-container .table{
+    width: 100%;
+    padding: 0 3%;
+    height: 50vh;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.table-section-CounsellorSession .table-container .table table{
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: none;
+}
+
+.table-section-CounsellorSession .table-container .table table th,
+.table-section-CounsellorSession .table-container .table table td{
+    width: calc(100% / 3);
+    padding: 10px 15px;
+}
+
+.table-section-CounsellorSession .table-container .table table th{
+    font-weight: 300;
+}
+
+.table-section-CounsellorSession .table-container .table table tr:nth-child(1){
+    background-color: #1D242B;
+    color: #f0ecec;
+}
+
+.table-section-CounsellorSession .table-container .table table tr:nth-child(even){
+    background-color: #f5f2f2;
+}
+
+.table-section-CounsellorSession .table-container .table table tr td:nth-child(5){
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+
+.table-section-CounsellorSession  .table-container .table table tr td:nth-child(5)   form .viewMore{
+    width: 60px;
+    height: fit-content;
+    background-color:  var(--hue-dark-blue);;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+.table-section-CounsellorSession  .table-container .table table tr td:nth-child(5)  form .viewRegUsers{
+    width: 110px;
+    height: fit-content;
+    background-color:  green;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/************************************************** Table-section-counsellorChangeSession style starts *********************************************************/
+
+
+.table-section-counsellorChangeSession{
+    width: 100%;
+    height: fit-content;
+    background-color: #ebecee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.table-section-counsellorChangeSession.dark{
+    background-color: var(--hue-black);
+}
+
+.table-section-counsellorChangeSession .table-container{
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #c7c5c5;
+    padding: 30px 0;
+}
+
+.table-section-counsellorChangeSession .table-container.dark{
+    box-shadow: none;
+}
+
+.table-section-counsellorChangeSession .table-container .table-topic-main{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    color: var(--hue-black);
+}
+
+.table-section-counsellorChangeSession .table-container .table-topic-main button{
+    padding: 8px 30px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+}
+
+
+.table-section-counsellorChangeSession .table-container .table-topic-main button a{
+ text-decoration:none;
+ color:var(--hue-white);
+}
+.table-section-counsellorChangeSession .table-container .search-section{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.table-section-counsellorChangeSession .table-container .search-section .search-bar .searchform{
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+
+.table-section-counsellorChangeSession .table-container .search-section .search-bar input{
+    width: 95%;
+}
+
+.table-section-counsellorChangeSession .table-container .search-section .search-bar button{
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-section-counsellorChangeSession .table-container .table{
+    width: 100%;
+    padding: 0 3%;
+    height: 50vh;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.table-section-counsellorChangeSession .table-container .table table{
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: none;
+}
+
+.table-section-counsellorChangeSession .table-container .table table th,
+.table-section-counsellorChangeSession .table-container .table table td{
+    width: calc(100% / 6);
+    padding: 10px 15px;
+}
+
+.table-section-counsellorChangeSession .table-container .table table th{
+    font-weight: 300;
+}
+
+.table-section-counsellorChangeSession .table-container .table table tr:nth-child(1){
+    background-color: #1D242B;
+    color: #f0ecec;
+}
+
+.table-section-counsellorChangeSession .table-container .table table tr:nth-child(even){
+    background-color: #f5f2f2;
+}
+
+.table-section-counsellorChangeSession .table-container .table table tr td:nth-child(6){
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+
+
+.table-section-counsellorChangeSession .table-container .table table tr td:nth-child(6)   form .update{
+    width: 60px;
+    height: fit-content;
+    background-color:  green;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+.table-section-counsellorChangeSession .table-container .table table tr td:nth-child(6)  form .delete{
+    width: 60px;
+    height: fit-content;
+    background-color:  #ed4d4d;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/************************************************** Table Page style ends *********************************************************/
+
+/************************************************** Table Page style ends *********************************************************/
+
+
+/************************************************** Table-section-CounsellorSessionRegUsers style starts *********************************************************/
+
+
+.table-section-CounsellorSessionRegUsers{
+    width: 100%;
+    height: fit-content;
+    background-color: #ebecee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.table-section-CounsellorSessionRegUsers.dark{
+    background-color: var(--hue-black);
+}
+
+.table-section-CounsellorSessionRegUsers .table-container{
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #c7c5c5;
+    padding: 30px 0;
+}
+
+.table-section-CounsellorSessionRegUsers .table-container.dark{
+    box-shadow: none;
+}
+
+.table-section-CounsellorSessionRegUsers .table-container .table-topic-main{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    color: var(--hue-black);
+}
+
+.table-section-CounsellorSessionRegUsers .table-container .table-topic-main button{
+    padding: 8px 30px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+}
+
+
+.table-section-CounsellorSessionRegUsers .table-container .table-topic-main button a{
+ text-decoration:none;
+ color:var(--hue-white);
+}
+.table-section-CounsellorSessionRegUsers .table-container .search-section{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.table-section-CounsellorSessionRegUsers .table-container .search-section .search-bar .searchform{
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+
+.table-section-CounsellorSessionRegUsers .table-container .search-section .search-bar input{
+    width: 95%;
+}
+
+.table-section-CounsellorSessionRegUsers .table-container .search-section .search-bar button{
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-section-CounsellorSessionRegUsers .table-container .table{
+    width: 100%;
+    padding: 0 3%;
+    height: 50vh;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.table-section-CounsellorSessionRegUsers .table-container .table table{
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: none;
+}
+
+.table-section-CounsellorSessionRegUsers .table-container .table table th,
+.table-section-CounsellorSessionRegUsers .table-container .table table td{
+    width: calc(100% / 5);
+    padding: 10px 15px;
+}
+
+.table-section-CounsellorSessionRegUsers .table-container .table table th{
+    font-weight: 300;
+}
+
+.table-section-CounsellorSessionRegUsers .table-container .table table tr:nth-child(1){
+    background-color: #1D242B;
+    color: #f0ecec;
+}
+
+.table-section-CounsellorSessionRegUsers .table-container .table table tr:nth-child(even){
+    background-color: #f5f2f2;
+}
+
+.table-section-CounsellorSessionRegUsers .table-container .table table tr td:nth-child(5){
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+
+.table-section-CounsellorSessionRegUsers  .table-container .table table tr td:nth-child(5)   form .viewMore{
+    width: 60px;
+    height: fit-content;
+    background-color:  var(--hue-dark-blue);;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+.table-section-CounsellorSessionRegUsers  .table-container .table table tr td:nth-child(5)  form .viewRegUsers{
+    width: 110px;
+    height: fit-content;
+    background-color:  green;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/************************************************** Table Page style ends *********************************************************/
+
+
+/************************************************** View profile Page style starts ****************************************************/
+
+.view-profile-container-counsellorSession{
+    width: 100%;
+    height: fit-content;
+    padding: 10vh 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dedede;
+    overflow: hidden;
+}
+
+.view-profile-container-counsellorSession.dark{
+    background-color: var(--hue-black);
+}
+
+.view-profile-container-counsellorSession .card{
+    width: 50%;
+    height: fit-content;
+    background-color: var(--hue-white);
+    overflow: hidden;
+    position: relative;
+}
+
+.view-profile-container-counsellorSession .card .main-image{
+    width: 100%;
+    height: 250px;
+    position: relative;
+    padding: 7% 10%;
+    text-align: right;
+    background-image: url(../img/view-profile-pictures/view-profile-image.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: var(--hue-white);
+}
+
+.view-profile-container-counsellorSession .card .main-image p{
+    font-size: 14px;
+}
+
+.view-profile-container-counsellorSession .card .main-image .profile-icon{
+    position: absolute;
+    bottom: 10px;
+    left: 2%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    background-color: #1D242B;
+    cursor: pointer;
+}
+
+.view-profile-container-counsellorSession .card .main-image .social-media-icons{
+    position: absolute;
+    bottom: 15px;
+    right: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--hue-black);
+}
+
+.view-profile-container-counsellorSession .card .main-image .social-media-icons i{
+    cursor: pointer;
+}
+
+.view-profile-container-counsellorSession .card .bottom{
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    position: relative;
+}
+
+.view-profile-container-counsellorSession .card .bottom ul{
+    width: 100%;
+}
+
+.view-profile-container-counsellorSession .card .bottom ul li{
+    list-style: none;
+    margin-top: 20px;
+    border-bottom: 1px solid #d8d3d3;
+    font-weight: 700;
+    color: #1d242bb6;
+}
+
+.view-profile-container-counsellorSession .card .bottom ul li a{
+    text-decoration: none;
+    color: #1d242bb6;
+}
+
+.view-profile-container-counsellorSession .card .bottom .bottom-line{
+    width: 100%;
+    height: 20px;
+    background-color: #0d5f84;
+    margin-top: 30px;
+}
+
+.view-profile-container-counsellorSession .card .main-image .backto-doctors{
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: #fafafacd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    gap: 10px;
+}
+
+/************************************************** View profile Page style ends ****************************************************/
+
+
+
+/* For Counsellor session page */
+.doctor-main-picture-container-counsellorSession{
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../img/counsellorSession/session.jpeg);
+    background-size: cover;
+    overflow: hidden;
+}
+
+.doctor-main-picture-container-counsellorSession .tittle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 40px;
+    color: var(--hue-white);
+    line-height: 40px;
+    margin-bottom: 50px;
+}
+
+.doctor-main-picture-container-counsellorSession .tittle i{
+    font-size: 4.5rem;
+}
+/* Counsellor session page ends */
+
+
 /************************************************** Session Page style ends *********************************************************/
 
+/************************************************** Invoice Page style starts *********************************************************/
+
+.pay-section{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    overflow: hidden;
+}
+
+.pay-section.dark{
+    background-color: var(--hue-black);
+}
+
+.pay-card{
+    width: 500px;
+    height: fit-content;
+    background-color: rgb(240, 240, 240);
+    padding: 70px 20px;
+    border-top: 10px solid var(--hue-black);
+    border-bottom: 10px solid var(--hue-black);
+    text-align: center;
+    position: relative;
+}
+
+.pay-card.dark{
+    border-top: 10px solid var(--hue-dark-blue);
+    border-bottom: 10px solid var(--hue-dark-blue);
+}
+
+#pay-icon{
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-size: 2.3rem;
+    color: #2a3138;
+}
+
+.main-topic{
+    margin-top: 30px;
+    color: var(--hue-black);
+}
+
+.pay-card .content{
+    width: 100%;
+    padding: 20px 30px;
+    margin-top: 20px;
+}
+
+.pay-card .content .topic{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.description-and-amount-container{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.description-and-amount-container li{
+    list-style: none;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #b2b4b56c;
+    padding: 10px 0px;
+
+}
+
+.content .total{
+    width: 100%;
+    text-align: right;
+    margin-top: 20px;
+    color: var(--hue-black);
+}
+
+.pay-card button{
+    width: 70%;
+    margin-top: 30px;
+    padding: 5px 20px;
+    background-color: var(--hue-dark-blue);
+    border: none;
+    border-radius: px;
+    color: var(--hue-white);
+    cursor: pointer;
+}
+
+/************************************************** Invoice Page style ends *********************************************************/
+#formNumber{
+    display: none;
+}
 /* Responsive precess starts here */
+
+@media(max-width:474px){
+    .pay-card .content{
+        width: 100%;
+        padding: 20px 0px;
+    }
+
+    .pay-card button{
+        width: 100%;
+    }
+
+    .pay-section{
+        padding: 40px 10px;
+    }
+}
 
 @media (max-width: 956px){
     .aside-menu{

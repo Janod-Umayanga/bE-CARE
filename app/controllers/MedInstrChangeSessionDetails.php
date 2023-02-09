@@ -349,7 +349,7 @@ class MedInstrChangeSessionDetails extends Controller{
         }
 
       }else{
-        redirect('MedInstr/login');  
+        redirect('Login/login');  
       }
     
 

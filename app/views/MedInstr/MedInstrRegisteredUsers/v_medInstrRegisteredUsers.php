@@ -34,7 +34,7 @@
         <?php if($data['monday']->d1  > 0){?>
 
             <a href="<?php echo URLROOT;?>/MedInstrRegisteredUsers/mondayRegisteredUsers" class="card">
-              <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
+              <img src="<?php echo URLROOT;?>/img/meditationInstructorRegisteredUsers/monday.jpeg" alt="">
               <h3>Monday</h3>
             </a>
 
@@ -43,7 +43,7 @@
 
 
             <a href="<?php echo URLROOT;?>/MedInstrRegisteredUsers/tuesdayRegisteredUsers" class="card">
-              <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
+              <img src="<?php echo URLROOT;?>/img/meditationInstructorRegisteredUsers/tuesday.jpeg" alt="">
               <h3>Tuesday</h3>
             </a>
 
@@ -51,7 +51,7 @@
 
         
             <a href="<?php echo URLROOT;?>/MedInstrRegisteredUsers/wednesdayRegisteredUsers" class="card">
-              <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
+              <img src="<?php echo URLROOT;?>/img/meditationInstructorRegisteredUsers/wednesday.jpeg" alt="">
               <h3>Wednesday</h3>
             </a>
 
@@ -60,7 +60,7 @@
 
         
             <a href="<?php echo URLROOT;?>/MedInstrRegisteredUsers/thursdayRegisteredUsers" class="card">
-              <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
+              <img src="<?php echo URLROOT;?>/img/meditationInstructorRegisteredUsers/thursday.jpeg" alt="">
               <h3>Thursday</h3>
             </a>
 
@@ -68,7 +68,7 @@
 
 
             <a href="<?php echo URLROOT;?>/MedInstrRegisteredUsers/fridayRegisteredUsers" class="card">
-              <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
+              <img src="<?php echo URLROOT;?>/img/meditationInstructorRegisteredUsers/friday.jpeg" alt="">
               <h3>Friday</h3>
             </a>
 
@@ -77,7 +77,7 @@
 
 
             <a href="<?php echo URLROOT;?>/MedInstrRegisteredUsers/saturdayRegisteredUsers" class="card">
-                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/meditationInstructorRegisteredUsers/saturday.jpeg" alt="">
                 <h3>Saturday</h3>
             </a>
 
@@ -87,7 +87,7 @@
 
 
             <a href="<?php echo URLROOT;?>/MedInstrRegisteredUsers/sundayRegisteredUsers" class="card">
-                <img src="<?php echo URLROOT;?>/img/reqserviceProvImgs/d1.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/meditationInstructorRegisteredUsers/sunday.jpeg" alt="">
                 <h3>Sunday</h3>
             </a>
 

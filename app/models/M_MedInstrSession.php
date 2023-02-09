@@ -93,6 +93,7 @@
   public function  searchMedInstrSessionRegUsers($session_id,$search)
                   
   {
+    
     $this->db->query("SELECT * FROM session_register WHERE session_id=:session_id AND CONCAT(name,age) LIKE '%$search%'");
     $this->db->bind(':session_id', $session_id);
     

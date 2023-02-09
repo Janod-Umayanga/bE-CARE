@@ -16,7 +16,7 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <section class="view-profile-container theme">
+    <section class="view-profile-container-userMgmtDoctorVM theme">
         <div class="card">
             
             <div class="main-image">
@@ -46,9 +46,19 @@
                     <li>Branch - <?php echo $data['nutritionist']->branch ?></li>
                    
                     <li>Account Number - <?php echo $data['nutritionist']->account_number ?></li>
-                     <li>Qualification File -   <button class=""><a download="<?php echo $data['nutritionist']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/nutritionist_qualification/<?php echo  $data['nutritionist']->qualification_file ?>">Download</a></button>
+                     <li>Qualification File -   <button class="qualification"><a download="<?php echo $data['nutritionist']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/nutritionist_qualification/<?php echo  $data['nutritionist']->qualification_file ?>">Download</a></button>
                </li>
-                   
+                    <?php if($data['nutritionist']->delete_flag==0): ?>
+                        <form class="deactiveForm" action="<?php echo URLROOT;?>/AdminUserMgmt/adminDeactivatednutritionist/<?php echo $data['nutritionist']->nutritionist_id ?>" method="GET">
+                             <button type="submit">Deactivate</button>
+                       </form>  
+                       
+                    <?php elseif($data['nutritionist']->delete_flag==1):?>
+                        <form class="activeForm" action="<?php echo URLROOT;?>/AdminUserMgmt/adminActivatednutritionist/<?php echo $data['nutritionist']->nutritionist_id ?>" method="GET">
+                             <button type="submit">Activate</button>
+                       </form>  
+                    <?php endif?>      
+
                 </ul>
                 <div class="bottom-line"></div>
             </div>

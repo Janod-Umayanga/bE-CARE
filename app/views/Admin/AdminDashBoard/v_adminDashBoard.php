@@ -11,11 +11,13 @@
     <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
     <script defer src="<?php echo URLROOT; ?>/js/script.js"></script>
+    <script defer src="<?php echo URLROOT; ?>/js/pushNotificationAdminLogin.js"></script>
     <title>BeCare</title>
 </head>
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
+    <div id="notification-container"></div>
     <section class="main-content-container">
         <div class="main-content">
             <p>From UCSC batch 19/20 CS Group 11</p>
@@ -28,25 +30,25 @@
     </section>
 
     <section class="our-services-container theme" id="our-services-container">
-        <dev class="service-topic">
+        <div class="service-topic">
             <span class="line"></span>
             <h2>Admin</h2>
-        </dev>
+        </div>
         <div class="card-container-forservices" id="to-be-show-more">
              <a href="<?php echo URLROOT;?>/AdminReqSerProviders/adminReqSerProviders" class="card">
-                <img src="<?php echo URLROOT;?>/img/adminDashBoard/reqServiceProviders.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/adminDashBoard/reqServiceProviders.jpeg" alt="">
                 <p>******<br>Requested Service Providers</p>
             </a>
             <a href="<?php echo URLROOT;?>/AdminComplaintMgmt/adminComplaintMgmt" class="card">
-                <img src="<?php echo URLROOT;?>/img/adminDashBoard/complaintManagement.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/adminDashBoard/complaintManagement.jpeg" alt="">
                 <p>******<br>Complaint Management</p>
             </a>
             <a href="<?php echo URLROOT;?>/AdminUserMgmt/adminUserMgmt" class="card">
-                <img src="<?php echo URLROOT;?>/img/adminDashBoard/userManagement.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/adminDashBoard/userManagement.jpeg" alt="">
                 <p>******<br>User Management</p>
             </a>
             <a href="<?php echo URLROOT;?>/AdminPayments/adminPayments" class="card">
-                <img src="<?php echo URLROOT;?>/img/adminDashBoard/payments.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/adminDashBoard/payments.jpeg" alt="">
                 <p>******<br>Payments</p>
             </a>
         
@@ -54,6 +56,8 @@
         <button id="show-button" class="show-button" onclick="showMore()"><span id="show-text">Show More</span><i class="fa-solid fa-angle-down" id="icon-more-orless"></i></button>
     </section>
 
-    <?php require APPROOT.'/views/inc/components/footer1.php'; ?>
+     <!-- For push notifications -->
+     <span id="isAdminLoggedIn"><?php if(isset($_SESSION['first_time_logged_Admin'])){echo $_SESSION['first_time_logged_Admin']; unset($_SESSION['first_time_logged_Admin']);}?></span>
+     <?php require APPROOT.'/views/inc/components/footer1.php'; ?>
 </body>
 </html>
