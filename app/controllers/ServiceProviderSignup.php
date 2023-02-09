@@ -19,48 +19,48 @@ class ServiceProviderSignup extends Controller{
         $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $_SESSION['signup_form_number'] = 1;
         $data=[
-          'first_name'=>trim($_POST['first_name']),
-          'last_name'=>trim($_POST['last_name']),
-          'nic'=>trim($_POST['nic']),
-          'contact_number'=>trim($_POST['contact_number']),
-          'email'=>trim($_POST['email']),
-          'password'=>trim($_POST['password']),
-          'confirm_password'=>trim($_POST['confirm_password']),
-          'city'=>trim($_POST['city']),
-          'bank_name'=>trim($_POST['bank_name']),
-          'account_holder_name'=>trim($_POST['account_holder_name']),
-          'branch'=>trim($_POST['branch']),
-          'account_number'=>trim($_POST['account_number']),
-          'slmc_reg_number'=>trim($_POST['slmc']),
-          'type'=>trim($_POST['type']),
-          'specialization'=>trim($_POST['specialization']),
-          'gender'=>trim($_POST['gender']),
-          'qualification_file'=>$_FILES['qualification_file'],
-          'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
+          'd_first_name'=>trim($_POST['first_name']),
+          'd_last_name'=>trim($_POST['last_name']),
+          'd_nic'=>trim($_POST['nic']),
+          'd_contact_number'=>trim($_POST['contact_number']),
+          'd_email'=>trim($_POST['email']),
+          'd_password'=>trim($_POST['password']),
+          'd_confirm_password'=>trim($_POST['confirm_password']),
+          'd_city'=>trim($_POST['city']),
+          'd_bank_name'=>trim($_POST['bank_name']),
+          'd_account_holder_name'=>trim($_POST['account_holder_name']),
+          'd_branch'=>trim($_POST['branch']),
+          'd_account_number'=>trim($_POST['account_number']),
+          'd_slmc_reg_number'=>trim($_POST['slmc']),
+          'd_type'=>trim($_POST['type']),
+          'd_specialization'=>trim($_POST['specialization']),
+          'd_gender'=>trim($_POST['gender']),
+          'd_qualification_file'=>$_FILES['qualification_file'],
+          'd_qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
           
       
-          'first_name_err'=>'',
-          'last_name_err'=>'',
-          'nic_err'=>'',
-          'contact_number_err'=>'',
-          'email_err'=>'',
-          'password_err'=>'',
-          'confirm_password_err'=>'',
-          'city_err'=>'',
-          'bank_name_err'=>'',
-          'account_holder_name_err'=>'',
-          'branch_err'=>'',
-          'account_number_err'=>'',
-          'slmc_reg_number_err'=>'',
-          'type_err'=>'',
-          'specialization_err'=>'',
-          'gender_err'=>'',
-          'qualification_file_err'=>'',
+          'd_first_name_err'=>'',
+          'd_last_name_err'=>'',
+          'd_nic_err'=>'',
+          'd_contact_number_err'=>'',
+          'd_email_err'=>'',
+          'd_password_err'=>'',
+          'd_confirm_password_err'=>'',
+          'd_city_err'=>'',
+          'd_bank_name_err'=>'',
+          'd_account_holder_name_err'=>'',
+          'd_branch_err'=>'',
+          'd_account_number_err'=>'',
+          'd_slmc_reg_number_err'=>'',
+          'd_type_err'=>'',
+          'd_specialization_err'=>'',
+          'd_gender_err'=>'',
+          'd_qualification_file_err'=>'',
           
        ];
     
-       if(empty($data['qualification_file'])){
-         $data['qualification_file_err']='qualification file can not be empty';
+       if(empty($data['d_qualification_file'])){
+         $data['d_qualification_file_err']='qualification file can not be empty';
        }else{
            $fileExt=explode('.',$_FILES['qualification_file']['name']);
            $fileActualExt=strtolower(end($fileExt));
@@ -68,109 +68,109 @@ class ServiceProviderSignup extends Controller{
 
          
            if(!in_array($fileActualExt,$allowed)){
-             $data['qualification_file_err']='You cannot upload files of this type';
+             $data['d_qualification_file_err']='You cannot upload files of this type';
 
            }
      
 
-           if($data['qualification_file']['size']>0){
-             if(uploadFile($data['qualification_file']['tmp_name'],$data['qualification_file_name'],'/upload/doctor_qualification/')){
+           if($data['d_qualification_file']['size']>0){
+             if(uploadFile($data['d_qualification_file']['tmp_name'],$data['d_qualification_file_name'],'/upload/doctor_qualification/')){
                        
              }else{  
-             $data['qualification_file_err']='Unsuccessful qualification_file uploading';
+             $data['d_qualification_file_err']='Unsuccessful qualification_file uploading';
              
              }
            }else{
-             $data[ 'qualification_file_err'] ="qualification file size is empty";
+             $data[ 'd_qualification_file_err'] ="qualification file size is empty";
            
            }
  
        }
-       if(empty($data['first_name'])){
-          $data['first_name_err']='first name can not be empty';
+       if(empty($data['d_first_name'])){
+          $data['d_first_name_err']='first name can not be empty';
        }
       
-       if(empty($data['last_name'])){
-          $data['last_name_err']='last name can not be empty';
+       if(empty($data['d_last_name'])){
+          $data['d_last_name_err']='last name can not be empty';
        }
     
-       if(empty($data['nic'])){
-         $data['nic_err']='nic can not be empty';
+       if(empty($data['d_nic'])){
+         $data['d_nic_err']='nic can not be empty';
       }
      
-      if(empty($data['contact_number'])){
-         $data['contact_number_err']='contact number can not be empty';
+      if(empty($data['d_contact_number'])){
+         $data['d_contact_number_err']='contact number can not be empty';
       }
        
-         if(empty($data['email'])){
-           $data['email_err']='email can not be empty';
+         if(empty($data['d_email'])){
+           $data['d_email_err']='email can not be empty';
        }
        
-       if(empty($data['password'])){
-           $data['password_err']='password can not be empty';
+       if(empty($data['d_password'])){
+           $data['d_password_err']='password can not be empty';
        }
      
-       if(empty($data['confirm_password'])){
-         $data['confirm_password_err']='confirm password  can not be empty';
+       if(empty($data['d_confirm_password'])){
+         $data['d_confirm_password_err']='confirm password  can not be empty';
        }
      
-       if(empty($data['city'])){
-         $data['city_err']='city can not be empty';
+       if(empty($data['d_city'])){
+         $data['d_city_err']='city can not be empty';
        }
 
-         if(empty($data['bank_name'])){
-           $data['bank_name_err']='bank name can not be empty';
+         if(empty($data['d_bank_name'])){
+           $data['d_bank_name_err']='bank name can not be empty';
        }
        
-       if(empty($data['account_holder_name'])){
-           $data['account_holder_name_err']='account holder name can not be empty';
+       if(empty($data['d_account_holder_name'])){
+           $data['d_account_holder_name_err']='account holder name can not be empty';
        }
      
-       if(empty($data['branch'])){
-         $data['branch_err']='branch name can not be empty';
+       if(empty($data['d_branch'])){
+         $data['d_branch_err']='branch name can not be empty';
        }
      
-       if(empty($data['account_number'])){
-         $data['account_number_err']='account number can not be empty';
+       if(empty($data['d_account_number'])){
+         $data['d_account_number_err']='account number can not be empty';
        }
 
-       if(empty($data['slmc_reg_number'])){
-         $data['slmc_reg_number_err']='slmc reg number can not be empty';
+       if(empty($data['d_slmc_reg_number'])){
+         $data['d_slmc_reg_number_err']='slmc reg number can not be empty';
       }
      
-       if(empty($data['type'])){
-           $data['type_err']='type can not be empty';
+       if(empty($data['d_type'])){
+           $data['d_type_err']='type can not be empty';
        }
      
-       if(empty($data['specialization'])){
-         $data['specialization_err']='specialization can not be empty';
+       if(empty($data['d_specialization'])){
+         $data['d_specialization_err']='specialization can not be empty';
        }
        
-       if(empty($data['gender'])){
-         $data['gender_err']='gender can not be empty';
+       if(empty($data['d_gender'])){
+         $data['d_gender_err']='gender can not be empty';
        }
        
     
 
        
-       if($data['password']!=$data['confirm_password']){
-        $data['password_err']='password not match';
+       if($data['d_password']!=$data['d_confirm_password']){
+        $data['d_confirm_password_err']='password not match';
        }
 
-       if($this->adminUserMgmtModel->findDoctorByEmail($data['email'])){
-         $data['email_err']='Email is already registered';
+       if($this->adminUserMgmtModel->findDoctorByEmail($data['d_email'])){
+         $data['d_email_err']='Email is already registered';
 
        } 
-       else if($this->adminUserMgmtModel->findReqDoctorByEmail($data['email'])){
-         $data['email_err']='Email is already registered';
+       else if($this->adminUserMgmtModel->findReqDoctorByEmail($data['d_email'])){
+         $data['d_email_err']='Email is already registered';
 
        }
     
 
 
-       if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['city_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['slmc_reg_number_err'])&& empty($data['type_err'])&& empty($data['specialization_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
+       if(empty($data['d_first_name_err']) && empty($data['d_last_name_err'])&& empty($data['d_nic_err'])&& empty($data['d_contact_number_err'])&& empty($data['d_email_err'])&& empty($data['d_password_err'])&& empty($data['d_confirm_password_err'])&& empty($data['d_city_err'])&& empty($data['d_bank_name_err'])&& empty($data['d_account_holder_name_err'])&& empty($data['d_branch_err'])&& empty($data['d_account_number_err'])&& empty($data['d_slmc_reg_number_err'])&& empty($data['d_type_err'])&& empty($data['d_specialization_err'])&& empty($data['d_gender_err'])&& empty($data['d_qualification_file_err'])){
             
-         $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
+         $data['d_password']=password_hash($data['d_password'],PASSWORD_DEFAULT);
           if($this->serviceProviderSignupModel->signupDoctor($data)){
                   $this->view('inc/v_pending',$data); 
             }else{
@@ -189,45 +189,44 @@ class ServiceProviderSignup extends Controller{
  
         $data=[
  
-         'first_name'=>'',
-         'last_name'=>'',
-         'nic'=>'',
-         'contact_number'=>'',
-         'email'=>'',
-         'password'=>'',
-         'confirm_password'=>'',
-         'gender'=>'',
-         'city'=>'',
-         'bank_name'=>'',
-         'account_holder_name'=>'',
-         'branch'=>'',
-         'account_number'=>'',
-         'slmc_reg_number'=>'',
-         'qualification_file'=>'',
-         'type'=>'',
-         'specialization'=>'',
+         'd_first_name'=>'',
+         'd_last_name'=>'',
+         'd_nic'=>'',
+         'd_contact_number'=>'',
+         'd_email'=>'',
+         'd_password'=>'',
+         'd_confirm_password'=>'',
+         'd_gender'=>'',
+         'd_city'=>'',
+         'd_bank_name'=>'',
+         'd_account_holder_name'=>'',
+         'd_branch'=>'',
+         'd_account_number'=>'',
+         'd_slmc_reg_number'=>'',
+         'd_qualification_file'=>'',
+         'd_type'=>'',
+         'd_specialization'=>'',
  
-          'first_name_err'=>'',
-          'last_name_err'=>'',
-          'nic_err'=>'',
-          'contact_number_err'=>'',
-          'email_err'=>'',
-          'password_err'=>'',
-          'confirm_password_err'=>'',
-          'city_err'=>'',
-          'bank_name_err'=>'',
-          'account_holder_name_err'=>'',
-          'branch_err'=>'',
-          'account_number_err'=>'',
-          'slmc_reg_number_err'=>'',
-          'type_err'=>'',
-          'specialization_err'=>'',
-          'gender_err'=>'',
-          'qualification_file_err'=>'',
+          'd_first_name_err'=>'',
+          'd_last_name_err'=>'',
+          'd_nic_err'=>'',
+          'd_contact_number_err'=>'',
+          'd_email_err'=>'',
+          'd_password_err'=>'',
+          'd_confirm_password_err'=>'',
+          'd_city_err'=>'',
+          'd_bank_name_err'=>'',
+          'd_account_holder_name_err'=>'',
+          'd_branch_err'=>'',
+          'd_account_number_err'=>'',
+          'd_slmc_reg_number_err'=>'',
+          'd_type_err'=>'',
+          'd_specialization_err'=>'',
+          'd_gender_err'=>'',
+          'd_qualification_file_err'=>'',
         ];
  
-    //    $this->view('AdminUserMgmt/Doctor/v_doctorAddNew',$data);
-    $this->view('patients/v_signup',$data);
+       $this->view('patients/v_signup',$data);
 
   }
   
@@ -244,40 +243,40 @@ class ServiceProviderSignup extends Controller{
               $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
               $_SESSION['signup_form_number'] = 2;
               $data=[
-                'first_name'=>trim($_POST['first_name']),
-                'last_name'=>trim($_POST['last_name']),
-                'nic'=>trim($_POST['nic']),
-                'contact_number'=>trim($_POST['contact_number']),
-                'email'=>trim($_POST['email']),
-                'password'=>trim($_POST['password']),
-                'confirm_password'=>trim($_POST['confirm_password']),
-                'city'=>trim($_POST['city']),
-                'bank_name'=>trim($_POST['bank_name']),
-                'account_holder_name'=>trim($_POST['account_holder_name']),
-                'branch'=>trim($_POST['branch']),
-                'account_number'=>trim($_POST['account_number']),
-                'slmc_reg_number'=>trim($_POST['slmc']),
-                'gender'=>trim($_POST['gender']),
-                'qualification_file'=>$_FILES['qualification_file'],
-                'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
+                'c_first_name'=>trim($_POST['first_name']),
+                'c_last_name'=>trim($_POST['last_name']),
+                'c_nic'=>trim($_POST['nic']),
+                'c_contact_number'=>trim($_POST['contact_number']),
+                'c_email'=>trim($_POST['email']),
+                'c_password'=>trim($_POST['password']),
+                'c_confirm_password'=>trim($_POST['confirm_password']),
+                'c_city'=>trim($_POST['city']),
+                'c_bank_name'=>trim($_POST['bank_name']),
+                'c_account_holder_name'=>trim($_POST['account_holder_name']),
+                'c_branch'=>trim($_POST['branch']),
+                'c_account_number'=>trim($_POST['account_number']),
+                'c_slmc_reg_number'=>trim($_POST['slmc']),
+                'c_gender'=>trim($_POST['gender']),
+                'c_qualification_file'=>$_FILES['qualification_file'],
+                'c_qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
                 
             
                                     
-                 'first_name_err'=>'',
-                 'last_name_err'=>'',
-                 'nic_err'=>'',
-                 'contact_number_err'=>'',
-                 'email_err'=>'',
-                 'password_err'=>'',
-                 'confirm_password_err'=>'',
-                 'city_err'=>'',
-                 'bank_name_err'=>'',
-                 'account_holder_name_err'=>'',
-                 'branch_err'=>'',
-                 'account_number_err'=>'',
-                 'slmc_reg_number_err'=>'',
-                 'gender_err'=>'',
-                 'qualification_file_err'=>'',
+                 'c_first_name_err'=>'',
+                 'c_last_name_err'=>'',
+                 'c_nic_err'=>'',
+                 'c_contact_number_err'=>'',
+                 'c_email_err'=>'',
+                 'c_password_err'=>'',
+                 'c_confirm_password_err'=>'',
+                 'c_city_err'=>'',
+                 'c_bank_name_err'=>'',
+                 'c_account_holder_name_err'=>'',
+                 'c_branch_err'=>'',
+                 'c_account_number_err'=>'',
+                 'c_slmc_reg_number_err'=>'',
+                 'c_gender_err'=>'',
+                 'c_qualification_file_err'=>'',
                      
          ];
              $fileExt=explode('.',$_FILES['qualification_file']['name']);
@@ -286,104 +285,104 @@ class ServiceProviderSignup extends Controller{
    
             
              if(!in_array($fileActualExt,$allowed)){
-               $data['qualification_file_err']='You cannot upload files of this type';
+               $data['c_qualification_file_err']='You cannot upload files of this type';
    
              }
        
    
-             if($data['qualification_file']['size']>0){
-               if(uploadFile($data['qualification_file']['tmp_name'],$data['qualification_file_name'],'/upload/counsellor_qualification/')){
+             if($data['c_qualification_file']['size']>0){
+               if(uploadFile($data['c_qualification_file']['tmp_name'],$data['c_qualification_file_name'],'/upload/counsellor_qualification/')){
                           
                }else{  
-                $data['qualification_file_err']='Unsuccessful qualification_file uploading';
+                $data['c_qualification_file_err']='Unsuccessful qualification_file uploading';
                 
                }
              }else{
-                $data[ 'qualification_file_err'] ="qualification file size is empty";
+                $data[ 'c_qualification_file_err'] ="qualification file size is empty";
               
              }
     
-             if(empty($data['first_name'])){
-               $data['first_name_err']='first name can not be empty';
+             if(empty($data['c_first_name'])){
+               $data['c_first_name_err']='first name can not be empty';
             }
            
-            if(empty($data['last_name'])){
-               $data['last_name_err']='last name can not be empty';
+            if(empty($data['c_last_name'])){
+               $data['c_last_name_err']='last name can not be empty';
             }
          
-            if(empty($data['nic'])){
-              $data['nic_err']='nic can not be empty';
+            if(empty($data['c_nic'])){
+              $data['c_nic_err']='nic can not be empty';
            }
           
-           if(empty($data['contact_number'])){
-              $data['contact_number_err']='contact number can not be empty';
+           if(empty($data['c_contact_number'])){
+              $data['c_contact_number_err']='contact number can not be empty';
            }
             
-              if(empty($data['email'])){
-                $data['email_err']='email can not be empty';
+              if(empty($data['c_email'])){
+                $data['c_email_err']='email can not be empty';
             }
             
-            if(empty($data['password'])){
-                $data['password_err']='password can not be empty';
+            if(empty($data['c_password'])){
+                $data['c_password_err']='password can not be empty';
             }
           
-            if(empty($data['confirm_password'])){
-              $data['confirm_password_err']='confirm password  can not be empty';
+            if(empty($data['c_confirm_password'])){
+              $data['c_confirm_password_err']='confirm password  can not be empty';
             }
           
-            if(empty($data['city'])){
-              $data['city_err']='city can not be empty';
+            if(empty($data['c_city'])){
+              $data['c_city_err']='city can not be empty';
             }
   
-              if(empty($data['bank_name'])){
-                $data['bank_name_err']='bank name can not be empty';
+              if(empty($data['c_bank_name'])){
+                $data['c_bank_name_err']='bank name can not be empty';
             }
             
-            if(empty($data['account_holder_name'])){
-                $data['account_holder_name_err']='account_holder name can not be empty';
+            if(empty($data['c_account_holder_name'])){
+                $data['c_account_holder_name_err']='account_holder name can not be empty';
             }
           
-            if(empty($data['branch'])){
-              $data['branch_err']='branch name can not be empty';
+            if(empty($data['c_branch'])){
+              $data['c_branch_err']='branch name can not be empty';
             }
           
-            if(empty($data['account_number'])){
-              $data['account_number_err']='last name can not be empty';
+            if(empty($data['c_account_number'])){
+              $data['c_account_number_err']='last name can not be empty';
             }
   
-            if(empty($data['slmc_reg_number'])){
-              $data['slmc_reg_number_err']='slmc reg number can not be empty';
+            if(empty($data['c_slmc_reg_number'])){
+              $data['c_slmc_reg_number_err']='slmc reg number can not be empty';
            }
           
             
-            if(empty($data['gender'])){
-              $data['gender_err']='gender can not be empty';
+            if(empty($data['c_gender'])){
+              $data['c_gender_err']='gender can not be empty';
             }
             
-            if(empty($data['qualification_file'])){
-              $data['qualification_file_err']='qualification_file can not be empty';
+            if(empty($data['c_qualification_file'])){
+              $data['c_qualification_file_err']='qualification_file can not be empty';
             }
   
   
 
-             if($data['password']!=$data['confirm_password']){
-              $data['passwordnotmatch_err']='password not match';
+             if($data['c_password']!=$data['c_confirm_password']){
+              $data['c_confirm_password_err']='password not match';
              }
    
-             if($this->adminUserMgmtModel->findCounsellorByEmail($data['email'])){
-               $data['email_err']='Email is already registered';
+             if($this->adminUserMgmtModel->findCounsellorByEmail($data['c_email'])){
+               $data['c_email_err']='Email is already registered';
     
              } 
-             else if($this->adminUserMgmtModel->findReqCounsellorByEmail($data['email'])){
-               $data['email_err']='Email is already registered';
+             else if($this->adminUserMgmtModel->findReqCounsellorByEmail($data['c_email'])){
+               $data['c_email_err']='Email is already registered';
     
              }
           
       
       
-             if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['city_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['slmc_reg_number_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
+             if(empty($data['c_first_name_err']) && empty($data['c_last_name_err'])&& empty($data['c_nic_err'])&& empty($data['c_contact_number_err'])&& empty($data['c_email_err'])&& empty($data['c_password_err'])&& empty($data['c_confirm_password_err'])&& empty($data['c_city_err'])&& empty($data['c_bank_name_err'])&& empty($data['c_account_holder_name_err'])&& empty($data['c_branch_err'])&& empty($data['c_account_number_err'])&& empty($data['c_slmc_reg_number_err'])&& empty($data['c_gender_err'])&& empty($data['c_qualification_file_err'])){
                
-               $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
+               $data['c_password']=password_hash($data['c_password'],PASSWORD_DEFAULT);
                 if($this->serviceProviderSignupModel->signupCounsellor($data)){
                         $this->view('inc/v_pending',$data); 
                   }else{
@@ -402,37 +401,37 @@ class ServiceProviderSignup extends Controller{
        
               $data=[
        
-               'first_name'=>'',
-               'last_name'=>'',
-               'nic'=>'',
-               'contact_number'=>'',
-               'email'=>'',
-               'password'=>'',
-               'confirm_password'=>'',
-               'gender'=>'',
-               'city'=>'',
-               'bank_name'=>'',
-               'account_holder_name'=>'',
-               'branch'=>'',
-               'account_number'=>'',
-               'slmc_reg_number'=>'',
-               'qualification_file'=>'',
+               'c_first_name'=>'',
+               'c_last_name'=>'',
+               'c_nic'=>'',
+               'c_contact_number'=>'',
+               'c_email'=>'',
+               'c_password'=>'',
+               'c_confirm_password'=>'',
+               'c_gender'=>'',
+               'c_city'=>'',
+               'c_bank_name'=>'',
+               'c_account_holder_name'=>'',
+               'c_branch'=>'',
+               'c_account_number'=>'',
+               'c_slmc_reg_number'=>'',
+               'c_qualification_file'=>'',
                
-               'first_name_err'=>'',
-               'last_name_err'=>'',
-               'nic_err'=>'',
-               'contact_number_err'=>'',
-               'email_err'=>'',
-               'password_err'=>'',
-               'confirm_password_err'=>'',
-               'city_err'=>'',
-               'bank_name_err'=>'',
-               'account_holder_name_err'=>'',
-               'branch_err'=>'',
-               'account_number_err'=>'',
-               'slmc_reg_number_err'=>'',
-               'gender_err'=>'',
-               'qualification_file_err'=>'',
+               'c_first_name_err'=>'',
+               'c_last_name_err'=>'',
+               'c_nic_err'=>'',
+               'c_contact_number_err'=>'',
+               'c_email_err'=>'',
+               'c_password_err'=>'',
+               'c_confirm_password_err'=>'',
+               'c_city_err'=>'',
+               'c_bank_name_err'=>'',
+               'c_account_holder_name_err'=>'',
+               'c_branch_err'=>'',
+               'c_account_number_err'=>'',
+               'c_slmc_reg_number_err'=>'',
+               'c_gender_err'=>'',
+               'c_qualification_file_err'=>'',
               ];
        
               $this->view('patients/v_signup',$data);
@@ -451,41 +450,41 @@ class ServiceProviderSignup extends Controller{
            $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
            $_SESSION['signup_form_number'] = 5;
            $data=[
-             'first_name'=>trim($_POST['first_name']),
-             'last_name'=>trim($_POST['last_name']),
-             'nic'=>trim($_POST['nic']),
-             'contact_number'=>trim($_POST['contact_number']),
-             'email'=>trim($_POST['email']),
-             'password'=>trim($_POST['password']),
-             'confirm_password'=>trim($_POST['confirm_password']),
-             'city'=>trim($_POST['city']),
-             'bank_name'=>trim($_POST['bank_name']),
-             'account_holder_name'=>trim($_POST['account_holder_name']),
-             'branch'=>trim($_POST['branch']),
-             'account_number'=>trim($_POST['account_number']),
-             'address'=>trim($_POST['address']),
-             'fee'=>trim($_POST['fee']),
-             'gender'=>trim($_POST['gender']),
-             'qualification_file'=>$_FILES['qualification_file'],
-             'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
+             'm_first_name'=>trim($_POST['first_name']),
+             'm_last_name'=>trim($_POST['last_name']),
+             'm_nic'=>trim($_POST['nic']),
+             'm_contact_number'=>trim($_POST['contact_number']),
+             'm_email'=>trim($_POST['email']),
+             'm_password'=>trim($_POST['password']),
+             'm_confirm_password'=>trim($_POST['confirm_password']),
+             'm_city'=>trim($_POST['city']),
+             'm_bank_name'=>trim($_POST['bank_name']),
+             'm_account_holder_name'=>trim($_POST['account_holder_name']),
+             'm_branch'=>trim($_POST['branch']),
+             'm_account_number'=>trim($_POST['account_number']),
+             'm_address'=>trim($_POST['address']),
+             'm_fee'=>trim($_POST['fee']),
+             'm_gender'=>trim($_POST['gender']),
+             'm_qualification_file'=>$_FILES['qualification_file'],
+             'm_qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
              
          
-             'first_name_err'=>'',
-             'last_name_err'=>'',
-             'nic_err'=>'',
-             'contact_number_err'=>'',
-             'email_err'=>'',
-             'password_err'=>'',
-             'confirm_password_err'=>'',
-             'city_err'=>'',
-             'bank_name_err'=>'',
-             'account_holder_name_err'=>'',
-             'branch_err'=>'',
-             'account_number_err'=>'',
-             'address_err'=>'',
-             'fee_err'=>'',
-             'gender_err'=>'',
-             'qualification_file_err'=>'',
+             'm_first_name_err'=>'',
+             'm_last_name_err'=>'',
+             'm_nic_err'=>'',
+             'm_contact_number_err'=>'',
+             'm_email_err'=>'',
+             'm_password_err'=>'',
+             'm_confirm_password_err'=>'',
+             'm_city_err'=>'',
+             'm_bank_name_err'=>'',
+             'm_account_holder_name_err'=>'',
+             'm_branch_err'=>'',
+             'm_account_number_err'=>'',
+             'm_address_err'=>'',
+             'm_fee_err'=>'',
+             'm_gender_err'=>'',
+             'm_qualification_file_err'=>'',
           ];
           $fileExt=explode('.',$_FILES['qualification_file']['name']);
           $fileActualExt=strtolower(end($fileExt));
@@ -493,112 +492,112 @@ class ServiceProviderSignup extends Controller{
 
          
           if(!in_array($fileActualExt,$allowed)){
-            $data['qualification_file_err']='You cannot upload files of this type';
+            $data['m_qualification_file_err']='You cannot upload files of this type';
 
           }
     
 
-          if($data['qualification_file']['size']>0){
-            if(uploadFile($data['qualification_file']['tmp_name'],$data['qualification_file_name'],'/upload/meditation_instructor_qualification/')){
+          if($data['m_qualification_file']['size']>0){
+            if(uploadFile($data['m_qualification_file']['tmp_name'],$data['m_qualification_file_name'],'/upload/meditation_instructor_qualification/')){
                        
             }else{  
-             $data['qualification_file_err']='Unsuccessful qualification_file uploading';
+             $data['m_qualification_file_err']='Unsuccessful qualification_file uploading';
              
             }
           }else{
-             $data[ 'qualification_file_err'] ="qualification file size is empty";
+             $data[ 'm_qualification_file_err'] ="qualification file size is empty";
            
           }
  
-          if(empty($data['first_name'])){
-            $data['first_name_err']='first name can not be empty';
+          if(empty($data['m_first_name'])){
+            $data['m_first_name_err']='first name can not be empty';
          }
         
-         if(empty($data['last_name'])){
-            $data['last_name_err']='last name can not be empty';
+         if(empty($data['m_last_name'])){
+            $data['m_last_name_err']='last name can not be empty';
          }
       
-         if(empty($data['nic'])){
-           $data['nic_err']='nic can not be empty';
+         if(empty($data['m_nic'])){
+           $data['m_nic_err']='nic can not be empty';
         }
        
-        if(empty($data['contact_number'])){
-           $data['contact_number_err']='contact number can not be empty';
+        if(empty($data['m_contact_number'])){
+           $data['m_contact_number_err']='contact number can not be empty';
         }
          
-           if(empty($data['email'])){
-             $data['email_err']='email can not be empty';
+           if(empty($data['m_email'])){
+             $data['m_email_err']='email can not be empty';
          }
          
-         if(empty($data['password'])){
-             $data['password_err']='password can not be empty';
+         if(empty($data['m_password'])){
+             $data['m_password_err']='password can not be empty';
          }
        
-         if(empty($data['confirm_password'])){
-           $data['confirm_password_err']='confirm password  can not be empty';
+         if(empty($data['m_confirm_password'])){
+           $data['m_confirm_password_err']='confirm password  can not be empty';
          }
        
-         if(empty($data['city'])){
-           $data['city_err']='city can not be empty';
+         if(empty($data['m_city'])){
+           $data['m_city_err']='city can not be empty';
          }
 
-           if(empty($data['bank_name'])){
-             $data['bank_name_err']='bank name can not be empty';
+           if(empty($data['m_bank_name'])){
+             $data['m_bank_name_err']='bank name can not be empty';
          }
          
-         if(empty($data['account_holder_name'])){
-             $data['account_holder_name_err']='account_holder name can not be empty';
+         if(empty($data['m_account_holder_name'])){
+             $data['m_account_holder_name_err']='account_holder name can not be empty';
          }
        
-         if(empty($data['branch'])){
-           $data['branch_err']='branch name can not be empty';
+         if(empty($data['m_branch'])){
+           $data['m_branch_err']='branch name can not be empty';
          }
        
-         if(empty($data['account_number'])){
-           $data['account_number_err']='account_number can not be empty';
+         if(empty($data['m_account_number'])){
+           $data['m_account_number_err']='account_number can not be empty';
          }
 
-         if(empty($data['address'])){
-           $data['address_err']='address can not be empty';
+         if(empty($data['m_address'])){
+           $data['m_address_err']='address can not be empty';
         }
        
-         if(empty($data['fee'])){
-             $data['fee_err']='fee can not be empty';
+         if(empty($data['m_fee'])){
+             $data['m_fee_err']='fee can not be empty';
          }
        
         
-         if(empty($data['gender'])){
-           $data['gender_err']='gender can not be empty';
+         if(empty($data['m_gender'])){
+           $data['m_gender_err']='gender can not be empty';
          }
          
-         if(empty($data['qualification_file'])){
-           $data['qualification_file_err']='qualification_file can not be empty';
+         if(empty($data['m_qualification_file'])){
+           $data['m_qualification_file_err']='qualification_file can not be empty';
          }
 
 
 
 
-          if($data['password']!=$data['confirm_password']){
-           $data['passwordnotmatch_err']='password not match';
+          if($data['m_password']!=$data['m_confirm_password']){
+           $data['m_passwordnotmatch_err']='password not match';
           }
 
-          if($this->adminUserMgmtModel->findMeditationInstructorByEmail($data['email'])){
-            $data['email_err']='Email is already registered';
+          if($this->adminUserMgmtModel->findMeditationInstructorByEmail($data['m_email'])){
+            $data['m_email_err']='Email is already registered';
  
           } 
-          else if($this->adminUserMgmtModel->findReqMeditationInstructorByEmail($data['email'])){
-            $data['email_err']='Email is already registered';
+          else if($this->adminUserMgmtModel->findReqMeditationInstructorByEmail($data['m_email'])){
+            $data['m_email_err']='Email is already registered';
  
           }
        
    
    
           
-          if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['city_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['address_err'])&& empty($data['fee_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
+          if(empty($data['m_first_name_err']) && empty($data['m_last_name_err'])&& empty($data['m_nic_err'])&& empty($data['m_contact_number_err'])&& empty($data['m_email_err'])&& empty($data['m_password_err'])&& empty($data['m_confirm_password_err'])&& empty($data['m_city_err'])&& empty($data['m_bank_name_err'])&& empty($data['m_account_holder_name_err'])&& empty($data['m_branch_err'])&& empty($data['m_account_number_err'])&& empty($data['m_address_err'])&& empty($data['m_fee_err'])&& empty($data['m_gender_err'])&& empty($data['m_qualification_file_err'])){
                
         
                
-            $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
+            $data['m_password']=password_hash($data['m_password'],PASSWORD_DEFAULT);
              if($this->serviceProviderSignupModel->signupMeditationInstructor($data)){
                      $this->view('inc/v_pending',$data);  
                }else{
@@ -616,39 +615,39 @@ class ServiceProviderSignup extends Controller{
     
            $data=[
     
-            'first_name'=>'',
-            'last_name'=>'',
-            'nic'=>'',
-            'contact_number'=>'',
-            'email'=>'',
-            'password'=>'',
-            'confirm_password'=>'',
-            'gender'=>'',
-            'city'=>'',
-            'bank_name'=>'',
-            'account_holder_name'=>'',
-            'branch'=>'',
-            'account_number'=>'',
-            'qualification_file'=>'',
-            'address'=>'',
-            'fee'=>'',
+            'm_first_name'=>'',
+            'm_last_name'=>'',
+            'm_nic'=>'',
+            'm_contact_number'=>'',
+            'm_email'=>'',
+            'm_password'=>'',
+            'm_confirm_password'=>'',
+            'm_gender'=>'',
+            'm_city'=>'',
+            'm_bank_name'=>'',
+            'm_account_holder_name'=>'',
+            'm_branch'=>'',
+            'm_account_number'=>'',
+            'm_qualification_file'=>'',
+            'm_address'=>'',
+            'm_fee'=>'',
     
-            'first_name_err'=>'',
-            'last_name_err'=>'',
-            'nic_err'=>'',
-            'contact_number_err'=>'',
-            'email_err'=>'',
-            'password_err'=>'',
-            'confirm_password_err'=>'',
-            'city_err'=>'',
-            'bank_name_err'=>'',
-            'account_holder_name_err'=>'',
-            'branch_err'=>'',
-            'account_number_err'=>'',
-            'address_err'=>'',
-            'fee_err'=>'',
-            'gender_err'=>'',
-            'qualification_file_err'=>'',
+            'm_first_name_err'=>'',
+            'm_last_name_err'=>'',
+            'm_nic_err'=>'',
+            'm_contact_number_err'=>'',
+            'm_email_err'=>'',
+            'm_password_err'=>'',
+            'm_confirm_password_err'=>'',
+            'm_city_err'=>'',
+            'm_bank_name_err'=>'',
+            'm_account_holder_name_err'=>'',
+            'm_branch_err'=>'',
+            'm_account_number_err'=>'',
+            'm_address_err'=>'',
+            'm_fee_err'=>'',
+            'm_gender_err'=>'',
+            'm_qualification_file_err'=>'',
           ];
     
           $this->view('patients/v_signup',$data);
@@ -668,43 +667,43 @@ class ServiceProviderSignup extends Controller{
            $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
            $_SESSION['signup_form_number'] = 3;
            $data=[
-             'first_name'=>trim($_POST['first_name']),
-             'last_name'=>trim($_POST['last_name']),
-             'nic'=>trim($_POST['nic']),
-             'contact_number'=>trim($_POST['contact_number']),
-             'email'=>trim($_POST['email']),
-             'password'=>trim($_POST['password']),
-             'confirm_password'=>trim($_POST['confirm_password']),
-             'city'=>trim($_POST['city']),
-             'bank_name'=>trim($_POST['bank_name']),
-             'account_holder_name'=>trim($_POST['account_holder_name']),
-             'branch'=>trim($_POST['branch']),
-             'account_number'=>trim($_POST['account_number']),
-             'slmc_reg_number'=>trim($_POST['slmc']),
-             'pharmacy_name'=>trim($_POST['pharmacy_name']),
-             'address'=>trim($_POST['address']),
-             'gender'=>trim($_POST['gender']),
-             'qualification_file'=>$_FILES['qualification_file'],
-             'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
+             'p_first_name'=>trim($_POST['first_name']),
+             'p_last_name'=>trim($_POST['last_name']),
+             'p_nic'=>trim($_POST['nic']),
+             'p_contact_number'=>trim($_POST['contact_number']),
+             'p_email'=>trim($_POST['email']),
+             'p_password'=>trim($_POST['password']),
+             'p_confirm_password'=>trim($_POST['confirm_password']),
+             'p_city'=>trim($_POST['city']),
+             'p_bank_name'=>trim($_POST['bank_name']),
+             'p_account_holder_name'=>trim($_POST['account_holder_name']),
+             'p_branch'=>trim($_POST['branch']),
+             'p_account_number'=>trim($_POST['account_number']),
+             'p_slmc_reg_number'=>trim($_POST['slmc']),
+             'p_pharmacy_name'=>trim($_POST['pharmacy_name']),
+             'p_address'=>trim($_POST['address']),
+             'p_gender'=>trim($_POST['gender']),
+             'p_qualification_file'=>$_FILES['qualification_file'],
+             'p_qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
              
          
-             'first_name_err'=>'',
-             'last_name_err'=>'',
-             'nic_err'=>'',
-             'contact_number_err'=>'',
-             'email_err'=>'',
-             'password_err'=>'',
-             'confirm_password_err'=>'',
-             'city_err'=>'',
-             'bank_name_err'=>'',
-             'account_holder_name_err'=>'',
-             'branch_err'=>'',
-             'account_number_err'=>'',
-             'slmc_reg_number_err'=>'',
-             'pharmacy_name_err'=>'',
-             'address_err'=>'',
-             'gender_err'=>'',
-             'qualification_file_err'=>''
+             'p_first_name_err'=>'',
+             'p_last_name_err'=>'',
+             'p_nic_err'=>'',
+             'p_contact_number_err'=>'',
+             'p_email_err'=>'',
+             'p_password_err'=>'',
+             'p_confirm_password_err'=>'',
+             'p_city_err'=>'',
+             'p_bank_name_err'=>'',
+             'p_account_holder_name_err'=>'',
+             'p_branch_err'=>'',
+             'p_account_number_err'=>'',
+             'p_slmc_reg_number_err'=>'',
+             'p_pharmacy_name_err'=>'',
+             'p_address_err'=>'',
+             'p_gender_err'=>'',
+             'p_qualification_file_err'=>''
           ];
           $fileExt=explode('.',$_FILES['qualification_file']['name']);
           $fileActualExt=strtolower(end($fileExt));
@@ -712,110 +711,110 @@ class ServiceProviderSignup extends Controller{
 
          
           if(!in_array($fileActualExt,$allowed)){
-            $data['qualification_file_err']='You cannot upload files of this type';
+            $data['p_qualification_file_err']='You cannot upload files of this type';
 
           }
     
 
-          if($data['qualification_file']['size']>0){
-            if(uploadFile($data['qualification_file']['tmp_name'],$data['qualification_file_name'],'/upload/pharmacist_qualification/')){
+          if($data['p_qualification_file']['size']>0){
+            if(uploadFile($data['p_qualification_file']['tmp_name'],$data['p_qualification_file_name'],'/upload/pharmacist_qualification/')){
                        
             }else{  
-             $data['qualification_file_err']='Unsuccessful qualification_file uploading';
+             $data['p_qualification_file_err']='Unsuccessful qualification_file uploading';
              
             }
           }else{
-             $data[ 'qualification_file_err'] ="qualification file size is empty";
+             $data[ 'p_qualification_file_err'] ="qualification file size is empty";
            
           }
  
-          if(empty($data['first_name'])){
-            $data['first_name_err']='first name can not be empty';
+          if(empty($data['p_first_name'])){
+            $data['p_first_name_err']='first name can not be empty';
          }
         
-         if(empty($data['last_name'])){
-            $data['last_name_err']='last name can not be empty';
+         if(empty($data['p_last_name'])){
+            $data['p_last_name_err']='last name can not be empty';
          }
       
-         if(empty($data['nic'])){
-           $data['nic_err']='nic can not be empty';
+         if(empty($data['p_nic'])){
+           $data['p_nic_err']='nic can not be empty';
         }
        
-        if(empty($data['contact_number'])){
-           $data['contact_number_err']='contact number can not be empty';
+        if(empty($data['p_contact_number'])){
+           $data['p_contact_number_err']='contact number can not be empty';
         }
          
-           if(empty($data['email'])){
-             $data['email_err']='email can not be empty';
+           if(empty($data['p_email'])){
+             $data['p_email_err']='email can not be empty';
          }
          
-         if(empty($data['password'])){
-             $data['password_err']='password can not be empty';
+         if(empty($data['p_password'])){
+             $data['p_password_err']='password can not be empty';
          }
        
-         if(empty($data['confirm_password'])){
-           $data['confirm_password_err']='confirm password  can not be empty';
+         if(empty($data['p_confirm_password'])){
+           $data['p_confirm_password_err']='confirm password  can not be empty';
          }
        
-         if(empty($data['city'])){
-           $data['city_err']='city can not be empty';
+         if(empty($data['p_city'])){
+           $data['p_city_err']='city can not be empty';
          }
 
-           if(empty($data['bank_name'])){
-             $data['bank_name_err']='bank name can not be empty';
+           if(empty($data['p_bank_name'])){
+             $data['p_bank_name_err']='bank name can not be empty';
          }
          
-         if(empty($data['account_holder_name'])){
-             $data['account_holder_name_err']='account_holder name can not be empty';
+         if(empty($data['p_account_holder_name'])){
+             $data['p_account_holder_name_err']='account_holder name can not be empty';
          }
        
-         if(empty($data['branch'])){
-           $data['branch_err']='branch name can not be empty';
+         if(empty($data['p_branch'])){
+           $data['p_branch_err']='branch name can not be empty';
          }
        
-         if(empty($data['account_number'])){
-           $data['account_number_err']='last name can not be empty';
+         if(empty($data['p_account_number'])){
+           $data['p_account_number_err']='last name can not be empty';
          }
 
-         if(empty($data['slmc_reg_number'])){
-           $data['slmc_reg_number_err']='slmc reg number can not be empty';
+         if(empty($data['p_slmc_reg_number'])){
+           $data['p_slmc_reg_number_err']='slmc reg number can not be empty';
         }
        
-         if(empty($data['pharmacy_name'])){
-             $data['pharmacy_name_err']='pharmacy name can not be empty';
+         if(empty($data['p_pharmacy_name'])){
+             $data['p_pharmacy_name_err']='pharmacy name can not be empty';
          }
        
-         if(empty($data['address'])){
-           $data['address_err']='address can not be empty';
+         if(empty($data['p_address'])){
+           $data['p_address_err']='address can not be empty';
          }
          
-         if(empty($data['gender'])){
-           $data['gender_err']='gender can not be empty';
+         if(empty($data['p_gender'])){
+           $data['p_gender_err']='gender can not be empty';
          }
          
-         if(empty($data['qualification_file'])){
-           $data['qualification_file_err']='qualification_file can not be empty';
+         if(empty($data['p_qualification_file'])){
+           $data['p_qualification_file_err']='qualification_file can not be empty';
          }
 
        
-          if($data['password']!=$data['confirm_password']){
-           $data['passwordnotmatch_err']='password not match';
+          if($data['p_password']!=$data['p_confirm_password']){
+           $data['p_confirm_password_err']='password not match';
           }
 
-          if($this->adminUserMgmtModel->findPharmacistByEmail($data['email'])){
-            $data['email_err']='Email is already registered';
+          if($this->adminUserMgmtModel->findPharmacistByEmail($data['p_email'])){
+            $data['p_email_err']='Email is already registered';
  
           } 
-          else if($this->adminUserMgmtModel->findReqPharmacistByEmail($data['email'])){
-            $data['email_err']='Email is already registered';
+          else if($this->adminUserMgmtModel->findReqPharmacistByEmail($data['p_email'])){
+            $data['p_email_err']='Email is already registered';
  
           }
        
              
-          if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['city_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['slmc_reg_number_err'])&& empty($data['pharmacy_name_err'])&& empty($data['address_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
+          if(empty($data['p_first_name_err']) && empty($data['p_last_name_err'])&& empty($data['p_nic_err'])&& empty($data['p_contact_number_err'])&& empty($data['p_email_err'])&& empty($data['p_password_err'])&& empty($data['p_confirm_password_err'])&& empty($data['p_city_err'])&& empty($data['p_bank_name_err'])&& empty($data['p_account_holder_name_err'])&& empty($data['p_branch_err'])&& empty($data['p_account_number_err'])&& empty($data['p_slmc_reg_number_err'])&& empty($data['p_pharmacy_name_err'])&& empty($data['p_address_err'])&& empty($data['p_gender_err'])&& empty($data['p_qualification_file_err'])){
                
                  
-            $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
+            $data['p_password']=password_hash($data['p_password'],PASSWORD_DEFAULT);
              if($this->serviceProviderSignupModel->signupPharmacist($data)){
                   $this->view('inc/v_pending',$data);
                }else{
@@ -834,41 +833,41 @@ class ServiceProviderSignup extends Controller{
     
            $data=[
     
-            'first_name'=>'',
-            'last_name'=>'',
-            'nic'=>'',
-            'contact_number'=>'',
-            'email'=>'',
-            'password'=>'',
-            'confirm_password'=>'',
-            'gender'=>'',
-            'city'=>'',
-            'bank_name'=>'',
-            'account_holder_name'=>'',
-            'branch'=>'',
-            'account_number'=>'',
-            'slmc_reg_number'=>'',
-            'qualification_file'=>'',
-            'pharmacy_name'=>'',
-            'address'=>'',
+            'p_first_name'=>'',
+            'p_last_name'=>'',
+            'p_nic'=>'',
+            'p_contact_number'=>'',
+            'p_email'=>'',
+            'p_password'=>'',
+            'p_confirm_password'=>'',
+            'p_gender'=>'',
+            'p_city'=>'',
+            'p_bank_name'=>'',
+            'p_account_holder_name'=>'',
+            'p_branch'=>'',
+            'p_account_number'=>'',
+            'p_slmc_reg_number'=>'',
+            'p_qualification_file'=>'',
+            'p_pharmacy_name'=>'',
+            'p_address'=>'',
 
-            'first_name_err'=>'',
-            'last_name_err'=>'',
-            'nic_err'=>'',
-            'contact_number_err'=>'',
-            'email_err'=>'',
-            'password_err'=>'',
-            'confirm_password_err'=>'',
-            'city_err'=>'',
-            'bank_name_err'=>'',
-            'account_holder_name_err'=>'',
-            'branch_err'=>'',
-            'account_number_err'=>'',
-            'slmc_reg_number_err'=>'',
-            'pharmacy_name_err'=>'',
-            'address_err'=>'',
-            'gender_err'=>'',
-            'qualification_file_err'=>''
+            'p_first_name_err'=>'',
+            'p_last_name_err'=>'',
+            'p_nic_err'=>'',
+            'p_contact_number_err'=>'',
+            'p_email_err'=>'',
+            'p_password_err'=>'',
+            'p_confirm_password_err'=>'',
+            'p_city_err'=>'',
+            'p_bank_name_err'=>'',
+            'p_account_holder_name_err'=>'',
+            'p_branch_err'=>'',
+            'p_account_number_err'=>'',
+            'p_slmc_reg_number_err'=>'',
+            'p_pharmacy_name_err'=>'',
+            'p_address_err'=>'',
+            'p_gender_err'=>'',
+            'p_qualification_file_err'=>''
            ];
     
            $this->view('patients/v_signup',$data);
@@ -888,40 +887,40 @@ class ServiceProviderSignup extends Controller{
            $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
            $_SESSION['signup_form_number'] = 4;
            $data=[
-             'first_name'=>trim($_POST['first_name']),
-             'last_name'=>trim($_POST['last_name']),
-             'nic'=>trim($_POST['nic']),
-             'contact_number'=>trim($_POST['contact_number']),
-             'email'=>trim($_POST['email']),
-             'password'=>trim($_POST['password']),
-             'confirm_password'=>trim($_POST['confirm_password']),
-             'bank_name'=>trim($_POST['bank_name']),
-             'account_holder_name'=>trim($_POST['account_holder_name']),
-             'branch'=>trim($_POST['branch']),
-             'account_number'=>trim($_POST['account_number']),
-             'slmc_reg_number'=>trim($_POST['slmc']),
-             'fee'=>trim($_POST['fee']),
-             'gender'=>trim($_POST['gender']),
-             'qualification_file'=>$_FILES['qualification_file'],
-             'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
+             'n_first_name'=>trim($_POST['first_name']),
+             'n_last_name'=>trim($_POST['last_name']),
+             'n_nic'=>trim($_POST['nic']),
+             'n_contact_number'=>trim($_POST['contact_number']),
+             'n_email'=>trim($_POST['email']),
+             'n_password'=>trim($_POST['password']),
+             'n_confirm_password'=>trim($_POST['confirm_password']),
+             'n_bank_name'=>trim($_POST['bank_name']),
+             'n_account_holder_name'=>trim($_POST['account_holder_name']),
+             'n_branch'=>trim($_POST['branch']),
+             'n_account_number'=>trim($_POST['account_number']),
+             'n_slmc_reg_number'=>trim($_POST['slmc']),
+             'n_fee'=>trim($_POST['fee']),
+             'n_gender'=>trim($_POST['gender']),
+             'n_qualification_file'=>$_FILES['qualification_file'],
+             'n_qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
              
          
             
-             'first_name_err'=>'',
-             'last_name_err'=>'',
-             'nic_err'=>'',
-             'contact_number_err'=>'',
-             'email_err'=>'',
-             'password_err'=>'',
-             'confirm_password_err'=>'',
-             'bank_name_err'=>'',
-             'account_holder_name_err'=>'',
-             'branch_err'=>'',
-             'account_number_err'=>'',
-             'slmc_reg_number_err'=>'',
-             'fee_err'=>'',
-             'gender_err'=>'',
-             'qualification_file_err'=>''
+             'n_first_name_err'=>'',
+             'n_last_name_err'=>'',
+             'n_nic_err'=>'',
+             'n_contact_number_err'=>'',
+             'n_email_err'=>'',
+             'n_password_err'=>'',
+             'n_confirm_password_err'=>'',
+             'n_bank_name_err'=>'',
+             'n_account_holder_name_err'=>'',
+             'n_branch_err'=>'',
+             'n_account_number_err'=>'',
+             'n_slmc_reg_number_err'=>'',
+             'n_fee_err'=>'',
+             'n_gender_err'=>'',
+             'n_qualification_file_err'=>''
           ];
           $fileExt=explode('.',$_FILES['qualification_file']['name']);
           $fileActualExt=strtolower(end($fileExt));
@@ -929,104 +928,104 @@ class ServiceProviderSignup extends Controller{
 
          
           if(!in_array($fileActualExt,$allowed)){
-            $data['qualification_file_err']='You cannot upload files of this type';
+            $data['n_qualification_file_err']='You cannot upload files of this type';
 
           }
     
 
-          if($data['qualification_file']['size']>0){
-            if(uploadFile($data['qualification_file']['tmp_name'],$data['qualification_file_name'],'/upload/nutritionist_qualification/')){
+          if($data['n_qualification_file']['size']>0){
+            if(uploadFile($data['n_qualification_file']['tmp_name'],$data['n_qualification_file_name'],'/upload/nutritionist_qualification/')){
                        
             }else{  
-             $data['qualification_file_err']='Unsuccessful qualification_file uploading';
+             $data['n_qualification_file_err']='Unsuccessful qualification_file uploading';
              
             }
           }else{
-             $data[ 'qualification_file_err'] ="qualification file size is empty";
+             $data[ 'n_qualification_file_err'] ="qualification file size is empty";
            
           }
  
-          if(empty($data['first_name'])){
-            $data['first_name_err']='first name can not be empty';
+          if(empty($data['n_first_name'])){
+            $data['n_first_name_err']='first name can not be empty';
          }
         
-         if(empty($data['last_name'])){
-            $data['last_name_err']='last name can not be empty';
+         if(empty($data['n_last_name'])){
+            $data['n_last_name_err']='last name can not be empty';
          }
       
-         if(empty($data['nic'])){
-           $data['nic_err']='nic can not be empty';
+         if(empty($data['n_nic'])){
+           $data['n_nic_err']='nic can not be empty';
         }
        
-        if(empty($data['contact_number'])){
-           $data['contact_number_err']='contact number can not be empty';
+        if(empty($data['n_contact_number'])){
+           $data['n_contact_number_err']='contact number can not be empty';
         }
          
-           if(empty($data['email'])){
-             $data['email_err']='email can not be empty';
+           if(empty($data['n_email'])){
+             $data['n_email_err']='email can not be empty';
          }
          
-         if(empty($data['password'])){
-             $data['password_err']='password can not be empty';
+         if(empty($data['n_password'])){
+             $data['n_password_err']='password can not be empty';
          }
        
-         if(empty($data['confirm_password'])){
-           $data['confirm_password_err']='confirm password  can not be empty';
+         if(empty($data['n_confirm_password'])){
+           $data['n_confirm_password_err']='confirm password  can not be empty';
          }
        
-         if(empty($data['bank_name'])){
-             $data['bank_name_err']='bank name can not be empty';
+         if(empty($data['n_bank_name'])){
+             $data['n_bank_name_err']='bank name can not be empty';
          }
          
-         if(empty($data['account_holder_name'])){
-             $data['account_holder_name_err']='account holder name can not be empty';
+         if(empty($data['n_account_holder_name'])){
+             $data['n_account_holder_name_err']='account holder name can not be empty';
          }
        
-         if(empty($data['branch'])){
-           $data['branch_err']='branch name can not be empty';
+         if(empty($data['n_branch'])){
+           $data['n_branch_err']='branch name can not be empty';
          }
        
-         if(empty($data['account_number'])){
-           $data['account_number_err']='account number can not be empty';
+         if(empty($data['n_account_number'])){
+           $data['n_account_number_err']='account number can not be empty';
          }
 
-         if(empty($data['slmc_reg_number'])){
-           $data['slmc_reg_number_err']='slmc reg number can not be empty';
+         if(empty($data['n_slmc_reg_number'])){
+           $data['n_slmc_reg_number_err']='slmc reg number can not be empty';
         }
        
-         if(empty($data['fee'])){
-             $data['fee_err']='fee can not be empty';
+         if(empty($data['n_fee'])){
+             $data['n_fee_err']='fee can not be empty';
          }
        
          
-         if(empty($data['gender'])){
-           $data['gender_err']='gender can not be empty';
+         if(empty($data['n_gender'])){
+           $data['n_gender_err']='gender can not be empty';
          }
          
-         if(empty($data['qualification_file'])){
-           $data['qualification_file_err']='qualification_file can not be empty';
+         if(empty($data['n_qualification_file'])){
+           $data['n_qualification_file_err']='qualification_file can not be empty';
          }
 
        
-          if($data['password']!=$data['confirm_password']){
-           $data['passwordnotmatch_err']='password not match';
+          if($data['n_password']!=$data['n_confirm_password']){
+           $data['n_passwordnotmatch_err']='password not match';
           }
 
-          if($this->adminUserMgmtModel->findNutritionistByEmail($data['email'])){
-            $data['email_err']='Email is already registered';
+          if($this->adminUserMgmtModel->findNutritionistByEmail($data['n_email'])){
+            $data['n_email_err']='Email is already registered';
  
           } 
-          else if($this->adminUserMgmtModel->findReqNutritionistByEmail($data['email'])){
-            $data['email_err']='Email is already registered';
+          else if($this->adminUserMgmtModel->findReqNutritionistByEmail($data['n_email'])){
+            $data['n_email_err']='Email is already registered';
  
           }
        
    
    
         
-          if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['slmc_reg_number_err'])&& empty($data['fee_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
+          if(empty($data['n_first_name_err']) && empty($data['n_last_name_err'])&& empty($data['n_nic_err'])&& empty($data['n_contact_number_err'])&& empty($data['n_email_err'])&& empty($data['n_password_err'])&& empty($data['n_confirm_password_err'])&& empty($data['n_bank_name_err'])&& empty($data['n_account_holder_name_err'])&& empty($data['n_branch_err'])&& empty($data['n_account_number_err'])&& empty($data['n_slmc_reg_number_err'])&& empty($data['n_fee_err'])&& empty($data['n_gender_err'])&& empty($data['n_qualification_file_err'])){
               
-            $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
+            $data['n_password']=password_hash($data['n_password'],PASSWORD_DEFAULT);
              if($this->serviceProviderSignupModel->signupNutritionist($data)){
                    $this->view('inc/v_pending',$data);  
                }else{
@@ -1045,38 +1044,38 @@ class ServiceProviderSignup extends Controller{
     
            $data=[
     
-            'first_name'=>'',
-            'last_name'=>'',
-            'nic'=>'',
-            'contact_number'=>'',
-            'email'=>'',
-            'password'=>'',
-            'confirm_password'=>'',
-            'gender'=>'',
-            'bank_name'=>'',
-            'account_holder_name'=>'',
-            'branch'=>'',
-            'account_number'=>'',
-            'slmc_reg_number'=>'',
-            'qualification_file'=>'',
-            'fee'=>'',
+            'n_first_name'=>'',
+            'n_last_name'=>'',
+            'n_nic'=>'',
+            'n_contact_number'=>'',
+            'n_email'=>'',
+            'n_password'=>'',
+            'n_confirm_password'=>'',
+            'n_gender'=>'',
+            'n_bank_name'=>'',
+            'n_account_holder_name'=>'',
+            'n_branch'=>'',
+            'n_account_number'=>'',
+            'n_slmc_reg_number'=>'',
+            'n_qualification_file'=>'',
+            'n_fee'=>'',
             
 
-            'first_name_err'=>'',
-            'last_name_err'=>'',
-            'nic_err'=>'',
-            'contact_number_err'=>'',
-            'email_err'=>'',
-            'password_err'=>'',
-            'confirm_password_err'=>'',
-            'bank_name_err'=>'',
-            'account_holder_name_err'=>'',
-            'branch_err'=>'',
-            'account_number_err'=>'',
-            'slmc_reg_number_err'=>'',
-            'fee_err'=>'',
-            'gender_err'=>'',
-            'qualification_file_err'=>''
+            'n_first_name_err'=>'',
+            'n_last_name_err'=>'',
+            'n_nic_err'=>'',
+            'n_contact_number_err'=>'',
+            'n_email_err'=>'',
+            'n_password_err'=>'',
+            'n_confirm_password_err'=>'',
+            'n_bank_name_err'=>'',
+            'n_account_holder_name_err'=>'',
+            'n_branch_err'=>'',
+            'n_account_number_err'=>'',
+            'n_slmc_reg_number_err'=>'',
+            'n_fee_err'=>'',
+            'n_gender_err'=>'',
+            'n_qualification_file_err'=>''
           ];
     
           $this->view('patients/v_signup',$data);
