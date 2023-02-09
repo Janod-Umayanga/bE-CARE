@@ -9,9 +9,9 @@
 
       }
 
-      public function getDoctorAppoinments($doctor_timeslot_id) {
-        $this->db->query('SELECT * FROM doctor_channel WHERE doctor_timeslot_id=:doctor_timeslot_id');
-        $this->db->bind(':doctor_timeslot_id', $doctor_timeslot_id);
+      public function getDoctorAppoinments($doctor_id) {
+        $this->db->query('SELECT * FROM doctor_channel WHERE doctor_id=:doctor_id');
+        $this->db->bind(':doctor_id', $doctor_id);
 
         $result = $this->db->resultSet();
 
