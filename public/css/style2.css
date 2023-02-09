@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
-
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -9,18 +7,21 @@
     scroll-behavior: smooth;
 }
 
-:root{ /*Color palette for entire application. color palette reference - https://colorhunt.co/palette/fafafac7eeff0077c01d242b */
+:root {
+    /*Color palette for entire application. color palette reference - https://colorhunt.co/palette/fafafac7eeff0077c01d242b */
     --hue-white: #FAFAFA;
     --hue-light-blue: #C7EEFF;
     --hue-dark-blue: #0077C0;
     --hue-black: #1D242B;
 }
 
+
 /************************************************** Home Page style starts ************************************************************/
+
 
 /*Navigation styles start from here*/
 
-nav{
+nav {
     --hue: var(--hue-white);
     width: 100%;
     background-color: var(--hue);
@@ -29,17 +30,19 @@ nav{
     overflow: hidden;
 }
 
-nav.dark{ /* background color of navigation changes to black when clicked on dark theme icon */
+nav.dark {
+    /* background color of navigation changes to black when clicked on dark theme icon */
     --hue: var(--hue-black);
 }
 
-.top-content-formobile{ /* This only appear when view width fits for mobile */
+.top-content-formobile {
+    /* This only appear when view width fits for mobile */
     width: 100%;
     height: 40px;
     display: none;
 }
 
-.nav-bottom{
+.nav-bottom {
     width: 100%;
     display: flex;
     align-items: center;
@@ -47,7 +50,8 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 5px;
 }
 
-.content-container{ /*This is the container for navigation bar tools */
+.content-container {
+    /*This is the container for navigation bar tools */
     --hue: var(--hue-black);
     width: 70vw;
     padding: 5px;
@@ -57,11 +61,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue);
 }
 
-.content-container.dark{ /* font color of this container changes to white when clicked on dark theme icon */
+.content-container.dark {
+    /* font color of this container changes to white when clicked on dark theme icon */
     --hue: var(--hue-white);
 }
 
-.content-container ul{
+.content-container ul {
     width: fit-content;
     display: flex;
     align-items: center;
@@ -69,7 +74,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     gap: 20px;
 }
 
-.links-container{
+.links-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,7 +85,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     list-style: none;
 }
 
-.content-container ul li a{
+.content-container ul li a {
     --hue: var(--hue-black);
     text-decoration: none;
     font-weight: bold;
@@ -88,24 +93,26 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue);
 }
 
-.content-container ul li a.dark{ /* font color of element <a /> changes to white when clicked on dark theme icon */
+.content-container ul li a.dark {
+    /* font color of element <a /> changes to white when clicked on dark theme icon */
     --hue: var(--hue-white);
 }
 
-.button-container{
+.button-container {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
 }
 
-.register-approach{ /*This only appear when view width fits for mobile */
+.register-approach {
+    /*This only appear when view width fits for mobile */
     display: none;
     font-size: 12px;
     font-weight: 700;
 }
 
-.nav-buttons{
+.nav-buttons {
     --hue: var(--hue-dark-blue);
     --hue-font: var(--hue-white);
     padding: 2px 20px;
@@ -119,7 +126,8 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     text-decoration: none;
 }
 
-.aside-menu{ /* This is only appeared when screen width is lower than 900px */
+.aside-menu {
+    /* This is only appeared when screen width is lower than 900px */
     width: 20px;
     height: 20px;
     position: absolute;
@@ -128,7 +136,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     display: none;
 }
 
-.aside-menu span{
+.aside-menu span {
     --hue: var(--hue-black);
     width: 100%;
     height: 3px;
@@ -139,11 +147,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     transition: all 0.3s ease-in-out;
 }
 
-.aside-menu span.dark{ /* background color of this span changes to white when clicked on dark theme icon */
+.aside-menu span.dark {
+    /* background color of this span changes to white when clicked on dark theme icon */
     --hue: var(--hue-white);
 }
 
-.content-container i{
+.content-container i {
     font-size: 20px;
     cursor: pointer;
 }
@@ -151,9 +160,10 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 
 /* Navigation styles end here */
 
+
 /* The main section starts here */
 
-.main-content-container{
+.main-content-container {
     --hue: var(--hue-white);
     color: var(--hue);
     width: 100%;
@@ -170,18 +180,18 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 0 5px;
 }
 
-.main-content p{
+.main-content p {
     font-size: 12px;
     font-weight: 700px;
 }
 
-.main-content h1{
+.main-content h1 {
     font-size: 3rem;
     line-height: 55px;
     font-weight: 700;
 }
 
-.main-two-buttons-container{
+.main-two-buttons-container {
     margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
@@ -189,7 +199,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     gap: 5px;
 }
 
-.main-button{
+.main-button {
     --hue: var(--hue-white);
     width: 150px;
     padding: 10px;
@@ -206,16 +216,18 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     text-decoration: none;
 }
 
-.main-button:hover{
+.main-button:hover {
     background-color: var(--hue-white);
     color: #1D242B;
 }
 
+
 /* Main section ends here */
+
 
 /* The main section Admin DashBoard starts here */
 
-.main-content-container-adminDashBoard{
+.main-content-container-adminDashBoard {
     --hue: var(--hue-white);
     color: var(--hue);
     width: 100%;
@@ -232,11 +244,13 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 0 5px;
 }
 
+
 /* Main section ends here */
+
 
 /* Service section starts here */
 
-.our-services-container{
+.our-services-container {
     --hue: var(--hue-white);
     width: 100%;
     display: flex;
@@ -249,25 +263,25 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.our-services-container.dark{
+.our-services-container.dark {
     --hue: var(--hue-black);
     color: var(--hue-white);
 }
 
-.service-topic{
+.service-topic {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.service-topic .line{
+.service-topic .line {
     width: 55px;
     height: 4px;
     border-radius: 5px;
     background-color: #0076c098;
 }
 
-.card-container-forservices{
+.card-container-forservices {
     width: 70vw;
     display: flex;
     height: 575px;
@@ -279,12 +293,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.card-container-forservices.active{
+.card-container-forservices.active {
     height: fit-content;
     overflow: auto;
 }
 
-.card-container-forservices .card{
+.card-container-forservices .card {
     width: 340px;
     height: 275px;
     background-color: #f1eaea;
@@ -294,14 +308,13 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     text-decoration: none;
 }
 
-
-.card-container-forservices .card img{
+.card-container-forservices .card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
 }
 
-.show-button{
+.show-button {
     --hue: var(--hue-black);
     padding: 5px 20px;
     outline: none;
@@ -314,13 +327,14 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     justify-content: center;
     gap: 10px;
 }
+
 
 /* Service section ends here */
 
 
 /* Service section RequestedService providers viewMore starts here */
 
-.our-services-container{
+.our-services-container {
     --hue: var(--hue-white);
     width: 100%;
     display: flex;
@@ -333,25 +347,25 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.our-services-container.dark{
+.our-services-container.dark {
     --hue: var(--hue-black);
     color: var(--hue-white);
 }
 
-.service-topic{
+.service-topic {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.service-topic .line{
+.service-topic .line {
     width: 55px;
     height: 4px;
     border-radius: 5px;
     background-color: #0076c098;
 }
 
-.card-container-forservices{
+.card-container-forservices {
     width: 70vw;
     display: flex;
     height: 575px;
@@ -363,12 +377,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.card-container-forservices.active{
+.card-container-forservices.active {
     height: fit-content;
     overflow: auto;
 }
 
-.card-container-forservices .card{
+.card-container-forservices .card {
     width: 340px;
     height: 275px;
     background-color: #f1eaea;
@@ -378,14 +392,13 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     text-decoration: none;
 }
 
-
-.card-container-forservices .card img{
+.card-container-forservices .card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
 }
 
-.show-button{
+.show-button {
     --hue: var(--hue-black);
     padding: 5px 20px;
     outline: none;
@@ -399,13 +412,13 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     gap: 10px;
 }
 
+
 /* Service section ends here */
 
 
 /* Card Container for user MGMT */
 
-
-.card-container-forUserMgmt{
+.card-container-forUserMgmt {
     width: 70vw;
     display: flex;
     height: 575px;
@@ -417,12 +430,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.card-container-forUserMgmt.active{
+.card-container-forUserMgmt.active {
     height: fit-content;
-   
 }
 
-.card-container-forUserMgmt .card{
+.card-container-forUserMgmt .card {
     width: 340px;
     height: 275px;
     background-color: #f1eaea;
@@ -432,8 +444,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     text-decoration: none;
 }
 
-
-.card-container-forUserMgmt .card img{
+.card-container-forUserMgmt .card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
@@ -442,7 +453,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 
 /* Service section Complaint Mgmt starts here */
 
-.our-services-container-complaint{
+.our-services-container-complaint {
     --hue: var(--hue-white);
     width: 100%;
     display: flex;
@@ -455,25 +466,25 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.our-services-container-complaint.dark{
+.our-services-container-complaint.dark {
     --hue: var(--hue-black);
     color: var(--hue-white);
 }
 
-.our-services-container-complaint .service-topic{
+.our-services-container-complaint .service-topic {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.our-services-container-complaint .service-topic .line{
+.our-services-container-complaint .service-topic .line {
     width: 55px;
     height: 4px;
     border-radius: 5px;
     background-color: #0076c098;
 }
 
-.our-services-container-complaint .card-container-forservices{
+.our-services-container-complaint .card-container-forservices {
     width: 70vw;
     display: flex;
     height: 275px;
@@ -485,12 +496,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.our-services-container-complaint .card-container-forservices.active{
+.our-services-container-complaint .card-container-forservices.active {
     height: fit-content;
     overflow: auto;
 }
 
-.our-services-container-complaint .card-container-forservices .card{
+.our-services-container-complaint .card-container-forservices .card {
     width: 340px;
     height: 275px;
     background-color: #f1eaea;
@@ -500,14 +511,13 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     text-decoration: none;
 }
 
-
-.our-services-container-complaint .card-container-forservices .card img{
+.our-services-container-complaint .card-container-forservices .card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
 }
 
-.our-services-container-complaint .show-button{
+.our-services-container-complaint .show-button {
     --hue: var(--hue-black);
     padding: 5px 20px;
     outline: none;
@@ -521,13 +531,13 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     gap: 10px;
 }
 
-/* Service section ends here */
 
+/* Service section ends here */
 
 
 /* Footer starts here */
 
-.footer{
+.footer {
     width: 100%;
     height: fit-content;
     background-color: var(--hue-black);
@@ -538,23 +548,23 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     position: relative;
 }
 
-.about-becare{
+.about-becare {
     width: 30%;
     padding: 40px 40px;
 }
 
-.about-becare h1{
+.about-becare h1 {
     color: var(--hue-white);
 }
 
-.about-becare p{
+.about-becare p {
     margin-top: 10px;
     color: #fafafaaa;
     font-weight: 100;
     font-size: 12px;
 }
 
-.footer-links{
+.footer-links {
     width: 60%;
     display: flex;
     justify-content: center;
@@ -563,25 +573,25 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     gap: 50px;
 }
 
-.footer-links h3{
+.footer-links h3 {
     color: var(--hue-white)
 }
 
-.footer-links ul{
+.footer-links ul {
     margin-top: 10px;
 }
 
-.footer-links li{
+.footer-links li {
     list-style: none;
 }
 
-.footer-links li a{
+.footer-links li a {
     text-decoration: none;
     color: #fafafab0;
     font-size: 13px;
 }
 
-.footer-buttons{
+.footer-buttons {
     width: 250px;
     padding: 5px 0px;
     outline: none;
@@ -591,12 +601,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
 }
 
-.footer-login{
+.footer-login {
     background-color: var(--hue-dark-blue);
     color: var(--hue-white);
 }
 
-.copyright{
+.copyright {
     position: absolute;
     bottom: 10px;
     right: 20px;
@@ -604,25 +614,31 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: #fafafa93;
 }
 
-.copyright a{
+.copyright a {
     color: #fafafa93;
 }
 
+
 /* Footer ends here */
+
 
 /************************************************** Home Page style ends ************************************************************/
 
+
 /************************************************** Login Page style starts ************************************************************/
+
 
 /* Login form style stars here */
 
-.login-section{
+.login-section {
     width: 100%;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+
 /*styles for Nutritionist and */
 
 .login-section-p-and-n {
@@ -633,7 +649,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     justify-content: center;
 }
 
-.login-page-leftside{
+.login-page-leftside {
     width: 50%;
     height: 100%;
     background-color: var(--hue-black);
@@ -642,7 +658,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     justify-content: center;
 }
 
-.left-side-container{
+.left-side-container {
     max-width: 60%;
     height: 100%;
     display: flex;
@@ -651,24 +667,24 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     position: relative;
 }
 
-.login-page-leftside div h1{
+.login-page-leftside div h1 {
     color: var(--hue-white);
     font-size: 3rem;
     font-weight: 900;
 }
 
-.login-page-leftside div h2{
+.login-page-leftside div h2 {
     line-height: 35px;
     color: #fafafabf
 }
 
-.login-page-leftside div p{
+.login-page-leftside div p {
     color: #fafafac2;
     font-size: 13px;
     margin-top: 20px;
 }
 
-.page-change-button{
+.page-change-button {
     position: absolute;
     top: 17%;
     left: 0;
@@ -679,7 +695,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-white);
 }
 
-.login-page-rightside{
+.login-page-rightside {
     width: 50%;
     height: 100%;
     background-color: var(--hue-white);
@@ -688,37 +704,37 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     justify-content: center;
 }
 
-.login-page-rightside form{
+.login-page-rightside form {
     width: 70%;
     display: grid;
     margin-top: -80px;
 }
 
-.topic-of-form h1{
+.topic-of-form h1 {
     font-size: 2.8rem;
     font-weight: 900;
 }
 
-.topic-of-form p{
+.topic-of-form p {
     font-size: 14px;
 }
 
-.topic-of-form a{
+.topic-of-form a {
     font-weight: bolder;
     color: var(--hue-dark-blue);
 }
 
-.form-inputs-and-buttons{
+.form-inputs-and-buttons {
     margin-top: 30px;
     display: grid;
 }
 
-.form-inputs-and-buttons label{
+.form-inputs-and-buttons label {
     margin-top: 20px;
     font-size: 14px;
 }
 
-.form-inputs-and-buttons input{
+.form-inputs-and-buttons input {
     margin-top: 5px;
     padding: 8px;
     background-color: var(--hue-white);
@@ -726,7 +742,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     border: 1px solid #ccc9c9;
 }
 
-.form-inputs-and-buttons select{
+.form-inputs-and-buttons select {
     margin-top: 5px;
     padding: 8px;
     background-color: var(--hue-white);
@@ -734,12 +750,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     border: 1px solid #ccc9c9;
 }
 
-.form-invalid{
+.form-invalid {
     font-size: 12px;
     color: #ff0b03;
 }
 
-.form-inputs-and-buttons button{
+.form-inputs-and-buttons button {
     margin-top: 40px;
     background-color: var(--hue-dark-blue);
     padding: 8px;
@@ -750,22 +766,26 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
 }
 
-.form-inputs-and-buttons a{
+.form-inputs-and-buttons a {
     text-decoration: none;
     margin-top: 10px;
     color: var(--hue-dark-blue);
     font-size: 14px;
 }
 
+
 /* Login form style ends here */
+
 
 /************************************************** Login Page style ends ************************************************************/
 
+
 /************************************************** Find doctors Page style starts ***************************************************/
+
 
 /* Search bar style starts here */
 
-.search-container-for-doctors{
+.search-container-for-doctors {
     --hue: var(--hue-white);
     width: 100%;
     padding-top: 70px;
@@ -776,8 +796,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     background-color: var(--hue);
 }
 
-
-.main-form{
+.main-form {
     width: 50%;
     display: flex;
     align-items: center;
@@ -786,7 +805,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     gap: 10px;
 }
 
-.filter-by{
+.filter-by {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -794,21 +813,20 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     gap: 20px;
 }
 
-.filter-by select{
+.filter-by select {
     width: 20%;
     border: 1px solid #c6c1c1;
 }
 
-.filter-by select:focus{
-    
+.filter-by select:focus {
     outline: none;
 }
 
-.filter-by select option{
+.filter-by select option {
     background-color: transparent;
 }
 
-.main-search{
+.main-search {
     width: 100%;
     height: 35px;
     display: flex;
@@ -818,23 +836,23 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-top: 10px;
 }
 
-.search-section{
+.search-section {
     width: 90%;
 }
 
-.search-section input{
+.search-section input {
     width: 100%;
     border: none;
     background-color: transparent;
     padding: 5px 10px;
 }
 
-.search-section input:focus{
+.search-section input:focus {
     border: none;
     outline: none;
 }
 
-.button-section{
+.button-section {
     width: 50px;
     height: 100%;
     background-color: var(--hue-black);
@@ -845,18 +863,20 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     justify-content: center;
 }
 
-.button-section button{
+.button-section button {
     cursor: pointer;
     background-color: transparent;
     border: none;
     color: var(--hue-white);
 }
 
+
 /* Search bar style starts here */
+
 
 /* Doctor card section style starts here */
 
-.doctor-cards-container{
+.doctor-cards-container {
     width: 100%;
     overflow: hidden;
     display: flex;
@@ -869,25 +889,25 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     background-color: var(--hue-white);
 }
 
-.doctor-cards-container.dark{
+.doctor-cards-container.dark {
     color: var(--hue-white);
     background-color: var(--hue-black);
 }
 
-.doctor-cards-topic{
+.doctor-cards-topic {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.doctor-cards-topic .line{
+.doctor-cards-topic .line {
     width: 55px;
     height: 4px;
     border-radius: 5px;
     background-color: #0076c098;
 }
 
-.card-content-fordoctors{
+.card-content-fordoctors {
     width: 70vw;
     height: 560px;
     overflow: hidden;
@@ -901,7 +921,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-top: 30px;
 }
 
-.card-page{
+.card-page {
     width: 100%;
     height: fit-content;
     display: flex;
@@ -911,12 +931,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     gap: 10px;
 }
 
-.card-content-fordoctors.active{
+.card-content-fordoctors.active {
     height: fit-content;
     overflow: auto;
 }
 
-.card-content-fordoctors .card{
+.card-content-fordoctors .card {
     width: 520px;
     display: flex;
     height: 170px;
@@ -924,36 +944,37 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     border: 1px solid #a59e9e;
 }
 
-.card-content-fordoctors .card.dark{
+.card-content-fordoctors .card.dark {
     border: none;
 }
 
-.card-content-fordoctors .card .left{
+.card-content-fordoctors .card .left {
     width: 40%;
     --hue: var(--hue-black);
     height: 100%;
     position: relative;
     text-align: left;
-    padding:  0 10px 0 30px;
+    padding: 0 10px 0 30px;
     background-color: var(--hue);
     color: var(--hue-white);
 }
 
-.card-content-fordoctors .card .left.dark{
+.card-content-fordoctors .card .left.dark {
     --hue: var(--hue-dark-blue);
 }
 
-.card-content-fordoctors .card .left p, .card-content-fordoctors .card .right p{
+.card-content-fordoctors .card .left p,
+.card-content-fordoctors .card .right p {
     margin-top: 30px;
     font-size: 12px;
 }
 
-.card-content-fordoctors .card .left h2{
+.card-content-fordoctors .card .left h2 {
     line-height: 26px;
     font-size: 20px;
 }
 
-.card-content-fordoctors .card .left a{
+.card-content-fordoctors .card .left a {
     position: absolute;
     bottom: 10px;
     left: 30px;
@@ -962,7 +983,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     font-size: 12px;
 }
 
-.card-content-fordoctors .card .right{
+.card-content-fordoctors .card .right {
     width: 70%;
     background-color: var(--hue-white);
     height: 100%;
@@ -972,11 +993,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.card-content-fordoctors .card .right h2{
+.card-content-fordoctors .card .right h2 {
     font-size: 22px;
 }
 
-.card-content-fordoctors .card .right .channel-butten{
+.card-content-fordoctors .card .right .channel-butten {
     position: absolute;
     bottom: 20px;
     right: 25px;
@@ -991,9 +1012,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
 }
 
-
-
-.show-button{
+.show-button {
     --hue: var(--hue-black);
     padding: 5px 20px;
     outline: none;
@@ -1007,13 +1026,16 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     gap: 10px;
 }
 
+
 /* Doctor card section style ends here */
+
 
 /************************************************** Find doctors Page style ends ****************************************************/
 
+
 /************************************************** Pharmacy Page style starts ****************************************************/
 
-.pharmacy-main-picture-container{
+.pharmacy-main-picture-container {
     width: 100%;
     height: 40vh;
     display: flex;
@@ -1025,7 +1047,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.pharmacy-main-picture-container .tittle{
+.pharmacy-main-picture-container .tittle {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1036,12 +1058,14 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-bottom: 50px;
 }
 
-.pharmacy-main-picture-container .tittle i{
+.pharmacy-main-picture-container .tittle i {
     font-size: 4.5rem;
 }
 
+
 /* For doctor page */
-.doctor-main-picture-container{
+
+.doctor-main-picture-container {
     width: 100%;
     height: 40vh;
     display: flex;
@@ -1053,7 +1077,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.doctor-main-picture-container .tittle{
+.doctor-main-picture-container .tittle {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1064,14 +1088,17 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-bottom: 50px;
 }
 
-.doctor-main-picture-container .tittle i{
+.doctor-main-picture-container .tittle i {
     font-size: 4.5rem;
 }
+
+
 /* doctor page ends */
 
 
 /* For meditation instructor reg users page */
-.doctor-main-picture-container-meditationInstructorRegisteredUsers{
+
+.doctor-main-picture-container-meditationInstructorRegisteredUsers {
     width: 100%;
     height: 40vh;
     display: flex;
@@ -1083,7 +1110,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.doctor-main-picture-container-meditationInstructorRegisteredUsers .tittle{
+.doctor-main-picture-container-meditationInstructorRegisteredUsers .tittle {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1094,15 +1121,17 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-bottom: 50px;
 }
 
-.doctor-main-picture-container-meditationInstructorRegisteredUsers .tittle i{
+.doctor-main-picture-container-meditationInstructorRegisteredUsers .tittle i {
     font-size: 4.5rem;
 }
+
+
 /* meditation instructor reg users page ends */
 
 
 /* Admin UserMgmt */
 
-.doctor-main-picture-container-userMgmt{
+.doctor-main-picture-container-userMgmt {
     width: 100%;
     height: 40vh;
     display: flex;
@@ -1114,7 +1143,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.doctor-main-picture-container-userMgmt .tittle{
+.doctor-main-picture-container-userMgmt .tittle {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1125,13 +1154,14 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-bottom: 50px;
 }
 
-.doctor-main-picture-container-userMgmt .tittle i{
+.doctor-main-picture-container-userMgmt .tittle i {
     font-size: 4.5rem;
 }
 
 
 /* For Complaint page */
-.doctor-main-picture-container-complaint{
+
+.doctor-main-picture-container-complaint {
     width: 100%;
     height: 40vh;
     display: flex;
@@ -1143,7 +1173,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.doctor-main-picture-container-complaint .tittle{
+.doctor-main-picture-container-complaint .tittle {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1154,17 +1184,17 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-bottom: 50px;
 }
 
-.doctor-main-picture-container-complaint .tittle i{
+.doctor-main-picture-container-complaint .tittle i {
     font-size: 4.5rem;
 }
+
+
 /* complaint page ends */
 
 
-
-
-
 /* For Meditation Instructor session page */
-.doctor-main-picture-container-meditationInstructorSession{
+
+.doctor-main-picture-container-meditationInstructorSession {
     width: 100%;
     height: 40vh;
     display: flex;
@@ -1176,7 +1206,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.doctor-main-picture-container-meditationInstructorSession .tittle{
+.doctor-main-picture-container-meditationInstructorSession .tittle {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1187,18 +1217,17 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-bottom: 50px;
 }
 
-.doctor-main-picture-container-meditationInstructorSession .tittle i{
+.doctor-main-picture-container-meditationInstructorSession .tittle i {
     font-size: 4.5rem;
 }
+
+
 /* Meditation Instructor session page ends */
 
 
-
-
-
-
 /* For counsellor page */
-.counsellor-main-picture-container{
+
+.counsellor-main-picture-container {
     width: 100%;
     height: 40vh;
     display: flex;
@@ -1210,7 +1239,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.counsellor-main-picture-container .tittle{
+.counsellor-main-picture-container .tittle {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1221,13 +1250,17 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-bottom: 50px;
 }
 
-.counsellor-main-picture-container .tittle i{
+.counsellor-main-picture-container .tittle i {
     font-size: 4.5rem;
 }
+
+
 /* doctor page ends */
 
+
 /* For nutritionist page */
-.nutritionist-main-picture-container{
+
+.nutritionist-main-picture-container {
     width: 100%;
     height: 40vh;
     display: flex;
@@ -1239,7 +1272,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.nutritionist-main-picture-container .tittle{
+.nutritionist-main-picture-container .tittle {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1250,13 +1283,312 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-bottom: 50px;
 }
 
-.nutritionist-main-picture-container .tittle i{
+.nutritionist-main-picture-container .tittle i {
     font-size: 4.5rem;
 }
+
+
 /* nutritionist page ends */
 
+
+/***************Nutritionist session page styless**************/
+
+.view-profile-container-nutritionistSession {
+    width: 100%;
+    height: fit-content;
+    padding: 10vh 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dedede;
+    overflow: hidden;
+}
+
+.view-profile-container-nutritionistSession.dark {
+    background-color: var(--hue-black);
+}
+
+.view-profile-container-nutritionistSession .card {
+    width: 50%;
+    height: fit-content;
+    background-color: var(--hue-white);
+    overflow: hidden;
+    position: relative;
+}
+
+.view-profile-container-nutritionistSession .card .main-image {
+    width: 100%;
+    height: 250px;
+    position: relative;
+    padding: 7% 10%;
+    text-align: right;
+    background-image: url(../img/view-profile-pictures/view-profile-image.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: var(--hue-white);
+}
+
+.view-profile-container-nutritionistSession .card .main-image p {
+    font-size: 14px;
+}
+
+.view-profile-container-nutritionistSession .card .main-image .profile-icon {
+    position: absolute;
+    bottom: 10px;
+    left: 2%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    background-color: #1D242B;
+    cursor: pointer;
+}
+
+.view-profile-container-nutritionistSession .card .main-image .social-media-icons {
+    position: absolute;
+    bottom: 15px;
+    right: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--hue-black);
+}
+
+.view-profile-container-nutritionistSession .card .main-image .social-media-icons i {
+    cursor: pointer;
+}
+
+.view-profile-container-nutritionistSession .card .bottom {
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    position: relative;
+}
+
+.view-profile-container-nutritionistSession .card .bottom ul {
+    width: 100%;
+}
+
+.view-profile-container-nutritionistSession .card .bottom ul li {
+    list-style: none;
+    margin-top: 20px;
+    border-bottom: 1px solid #d8d3d3;
+    font-weight: 700;
+    color: #1d242bb6;
+}
+
+.view-profile-container-nutritionistSession .card .bottom ul li a {
+    text-decoration: none;
+    color: #1d242bb6;
+}
+
+.view-profile-container-nutritionistSession .card .bottom .bottom-line {
+    width: 100%;
+    height: 20px;
+    background-color: #0d5f84;
+    margin-top: 30px;
+}
+
+.view-profile-container-nutritionistSession .card .main-image .backto-doctors {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: #fafafacd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    gap: 10px;
+}
+
+
+/* For Nutritionist  session page */
+
+.doctor-main-picture-container-nutritionistSession {
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../img/nutritionist-page-pictures/nSessions.jpg);
+    background-size: cover;
+    overflow: hidden;
+}
+
+.doctor-main-picture-container-nutritionistSession .tittle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 40px;
+    color: var(--hue-white);
+    line-height: 40px;
+    margin-bottom: 50px;
+}
+
+.doctor-main-picture-container-nutritionistSession .tittle i {
+    font-size: 4.5rem;
+}
+
+
+/* Nutritionist session page ends */
+
+
+/************************************************** Table-section-nutritionistChangeSession style starts *********************************************************/
+
+.table-section-nutritionistChangeSession {
+    width: 100%;
+    height: fit-content;
+    background-color: #ebecee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.table-section-nutritionistChangeSession.dark {
+    background-color: var(--hue-black);
+}
+
+.table-section-nutritionistChangeSession .table-container {
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #c7c5c5;
+    padding: 30px 0;
+}
+
+.table-section-nutritionistChangeSession .table-container.dark {
+    box-shadow: none;
+}
+
+.table-section-nutritionistChangeSession .table-container .table-topic-main {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    color: var(--hue-black);
+}
+
+.table-section-nutritionistChangeSession .table-container .table-topic-main button {
+    padding: 8px 30px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+}
+
+.table-section-nutritionistChangeSession .table-container .table-topic-main button a {
+    text-decoration: none;
+    color: var(--hue-white);
+}
+
+.table-section-nutritionistChangeSession .table-container .search-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.table-section-nutritionistChangeSession .table-container .search-section .search-bar .searchform {
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+
+.table-section-nutritionistChangeSession .table-container .search-section .search-bar input {
+    width: 95%;
+}
+
+.table-section-nutritionistChangeSession .table-container .search-section .search-bar button {
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-section-nutritionistChangeSession .table-container .table {
+    width: 100%;
+    padding: 0 3%;
+    height: 50vh;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.table-section-nutritionistChangeSession .table-container .table table {
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: none;
+}
+
+.table-section-nutritionistChangeSession .table-container .table table th,
+.table-section-nutritionistChangeSession .table-container .table table td {
+    width: calc(100% / 6);
+    padding: 10px 15px;
+}
+
+.table-section-nutritionistChangeSession .table-container .table table th {
+    font-weight: 300;
+}
+
+.table-section-nutritionistChangeSession .table-container .table table tr:nth-child(1) {
+    background-color: #1D242B;
+    color: #f0ecec;
+}
+
+.table-section-nutritionistChangeSession .table-container .table table tr:nth-child(even) {
+    background-color: #f5f2f2;
+}
+
+.table-section-nutritionistChangeSession .table-container .table table tr td:nth-child(6) {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.table-section-nutritionistChangeSession .table-container .table table tr td:nth-child(6) form .update {
+    width: 60px;
+    height: fit-content;
+    background-color: green;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.table-section-nutritionistChangeSession .table-container .table table tr td:nth-child(6) form .delete {
+    width: 60px;
+    height: fit-content;
+    background-color: #ed4d4d;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
 /* For time slot page */
-.time-slot-main-picture-container{
+
+.time-slot-main-picture-container {
     width: 100%;
     height: 40vh;
     display: flex;
@@ -1268,7 +1600,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.time-slot-main-picture-container .tittle{
+.time-slot-main-picture-container .tittle {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1279,12 +1611,14 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-bottom: 50px;
 }
 
-.time-slot-main-picture-container .tittle i{
+.time-slot-main-picture-container .tittle i {
     font-size: 4.5rem;
 }
+
+
 /* time slot page ends */
 
-.pharmacy-search-section{
+.pharmacy-search-section {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -1295,11 +1629,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     justify-content: center;
 }
 
-.pharmacy-search-section.dark{
+.pharmacy-search-section.dark {
     background-color: #1d242bbd;
 }
 
-.search-form-pharmacy{
+.search-form-pharmacy {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1307,7 +1641,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     width: 70%;
 }
 
-.search-form-pharmacy select{
+.search-form-pharmacy select {
     width: 300px;
     height: 35px;
     border: none;
@@ -1317,12 +1651,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: #646161;
 }
 
-.search-form-pharmacy select:focus{
+.search-form-pharmacy select:focus {
     outline: none;
     border: none;
 }
 
-.search-form-pharmacy .main-search{
+.search-form-pharmacy .main-search {
     margin-bottom: 10px;
     width: 450px;
     height: 35px;
@@ -1334,7 +1668,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     border-radius: 20px;
 }
 
-.search-form-pharmacy .main-search input{
+.search-form-pharmacy .main-search input {
     width: 90%;
     height: 100%;
     background-color: transparent;
@@ -1343,12 +1677,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 0px 10px;
 }
 
-.search-form-pharmacy .main-search input:focus{
+.search-form-pharmacy .main-search input:focus {
     border: none;
     outline: none;
 }
 
-.search-form-pharmacy .main-search button{
+.search-form-pharmacy .main-search button {
     cursor: pointer;
     font-size: 20px;
     margin-right: 10px;
@@ -1356,7 +1690,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     border: none;
 }
 
-.pharmacy-card-container{
+.pharmacy-card-container {
     width: 100%;
     overflow: hidden;
     display: flex;
@@ -1369,37 +1703,37 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     background-color: var(--hue-white);
 }
 
-.pharmacy-card-container.dark{
+.pharmacy-card-container.dark {
     color: var(--hue-white);
     background-color: var(--hue-black);
 }
 
-.pharmacy-cards-topic{
+.pharmacy-cards-topic {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.pharmacy-cards-topic .line{
+.pharmacy-cards-topic .line {
     width: 55px;
     height: 4px;
     border-radius: 5px;
     background-color: #0076c098;
 }
 
-.pharmacy-main-container{
+.pharmacy-main-container {
     width: 70%;
     height: 940px;
     margin-top: 40px;
     overflow: hidden;
 }
 
-.pharmacy-main-container.active{
+.pharmacy-main-container.active {
     height: fit-content;
     overflow: auto;
 }
 
-.pharmacy-sub{
+.pharmacy-sub {
     width: 100%;
     height: fit-content;
     display: flex;
@@ -1409,21 +1743,22 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     justify-content: center;
 }
 
+
 /* time slot card design starts */
 
-.time-slot-main-container{
+.time-slot-main-container {
     width: 70%;
     height: 900px;
     margin-top: 40px;
     overflow: hidden;
 }
 
-.time-slot-main-container.active{
+.time-slot-main-container.active {
     height: fit-content;
     overflow: auto;
 }
 
-.time-slot-sub{
+.time-slot-sub {
     width: 100%;
     height: fit-content;
     display: flex;
@@ -1433,7 +1768,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     justify-content: center;
 }
 
-.time-slot-sub .card{
+.time-slot-sub .card {
     width: 80%;
     height: 38vh;
     background-color: rgb(244, 230, 230);
@@ -1443,13 +1778,13 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.time-slot-sub .card .bottom{
+.time-slot-sub .card .bottom {
     position: absolute;
     z-index: 10;
     bottom: 60px;
 }
 
-.time-slot-sub .card .bottom p{
+.time-slot-sub .card .bottom p {
     display: flex;
     align-items: center;
     justify-content: left;
@@ -1458,14 +1793,14 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: #1d242bd7;
 }
 
-.time-slot-sub .card .top{
+.time-slot-sub .card .top {
     position: absolute;
     z-index: 10;
     top: 20px;
     color: #fafafacb;
 }
 
-.time-slot-sub .top-box{
+.time-slot-sub .top-box {
     position: absolute;
     top: -30px;
     left: -90px;
@@ -1475,7 +1810,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     background-color: #263747;
 }
 
-.time-slot-sub .bottom-box{
+.time-slot-sub .bottom-box {
     width: 50%;
     height: 20vh;
     background-color: var(--hue-dark-blue);
@@ -1485,7 +1820,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     border-radius: 100px;
 }
 
-.time-slot-sub .card .main-button{
+.time-slot-sub .card .main-button {
     position: absolute;
     bottom: 20px;
     right: 5%;
@@ -1495,9 +1830,10 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: #1D242B;
 }
 
+
 /* time slot card design ends */
 
-.pharmacy-sub .card{
+.pharmacy-sub .card {
     width: 340px;
     height: 450px;
     background-color: #ffffff;
@@ -1507,7 +1843,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.pharmacy-sub .card .circle{
+.pharmacy-sub .card .circle {
     position: absolute;
     top: -250px;
     width: 460px;
@@ -1516,7 +1852,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     background-color: #0076c0e5;
 }
 
-.pharmacy-sub .card .name{
+.pharmacy-sub .card .name {
     position: absolute;
     top: 50px;
     right: 70px;
@@ -1524,11 +1860,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-white);
 }
 
-.pharmacy-sub .card .name h1{
+.pharmacy-sub .card .name h1 {
     max-width: 100px;
 }
 
-.pharmacy-sub .card .description{
+.pharmacy-sub .card .description {
     width: 340px;
     height: 100px;
     position: absolute;
@@ -1537,14 +1873,14 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: #1d242b79;
 }
 
-.pharmacy-sub .card .description p{
+.pharmacy-sub .card .description p {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 5px;
 }
 
-.card-main-button{
+.card-main-button {
     position: absolute;
     bottom: 20px;
     width: 100%;
@@ -1554,7 +1890,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     justify-content: center;
 }
 
-.pharmacy-sub .card .card-main-button button{
+.pharmacy-sub .card .card-main-button button {
     width: 75%;
     padding: 5px;
     background-color: var(--hue-dark-blue);
@@ -1563,7 +1899,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
 }
 
-.form-button{
+.form-button {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -1574,11 +1910,13 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     background-color: #1D242B;
 }
 
+
 /************************************************** Pharmacy Page style ends ****************************************************/
+
 
 /* Diet plan page style stars here */
 
-.diet-plan-section{
+.diet-plan-section {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -1586,7 +1924,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     justify-content: center;
 }
 
-.diet-plan-leftside{
+.diet-plan-leftside {
     width: 40%;
     height: 100%;
     background-color: var(--hue-black);
@@ -1595,7 +1933,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     justify-content: center;
 }
 
-.diet-left-side-container{
+.diet-left-side-container {
     max-width: 60%;
     height: 100%;
     display: flex;
@@ -1604,24 +1942,24 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     position: relative;
 }
 
-.diet-left-side-container div h1{
+.diet-left-side-container div h1 {
     color: var(--hue-white);
     font-size: 3rem;
     font-weight: 900;
 }
 
-.diet-left-side-container div h2{
+.diet-left-side-container div h2 {
     line-height: 35px;
     color: #fafafabf
 }
 
-.diet-left-side-container div p{
+.diet-left-side-container div p {
     color: #fafafac2;
     font-size: 13px;
     margin-top: 20px;
 }
 
-.page-change-button-from-diet{
+.page-change-button-from-diet {
     position: absolute;
     top: 17%;
     left: 0;
@@ -1632,7 +1970,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-white);
 }
 
-.diet-plan-rightside{
+.diet-plan-rightside {
     width: 60%;
     height: 100%;
     background-color: var(--hue-white);
@@ -1642,18 +1980,18 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     justify-content: center;
 }
 
-.diet-plan-rightside .form-topic{
+.diet-plan-rightside .form-topic {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
 }
 
-.diet-plan-rightside .form-topic h2{
+.diet-plan-rightside .form-topic h2 {
     color: var(--hue-black);
 }
 
-.diet-plan-rightside .form-topic button{
+.diet-plan-rightside .form-topic button {
     background-color: transparent;
     border: none;
     font-size: 20px;
@@ -1661,12 +1999,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: #b9b3b3;
 }
 
-.diet-plan-rightside .form-container{
+.diet-plan-rightside .form-container {
     width: 85%;
     height: 90vh;
 }
 
-.diet-plan-rightside form{
+.diet-plan-rightside form {
     width: 100%;
     height: 100%;
     display: flex;
@@ -1679,7 +2017,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     flex-direction: column;
 }
 
-.diet-plan-rightside form .topic-of-form{
+.diet-plan-rightside form .topic-of-form {
     width: 80%;
     display: flex;
     align-items: left;
@@ -1687,7 +2025,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-bottom: 60px;
 }
 
-.diet-form-inputs-and-buttons{
+.diet-form-inputs-and-buttons {
     display: flex;
     justify-content: space-around;
     width: 100%;
@@ -1695,24 +2033,24 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     position: relative;
 }
 
-.diet-form-inputs-and-buttons .left{
+.diet-form-inputs-and-buttons .left {
     width: 300px;
     display: flex;
     flex-direction: column;
 }
 
-.diet-form-inputs-and-buttons .right{
+.diet-form-inputs-and-buttons .right {
     width: 300px;
     display: flex;
     flex-direction: column;
 }
 
-.diet-form-inputs-and-buttons label{
+.diet-form-inputs-and-buttons label {
     margin-top: 10px;
     font-size: 14px;
 }
 
-.diet-form-inputs-and-buttons input{
+.diet-form-inputs-and-buttons input {
     margin-top: 10px;
     height: 30px;
     background-color: var(--hue-white);
@@ -1721,12 +2059,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 0px 10px;
 }
 
-.diet-form-inputs-and-buttons input:focus{
+.diet-form-inputs-and-buttons input:focus {
     border: 2px solid #b8bdbe;
     outline: none;
 }
 
-.diet-form-inputs-and-buttons select{
+.diet-form-inputs-and-buttons select {
     outline: none;
     margin-top: 10px;
     height: 30px;
@@ -1737,12 +2075,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: #0077C0;
 }
 
-.diet-form-inputs-and-buttons select:focus{
+.diet-form-inputs-and-buttons select:focus {
     border: 2px solid #b8bdbe;
     outline: none;
 }
 
-.diet-form-inputs-and-buttons textarea{
+.diet-form-inputs-and-buttons textarea {
     margin-top: 10px;
     width: 100%;
     height: 200px;
@@ -1752,12 +2090,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     background-color: var(--hue-white);
 }
 
-.diet-form-inputs-and-buttons textarea:focus{
+.diet-form-inputs-and-buttons textarea:focus {
     border: 2px solid #b8bdbe;
     outline: none;
 }
 
-.diet-form-inputs-and-buttons button{
+.diet-form-inputs-and-buttons button {
     width: 100%;
     margin-top: 50px;
     background-color: var(--hue-dark-blue);
@@ -1769,21 +2107,25 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
 }
 
-#doctor-form, #admin-form, #counsellor-form{
+#doctor-form,
+#admin-form,
+#counsellor-form {
     display: none;
 }
 
 @keyframes anim {
-    100%{
+    100% {
         opacity: 1;
     }
 }
 
+
 /* Diet plan page style ends here */
+
 
 /************************************************** View profile Page style starts ****************************************************/
 
-.view-profile-container{
+.view-profile-container {
     width: 100%;
     height: fit-content;
     padding: 10vh 0;
@@ -1794,11 +2136,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.view-profile-container.dark{
+.view-profile-container.dark {
     background-color: var(--hue-black);
 }
 
-.view-profile-container .card{
+.view-profile-container .card {
     width: 50%;
     height: fit-content;
     background-color: var(--hue-white);
@@ -1806,7 +2148,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     position: relative;
 }
 
-.view-profile-container .card .main-image{
+.view-profile-container .card .main-image {
     width: 100%;
     height: 250px;
     position: relative;
@@ -1818,11 +2160,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-white);
 }
 
-.view-profile-container .card .main-image p{
+.view-profile-container .card .main-image p {
     font-size: 14px;
 }
 
-.view-profile-container .card .main-image .profile-icon{
+.view-profile-container .card .main-image .profile-icon {
     position: absolute;
     bottom: 10px;
     left: 2%;
@@ -1837,7 +2179,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
 }
 
-.view-profile-container .card .main-image .social-media-icons{
+.view-profile-container .card .main-image .social-media-icons {
     position: absolute;
     bottom: 15px;
     right: 3%;
@@ -1848,22 +2190,22 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.view-profile-container .card .main-image .social-media-icons i{
+.view-profile-container .card .main-image .social-media-icons i {
     cursor: pointer;
 }
 
-.view-profile-container .card .bottom{
+.view-profile-container .card .bottom {
     width: 100%;
     height: fit-content;
     text-align: center;
     position: relative;
 }
 
-.view-profile-container .card .bottom ul{
+.view-profile-container .card .bottom ul {
     width: 100%;
 }
 
-.view-profile-container .card .bottom ul li{
+.view-profile-container .card .bottom ul li {
     list-style: none;
     margin-top: 20px;
     border-bottom: 1px solid #d8d3d3;
@@ -1871,19 +2213,19 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: #1d242bb6;
 }
 
-.view-profile-container .card .bottom ul li a{
+.view-profile-container .card .bottom ul li a {
     text-decoration: none;
     color: #1d242bb6;
 }
 
-.view-profile-container .card .bottom .bottom-line{
+.view-profile-container .card .bottom .bottom-line {
     width: 100%;
     height: 20px;
     background-color: #0d5f84;
     margin-top: 30px;
 }
 
-.view-profile-container .card .main-image .backto-doctors{
+.view-profile-container .card .main-image .backto-doctors {
     position: absolute;
     top: 10px;
     left: 20px;
@@ -1894,13 +2236,14 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     text-decoration: none;
     gap: 10px;
 }
+
 
 /************************************************** View profile Page style ends ****************************************************/
 
 
 /************************************************** View profile Page requested service providers style starts ****************************************************/
 
-.view-profile-container-requestedSP{
+.view-profile-container-requestedSP {
     width: 100%;
     height: fit-content;
     padding: 10vh 0;
@@ -1911,11 +2254,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.view-profile-container-requestedSP.dark{
+.view-profile-container-requestedSP.dark {
     background-color: var(--hue-black);
 }
 
-.view-profile-container-requestedSP .card{
+.view-profile-container-requestedSP .card {
     width: 50%;
     height: fit-content;
     background-color: var(--hue-white);
@@ -1923,7 +2266,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     position: relative;
 }
 
-.view-profile-container-requestedSP .card .main-image{
+.view-profile-container-requestedSP .card .main-image {
     width: 100%;
     height: 250px;
     position: relative;
@@ -1935,11 +2278,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-white);
 }
 
-.view-profile-container-requestedSP .card .main-image p{
+.view-profile-container-requestedSP .card .main-image p {
     font-size: 14px;
 }
 
-.view-profile-container-requestedSP .card .main-image .profile-icon{
+.view-profile-container-requestedSP .card .main-image .profile-icon {
     position: absolute;
     bottom: 10px;
     left: 2%;
@@ -1954,7 +2297,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
 }
 
-.view-profile-container-requestedSP .card .main-image .social-media-icons{
+.view-profile-container-requestedSP .card .main-image .social-media-icons {
     position: absolute;
     bottom: 15px;
     right: 3%;
@@ -1965,22 +2308,22 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.view-profile-container-requestedSP .card .main-image .social-media-icons i{
+.view-profile-container-requestedSP .card .main-image .social-media-icons i {
     cursor: pointer;
 }
 
-.view-profile-container-requestedSP .card .bottom{
+.view-profile-container-requestedSP .card .bottom {
     width: 100%;
     height: fit-content;
     text-align: center;
     position: relative;
 }
 
-.view-profile-container-requestedSP .card .bottom ul{
+.view-profile-container-requestedSP .card .bottom ul {
     width: 100%;
 }
 
-.view-profile-container-requestedSP .card .bottom ul li{
+.view-profile-container-requestedSP .card .bottom ul li {
     list-style: none;
     margin-top: 20px;
     border-bottom: 1px solid #d8d3d3;
@@ -1988,35 +2331,32 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: #1d242bb6;
 }
 
-
-.view-profile-container-requestedSP .card .bottom ul li .download{
+.view-profile-container-requestedSP .card .bottom ul li .download {
     padding: 8px 20px;
     background-color: var(--hue-dark-blue);
     color: var(--hue-white);
     border: none;
     border-radius: 5px;
-    margin-bottom:20px;
+    margin-bottom: 20px;
 }
 
-
-.view-profile-container-requestedSP .card .bottom ul li .download a{
+.view-profile-container-requestedSP .card .bottom ul li .download a {
     color: var(--hue-white);
-   
 }
 
-.view-profile-container-requestedSP .card .bottom ul li a{
+.view-profile-container-requestedSP .card .bottom ul li a {
     text-decoration: none;
     color: #1d242bb6;
 }
 
-.view-profile-container-requestedSP .card .bottom .bottom-line{
+.view-profile-container-requestedSP .card .bottom .bottom-line {
     width: 100%;
     height: 20px;
     background-color: #0d5f84;
     margin-top: 30px;
 }
 
-.view-profile-container-requestedSP .card .main-image .backto-doctors{
+.view-profile-container-requestedSP .card .main-image .backto-doctors {
     position: absolute;
     top: 10px;
     left: 20px;
@@ -2028,17 +2368,13 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     gap: 10px;
 }
 
+
 /************************************************** View profile Page style ends ****************************************************/
-
-
-
-
-
 
 
 /************************************************** View profile requestedSP  Page style starts ****************************************************/
 
-.view-profile-container-requestedSP{
+.view-profile-container-requestedSP {
     width: 100%;
     height: fit-content;
     padding: 10vh 0;
@@ -2049,11 +2385,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.view-profile-container-requestedSP.dark{
+.view-profile-container-requestedSP.dark {
     background-color: var(--hue-black);
 }
 
-.view-profile-container-requestedSP .card{
+.view-profile-container-requestedSP .card {
     width: 50%;
     height: fit-content;
     background-color: var(--hue-white);
@@ -2061,7 +2397,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     position: relative;
 }
 
-.view-profile-container-requestedSP .card .main-image{
+.view-profile-container-requestedSP .card .main-image {
     width: 100%;
     height: 250px;
     position: relative;
@@ -2073,11 +2409,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-white);
 }
 
-.view-profile-container-requestedSP .card .main-image p{
+.view-profile-container-requestedSP .card .main-image p {
     font-size: 14px;
 }
 
-.view-profile-container-requestedSP .card .main-image .profile-icon{
+.view-profile-container-requestedSP .card .main-image .profile-icon {
     position: absolute;
     bottom: 10px;
     left: 2%;
@@ -2092,7 +2428,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
 }
 
-.view-profile-container-requestedSP .card .main-image .social-media-icons{
+.view-profile-container-requestedSP .card .main-image .social-media-icons {
     position: absolute;
     bottom: 15px;
     right: 3%;
@@ -2103,22 +2439,22 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.view-profile-container-requestedSP .card .main-image .social-media-icons i{
+.view-profile-container-requestedSP .card .main-image .social-media-icons i {
     cursor: pointer;
 }
 
-.view-profile-container-requestedSP .card .bottom{
+.view-profile-container-requestedSP .card .bottom {
     width: 100%;
     height: fit-content;
     text-align: center;
     position: relative;
 }
 
-.view-profile-container-requestedSP .card .bottom ul{
+.view-profile-container-requestedSP .card .bottom ul {
     width: 100%;
 }
 
-.view-profile-container-requestedSP .card .bottom ul li{
+.view-profile-container-requestedSP .card .bottom ul li {
     list-style: none;
     margin-top: 20px;
     border-bottom: 1px solid #d8d3d3;
@@ -2126,34 +2462,32 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: #1d242bb6;
 }
 
-
-.view-profile-container-requestedSP .card .bottom ul li .download{
+.view-profile-container-requestedSP .card .bottom ul li .download {
     padding: 8px 20px;
     background-color: var(--hue-dark-blue);
     color: var(--hue-white);
     border: none;
     border-radius: 5px;
-    margin-bottom:20px;
+    margin-bottom: 20px;
 }
 
-
-.view-profile-container-requestedSP .card .bottom ul li .download a{
+.view-profile-container-requestedSP .card .bottom ul li .download a {
     color: var(--hue-white);
-   
 }
-.view-profile-container-requestedSP .card .bottom ul li a{
+
+.view-profile-container-requestedSP .card .bottom ul li a {
     text-decoration: none;
     color: #1d242bb6;
 }
 
-.view-profile-container-requestedSP .card .bottom .bottom-line{
+.view-profile-container-requestedSP .card .bottom .bottom-line {
     width: 100%;
     height: 20px;
     background-color: #0d5f84;
     margin-top: 30px;
 }
 
-.view-profile-container-requestedSP .card .main-image .backto-doctors{
+.view-profile-container-requestedSP .card .main-image .backto-doctors {
     position: absolute;
     top: 10px;
     left: 20px;
@@ -2164,14 +2498,14 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     text-decoration: none;
     gap: 10px;
 }
+
 
 /************************************************** View profile Page style ends ****************************************************/
 
 
-
 /************************************************** view-profile-container-complaintMgmtViewMore style starts ****************************************************/
 
-.view-profile-container-complaintMgmtViewMore{
+.view-profile-container-complaintMgmtViewMore {
     width: 100%;
     height: fit-content;
     padding: 10vh 0;
@@ -2182,11 +2516,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.view-profile-container-complaintMgmtViewMore.dark{
+.view-profile-container-complaintMgmtViewMore.dark {
     background-color: var(--hue-black);
 }
 
-.view-profile-container-complaintMgmtViewMore .card{
+.view-profile-container-complaintMgmtViewMore .card {
     width: 50%;
     height: fit-content;
     background-color: var(--hue-white);
@@ -2194,7 +2528,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     position: relative;
 }
 
-.view-profile-container-complaintMgmtViewMore .card .main-image{
+.view-profile-container-complaintMgmtViewMore .card .main-image {
     width: 100%;
     height: 250px;
     position: relative;
@@ -2206,11 +2540,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-white);
 }
 
-.view-profile-container-complaintMgmtViewMore .card .main-image p{
+.view-profile-container-complaintMgmtViewMore .card .main-image p {
     font-size: 14px;
 }
 
-.view-profile-container-complaintMgmtViewMore .card .main-image .profile-icon{
+.view-profile-container-complaintMgmtViewMore .card .main-image .profile-icon {
     position: absolute;
     bottom: 10px;
     left: 2%;
@@ -2225,7 +2559,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
 }
 
-.view-profile-container-complaintMgmtViewMore .card .main-image .social-media-icons{
+.view-profile-container-complaintMgmtViewMore .card .main-image .social-media-icons {
     position: absolute;
     bottom: 15px;
     right: 3%;
@@ -2236,22 +2570,22 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.view-profile-container-complaintMgmtViewMore .card .main-image .social-media-icons i{
+.view-profile-container-complaintMgmtViewMore .card .main-image .social-media-icons i {
     cursor: pointer;
 }
 
-.view-profile-container-complaintMgmtViewMore .card .bottom{
+.view-profile-container-complaintMgmtViewMore .card .bottom {
     width: 100%;
     height: fit-content;
     text-align: center;
     position: relative;
 }
 
-.view-profile-container-complaintMgmtViewMore .card .bottom ul{
+.view-profile-container-complaintMgmtViewMore .card .bottom ul {
     width: 100%;
 }
 
-.view-profile-container-complaintMgmtViewMore .card .bottom ul li{
+.view-profile-container-complaintMgmtViewMore .card .bottom ul li {
     list-style: none;
     margin-top: 20px;
     border-bottom: 1px solid #d8d3d3;
@@ -2259,32 +2593,30 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: #1d242bb6;
 }
 
-.view-profile-container-complaintMgmtViewMore .card .bottom ul li a{
+.view-profile-container-complaintMgmtViewMore .card .bottom ul li a {
     text-decoration: none;
     color: #1d242bb6;
 }
 
-.view-profile-container-complaintMgmtViewMore .card .bottom ul .solvedForm button{
+.view-profile-container-complaintMgmtViewMore .card .bottom ul .solvedForm button {
     padding: 8px 20px;
     background-color: var(--hue-dark-blue);
     color: var(--hue-white);
     border: none;
     border-radius: 5px;
-    margin-bottom:20px;
-    margin-top:20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
     cursor: pointer;
 }
 
-
-
-.view-profile-container-complaintMgmtViewMore .card .bottom .bottom-line{
+.view-profile-container-complaintMgmtViewMore .card .bottom .bottom-line {
     width: 100%;
     height: 20px;
     background-color: #0d5f84;
     margin-top: 30px;
 }
 
-.view-profile-container-complaintMgmtViewMore .card .main-image .backto-doctors{
+.view-profile-container-complaintMgmtViewMore .card .main-image .backto-doctors {
     position: absolute;
     top: 10px;
     left: 20px;
@@ -2296,14 +2628,13 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     gap: 10px;
 }
 
+
 /************************************************** View profile userMgmt style ends ****************************************************/
-
-
 
 
 /************************************************** view-profile-container-userMgmt style starts ****************************************************/
 
-.view-profile-container-userMgmt{
+.view-profile-container-userMgmt {
     width: 100%;
     height: fit-content;
     padding: 10vh 0;
@@ -2314,11 +2645,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.view-profile-container-userMgmt.dark{
+.view-profile-container-userMgmt.dark {
     background-color: var(--hue-black);
 }
 
-.view-profile-container-userMgmt .card{
+.view-profile-container-userMgmt .card {
     width: 50%;
     height: fit-content;
     background-color: var(--hue-white);
@@ -2326,7 +2657,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     position: relative;
 }
 
-.view-profile-container-userMgmt .card .main-image{
+.view-profile-container-userMgmt .card .main-image {
     width: 100%;
     height: 250px;
     position: relative;
@@ -2338,11 +2669,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-white);
 }
 
-.view-profile-container-userMgmt .card .main-image p{
+.view-profile-container-userMgmt .card .main-image p {
     font-size: 14px;
 }
 
-.view-profile-container-userMgmt .card .main-image .profile-icon{
+.view-profile-container-userMgmt .card .main-image .profile-icon {
     position: absolute;
     bottom: 10px;
     left: 2%;
@@ -2357,7 +2688,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
 }
 
-.view-profile-container-userMgmt .card .main-image .social-media-icons{
+.view-profile-container-userMgmt .card .main-image .social-media-icons {
     position: absolute;
     bottom: 15px;
     right: 3%;
@@ -2368,22 +2699,22 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.view-profile-container-userMgmt .card .main-image .social-media-icons i{
+.view-profile-container-userMgmt .card .main-image .social-media-icons i {
     cursor: pointer;
 }
 
-.view-profile-container-userMgmt .card .bottom{
+.view-profile-container-userMgmt .card .bottom {
     width: 100%;
     height: fit-content;
     text-align: center;
     position: relative;
 }
 
-.view-profile-container-userMgmt .card .bottom ul{
+.view-profile-container-userMgmt .card .bottom ul {
     width: 100%;
 }
 
-.view-profile-container-userMgmt .card .bottom ul li{
+.view-profile-container-userMgmt .card .bottom ul li {
     list-style: none;
     margin-top: 20px;
     border-bottom: 1px solid #d8d3d3;
@@ -2391,12 +2722,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: #1d242bb6;
 }
 
-.view-profile-container-userMgmt .card .bottom ul li a{
+.view-profile-container-userMgmt .card .bottom ul li a {
     text-decoration: none;
     color: #1d242bb6;
 }
 
-.view-profile-container-userMgmt .card .bottom ul .deactiveForm button{
+.view-profile-container-userMgmt .card .bottom ul .deactiveForm button {
     padding: 8px 30px;
     background-color: red;
     color: var(--hue-white);
@@ -2405,8 +2736,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-top: 30px;
 }
 
-
-.view-profile-container-userMgmt .card .bottom ul .activeForm button{
+.view-profile-container-userMgmt .card .bottom ul .activeForm button {
     padding: 8px 30px;
     background-color: green;
     color: var(--hue-white);
@@ -2415,14 +2745,14 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-top: 30px;
 }
 
-.view-profile-container-userMgmt .card .bottom .bottom-line{
+.view-profile-container-userMgmt .card .bottom .bottom-line {
     width: 100%;
     height: 20px;
     background-color: #0d5f84;
     margin-top: 30px;
 }
 
-.view-profile-container-userMgmt .card .main-image .backto-doctors{
+.view-profile-container-userMgmt .card .main-image .backto-doctors {
     position: absolute;
     top: 10px;
     left: 20px;
@@ -2434,13 +2764,13 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     gap: 10px;
 }
 
-/************************************************** View profile userMgmt style ends ****************************************************/
 
+/************************************************** View profile userMgmt style ends ****************************************************/
 
 
 /************************************************** view-profile-container-userMgmt Doctor view More style starts ****************************************************/
 
-.view-profile-container-userMgmtDoctorVM{
+.view-profile-container-userMgmtDoctorVM {
     width: 100%;
     height: fit-content;
     padding: 10vh 0;
@@ -2451,11 +2781,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.view-profile-container-userMgmtDoctorVM.dark{
+.view-profile-container-userMgmtDoctorVM.dark {
     background-color: var(--hue-black);
 }
 
-.view-profile-container-userMgmtDoctorVM .card{
+.view-profile-container-userMgmtDoctorVM .card {
     width: 50%;
     height: fit-content;
     background-color: var(--hue-white);
@@ -2463,7 +2793,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     position: relative;
 }
 
-.view-profile-container-userMgmtDoctorVM .card .main-image{
+.view-profile-container-userMgmtDoctorVM .card .main-image {
     width: 100%;
     height: 250px;
     position: relative;
@@ -2475,11 +2805,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-white);
 }
 
-.view-profile-container-userMgmtDoctorVM .card .main-image p{
+.view-profile-container-userMgmtDoctorVM .card .main-image p {
     font-size: 14px;
 }
 
-.view-profile-container-userMgmtDoctorVM .card .main-image .profile-icon{
+.view-profile-container-userMgmtDoctorVM .card .main-image .profile-icon {
     position: absolute;
     bottom: 10px;
     left: 2%;
@@ -2494,7 +2824,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
 }
 
-.view-profile-container-userMgmtDoctorVM .card .main-image .social-media-icons{
+.view-profile-container-userMgmtDoctorVM .card .main-image .social-media-icons {
     position: absolute;
     bottom: 15px;
     right: 3%;
@@ -2505,22 +2835,22 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.view-profile-container-userMgmtDoctorVM .card .main-image .social-media-icons i{
+.view-profile-container-userMgmtDoctorVM .card .main-image .social-media-icons i {
     cursor: pointer;
 }
 
-.view-profile-container-userMgmtDoctorVM .card .bottom{
+.view-profile-container-userMgmtDoctorVM .card .bottom {
     width: 100%;
     height: fit-content;
     text-align: center;
     position: relative;
 }
 
-.view-profile-container-userMgmtDoctorVM .card .bottom ul{
+.view-profile-container-userMgmtDoctorVM .card .bottom ul {
     width: 100%;
 }
 
-.view-profile-container-userMgmtDoctorVM .card .bottom ul li{
+.view-profile-container-userMgmtDoctorVM .card .bottom ul li {
     list-style: none;
     margin-top: 20px;
     border-bottom: 1px solid #d8d3d3;
@@ -2528,12 +2858,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: #1d242bb6;
 }
 
-.view-profile-container-userMgmtDoctorVM .card .bottom ul li a{
+.view-profile-container-userMgmtDoctorVM .card .bottom ul li a {
     text-decoration: none;
     color: #1d242bb6;
 }
 
-.view-profile-container-userMgmtDoctorVM .card .bottom ul .deactiveForm button{
+.view-profile-container-userMgmtDoctorVM .card .bottom ul .deactiveForm button {
     padding: 8px 30px;
     background-color: red;
     color: var(--hue-white);
@@ -2544,7 +2874,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
 }
 
-.view-profile-container-userMgmtDoctorVM .card .bottom ul .qualification{
+.view-profile-container-userMgmtDoctorVM .card .bottom ul .qualification {
     padding: 8px 30px;
     background-color: var(--hue-dark-blue);
     color: var(--hue-white);
@@ -2554,14 +2884,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-bottom: 7px;
 }
 
-
-.view-profile-container-userMgmtDoctorVM .card .bottom ul .qualification a{
+.view-profile-container-userMgmtDoctorVM .card .bottom ul .qualification a {
     text-decoration: none;
-    color:white;
+    color: white;
 }
 
-
-.view-profile-container-userMgmtDoctorVM .card .bottom ul .activeForm button{
+.view-profile-container-userMgmtDoctorVM .card .bottom ul .activeForm button {
     padding: 8px 30px;
     background-color: green;
     color: var(--hue-white);
@@ -2572,14 +2900,14 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
 }
 
-.view-profile-container-userMgmtDoctorVM .card .bottom .bottom-line{
+.view-profile-container-userMgmtDoctorVM .card .bottom .bottom-line {
     width: 100%;
     height: 20px;
     background-color: #0d5f84;
     margin-top: 30px;
 }
 
-.view-profile-container-userMgmtDoctorVM .card .main-image .backto-doctors{
+.view-profile-container-userMgmtDoctorVM .card .main-image .backto-doctors {
     position: absolute;
     top: 10px;
     left: 20px;
@@ -2591,14 +2919,13 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     gap: 10px;
 }
 
+
 /************************************************** View profile userMgmt style ends ****************************************************/
-
-
 
 
 /************************************************** Table Page style starts *********************************************************/
 
-.table-section{
+.table-section {
     width: 100%;
     height: fit-content;
     background-color: #ebecee;
@@ -2608,11 +2935,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 40px 0;
 }
 
-.table-section.dark{
+.table-section.dark {
     background-color: var(--hue-black);
 }
 
-.table-section .table-container{
+.table-section .table-container {
     width: 70%;
     height: fit-content;
     background-color: #ffffff;
@@ -2620,11 +2947,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 30px 0;
 }
 
-.table-section .table-container.dark{
+.table-section .table-container.dark {
     box-shadow: none;
 }
 
-.table-section .table-container .table-topic-main{
+.table-section .table-container .table-topic-main {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -2635,7 +2962,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.table-section .table-container .table-topic-main button{
+.table-section .table-container .table-topic-main button {
     padding: 8px 30px;
     background-color: var(--hue-dark-blue);
     color: var(--hue-white);
@@ -2644,7 +2971,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
 }
 
-.table-section .table-container .search-section{
+.table-section .table-container .search-section {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -2653,7 +2980,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-top: 20px;
 }
 
-.table-section .table-container .search-section .search-bar{
+.table-section .table-container .search-section .search-bar {
     width: 40%;
     display: flex;
     justify-content: space-between;
@@ -2663,18 +2990,18 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding-right: 10px;
 }
 
-.table-section .table-container .search-section .search-bar input{
+.table-section .table-container .search-section .search-bar input {
     width: 95%;
 }
 
-.table-section .table-container .search-section .search-bar button{
+.table-section .table-container .search-section .search-bar button {
     width: 5%;
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-.table-section .table-container .table{
+.table-section .table-container .table {
     width: 100%;
     padding: 0 3%;
     height: 50vh;
@@ -2682,7 +3009,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: auto;
 }
 
-.table-section .table-container .table table{
+.table-section .table-container .table table {
     width: 100%;
     text-align: left;
     outline: none;
@@ -2690,31 +3017,31 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 }
 
 .table-section .table-container .table table th,
-.table-section .table-container .table table td{
+.table-section .table-container .table table td {
     width: calc(100% / 6);
     padding: 10px 15px;
 }
 
-.table-section .table-container .table table th{
+.table-section .table-container .table table th {
     font-weight: 300;
 }
 
-.table-section .table-container .table table tr:nth-child(1){
+.table-section .table-container .table table tr:nth-child(1) {
     background-color: #1D242B;
     color: #f0ecec;
 }
 
-.table-section .table-container .table table tr:nth-child(even){
+.table-section .table-container .table table tr:nth-child(even) {
     background-color: #f5f2f2;
 }
 
-.table-section .table-container .table table tr td:nth-child(6){
+.table-section .table-container .table table tr td:nth-child(6) {
     width: 100%;
     display: flex;
     gap: 10px;
 }
 
-.table-section .table-container .table table tr td:nth-child(6) button{
+.table-section .table-container .table table tr td:nth-child(6) button {
     width: 40px;
     height: fit-content;
     background-color: #0077C0;
@@ -2726,16 +3053,17 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     font-size: 12px;
 }
 
-.table-section .table-container .table table tr td:nth-child(6) button:nth-child(2){
+.table-section .table-container .table table tr td:nth-child(6) button:nth-child(2) {
     background-color: #ed4d4d;
 }
+
 
 /************************************************** Table Page style ends *********************************************************/
 
 
 /************************************************** Table-section-2 style starts *********************************************************/
 
-.table-section-2{
+.table-section-2 {
     width: 100%;
     height: fit-content;
     background-color: #ebecee;
@@ -2745,11 +3073,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 40px 0;
 }
 
-.table-section-2.dark{
+.table-section-2.dark {
     background-color: var(--hue-black);
 }
 
-.table-section-2 .table-container{
+.table-section-2 .table-container {
     width: 70%;
     height: fit-content;
     background-color: #ffffff;
@@ -2757,11 +3085,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 30px 0;
 }
 
-.table-section-2 .table-container.dark{
+.table-section-2 .table-container.dark {
     box-shadow: none;
 }
 
-.table-section-2 .table-container .table-topic-main{
+.table-section-2 .table-container .table-topic-main {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -2772,7 +3100,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.table-section-2 .table-container .table-topic-main button{
+.table-section-2 .table-container .table-topic-main button {
     padding: 8px 30px;
     background-color: var(--hue-dark-blue);
     color: var(--hue-white);
@@ -2780,7 +3108,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     border-radius: 5px;
 }
 
-.table-section-2 .table-container .search-section{
+.table-section-2 .table-container .search-section {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -2789,7 +3117,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-top: 20px;
 }
 
-.table-section-2 .table-container .search-section .search-bar .searchForm{
+.table-section-2 .table-container .search-section .search-bar .searchForm {
     width: 700px;
     display: flex;
     justify-content: space-between;
@@ -2799,18 +3127,18 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding-right: 10px;
 }
 
-.table-section-2 .table-container .search-section .search-bar input{
+.table-section-2 .table-container .search-section .search-bar input {
     width: 95%;
 }
 
-.table-section-2 .table-container .search-section .search-bar button{
+.table-section-2 .table-container .search-section .search-bar button {
     width: 5%;
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-.table-section-2 .table-container .table{
+.table-section-2 .table-container .table {
     width: 100%;
     padding: 0 3%;
     height: 50vh;
@@ -2818,7 +3146,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: auto;
 }
 
-.table-section-2 .table-container .table table{
+.table-section-2 .table-container .table table {
     width: 100%;
     text-align: left;
     outline: none;
@@ -2826,31 +3154,31 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 }
 
 .table-section-2 .table-container .table table th,
-.table-section-2 .table-container .table table td{
+.table-section-2 .table-container .table table td {
     width: calc(100% / 6);
     padding: 10px 15px;
 }
 
-.table-section-2 .table-container .table table th{
+.table-section-2 .table-container .table table th {
     font-weight: 300;
 }
 
-.table-section-2 .table-container .table table tr:nth-child(1){
+.table-section-2 .table-container .table table tr:nth-child(1) {
     background-color: #1D242B;
     color: #f0ecec;
 }
 
-.table-section-2 .table-container .table table tr:nth-child(even){
+.table-section-2 .table-container .table table tr:nth-child(even) {
     background-color: #f5f2f2;
 }
 
-.table-section-2 .table-container .table table tr td:nth-child(6){
+.table-section-2 .table-container .table table tr td:nth-child(6) {
     width: 100%;
     display: flex;
     gap: 10px;
 }
 
-.table-section-2 .table-container .table table tr td:nth-child(6) button{
+.table-section-2 .table-container .table table tr td:nth-child(6) button {
     width: 40px;
     height: fit-content;
     background-color: #0077C0;
@@ -2862,16 +3190,17 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     font-size: 12px;
 }
 
-.table-section-2 .table-container .table table tr td:nth-child(6) button:nth-child(2){
+.table-section-2 .table-container .table table tr td:nth-child(6) button:nth-child(2) {
     background-color: #ed4d4d;
 }
+
 
 /************************************************** Table Page style ends *********************************************************/
 
 
 /************************************************** Table-section-userMgmt style starts *********************************************************/
 
-.table-section-userMgmt{
+.table-section-userMgmt {
     width: 100%;
     height: fit-content;
     background-color: #ebecee;
@@ -2881,11 +3210,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 40px 0;
 }
 
-.table-section-userMgmt.dark{
+.table-section-userMgmt.dark {
     background-color: var(--hue-black);
 }
 
-.table-section-userMgmt .table-container{
+.table-section-userMgmt .table-container {
     width: 70%;
     height: fit-content;
     background-color: #ffffff;
@@ -2893,11 +3222,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 30px 0;
 }
 
-.table-section-userMgmt .table-container.dark{
+.table-section-userMgmt .table-container.dark {
     box-shadow: none;
 }
 
-.table-section-userMgmt .table-container .table-topic-main{
+.table-section-userMgmt .table-container .table-topic-main {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -2908,12 +3237,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.table-section-userMgmt .table-container .table-topic-main button a{
+.table-section-userMgmt .table-container .table-topic-main button a {
     text-decoration: none;
-    color:white;
+    color: white;
 }
 
-.table-section-userMgmt .table-container .table-topic-main button{
+.table-section-userMgmt .table-container .table-topic-main button {
     padding: 8px 30px;
     background-color: var(--hue-dark-blue);
     color: var(--hue-white);
@@ -2921,7 +3250,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     border-radius: 5px;
 }
 
-.table-section-userMgmt .table-container .search-section{
+.table-section-userMgmt .table-container .search-section {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -2930,7 +3259,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-top: 20px;
 }
 
-.table-section-userMgmt .table-container .search-section .search-bar .searchForm{
+.table-section-userMgmt .table-container .search-section .search-bar .searchForm {
     width: 700px;
     display: flex;
     justify-content: space-between;
@@ -2940,18 +3269,18 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding-right: 10px;
 }
 
-.table-section-userMgmt .table-container .search-section .search-bar input{
+.table-section-userMgmt .table-container .search-section .search-bar input {
     width: 95%;
 }
 
-.table-section-userMgmt .table-container .search-section .search-bar button{
+.table-section-userMgmt .table-container .search-section .search-bar button {
     width: 5%;
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-.table-section-userMgmt .table-container .table{
+.table-section-userMgmt .table-container .table {
     width: 100%;
     padding: 0 3%;
     height: 50vh;
@@ -2959,7 +3288,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: auto;
 }
 
-.table-section-userMgmt .table-container .table table{
+.table-section-userMgmt .table-container .table table {
     width: 100%;
     text-align: left;
     outline: none;
@@ -2967,31 +3296,31 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 }
 
 .table-section-userMgmt .table-container .table table th,
-.table-section-userMgmt .table-container .table table td{
+.table-section-userMgmt .table-container .table table td {
     width: calc(100% / 6);
     padding: 10px 15px;
 }
 
-.table-section-userMgmt .table-container .table table th{
+.table-section-userMgmt .table-container .table table th {
     font-weight: 300;
 }
 
-.table-section-userMgmt .table-container .table table tr:nth-child(1){
+.table-section-userMgmt .table-container .table table tr:nth-child(1) {
     background-color: #1D242B;
     color: #f0ecec;
 }
 
-.table-section-userMgmt .table-container .table table tr:nth-child(even){
+.table-section-userMgmt .table-container .table table tr:nth-child(even) {
     background-color: #f5f2f2;
 }
 
-.table-section-userMgmt .table-container .table table tr td:nth-child(6){
+.table-section-userMgmt .table-container .table table tr td:nth-child(6) {
     width: 100%;
     display: flex;
     gap: 10px;
 }
 
-.table-section-userMgmt .table-container .table table tr td:nth-child(6) button{
+.table-section-userMgmt .table-container .table table tr td:nth-child(6) button {
     width: 40px;
     height: fit-content;
     background-color: #0077C0;
@@ -3003,16 +3332,17 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     font-size: 12px;
 }
 
-.table-section-userMgmt .table-container .table table tr td:nth-child(6) button:nth-child(2){
+.table-section-userMgmt .table-container .table table tr td:nth-child(6) button:nth-child(2) {
     background-color: #ed4d4d;
 }
+
 
 /************************************************** Table Page style ends *********************************************************/
 
 
 /************************************************** Table-doctor User Mgmt style starts *********************************************************/
 
-.table-section-userMgmtDoctor{
+.table-section-userMgmtDoctor {
     width: 100%;
     height: fit-content;
     background-color: #ebecee;
@@ -3022,11 +3352,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 40px 0;
 }
 
-.table-section-userMgmtDoctor.dark{
+.table-section-userMgmtDoctor.dark {
     background-color: var(--hue-black);
 }
 
-.table-section-userMgmtDoctor .table-container{
+.table-section-userMgmtDoctor .table-container {
     width: 70%;
     height: fit-content;
     background-color: #ffffff;
@@ -3034,11 +3364,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 30px 0;
 }
 
-.table-section-userMgmtDoctor .table-container.dark{
+.table-section-userMgmtDoctor .table-container.dark {
     box-shadow: none;
 }
 
-.table-section-userMgmtDoctor .table-container .table-topic-main{
+.table-section-userMgmtDoctor .table-container .table-topic-main {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -3049,12 +3379,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.table-section-userMgmtDoctor .table-container .table-topic-main button a{
+.table-section-userMgmtDoctor .table-container .table-topic-main button a {
     text-decoration: none;
-    color:white;
+    color: white;
 }
 
-.table-section-userMgmtDoctor .table-container .table-topic-main button{
+.table-section-userMgmtDoctor .table-container .table-topic-main button {
     padding: 8px 30px;
     background-color: var(--hue-dark-blue);
     color: var(--hue-white);
@@ -3062,7 +3392,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     border-radius: 5px;
 }
 
-.table-section-userMgmtDoctor .table-container .search-section{
+.table-section-userMgmtDoctor .table-container .search-section {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -3071,7 +3401,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-top: 20px;
 }
 
-.table-section-userMgmtDoctor .table-container .search-section .search-bar .searchForm{
+.table-section-userMgmtDoctor .table-container .search-section .search-bar .searchForm {
     width: 700px;
     display: flex;
     justify-content: space-between;
@@ -3081,18 +3411,18 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding-right: 10px;
 }
 
-.table-section-userMgmtDoctor .table-container .search-section .search-bar input{
+.table-section-userMgmtDoctor .table-container .search-section .search-bar input {
     width: 95%;
 }
 
-.table-section-userMgmtDoctor .table-container .search-section .search-bar button{
+.table-section-userMgmtDoctor .table-container .search-section .search-bar button {
     width: 5%;
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-.table-section-userMgmtDoctor .table-container .table{
+.table-section-userMgmtDoctor .table-container .table {
     width: 100%;
     padding: 0 3%;
     height: 50vh;
@@ -3100,7 +3430,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: auto;
 }
 
-.table-section-userMgmtDoctor .table-container .table table{
+.table-section-userMgmtDoctor .table-container .table table {
     width: 100%;
     text-align: left;
     outline: none;
@@ -3108,31 +3438,31 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 }
 
 .table-section-userMgmtDoctor .table-container .table table th,
-.table-section-userMgmtDoctor .table-container .table table td{
+.table-section-userMgmtDoctor .table-container .table table td {
     width: calc(100% / 7);
     padding: 10px 15px;
 }
 
-.table-section-userMgmtDoctor .table-container .table table th{
+.table-section-userMgmtDoctor .table-container .table table th {
     font-weight: 300;
 }
 
-.table-section-userMgmtDoctor .table-container .table table tr:nth-child(1){
+.table-section-userMgmtDoctor .table-container .table table tr:nth-child(1) {
     background-color: #1D242B;
     color: #f0ecec;
 }
 
-.table-section-userMgmtDoctor .table-container .table table tr:nth-child(even){
+.table-section-userMgmtDoctor .table-container .table table tr:nth-child(even) {
     background-color: #f5f2f2;
 }
 
-.table-section-userMgmtDoctor .table-container .table table tr td:nth-child(7){
+.table-section-userMgmtDoctor .table-container .table table tr td:nth-child(7) {
     width: 100%;
     display: flex;
     gap: 10px;
 }
 
-.table-section-userMgmtDoctor .table-container .table table tr td:nth-child(7) button{
+.table-section-userMgmtDoctor .table-container .table table tr td:nth-child(7) button {
     width: 40px;
     height: fit-content;
     background-color: #0077C0;
@@ -3144,16 +3474,17 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     font-size: 12px;
 }
 
-.table-section-userMgmtDoctor .table-container .table table tr td:nth-child(7) button:nth-child(2){
+.table-section-userMgmtDoctor .table-container .table table tr td:nth-child(7) button:nth-child(2) {
     background-color: #ed4d4d;
 }
+
 
 /************************************************** Table Page style ends *********************************************************/
 
 
 /************************************************** Ttable-section-requested style starts *********************************************************/
 
-.table-section-requested{
+.table-section-requested {
     width: 100%;
     height: fit-content;
     background-color: #ebecee;
@@ -3163,11 +3494,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 40px 0;
 }
 
-.table-section-requested.dark{
+.table-section-requested.dark {
     background-color: var(--hue-black);
 }
 
-.table-section-requested .table-container{
+.table-section-requested .table-container {
     width: 70%;
     height: fit-content;
     background-color: #ffffff;
@@ -3175,11 +3506,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 30px 0;
 }
 
-.table-section-requested .table-container.dark{
+.table-section-requested .table-container.dark {
     box-shadow: none;
 }
 
-.table-section-requested .table-container .table-topic-main{
+.table-section-requested .table-container .table-topic-main {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -3190,7 +3521,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.table-section-requested .table-container .table-topic-main button{
+.table-section-requested .table-container .table-topic-main button {
     padding: 8px 30px;
     background-color: var(--hue-dark-blue);
     color: var(--hue-white);
@@ -3198,7 +3529,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     border-radius: 5px;
 }
 
-.table-section-requested .table-container .search-section{
+.table-section-requested .table-container .search-section {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -3207,7 +3538,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-top: 20px;
 }
 
-.table-section-requested .table-container .search-section .search-bar .searchForm{
+.table-section-requested .table-container .search-section .search-bar .searchForm {
     width: 700px;
     display: flex;
     justify-content: space-between;
@@ -3217,18 +3548,18 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding-right: 10px;
 }
 
-.table-section-requested .table-container .search-section .search-bar input{
+.table-section-requested .table-container .search-section .search-bar input {
     width: 95%;
 }
 
-.table-section-requested .table-container .search-section .search-bar button{
+.table-section-requested .table-container .search-section .search-bar button {
     width: 5%;
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-.table-section-requested .table-container .table{
+.table-section-requested .table-container .table {
     width: 100%;
     padding: 0 3%;
     height: 50vh;
@@ -3236,7 +3567,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: auto;
 }
 
-.table-section-requested .table-container .table table{
+.table-section-requested .table-container .table table {
     width: 100%;
     text-align: left;
     outline: none;
@@ -3244,31 +3575,31 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 }
 
 .table-section-requested .table-container .table table th,
-.table-section-requested .table-container .table table td{
+.table-section-requested .table-container .table table td {
     width: calc(100% / 6);
     padding: 10px 15px;
 }
 
-.table-section-requested .table-container .table table th{
+.table-section-requested .table-container .table table th {
     font-weight: 300;
 }
 
-.table-section-requested .table-container .table table tr:nth-child(1){
+.table-section-requested .table-container .table table tr:nth-child(1) {
     background-color: #1D242B;
     color: #f0ecec;
 }
 
-.table-section-requested .table-container .table table tr:nth-child(even){
+.table-section-requested .table-container .table table tr:nth-child(even) {
     background-color: #f5f2f2;
 }
 
-.table-section-requested .table-container .table table tr td:nth-child(6){
+.table-section-requested .table-container .table table tr td:nth-child(6) {
     width: 100%;
     display: flex;
     gap: 10px;
 }
 
-.table-section-requested .table-container .table table tr td:nth-child(6) .viewMoreForm .viewMore{
+.table-section-requested .table-container .table table tr td:nth-child(6) .viewMoreForm .viewMore {
     width: 40px;
     height: fit-content;
     background-color: #0077C0;
@@ -3280,7 +3611,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     font-size: 12px;
 }
 
-.table-section-requested .table-container .table table tr td:nth-child(6) .verifyForm .verify{
+.table-section-requested .table-container .table table tr td:nth-child(6) .verifyForm .verify {
     width: 40px;
     height: fit-content;
     background-color: green;
@@ -3292,8 +3623,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     font-size: 12px;
 }
 
-
-.table-section-requested .table-container .table table tr td:nth-child(6) .notVerifyForm .notVerify{
+.table-section-requested .table-container .table table tr td:nth-child(6) .notVerifyForm .notVerify {
     width: 65px;
     height: fit-content;
     background-color: #770000;
@@ -3305,12 +3635,13 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     font-size: 12px;
 }
 
+
 /************************************************** Table Page style ends *********************************************************/
 
 
 /************************************************** table-section-requestedCounsellor MedInstr Pharmacist style starts *********************************************************/
 
-.table-section-requestedCMP{
+.table-section-requestedCMP {
     width: 100%;
     height: fit-content;
     background-color: #ebecee;
@@ -3320,11 +3651,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 40px 0;
 }
 
-.table-section-requestedCMP.dark{
+.table-section-requestedCMP.dark {
     background-color: var(--hue-black);
 }
 
-.table-section-requestedCMP .table-container{
+.table-section-requestedCMP .table-container {
     width: 70%;
     height: fit-content;
     background-color: #ffffff;
@@ -3332,11 +3663,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 30px 0;
 }
 
-.table-section-requestedCMP .table-container.dark{
+.table-section-requestedCMP .table-container.dark {
     box-shadow: none;
 }
 
-.table-section-requestedCMP .table-container .table-topic-main{
+.table-section-requestedCMP .table-container .table-topic-main {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -3347,7 +3678,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.table-section-requestedCMP .table-container .table-topic-main button{
+.table-section-requestedCMP .table-container .table-topic-main button {
     padding: 8px 30px;
     background-color: var(--hue-dark-blue);
     color: var(--hue-white);
@@ -3355,7 +3686,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     border-radius: 5px;
 }
 
-.table-section-requestedCMP .table-container .search-section{
+.table-section-requestedCMP .table-container .search-section {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -3364,7 +3695,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-top: 20px;
 }
 
-.table-section-requestedCMP .table-container .search-section .search-bar .searchForm{
+.table-section-requestedCMP .table-container .search-section .search-bar .searchForm {
     width: 700px;
     display: flex;
     justify-content: space-between;
@@ -3374,18 +3705,18 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding-right: 10px;
 }
 
-.table-section-requestedCMP .table-container .search-section .search-bar input{
+.table-section-requestedCMP .table-container .search-section .search-bar input {
     width: 95%;
 }
 
-.table-section-requestedCMP .table-container .search-section .search-bar button{
+.table-section-requestedCMP .table-container .search-section .search-bar button {
     width: 5%;
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-.table-section-requestedCMP .table-container .table{
+.table-section-requestedCMP .table-container .table {
     width: 100%;
     padding: 0 3%;
     height: 50vh;
@@ -3393,7 +3724,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: auto;
 }
 
-.table-section-requestedCMP .table-container .table table{
+.table-section-requestedCMP .table-container .table table {
     width: 100%;
     text-align: left;
     outline: none;
@@ -3401,31 +3732,31 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 }
 
 .table-section-requestedCMP .table-container .table table th,
-.table-section-requestedCMP .table-container .table table td{
+.table-section-requestedCMP .table-container .table table td {
     width: calc(100% / 5);
     padding: 10px 15px;
 }
 
-.table-section-requestedCMP .table-container .table table th{
+.table-section-requestedCMP .table-container .table table th {
     font-weight: 300;
 }
 
-.table-section-requestedCMP .table-container .table table tr:nth-child(1){
+.table-section-requestedCMP .table-container .table table tr:nth-child(1) {
     background-color: #1D242B;
     color: #f0ecec;
 }
 
-.table-section-requestedCMP .table-container .table table tr:nth-child(even){
+.table-section-requestedCMP .table-container .table table tr:nth-child(even) {
     background-color: #f5f2f2;
 }
 
-.table-section-requestedCMP .table-container .table table tr td:nth-child(5){
+.table-section-requestedCMP .table-container .table table tr td:nth-child(5) {
     width: 100%;
     display: flex;
     gap: 10px;
 }
 
-.table-section-requestedCMP .table-container .table table tr td:nth-child(5) .viewMoreForm .viewMore{
+.table-section-requestedCMP .table-container .table table tr td:nth-child(5) .viewMoreForm .viewMore {
     width: 40px;
     height: fit-content;
     background-color: #0077C0;
@@ -3437,7 +3768,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     font-size: 12px;
 }
 
-.table-section-requestedCMP .table-container .table table tr td:nth-child(5) .verifyForm .verify{
+.table-section-requestedCMP .table-container .table table tr td:nth-child(5) .verifyForm .verify {
     width: 40px;
     height: fit-content;
     background-color: green;
@@ -3449,8 +3780,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     font-size: 12px;
 }
 
-
-.table-section-requestedCMP .table-container .table table tr td:nth-child(5) .notVerifyForm .notVerify{
+.table-section-requestedCMP .table-container .table table tr td:nth-child(5) .notVerifyForm .notVerify {
     width: 65px;
     height: fit-content;
     background-color: #770000;
@@ -3462,13 +3792,13 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     font-size: 12px;
 }
 
+
 /************************************************** Table Page style ends *********************************************************/
 
 
 /************************************************** table-section-MIregUsers style starts *********************************************************/
 
-
-.table-section-MIRegUsers{
+.table-section-MIRegUsers {
     width: 100%;
     height: fit-content;
     background-color: #ebecee;
@@ -3478,11 +3808,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 40px 0;
 }
 
-.table-section-MIRegUsers.dark{
+.table-section-MIRegUsers.dark {
     background-color: var(--hue-black);
 }
 
-.table-section-MIRegUsers .table-container{
+.table-section-MIRegUsers .table-container {
     width: 70%;
     height: fit-content;
     background-color: #ffffff;
@@ -3490,8 +3820,8 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 30px 0;
 }
 
-
-.table-section-MIRegUsers .table-container h1,h4{
+.table-section-MIRegUsers .table-container h1,
+h4 {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -3501,11 +3831,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 0 3%;
     color: var(--hue-black);
 }
-.table-section-MIRegUsers .table-container.dark{
+
+.table-section-MIRegUsers .table-container.dark {
     box-shadow: none;
 }
 
-.table-section-MIRegUsers .table-container .table-topic-main{
+.table-section-MIRegUsers .table-container .table-topic-main {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -3516,7 +3847,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.table-section-MIRegUsers .table-container .table-topic-main button{
+.table-section-MIRegUsers .table-container .table-topic-main button {
     padding: 8px 30px;
     background-color: var(--hue-dark-blue);
     color: var(--hue-white);
@@ -3524,12 +3855,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     border-radius: 5px;
 }
 
-
-.table-section-MIRegUsers .table-container .table-topic-main button a{
- text-decoration:none;
- color:var(--hue-white);
+.table-section-MIRegUsers .table-container .table-topic-main button a {
+    text-decoration: none;
+    color: var(--hue-white);
 }
-.table-section-MIRegUsers .table-container .search-section{
+
+.table-section-MIRegUsers .table-container .search-section {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -3538,7 +3869,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-top: 20px;
 }
 
-.table-section-MIRegUsers .table-container .search-section .search-bar .searchForm{
+.table-section-MIRegUsers .table-container .search-section .search-bar .searchForm {
     width: 700px;
     display: flex;
     justify-content: space-between;
@@ -3549,18 +3880,18 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-bottom: 20px;
 }
 
-.table-section-MIRegUsers .table-container .search-section .search-bar input{
+.table-section-MIRegUsers .table-container .search-section .search-bar input {
     width: 95%;
 }
 
-.table-section-MIRegUsers .table-container .search-section .search-bar button{
+.table-section-MIRegUsers .table-container .search-section .search-bar button {
     width: 5%;
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-.table-section-MIRegUsers .table-container .table{
+.table-section-MIRegUsers .table-container .table {
     width: 100%;
     padding: 0 3%;
     margin-top: 30px;
@@ -3568,7 +3899,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-bottom: 20px;
 }
 
-.table-section-MIRegUsers .table-container .table table{
+.table-section-MIRegUsers .table-container .table table {
     width: 100%;
     text-align: left;
     outline: none;
@@ -3576,35 +3907,35 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 }
 
 .table-section-MIRegUsers .table-container .table table th,
-.table-section-MIRegUsers .table-container .table table td{
+.table-section-MIRegUsers .table-container .table table td {
     width: calc(100% / 5);
     padding: 10px 15px;
 }
 
-.table-section-MIRegUsers .table-container .table table th{
+.table-section-MIRegUsers .table-container .table table th {
     font-weight: 300;
 }
 
-.table-section-MIRegUsers .table-container .table table tr:nth-child(1){
+.table-section-MIRegUsers .table-container .table table tr:nth-child(1) {
     background-color: #1D242B;
     color: #f0ecec;
 }
 
-.table-section-MIRegUsers .table-container .table table tr:nth-child(even){
+.table-section-MIRegUsers .table-container .table table tr:nth-child(even) {
     background-color: #f5f2f2;
 }
 
-.table-section-MIRegUsers .table-container .table table tr td:nth-child(5){
+.table-section-MIRegUsers .table-container .table table tr td:nth-child(5) {
     width: 100%;
     display: flex;
     gap: 10px;
 }
 
-
-.table-section-MIRegUsers  .table-container .table table tr td:nth-child(5)   form .viewMore{
+.table-section-MIRegUsers .table-container .table table tr td:nth-child(5) form .viewMore {
     width: 60px;
     height: fit-content;
-    background-color:  var(--hue-dark-blue);;
+    background-color: var(--hue-dark-blue);
+    ;
     border: none;
     color: var(--hue-white);
     padding: 5px 2px;
@@ -3613,11 +3944,10 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     font-size: 12px;
 }
 
-
-.table-section-MIRegUsers  .table-container .table table tr td:nth-child(5)  form .viewRegUsers{
+.table-section-MIRegUsers .table-container .table table tr td:nth-child(5) form .viewRegUsers {
     width: 110px;
     height: fit-content;
-    background-color:  green;
+    background-color: green;
     border: none;
     color: var(--hue-white);
     padding: 5px 2px;
@@ -3625,14 +3955,14 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
     font-size: 12px;
 }
+
 
 /************************************************** Table Page style ends *********************************************************/
 
 
 /************************************************** Table-section-MISessionRegUsers style starts *********************************************************/
 
-
-.table-section-MISessionRegUsers{
+.table-section-MISessionRegUsers {
     width: 100%;
     height: fit-content;
     background-color: #ebecee;
@@ -3642,11 +3972,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 40px 0;
 }
 
-.table-section-MISessionRegUsers.dark{
+.table-section-MISessionRegUsers.dark {
     background-color: var(--hue-black);
 }
 
-.table-section-MISessionRegUsers .table-container{
+.table-section-MISessionRegUsers .table-container {
     width: 70%;
     height: fit-content;
     background-color: #ffffff;
@@ -3654,11 +3984,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 30px 0;
 }
 
-.table-section-MISessionRegUsers .table-container.dark{
+.table-section-MISessionRegUsers .table-container.dark {
     box-shadow: none;
 }
 
-.table-section-MISessionRegUsers .table-container .table-topic-main{
+.table-section-MISessionRegUsers .table-container .table-topic-main {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -3669,7 +3999,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.table-section-MISessionRegUsers .table-container .table-topic-main button{
+.table-section-MISessionRegUsers .table-container .table-topic-main button {
     padding: 8px 30px;
     background-color: var(--hue-dark-blue);
     color: var(--hue-white);
@@ -3677,12 +4007,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     border-radius: 5px;
 }
 
-
-.table-section-MISessionRegUsers .table-container .table-topic-main button a{
- text-decoration:none;
- color:var(--hue-white);
+.table-section-MISessionRegUsers .table-container .table-topic-main button a {
+    text-decoration: none;
+    color: var(--hue-white);
 }
-.table-section-MISessionRegUsers .table-container .search-section{
+
+.table-section-MISessionRegUsers .table-container .search-section {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -3691,7 +4021,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-top: 20px;
 }
 
-.table-section-MISessionRegUsers .table-container .search-section .search-bar .searchform{
+.table-section-MISessionRegUsers .table-container .search-section .search-bar .searchform {
     width: 700px;
     display: flex;
     justify-content: space-between;
@@ -3701,18 +4031,18 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding-right: 10px;
 }
 
-.table-section-MISessionRegUsers .table-container .search-section .search-bar input{
+.table-section-MISessionRegUsers .table-container .search-section .search-bar input {
     width: 95%;
 }
 
-.table-section-MISessionRegUsers .table-container .search-section .search-bar button{
+.table-section-MISessionRegUsers .table-container .search-section .search-bar button {
     width: 5%;
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-.table-section-MISessionRegUsers .table-container .table{
+.table-section-MISessionRegUsers .table-container .table {
     width: 100%;
     padding: 0 3%;
     height: 50vh;
@@ -3720,7 +4050,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: auto;
 }
 
-.table-section-MISessionRegUsers .table-container .table table{
+.table-section-MISessionRegUsers .table-container .table table {
     width: 100%;
     text-align: left;
     outline: none;
@@ -3728,35 +4058,35 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 }
 
 .table-section-MISessionRegUsers .table-container .table table th,
-.table-section-MISessionRegUsers .table-container .table table td{
+.table-section-MISessionRegUsers .table-container .table table td {
     width: calc(100% / 5);
     padding: 10px 15px;
 }
 
-.table-section-MISessionRegUsers .table-container .table table th{
+.table-section-MISessionRegUsers .table-container .table table th {
     font-weight: 300;
 }
 
-.table-section-MISessionRegUsers .table-container .table table tr:nth-child(1){
+.table-section-MISessionRegUsers .table-container .table table tr:nth-child(1) {
     background-color: #1D242B;
     color: #f0ecec;
 }
 
-.table-section-MISessionRegUsers .table-container .table table tr:nth-child(even){
+.table-section-MISessionRegUsers .table-container .table table tr:nth-child(even) {
     background-color: #f5f2f2;
 }
 
-.table-section-MISessionRegUsers .table-container .table table tr td:nth-child(5){
+.table-section-MISessionRegUsers .table-container .table table tr td:nth-child(5) {
     width: 100%;
     display: flex;
     gap: 10px;
 }
 
-
-.table-section-MISessionRegUsers  .table-container .table table tr td:nth-child(5)   form .viewMore{
+.table-section-MISessionRegUsers .table-container .table table tr td:nth-child(5) form .viewMore {
     width: 60px;
     height: fit-content;
-    background-color:  var(--hue-dark-blue);;
+    background-color: var(--hue-dark-blue);
+    ;
     border: none;
     color: var(--hue-white);
     padding: 5px 2px;
@@ -3765,11 +4095,10 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     font-size: 12px;
 }
 
-
-.table-section-MISessionRegUsers  .table-container .table table tr td:nth-child(5)  form .viewRegUsers{
+.table-section-MISessionRegUsers .table-container .table table tr td:nth-child(5) form .viewRegUsers {
     width: 110px;
     height: fit-content;
-    background-color:  green;
+    background-color: green;
     border: none;
     color: var(--hue-white);
     padding: 5px 2px;
@@ -3777,15 +4106,14 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
     font-size: 12px;
 }
+
 
 /************************************************** Table Page style ends *********************************************************/
 
 
-
 /************************************************** Table-section-MISession  style starts *********************************************************/
 
-
-.table-section-MISession{
+.table-section-MISession {
     width: 100%;
     height: fit-content;
     background-color: #ebecee;
@@ -3795,11 +4123,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 40px 0;
 }
 
-.table-section-MISession.dark{
+.table-section-MISession.dark {
     background-color: var(--hue-black);
 }
 
-.table-section-MISession .table-container{
+.table-section-MISession .table-container {
     width: 70%;
     height: fit-content;
     background-color: #ffffff;
@@ -3807,11 +4135,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 30px 0;
 }
 
-.table-section-MISession .table-container.dark{
+.table-section-MISession .table-container.dark {
     box-shadow: none;
 }
 
-.table-section-MISession .table-container .table-topic-main{
+.table-section-MISession .table-container .table-topic-main {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -3822,7 +4150,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.table-section-MISession .table-container .table-topic-main button{
+.table-section-MISession .table-container .table-topic-main button {
     padding: 8px 30px;
     background-color: var(--hue-dark-blue);
     color: var(--hue-white);
@@ -3830,12 +4158,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     border-radius: 5px;
 }
 
-
-.table-section-MISession .table-container .table-topic-main button a{
- text-decoration:none;
- color:var(--hue-white);
+.table-section-MISession .table-container .table-topic-main button a {
+    text-decoration: none;
+    color: var(--hue-white);
 }
-.table-section-MISession .table-container .search-section{
+
+.table-section-MISession .table-container .search-section {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -3844,7 +4172,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-top: 20px;
 }
 
-.table-section-MISession .table-container .search-section .search-bar .searchform{
+.table-section-MISession .table-container .search-section .search-bar .searchform {
     width: 700px;
     display: flex;
     justify-content: space-between;
@@ -3854,18 +4182,18 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding-right: 10px;
 }
 
-.table-section-MISession .table-container .search-section .search-bar input{
+.table-section-MISession .table-container .search-section .search-bar input {
     width: 95%;
 }
 
-.table-section-MISession .table-container .search-section .search-bar button{
+.table-section-MISession .table-container .search-section .search-bar button {
     width: 5%;
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-.table-section-MISession .table-container .table{
+.table-section-MISession .table-container .table {
     width: 100%;
     padding: 0 3%;
     height: 50vh;
@@ -3873,7 +4201,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: auto;
 }
 
-.table-section-MISession .table-container .table table{
+.table-section-MISession .table-container .table table {
     width: 100%;
     text-align: left;
     outline: none;
@@ -3881,35 +4209,35 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 }
 
 .table-section-MISession .table-container .table table th,
-.table-section-MISession .table-container .table table td{
+.table-section-MISession .table-container .table table td {
     width: calc(100% / 3);
     padding: 10px 15px;
 }
 
-.table-section-MISession .table-container .table table th{
+.table-section-MISession .table-container .table table th {
     font-weight: 300;
 }
 
-.table-section-MISession .table-container .table table tr:nth-child(1){
+.table-section-MISession .table-container .table table tr:nth-child(1) {
     background-color: #1D242B;
     color: #f0ecec;
 }
 
-.table-section-MISession .table-container .table table tr:nth-child(even){
+.table-section-MISession .table-container .table table tr:nth-child(even) {
     background-color: #f5f2f2;
 }
 
-.table-section-MISession .table-container .table table tr td:nth-child(5){
+.table-section-MISession .table-container .table table tr td:nth-child(5) {
     width: 100%;
     display: flex;
     gap: 10px;
 }
 
-
-.table-section-MISession  .table-container .table table tr td:nth-child(5)   form .viewMore{
+.table-section-MISession .table-container .table table tr td:nth-child(5) form .viewMore {
     width: 60px;
     height: fit-content;
-    background-color:  var(--hue-dark-blue);;
+    background-color: var(--hue-dark-blue);
+    ;
     border: none;
     color: var(--hue-white);
     padding: 5px 2px;
@@ -3918,11 +4246,10 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     font-size: 12px;
 }
 
-
-.table-section-MISession  .table-container .table table tr td:nth-child(5)  form .viewRegUsers{
+.table-section-MISession .table-container .table table tr td:nth-child(5) form .viewRegUsers {
     width: 110px;
     height: fit-content;
-    background-color:  green;
+    background-color: green;
     border: none;
     color: var(--hue-white);
     padding: 5px 2px;
@@ -3930,14 +4257,14 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
     font-size: 12px;
 }
+
 
 /************************************************** Table Page style ends *********************************************************/
 
 
 /************************************************** Table-section-MIChangeSession style starts *********************************************************/
 
-
-.table-section-MIChangeSession{
+.table-section-MIChangeSession {
     width: 100%;
     height: fit-content;
     background-color: #ebecee;
@@ -3947,11 +4274,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 40px 0;
 }
 
-.table-section-MIChangeSession.dark{
+.table-section-MIChangeSession.dark {
     background-color: var(--hue-black);
 }
 
-.table-section-MIChangeSession .table-container{
+.table-section-MIChangeSession .table-container {
     width: 70%;
     height: fit-content;
     background-color: #ffffff;
@@ -3959,11 +4286,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 30px 0;
 }
 
-.table-section-MIChangeSession .table-container.dark{
+.table-section-MIChangeSession .table-container.dark {
     box-shadow: none;
 }
 
-.table-section-MIChangeSession .table-container .table-topic-main{
+.table-section-MIChangeSession .table-container .table-topic-main {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -3974,7 +4301,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.table-section-MIChangeSession .table-container .table-topic-main button{
+.table-section-MIChangeSession .table-container .table-topic-main button {
     padding: 8px 30px;
     background-color: var(--hue-dark-blue);
     color: var(--hue-white);
@@ -3982,12 +4309,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     border-radius: 5px;
 }
 
-
-.table-section-MIChangeSession .table-container .table-topic-main button a{
- text-decoration:none;
- color:var(--hue-white);
+.table-section-MIChangeSession .table-container .table-topic-main button a {
+    text-decoration: none;
+    color: var(--hue-white);
 }
-.table-section-MIChangeSession .table-container .search-section{
+
+.table-section-MIChangeSession .table-container .search-section {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -3996,7 +4323,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-top: 20px;
 }
 
-.table-section-MIChangeSession .table-container .search-section .search-bar .searchform{
+.table-section-MIChangeSession .table-container .search-section .search-bar .searchform {
     width: 700px;
     display: flex;
     justify-content: space-between;
@@ -4006,18 +4333,18 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding-right: 10px;
 }
 
-.table-section-MIChangeSession .table-container .search-section .search-bar input{
+.table-section-MIChangeSession .table-container .search-section .search-bar input {
     width: 95%;
 }
 
-.table-section-MIChangeSession .table-container .search-section .search-bar button{
+.table-section-MIChangeSession .table-container .search-section .search-bar button {
     width: 5%;
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-.table-section-MIChangeSession .table-container .table{
+.table-section-MIChangeSession .table-container .table {
     width: 100%;
     padding: 0 3%;
     height: 50vh;
@@ -4025,7 +4352,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: auto;
 }
 
-.table-section-MIChangeSession .table-container .table table{
+.table-section-MIChangeSession .table-container .table table {
     width: 100%;
     text-align: left;
     outline: none;
@@ -4033,36 +4360,34 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 }
 
 .table-section-MIChangeSession .table-container .table table th,
-.table-section-MIChangeSession .table-container .table table td{
+.table-section-MIChangeSession .table-container .table table td {
     width: calc(100% / 6);
     padding: 10px 15px;
 }
 
-.table-section-MIChangeSession .table-container .table table th{
+.table-section-MIChangeSession .table-container .table table th {
     font-weight: 300;
 }
 
-.table-section-MIChangeSession .table-container .table table tr:nth-child(1){
+.table-section-MIChangeSession .table-container .table table tr:nth-child(1) {
     background-color: #1D242B;
     color: #f0ecec;
 }
 
-.table-section-MIChangeSession .table-container .table table tr:nth-child(even){
+.table-section-MIChangeSession .table-container .table table tr:nth-child(even) {
     background-color: #f5f2f2;
 }
 
-.table-section-MIChangeSession .table-container .table table tr td:nth-child(6){
+.table-section-MIChangeSession .table-container .table table tr td:nth-child(6) {
     width: 100%;
     display: flex;
     gap: 10px;
 }
 
-
-
-.table-section-MIChangeSession .table-container .table table tr td:nth-child(6)   form .update{
+.table-section-MIChangeSession .table-container .table table tr td:nth-child(6) form .update {
     width: 60px;
     height: fit-content;
-    background-color:  green;
+    background-color: green;
     border: none;
     color: var(--hue-white);
     padding: 5px 2px;
@@ -4071,11 +4396,10 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     font-size: 12px;
 }
 
-
-.table-section-MIChangeSession .table-container .table table tr td:nth-child(6)  form .delete{
+.table-section-MIChangeSession .table-container .table table tr td:nth-child(6) form .delete {
     width: 60px;
     height: fit-content;
-    background-color:  #ed4d4d;
+    background-color: #ed4d4d;
     border: none;
     color: var(--hue-white);
     padding: 5px 2px;
@@ -4083,15 +4407,14 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
     font-size: 12px;
 }
+
 
 /************************************************** Table Page style ends *********************************************************/
 
 
-
 /************************************************** Table-section-MIChangeTimeslot style starts *********************************************************/
 
-
-.table-section-MIChangeTimeslot{
+.table-section-MIChangeTimeslot {
     width: 100%;
     height: fit-content;
     background-color: #ebecee;
@@ -4101,11 +4424,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 40px 0;
 }
 
-.table-section-MIChangeTimeslot.dark{
+.table-section-MIChangeTimeslot.dark {
     background-color: var(--hue-black);
 }
 
-.table-section-MIChangeTimeslot .table-container{
+.table-section-MIChangeTimeslot .table-container {
     width: 70%;
     height: fit-content;
     background-color: #ffffff;
@@ -4113,11 +4436,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 30px 0;
 }
 
-.table-section-MIChangeTimeslot .table-container.dark{
+.table-section-MIChangeTimeslot .table-container.dark {
     box-shadow: none;
 }
 
-.table-section-MIChangeTimeslot .table-container .table-topic-main{
+.table-section-MIChangeTimeslot .table-container .table-topic-main {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -4128,7 +4451,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.table-section-MIChangeTimeslot .table-container .table-topic-main button{
+.table-section-MIChangeTimeslot .table-container .table-topic-main button {
     padding: 8px 30px;
     background-color: var(--hue-dark-blue);
     color: var(--hue-white);
@@ -4136,12 +4459,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     border-radius: 5px;
 }
 
-
-.table-section-MIChangeTimeslot .table-container .table-topic-main button a{
- text-decoration:none;
- color:var(--hue-white);
+.table-section-MIChangeTimeslot .table-container .table-topic-main button a {
+    text-decoration: none;
+    color: var(--hue-white);
 }
-.table-section-MIChangeTimeslot .table-container .search-section{
+
+.table-section-MIChangeTimeslot .table-container .search-section {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -4150,7 +4473,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-top: 20px;
 }
 
-.table-section-MIChangeTimeslot .table-container .search-section .search-bar .searchform{
+.table-section-MIChangeTimeslot .table-container .search-section .search-bar .searchform {
     width: 700px;
     display: flex;
     justify-content: space-between;
@@ -4160,18 +4483,18 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding-right: 10px;
 }
 
-.table-section-MIChangeTimeslot .table-container .search-section .search-bar input{
+.table-section-MIChangeTimeslot .table-container .search-section .search-bar input {
     width: 95%;
 }
 
-.table-section-MIChangeTimeslot .table-container .search-section .search-bar button{
+.table-section-MIChangeTimeslot .table-container .search-section .search-bar button {
     width: 5%;
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-.table-section-MIChangeTimeslot .table-container .table{
+.table-section-MIChangeTimeslot .table-container .table {
     width: 100%;
     padding: 0 3%;
     height: 50vh;
@@ -4179,7 +4502,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: auto;
 }
 
-.table-section-MIChangeTimeslot .table-container .table table{
+.table-section-MIChangeTimeslot .table-container .table table {
     width: 100%;
     text-align: left;
     outline: none;
@@ -4187,36 +4510,34 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 }
 
 .table-section-MIChangeTimeslot .table-container .table table th,
-.table-section-MIChangeTimeslot .table-container .table table td{
+.table-section-MIChangeTimeslot .table-container .table table td {
     width: calc(100% / 5);
     padding: 10px 15px;
 }
 
-.table-section-MIChangeTimeslot .table-container .table table th{
+.table-section-MIChangeTimeslot .table-container .table table th {
     font-weight: 300;
 }
 
-.table-section-MIChangeTimeslot .table-container .table table tr:nth-child(1){
+.table-section-MIChangeTimeslot .table-container .table table tr:nth-child(1) {
     background-color: #1D242B;
     color: #f0ecec;
 }
 
-.table-section-MIChangeTimeslot .table-container .table table tr:nth-child(even){
+.table-section-MIChangeTimeslot .table-container .table table tr:nth-child(even) {
     background-color: #f5f2f2;
 }
 
-.table-section-MIChangeTimeslot .table-container .table table tr td:nth-child(5){
+.table-section-MIChangeTimeslot .table-container .table table tr td:nth-child(5) {
     width: 100%;
     display: flex;
     gap: 10px;
 }
 
-
-
-.table-section-MIChangeTimeslot .table-container .table table tr td:nth-child(5)   form .update{
+.table-section-MIChangeTimeslot .table-container .table table tr td:nth-child(5) form .update {
     width: 60px;
     height: fit-content;
-    background-color:  green;
+    background-color: green;
     border: none;
     color: var(--hue-white);
     padding: 5px 2px;
@@ -4225,11 +4546,10 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     font-size: 12px;
 }
 
-
-.table-section-MIChangeTimeslot .table-container .table table tr td:nth-child(5)  form .delete{
+.table-section-MIChangeTimeslot .table-container .table table tr td:nth-child(5) form .delete {
     width: 60px;
     height: fit-content;
-    background-color:  #ed4d4d;
+    background-color: #ed4d4d;
     border: none;
     color: var(--hue-white);
     padding: 5px 2px;
@@ -4237,12 +4557,14 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
     font-size: 12px;
 }
+
 
 /************************************************** Table Page style ends *********************************************************/
 
 
 /* notification style */
-#notification-container{
+
+#notification-container {
     position: absolute;
     top: 80px;
     right: 10px;
@@ -4251,7 +4573,8 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     flex-direction: column;
     overflow: hidden;
 }
-.notification{
+
+.notification {
     width: fit-content;
     height: fit-content;
     padding: 15px 20px;
@@ -4267,11 +4590,13 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     animation: notify 0.3s linear forwards;
     opacity: 0;
 }
-.notification i{
+
+.notification i {
     font-size: 20px;
     color: var(--hue-dark-blue);
 }
-.notification::after{
+
+.notification::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -4282,19 +4607,19 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     animation: reduceWidth 5s linear forwards;
 }
 
-.notification.warning i{
+.notification.warning i {
     color: red;
 }
 
-.notification.warning::after{
+.notification.warning::after {
     background-color: red;
 }
 
-.notification.success i{
+.notification.success i {
     color: green;
 }
 
-.notification.success::after{
+.notification.success::after {
     background-color: green;
 }
 
@@ -4310,13 +4635,14 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
         width: 0;
     }
 }
-/* notification style ends */
 
+
+/* notification style ends */
 
 
 /* notification style MedInstructor profile */
 
-#notification-container-MedInstrProfile{
+#notification-container-MedInstrProfile {
     position: absolute;
     top: 60px;
     right: 10px;
@@ -4325,7 +4651,8 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     flex-direction: column;
     overflow: hidden;
 }
-.notification{
+
+.notification {
     width: fit-content;
     height: fit-content;
     padding: 15px 20px;
@@ -4341,11 +4668,13 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     animation: notify 0.3s linear forwards;
     opacity: 0;
 }
-.notification i{
+
+.notification i {
     font-size: 20px;
     color: var(--hue-dark-blue);
 }
-.notification::after{
+
+.notification::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -4356,21 +4685,22 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     animation: reduceWidth 5s linear forwards;
 }
 
-.notification.warning i{
+.notification.warning i {
     color: red;
 }
 
-.notification.warning::after{
+.notification.warning::after {
     background-color: red;
 }
 
-.notification.success i{
+.notification.success i {
     color: green;
 }
 
-.notification.success::after{
+.notification.success::after {
     background-color: green;
 }
+
 
 /*Nutritionist*/
 
@@ -4982,12 +5312,9 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 }
 
 
-
-
-
 /************************************************** Session Page style starts *********************************************************/
 
-.session-container{
+.session-container {
     width: 100%;
     height: fit-content;
     overflow: hidden;
@@ -5000,11 +5327,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     background-color: #ebecee;
 }
 
-.session-container.dark{
+.session-container.dark {
     background-color: var(--hue-black);
 }
 
-.session-card{
+.session-card {
     width: 700px;
     height: fit-content;
     background-color: var(--hue-black);
@@ -5015,11 +5342,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 20px 20px;
 }
 
-.session-card.dark{
+.session-card.dark {
     background-color: var(--hue-white);
 }
 
-.session-card .top-box{
+.session-card .top-box {
     width: 600px;
     height: fit-content;
     background-image: url(../img/Sessions-page-pictures/session--background.jpg);
@@ -5030,7 +5357,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding-left: 30px;
 }
 
-.session-card .top-box .top-box-inner{
+.session-card .top-box .top-box-inner {
     position: relative;
     width: 80%;
     height: fit-content;
@@ -5041,16 +5368,16 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding-bottom: 30px;
 }
 
-.session-card .top-box .top-box-inner h2{
+.session-card .top-box .top-box-inner h2 {
     color: #fafafac1;
 }
 
-.session-card .top-box .top-box-inner p{
+.session-card .top-box .top-box-inner p {
     color: #fafafaa0;
     font-size: 14px;
 }
 
-.session-card .bottom{
+.session-card .bottom {
     width: 600px;
     margin-top: 20px;
     text-align: right;
@@ -5058,12 +5385,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 10px;
 }
 
-.session-card .bottom h3{
+.session-card .bottom h3 {
     color: #1d242be4;
     font-size: 14px;
 }
 
-.session-card .bottom button{
+.session-card .bottom button {
     padding: 4px 20px;
     border: none;
     color: var(--hue-white);
@@ -5072,7 +5399,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-top: 10px;
 }
 
-.session-card .icon-container{
+.session-card .icon-container {
     position: absolute;
     bottom: 10px;
     right: 10px;
@@ -5083,11 +5410,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     gap: 10px;
 }
 
-.session-card .icon-container i{
+.session-card .icon-container i {
     cursor: pointer;
 }
 
-.inner-circle-for-initials{
+.inner-circle-for-initials {
     position: absolute;
     top: 30px;
     left: -50px;
@@ -5104,8 +5431,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 
 /************************************************** Table-section-CounsellorSession  style starts *********************************************************/
 
-
-.table-section-CounsellorSession{
+.table-section-CounsellorSession {
     width: 100%;
     height: fit-content;
     background-color: #ebecee;
@@ -5115,11 +5441,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 40px 0;
 }
 
-.table-section-CounsellorSession.dark{
+.table-section-CounsellorSession.dark {
     background-color: var(--hue-black);
 }
 
-.table-section-CounsellorSession .table-container{
+.table-section-CounsellorSession .table-container {
     width: 70%;
     height: fit-content;
     background-color: #ffffff;
@@ -5127,11 +5453,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 30px 0;
 }
 
-.table-section-CounsellorSession .table-container.dark{
+.table-section-CounsellorSession .table-container.dark {
     box-shadow: none;
 }
 
-.table-section-CounsellorSession .table-container .table-topic-main{
+.table-section-CounsellorSession .table-container .table-topic-main {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -5142,7 +5468,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.table-section-CounsellorSession .table-container .table-topic-main button{
+.table-section-CounsellorSession .table-container .table-topic-main button {
     padding: 8px 30px;
     background-color: var(--hue-dark-blue);
     color: var(--hue-white);
@@ -5150,12 +5476,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     border-radius: 5px;
 }
 
-
-.table-section-CounsellorSession .table-container .table-topic-main button a{
- text-decoration:none;
- color:var(--hue-white);
+.table-section-CounsellorSession .table-container .table-topic-main button a {
+    text-decoration: none;
+    color: var(--hue-white);
 }
-.table-section-CounsellorSession .table-container .search-section{
+
+.table-section-CounsellorSession .table-container .search-section {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -5164,7 +5490,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-top: 20px;
 }
 
-.table-section-CounsellorSession .table-container .search-section .search-bar .searchform{
+.table-section-CounsellorSession .table-container .search-section .search-bar .searchform {
     width: 700px;
     display: flex;
     justify-content: space-between;
@@ -5174,18 +5500,18 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding-right: 10px;
 }
 
-.table-section-CounsellorSession .table-container .search-section .search-bar input{
+.table-section-CounsellorSession .table-container .search-section .search-bar input {
     width: 95%;
 }
 
-.table-section-CounsellorSession .table-container .search-section .search-bar button{
+.table-section-CounsellorSession .table-container .search-section .search-bar button {
     width: 5%;
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-.table-section-CounsellorSession .table-container .table{
+.table-section-CounsellorSession .table-container .table {
     width: 100%;
     padding: 0 3%;
     height: 50vh;
@@ -5193,7 +5519,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: auto;
 }
 
-.table-section-CounsellorSession .table-container .table table{
+.table-section-CounsellorSession .table-container .table table {
     width: 100%;
     text-align: left;
     outline: none;
@@ -5201,35 +5527,35 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 }
 
 .table-section-CounsellorSession .table-container .table table th,
-.table-section-CounsellorSession .table-container .table table td{
+.table-section-CounsellorSession .table-container .table table td {
     width: calc(100% / 3);
     padding: 10px 15px;
 }
 
-.table-section-CounsellorSession .table-container .table table th{
+.table-section-CounsellorSession .table-container .table table th {
     font-weight: 300;
 }
 
-.table-section-CounsellorSession .table-container .table table tr:nth-child(1){
+.table-section-CounsellorSession .table-container .table table tr:nth-child(1) {
     background-color: #1D242B;
     color: #f0ecec;
 }
 
-.table-section-CounsellorSession .table-container .table table tr:nth-child(even){
+.table-section-CounsellorSession .table-container .table table tr:nth-child(even) {
     background-color: #f5f2f2;
 }
 
-.table-section-CounsellorSession .table-container .table table tr td:nth-child(5){
+.table-section-CounsellorSession .table-container .table table tr td:nth-child(5) {
     width: 100%;
     display: flex;
     gap: 10px;
 }
 
-
-.table-section-CounsellorSession  .table-container .table table tr td:nth-child(5)   form .viewMore{
+.table-section-CounsellorSession .table-container .table table tr td:nth-child(5) form .viewMore {
     width: 60px;
     height: fit-content;
-    background-color:  var(--hue-dark-blue);;
+    background-color: var(--hue-dark-blue);
+    ;
     border: none;
     color: var(--hue-white);
     padding: 5px 2px;
@@ -5238,11 +5564,10 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     font-size: 12px;
 }
 
-
-.table-section-CounsellorSession  .table-container .table table tr td:nth-child(5)  form .viewRegUsers{
+.table-section-CounsellorSession .table-container .table table tr td:nth-child(5) form .viewRegUsers {
     width: 110px;
     height: fit-content;
-    background-color:  green;
+    background-color: green;
     border: none;
     color: var(--hue-white);
     padding: 5px 2px;
@@ -5250,11 +5575,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
     font-size: 12px;
 }
+
 
 /************************************************** Table-section-counsellorChangeSession style starts *********************************************************/
 
-
-.table-section-counsellorChangeSession{
+.table-section-counsellorChangeSession {
     width: 100%;
     height: fit-content;
     background-color: #ebecee;
@@ -5264,11 +5589,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 40px 0;
 }
 
-.table-section-counsellorChangeSession.dark{
+.table-section-counsellorChangeSession.dark {
     background-color: var(--hue-black);
 }
 
-.table-section-counsellorChangeSession .table-container{
+.table-section-counsellorChangeSession .table-container {
     width: 70%;
     height: fit-content;
     background-color: #ffffff;
@@ -5276,11 +5601,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 30px 0;
 }
 
-.table-section-counsellorChangeSession .table-container.dark{
+.table-section-counsellorChangeSession .table-container.dark {
     box-shadow: none;
 }
 
-.table-section-counsellorChangeSession .table-container .table-topic-main{
+.table-section-counsellorChangeSession .table-container .table-topic-main {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -5291,7 +5616,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.table-section-counsellorChangeSession .table-container .table-topic-main button{
+.table-section-counsellorChangeSession .table-container .table-topic-main button {
     padding: 8px 30px;
     background-color: var(--hue-dark-blue);
     color: var(--hue-white);
@@ -5299,12 +5624,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     border-radius: 5px;
 }
 
-
-.table-section-counsellorChangeSession .table-container .table-topic-main button a{
- text-decoration:none;
- color:var(--hue-white);
+.table-section-counsellorChangeSession .table-container .table-topic-main button a {
+    text-decoration: none;
+    color: var(--hue-white);
 }
-.table-section-counsellorChangeSession .table-container .search-section{
+
+.table-section-counsellorChangeSession .table-container .search-section {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -5313,7 +5638,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-top: 20px;
 }
 
-.table-section-counsellorChangeSession .table-container .search-section .search-bar .searchform{
+.table-section-counsellorChangeSession .table-container .search-section .search-bar .searchform {
     width: 700px;
     display: flex;
     justify-content: space-between;
@@ -5323,18 +5648,18 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding-right: 10px;
 }
 
-.table-section-counsellorChangeSession .table-container .search-section .search-bar input{
+.table-section-counsellorChangeSession .table-container .search-section .search-bar input {
     width: 95%;
 }
 
-.table-section-counsellorChangeSession .table-container .search-section .search-bar button{
+.table-section-counsellorChangeSession .table-container .search-section .search-bar button {
     width: 5%;
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-.table-section-counsellorChangeSession .table-container .table{
+.table-section-counsellorChangeSession .table-container .table {
     width: 100%;
     padding: 0 3%;
     height: 50vh;
@@ -5342,7 +5667,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: auto;
 }
 
-.table-section-counsellorChangeSession .table-container .table table{
+.table-section-counsellorChangeSession .table-container .table table {
     width: 100%;
     text-align: left;
     outline: none;
@@ -5350,36 +5675,34 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 }
 
 .table-section-counsellorChangeSession .table-container .table table th,
-.table-section-counsellorChangeSession .table-container .table table td{
+.table-section-counsellorChangeSession .table-container .table table td {
     width: calc(100% / 6);
     padding: 10px 15px;
 }
 
-.table-section-counsellorChangeSession .table-container .table table th{
+.table-section-counsellorChangeSession .table-container .table table th {
     font-weight: 300;
 }
 
-.table-section-counsellorChangeSession .table-container .table table tr:nth-child(1){
+.table-section-counsellorChangeSession .table-container .table table tr:nth-child(1) {
     background-color: #1D242B;
     color: #f0ecec;
 }
 
-.table-section-counsellorChangeSession .table-container .table table tr:nth-child(even){
+.table-section-counsellorChangeSession .table-container .table table tr:nth-child(even) {
     background-color: #f5f2f2;
 }
 
-.table-section-counsellorChangeSession .table-container .table table tr td:nth-child(6){
+.table-section-counsellorChangeSession .table-container .table table tr td:nth-child(6) {
     width: 100%;
     display: flex;
     gap: 10px;
 }
 
-
-
-.table-section-counsellorChangeSession .table-container .table table tr td:nth-child(6)   form .update{
+.table-section-counsellorChangeSession .table-container .table table tr td:nth-child(6) form .update {
     width: 60px;
     height: fit-content;
-    background-color:  green;
+    background-color: green;
     border: none;
     color: var(--hue-white);
     padding: 5px 2px;
@@ -5388,11 +5711,10 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     font-size: 12px;
 }
 
-
-.table-section-counsellorChangeSession .table-container .table table tr td:nth-child(6)  form .delete{
+.table-section-counsellorChangeSession .table-container .table table tr td:nth-child(6) form .delete {
     width: 60px;
     height: fit-content;
-    background-color:  #ed4d4d;
+    background-color: #ed4d4d;
     border: none;
     color: var(--hue-white);
     padding: 5px 2px;
@@ -5400,16 +5722,17 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
     font-size: 12px;
 }
+
 
 /************************************************** Table Page style ends *********************************************************/
+
 
 /************************************************** Table Page style ends *********************************************************/
 
 
 /************************************************** Table-section-CounsellorSessionRegUsers style starts *********************************************************/
 
-
-.table-section-CounsellorSessionRegUsers{
+.table-section-CounsellorSessionRegUsers {
     width: 100%;
     height: fit-content;
     background-color: #ebecee;
@@ -5419,11 +5742,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 40px 0;
 }
 
-.table-section-CounsellorSessionRegUsers.dark{
+.table-section-CounsellorSessionRegUsers.dark {
     background-color: var(--hue-black);
 }
 
-.table-section-CounsellorSessionRegUsers .table-container{
+.table-section-CounsellorSessionRegUsers .table-container {
     width: 70%;
     height: fit-content;
     background-color: #ffffff;
@@ -5431,11 +5754,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding: 30px 0;
 }
 
-.table-section-CounsellorSessionRegUsers .table-container.dark{
+.table-section-CounsellorSessionRegUsers .table-container.dark {
     box-shadow: none;
 }
 
-.table-section-CounsellorSessionRegUsers .table-container .table-topic-main{
+.table-section-CounsellorSessionRegUsers .table-container .table-topic-main {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -5446,7 +5769,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.table-section-CounsellorSessionRegUsers .table-container .table-topic-main button{
+.table-section-CounsellorSessionRegUsers .table-container .table-topic-main button {
     padding: 8px 30px;
     background-color: var(--hue-dark-blue);
     color: var(--hue-white);
@@ -5454,12 +5777,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     border-radius: 5px;
 }
 
-
-.table-section-CounsellorSessionRegUsers .table-container .table-topic-main button a{
- text-decoration:none;
- color:var(--hue-white);
+.table-section-CounsellorSessionRegUsers .table-container .table-topic-main button a {
+    text-decoration: none;
+    color: var(--hue-white);
 }
-.table-section-CounsellorSessionRegUsers .table-container .search-section{
+
+.table-section-CounsellorSessionRegUsers .table-container .search-section {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -5468,7 +5791,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-top: 20px;
 }
 
-.table-section-CounsellorSessionRegUsers .table-container .search-section .search-bar .searchform{
+.table-section-CounsellorSessionRegUsers .table-container .search-section .search-bar .searchform {
     width: 700px;
     display: flex;
     justify-content: space-between;
@@ -5478,18 +5801,18 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     padding-right: 10px;
 }
 
-.table-section-CounsellorSessionRegUsers .table-container .search-section .search-bar input{
+.table-section-CounsellorSessionRegUsers .table-container .search-section .search-bar input {
     width: 95%;
 }
 
-.table-section-CounsellorSessionRegUsers .table-container .search-section .search-bar button{
+.table-section-CounsellorSessionRegUsers .table-container .search-section .search-bar button {
     width: 5%;
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-.table-section-CounsellorSessionRegUsers .table-container .table{
+.table-section-CounsellorSessionRegUsers .table-container .table {
     width: 100%;
     padding: 0 3%;
     height: 50vh;
@@ -5497,7 +5820,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: auto;
 }
 
-.table-section-CounsellorSessionRegUsers .table-container .table table{
+.table-section-CounsellorSessionRegUsers .table-container .table table {
     width: 100%;
     text-align: left;
     outline: none;
@@ -5505,35 +5828,35 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 }
 
 .table-section-CounsellorSessionRegUsers .table-container .table table th,
-.table-section-CounsellorSessionRegUsers .table-container .table table td{
+.table-section-CounsellorSessionRegUsers .table-container .table table td {
     width: calc(100% / 5);
     padding: 10px 15px;
 }
 
-.table-section-CounsellorSessionRegUsers .table-container .table table th{
+.table-section-CounsellorSessionRegUsers .table-container .table table th {
     font-weight: 300;
 }
 
-.table-section-CounsellorSessionRegUsers .table-container .table table tr:nth-child(1){
+.table-section-CounsellorSessionRegUsers .table-container .table table tr:nth-child(1) {
     background-color: #1D242B;
     color: #f0ecec;
 }
 
-.table-section-CounsellorSessionRegUsers .table-container .table table tr:nth-child(even){
+.table-section-CounsellorSessionRegUsers .table-container .table table tr:nth-child(even) {
     background-color: #f5f2f2;
 }
 
-.table-section-CounsellorSessionRegUsers .table-container .table table tr td:nth-child(5){
+.table-section-CounsellorSessionRegUsers .table-container .table table tr td:nth-child(5) {
     width: 100%;
     display: flex;
     gap: 10px;
 }
 
-
-.table-section-CounsellorSessionRegUsers  .table-container .table table tr td:nth-child(5)   form .viewMore{
+.table-section-CounsellorSessionRegUsers .table-container .table table tr td:nth-child(5) form .viewMore {
     width: 60px;
     height: fit-content;
-    background-color:  var(--hue-dark-blue);;
+    background-color: var(--hue-dark-blue);
+    ;
     border: none;
     color: var(--hue-white);
     padding: 5px 2px;
@@ -5542,11 +5865,10 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     font-size: 12px;
 }
 
-
-.table-section-CounsellorSessionRegUsers  .table-container .table table tr td:nth-child(5)  form .viewRegUsers{
+.table-section-CounsellorSessionRegUsers .table-container .table table tr td:nth-child(5) form .viewRegUsers {
     width: 110px;
     height: fit-content;
-    background-color:  green;
+    background-color: green;
     border: none;
     color: var(--hue-white);
     padding: 5px 2px;
@@ -5554,13 +5876,14 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
     font-size: 12px;
 }
+
 
 /************************************************** Table Page style ends *********************************************************/
 
 
 /************************************************** View profile Page style starts ****************************************************/
 
-.view-profile-container-counsellorSession{
+.view-profile-container-counsellorSession {
     width: 100%;
     height: fit-content;
     padding: 10vh 0;
@@ -5571,11 +5894,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.view-profile-container-counsellorSession.dark{
+.view-profile-container-counsellorSession.dark {
     background-color: var(--hue-black);
 }
 
-.view-profile-container-counsellorSession .card{
+.view-profile-container-counsellorSession .card {
     width: 50%;
     height: fit-content;
     background-color: var(--hue-white);
@@ -5583,7 +5906,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     position: relative;
 }
 
-.view-profile-container-counsellorSession .card .main-image{
+.view-profile-container-counsellorSession .card .main-image {
     width: 100%;
     height: 250px;
     position: relative;
@@ -5595,11 +5918,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-white);
 }
 
-.view-profile-container-counsellorSession .card .main-image p{
+.view-profile-container-counsellorSession .card .main-image p {
     font-size: 14px;
 }
 
-.view-profile-container-counsellorSession .card .main-image .profile-icon{
+.view-profile-container-counsellorSession .card .main-image .profile-icon {
     position: absolute;
     bottom: 10px;
     left: 2%;
@@ -5614,7 +5937,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
 }
 
-.view-profile-container-counsellorSession .card .main-image .social-media-icons{
+.view-profile-container-counsellorSession .card .main-image .social-media-icons {
     position: absolute;
     bottom: 15px;
     right: 3%;
@@ -5625,22 +5948,22 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: var(--hue-black);
 }
 
-.view-profile-container-counsellorSession .card .main-image .social-media-icons i{
+.view-profile-container-counsellorSession .card .main-image .social-media-icons i {
     cursor: pointer;
 }
 
-.view-profile-container-counsellorSession .card .bottom{
+.view-profile-container-counsellorSession .card .bottom {
     width: 100%;
     height: fit-content;
     text-align: center;
     position: relative;
 }
 
-.view-profile-container-counsellorSession .card .bottom ul{
+.view-profile-container-counsellorSession .card .bottom ul {
     width: 100%;
 }
 
-.view-profile-container-counsellorSession .card .bottom ul li{
+.view-profile-container-counsellorSession .card .bottom ul li {
     list-style: none;
     margin-top: 20px;
     border-bottom: 1px solid #d8d3d3;
@@ -5648,19 +5971,19 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: #1d242bb6;
 }
 
-.view-profile-container-counsellorSession .card .bottom ul li a{
+.view-profile-container-counsellorSession .card .bottom ul li a {
     text-decoration: none;
     color: #1d242bb6;
 }
 
-.view-profile-container-counsellorSession .card .bottom .bottom-line{
+.view-profile-container-counsellorSession .card .bottom .bottom-line {
     width: 100%;
     height: 20px;
     background-color: #0d5f84;
     margin-top: 30px;
 }
 
-.view-profile-container-counsellorSession .card .main-image .backto-doctors{
+.view-profile-container-counsellorSession .card .main-image .backto-doctors {
     position: absolute;
     top: 10px;
     left: 20px;
@@ -5672,12 +5995,13 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     gap: 10px;
 }
 
+
 /************************************************** View profile Page style ends ****************************************************/
 
 
-
 /* For Counsellor session page */
-.doctor-main-picture-container-counsellorSession{
+
+.doctor-main-picture-container-counsellorSession {
     width: 100%;
     height: 40vh;
     display: flex;
@@ -5689,7 +6013,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.doctor-main-picture-container-counsellorSession .tittle{
+.doctor-main-picture-container-counsellorSession .tittle {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -5700,17 +6024,20 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     margin-bottom: 50px;
 }
 
-.doctor-main-picture-container-counsellorSession .tittle i{
+.doctor-main-picture-container-counsellorSession .tittle i {
     font-size: 4.5rem;
 }
+
+
 /* Counsellor session page ends */
 
 
 /************************************************** Session Page style ends *********************************************************/
 
+
 /************************************************** Invoice Page style starts *********************************************************/
 
-.pay-section{
+.pay-section {
     width: 100%;
     height: fit-content;
     display: flex;
@@ -5720,11 +6047,11 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     overflow: hidden;
 }
 
-.pay-section.dark{
+.pay-section.dark {
     background-color: var(--hue-black);
 }
 
-.pay-card{
+.pay-card {
     width: 500px;
     height: fit-content;
     background-color: rgb(240, 240, 240);
@@ -5735,12 +6062,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     position: relative;
 }
 
-.pay-card.dark{
+.pay-card.dark {
     border-top: 10px solid var(--hue-dark-blue);
     border-bottom: 10px solid var(--hue-dark-blue);
 }
 
-#pay-icon{
+#pay-icon {
     position: absolute;
     top: 20px;
     left: 30px;
@@ -5748,46 +6075,45 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     color: #2a3138;
 }
 
-.main-topic{
+.main-topic {
     margin-top: 30px;
     color: var(--hue-black);
 }
 
-.pay-card .content{
+.pay-card .content {
     width: 100%;
     padding: 20px 30px;
     margin-top: 20px;
 }
 
-.pay-card .content .topic{
+.pay-card .content .topic {
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
-.description-and-amount-container{
+.description-and-amount-container {
     width: 100%;
     margin-top: 10px;
 }
 
-.description-and-amount-container li{
+.description-and-amount-container li {
     list-style: none;
     width: 100%;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #b2b4b56c;
     padding: 10px 0px;
-
 }
 
-.content .total{
+.content .total {
     width: 100%;
     text-align: right;
     margin-top: 20px;
     color: var(--hue-black);
 }
 
-.pay-card button{
+.pay-card button {
     width: 70%;
     margin-top: 30px;
     padding: 5px 20px;
@@ -5798,32 +6124,34 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
     cursor: pointer;
 }
 
+
 /************************************************** Invoice Page style ends *********************************************************/
-#formNumber{
+
+#formNumber {
     display: none;
 }
+
+
 /* Responsive precess starts here */
 
-@media(max-width:474px){
-    .pay-card .content{
+@media(max-width:474px) {
+    .pay-card .content {
         width: 100%;
         padding: 20px 0px;
     }
-
-    .pay-card button{
+    .pay-card button {
         width: 100%;
     }
-
-    .pay-section{
+    .pay-section {
         padding: 40px 10px;
     }
 }
 
-@media (max-width: 956px){
-    .aside-menu{
+@media (max-width: 956px) {
+    .aside-menu {
         display: grid;
     }
-    .links-container{
+    .links-container {
         --hue: var(--hue-black);
         background-color: var(--hue);
         position: fixed;
@@ -5839,111 +6167,111 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
         transition: all 0.3s ease-in-out;
         z-index: 10;
     }
-    .content-container ul li a{
+    .content-container ul li a {
         --hue: var(--hue-white);
     }
-    .links-container.active{
+    .links-container.active {
         left: 0;
     }
-    .aside-menu.active span:nth-child(2){
+    .aside-menu.active span:nth-child(2) {
         opacity: 0;
     }
-    .aside-menu.active span:nth-child(1){
+    .aside-menu.active span:nth-child(1) {
         transform: translateY(6px) rotate(45deg);
     }
-    .aside-menu.active span:nth-child(3){
+    .aside-menu.active span:nth-child(3) {
         transform: translateY(-7px) rotate(-45deg);
     }
 }
 
-@media (max-width: 600px){
-    .top-content-formobile{
+@media (max-width: 600px) {
+    .top-content-formobile {
         display: block;
         border-bottom: 1px solid var(--hue-black);
     }
-    .register-approach{
+    .register-approach {
         display: block;
     }
-    .aside-menu{
+    .aside-menu {
         top: 12px;
     }
-    .content-container h2{
+    .content-container h2 {
         font-size: 18px;
     }
-    .content-container{
+    .content-container {
         width: 100vw;
         padding: 0 5px;
     }
-    .button-container{
+    .button-container {
         position: absolute;
         top: 7px;
         right: 10px;
     }
-    .links-container{
+    .links-container {
         top: 78px;
     }
-    .main-form{
+    .main-form {
         width: 75%;
     }
-    .table-section .table-container{
+    .table-section .table-container {
         width: 90%;
     }
 }
 
 @media (max-width: 466px) {
-    .button-container{
+    .button-container {
         gap: 5px;
         top: 10px;
     }
-    .nav-buttons{
-        padding: 0 10px;;
+    .nav-buttons {
+        padding: 0 10px;
+        ;
         border-radius: 0px;
     }
-    .main-form{
+    .main-form {
         width: 90%;
     }
-    .search-form-pharmacy{
+    .search-form-pharmacy {
         flex-wrap: wrap;
         gap: 5px;
-        
     }
-    .pharmacy-main-picture-container{
+    .pharmacy-main-picture-container {
         height: 50vh;
     }
-    .pharmacy-search-section{
+    .pharmacy-search-section {
         height: 20vh;
     }
-    .pharmacy-main-picture-container .tittle{
+    .pharmacy-main-picture-container .tittle {
         margin-bottom: 20vh;
     }
-    .pharmacy-sub .card .description{
+    .pharmacy-sub .card .description {
         text-align: left;
         padding-left: 30px;
     }
 }
 
 @media (max-width: 384px) {
-    .register-approach{
+    .register-approach {
         display: none;
     }
-    .pharmacy-sub .card .description{
+    .pharmacy-sub .card .description {
         padding-left: 20px;
     }
     .pharmacy-sub .card .description p,
-    .pharmacy-sub .card .description h2{
+    .pharmacy-sub .card .description h2 {
         width: 150px;
     }
-    .pharmacy-sub .card .name{
+    .pharmacy-sub .card .name {
         left: 50px;
     }
 }
 
 @media (max-width: 1103px) {
-    .footer{
+    .footer {
         flex-direction: column;
         overflow: hidden;
     }
-    .about-becare{
+    .about-becare {
         width: 100%;
         padding: 40px 20px;
         display: flex;
@@ -5952,16 +6280,16 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
         align-items: center;
         text-align: center;
     }
-    .about-becare p{
+    .about-becare p {
         width: 60%;
     }
-    .footer-links{
+    .footer-links {
         border-top: 1px solid #C7EEFF;
         justify-content: left;
         width: 100%;
         padding: 40px 20px;
     }
-    .time-slot-sub .top-box{
+    .time-slot-sub .top-box {
         position: absolute;
         top: -30px;
         left: -90px;
@@ -5970,8 +6298,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
         border-radius: 200px 0;
         background-color: #263747;
     }
-    
-    .time-slot-sub .bottom-box{
+    .time-slot-sub .bottom-box {
         width: 70%;
         height: 20vh;
         background-color: var(--hue-dark-blue);
@@ -5983,68 +6310,67 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 }
 
 @media (max-width: 914px) {
-    .login-section{
+    .login-section {
         height: fit-content;
         display: grid;
     }
-    .login-page-leftside{
+    .login-page-leftside {
         width: 100%;
         height: fit-content;
         padding: 5vh 0px;
     }
-    .left-side-container{
+    .left-side-container {
         max-width: 80%;
         padding: 8vh 0px;
     }
-    .login-page-rightside{
+    .login-page-rightside {
         padding: 0px 30px;
         width: 100%;
         height: 80vh;
         justify-content: left;
     }
-    .page-change-button{
+    .page-change-button {
         top: 0;
     }
-    .topic-of-form h1{
+    .topic-of-form h1 {
         font-size: 2.5rem;
     }
-    .form-inputs-and-buttons{
+    .form-inputs-and-buttons {
         margin-top: 10px;
     }
-    .table-section .table-container .search-section .search-bar{
+    .table-section .table-container .search-section .search-bar {
         width: 100%;
     }
 }
 
-@media (max-width: 1227px){
-    .filter-by{
+@media (max-width: 1227px) {
+    .filter-by {
         flex-direction: column;
     }
-    .filter-by select{
+    .filter-by select {
         width: 50%;
     }
 }
 
 @media (max-width: 788px) {
-
     .card-content-fordoctors {
         height: 1100px;
     }
-    .card-content-fordoctors .card{
+    .card-content-fordoctors .card {
         display: flex;
         flex-direction: column;
         width: 340px;
         height: 350px;
     }
-    .card-content-fordoctors .card .left{
+    .card-content-fordoctors .card .left {
         width: 100%;
         height: 50%;
         position: relative;
         text-align: left;
-        padding:  0 20px;
+        padding: 0 20px;
         color: var(--hue-white);
     }
-    .card-content-fordoctors .card .right{
+    .card-content-fordoctors .card .right {
         width: 100%;
         background-color: var(--hue-white);
         height: 50%;
@@ -6053,89 +6379,83 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
         position: relative;
         color: var(--hue-black);
     }
-    .card-content-fordoctors .card .left p, .card-content-fordoctors .card .right p{
+    .card-content-fordoctors .card .left p,
+    .card-content-fordoctors .card .right p {
         margin-top: 30px;
         font-size: 14px;
     }
-    .card-content-fordoctors .card .left h2{
+    .card-content-fordoctors .card .left h2 {
         line-height: 26px;
         font-size: 22px;
     }
-    .card-content-fordoctors .card .left a{
+    .card-content-fordoctors .card .left a {
         left: 20px;
     }
-    .card-content-fordoctors .card .right h2{
+    .card-content-fordoctors .card .right h2 {
         font-size: 24px;
     }
-    .pharmacy-main-picture-container .tittle i{
+    .pharmacy-main-picture-container .tittle i {
         display: none;
     }
-    .doctor-main-picture-container .tittle i{
+    .doctor-main-picture-container .tittle i {
         display: none;
     }
-    .counsellor-main-picture-container .tittle i{
+    .counsellor-main-picture-container .tittle i {
         display: none;
     }
-    .nutritionist-main-picture-container .tittle i{
+    .nutritionist-main-picture-container .tittle i {
         display: none;
     }
-    .time-slot-main-picture-container .tittle i{
+    .time-slot-main-picture-container .tittle i {
         display: none;
     }
 }
 
 @media (max-width: 440px) {
-    .pharmacy-sub .card .description button{
+    .pharmacy-sub .card .description button {
         width: 150px;
     }
     .pharmacy-sub .card .description p,
-    .pharmacy-sub .card .description h2{
+    .pharmacy-sub .card .description h2 {
         max-width: 200px;
     }
-    .pharmacy-sub .card .name{
+    .pharmacy-sub .card .name {
         right: 30px;
     }
 }
 
 @media (max-width: 1219px) {
-    .diet-plan-section{
+    .diet-plan-section {
         height: fit-content;
         display: grid;
     }
-    
-    .diet-plan-leftside{
+    .diet-plan-leftside {
         width: 100%;
         height: fit-content;
         padding: 5vh 0px;
     }
-    
-    .diet-left-side-container{
+    .diet-left-side-container {
         max-width: 80%;
         padding: 8vh 0px;
     }
-    
-    .diet-left-side-container div h1{
+    .diet-left-side-container div h1 {
         color: var(--hue-white);
         font-size: 3rem;
         font-weight: 900;
     }
-    
-    .diet-left-side-container div h2{
+    .diet-left-side-container div h2 {
         line-height: 35px;
         color: #fafafabf
     }
-    
-    .diet-left-side-container div p{
+    .diet-left-side-container div p {
         color: #fafafac2;
         font-size: 13px;
         margin-top: 20px;
     }
-    
-    .page-change-button-from-diet{
+    .page-change-button-from-diet {
         top: 0;
     }
-    
-    .diet-plan-rightside{
+    .diet-plan-rightside {
         padding: 40px 30px;
         width: 100%;
         display: flex;
@@ -6143,34 +6463,28 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
         align-items: center;
         justify-content: center;
     }
-    
-    .diet-plan-rightside form{
+    .diet-plan-rightside form {
         width: 100%;
     }
-    
-    .diet-form-inputs-and-buttons{
+    .diet-form-inputs-and-buttons {
         flex-wrap: wrap;
         height: fit-content;
     }
-    
-    .diet-form-inputs-and-buttons .left{
+    .diet-form-inputs-and-buttons .left {
         width: 300px;
         display: flex;
         flex-direction: column;
     }
-    
-    .diet-form-inputs-and-buttons .right{
+    .diet-form-inputs-and-buttons .right {
         width: 300px;
         display: flex;
         flex-direction: column;
     }
-    
-    .diet-form-inputs-and-buttons label{
+    .diet-form-inputs-and-buttons label {
         margin-top: 10px;
         font-size: 14px;
     }
-    
-    .diet-form-inputs-and-buttons input{
+    .diet-form-inputs-and-buttons input {
         margin-top: 10px;
         height: 30px;
         background-color: var(--hue-white);
@@ -6178,10 +6492,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
         border: 1px solid #aca8a8;
         padding: 0px 10px;
     }
-    
-    
-    
-    .diet-form-inputs-and-buttons select{
+    .diet-form-inputs-and-buttons select {
         outline: none;
         margin-top: 10px;
         height: 30px;
@@ -6191,8 +6502,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
         padding: 0px 10px;
         color: #0077C0;
     }
-    
-    .diet-form-inputs-and-buttons textarea{
+    .diet-form-inputs-and-buttons textarea {
         margin-top: 10px;
         width: 100%;
         height: 200px;
@@ -6201,8 +6511,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
         border: 1px solid #aca8a8;
         background-color: var(--hue-white)
     }
-    
-    .diet-form-inputs-and-buttons button{
+    .diet-form-inputs-and-buttons button {
         width: 100%;
         margin-top: 50px;
         background-color: var(--hue-dark-blue);
@@ -6216,42 +6525,40 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
 }
 
 @media (max-width: 766px) {
-    .diet-form-inputs-and-buttons button{
+    .diet-form-inputs-and-buttons button {
         width: 300px;
         position: absolute;
         bottom: 0;
         margin-top: 0px;
     }
-    .diet-form-inputs-and-buttons{
+    .diet-form-inputs-and-buttons {
         flex-wrap: wrap;
         height: fit-content;
         justify-content: center;
         position: relative;
         padding-bottom: 80px;
     }
-    .diet-plan-rightside .form-container{
+    .diet-plan-rightside .form-container {
         height: fit-content;
     }
-    .diet-plan-rightside form .topic-of-form{
+    .diet-plan-rightside form .topic-of-form {
         margin-bottom: 20px;
         width: 100%;
         align-items: center;
         justify-content: center;
         margin-top: 40px;
     }
-    .time-slot-main-container{
+    .time-slot-main-container {
         width: 70%;
         height: 940px;
         margin-top: 40px;
         overflow: hidden;
     }
-    
-    .time-slot-main-container.active{
+    .time-slot-main-container.active {
         height: fit-content;
         overflow: auto;
     }
-    
-    .time-slot-sub{
+    .time-slot-sub {
         width: 100%;
         height: fit-content;
         display: flex;
@@ -6260,8 +6567,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
         align-items: center;
         justify-content: center;
     }
-    
-    .time-slot-sub .card{
+    .time-slot-sub .card {
         width: 100%;
         height: 70vh;
         background-color: rgb(244, 230, 230);
@@ -6270,14 +6576,12 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
         position: relative;
         overflow: hidden;
     }
-    
-    .time-slot-sub .card .bottom{
+    .time-slot-sub .card .bottom {
         position: absolute;
         z-index: 10;
         bottom: 140px;
     }
-    
-    .time-slot-sub .card .bottom p{
+    .time-slot-sub .card .bottom p {
         display: flex;
         align-items: center;
         justify-content: left;
@@ -6285,15 +6589,13 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
         font-size: 14px;
         color: #1d242bd7;
     }
-    
-    .time-slot-sub .card .top{
+    .time-slot-sub .card .top {
         position: absolute;
         z-index: 10;
         top: 50px;
         color: #fafafacb;
     }
-    
-    .time-slot-sub .top-box{
+    .time-slot-sub .top-box {
         position: absolute;
         top: 0px;
         left: 0;
@@ -6302,8 +6604,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
         border-radius: 0;
         background-color: #263747;
     }
-    
-    .time-slot-sub .bottom-box{
+    .time-slot-sub .bottom-box {
         width: 50%;
         height: 20vh;
         background-color: var(--hue-dark-blue);
@@ -6313,8 +6614,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
         border-radius: 100px;
         display: none;
     }
-    
-    .time-slot-sub .card .main-button{
+    .time-slot-sub .card .main-button {
         position: absolute;
         bottom: 30px;
         left: 11%;
@@ -6323,18 +6623,15 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
         border: none;
         color: var(--hue-white);
     }
-
-    .session-card{
+    .session-card {
         width: 95%;
         height: fit-content;
         padding: 20px 20px;
     }
-    
-    .session-card.dark{
+    .session-card.dark {
         background-color: var(--hue-white);
     }
-    
-    .session-card .top-box{
+    .session-card .top-box {
         width: 90%;
         height: fit-content;
         background-size: cover;
@@ -6342,8 +6639,7 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
         padding-bottom: 20px;
         padding-left: 30px;
     }
-    
-    .session-card .top-box .top-box-inner{
+    .session-card .top-box .top-box-inner {
         width: 90%;
         height: fit-content;
         padding-left: 30px;
@@ -6351,41 +6647,41 @@ nav.dark{ /* background color of navigation changes to black when clicked on dar
         padding-right: 10px;
         padding-bottom: 40px;
     }
-    
-    .session-card .bottom{
+    .session-card .bottom {
         width: 90%;
         margin-top: 20px
     }
-    
 }
 
 @media (max-width: 411px) {
-    .diet-form-inputs-and-buttons button{
+    .diet-form-inputs-and-buttons button {
         width: 100%;
     }
     .diet-form-inputs-and-buttons .left,
-    .diet-form-inputs-and-buttons .right{
+    .diet-form-inputs-and-buttons .right {
         width: 100%;
     }
 }
 
 @media (max-width: 727px) {
-    .view-profile-container .card{
+    .view-profile-container .card {
         width: 80%;
         padding-bottom: 0;
     }
-    .view-profile-container .card .main-image{
+    .view-profile-container .card .main-image {
         padding-top: 60px
     }
-    .view-profile-container .card .bottom{
+    .view-profile-container .card .bottom {
         text-align: left;
         margin-top: 0;
         height: fit-content;
         font-size: 14px;
     }
-    .view-profile-container .card .bottom ul{
+    .view-profile-container .card .bottom ul {
         padding: 0 20px;
         overflow: auto;
     }
 }
+
+
 /* Responsive precess ends here */

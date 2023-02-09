@@ -30,7 +30,7 @@
     public function pharmacistViewOrders()
     {
       if(isset($_SESSION['pharmacist_id'])){
-        $orders = $this->pharmacistViewOrdersModel->getAllOrderDetails($_SESSION['pharmacist_id']);
+        $orders = $this->pharmacistViewOrdersModel->getAllOrderDetailsp($_SESSION['pharmacist_id']);
     
         $data=[                      
           'orders'=>$orders
@@ -44,7 +44,7 @@
     public function pharmacistViewOrdersMore()
     {
       if(isset($_SESSION['pharmacist_id'])){
-        $orders = $this->pharmacistViewOrdersModel->getAllOrderDetails($_SESSION['pharmacist_id']);
+        $orders = $this->pharmacistViewOrdersModel->getAllOrderDetailsp($_SESSION['pharmacist_id']);
     
         $data=[                      
           'orders'=>$orders
