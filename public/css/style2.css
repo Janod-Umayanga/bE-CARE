@@ -2002,11 +2002,14 @@ nav.dark {
 .diet-plan-rightside .form-container {
     width: 85%;
     height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
 }
 
 .diet-plan-rightside form {
     width: 100%;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2022,7 +2025,6 @@ nav.dark {
     display: flex;
     align-items: left;
     flex-direction: column;
-    margin-bottom: 60px;
 }
 
 .diet-form-inputs-and-buttons {
