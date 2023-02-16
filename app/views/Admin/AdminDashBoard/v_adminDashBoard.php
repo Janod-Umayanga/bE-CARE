@@ -47,7 +47,7 @@
                 <img src="<?php echo URLROOT;?>/img/adminDashBoard/userManagement.jpeg" alt="">
                 <p>******<br>User Management</p>
             </a>
-            <a href="<?php echo URLROOT;?>/AdminPayments/adminPayments" class="card">
+            <a href="<?php echo URLROOT;?>/AdminPayments/doctorChannelPayments" class="card">
                 <img src="<?php echo URLROOT;?>/img/adminDashBoard/payments.jpeg" alt="">
                 <p>******<br>Payments</p>
             </a>

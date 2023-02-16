@@ -19,7 +19,7 @@
     <section class="table-section theme">
         <div class="table-container theme">
             <div class="table-topic-main">
-                <h1>Pending Orders</h1>
+                <h1>Channeling History</h1>
             </div>
             <div class="table">
                 <table cellspacing="0" cellpadding="0">

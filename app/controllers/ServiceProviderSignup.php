@@ -498,7 +498,7 @@ class ServiceProviderSignup extends Controller{
     
 
           if($data['m_qualification_file']['size']>0){
-            if(uploadFile($data['m_qualification_file']['tmp_name'],$data['m_qualification_file_name'],'/upload/meditation_instructor_qualification/')){
+            if(uploadFile($data['m_qualification_file']['tmp_name'],$data['m_qualification_file_name'],'/upload/meditationInstructor_qualification/')){
                        
             }else{  
              $data['m_qualification_file_err']='Unsuccessful qualification_file uploading';

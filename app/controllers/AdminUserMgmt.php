@@ -1523,7 +1523,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
     
 
           if($data['qualification_file']['size']>0){
-            if(uploadFile($data['qualification_file']['tmp_name'],$data['qualification_file_name'],'/upload/meditation_instructor_qualification/')){
+            if(uploadFile($data['qualification_file']['tmp_name'],$data['qualification_file_name'],'/upload/meditationInstructor_qualification/')){
                        
             }else{  
              $data['qualification_file_err']='Unsuccessful qualification_file uploading';

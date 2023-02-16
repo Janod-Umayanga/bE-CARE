@@ -4,7 +4,8 @@
     define('DB_HOST', 'localhost');
     define('DB_USER', 'root');
     define('DB_PASSWORD', '');
-    define('DB_NAME', 'be_care');
+    define('DB_NAME', 'be_care_j'); //Change database name  
+
 
     // APPROOT
     define('APPROOT', dirname(dirname(__FILE__)));

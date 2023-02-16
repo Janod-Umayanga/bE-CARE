@@ -178,10 +178,18 @@ class AdminReqSerProviders extends Controller{
   public function  adminVerifyReqDoctor($doctor_id)
   {
     if(isset($_SESSION['admin_id'])) {  
-  
+      $to ='geenathweer1@gmail.com'; /*$_POST['email'];*/ 
+      $subject = 'Verify your email address';
+      $message = 'Hello ' . 'Geenath' . ',<br><br>Please click the following link to verify your email address:<br><a href="http://localhost/verify.php?">Verify your email address</a><br><br>Thanks!';
+      $headers = 'From: myemail@example.com' . "\r\n" .
+                 'Content-type: text/html; charset=UTF-8' . "\r\n" .
+                 'X-Mailer: PHP/' . phpversion();
+      
+      mail($to, $subject, $message, $headers);
+      
     $verifydoctor= $this->adminReqSerProvidersModel->VerifyReqDoctor($doctor_id);
     $doctor= $this->adminReqSerProvidersModel->getReqDoctors();
-   
+    
     $data=[                      
       'doctor'=>$doctor,
       'search'=>'',
