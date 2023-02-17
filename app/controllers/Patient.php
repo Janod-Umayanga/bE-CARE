@@ -420,6 +420,15 @@
         // View doctor timeslots
         public function viewDoctorTimeslots($doctor_id) {
             $timeslots = $this->doctorTimeslotModel->getAllDoctorTimeslots($doctor_id);
+            
+            // Check if all timeslots have 4 days or else need to add upto 4 days
+            foreach($timeslots as $timeslot) {
+                $channeling_days = $this->doctorTimeslotModel->getChannelingDays($timeslot->doctor_timeslot_id, $timeslot->doctor_id, $timeslot->channeling_day, $timeslot->starting_time);
+                
+            }
+
+            $timeslots = $this->doctorTimeslotModel->getAllDoctorChannelingTimeslots($doctor_id);
+
             $data = [
                 'timeslots' => $timeslots,
                 'doctor_id' => $doctor_id
