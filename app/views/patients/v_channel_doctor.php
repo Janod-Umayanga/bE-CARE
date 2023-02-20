@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="login-page-rightside">
-            <form action="<?php echo URLROOT ?>/Patient/channelDoctor/<?php echo $data['doctor_id'] ?>/<?php echo $data['channel_day_id'] ?>/<?php echo $data['date'] ?>/<?php echo $data['time'] ?>/<?php echo $data['fee'] ?>" method="POST">
+            <form action="<?php echo URLROOT ?>/Patient/channelDoctor/<?php echo $data['doctor_id'] ?>/<?php echo $data['channel_day_id'] ?>/<?php echo $data['date'] ?>/<?php echo $data['time'] ?>/<?php echo $data['ending_time'] ?>/<?php echo $data['fee'] ?>" method="POST">
                 <div class="topic-of-form">
                     <h1>Make an Appointment</h1>
                 </div>

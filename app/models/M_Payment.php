@@ -48,11 +48,20 @@
             $this->db->bind(':doctor_channel_day_id', $data['channel_day_id']);
             $this->db->bind(':patient_id', $patient_id);
 
-            // add minutes to the time
+            // Increment the current channel time
             $time = $data['time'];
             $time = date('H:i:s', strtotime($time . ' + 10 minutes'));
 
-            if($this->db->execute()) {
+            // Check if the timeslot would be full after incrementing
+            if($time >= $data['ending_time']) { 
+                if($this->disableDoctorChannelDay($data)) {
+                    $this->db->execute();
+                }
+                else {
+                    return false;
+                }
+            }
+            else if($this->db->execute()) {
                 return $this->updateCurrentChannelTime($data, $time);
             }
             else {
@@ -64,6 +73,19 @@
         public function updateCurrentChannelTime($data, $time) {
             $this->db->query('UPDATE doctor_channel_day SET current_channel_time = :current_channel_time WHERE doctor_channel_day_id = :doctor_channel_day_id');
             $this->db->bind(':current_channel_time', $time);
+            $this->db->bind(':doctor_channel_day_id', $data['channel_day_id']);
+
+            if($this->db->execute()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        // Disable the doctor channel day
+        public function disableDoctorChannelDay($data) {
+            $this->db->query('UPDATE doctor_channel_day SET active = 0 WHERE doctor_channel_day_id = :doctor_channel_day_id');
             $this->db->bind(':doctor_channel_day_id', $data['channel_day_id']);
 
             if($this->db->execute()) {

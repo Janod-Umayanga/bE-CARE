@@ -450,7 +450,7 @@
         }
 
         // Channel doctor
-        public function channelDoctor($doctor_id, $channel_day_id, $date, $time, $fee) {
+        public function channelDoctor($doctor_id, $channel_day_id, $date, $time, $ending_time, $fee) {
             if(isset($_SESSION['patient_id'])) {
                 $loggedPatient = $this->patientModel->getPatientById($_SESSION['patient_id']);
 
@@ -470,6 +470,7 @@
                         'channel_day_id' => $channel_day_id,
                         'date' => $date,
                         'time' => $time,
+                        'ending_time' => $ending_time,
                         'fee' => $fee,
     
                         'name_err' => '',
@@ -528,6 +529,7 @@
                         'channel_day_id' => $channel_day_id,
                         'date' => $date,
                         'time' => $time,
+                        'ending_time' => $ending_time,
                         'fee' => $fee,
     
                         'name_err' => '',

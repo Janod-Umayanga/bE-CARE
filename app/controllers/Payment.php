@@ -70,6 +70,7 @@
                         'channel_day_id' => trim($_POST['channel_day_id']),
                         'date' => trim($_POST['date']),
                         'time' => trim($_POST['time']),
+                        'ending_time' => trim($_POST['ending_time']),
                         'fee' => trim($_POST['fee']),
                     ];
     
