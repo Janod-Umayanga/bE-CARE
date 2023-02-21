@@ -54,8 +54,10 @@
 
             // Check if the timeslot would be full after incrementing
             if($time >= $data['ending_time']) { 
-                if($this->disableDoctorChannelDay($data)) {
-                    $this->db->execute();
+                if($this->db->execute()) {
+                    if($this->updateCurrentChannelTime($data, $time)) {
+                        return $this->disableDoctorChannelDay($data);
+                    }
                 }
                 else {
                     return false;
