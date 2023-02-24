@@ -37,7 +37,9 @@
             <div class="bottom">
                 <p>*******</p>
                 <h3>This session will be conducted by Dr. <?php echo $session->first_name ?> <?php echo $session->last_name ?> on <?php echo $session->date ?> during <?php echo $session->starting_time ?> to <?php echo $session->ending_time ?> at <?php echo $session->address ?></h3>
-                <button>Register</button>
+                <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $session->sesion_id ?>/<?php echo $session->fee ?>">
+                    <button>Register</button>
+                </form>
             </div>
         </div>
         <?php endif; ?>
@@ -63,7 +65,9 @@
             <div class="bottom">
                 <p>*******</p>
                 <h3>This session will be conducted by Dr. <?php echo $session->first_name ?> <?php echo $session->last_name ?> on <?php echo $session->date ?> during <?php echo $session->starting_time ?> to <?php echo $session->ending_time ?> at <?php echo $session->address ?></h3>
-                <button>Register</button>
+                <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $session->sesion_id ?>/<?php echo $session->fee ?>">
+                    <button>Register</button>
+                </form>
             </div>
         </div>
         <?php endif; ?>
@@ -89,7 +93,9 @@
             <div class="bottom">
                 <p>*******</p>
                 <h3>This session will be conducted by <?php echo $session->gender ?>. <?php echo $session->first_name ?> <?php echo $session->last_name ?> on <?php echo $session->date ?> during <?php echo $session->starting_time ?> to <?php echo $session->ending_time ?> at <?php echo $session->address ?></h3>
-                <button>Register</button>
+                <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $session->sesion_id ?>/<?php echo $session->fee ?>">
+                    <button>Register</button>
+                </form>
             </div>
         </div>
         <?php endif; ?>
@@ -99,44 +105,3 @@
     <?php require APPROOT.'/views/inc/components/footer1.php'; ?>
 </body>
 </html>
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
-    <title>View Sessions</title>
-</head>
-<body>
-
-<?php require APPROOT.'/views/inc/components/header.php'; ?>
-
-    <section class="doctor-cards">
-        <div class="left">
-            <h1>Available Sessions</h1>
-            <?php foreach($data['sessions'] as $session): ?>
-            <div class="card">
-                <div class="card-left">
-                    <p>Will be held on:<br><?php echo $session->date ?><br><?php echo $session->starting_time ?> - <?php echo $session->ending_time ?></p>
-                </div>
-                <div class="card-right">
-                    <div>
-                        <h3><?php echo $session->title ?></h3>
-                        <p>Address : <?php  echo $session->address ?></p>
-                    </div>
-                </div>
-            </div>
-            <?php endforeach; ?>
-        </div>
-
-        <div class="right">
-            <img src="../public/img/doctor-cards.png" alt="">
-        </div>
-    </section>
-
-<?php require APPROOT.'/views/inc/components/footer.php'; ?>
-
-</body>
-</html> -->

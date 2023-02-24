@@ -93,6 +93,34 @@
             }
         }
 
+        // Register for the session
+        public function createSessionRegister() {
+                if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    // Form is submitting
+    
+                    $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    
+                    // Inserted form
+                    $data = [
+                        'name' => trim($_POST['name']),
+                        'age' => trim($_POST['age']),
+                        'cnumber' => trim($_POST['cnumber']),
+                        'gender' => trim($_POST['gender']),
+                        'session_id' =>trim($_POST['session_id']),
+                        'fee' => trim($_POST['fee']),
+                    ];
+    
+                    // Create session register
+                    if($this->paymentModel->createSessionRegister($data)) {
+                        $_SESSION['session_register_created'] = true;
+                        redirect('Pages/index');
+                    }
+                    else {
+                        die('Something went wrong');
+                    }   
+                }
+        }
+
     }
 
 ?>

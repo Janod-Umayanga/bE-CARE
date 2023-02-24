@@ -102,6 +102,25 @@
                 return false;
             }
         }
+
+        // Create session register
+        public function createSessionRegister($data) {
+            $this->db->query('INSERT INTO session_register (name, age, contact_number, gender, paid_amount, session_id, patient_id) VALUES (:name, :age, :contact_number, :gender, :paid_amount, :session_id, :patient_id)');
+            $this->db->bind(':name', $data['name']);
+            $this->db->bind(':age', $data['age']);
+            $this->db->bind(':contact_number', $data['cnumber']);
+            $this->db->bind(':gender', $data['gender']);
+            $this->db->bind(':paid_amount', $data['fee']+$data['fee']*0.1);
+            $this->db->bind(':session_id', $data['session_id']);
+            $this->db->bind(':patient_id', $_SESSION['patient_id']);
+
+            if($this->db->execute()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
         
     }
 
