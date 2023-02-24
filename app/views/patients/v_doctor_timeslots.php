@@ -45,7 +45,7 @@
                     </div>
                     <div class="top-box"></div>
                     <div class="bottom-box"></div>
-                    <form action="<?php echo URLROOT ?>/Patient/channelDoctor/<?php echo $timeslot->doctor_id ?>/<?php echo $timeslot->doctor_channel_day_id ?>/<?php echo $timeslot->day ?>/<?php echo $timeslot->current_channel_time ?>/<?php echo $timeslot->ending_time ?>/<?php echo $timeslot->fee ?>">
+                    <form action="<?php echo URLROOT ?>/Patient/channelDoctor/<?php echo $timeslot->doctor_id ?>/<?php echo $timeslot->doctor_channel_day_id ?>/<?php echo $timeslot->day ?>/<?php echo $timeslot->starting_time ?>/<?php echo $timeslot->current_channel_time ?>/<?php echo $timeslot->duration_for_one_patient ?>/<?php echo $timeslot->ending_time ?>/<?php echo $timeslot->fee ?>">
                         <?php if($timeslot->active == 0): ?>
                             <button class="main-button" disabled>Channel</button>
                         <?php else: ?>

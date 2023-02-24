@@ -26,18 +26,22 @@
                     <tr>
                         <th>Date</th>
                         <th>Time</th>
+                        <th>Your Number</th>
                         <th>Paid Amount</th>
                         <th>Doctor's Name</th>
                         <th>Venue</th>
+                        <th>Appointment made on</th>
                     </tr>
                     <?php foreach($data['appointments'] as $appointment): ?>
                         <?php if($appointment->date < $data['currentDate'] || ($appointment->date == $data['currentDate'] && $appointment->time < $data['currentTime'])): ?>
                     <tr>
                         <td><?php echo $appointment->date ?></td>
                         <td><?php echo $appointment->time ?></td>
+                        <td><?php echo $appointment->appointment_number ?></td>
                         <td>Rs. <?php echo $appointment->paid_amount ?></td>
                         <td>Dr. <?php echo $appointment->first_name ?> <?php echo $appointment->last_name ?></td>
                         <td><?php echo $appointment->address ?></td>
+                        <td><?php echo $appointment->paid_time ?></td>
                     </tr>
                         <?php endif; ?>
                     <?php endforeach; ?>

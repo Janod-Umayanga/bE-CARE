@@ -69,7 +69,9 @@
                         'doctor_id' =>trim($_POST['doctor_id']),
                         'channel_day_id' => trim($_POST['channel_day_id']),
                         'date' => trim($_POST['date']),
+                        'starting_time' => trim($_POST['starting_time']),
                         'time' => trim($_POST['time']),
+                        'duration' => trim($_POST['duration']),
                         'ending_time' => trim($_POST['ending_time']),
                         'fee' => trim($_POST['fee']),
                     ];
