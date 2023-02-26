@@ -120,6 +120,49 @@
                     }   
                 }
         }
+        
+        // Request a diet plan
+        public function createDietPlanRequest() {
+            if(isset($_SESSION['patient_id'])) {
+                if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    // Form is submitting
+    
+                    $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    
+                    // Inserted form
+                    $data = [
+                        'name' => trim($_POST['name']),
+                        'age' => trim($_POST['age']),
+                        'gender' => trim($_POST['gender']),
+                        'cnumber' => trim($_POST['cnumber']),
+                        'weight' => trim($_POST['weight']),
+                        'height' => trim($_POST['height']),
+                        'marital_status' => trim($_POST['marital_status']),
+                        'medical_details' => trim($_POST['medical_details']),
+                        'allergies' => trim($_POST['allergies']),
+                        'sleeping_hours' => trim($_POST['sleeping_hours']),
+                        'water_consumption_per_day' => trim($_POST['water_consumption_per_day']),
+                        'goal' => trim($_POST['goal']),
+                        'nutritionist_id' => trim($_POST['nutritionist_id']),
+                        'fee' => trim($_POST['fee']),
+                    ];
+    
+                    // Create apppointment
+                    if($this->paymentModel->createDietPlanRequest($data, $_SESSION['patient_id'])) {
+                        $_SESSION['diet_plan_request_created'] = true;
+                        redirect('Pages/index');
+                    }
+                    else {
+                        die('Something went wrong');
+                    }   
+                }
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
 
     }
 

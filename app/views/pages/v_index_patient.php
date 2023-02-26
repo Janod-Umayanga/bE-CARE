@@ -71,6 +71,10 @@
                 <img src="<?php echo URLROOT; ?>/img/sevices-images/Your Orders.jpg" alt="">
                 <p>******<br>Your Orders</p>
             </a>
+            <a href="<?php echo URLROOT ?>/Patient/viewDietPlans" class="card">
+                <img src="<?php echo URLROOT; ?>/img/sevices-images/diet plans.jpg" alt="">
+                <p>******<br>Your Diet Plans</p>
+            </a>
         </div>
         <button id="show-button" class="show-button" onclick="showMore()"><span id="show-text">Show More</span><i class="fa-solid fa-angle-down" id="icon-more-orless"></i></button>
     </section>

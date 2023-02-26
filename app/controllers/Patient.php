@@ -699,24 +699,7 @@
 
                 if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     // Form is submitting
-    
-                    // Data validation
                     $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-                    $merchant_id = "1221976";
-                    $order_id = "ItemNo12345";
-                    $amount = $fee;
-                    $currency = "LKR";
-                    $merchant_secret = 'NDA0MzQyMjc0NzQxMjQ5NjY4MTUxNTU5NjIzMjc4OTE3NjE4MTIx';
-                    $hash = strtoupper(
-                        md5(
-                            $merchant_id . 
-                            $order_id . 
-                            number_format($amount, 2, '.', '') . 
-                            $currency .  
-                            strtoupper(md5($merchant_secret)) 
-                        ) 
-                    );
     
                     // Inserted form
                     $data = [
@@ -734,8 +717,6 @@
                         'goal' => trim($_POST['goal']),
                         'nutritionist_id' => $nutritionist_id,
                         'fee' => $fee,
-                        'hash' => $hash,
-                        'order_id' => $order_id,
     
                         'name_err' => '',
                         'age_err' => '',
@@ -819,7 +800,7 @@
                         
 
                         // Load payment information view
-                        $this->view('patients/v_payment_diet_plan', $data);
+                        $this->view('patients/v_diet_plan_invoice', $data);
                         // // Create order
                         // if($this->requestDietPlanModel->createDietPlanRequest($data, $_SESSION['patient_id'])) {
                         //     redirect('Pages/index');
@@ -849,8 +830,6 @@
                         'goal' => '',
                         'nutritionist_id' => $nutritionist_id,
                         'fee' => $fee,
-                        'hash' => '',
-                        'order_id' => '',
     
                         'name_err' => '',
                         'age_err' => '',
@@ -887,6 +866,42 @@
 
             // Load view
             $this->view('patients/v_nutritionist_profile', $data);
+        }
+
+        // View diet plans
+        public function viewDietPlans() {
+            if(isset($_SESSION['patient_id'])) {
+            $requests = $this->requestDietPlanModel->getAllDietPlanRequests($_SESSION['patient_id']);
+            $data = [
+                'requests' => $requests
+            ];
+
+            // Load view
+            $this->view('patients/v_diet_plans', $data);
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
+
+        // View diet plan details
+        public function viewDietPlanDetails($diet_plan_id) {
+            if(isset($_SESSION['patient_id'])) {
+            $request = $this->requestDietPlanModel->getDietPlanRequestById($diet_plan_id);
+            $data = [
+                'request' => $request
+            ];
+
+            // Load view
+            $this->view('patients/v_diet_plan_details', $data);
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
         }
 
         // View pharmacies
