@@ -104,6 +104,75 @@
             }
         }
 
+        // Create counsellor channel
+        public function createCounsellorChannel($data, $patient_id) {
+            // Increment the current channel time
+            $duration = $data['duration'];
+            $time = $data['time'];
+            $time = date('H:i:s', strtotime($time . ' + '.$duration.' minutes'));
+
+            // Calculating the appointment number
+            $appointment_number = (strtotime($time) - strtotime($data['starting_time'])) / (60 * $duration);
+            
+            $this->db->query('INSERT INTO counsellor_channel (name, age, contact_number, gender, date, time, appointment_number, paid_amount, counsellor_id, counsellor_channel_day_id, patient_id) VALUES (:name, :age, :contact_number, :gender, :date, :time, :appointment_number, :paid_amount, :counsellor_id, :counsellor_channel_day_id, :patient_id)');
+            $this->db->bind(':name', $data['name']);
+            $this->db->bind(':age', $data['age']);
+            $this->db->bind(':contact_number', $data['cnumber']);
+            $this->db->bind(':gender', $data['gender']);
+            $this->db->bind(':date', $data['date']);
+            $this->db->bind(':time', $data['time']);
+            $this->db->bind(':appointment_number', $appointment_number);
+            $this->db->bind(':paid_amount', $data['fee']+$data['fee']*0.1);
+            $this->db->bind(':counsellor_id', $data['counsellor_id']);
+            $this->db->bind(':counsellor_channel_day_id', $data['channel_day_id']);
+            $this->db->bind(':patient_id', $patient_id);
+
+            // Check if the timeslot would be full after incrementing
+            if($time >= $data['ending_time']) { 
+                if($this->db->execute()) {
+                    if($this->updateCurrentCounsellorChannelTime($data, $time)) {
+                        return $this->disableCounsellorChannelDay($data);
+                    }
+                }
+                else {
+                    return false;
+                }
+            }
+            else if($this->db->execute()) {
+                return $this->updateCurrentCounsellorChannelTime($data, $time);
+            }
+            else {
+                return false;
+            }
+        }
+
+        // Update current channel time
+        public function updateCurrentCounsellorChannelTime($data, $time) {
+            $this->db->query('UPDATE counsellor_channel_day SET current_channel_time = :current_channel_time WHERE counsellor_channel_day_id = :counsellor_channel_day_id');
+            $this->db->bind(':current_channel_time', $time);
+            $this->db->bind(':counsellor_channel_day_id', $data['channel_day_id']);
+
+            if($this->db->execute()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        // Disable the doctor channel day
+        public function disableCounsellorChannelDay($data) {
+            $this->db->query('UPDATE counsellor_channel_day SET active = 0 WHERE counsellor_channel_day_id = :counsellor_channel_day_id');
+            $this->db->bind(':counsellor_channel_day_id', $data['channel_day_id']);
+
+            if($this->db->execute()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
         // Create session register
         public function createSessionRegister($data) {
             $this->db->query('INSERT INTO session_register (name, age, contact_number, gender, paid_amount, session_id, patient_id) VALUES (:name, :age, :contact_number, :gender, :paid_amount, :session_id, :patient_id)');

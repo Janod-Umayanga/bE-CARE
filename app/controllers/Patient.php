@@ -636,9 +636,18 @@
             }
         }
 
-        // View doctor timeslots
+        // View counsellor timeslots
         public function viewCounsellorTimeslots($counsellor_id) {
             $timeslots = $this->counsellorTimeslotModel->getAllCounsellorTimeslots($counsellor_id);
+
+            // Check if all timeslots have 4 days or else need to add upto 4 days
+            foreach($timeslots as $timeslot) {
+                $channeling_days = $this->counsellorTimeslotModel->getChannelingDays($timeslot->counsellor_timeslot_id, $timeslot->counsellor_id, $timeslot->channeling_day, $timeslot->starting_time);
+                
+            }
+
+            $timeslots = $this->counsellorTimeslotModel->getAllCounsellorChannelingTimeslots($counsellor_id);
+            
             $data = [
                 'timeslots' => $timeslots,
                 'counsellor_id' => $counsellor_id
@@ -657,6 +666,111 @@
 
             // Load view
             $this->view('patients/v_counsellor_profile', $data);
+        }
+
+        // Channel counsellor
+        public function channelCounsellor($counsellor_id, $channel_day_id, $date, $starting_time, $time, $duration, $ending_time, $fee) {
+            if(isset($_SESSION['patient_id'])) {
+                $loggedPatient = $this->patientModel->getPatientById($_SESSION['patient_id']);
+
+                if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    // Form is submitting
+    
+                    // Data validation
+                    $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    
+                    // Inserted form
+                    $data = [
+                        'name' => trim($_POST['name']),
+                        'age' => trim($_POST['age']),
+                        'cnumber' => trim($_POST['cnumber']),
+                        'gender' => trim($_POST['gender']),
+                        'counsellor_id' => $counsellor_id,
+                        'channel_day_id' => $channel_day_id,
+                        'date' => $date,
+                        'starting_time' => $starting_time,
+                        'time' => $time,
+                        'duration' => $duration,
+                        'ending_time' => $ending_time,
+                        'fee' => $fee,
+    
+                        'name_err' => '',
+                        'age_err' => '',
+                        'cnumber_err' => '',
+                        'gender_err' => ''
+                    ];
+    
+                    // Validate each input
+    
+                    // Validate name
+                    if(empty($data['name'])) {
+                        $data['name_err'] = 'Name required';
+                    }
+    
+                    // Validate address
+                    if(empty($data['age'])) {
+                        $data['age_err'] = 'Age required';
+                    }
+    
+                    // Validate contact number
+                    if(empty($data['cnumber'])) {
+                        $data['cnumber_err'] = 'Contact number required';
+                    }
+    
+                    // Validate gneder
+                    if(empty($data['gender'])) {
+                        $data['gender_err'] = 'Gender required';
+                    }
+    
+                    // Create order after validation
+                    if(empty($data['name_err']) && empty($data['age_err']) && empty($data['cnumber_err']) && empty($data['gender_err'])) {
+                        // Load invoice view
+                        $this->view('patients/v_channel_counsellor_invoice', $data);
+                        // // Create order
+                        // if($this->doctorChannelModel->createDoctorChannel($data, $_SESSION['patient_id'])) {
+                        //     $_SESSION['channel_created'] = true;
+                        //     redirect('Pages/index');
+                        // }
+                        // else {
+                        //     die('Something went wrong');
+                        // }
+                    }
+                    else {
+                        // Load view
+                         $this->view('patients/v_channel_counsellor', $data);
+                    }
+                }
+                else {
+                    $data = [
+                        'name' => $loggedPatient->first_name,
+                        'age' => '',
+                        'cnumber' => $loggedPatient->contact_number,
+                        'gender' => '',
+                        'counsellor_id' => $counsellor_id,
+                        'channel_day_id' => $channel_day_id,
+                        'date' => $date,
+                        'starting_time' => $starting_time,
+                        'time' => $time,
+                        'duration' => $duration,
+                        'ending_time' => $ending_time,
+                        'fee' => $fee,
+    
+                        'name_err' => '',
+                        'age_err' => '',
+                        'cnumber_err' => '',
+                        'gender_err' => ''
+                    ];
+    
+                    // Load view
+                    $this->view('patients/v_channel_counsellor', $data);
+                }
+                $data = [];
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
         }
 
         // View and search nutritionists

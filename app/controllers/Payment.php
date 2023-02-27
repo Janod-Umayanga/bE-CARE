@@ -93,6 +93,47 @@
             }
         }
 
+        // Channel counsellor
+        public function createCounsellorChannel() {
+            if(isset($_SESSION['patient_id'])) {
+                if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    // Form is submitting
+    
+                    $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    
+                    // Inserted form
+                    $data = [
+                        'name' => trim($_POST['name']),
+                        'age' => trim($_POST['age']),
+                        'cnumber' => trim($_POST['cnumber']),
+                        'gender' => trim($_POST['gender']),
+                        'counsellor_id' =>trim($_POST['counsellor_id']),
+                        'channel_day_id' => trim($_POST['channel_day_id']),
+                        'date' => trim($_POST['date']),
+                        'starting_time' => trim($_POST['starting_time']),
+                        'time' => trim($_POST['time']),
+                        'duration' => trim($_POST['duration']),
+                        'ending_time' => trim($_POST['ending_time']),
+                        'fee' => trim($_POST['fee']),
+                    ];
+    
+                    // Create apppointment
+                    if($this->paymentModel->createCounsellorChannel($data, $_SESSION['patient_id'])) {
+                        $_SESSION['channel_created'] = true;
+                        redirect('Pages/index');
+                    }
+                    else {
+                        die('Something went wrong');
+                    }   
+                }
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
+
         // Register for the session
         public function createSessionRegister() {
                 if($_SERVER['REQUEST_METHOD'] == 'POST') {
