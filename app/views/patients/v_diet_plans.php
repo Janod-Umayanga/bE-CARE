@@ -36,7 +36,7 @@
                         <td><?php echo $request->requested_date_and_time ?></td>
                         <td>
                         <form action="<?php echo URLROOT ?>/Patient/viewDietPlanDetails/<?php echo $request->request_diet_plan_id ?>">
-                            <button class="delete"><i class="fa-solid fa-credit-card"></i> details</button>
+                            <button class="delete"><i class="fa-solid fa-circle-info"></i> details</button>
                         </form>
                         </td>
                     </tr>

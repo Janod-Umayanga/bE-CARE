@@ -37,7 +37,7 @@
             <div class="bottom">
                 <p>*******</p>
                 <h3>This session will be conducted by Dr. <?php echo $session->first_name ?> <?php echo $session->last_name ?> on <?php echo $session->date ?> during <?php echo $session->starting_time ?> to <?php echo $session->ending_time ?> at <?php echo $session->address ?></h3>
-                <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $session->sesion_id ?>/<?php echo $session->fee ?>">
+                <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $session->sesion_id ?>/<?php echo $session->registration_fee ?>">
                     <button>Register</button>
                 </form>
             </div>
@@ -65,7 +65,7 @@
             <div class="bottom">
                 <p>*******</p>
                 <h3>This session will be conducted by Dr. <?php echo $session->first_name ?> <?php echo $session->last_name ?> on <?php echo $session->date ?> during <?php echo $session->starting_time ?> to <?php echo $session->ending_time ?> at <?php echo $session->address ?></h3>
-                <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $session->sesion_id ?>/<?php echo $session->fee ?>">
+                <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $session->sesion_id ?>/<?php echo $session->registration_fee ?>">
                     <button>Register</button>
                 </form>
             </div>
@@ -93,7 +93,7 @@
             <div class="bottom">
                 <p>*******</p>
                 <h3>This session will be conducted by <?php echo $session->gender ?>. <?php echo $session->first_name ?> <?php echo $session->last_name ?> on <?php echo $session->date ?> during <?php echo $session->starting_time ?> to <?php echo $session->ending_time ?> at <?php echo $session->address ?></h3>
-                <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $session->sesion_id ?>/<?php echo $session->fee ?>">
+                <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $session->sesion_id ?>/<?php echo $session->registration_fee ?>">
                     <button>Register</button>
                 </form>
             </div>

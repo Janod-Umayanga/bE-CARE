@@ -1226,6 +1226,40 @@
                 }
         }
 
+        // View registered sessions
+        public function viewRegisteredSessions() {
+            if(isset($_SESSION['patient_id'])) {
+                $registered_sessions = $this->sessionModel->getRegisteredSessions($_SESSION['patient_id']);
+
+                // Get current date and time
+                date_default_timezone_set("Asia/Kolkata");
+                $currentDate = date("Y-m-d");
+                $currentTime = date("H:i:s");
+                $data = [
+                    'registered_sessions' => $registered_sessions,
+                    'currentDate' => $currentDate,
+                    'currentTime' => $currentTime
+                ];
+    
+                // Load view
+                $this->view('patients/v_registered_sessions', $data);
+            }
+            else {
+                $this->view('patients/v_registered_sessions');
+            }
+        }
+
+        // View session details
+        public function viewSessionDetails($session_id) {
+            $session = $this->sessionModel->getSessionById($session_id);
+            $data = [
+                'session' => $session
+            ];
+
+            // Load view
+            $this->view('patients/v_session_details', $data);
+        }
+
     }
 
 ?>
