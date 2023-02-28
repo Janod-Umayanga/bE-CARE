@@ -773,6 +773,56 @@
             }
         }
 
+        // View doctor appointments
+        public function viewCounsellorAppointments() {
+            if(isset($_SESSION['patient_id'])) {
+                // Get current date and time
+                date_default_timezone_set("Asia/Kolkata");
+                $currentDate = date("Y-m-d");
+                $currentTime = date("H:i:s");
+                // Show all doctor appointments
+                $appointments = $this->doctorChannelModel->getAllCounsellorChannels($_SESSION['patient_id']);
+                $data = [
+                    'appointments' => $appointments,
+                    'currentDate' => $currentDate,
+                    'currentTime' => $currentTime
+                ];
+
+                // Load view
+                $this->view('patients/v_doctor_appointments', $data);
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
+
+        // View doctor channeling history
+        public function viewCounsellorChannelingHistory() {
+            if(isset($_SESSION['patient_id'])) {
+                // Get current date and time
+                date_default_timezone_set("Asia/Kolkata");
+                $currentDate = date("Y-m-d");
+                $currentTime = date("H:i:s");
+                // Show all doctor appointments
+                $appointments = $this->doctorChannelModel->getAllCounsellorChannels($_SESSION['patient_id']);
+                $data = [
+                    'appointments' => $appointments,
+                    'currentDate' => $currentDate,
+                    'currentTime' => $currentTime
+                ];
+
+                // Load view
+                $this->view('patients/v_doctor_channeling_history', $data);
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
+
         // View and search nutritionists
         public function findNutritionist() {
             if($_SERVER['REQUEST_METHOD'] == 'POST') {

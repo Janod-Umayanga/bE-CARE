@@ -71,6 +71,14 @@
                 <img src="<?php echo URLROOT; ?>/img/sevices-images/Your Orders.jpg" alt="">
                 <p>******<br>Your Orders</p>
             </a>
+            <a href="<?php echo URLROOT ?>/Patient/viewCounsellorAppointments" class="card">
+                <img src="<?php echo URLROOT; ?>/img/sevices-images/counsellor appointments.jpg" alt="">
+                <p>******<br>Your Counsellor Appointments</p>
+            </a>
+            <a href="<?php echo URLROOT ?>/Patient/viewCounsellorChannelingHistory" class="card">
+                <img src="<?php echo URLROOT; ?>/img/sevices-images/counsellor history.jpg" alt="">
+                <p>******<br>Your Counsellor Channeling History</p>
+            </a>
             <a href="<?php echo URLROOT ?>/Patient/viewDietPlans" class="card">
                 <img src="<?php echo URLROOT; ?>/img/sevices-images/diet plans.jpg" alt="">
                 <p>******<br>Your Diet Plans</p>
