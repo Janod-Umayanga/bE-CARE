@@ -1214,6 +1214,24 @@
             }
         }
 
+        // pay for order
+        public function payForOrder($order_id, $fee) {
+            if(isset($_SESSION['patient_id'])) {
+                $data = [
+                    'order_id' => $order_id,
+                    'fee' => $fee
+                ];
+
+                // Load view
+                $this->view('patients/v_pay_order_invoice', $data);
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
+
          // View and search meditation instructors
          public function findMedidationInstructor() {
             if($_SERVER['REQUEST_METHOD'] == 'POST') {

@@ -28,6 +28,7 @@
                         <th>Pharmacy Address</th>
                         <th>Pharmacy Contact Number</th>
                         <th>Delivery Address</th>
+                        <th>Given Prescription</th>
                         <th>Ordered Date and Time</th>
                     </tr>
                     <?php foreach($data['orders'] as $order): ?>
@@ -36,6 +37,7 @@
                         <td><?php echo $order->address ?></td>
                         <td><?php echo $order->contact_number ?></td>
                         <td><?php echo $order->delivery_address ?></td>
+                        <td><button class="delete"><i class="fa-solid fa-download"></i><a download="<?php echo $order->prescription ?>"  href="<?php echo URLROOT?>/img/prescriptions/<?php echo $order->prescription ?>">Download</a></button></td>
                         <td><?php echo $order->ordered_date_and_time ?></td>
                     </tr>
                     <?php endforeach; ?>
@@ -55,22 +57,59 @@
                         <th>Pharmacy Address</th>
                         <th>Pharmacy Contact Number</th>
                         <th>Delivery Address</th>
+                        <th>Given Prescription</th>
                         <th>Ordered Date and Time</th>
                         <!-- <th>Accepted Date and Time</th> -->
                         <th></th>
                     </tr>
                     <?php foreach($data['acccepted_orders'] as $accepted_order): ?>
+                    <?php if(!$accepted_order->paid_amount): ?>
                     <tr>
                         <td><?php echo $accepted_order->pharmacy_name ?></td>
                         <td><?php echo $accepted_order->address ?></td>
                         <td><?php echo $accepted_order->contact_number ?></td>
                         <td><?php echo $accepted_order->delivery_address ?></td>
+                        <td><button class="delete"><i class="fa-solid fa-download"></i><a download="<?php echo $accepted_order->prescription ?>"  href="<?php echo URLROOT?>/img/prescriptions/<?php echo $accepted_order->prescription ?>">Download</a></button></td>
                         <td><?php echo $accepted_order->ordered_date_and_time ?></td>
-                        <!-- <td><?php echo $accepted_order->ordered_date_and_time ?></td> -->
                         <td>
-                            <button class="delete"><i class="fa-solid fa-credit-card"></i> Pay!</button>
+                            <form action="<?php echo URLROOT ?>/Patient/payForOrder/<?php echo $accepted_order->order_id ?>/<?php echo $accepted_order->charge ?>">
+                                <button class="delete"><i class="fa-solid fa-credit-card"></i>Pay!</button>
+                            </form>
                         </td>
                     </tr>
+                    <?php endif; ?>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="table-section theme">
+        <div class="table-container theme">
+            <div class="table-topic-main">
+                <h1>Buying History</h1>
+            <div class="table">
+                <table cellspacing="0" cellpadding="0">
+                    <tr>
+                        <th>Pharmacy Name</th>
+                        <th>Delivery Address</th>
+                        <th>Given Prescription</th>
+                        <th>Ordered Date and Time</th>
+                        <th>Paid Amount</th>
+                        <th>Paid Time</th>
+                        <th></th>
+                    </tr>
+                    <?php foreach($data['acccepted_orders'] as $accepted_order): ?>
+                    <?php if($accepted_order->paid_amount): ?>
+                    <tr>
+                        <td><?php echo $accepted_order->pharmacy_name ?></td>
+                        <td><?php echo $accepted_order->delivery_address ?></td>
+                        <td><button class="delete"><i class="fa-solid fa-download"></i><a download="<?php echo $accepted_order->prescription ?>"  href="<?php echo URLROOT?>/img/prescriptions/<?php echo $accepted_order->prescription ?>">Download</a></button></td>
+                        <td><?php echo $accepted_order->ordered_date_and_time ?></td>
+                        <td>Rs. <?php echo $accepted_order->paid_amount ?></td>
+                        <td><?php echo $accepted_order->paid_time ?></td>
+                    </tr>
+                    <?php endif; ?>
                     <?php endforeach; ?>
                 </table>
             </div>

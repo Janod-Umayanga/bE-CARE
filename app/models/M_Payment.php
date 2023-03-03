@@ -191,6 +191,20 @@
                 return false;
             }
         }
+
+        // pay for order
+        public function payForOrder($data) {
+            $this->db->query('UPDATE accept_order SET paid_amount = :paid_amount WHERE order_id = :order_id');
+            $this->db->bind(':paid_amount', $data['fee']+$data['fee']*0.1);
+            $this->db->bind(':order_id', $data['order_id']);
+
+            if($this->db->execute()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
         
     }
 

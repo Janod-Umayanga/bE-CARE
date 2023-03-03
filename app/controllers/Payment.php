@@ -205,6 +205,37 @@
             }
         }
 
+        // pay for order
+        public function payForOrder() {
+            if(isset($_SESSION['patient_id'])) {
+                if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    // Form is submitting
+    
+                    $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    
+                    // Inserted form
+                    $data = [
+                        'order_id' => trim($_POST['order_id']),
+                        'fee' => trim($_POST['fee']),
+                    ];
+    
+                    // Create apppointment
+                    if($this->paymentModel->payForOrder($data)) {
+                        $_SESSION['paid_for_order'] = true;
+                        redirect('Pages/index');
+                    }
+                    else {
+                        die('Something went wrong');
+                    }   
+                }
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
+
     }
 
 ?>
