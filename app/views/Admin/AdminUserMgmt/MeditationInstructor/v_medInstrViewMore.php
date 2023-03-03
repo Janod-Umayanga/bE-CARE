@@ -49,7 +49,7 @@
                     <li>Branch - <?php echo $data['meditationInstructor']->branch ?></li>
                    
                     <li>Account Number - <?php echo $data['meditationInstructor']->account_number ?></li>
-                     <li>Qualification File -   <button class="qualification"><a download="<?php echo $data['meditationInstructor']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/meditationInstructor_qualification/<?php echo  $data['meditationInstructor']->qualification_file ?>">Download</a></button>
+                    <li>Qualification File -   <button class="qualification"><a download="<?php echo $data['meditationInstructor']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/meditationInstructor_qualification/<?php echo  $data['meditationInstructor']->qualification_file ?>">Download</a></button>
                </li>
                           
                     <?php if($data['meditationInstructor']->delete_flag==0): ?>
