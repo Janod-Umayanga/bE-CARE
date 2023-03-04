@@ -19,7 +19,7 @@
     <section class="table-section theme">
         <div class="table-container theme">
             <div class="table-topic-main">
-                <h1>Requested Diet Plans</h1>
+                <h1>Details Provided by You</h1>
             </div>
             <div class="table">
                 <table cellspacing="0" cellpadding="0">

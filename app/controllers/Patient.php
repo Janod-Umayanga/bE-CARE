@@ -1035,13 +1035,15 @@
         // View diet plans
         public function viewDietPlans() {
             if(isset($_SESSION['patient_id'])) {
-            $requests = $this->requestDietPlanModel->getAllDietPlanRequests($_SESSION['patient_id']);
-            $data = [
-                'requests' => $requests
-            ];
+                $requests = $this->requestDietPlanModel->getAllDietPlanRequests($_SESSION['patient_id']);
+                $dietplans = $this->requestDietPlanModel->getAllDietPlans($_SESSION['patient_id']);
+                $data = [
+                    'requests' => $requests,
+                    'dietplans' => $dietplans
+                ];
 
-            // Load view
-            $this->view('patients/v_diet_plans', $data);
+                // Load view
+                $this->view('patients/v_diet_plans', $data);
             }
             else {
                 $_SESSION['need_login'] = true;

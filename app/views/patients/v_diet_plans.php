@@ -46,6 +46,36 @@
         </div>
     </section>
 
+    <section class="table-section theme">
+        <div class="table-container theme">
+            <div class="table-topic-main">
+                <h1>Requested Diet Plans</h1>
+            </div>
+            <div class="table">
+                <table cellspacing="0" cellpadding="0">
+                    <tr>
+                        <th>Requested From</th>
+                        <th>Issued Date and Time</th>
+                        <th>Diet Plan</th>
+                        <th>Details Provided by You</th>
+                    </tr>
+                    <?php foreach($data['dietplans'] as $dietplan): ?>
+                    <tr>
+                        <td>Dr. <?php echo $dietplan->first_name ?> <?php echo $dietplan->last_name ?></td>
+                        <td><?php echo $dietplan->issued_date_and_time ?></td>
+                        <td><button class="delete"><i class="fa-solid fa-download"></i><a download="<?php echo $dietplan->diet_plan_file ?>"  href="<?php echo URLROOT?>/upload/dietplans/<?php echo $dietplan->diet_plan_file ?>">Download</a></button></td>
+                        <td>
+                        <form action="<?php echo URLROOT ?>/Patient/viewDietPlanDetails/<?php echo $dietplan->request_diet_plan_id ?>">
+                            <button class="delete"><i class="fa-solid fa-circle-info"></i> details</button>
+                        </form>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+        </div>
+    </section>
+
     <?php require APPROOT.'/views/inc/components/footer1.php'; ?>
 </body>
 </html>

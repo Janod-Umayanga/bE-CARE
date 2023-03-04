@@ -41,6 +41,14 @@
 
             return $this->db->resultSet();
         }
+
+        // get all diet plans
+        public function getAllDietPlans($patient_id) {
+            $this->db->query('SELECT diet_plan.*, nutritionist.*, request_diet_plan.* FROM diet_plan INNER JOIN nutritionist ON diet_plan.nutritionist_id = nutritionist.nutritionist_id INNER JOIN request_diet_plan ON diet_plan.request_diet_plan_id = request_diet_plan.request_diet_plan_id WHERE diet_plan.patient_id = :patient_id');
+            $this->db->bind(':patient_id', $patient_id);
+
+            return $this->db->resultSet();
+        }
         
         // get all diet plan requests
         public function getDietPlanRequestById($diet_plan_id) {
