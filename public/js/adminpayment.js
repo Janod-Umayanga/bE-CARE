@@ -1,18 +1,34 @@
-  // get the select element
-  var select = document.getElementById("period");
+// period dropdown
+var periodSelect = document.getElementById("period");
+var selectedPeriod = localStorage.getItem("selectedPeriod");
 
-  // get the selected value from localStorage
-  var selectedValue = localStorage.getItem("selectedValue");
-
-  // loop through the options and set the selected attribute on the matching option
-  for (var i = 0; i < select.options.length; i++) {
-    var option = select.options[i];
-    if (option.value == selectedValue) {
-      option.selected = true;
-    }
+for (var i = 0; i < periodSelect.options.length; i++) {
+  var option = periodSelect.options[i];
+  if (option.value == selectedPeriod) {
+    option.selected = true;
   }
+}
 
-  // listen for changes to the select element and update localStorage
-  select.addEventListener("change", function() {
-    localStorage.setItem("selectedValue", select.value);
-  });
+periodSelect.addEventListener("change", function() {
+  localStorage.setItem("selectedPeriod", periodSelect.value);
+});
+
+
+// service dropdown
+var serviceSelect = document.getElementById("service");
+var selectedService = localStorage.getItem("selectedService");
+
+if (!selectedService) {
+  selectedService = "doctorChannel"; // set default value
+}
+
+for (var i = 0; i < serviceSelect.options.length; i++) {
+  var option = serviceSelect.options[i];
+  if (option.value == selectedService) {
+    option.selected = true;
+  }
+}
+
+serviceSelect.addEventListener("change", function() {
+  localStorage.setItem("selectedService", serviceSelect.value);
+});

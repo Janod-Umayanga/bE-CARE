@@ -2766,6 +2766,22 @@ nav.dark {
     gap: 10px;
 }
 
+.view-profile-container-userMgmt .card .main-image .backto-counsellors{
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: #fafafacd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    gap: 10px;
+    background-color: transparent;
+    border:none;
+    cursor:pointer;
+
+}
+
 
 /************************************************** View profile userMgmt style ends ****************************************************/
 
@@ -6201,7 +6217,7 @@ h4 {
 
 
 .table-section-adminPayment .table-container .search-section .search-bar .searchForm {
-    width: 700px;
+    width: 900px;
     display: flex;
     justify-content: space-between;
     align-items: center;

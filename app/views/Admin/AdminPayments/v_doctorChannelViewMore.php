@@ -32,18 +32,16 @@
                     <li>Profit - <?php echo ($data['docChannel']->paid_amount/110)*10 ?></li>
                    
 
-                    <li>Payment Date & Time - <?php echo $data['docChannel']->date ?> <?php echo $data['docChannel']->time?></li>
+                    <li>Payment Date & Time - <?php echo $data['docChannel']->paid_time ?></li>
                    
-                    <li>Dr.Email - <a href="mailto:<?php echo $data['docChannel']->email ?>"><?php echo $data['docChannel']->email ?></a></li>
-                    <li>Dr.Contact number - <?php echo $data['docChannel']->contact_number ?></li>
+                    <li>Doctor Email - <a href="mailto:<?php echo $data['docChannel']->email ?>"><?php echo $data['docChannel']->email ?></a></li>
+                    <li>Doctor Contact number - <?php echo $data['docChannel']->contact_number ?></li>
                    
                     <li>Patient Name -<?php echo $data['docChannel']->name ?></a></li>
                     <li>Patient Contact Number - <?php echo $data['docChannel']->contact_number ?></li>
                     
 
-                  <!-- //Janod gn ahanna time k kiyanne channeling time kda kiyla -->
-                                    <!--Payment k dapu date k and time k wenama ganna  -->
-                    
+                 
                 </ul>
                 <div class="bottom-line"></div>
             </div>
