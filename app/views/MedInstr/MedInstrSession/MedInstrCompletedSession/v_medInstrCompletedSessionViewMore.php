@@ -29,6 +29,7 @@
                     <li>Ending Time - <?php echo $data['oldSession']->ending_time ?></li>
                     <li>Fee - <?php echo $data['oldSession']->fee ?></li>
                     <li>Address - <?php echo $data['oldSession']->address ?></li>
+                    <li>Maximum No of Participants - <?php echo $data['oldSession']->noOfParticipants ?></li>
                    
                 </ul>
                 <div class="bottom-line"></div>

@@ -61,6 +61,19 @@
             }
         }
 
+        public function isDeactivateAccount($email){
+            $this->db->query('SELECT delete_flag FROM counsellor WHERE email=:email');
+            $this->db->bind(':email',$email);
+            
+            $row= $this->db->single();
+            
+            if($this->db->rowCount() >0){
+              return $row;
+            }else{
+                  return false;
+            }  
+        }    
+
         public function updatePW($data, $counsellor_id) {
             $this->db->query('UPDATE counsellor SET password = :password WHERE counsellor_id = :counsellor_id');
             $this->db->bind(':password', $data['newpw']);

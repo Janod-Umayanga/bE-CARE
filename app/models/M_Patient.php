@@ -59,6 +59,20 @@
             }
         }
 
+        public function isDeactivateAccount($email){
+            $this->db->query('SELECT delete_flag FROM patient WHERE email=:email');
+            $this->db->bind(':email',$email);
+            
+            $row= $this->db->single();
+            
+            if($this->db->rowCount() >0){
+              return $row;
+              
+            }else{
+                  return false;
+            }  
+        }    
+
         // Get patient by id
         public function getPatientById($patient_id) {
             $this->db->query('SELECT * FROM patient WHERE patient_id = :patient_id');

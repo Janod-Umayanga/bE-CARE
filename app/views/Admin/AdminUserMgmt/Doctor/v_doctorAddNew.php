@@ -25,7 +25,9 @@
             </div>
         </div>
         <div class="diet-plan-rightside">
-            <form action="<?php echo URLROOT ?>/AdminUserMgmt/addnewDoctor" method="POST" enctype="multipart/form-data">
+           <div class="form-container" id="form-container">
+           
+           <form action="<?php echo URLROOT ?>/AdminUserMgmt/addnewDoctor" method="POST" enctype="multipart/form-data">
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left"> <br><br><br>
 
@@ -121,6 +123,7 @@
                 </div>
             </form>
         </div>
+        </div> 
     </section>  
 </body>
 </html>

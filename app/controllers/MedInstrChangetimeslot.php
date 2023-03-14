@@ -14,8 +14,29 @@ class MedInstrChangetimeslot extends Controller{
    if(isset($_SESSION['MedInstr_id'])) {  
    
    $timeslot= $this->medInstrChangetimeslotModel->medInstrtimeslot($_SESSION['MedInstr_id']);
+  
+  
+   foreach($timeslot AS $slot){
+
+       if($slot->continue_flag==1){
+        $this->medInstrChangetimeslotModel->getChannelingDays($slot->med_timeslot_id,$slot->appointment_day, $slot->starting_time,$slot->ending_time,$slot->fee,$slot->address,$slot->noOfParticipants, $slot->meditation_instructor_id);
+       }
+
+
+   }
+  
+  
+  
+  
+   $appointmentday= $this->medInstrChangetimeslotModel->medInstrappointmentday($_SESSION['MedInstr_id']);
+  
+   
+
+
+
    $data=[                      
      'timeslot'=>$timeslot,
+     'appointmentday'=>$appointmentday,
      'search'=>''
    ];
    $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);
@@ -35,26 +56,23 @@ class MedInstrChangetimeslot extends Controller{
           $search=trim($_GET['search']);
           
           $timeslot= $this->medInstrChangetimeslotModel->searchMedInstrTimeslot($search,$_SESSION['MedInstr_id']);
+          $appointmentday= $this->medInstrChangetimeslotModel->medInstrappointmentday($_SESSION['MedInstr_id']);
+         
           $data=[                      
             'timeslot'=>$timeslot,
+            'appointmentday'=>$appointmentday,
             'search'=>$search
-         ];
+          ];
          $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);
    
       
-     }else{
-          $data=[                      
-            'timeslot'=>'',
-            'search'=>''
-          ];
-          $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);
-        }
+     }
       }else{
         redirect('Login/login');  
       }
   }
 
-  public function updateMedInstrChangeTimeslot($timeslot_id)
+  public function updateAppointmentDay($appointment_day_id)
   {
     if(isset($_SESSION['MedInstr_id'])) {  
   
@@ -66,18 +84,24 @@ class MedInstrChangetimeslot extends Controller{
           'starting_time'=>trim($_POST['starting_time']),
           'ending_time'=>trim($_POST['ending_time']),      
           'fee'=>trim($_POST['fee']),
-          'address'=>trim($_POST['address']),      
+          'address'=>trim($_POST['address']), 
+          'noOfParticipants'=>trim($_POST['noOfParticipants']),     
           'meditation_instructor_id'=>$_SESSION['MedInstr_id'],      
-          'timeslot_id'=>$_SESSION['Med_Instr_timeslot_id'],          
-
-          'date_err'=>'',  
+          'appointment_day_id'=>$appointment_day_id,          
+  
+          'date_err'=>'',
           'starting_time_err'=>'',
           'ending_time_err'=>'',
           'fee_err'=>'',
-          'address_err'=>''
+          'address_err'=>'',
+          'noOfParticipants_err'=>''
+
          ];      
          
          
+        if(empty($data['date'])){
+          $data['date_err']='Please enter a date';
+        }
 
         if(empty($data['starting_time'])){
           $data['starting_time_err']='Please select a starting time';
@@ -88,52 +112,32 @@ class MedInstrChangetimeslot extends Controller{
         } 
 
         if(empty($data['fee'])){
-          $data['fee_err']='Please enyer a fee';
+          $data['fee_err']='Please enter a fee';
         }
 
         if(empty($data['address'])){
            $data['address_err']='Please enter a address';
         } 
        
-        if(empty($data['date'])){
-          $data['date_err']='Please enter a date';
+        if(empty($data['noOfParticipants'])){
+          $data['noOfParticipants_err']='Please enter a no Of Participants';
        } 
        
 
-        if( empty($data['starting_time_err']) && empty($data['ending_time_err']) && empty($data['fee_err']) && empty($data['address_err']) && empty($data['date_err']) ){
+        if(empty($data['date_err']) && empty($data['starting_time_err']) && empty($data['ending_time_err']) && empty($data['fee_err']) && empty($data['address_err']) && empty($data['noOfParticipants_err']) ){
  
-            $updateTimeslot=$this->medInstrChangetimeslotModel->updatetimeslot($data,$timeslot_id);
+            $updateappointment=$this->medInstrChangetimeslotModel->updateappointmentday($data,$appointment_day_id);
        
-         if($updateTimeslot){
-             $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrUpdatetimeslot',$data); 
+         if($updateappointment){
+             $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrUpdateappointment',$data); 
            }
            else{
-            $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrUpdatetimeslot',$data);
+            $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrUpdateappointment',$data);
            }   
         }else{
-          $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrUpdatetimeslot',$data);
+          $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrUpdateappointment',$data);
         } 
-      }else{
-      
-      $data = [
-        'date'=>'',
-        'starting_time'=>'',
-        'ending_time'=>'',      
-        'fee'=>'',
-        'address'=>'',      
-        'meditation_instructor_id'=>'',      
-        'timeslot_id'=>$_SESSION['Med_Instr_timeslot_id'],
-
-        
-        'date_err'=>'',
-        'starting_time_err'=>'',
-        'ending_time_err'=>'',
-        'fee_err'=>'',
-        'address_err'=>''
-    
-      ];
-       $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);     
-    } 
+      }
   }else{
     redirect('Login/login');  
   }
@@ -141,27 +145,67 @@ class MedInstrChangetimeslot extends Controller{
 
  
 
-    public function medInstrViewtimeslot($timeslot_id)
+    public function viewAppointmentDay($appointment_day_id)
+    {
+      if(isset($_SESSION['MedInstr_id'])) {  
+  
+      $appointment=$this->medInstrChangetimeslotModel->viewappointmentday($appointment_day_id);
+           // $_SESSION['Med_Instr_timeslot_id']=$appointment_day_id;
+            
+            $data = [
+              'date'=>$appointment->date,
+              'day'=>$appointment->day,
+              'starting_time'=>$appointment->starting_time,
+              'ending_time'=>$appointment->ending_time,      
+              'fee'=>$appointment->fee,
+              'address'=>$appointment->address,
+              'noOfParticipants'=>$appointment->noOfParticipants,      
+              'meditation_instructor_id'=>$_SESSION['MedInstr_id'],      
+              'appointment_day_id'=>$appointment_day_id,
+              
+              'date_err'=>'',
+              'day_err'=>'',
+              'starting_time_err'=>'',
+              'ending_time_err'=>'',
+              'fee_err'=>'',
+              'address_err'=>'',
+              'noOfParticipants_err'=>'',
+              
+            
+            ];
+            $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrUpdateappointment',$data);
+        
+          }else{
+            redirect('Login/login');  
+          }
+    } 
+        
+    
+    public function viewTimeslot($timeslot_id)
     {
       if(isset($_SESSION['MedInstr_id'])) {  
   
       $timeslot=$this->medInstrChangetimeslotModel->viewtimeslot($timeslot_id);
-            $_SESSION['Med_Instr_timeslot_id']=$timeslot_id;
+           // $_SESSION['Med_Instr_timeslot_id']=$timeslot_id;
             
             $data = [
-              'date'=>$timeslot->date,
+             
+              'appointment_day'=>$timeslot->appointment_day,
               'starting_time'=>$timeslot->starting_time,
               'ending_time'=>$timeslot->ending_time,      
               'fee'=>$timeslot->fee,
-              'address'=>$timeslot->address,      
+              'address'=>$timeslot->address,
+              'noOfParticipants'=>$timeslot->noOfParticipants,      
               'meditation_instructor_id'=>$_SESSION['MedInstr_id'],      
               'timeslot_id'=>$timeslot_id,
               
-              'date_err'=>'',
+              'appointment_day_err'=>'',
               'starting_time_err'=>'',
               'ending_time_err'=>'',
               'fee_err'=>'',
-              'address_err'=>''
+              'address_err'=>'',
+              'noOfParticipants_err'=>'',
+              
             
             ];
             $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrUpdatetimeslot',$data);
@@ -170,30 +214,171 @@ class MedInstrChangetimeslot extends Controller{
             redirect('Login/login');  
           }
     } 
-        
     
-    public function deleteMedInstrChangeTimeslot($timeslot_id)
-    {
-      if(isset($_SESSION['MedInstr_id'])) {  
-  
-         $deletetimeslot=$this->medInstrChangetimeslotModel->deleteMedInstrChangeTimeslot($timeslot_id);
-            $timeslot= $this->medInstrChangetimeslotModel->medInstrtimeslot($_SESSION['MedInstr_id']);
 
-            $data = [
-            'timeslot'=>$timeslot,
-            'search'=>''
-            ];
+
+    public function disableAppointmentDay($appointment_day_id)
+    {
+          
+      if(isset($_SESSION['MedInstr_id'])) {  
+      
+        $this->medInstrChangetimeslotModel->medInstrdisableappointmentday($appointment_day_id);
+        $timeslot= $this->medInstrChangetimeslotModel->medInstrtimeslot($_SESSION['MedInstr_id']);
+        $appointmentday= $this->medInstrChangetimeslotModel->medInstrappointmentday($_SESSION['MedInstr_id']);
         
-            if($deletetimeslot==true){
-                $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);
-            }
-          }else{
-            redirect('Login/login');  
-          }          
+        $data=[                      
+          'timeslot'=>$timeslot,
+          'appointmentday'=>$appointmentday,
+          'search'=>''
+        ];
+        $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);
+      }else{
+        redirect('Login/login');  
+      }
+ 
 
     } 
 
     
+    public function enableAppointmentDay($appointment_day_id)
+    {
+          
+      if(isset($_SESSION['MedInstr_id'])) {  
+      
+        $this->medInstrChangetimeslotModel->medInstrenableappointmentday($appointment_day_id);
+        $timeslot= $this->medInstrChangetimeslotModel->medInstrtimeslot($_SESSION['MedInstr_id']);
+        $appointmentday= $this->medInstrChangetimeslotModel->medInstrappointmentday($_SESSION['MedInstr_id']);
+        
+        $data=[                      
+          'timeslot'=>$timeslot,
+          'appointmentday'=>$appointmentday,
+          'search'=>''
+        ];
+        $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);
+      }else{
+        redirect('Login/login');  
+      }
+ 
+
+    } 
+
+    public function stopCreatingRecurringTimeslot($appointment_day_id)
+    {
+          
+      if(isset($_SESSION['MedInstr_id'])) {  
+      
+        $this->medInstrChangetimeslotModel->stopCreateRecurringTimeslot($appointment_day_id);
+        $timeslot= $this->medInstrChangetimeslotModel->medInstrtimeslot($_SESSION['MedInstr_id']);
+        $appointmentday= $this->medInstrChangetimeslotModel->medInstrappointmentday($_SESSION['MedInstr_id']);
+        
+        $data=[                      
+          'timeslot'=>$timeslot,
+          'appointmentday'=>$appointmentday,
+          'search'=>''
+        ];
+        $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);
+      }else{
+        redirect('Login/login');  
+      }
+ 
+
+    } 
+ 
+    public function creatingRecurringTimeslot($appointment_day_id)
+    {
+          
+      if(isset($_SESSION['MedInstr_id'])) {  
+      
+        $this->medInstrChangetimeslotModel->createRecurringTimeslot($appointment_day_id);
+        $timeslot= $this->medInstrChangetimeslotModel->medInstrtimeslot($_SESSION['MedInstr_id']);
+        $appointmentday= $this->medInstrChangetimeslotModel->medInstrappointmentday($_SESSION['MedInstr_id']);
+        
+        $data=[                      
+          'timeslot'=>$timeslot,
+          'appointmentday'=>$appointmentday,
+          'search'=>''
+        ];
+        $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);
+      }else{
+        redirect('Login/login');  
+      }
+ 
+
+    } 
+    
+
+public function updateFutureTimeslot($timeslot_id)
+{
+  if(isset($_SESSION['MedInstr_id'])) {  
+
+  if($_SERVER["REQUEST_METHOD"] == 'POST'){
+      $_POST=filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+
+      $data = [
+        'appointment_day'=>trim($_POST['appointment_day']),
+        'starting_time'=>trim($_POST['starting_time']),
+        'ending_time'=>trim($_POST['ending_time']),      
+        'fee'=>trim($_POST['fee']),
+        'address'=>trim($_POST['address']), 
+        'noOfParticipants'=>trim($_POST['noOfParticipants']),     
+        'meditation_instructor_id'=>$_SESSION['MedInstr_id'],      
+        'appointment_day_id'=>$timeslot_id,          
+
+        'appointment_day_err'=>'',
+        'starting_time_err'=>'',
+        'ending_time_err'=>'',
+        'fee_err'=>'',
+        'address_err'=>'',
+        'noOfParticipants_err'=>''
+
+       ];      
+       
+       
+      if(empty($data['appointment_day'])){
+        $data['appointment_day_err']='Please enter a appointment_day';
+      }
+
+      if(empty($data['starting_time'])){
+        $data['starting_time_err']='Please select a starting time';
+      }
+
+      if(empty($data['ending_time'])){
+         $data['ending_time_err']='Please select ending time';
+      } 
+
+      if(empty($data['fee'])){
+        $data['fee_err']='Please enter a fee';
+      }
+
+      if(empty($data['address'])){
+         $data['address_err']='Please enter a address';
+      } 
+     
+      if(empty($data['noOfParticipants'])){
+        $data['noOfParticipants_err']='Please enter a no Of Participants';
+     } 
+     
+
+      if(empty($data['appointment_day_err']) && empty($data['starting_time_err']) && empty($data['ending_time_err']) && empty($data['fee_err']) && empty($data['address_err']) && empty($data['noOfParticipants_err']) ){
+
+          $updateTimeslot=$this->medInstrChangetimeslotModel->updateTimeslot($data,$timeslot_id);
+     
+       if($updateTimeslot){
+           $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrUpdatetimeslot',$data); 
+         }
+         else{
+          $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrUpdatetimeslot',$data);
+         }   
+      }else{
+        $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrUpdatetimeslot',$data);
+      } 
+    }
+}else{
+  redirect('Login/login');  
+}
+}
+
+
 }
 
 

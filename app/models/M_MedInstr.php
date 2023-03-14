@@ -53,6 +53,21 @@
           }  
       }    
      
+      public function isDeactivateAccount($email){
+        $this->db->query('SELECT delete_flag FROM meditation_instructor WHERE email=:email');
+        $this->db->bind(':email',$email);
+        
+        $row= $this->db->single();
+        
+        if($this->db->rowCount() >0){
+          return $row;
+        }else{
+              return false;
+        }  
+    }    
+  
+
+
       public function findUserByID($id)
       {
         $this->db->query('SELECT * FROM meditation_instructor WHERE meditation_instructor_id= :id');

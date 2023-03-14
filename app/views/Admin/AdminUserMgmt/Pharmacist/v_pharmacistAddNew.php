@@ -25,6 +25,8 @@
             </div>
         </div>
         <div class="diet-plan-rightside">
+           <div class="form-container" id="form-container">
+        
             <form action="<?php echo URLROOT ?>/AdminUserMgmt/addnewPharmacist" method="POST" enctype="multipart/form-data">
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left"> <br><br><br>
@@ -67,6 +69,12 @@
                         <input type="text" id="pharmacy_name" name="pharmacy_name" value="<?php echo $data['pharmacy_name'] ?>">
                         <span class="form-invalid"><?php echo $data['pharmacy_name_err'] ?></span>
 
+                        
+                        <label for="pharmacy Name">Pharmacy Name</label>
+                        <input type="text" id="pharmacy_name" name="pharmacy_name" value="<?php echo $data['pharmacy_name'] ?>">
+                        <span class="form-invalid"><?php echo $data['pharmacy_name_err'] ?></span>
+
+                        
                        <button type="submit" >Submit</button> 
                     </div>
                     <div class="right">
@@ -117,6 +125,7 @@
                     </div>
                 </div>
             </form>
+          </div>  
         </div>
     </section>  
 </body>

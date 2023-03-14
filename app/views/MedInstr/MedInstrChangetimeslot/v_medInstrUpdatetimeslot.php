@@ -25,14 +25,16 @@
             </div>
         </div>
         <div class="diet-plan-rightside">
-            <form action="<?php echo URLROOT ?>/MedInstrChangeTimeslot/updateMedInstrChangeTimeslot/<?php echo  $data["timeslot_id"] ?>" method="POST">
-                <input type="hidden" name="date" value="<?php echo $data["date"] ?>">
+            <form action="<?php echo URLROOT ?>/MedInstrChangeTimeslot/updateFutureTimeslot/<?php echo  $data["timeslot_id"] ?>" method="POST">
+                <input type="hidden" name="appointment_day" value="<?php echo $data["appointment_day"] ?>">
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left">
 
-                        <label for="Date">Date</label>
-                        <input type="text" id="dat" name="dat"  disabled="true" value="<?php echo $data['date'] ?>">
-                        <span class="form-invalid"><?php echo $data['date_err'] ?></span>
+                     
+
+                        <label for="Date">Day</label>
+                        <input type="text" id="dat" name="dat"  disabled="true" value="<?php echo $data['appointment_day'] ?>">
+                        <span class="form-invalid"><?php echo $data['appointment_day_err'] ?></span>
 
                         
                         <label for="starting Time">Starting Time</label>
@@ -48,7 +50,7 @@
                         <span class="form-invalid"><?php echo $data['fee_err'] ?></span>
 
 
-                        <button>Submit</button>
+                        <button>Update</button>
                     </div>
                     <div class="right">
                         
@@ -56,7 +58,10 @@
                         <input type="text" id="address" name="address" value="<?php echo $data['address'] ?>">
                         <span class="form-invalid"><?php echo $data['address_err'] ?></span>
 
-                        
+                        <label for="noOfParticipants">No Of Participants</label>
+                        <input type="text" id="noOfParticipants" name="noOfParticipants" value="<?php echo $data['noOfParticipants'] ?>">
+                        <span class="form-invalid"><?php echo $data['noOfParticipants_err'] ?></span>
+                     
                     </div>
                 </div>
             </form>

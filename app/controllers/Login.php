@@ -52,6 +52,19 @@
                         }
                     }
 
+                    $isDeactivated=$this->patientModel->isDeactivateAccount($data['email']);
+                        
+                    
+                    if(!empty($isDeactivated)){
+                        if($isDeactivated->delete_flag=='1') {
+                            $data['email_err'] = 'Deactivated Account';
+                        }
+                        else {
+                            
+                        }
+                    }
+                                       
+
                     // Validate password
                     if(empty($data['password'])) {
                         $data['password_err'] = 'Password required';
@@ -95,6 +108,17 @@
                         }
                     }
 
+                    $isDeactivated=$this->adminModel->isDeactivateAccount($data['email']);
+                    
+                    if(!empty($isDeactivated)){
+                        if($isDeactivated->delete_flag=='1') {
+                            $data['email_err'] = 'Deactivated Account';
+                        }
+                        else {
+                            
+                        }
+                    }
+                    
                     // Validate password
                     if(empty($data['password'])) {
                         $data['password_err'] = 'Password required';
@@ -137,7 +161,18 @@
                                 $data['email_err'] = 'Invalid email';
                             }
                         }
-    
+                        $isDeactivated=$this->medInstrModel->isDeactivateAccount($data['email']);
+                     
+                        if(!empty($isDeactivated)){
+
+                            if($isDeactivated->delete_flag=='1') {
+                                $data['email_err'] = 'Deactivated Account';
+                            }
+                            else {
+                                
+                            }
+
+                       }
                         // Validate password
                         if(empty($data['password'])) {
                             $data['password_err'] = 'Password required';
@@ -182,6 +217,17 @@
                         }
                     }
 
+                    $isDeactivated=$this->doctorModel->isDeactivateAccount($data['email']);
+
+                    if(!empty($isDeactivated)){
+                        if($isDeactivated->delete_flag=='1') {
+                            $data['email_err'] = 'Deactivated Account';
+                        }
+                        else {
+                            
+                        }
+                    }    
+
                     // Validate password
                     if(empty($data['password'])) {
                         $data['password_err'] = 'Password required';
@@ -224,6 +270,17 @@
                             $data['email_err'] = 'Invalid email';
                         }
                     }
+
+                    $isDeactivated=$this->counsellorModel->isDeactivateAccount($data['email']);
+                     
+                    if(!empty($isDeactivated)){
+                        if($isDeactivated->delete_flag=='1') {
+                            $data['email_err'] = 'Deactivated Account';
+                        }
+                        else {
+                            
+                        }
+                    }    
 
                     // Validate password
                     if(empty($data['password'])) {
@@ -268,6 +325,18 @@
                             $data['email_err'] = 'Invalid email';
                         }
                     }
+
+                    $isDeactivated=$this->nutritionistModel->isDeactivateAccount($data['email']);
+                     
+                    if(!empty($isDeactivated)){
+
+                        if($isDeactivated->delete_flag=='1') {
+                            $data['email_err'] = 'Deactivated Account';
+                        }
+                        else {
+                            
+                        }
+                    }    
 
                     // Validate password
                     if(empty($data['password'])) {
@@ -314,6 +383,18 @@
                         }
                     }
 
+                    $isDeactivated=$this->pharmacistModel->isDeactivateAccount($data['email']);
+                    
+                    if(!empty($isDeactivated)){
+
+                        if($isDeactivated->delete_flag=='1') {
+                            $data['email_err'] = 'Deactivated Account';
+                        }
+                        else {
+                            
+                        }
+                    }
+                        
                     // Validate password
                     if(empty($data['password'])) {
                         $data['password_err'] = 'Password required';

@@ -34,10 +34,10 @@
                     <li>Date - <?php echo $data['medChannel']->date ?></li>
                     <li>Starting Time - <?php echo $data['medChannel']->starting_time ?></li>
                     <li>Ending Time - <?php echo $data['medChannel']->ending_time ?></li>
-                    <li>Day - <?php echo $data['medChannel']->appointment_day?></li>
+                    <li>Day - <?php echo $data['medChannel']->day?></li>
                    
                     <li>Gender - <?php echo $data['medChannel']->gender ?></li>
-                    <li>Registered date - <?php echo $data['medChannel']->reg_date ?></li>
+                    <li>Registered date - <?php echo $data['medChannel']->registered_date_and_time ?></li>
                     <li>Fee - <?php echo $data['medChannel']->fee ?></li>
                     <li>Address - <?php echo $data['medChannel']->address ?></li>
                    

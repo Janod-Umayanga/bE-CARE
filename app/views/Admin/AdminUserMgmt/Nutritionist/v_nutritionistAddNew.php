@@ -25,6 +25,8 @@
             </div>
         </div>
         <div class="diet-plan-rightside">
+           <div class="form-container" id="form-container">
+       
             <form action="<?php echo URLROOT ?>/AdminUserMgmt/addnewNutritionist" method="POST" enctype="multipart/form-data">
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left"> <br><br><br>
@@ -58,17 +60,17 @@
                         </select>
                         <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
 
-
+                        <label for="fee">Fee</label>
+                        <input type="text" id="fee" name="fee" value="<?php echo $data['fee'] ?>">
+                        <span class="form-invalid"><?php echo $data['fee'] ?></span>
+        
                                   
                         <button type="submit" >Submit</button> 
                     </div>
                     <div class="right">
                     <br><br><br>
 
-                        <label for="fee">Fee</label>
-                        <input type="text" id="fee" name="fee" value="<?php echo $data['fee'] ?>">
-                        <span class="form-invalid"><?php echo $data['fee'] ?></span>
-        
+                     
        
                         <label for="slmc">SLMC registration Number</label>
                         <input type="text" id="slmc" name="slmc" value="<?php echo $data['slmc_reg_number'] ?>">
@@ -110,6 +112,7 @@
                     </div>
                 </div>
             </form>
+            </div>
         </div>
     </section>  
 </body>

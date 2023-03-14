@@ -182,10 +182,16 @@ class Admin extends Controller{
       
        if(empty($data['first_name'])){
           $data['first_name_err']='first name can not be empty';
+       
+       }else if(validateFirstName($data['first_name'])!="true"){
+        $data['first_name_err']=validateFirstName($data['first_name']);
        }
 
        if(empty($data['last_name'])){
           $data['last_name_err']='last name can not be empty';
+       
+        }else if(validateLastName($data['last_name'])!="true"){
+        $data['last_name_err']=validateLastName($data['last_name']);
        }
 
        if(empty($data['nic'])){
@@ -193,24 +199,39 @@ class Admin extends Controller{
         }
 
         if(empty($data['contact_number'])){
-            $data['contact_number_err']='contact_number can not be empty';
-        }
+             $data['contact_number_err']='contact_number can not be empty';
+        
+          }else if(validateContactNumber($data['contact_number'])!="true"){
+             $data['contact_number_err']=validateContactNumber($data['contact_number']);
+         }
 
         if(empty($data['bank_name'])){
           $data['bank_name_err']='bank name can not be empty';
-      }
+      }else if(validateBankBranch($data['bank_name'])!="true"){
+        $data['bank_name_err']=validateBankBranch($data['bank_name']);
+       }
 
       if(empty($data['account_holder_name'])){
           $data['account_holder_name_err']='account_holder_name can not be empty';
-      }
+
+        }else if(validateAccountHolderName($data['account_holder_name'])!="true"){
+        $data['account_holder_name_err']=validateAccountHolderName($data['account_holder_name']);
+       }
+
 
         if(empty($data['branch'])){
           $data['branch_err']='branch name can not be empty';
-      }
+      
+        }else if(validateBankBranch($data['branch'])!="true"){
+        $data['branch_err']=validateBankName($data['branch']);
+       }
+
 
       if(empty($data['account_number'])){
           $data['account_number_err']='account_number can not be empty';
-      }
+      }else if(validateAccountNumber($data['account_number'])!="true"){
+        $data['account_number_err']=validateAccountNumber($data['account_number']);
+       }
      
       if(empty($data['gender'])){
         $data['gender_err']='gender can not be empty';

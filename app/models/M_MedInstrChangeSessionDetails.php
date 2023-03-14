@@ -13,7 +13,7 @@ class M_MedInstrChangeSessionDetails{
 
    { 
          $current_date= date("Y-m-d");
-         $this->db->query('SELECT * FROM session WHERE meditation_instructor_id=:id AND date>=:current_date AND session_id NOT IN (SELECT session_id from session_register)');
+         $this->db->query('SELECT * FROM session WHERE meditation_instructor_id=:id AND date>=:current_date AND session_id NOT IN (SELECT session_id from session_register) ORDER BY date ASC');
          $this->db->bind(':id',$id);
          $this->db->bind(':current_date',$current_date);
         
@@ -26,7 +26,7 @@ class M_MedInstrChangeSessionDetails{
 
    { 
          $current_date= date("Y-m-d");
-         $this->db->query("SELECT * FROM session WHERE meditation_instructor_id=:id AND date>=:current_date AND  session_id NOT IN (SELECT session_id from session_register) AND CONCAT(title,date,address, fee) LIKE '%$search%'");
+         $this->db->query("SELECT * FROM session WHERE meditation_instructor_id=:id AND date>=:current_date AND  session_id NOT IN (SELECT session_id from session_register) AND CONCAT(title,date,address, fee) LIKE '%$search%' ORDER BY date ASC");
          $this->db->bind(':id',$id);
          $this->db->bind(':current_date',$current_date);
         
@@ -50,7 +50,7 @@ class M_MedInstrChangeSessionDetails{
   public function medInstraddNewSession($id,$data)
   {
    
-    $this->db->query('INSERT INTO session (title,description,date,starting_time,ending_time,address,fee,meditation_instructor_id) VALUES (:title,:description,:date,:starting_time,:ending_time,:address,:fee,:id)');
+    $this->db->query('INSERT INTO session (title,description,date,starting_time,ending_time,address,fee,noOfParticipants,meditation_instructor_id) VALUES (:title,:description,:date,:starting_time,:ending_time,:address,:fee,:noOfParticipants,:id)');
     $this->db->bind(':title',$data['title']);
     $this->db->bind(':description',$data['description']);
     $this->db->bind(':date',$data['date']);
@@ -58,6 +58,7 @@ class M_MedInstrChangeSessionDetails{
     $this->db->bind(':ending_time',$data['ending_time']);
     $this->db->bind(':address',$data['address']);
     $this->db->bind(':fee',$data['fee']);
+    $this->db->bind(':noOfParticipants',$data['noOfParticipants']);
     $this->db->bind(':id',$id);
 
     if($this->db->execute()){
@@ -80,7 +81,7 @@ class M_MedInstrChangeSessionDetails{
 
   public function medInstrupdateSession($id,$sessionId,$data)
   {
-    $this->db->query('UPDATE session SET title=:title,date=:date,starting_time=:starting_time,ending_time=:ending_time,address=:address,fee=:fee,description=:description,meditation_instructor_id=:id WHERE session_id=:sessionId');
+    $this->db->query('UPDATE session SET title=:title,date=:date,starting_time=:starting_time,ending_time=:ending_time,address=:address,fee=:fee,noOfParticipants=:noOfParticipants,description=:description,meditation_instructor_id=:id WHERE session_id=:sessionId');
     $this->db->bind(':title',$data['title']);
     $this->db->bind(':description',$data['description']);
     $this->db->bind(':date',$data['date']);
@@ -88,6 +89,7 @@ class M_MedInstrChangeSessionDetails{
     $this->db->bind(':ending_time',$data['ending_time']);
     $this->db->bind(':address',$data['address']);
     $this->db->bind(':fee',$data['fee']);
+    $this->db->bind(':noOfParticipants',$data['noOfParticipants']);
     $this->db->bind(':id',$id);
     $this->db->bind(':sessionId',$sessionId);
 

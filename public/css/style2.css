@@ -2267,14 +2267,14 @@ nav.dark {
     overflow: hidden;
     position: relative;
 }
-
+/* Requested Service provider pic */
 .view-profile-container-requestedSP .card .main-image {
     width: 100%;
     height: 250px;
     position: relative;
     padding: 7% 10%;
     text-align: right;
-    background-image: url(../img/view-profile-pictures/view-profile-image.jpg);
+    background-image: url('../img/adminRequestedServiceProviders/doctor.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
     color: var(--hue-white);
@@ -2399,13 +2399,15 @@ nav.dark {
     position: relative;
 }
 
+/* Requested Service provider pic  */
+
 .view-profile-container-requestedSP .card .main-image {
     width: 100%;
     height: 250px;
     position: relative;
     padding: 7% 10%;
     text-align: right;
-    background-image: url(../img/view-profile-pictures/view-profile-image.jpg);
+    background-image: url('../img/adminRequestedServiceProviders/doctor.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
     color: var(--hue-white);
@@ -2529,6 +2531,7 @@ nav.dark {
     overflow: hidden;
     position: relative;
 }
+/* Complaint Pic */
 
 .view-profile-container-complaintMgmtViewMore .card .main-image {
     width: 100%;
@@ -2658,7 +2661,7 @@ nav.dark {
     overflow: hidden;
     position: relative;
 }
-
+/* UserMgmt Admin */
 .view-profile-container-userMgmt .card .main-image {
     width: 100%;
     height: 250px;
@@ -2731,7 +2734,7 @@ nav.dark {
 
 .view-profile-container-userMgmt .card .bottom ul .deactiveForm button {
     padding: 8px 30px;
-    background-color: red;
+    background-color: #e74c3c;
     color: var(--hue-white);
     border: none;
     border-radius: 5px;
@@ -2810,7 +2813,7 @@ nav.dark {
     overflow: hidden;
     position: relative;
 }
-
+/* UserMgmt Doctor */
 .view-profile-container-userMgmtDoctorVM .card .main-image {
     width: 100%;
     height: 250px;
@@ -2883,7 +2886,7 @@ nav.dark {
 
 .view-profile-container-userMgmtDoctorVM .card .bottom ul .deactiveForm button {
     padding: 8px 30px;
-    background-color: red;
+    background-color: #e74c3c;
     color: var(--hue-white);
     border: none;
     border-radius: 5px;
@@ -4512,10 +4515,69 @@ h4 {
     cursor: pointer;
 }
 
+
+/* timeslot section */
+
+.table-section-MIChangeTimeslot .table-container .timeslot-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 10px;
+}
+
+
+.table-section-MIChangeTimeslot .table-container .timeslot-section .timeslot-bar{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+/* .table-section-MIChangeTimeslot .table-container .timeslot-section .timeslot-bar .timeslotform {
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+} */
+
+
+.table-section-MIChangeTimeslot .table-container .timeslot-section .timeslot-bar .update {
+    width: 240px;
+    height: fit-content;
+    background-color: green;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+.table-section-MIChangeTimeslot .table-container .timeslot-section .timeslot-bar .create {
+    width: 240px;
+    height: fit-content;
+    background-color: var(--hue-dark-blue );
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/* ss */
 .table-section-MIChangeTimeslot .table-container .table {
     width: 100%;
     padding: 0 3%;
-    height: 50vh;
+    height: 38vh;
     margin-top: 30px;
     overflow: auto;
 }

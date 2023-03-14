@@ -11,12 +11,13 @@
     <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
     <script defer src="script.js"></script>
+    <script defer src="<?php echo URLROOT; ?>/js/popup.js"></script>
+
     <title>Document</title>
 </head>
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
-
-
+                   
     <section class="table-section-requestedCMP theme">
         <div class="table-container theme">
             <div class="table-topic-main">
@@ -58,13 +59,23 @@
                               <button class="viewMore"><i class="fa-solid fa-circle-info"></i></button>
                           </form>
                        
-                          <form class="verifyForm" action="<?php echo URLROOT;?>/AdminReqSerProviders/adminVerifyReqCounsellor/<?php echo $counsellor->requested_counsellor_id ?>" method="post">
-                                <button class="verify">Verify</button>
-                          </form>
+                     
+                        <form class="verifyForm" action="<?php echo URLROOT;?>/AdminReqSerProviders/adminVerifyReqCounsellor/<?php echo $counsellor->requested_counsellor_id ?>" method="post">
+                                <button type="submit" id="green_yes" class="verify">Verify</button>
+                                             
+                         </form>
+                      
+                       
+                                
+                     
                         
                           <form class="notVerifyForm" action="<?php echo URLROOT;?>/AdminReqSerProviders/adminNotVerifyReqCounsellor/<?php echo $counsellor->requested_counsellor_id ?>" method="post">
                                 <button class="notVerify">Not Verify</button>
                           </form>
+                        
+                        
+                        
+                        
                         </td>
                         </tr>                              
                    <?php endforeach;?>
