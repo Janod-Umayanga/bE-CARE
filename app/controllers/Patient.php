@@ -1217,11 +1217,12 @@
         }
 
         // pay for order
-        public function payForOrder($order_id, $fee) {
+        public function payForOrder($order_id, $fee, $email) {
             if(isset($_SESSION['patient_id'])) {
                 $data = [
                     'order_id' => $order_id,
-                    'fee' => $fee
+                    'fee' => $fee,
+                    'email' => $email
                 ];
 
                 // Load view
@@ -1429,7 +1430,67 @@
                 $this->view('patients/v_registered_sessions', $data);
             }
             else {
-                $this->view('patients/v_registered_sessions');
+                if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    // Form is submitting
+                    $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    
+                    // Inserted form
+                    $data = [
+                        'cnumber' => trim($_POST['cnumber']),
+    
+                        'cnumber_err' => '',
+                    ];
+
+                    // Validate contact number
+                    if(empty($data['cnumber'])) {
+                        $data['cnumber_err'] = 'Contact number for given session required';
+                    }
+                    else {
+                        //check for existing emails
+                        if(!($this->sessionModel->findByNumber($data['cnumber']))) {
+                            $data['cnumber_err'] = 'No such contact number given for a session';
+                        }
+                    }
+
+                    // Get sessions after validation
+                    if(empty($data['cnumber_err'])) {
+                        $registered_sessions = $this->sessionModel->getRegisteredSessionsByNumber($data['cnumber']);
+
+                        // Get current date and time
+                        date_default_timezone_set("Asia/Kolkata");
+                        $currentDate = date("Y-m-d");
+                        $currentTime = date("H:i:s");
+                        $data = [
+                            'registered_sessions' => $registered_sessions,
+                            'currentDate' => $currentDate,
+                            'currentTime' => $currentTime
+                        ];
+    
+                        // Load view
+                        $this->view('patients/v_registered_sessions', $data);
+                    }
+                    else {
+                        // Load view
+                        $this->view('patients/v_registered_sessions_visitor', $data);
+                    }
+
+                    // Get current date and time
+                    date_default_timezone_set("Asia/Kolkata");
+                    $currentDate = date("Y-m-d");
+                    $currentTime = date("H:i:s");
+
+                    
+                }
+                else {
+                    $data = [
+                        'cnumber' => '',
+    
+                        'cnumber_err' => '',
+                    ];
+
+                    // Load view
+                    $this->view('patients/v_registered_sessions_visitor', $data);
+                }
             }
         }
 

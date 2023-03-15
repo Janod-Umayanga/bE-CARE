@@ -72,7 +72,7 @@
                         <td><button class="delete"><i class="fa-solid fa-download"></i><a download="<?php echo $accepted_order->prescription ?>"  href="<?php echo URLROOT?>/img/prescriptions/<?php echo $accepted_order->prescription ?>">Download</a></button></td>
                         <td><?php echo $accepted_order->ordered_date_and_time ?></td>
                         <td>
-                            <form action="<?php echo URLROOT ?>/Patient/payForOrder/<?php echo $accepted_order->order_id ?>/<?php echo $accepted_order->charge ?>">
+                            <form action="<?php echo URLROOT ?>/Patient/payForOrder/<?php echo $accepted_order->order_id ?>/<?php echo $accepted_order->charge ?>/<?php echo $accepted_order->email ?>">
                                 <button class="delete"><i class="fa-solid fa-credit-card"></i>Pay!</button>
                             </form>
                         </td>

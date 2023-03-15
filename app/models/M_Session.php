@@ -40,6 +40,28 @@
             $this->db->bind(':session_id', $session_id);
             return $this->db->single();
         }
+
+        // find session by contact number (for guest users)
+        public function findByNumber($cnumber) {
+            $this->db->query('SELECT * FROM session_register WHERE contact_number = :cnumber');
+            $this->db->bind(':cnumber', $cnumber);
+
+            $row = $this->db->single();
+
+            if($this->db->rowCount() > 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        // get registered sessions by guest user
+        public function getRegisteredSessionsByNumber($cnumber) {
+            $this->db->query('SELECT session_register.*, session.* FROM session_register INNER JOIN session ON session_register.session_id = session.sesion_id WHERE session_register.contact_number = :cnumber');
+            $this->db->bind(':cnumber', $cnumber);
+            return $this->db->resultSet();
+        }
     }
 
 ?>

@@ -46,6 +46,7 @@
             <form action="<?php echo URLROOT ?>/Payment/payForOrder" method="POST">
                 <input type="hidden" name="fee" value="<?php echo $data['fee'] ?>">
                 <input type="hidden" name="order_id" value="<?php echo $data['order_id'] ?>">
+                <input type="hidden" name="email" value="<?php echo $data['email'] ?>">
                 <button>Pay here</button>
             </form>
         </div>

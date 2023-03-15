@@ -217,11 +217,20 @@
                     $data = [
                         'order_id' => trim($_POST['order_id']),
                         'fee' => trim($_POST['fee']),
+                        'email' => trim($_POST['email'])
                     ];
     
                     // Create apppointment
                     if($this->paymentModel->payForOrder($data)) {
                         $_SESSION['paid_for_order'] = true;
+
+                        // Send email notification to the pharmacy
+                        $to = $data['email'];
+                        $subject = "Order Payment";
+                        $message = "Customer paid for the medicine order. You can now deliver the medicine.";
+                        $headers = "From: " . SITENAME . " <" . EMAIL . ">" . "\r\n" .'Reply-To: ' . EMAIL . "\r\n" .'X-Mailer: PHP/' . phpversion();
+                        mail($to, $subject, $message, $headers);
+
                         redirect('Pages/index');
                     }
                     else {

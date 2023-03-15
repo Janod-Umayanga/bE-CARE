@@ -24,6 +24,7 @@
             <div class="table">
                 <table cellspacing="0" cellpadding="0">
                     <tr>
+                        <th>Given name</th>
                         <th>Date</th>
                         <th>Time</th>
                         <th>Paid Amount</th>
@@ -33,6 +34,7 @@
                     <?php foreach($data['registered_sessions'] as $registered_session): ?>
                     <?php if($registered_session->date > $data['currentDate'] || ($registered_session->date == $data['currentDate'] && $registered_session->starting_time >= $data['currentTime'])): ?>
                     <tr>
+                        <td><?php echo $registered_session->name ?></td>
                         <td><?php echo $registered_session->date ?></td>
                         <td><?php echo $registered_session->starting_time ?></td>
                         <td>Rs. <?php echo $registered_session->paid_amount ?></td>

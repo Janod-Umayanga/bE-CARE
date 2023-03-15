@@ -19,4 +19,7 @@
     // PUBLIC ROOT
     define('PUBROOT', dirname(dirname(dirname(__FILE__))).'/public');
 
+    // WEBSITE EMAIL
+    define('EMAIL', '2020cs189@stu.ucsc.cmb.ac.lk');
+
 ?>
