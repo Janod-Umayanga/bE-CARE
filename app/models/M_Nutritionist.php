@@ -47,37 +47,41 @@
         }
 
         // Get all requested diet plans of logged nutritionist
-        public function getAllRequestedDietPlanDetails($nutritionist_id){
-        $this->db->query('SELECT * FROM request_diet_plan inner join nutritionist on 
-        nutritionist.nutritionist_id =request_diet_plan.nutritionist_id
-        WHERE nutritionist.nutritionist_id = :nutritionist_id');
-        $this->db->bind(':nutritionist_id',$nutritionist_id);  
-
-        return $this->db->resultSet();
+        public function getAllRequests($nutritionist_id){
+            $this->db->query('SELECT * FROM request_diet_plan 
+            WHERE nutritionist_id = :nutritionist_id ORDER BY requested_date_and_time ASC');
+            $this->db->bind(':nutritionist_id',$nutritionist_id);  
+     
+            return $this->db->resultSet();
         }
+       
 
          // Get all requested diet plans of logged nutritionist(more details)
-         public function getAllRequestedDietPlanMoreDetails($nutritionist_id){
-            $this->db->query('SELECT * FROM request_diet_plan inner join nutritionist on 
-            nutritionist.nutritionist_id =request_diet_plan.nutritionist_id
-            WHERE nutritionist.nutritionist_id = :nutritionist_id');
-            $this->db->bind(':nutritionist_id',$nutritionist_id);  
-    
-            return $this->db->resultSet();
-            }
-
+         public function getAllRequestsMore($dietID) {
+            $this->db->query('SELECT * FROM request_diet_plan 
+            WHERE request_diet_plan_id = :request_diet_plan_id');
+            $this->db->bind(':request_diet_plan_id', $dietID);
+            return $this->db->single();
+        }
+       
         // get all issued diet plans history of nutritionist
         public function viewHistoryPage($nutritionist_id){
-            $this->db->query('SELECT * FROM diet_plan INNER JOIN nutritionist ON
-            nutritionist.nutritionist_id = diet_plan.nutritionist_id
-            WHERE nutritionist.nutritionist_id = :nutritionist_id');
+            $this->db->query('SELECT * FROM diet_plan 
+            WHERE nutritionist_id = :nutritionist_id ORDER BY issued_date_and_time ASC ');
             $this->db->bind(':nutritionist_id',$nutritionist_id);  
-    
+     
             return $this->db->resultSet();
          }
 
+         public function viewHistoryPageMore($diet_plan_id) {
+            $this->db->query('SELECT * FROM diet_plan WHERE diet_plan_id = :diet_plan_id');
+            $this->db->bind(':diet_plan_id', $diet_plan_id);
+            return $this->db->single();
+        }
+        
+
         // insert data to diet_plan table(issue a diet plan)
-        public function issueDietPlans($nutritionist_id,$data){
+        public function insertDietPlanDetails($nutritionist_id,$data){
         $this->db->query('INSERT INTO diet_plan (diet_plan_id,description,diet_plan_file,issued_date_and_time,
         nutritionist_id,request_diet_plan_id) 
         VALUES( :diet_plan_id, :description,:diet_plan_file,:issued_date_and_time,
@@ -88,13 +92,9 @@
         $this->db->bind(':diet_plan_file',$data['diet_plan_file']);      
         $this->db->bind(':issued_date_and_time',$data['issued_date_and_time']);
         $this->db->bind(':nutritionist_id',$data['nutritionist_id']);
-        $this->db->bind(':request_diet_plan_id',$data['request_diet_plan_id']);
-
-        
-
-    
+        $this->db->bind(':request_diet_plan_id',$data['request_diet_plan_id']); 
     }
-             
+
         // Login nutritionist
         public function login($email, $password) {
             $this->db->query('SELECT * FROM nutritionist WHERE email = :email');
@@ -112,6 +112,14 @@
             }
         }
 
+        public function getRequestedDietPlanDetailsById($request_diet_plan_id){
+            $this->db->query('SELECT * FROM request_diet_plan
+            WHERE request_diet_plan_id = :request_diet_plan_id');
+            $this->db->bind(':request_diet_plan_id', $request_diet_plan_id);
+    
+            return $this->db->resultSet();
+        }
+
         public function isDeactivateAccount($email){
             $this->db->query('SELECT delete_flag FROM nutritionist WHERE email=:email');
             $this->db->bind(':email',$email);
@@ -125,14 +133,82 @@
             }  
         }    
 
-        public function update($data, $nutritionist_id) {
-            $this->db->query('UPDATE nutritionist SET first_name = :first_name, last_name = :last_name, nic = :nic, contact_number = :contact_number, gender = :gender WHERE patient_id = :patient_id');
-            $this->db->bind(':first_name', $data['fname']);
-            $this->db->bind(':last_name', $data['lname']);
+        public function issueDietPlansDetails($dietPlanID){
+            $this->db->query('SELECT * FROM request_diet_plan 
+            WHERE request_diet_plan_id = :request_diet_plan_id');
+            $this->db->bind(':request_diet_plan_id', $dietPlanID);
+
+        return $this->db->resultSet();
+        }
+
+        public function editUser($data) {
+            $this->db->query('UPDATE nutritionist SET first_name = :first_name, last_name = :last_name,
+            nic = :nic, contact_number = :contact_number, gender = :gender,
+            bank_name=:bank_name,account_holder_name=:account_holder_name,branch=:branch,
+            account_number=:account_number, fee=:fee WHERE nutritionist_id = :nutritionist_id');
+            $this->db->bind(':first_name', $data['first_name']);
+            $this->db->bind(':last_name', $data['last_name']);
+        //   $this->db->bind(':slmc_reg_number', $data['slmc_reg_number']);           
             $this->db->bind(':nic', $data['nic']);
-            $this->db->bind(':contact_number', $data['cnumber']);
+            $this->db->bind(':contact_number', $data['contact_number']);
             $this->db->bind(':gender', $data['gender']);
-            $this->db->bind(':patient_id', $nutritionist_id);
+            $this->db->bind(':bank_name', $data['bank_name']);
+            $this->db->bind(':account_holder_name', $data['account_holder_name']);
+            $this->db->bind(':branch', $data['branch']);
+            $this->db->bind(':account_number', $data['account_number']);
+            $this->db->bind(':fee', $data['fee']);
+            $this->db->bind(':nutritionist_id',$data['nutritionist_id']);
+
+            if($this->db->execute()) {
+                $_SESSION['nutritionist_name'] = $data['first_name'];
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        public function sendDietPlanDetails($nutritionist_id,$data)
+        {
+            $this->db->query('INSERT INTO diet_plan (description,diet_plan_file
+            ,nutritionist_id,request_diet_plan_id) 
+            VALUES (:description,:diet_plan_file,:nutritionist_id,:request_diet_plan_id)');
+
+            $this->db->bind(':description',$data['description']);
+            $this->db->bind(':diet_plan_file',$data['diet_plan_file']); 
+            $this->db->bind(':nutritionist_id',$nutritionist_id);
+            $this->db->bind(':request_diet_plan_id',$data['more']->request_diet_plan_id);
+          //  $this->db->bind(':diet_plan_id',$data['more']->diet_plan_id); 
+         //   $this->db->bind(':issued_date_and_time',GETDATE());
+
+            if($this->db->execute()){
+                return true;
+             }else{
+                 return false;
+             } 
+
+        
+        }
+        // After sent a diet plan Then delete requests from diet_plan_requets table
+        public function removeRequest($dietPlanID)
+        {
+            $this->db->query('DELETE  FROM request_diet_plan WHERE request_diet_plan_id=:request_diet_plan_id');
+            $this->db->bind(':request_diet_plan_id', $dietPlanID);
+
+            if($this->db->execute())
+            {
+               return true;
+            }
+            else
+            {
+               return false;
+            } 
+         }
+
+         public function updatePW($data, $nutritionist_id) {
+            $this->db->query('UPDATE nutritionist SET password = :password WHERE nutritionist_id = :nutritionist_id');
+            $this->db->bind(':password', $data['newpw']);
+            $this->db->bind(':nutritionist', $nutritionist_id);
 
             if($this->db->execute()) {
                 return true;
@@ -141,6 +217,36 @@
                 return false;
             }
         }
+
+        public function changePW($data){
+
+       
+            $this->db->query('UPDATE nutritionist set password = :password WHERE nutritionist_id = :id');
+            $this->db->bind(':password', $data['password']);
+            $this->db->bind(':id', $data['nutritionist_id']);
+                
+    
+            if($this->db->execute()){
+               return true;
+            }else{
+                return false;
+            } 
+          }
+
+        public function findUserPWMatch($id,$password){
+            $this->db->query('SELECT password FROM nutritionist WHERE nutritionist_id=:id');
+            $this->db->bind(':id',$id);
+            
+            $row= $this->db->single();
+            $hashed_password =$row->password;
+            if(password_verify($password,$hashed_password)){
+               return true;
+            }else{
+              return false;
+            }  
+    
+          }
+
 
     }
 

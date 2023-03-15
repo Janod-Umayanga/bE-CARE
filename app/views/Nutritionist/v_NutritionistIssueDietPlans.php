@@ -16,7 +16,7 @@
     <section class="diet-plan-section">
         <div class="diet-plan-leftside">
             <div class="diet-left-side-container">
-                <a href="<?php echo URLROOT ?>/NutritionistChangeSessionDetails/nutritionistChangeSessionDetails" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Change Session Details</a>
+                <a href="<?php echo URLROOT ?>/Nutritionist/getAllRequests/" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Diet Plans requests Page</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
                     <h2>Fill these details to add new session</h2>
@@ -25,47 +25,29 @@
             </div>
         </div>
         <div class="diet-plan-rightside">
-            <form action="<?php echo URLROOT ?>#" method="POST">
+            <form action="<?php echo URLROOT ?>/Nutritionist/sendDietPlan/" method="POST">
+            <input type="hidden" name="request_diet_plan_id" value=" <?php echo $data['more']->request_diet_plan_id; ?>"> 
+
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left">
 
-                        
-                        <label for="title">Title</label>
-                        <input type="text" id="title" name="title" value="<?php echo $data['title'] ?>">
-                        <span class="form-invalid"><?php echo $data['title_err'] ?></span>
+                  
+                   <!--     <lable for="" >Request Diet Plan ID</lable>
+                        <input type="text" id="request_diet_plan_id" name="request_diet_plan_id" value="<?php #echo $details->request_diet_plan_id?>" disabled>
+                   
+                    <input type="hidden" name="request_diet_plan_id" value="<?php #echo $more->request_diet_plan_id; ?>"> -->
+                        <label for="diet_plan_file">Diet Plan File</label>
+                        <input type="file" name="diet_plan_file" id="diet_plan_file" value="<?php echo $data['diet_plan_file'] ?>">
+                        <span class="form-invalid"><?php echo $data['diet_plan_file_err'] ?></span>
 
                         <label for="description">Description</label>
-                        <textarea name="description" id="description"  rows="6" cols="80"></textarea>
+                        <textarea name="description" id="description"  rows="6" cols="80" required value="<?php echo $data['description'] ?>" placeholder="Any Description"></textarea>
                         <span class="form-invalid"><?php echo $data['description_err'] ?></span>
-
-                        <label for="date">Date</label>
-                        <input type="date" id="date" name="date" value="<?php echo $data['date'] ?>">
-                        <span class="form-invalid"><?php echo $data['date_err'] ?></span>
-
-                        <label for="starting Time">Starting Time</label>
-                        <input type="time" id="starting_time" name="starting_time" value="<?php echo $data['starting_time'] ?>">
-                        <span class="form-invalid"><?php echo $data['starting_time_err'] ?></span>
-
-                        <label for="Ending Time">Ending Time</label>
-                        <input type="time" id="ending_time" name="ending_time" value="<?php echo $data['ending_time'] ?>">
-                        <span class="form-invalid"><?php echo $data['ending_time_err'] ?></span>
-
-                        <label for="address">Address</label>
-                        <input type="text" id="address" name="address" value="<?php echo $data['address'] ?>">
-                        <span class="form-invalid"><?php echo $data['address_err'] ?></span>
-   
-                        <button>Submit</button>
-                    </div>
-                    <div class="right">
-                        
-                        <label for="fee">Session Fee (Rs.)</label>
-                        <input type="number" id="fee" name="fee" value="<?php echo $data['fee'] ?>">
-                        <span class="form-invalid"><?php echo $data['fee_err'] ?></span>
-
-                       
-   
-                    </div>
-                </div>
+                  
+                        <button type="submit" >Send</button>
+                  
+                    
+               </div>
             </form>
         </div>
     </section>  

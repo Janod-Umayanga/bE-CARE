@@ -35,7 +35,7 @@
             <h2>Dashboard</h2>
         </dev>
         <div class="card-container-forservices" id="to-be-show-more">
-            <a href="<?php echo URLROOT ?>/Nutritionist/nutritionistViewRequests" class="card">
+            <a href="<?php echo URLROOT ?>/Nutritionist/getAllRequests" class="card">
                 <img src="<?php echo URLROOT; ?>/img/nutritionist-page-pictures/n-issue.jpg" alt="">
                 <p>******<br>Diet Plan Requests</p>
             </a>
