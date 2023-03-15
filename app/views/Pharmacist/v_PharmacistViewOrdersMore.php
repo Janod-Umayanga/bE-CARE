@@ -23,18 +23,11 @@
             </div>
             <div class="bottom">
                 <ul>
-                    <li>Order ID - <?php echo #$data['plans']->request_diet_plan_id 
-                    '01'?></li>
-                    <li>Name - <?php echo #$data['plans']->name 
-                    'Kushani Sandareka'?></li>
-                     <li>Contact Number - <?php echo #$data['plans']->contact_number 
-                    '0787823456'?></li>
-                    <li>Delivery Address - <?php echo #$data['plans']->age
-                    'NO.191/2,Nawala.'?></li>
-                   
-                   
-                    <li>Ordered Date and Time - <?php echo #$data['plans']->weight 
-                    '2023-01-01 08:45:18'?></li>
+                    <li>Ordered Date and Time - <?php echo $data['more']->ordered_date_and_time ?></li>
+                    <li>Name - <?php echo $data['more']->name ?></li>
+                    <li>Contact Number - <?php echo $data['more']->contact_number ?></li>
+                    <li>Delivery Address - <?php echo $data['more']->delivery_address?></li>
+                    <li>Prescription - <a href="prescription.pdf" download="">Click Here</a> <?php ?></li>
                 </ul>
                 <div class="bottom-line"></div>
             </div>

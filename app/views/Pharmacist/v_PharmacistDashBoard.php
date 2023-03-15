@@ -39,7 +39,7 @@
                 <img src="<?php echo URLROOT; ?>/img/pharmacist-page-pictures/p-orders.jpg" alt="">
                 <p>******<br>Orders</p>
             </a>
-            <a href="<?php echo URLROOT ?>/v_PharmacistViewHistory.php/" class="card">
+            <a href="<?php echo URLROOT ?>/Pharmacist/pharmacistSellingHistory/" class="card">
                 <img src="<?php echo URLROOT; ?>/img/pharmacist-page-pictures/p-history.jpg" alt="">
                 <p>******<br>Selling History</p>
             </a>
