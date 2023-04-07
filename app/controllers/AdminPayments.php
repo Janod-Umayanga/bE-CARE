@@ -24,6 +24,11 @@ class AdminPayments extends Controller{
       'profit'=>$profit
       
     ];
+
+      $_SESSION['payment_service'] ='doctorChannel' ;
+    
+      $_SESSION['payment_period'] ='transactionPeriod';
+    
     
 
     $this->view('Admin/AdminPayments/v_adminPayments',$data);
@@ -47,7 +52,13 @@ public function  doctorChannelPaymentsSearch()
         $service=trim($_GET['service']);
         $period= trim($_GET['period']);
 
-       
+        if(isset($_GET['service'])){
+          $_SESSION['payment_service'] = $_GET['service'];
+         }
+    
+        if(isset($_GET['period'])){
+          $_SESSION['payment_period'] = $_GET['period'];
+        }
         
         
      
@@ -69,7 +80,8 @@ public function  doctorChannelPaymentsSearch()
                $docChannel=$this->adminPaymentsModel->doctorChannelAll();
                $profit= $this->adminPaymentsModel->doctorChannelAllProfit();
    
-            }   
+            }
+               
           }  
           else if($period=='today'){
             if(!empty($search)){
@@ -885,6 +897,381 @@ public function medInstructorRegistrationViewMore($id)
     redirect('Login/login');  
   }
 }
+
+
+
+
+
+
+  public function generateReport(){
+
+    
+    if(isset($_SESSION['admin_id'])) {  
+      if($_SERVER['REQUEST_METHOD']=='POST'){
+        $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        $today = date('Y-m-d'); 
+        $yesterday = date('Y-m-d', strtotime('-1 day'));
+        $month = date("m"); 
+        $year = date("Y"); 
+      
+       
+        if($_SESSION['payment_service']=='doctorChannel'){ 
+            $service='Doctor Channel';
+                                            
+          if($_SESSION['payment_period']=='transactionPeriod'){ 
+             $payment_service= $this->adminPaymentsModel->doctorChannelAll();
+             $payment_profit= $this->adminPaymentsModel->doctorChannelAllProfit();
+             $period='Total';
+          }
+
+
+          if($_SESSION['payment_period']=='today'){ 
+            $payment_service= $this->adminPaymentsModel->doctorChannelToday($today);
+            $payment_profit=  $this->adminPaymentsModel->doctorChannelTodayProfit($today);
+            $period=$today;
+          }
+
+          if($_SESSION['payment_period']=='yesterday'){ 
+            $payment_service= $this->adminPaymentsModel->doctorChannelYesterday($yesterday);
+            $payment_profit= $this->adminPaymentsModel->doctorChannelYesterdayProfit($yesterday);
+            $period=$yesterday;
+          }
+
+          if($_SESSION['payment_period']=='thisMonth'){ 
+            $payment_service= $this->adminPaymentsModel->doctorChannelThisMonth($month,$year);
+            $payment_profit= $this->adminPaymentsModel->doctorChannelThisMonthProfit($month,$year);
+            $period= date("Y").' '. date("M");
+          }
+
+          if($_SESSION['payment_period']=='thisYear'){ 
+            $payment_service= $this->adminPaymentsModel->doctorChannelThisYear($year);
+            $payment_profit= $this->adminPaymentsModel->doctorChannelThisYearProfit($year);
+            $period='Year'.' '.date("Y");
+          }
+ 
+
+         } 
+
+      else if($_SESSION['payment_service']=='counsellorChannel'){ 
+          $service='Counsellor Channel';
+                                          
+        if($_SESSION['payment_period']=='transactionPeriod'){ 
+           $payment_service= $this->adminPaymentsModel->counsellorChannelAll();
+           $payment_profit= $this->adminPaymentsModel->counsellorChannelAllProfit();
+           $period='Total';
+        }
+
+
+        if($_SESSION['payment_period']=='today'){ 
+          $payment_service= $this->adminPaymentsModel->counsellorChannelToday($today);
+          $payment_profit=  $this->adminPaymentsModel->counsellorChannelTodayProfit($today);
+          $period=$today;
+        }
+
+        if($_SESSION['payment_period']=='yesterday'){ 
+          $payment_service= $this->adminPaymentsModel->counsellorChannelYesterday($yesterday);
+          $payment_profit= $this->adminPaymentsModel->counsellorChannelYesterdayProfit($yesterday);
+          $period=$yesterday;
+        }
+
+        if($_SESSION['payment_period']=='thisMonth'){ 
+          $payment_service= $this->adminPaymentsModel->counsellorChannelThisMonth($month,$year);
+          $payment_profit= $this->adminPaymentsModel->counsellorChannelThisMonthProfit($month,$year);
+          $period= date("Y").' '. date("M");
+        }
+
+        if($_SESSION['payment_period']=='thisYear'){ 
+          $payment_service= $this->adminPaymentsModel->counsellorChannelThisYear($year);
+          $payment_profit= $this->adminPaymentsModel->counsellorChannelThisYearProfit($year);
+          $period='Year'.' '.date("Y");
+        }
+
+
+       } 
+
+     else if($_SESSION['payment_service']=='nutritionistDietPlan'){ 
+        $service='Nutritionist Diet Plan';
+                                        
+      if($_SESSION['payment_period']=='transactionPeriod'){ 
+         $payment_service= $this->adminPaymentsModel->nutritionistDietPlanAll();
+         $payment_profit= $this->adminPaymentsModel->nutritionistDietPlanAllProfit();
+         $period='Total';
+      }
+
+
+      if($_SESSION['payment_period']=='today'){ 
+        $payment_service= $this->adminPaymentsModel->nutritionistDietPlanToday($today);
+        $payment_profit=  $this->adminPaymentsModel->nutritionistDietPlanTodayProfit($today);
+        $period=$today;
+      }
+
+      if($_SESSION['payment_period']=='yesterday'){ 
+        $payment_service= $this->adminPaymentsModel->nutritionistDietPlanYesterday($yesterday);
+        $payment_profit= $this->adminPaymentsModel->nutritionistDietPlanYesterdayProfit($yesterday);
+        $period=$yesterday;
+      }
+
+      if($_SESSION['payment_period']=='thisMonth'){ 
+        $payment_service= $this->adminPaymentsModel->nutritionistDietPlanThisMonth($month,$year);
+        $payment_profit= $this->adminPaymentsModel->nutritionistDietPlanThisMonthProfit($month,$year);
+        $period= date("Y").' '. date("M");
+      }
+
+      if($_SESSION['payment_period']=='thisYear'){ 
+        $payment_service= $this->adminPaymentsModel->nutritionistDietPlanThisYear($year);
+        $payment_profit= $this->adminPaymentsModel->nutritionistDietPlanThisYearProfit($year);
+        $period='Year'.' '.date("Y");
+      }
+
+
+      }
+      else if($_SESSION['payment_service']=='medInstructorRegistration'){ 
+        $service='Med Instruction Registration';
+                                        
+      if($_SESSION['payment_period']=='transactionPeriod'){ 
+         $payment_service= $this->adminPaymentsModel->medInstructorRegistrationAll();
+         $payment_profit= $this->adminPaymentsModel->medInstructorRegistrationAllProfit();
+         $period='Total';
+      }
+
+
+      if($_SESSION['payment_period']=='today'){ 
+        $payment_service= $this->adminPaymentsModel->medInstructorRegistrationToday($today);
+        $payment_profit=  $this->adminPaymentsModel->medInstructorRegistrationTodayProfit($today);
+        $period=$today;
+      }
+
+      if($_SESSION['payment_period']=='yesterday'){ 
+        $payment_service= $this->adminPaymentsModel->medInstructorRegistrationYesterday($yesterday);
+        $payment_profit= $this->adminPaymentsModel->medInstructorRegistrationYesterdayProfit($yesterday);
+        $period=$yesterday;
+      }
+
+      if($_SESSION['payment_period']=='thisMonth'){ 
+        $payment_service= $this->adminPaymentsModel->medInstructorRegistrationThisMonth($month,$year);
+        $payment_profit= $this->adminPaymentsModel->medInstructorRegistrationThisMonthProfit($month,$year);
+        $period= date("Y").' '. date("M");
+      }
+
+      if($_SESSION['payment_period']=='thisYear'){ 
+        $payment_service= $this->adminPaymentsModel->medInstructorRegistrationThisYear($year);
+        $payment_profit= $this->adminPaymentsModel->medInstructorRegistrationThisYearProfit($year);
+        $period='Year'.' '.date("Y");
+      }
+
+
+     } 
+
+    
+    else if($_SESSION['payment_service']=='pharmacistOrder'){ 
+      $service='Pharmacist Order';
+                                      
+    if($_SESSION['payment_period']=='transactionPeriod'){ 
+       $payment_service= $this->adminPaymentsModel->pharmacistOrderAll();
+       $payment_profit= $this->adminPaymentsModel->pharmacistOrderAllProfit();
+       $period='Total';
+    }
+
+
+    if($_SESSION['payment_period']=='today'){ 
+      $payment_service= $this->adminPaymentsModel->pharmacistOrderToday($today);
+      $payment_profit=  $this->adminPaymentsModel->pharmacistOrderTodayProfit($today);
+      $period=$today;
+    }
+
+    if($_SESSION['payment_period']=='yesterday'){ 
+      $payment_service= $this->adminPaymentsModel->pharmacistOrderYesterday($yesterday);
+      $payment_profit= $this->adminPaymentsModel->pharmacistOrderYesterdayProfit($yesterday);
+      $period=$yesterday;
+    }
+
+    if($_SESSION['payment_period']=='thisMonth'){ 
+      $payment_service= $this->adminPaymentsModel->pharmacistOrderThisMonth($month,$year);
+      $payment_profit= $this->adminPaymentsModel->pharmacistOrderThisMonthProfit($month,$year);
+      $period= date("Y").' '. date("M");
+    }
+
+    if($_SESSION['payment_period']=='thisYear'){ 
+      $payment_service= $this->adminPaymentsModel->pharmacistOrderThisYear($year);
+      $payment_profit= $this->adminPaymentsModel->pharmacistOrderThisYearProfit($year);
+      $period='Year'.' '.date("Y");
+    }
+
+
+   } 
+ else if($_SESSION['payment_service']=='sessionRegistration'){ 
+      $service='Session Registration';
+                                      
+    if($_SESSION['payment_period']=='transactionPeriod'){ 
+       $payment_service= $this->adminPaymentsModel->sessionRegistrationAll();
+       $payment_profit= $this->adminPaymentsModel->sessionRegistrationAllProfit();
+       $period='Total';
+    }
+
+
+    if($_SESSION['payment_period']=='today'){ 
+      $payment_service= $this->adminPaymentsModel->sessionRegistrationToday($today);
+      $payment_profit=  $this->adminPaymentsModel->sessionRegistrationTodayProfit($today);
+      $period=$today;
+    }
+
+    if($_SESSION['payment_period']=='yesterday'){ 
+      $payment_service= $this->adminPaymentsModel->sessionRegistrationYesterday($yesterday);
+      $payment_profit= $this->adminPaymentsModel->sessionRegistrationYesterdayProfit($yesterday);
+      $period=$yesterday;
+    }
+
+    if($_SESSION['payment_period']=='thisMonth'){ 
+      $payment_service= $this->adminPaymentsModel->sessionRegistrationThisMonth($month,$year);
+      $payment_profit= $this->adminPaymentsModel->sessionRegistrationThisMonthProfit($month,$year);
+      $period= date("Y").' '. date("M");
+    }
+
+    if($_SESSION['payment_period']=='thisYear'){ 
+      $payment_service= $this->adminPaymentsModel->sessionRegistrationThisYear($year);
+      $payment_profit= $this->adminPaymentsModel->sessionRegistrationThisYearProfit($year);
+      $period='Year'.' '.date("Y");
+    }
+
+
+   } 
+
+
+      
+
+         
+        // Generate the PDF report using the FPDF library
+        $pdf = new FPDF();
+        $pdf->AddPage('L','A4');
+        
+        $pdf->SetFont('Arial', 'B', 20);
+        $pdf->Cell(0, 10, 'Becare '. $service.' '.$period. ' Payment Details', 0, 1, 'C');
+        $pdf->Cell(0, 10, $period.' profit : Rs. '.Round($payment_profit->profit,2 ), 0, 1, 'C');
+       
+       
+        $pdfWidth = $pdf->GetPageWidth();
+        $pdfHeight = $pdf->GetPageHeight();
+
+        $pdf->Rect(5, 5, $pdfWidth-8, $pdfHeight-10, 'D');    
+
+        $pdf->SetFont('Arial', 'B', 14);
+        $pdf->SetTitle('Becare Payment Details Report');
+        $pdf->SetTextColor(255, 255, 255);
+       
+
+
+        $pdf->Cell(70, 10, 'Service Provider Name', 1 , 0, 'C',1);
+        $pdf->Cell(30, 10, 'Total Fee', 1 , 0, 'C',1);
+        $pdf->Cell(60, 10, 'Service Provider Fee', 1 , 0, 'C',1);
+        $pdf->Cell(30, 10, 'Profit', 1 , 0, 'C',1);
+        $pdf->Cell(50, 10, 'Date & Time', 1 , 0, 'C',1);
+         $pdf->Ln();
+        
+        $pdf->SetTextColor(0, 0, 0);
+        
+        $pdf->SetFont('Arial', '', 12);
+        foreach ($payment_service as $row) {
+        
+          if($_SESSION['payment_service']=='medInstructorRegistration'||$_SESSION['payment_service']=='pharmacistOrder'){
+                if($row->gender=='Male'){$gend='Mr.';}
+                elseif($row->gender=='Female'){$gend='Mrs.';}
+
+            $pdf->Cell(70,10, $gend. $row->first_name.' '. $row->last_name, 1 , 0, 'C');
+           
+          }
+          
+          elseif($_SESSION['payment_service']=='sessionRegistration'){
+            
+            if(!empty($row->meditation_instructor_id)){
+              if($row->gender=='Male'){$gend='Mr.';}
+              elseif($row->gender=='Female'){$gend='Mrs.';}
+
+               $pdf->Cell(70,10, $gend. $row->first_name.' '. $row->last_name, 1 , 0, 'C');
+       
+            }
+       
+            if(!empty($row->nutritionist_id)){
+                $pdf->Cell(70,10, 'Dr. '. $row->nutritionist_first_name.' '. $row->nutritionist_last_name, 1 , 0, 'C');
+       
+            }
+       
+            if(!empty($row->counsellor_id)){
+                $pdf->Cell(70,10, 'Dr. '. $row->counsellor_first_name.' '. $row->counsellor_last_name, 1 , 0, 'C');
+       
+            }
+       
+       
+         }
+              
+            
+          
+          else{
+            $pdf->Cell(70,10,'Dr '. $row->first_name.' '. $row->last_name, 1 , 0, 'C');
+           
+          }
+ 
+            
+        if($_SESSION['payment_service']=='pharmacistOrder'){
+          $pdf->Cell(30,10,Round($row->charge,2), 1 , 0, 'C');
+          $pdf->Cell(60,10,Round(($row->charge/110)*100,2), 1 , 0, 'C');
+          $pdf->Cell(30,10,Round(($row->charge/110)*10,2), 1 , 0, 'C');
+       
+        }else{
+          $pdf->Cell(30,10,Round($row->paid_amount,2), 1 , 0, 'C');
+          $pdf->Cell(60,10,Round(($row->paid_amount/110)*100,2), 1 , 0, 'C');
+          $pdf->Cell(30,10,Round(($row->paid_amount/110)*10,2), 1 , 0, 'C');
+       
+        }
+          
+
+            
+       if(!empty($row->paid_time)){
+           $pdf->Cell(50,10,$row->paid_time, 1 , 0, 'C');
+
+      }else if(!empty($row->requested_date_and_time)){
+           $pdf->Cell(50,10,$row->requested_date_and_time, 1 , 0, 'C');
+
+      }else if(!empty($row->registered_date_and_time)){
+           $pdf->Cell(50,10,$row->registered_date_and_time, 1 , 0, 'C');
+
+      }
+           
+
+       $pdf->Ln();
+   
+
+        }
+
+       
+        
+        $pdf->AliasNbPages();
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(0, 10, 'Page ' . $pdf->PageNo() . ' of {nb}', 0, 0, 'C');
+        
+  
+        // $pdf->Output();
+         $pdf->Output('BeCarePayments.pdf', 'D');
+       
+         
+               
+      }
+    }else{
+      redirect('Login/login');  
+    }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

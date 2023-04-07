@@ -38,8 +38,8 @@
                            $check=1;
                        ?>
                              
-                    <h1>  <?php if(!empty($data['search'])){ echo $gend.' '.$data['profit']->name; }?>  <?php echo $data['period'] ?>  <?php echo $data['profit']->no ?> <?php echo $data['service'] ?> , Rs. <?php echo Round($data['profit']->profit,2) ?> Profit</h1>
-                    
+                    <h1>  <?php if(empty($data['search'])){?>  <?php echo $data['period'] ?>  <?php echo $data['profit']->no ?> <?php echo $data['service'] ?> , Rs. <?php echo Round($data['profit']->profit,2) ?> Profit</h1>
+                          <?php  }?>
                      
 
                     <?php }
@@ -66,8 +66,9 @@
                             $gendr='Dr.';
                         }                         
                     ?>    
-                    <h1>  <?php if(!empty($data['search'])){ echo $gendr.' '.$name; }?>  <?php echo $data['period'] ?>  <?php echo $data['profit']->no ?> <?php echo $data['service'] ?> , Rs. <?php echo Round($data['profit']->profit,2) ?> Profit</h1>
-                      
+                    <h1>  <?php if(empty($data['search'])){ ?>  <?php echo $data['period'] ?>  <?php echo $data['profit']->no ?> <?php echo $data['service'] ?> , Rs. <?php echo Round($data['profit']->profit,2) ?> Profit</h1>
+                          <?php  }?>
+                     
                     <?php
                      }
                 
@@ -76,8 +77,8 @@
               
                     <?php if(($data['profit']->profit!=0) && $check!=1 ){ ?>
                        
-                       <h1>  <?php if(!empty($data['search'])){ echo "Dr.".' '.$data['profit']->name; }?>  <?php echo $data['period'] ?>  <?php echo $data['profit']->no ?> <?php echo $data['service'] ?> , Rs. <?php echo Round($data['profit']->profit,2) ?> Profit</h1>
-                             
+                       <h1>  <?php if(empty($data['search'])){ ?>  <?php echo $data['period'] ?>  <?php echo $data['profit']->no ?> <?php echo $data['service'] ?> , Rs. <?php echo Round($data['profit']->profit,2) ?> Profit</h1>
+                       <?php  }?>
                    
                     <?php $check=0;  } ?>   
             
@@ -91,7 +92,7 @@
                     <option value="doctorChannel">Doctor Channel</option>
                     <option value="counsellorChannel">Counsellor Channel</option>
                     <option value="nutritionistDietPlan">Nutritionist DietPlan</option>
-                    <option value="medInstructorRegistration">Med Instructor Registration </option>
+                    <option value="medInstructorRegistration">Med Instruction Registration </option>
                     <option value="pharmacistOrder">Pharmacist Order</option>
                     <option value="sessionRegistration">Session Registration</option>
                     
@@ -109,9 +110,18 @@
                     <button><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
 
-               </form>
 
-                 
+                
+               </form>
+          
+               <?php if(empty($data['search']) ): ?>
+
+                 <form  action="<?php echo URLROOT?>/AdminPayments/generateReport" method="POST">
+                             <button class="view-more" type="submit"><i class="fa-solid fa-file-invoice">Generate Report</i></button>
+                  </form>
+                  
+               <?php endif ?>
+
 
                 </div>
             </div>

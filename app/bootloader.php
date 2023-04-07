@@ -7,7 +7,8 @@
     require_once 'libraries/Core.php';
     require_once 'libraries/Controller.php';
     require_once 'libraries/Database.php';
-    
+    require_once 'libraries/fpdf/fpdf.php';
+ 
 
     // Load helpers
     require_once 'helpers/URL_Helper.php';
