@@ -140,7 +140,14 @@
        
         $this->db->query('UPDATE meditation_instructor set password = :password WHERE meditation_instructor_id = :id');
         $this->db->bind(':password', $data['password']);
-        $this->db->bind(':id', $data['meditation_instructor_id']);
+        
+        if(!empty($data['meditation_instructor_id'])){
+          $this->db->bind(':id', $data['meditation_instructor_id']);
+     
+        }else{
+          $this->db->bind(':id', $data['user_id']);
+     
+        }
             
 
         if($this->db->execute()){
@@ -150,6 +157,29 @@
         } 
       }
       
+      public function setToken($token,$email)
+      {
+          $this->db->query('UPDATE meditation_instructor set verify_token=:token WHERE email = :email');
+          $this->db->bind(':token',$token);
+          $this->db->bind(':email',$email);
+  
+          if($this->db->execute()){
+             return true;
+          }else{
+              return false;
+          }    
+      } 
+  
+      public function checkToken($email) {
+        
+        $this->db->query("SELECT verify_token FROM meditation_instructor WHERE email = :email");
+        $this->db->bind(':email',$email);
+        
+        $result=$this->db->single();
+
+        return $result ? $result : false; 
+    }
+
 
 }
 

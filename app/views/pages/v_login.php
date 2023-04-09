@@ -50,7 +50,8 @@
                     <label for="password">Password</label>
                         <input type="password" id="password" name="password" value="<?php echo $data['password'] ?>">
                         <span class="form-invalid"><?php echo $data['password_err'] ?></span>
-                    <a href="#">Forgot password?</a>
+                    <a href="<?php echo URLROOT ?>/Login/forgotPassword">Forgot password?</a>
+                  
                     <button>Log In</button>
                 </div>
             </form>

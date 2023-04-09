@@ -803,8 +803,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
 
        if(empty($data['first_name_err']) && empty($data['last_name_err']) && empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])&& empty($data['gender_err'])){
             if($this->adminUserMgmtModel->addPatient($data)){
-                flash('post_msg', 'add new patient successfully');
-                     redirect('AdminUserMgmt/patient'); 
+                sendMail($data['email'],$data['first_name'],'', 2,'');
+                redirect('AdminUserMgmt/patient'); 
             }else{
               $this->view('Admin/AdminUserMgmt/Patient/v_patientAddNew',$data);
             }  
@@ -856,6 +856,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
  
         
     }
+
+
+    
+
 
     
 
@@ -1022,7 +1026,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                
             $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
              if($this->adminUserMgmtModel->addDoctor($data)){
-                   flash('post_msg', 'add new doctor successfully');
+                        sendMail($data['email'],$data['first_name'],'', 2,'');
                         redirect('AdminUserMgmt/doctor'); 
                }else{
                    die('Error creating');
@@ -1240,8 +1244,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                   
                   $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
                    if($this->adminUserMgmtModel->addCounsellor($data)){
-                         flash('post_msg', 'add new counsellor successfully');
-                              redirect('AdminUserMgmt/counsellor'); 
+                           sendMail($data['email'],$data['first_name'],'', 2,'');
+                           redirect('AdminUserMgmt/counsellor'); 
                      }else{
                          die('Error creating');
                      }  
@@ -1407,8 +1411,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
             
             $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
              if($this->adminUserMgmtModel->addAdmin($data)){
-                   flash('post_msg', 'add new admin successfully');
-                        redirect('AdminUserMgmt/admin'); 
+                      sendMail($data['email'],$data['first_name'],'', 2,'');
+                      redirect('AdminUserMgmt/admin'); 
                }else{
                    die('Error creating');
                }  
@@ -1624,8 +1628,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                
             $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
              if($this->adminUserMgmtModel->addMeditationInstructor($data)){
-                   flash('post_msg', 'add new meditationInstructor successfully');
-                        redirect('AdminUserMgmt/meditationInstructor'); 
+                       sendMail($data['email'],$data['first_name'],'', 2,'');
+                       redirect('AdminUserMgmt/meditationInstructor'); 
                }else{
                    die('Error creating');
                }  
@@ -1846,8 +1850,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                  
             $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
              if($this->adminUserMgmtModel->addPharmacist($data)){
-                   flash('post_msg', 'add new pharmacist successfully');
-                        redirect('AdminUserMgmt/pharmacist'); 
+                     sendMail($data['email'],$data['first_name'],'', 2,'');
+                     redirect('AdminUserMgmt/pharmacist'); 
                }else{
                    die('Error creating');
                }  
@@ -2062,7 +2066,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
               
             $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
              if($this->adminUserMgmtModel->addNutritionist($data)){
-                   flash('post_msg', 'add new nutritionist successfully');
+                        sendMail($data['email'],$data['first_name'],'', 2,'');
                         redirect('AdminUserMgmt/nutritionist'); 
                }else{
                    die('Error creating');

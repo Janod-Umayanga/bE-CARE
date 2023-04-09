@@ -247,6 +247,30 @@
     
           }
 
+          public function setToken($token,$email)
+          {
+              $this->db->query('UPDATE nutritionist set verify_token=:token WHERE email = :email');
+              $this->db->bind(':token',$token);
+              $this->db->bind(':email',$email);
+      
+              if($this->db->execute()){
+                 return true;
+              }else{
+                  return false;
+              }    
+          } 
+      
+          public function checkToken($email) {
+            
+            $this->db->query("SELECT verify_token FROM nutritionist WHERE email = :email");
+            $this->db->bind(':email',$email);
+            
+            $result=$this->db->single();
+    
+            return $result ? $result : false; 
+        }
+  
+
 
     }
 

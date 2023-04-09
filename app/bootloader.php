@@ -16,6 +16,7 @@
     require_once 'helpers/ImageUpload_Helper.php';
     require_once 'helpers/qualificationfileUpload_helper.php';
     require_once 'helpers/validate.php';
+    require_once 'helpers/emailSend_Helper.php';
    
 ?>
    

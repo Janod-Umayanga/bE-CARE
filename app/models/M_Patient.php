@@ -35,7 +35,7 @@
             $row = $this->db->single();
 
             if($this->db->rowCount() > 0) {
-                return true;
+                return $row;
             }
             else {
                 return false;
@@ -112,6 +112,8 @@
             $this->db->bind(':password', $data['newpw']);
             $this->db->bind(':patient_id', $patient_id);
 
+            
+
             if($this->db->execute()) {
                 return true;
             }
@@ -136,6 +138,48 @@
                 return false;
             }
         }
+
+
+        public function setToken($token,$email)
+        {
+            $this->db->query('UPDATE patient set verify_token=:token WHERE email = :email');
+            $this->db->bind(':token',$token);
+            $this->db->bind(':email',$email);
+    
+            if($this->db->execute()){
+               return true;
+            }else{
+                return false;
+            }    
+        } 
+    
+        public function checkToken($email) {
+          
+          $this->db->query("SELECT verify_token FROM patient WHERE email = :email");
+          $this->db->bind(':email',$email);
+          
+          $result=$this->db->single();
+  
+          return $result ? $result : false; 
+      }
+
+      public function changePW($data){
+
+       
+        $this->db->query('UPDATE patient set password = :password WHERE patient_id = :id');
+        $this->db->bind(':password', $data['password']);
+        
+        $this->db->bind(':id', $data['user_id']);
+          
+
+        if($this->db->execute()){
+           return true;
+        }else{
+            return false;
+        } 
+      }
+      
+
     }
 
 ?>

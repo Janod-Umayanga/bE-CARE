@@ -610,6 +610,310 @@
             }
 
         }    
+
+
+
+
+        public function forgotPassword() {
+       
+          if($_SERVER['REQUEST_METHOD']=='POST'){
+          
+              $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                 
+                $email = $_POST['forgot_email'];
+                       
+                if(isset($_POST['usertype'])){
+                    $_SESSION['usertype'] = $_POST['usertype'];
+                }
+                $userType=  $_SESSION['usertype'];
+
+                if(isset(($_POST['forgot_email']))){
+                    $_SESSION['email_reset_password'] = $_POST['forgot_email'];
+                }
+
+
+                if(empty($email)){
+                    $data = [
+                        'email_err' => 'please enter your email address',
+                        'email'=>''
+                     ];
+
+                    $this->view('pages/v_forgotpassword', $data); 
+               
+                 }
+
+                 $token = md5(rand());
+                 
+         
+                 if($userType=='patient'){
+                    $row = $this->patientModel->findPatientByEmail($email);
+                
+                 }else if($userType=='doctor'){
+                    $row = $this->doctorModel->findDoctorByEmail($email);
+                
+                 }else if($userType=='counsellor'){
+                    $row = $this->counsellorModel->findCounsellorByEmail($email);
+                
+                 }else if($userType=='pharmacist'){
+                    $row = $this->pharmacistModel->findPharmacistByEmail($email);
+                
+                 }else if($userType=='nutritionist'){
+                    $row = $this->nutritionistModel->findNutritionistByEmail($email);
+                
+                 }else if($userType=='meditation_instructor'){
+                    $row = $this->medInstrModel->findUserByEmail($email);
+                
+                 }else if($userType=='admin'){
+                    $row = $this->adminModel->findUserByEmail($email);
+            
+                 }
+
+                if($row) {
+                    $name = $row->first_name; 
+                  
+                     if($userType=='patient'){
+                        $updateResult= $this->patientModel->setToken($token,$email);
+                    
+                     }else if($userType=='doctor'){
+                        $updateResult= $this->doctorModel->setToken($token,$email);
+                    
+                     }else if($userType=='counsellor'){
+                        $updateResult= $this->counsellorModel->setToken($token,$email);
+                    
+                     }else if($userType=='pharmacist'){
+                        $updateResult= $this->pharmacistModel->setToken($token,$email);
+                    
+                     }else if($userType=='nutritionist'){
+                        $updateResult= $this->nutritionistModel->setToken($token,$email);
+                    
+                     }else if($userType=='meditation_instructor'){
+                        $updateResult= $this->medInstrModel->setToken($token,$email);
+                    
+                     }else if($userType=='admin'){
+                        $updateResult= $this->adminModel->setToken($token,$email);
+                
+                     }
+    
+     
+                     $flag=1;
+                     if($updateResult) {
+                         $val = sendMail($email,$name, $token, $flag,'');
+          
+                         if($val){
+                             $data = [
+                                 'email_err' => 'We emailed you a password reset link',
+                                 'email'=>$email
+                              ];
+         
+                             $this->view('pages/v_forgotpassword', $data); 
+                         }else{
+                             $data = [
+                                 'email_err' => 'Oops... Something went wrong',
+                                 'email'=>''
+                             ];
+             
+                             $this->view('pages/v_forgotpassword', $data); 
+                         }
+                                         
+                    } else {
+                           $_SESSION['status'] = "Something went wrong.";
+                          
+                           $data = [
+                                'email_err' => 'Something went wrong.',
+                                'email'=>''     
+                           ];
+                 
+                           $this->view('pages/v_forgotpassword', $data);                        }
+                               
+                     
+                }else{
+                
+                      $data = [
+                         
+                         'email_err' => 'No Email Found',
+                         'email'=>''
+                     ];
+     
+                     $this->view('pages/v_forgotpassword', $data);  
+                 }
+               
+     
+          }else{
+                     //initial form
+                     $data = [
+                         'email_err' => '',
+                         'email'=>''
+                     ];
+     
+                     //load view
+                     $this->view('pages/v_forgotpassword', $data);
+     
+             }
+       }
+
+
+       public function reset_password()
+       {
+       
+          if($_SERVER['REQUEST_METHOD']=='POST'){
+             
+              $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                 
+                               
+                        $email=$_SESSION['email_reset_password'];
+                        $userType=$_SESSION['usertype'];
+
+                     
+                    if($userType=='patient'){
+                        $userRow=$this->patientModel->findPatientByEmail($email);
+                        $tokenExpire = $this->patientModel->checkToken($email);
+                        $userId=$userRow -> patient_id;
+                       
+                     
+                     }else if($userType=='doctor'){
+                        $userRow=$this->doctorModel->findDoctorByEmail($email);
+                        $tokenExpire = $this->doctorModel->checkToken($email);
+                        $userId=$userRow -> doctor_id;
+                     
+                     }else if($userType=='counsellor'){
+                        $userRow=$this->counsellorModel->findCounsellorByEmail($email);
+                        $tokenExpire = $this->counsellorModel->checkToken($email);
+                        $userId=$userRow -> counsellor_id;
+                     
+                     }else if($userType=='pharmacist'){
+                        $userRow=$this->pharmacistModel->findPharmacistByEmail($email);
+                        $tokenExpire = $this->pharmacistModel->checkToken($email);
+                        $userId=$userRow -> pharmacist_id;
+                     
+                     }else if($userType=='nutritionist'){
+                        $userRow=$this->nutritionistModel->findNutritionistByEmail($email);
+                        $tokenExpire = $this->nutritionistModel->checkToken($email);
+                        $userId=$userRow -> nutritionist_id;
+                     
+                     }else if($userType=='meditation_instructor'){
+                        $userRow=$this->medInstrModel->findUserByEmail($email);
+                        $tokenExpire = $this->medInstrModel->checkToken($email);
+                        $userId=$userRow -> meditation_instructor_id;
+ 
+                     }else if($userType=='admin'){
+                        $userRow=$this->adminModel->findUserByEmail($email);
+                        $tokenExpire = $this->adminModel->checkToken($email);
+                        $userId=$userRow -> admin_id;
+                     }
+    
+                      
+                     
+
+                      
+                
+
+                     $token=$_SESSION['password_Token'];
+                    
+                      $data = [
+                          'new_pwd' => trim($_POST['new_pwd']),       
+                          'password' => trim($_POST['password']),
+                          'email' => trim($_POST['email']),
+                          'pwd_token' => $_SESSION['password_Token'],
+                          'user_id'=> $userId,
+       
+                          'new_pwd_err' => '',
+                          'other_err' => '',
+                      ];
+                      
+                     
+                    if($data['new_pwd']!=$data['password']){
+                         $data['other_err']='New password and confirm password is diffrent';
+                    } 
+                  
+                    if(empty($data['new_pwd'])){
+                            $data['new_pwd_err']='Please enter a new password';
+                    } 
+                        
+                    if(empty($data['password'])){
+                          $data['other_err']='Please retype your new password';
+                    } 
+  
+                 
+                    if($token != $tokenExpire->verify_token){
+                             $data['other_err'] = 'Oops, it looks like your password reset link has expired. Please request a new password reset link and try again.';
+                    }
+  
+                    
+             
+               if(empty($data['new_pwd_err']) && empty($data['other_err']) ){
+               
+                    $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
+          
+
+                    if($userType=='patient'){
+                        $resetPW=$this->patientModel->changePW($data);
+                        $token = md5(rand());
+                        $this->patientModel->setToken($token,$email);
+                    
+                     }else if($userType=='doctor'){
+                        $resetPW=$this->doctorModel->changePW($data);
+                        $token = md5(rand());
+                        $this->doctorModel->setToken($token,$email);
+                    
+                     }else if($userType=='counsellor'){
+                        $resetPW=$this->counsellorModel->changePW($data);
+                        $token = md5(rand());
+                        $this->counsellorModel->setToken($token,$email);
+                    
+                     }else if($userType=='pharmacist'){
+                        $resetPW=$this->pharmacistModel->changePW($data);
+                        $token = md5(rand());
+                        $this->pharmacistModel->setToken($token,$email);
+                    
+                     }else if($userType=='nutritionist'){
+                        $resetPW=$this->nutritionistModel->changePW($data);
+                        $token = md5(rand());
+                        $this->nutritionistModel->setToken($token,$email);
+                    
+                     }else if($userType=='meditation_instructor'){
+                        $resetPW=$this->medInstrModel->changePW($data);
+                        $token = md5(rand());
+                        $this->medInstrModel->setToken($token,$email);
+                    
+                     }else if($userType=='admin'){
+                        $resetPW=$this->adminModel->changePW($data);
+                        $token = md5(rand());
+                        $this->adminModel->setToken($token,$email);
+                    
+                     }
+                    
+
+                    if($resetPW){
+                         redirect('Login/login');      
+                             
+                    }else{
+                         $data['other_err']='something wrong';
+                         $this->view('pages/v_resetPassword', $data);
+                    }   
+               }else{
+                       $this->view('pages/v_resetPassword', $data);
+               }
+              
+             
+              }else{
+                  //initial form
+                  $data = [
+                      'new_pwd' => '',       
+                      'password' => '',
+                      'email' => '',
+                      'pwd_token' => '',
+   
+                      'new_pwd_err' => '',
+                      'other_err' => '',
+                  ];
+  
+                  //load view
+                  $this->view('pages/v_resetPassword', $data);
+              }
+    
+      }
+
+
     }
 
 ?>

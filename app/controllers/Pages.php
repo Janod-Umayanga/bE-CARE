@@ -36,6 +36,7 @@
             
             $this->view('v_about', $data);
         }
-    }
 
+       
+  }
 ?>

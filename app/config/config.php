@@ -4,7 +4,7 @@
     define('DB_HOST', 'localhost');
     define('DB_USER', 'root');
     define('DB_PASSWORD', '');
-    define('DB_NAME', 'be_care'); //Change database name  
+    define('DB_NAME', 'becarenew'); //Change database name  
 
 
     // APPROOT
@@ -18,8 +18,5 @@
 
     // PUBLIC ROOT
     define('PUBROOT', dirname(dirname(dirname(__FILE__))).'/public');
-
-    // WEBSITE EMAIL
-    define('EMAIL', '2020cs189@stu.ucsc.cmb.ac.lk');
 
 ?>
