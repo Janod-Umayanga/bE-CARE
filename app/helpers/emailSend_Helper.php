@@ -7,18 +7,21 @@
        require '../app/vendor/autoload.php';
                         
 
-      function sendMail($email,$name,$token,$bodyFlag,$password){   
+      function sendMail($email,$name,$token,$bodyFlag,$other){   
                
-       // $flag =1 for forgot_password
-       // $flag =2 for send_password_via_email
-       // $flag =3 for verify_email
+       // $flag =1 Password Reset Request for Your BeCare Account
+       // $flag =2 Your BeCare Account has been created!
+       // $flag =3 BeCare Account Verified
+       // $flag =4 BeCare Account Status - Service Provider Qualification Not Verified
+       // $flag =5 Your BeCare account has been activated
+       // $flag =6 Your BeCare account has been deactivated
+       // $flag =7 Verify Your BeCare Account
 
                         // //Server settings
       $mail = new PHPMailer(true);
                         
       try{
           $mail->isSMTP();
-       // $mail->SMTPDebug = 1;                      //Enable verbose debug output
                         
                                                                 //Send using SMTP
           $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
@@ -41,103 +44,532 @@
 
 
           if($bodyFlag == 1){
-          $mail->Subject ="Reset Password Notification";    
+          $mail->Subject ="Password Reset Request for Your BeCare Account";    
           $email_template = "
-            <html>
-                    <head>
-                            <title>Password Reset Request</title>
-                    </head>
-                    <body style='font-family: Arial, sans-serif;'>
-            
-                      <div style='background-color: #f2f2f2; padding: 20px;'>
-                            
-                        
-                       <div style='padding: 20px;'>
-                            <h2>Hello $name,</h2>
-                            <p>You are receiving this email because we received a password reset request for your account.</p>
-                            <p>To reset your password, please click the button below:</p>
-                            <p><a href='http://localhost/be-care/Login/reset_password?token=$token&email=$email' style='background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none;'>Reset Password</a></p>
-                            <p>If you did not request a password reset, please ignore this email.</p>
-                            <p>Thank you,</p>
-                            <p>The BeCare Team</p>
-                       </div>
+          <!DOCTYPE html>
+          <html>
+            <head>
+              <title> Reset Your BeCare Account Password</title>
+              <style>
+                body {
+                  font-family: Arial, sans-serif;
+                  margin: 0;
+                  padding: 0;
+                  background-color: #f4f4f4;
+                  color: #333333;
+                }
           
-                       <div style='background-color: #f2f2f2; padding: 20px;'>
-                          <p>Follow us on <a href='https://twitter.com/BeCare' style='color: #4CAF50;'>Twitter</a> | Like us on <a href='https://www.facebook.com/BeCare' style='color: #4CAF50;'>Facebook</a></p>
-                          <p>You are receiving this email because you have an account with BeCare. If you have any questions or concerns, please contact us at <a href='mailto:support@sobawitha.com' style='color: #4CAF50;'>support@sobawitha.com</a>.
-                       </div>
-            
-                       </div>
-                       
-                       </body>
-            </html>
+                .container {
+                  max-width: 600px;
+                  margin: 0 auto;
+                  padding: 20px;
+                  background-color: #ffffff;
+                  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                }
+          
+                h1 {
+                  font-size: 28px;
+                  font-weight: bold;
+                  margin: 0;
+                  margin-bottom: 20px;
+                  color: #333333;
+                }
+          
+                p {
+                  font-size: 16px;
+                  line-height: 24px;
+                  margin: 0;
+                  margin-bottom: 20px;
+                  color: #333333;
+                }
+          
+                .button {
+                  display: inline-block;
+                  padding: 10px 20px;
+                  background-color: #007bff;
+                  color: #ffffff;
+                  text-decoration: none;
+                  border-radius: 4px;
+                  margin-top: 20px;
+                  border: none;
+                  font-size: 16px;
+                  font-weight: bold;
+                  cursor: pointer;
+                }
+          
+                .button:hover {
+                  background-color: #0069d9;
+                }
+              </style>
+            </head>
+            <body>
+              <div class='container'>
+                <h1>Reset your BeCare password</h1>
+                <p>Dear $name,</p>
+                <p>We received a request to reset your BeCare password. Please click the button below to reset your password:</p>
+                <p><a class='button' href='http://localhost/be-care/Login/reset_password?token=$token&email=$email'  style='color:white'>Reset Password</a></p>
+                <p>If you did not request a password reset, please ignore this email.</p>
+                <p>Best regards,</p>
+                <p>The BeCare Team</p>
+              </div>
+            </body>
+          </html>
+          
          
             " ;
           }else if($bodyFlag == 2){
-                $mail->Subject ="Login Access for BeCare";  
-                $email_template = "
+            $mail->Subject = "Your BeCare Account has been created!";  
+            $email_template = "
+                <!DOCTYPE html>
                 <html>
-                    <head>
-                       <title>Login Access for BeCare</title>
-                    </head>
-                 
-                    <body style='font-family: Arial, sans-serif;'>
-                               <div style='padding: 20px;'>
-                                <h2>Hello $name,</h2>
-                                <p>You are receiving this email because you have registered for an account with BeCare.</p>
-                                <p>Your password has been generated and is below. To access your account, please use the login credentials provided below.</p>
-                                <p><b>As a security precaution, we recommend that you change your password at your earliest convenience. This will help to ensure the safety and security of your account.</b></p>
-                                <p>Your username is: $email</p>
-                                <p>Your password is: $password</p>
-                                
-                                
-                                <p>If you did not register for an account, please ignore this email.</p>
-                                <p>Thank you,</p>
-                                <p>The BeCare Team</p>
-                             </div>
-                             <div style='background-color: #f2f2f2; padding: 20px;'>
-                               <p>Follow us on <a href='https://twitter.com/BeCare' style='color: #4CAF50;'>Twitter</a> | Like us on <a href='https://www.facebook.com/BeCare' style='color: #4CAF50;'>Facebook</a></p>
-                               <p>You are receiving this email because you request to register with BeCare. If you have any questions or concerns, please contact us at <a href='mailto:support@sobawitha.com' style='color: #4CAF50;'>support@sobawitha.com</a>.
-                             </div>
-             
-                     </body>
+                <head>
+                    <title>Welcome to BeCare</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            margin: 0;
+                            padding: 0;
+                            background-color: #f4f4f4;
+                            color: #333333;
+                        }
+        
+                        .container {
+                            max-width: 600px;
+                            margin: 0 auto;
+                            padding: 20px;
+                            background-color: #ffffff;
+                            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                        }
+        
+                        h1 {
+                            font-size: 28px;
+                            font-weight: bold;
+                            margin: 0;
+                            margin-bottom: 20px;
+                            color: #333333;
+                        }
+        
+                        p {
+                            font-size: 16px;
+                            line-height: 24px;
+                            margin: 0;
+                            margin-bottom: 20px;
+                            color: #333333;
+                        }
+        
+                        .button {
+                            display: inline-block;
+                            padding: 10px 20px;
+                            background-color: #007bff;
+                            color: #ffffff;
+                            text-decoration: none;
+                            border-radius: 4px;
+                            margin-top: 20px;
+                            border: none;
+                            font-size: 16px;
+                            font-weight: bold;
+                            cursor: pointer;
+                            color: #ffffff;
+                        }
+
+                        
+        
+                        .button:hover {
+                            background-color: #0069d9;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class='container'>
+                        <h1>Welcome to BeCare!</h1>
+                        <p>Dear {$name},</p>
+                        <p>We are pleased to inform you that an account has been created for you on BeCare, the online platform connecting service providers with patients.</p>
+                        <p>Your username is <strong>{$email}</strong>. You can access the platform by clicking on the following button:</p>
+                        <p><a href='http://localhost/be-care/Login/login' style='color:white' class='button'>Login to BeCare</a></p>
+                        <p>Please use the following temporary password to log in for the first time:</p>
+                        <p><strong>{$other}</strong></p>
+                        <p>You will be prompted to change your password upon logging in for the first time.</p>
+                        <p>Thank you for joining BeCare. We look forward to your participation on the platform.</p>
+                        <p>Best regards,</p>
+                        <p>The BeCare Team</p>
+                    </div>
+                </body>
                 </html>
-            " ;
-            
+            ";
+                   
             }else if($bodyFlag == 3){
+               $mail->Subject ="BeCare Account Verified";  
+               $email_template = "
+               <!DOCTYPE html>
+               <html>
+                 <head>
+                   <title>Your BeCare Account has been verified!</title>
+                   <style>
+                     /* CSS styles */
+                     body {
+                       font-family: Arial, sans-serif;
+                       margin: 0;
+                       padding: 0;
+                       background-color: #f4f4f4;
+                       color: #333;
+                     }
+                     .container {
+                        max-width: 600px;
+                        margin: 0 auto;
+                        padding: 20px;
+                        background-color: #ffffff;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                     }
+
+                     h1 {
+                        font-size: 28px;
+                        font-weight: bold;
+                        margin: 0;
+                        margin-bottom: 20px;
+                        color: #333333;
+                     }
+
+                     p {
+                           font-size: 16px;
+                           line-height: 24px;
+                           margin: 0;
+                           margin-bottom: 20px;
+                           color: #333333;
+                     }
+
+                     .btn {
+                       display: inline-block;
+                       padding: 10px 20px;
+                       background-color: #007bff;
+                       color: #ffffff;
+                       text-decoration: none;
+                       border-radius: 4px;
+                       font-size: 16px;
+                       font-weight: bold;
+                     }
+                     .btn:hover {
+                       background-color: #0069d9;
+                     }
+                   </style>
+                 </head>
+                 <body>
+                   <div class='container'>
+                     <h1>Your BeCare Account has been verified!</h1>
+                     <p>Dear {$name},</p>
+                     <p>We are pleased to inform you that your account on BeCare has been verified and is now active.</p>
+                     <p>To access your account, please click the button below:</p>
+                     <p>
+                        <a href='http://localhost/be-care/Login/login' style='color:white' class='btn'>Login to BeCare</a>
+                     </p>
+                     <p>Please use the username and password you entered during the signup process to login.</p>
+                     <p>If you have any questions or concerns, please do not hesitate to contact us.</p>
+                     <p>Thank you for choosing BeCare!</p>
+                     <p>Best regards,</p>
+                     <p>The BeCare Team</p>
+
+                   </div>
+                 </body>
+               </html>
+                                        
+               ";
+           }
+           
+          else if($bodyFlag == 4){
+            $mail->Subject ="BeCare Account Status - Service Provider Qualification Not Verified";  
+            $email_template = "
             
-                $mail->Subject = "Email Verification Code for BeCare";
-                $email_template = "
-                
-                <html>
-                    <head>
-                      <title>Email Verification Code for BeCare</title>
-                    </head>
-                
-                    <body style='font-family: Arial, sans-serif;'>
-                 
-                     
-                        <div style='padding: 20px;'>
-                            <h2>Hello $name,</h2>
-                            <p>Thank you for registering with BeCare.</p>
-                            <p>To verify your email address and activate your account, please enter the following code on the verification page:</p>
-                            <h3 style='color: #4CAF50;'>$token</h3>
-                            <p>Please do not share this code with anyone.</p>
-                            <p>If you did not register for an account, please ignore this email.</p>
-                            <p>Thank you,</p>
-                            <p>The BeCare Team</p>
-                        </div>
-                        
-                        <div style='background-color: #f2f2f2; padding: 20px;'>
-                               <p>Follow us on <a href='https://twitter.com/BeCare' style='color: #4CAF50;'>Twitter</a> | Like us on <a href='https://www.facebook.com/BeCare' style='color: #4CAF50;'>Facebook</a></p>
-                               <p>You are receiving this email because you requested to register with BeCare. If you have any questions or concerns, please contact us at <a href='mailto:support@sobawitha.com' style='color: #4CAF50;'>support@sobawitha.com</a>.
-                        </div>
-                        
-                    </body>
-                </html>
-         ";
+            <!DOCTYPE html>
+            <html>
+            <head>
+               <title>Service Provider Qualification Not Verified</title>
+               <style>
+                  body {
+                        font-family: Arial, sans-serif;
+                        margin: 0;
+                        padding: 0;
+                        background-color: #f4f4f4;
+                        color: #333333;
+                  }
+
+                  .container {
+                        max-width: 600px;
+                        margin: 0 auto;
+                        padding: 20px;
+                        background-color: #ffffff;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                  }
+
+                  h1 {
+                        font-size: 28px;
+                        font-weight: bold;
+                        margin: 0;
+                        margin-bottom: 20px;
+                        color: #333333;
+                  }
+
+                  p {
+                        font-size: 16px;
+                        line-height: 24px;
+                        margin: 0;
+                        margin-bottom: 20px;
+                        color: #333333;
+                  }
+
+                  .button {
+                        display: inline-block;
+                        padding: 10px 20px;
+                        background-color: #007bff;
+                        color: #ffffff;
+                        text-decoration: none;
+                        border-radius: 4px;
+                        margin-top: 20px;
+                        border: none;
+                        font-size: 16px;
+                        font-weight: bold;
+                        cursor: pointer;
+                  }
+
+                  .button:hover {
+                        background-color: #0069d9;
+                  }
+               </style>
+            </head>
+            <body>
+            <div class='container'>
+               <h1>BeCare Account Verification</h1>
+               <p>Dear {$name},</p>
+               <p>We regret to inform you that your application to become a service provider on BeCare has been unsuccessful. Our administrators have carefully reviewed your qualifications and determined that they do not meet our standards at this time. We encourage you to continue building your skills and qualifications, and to reapply in the future.</p>
+               <p>Thank you for your interest in BeCare, and we wish you all the best in your endeavors.</p>
+               <p>If you have any questions or concerns, please contact us at becarecs11@gmail.com.</p>
+               <p>Best regards,</p>
+               <p>The BeCare Team</p>
+            </div>
+            </body>
+            </html>
+
+        " ;
+        
+        }
+        else if($bodyFlag == 5){
+         $mail->Subject ="Your BeCare account has been activated";  
+         $email_template = "
+          <!DOCTYPE html>
+            <html>
+            <head>
+               <title>Your BeCare Account is now Active!</title>
+               <style>
+                  body {
+                        font-family: Arial, sans-serif;
+                        margin: 0;
+                        padding: 0;
+                        background-color: #f4f4f4;
+                        color: #333333;
+                  }
+
+                  .container {
+                        max-width: 600px;
+                        margin: 0 auto;
+                        padding: 20px;
+                        background-color: #ffffff;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                  }
+
+                  h1 {
+                        font-size: 28px;
+                        font-weight: bold;
+                        margin: 0;
+                        margin-bottom: 20px;
+                        color: #333333;
+                  }
+
+                  p {
+                        font-size: 16px;
+                        line-height: 24px;
+                        margin: 0;
+                        margin-bottom: 20px;
+                        color: #333333;
+                  }
+
+                  .button {
+                        display: inline-block;
+                        padding: 10px 20px;
+                        background-color: #007bff;
+                        color: #ffffff;
+                        text-decoration: none;
+                        border-radius: 4px;
+                        margin-top: 20px;
+                        border: none;
+                        font-size: 16px;
+                        font-weight: bold;
+                        cursor: pointer;
+                  }
+
+                  .button:hover {
+                        background-color: #0069d9;
+                  }
+               </style>
+            </head>
+            <body>
+               <div class='container'>
+                  <h1>Your BeCare Account is now Active!</h1>
+                  <p>Dear {$name},</p>
+                  <p>We are pleased to inform you that your account on BeCare has been activated by the administrator.</p>
+                  <p>You can now log in to the platform using your email address and the password that you set up when you created your account.</p>
+                  <p>Thank you for joining BeCare. We look forward to your participation on the platform.</p>
+                  <p>Best regards,</p>
+                  <p>The BeCare Team</p>
+               </div>
+            </body>
+            </html>
+
+     " ;
      
-          }
+     }else if($bodyFlag == 6){
+      $mail->Subject ="Your BeCare account has been deactivated";  
+      $email_template = "
+         <!DOCTYPE html>
+            <html>
+            <head>
+               <title>Your BeCare account has been deactivated</title>
+               <style>
+                  body {
+                        font-family: Arial, sans-serif;
+                        margin: 0;
+                        padding: 0;
+                        background-color: #f4f4f4;
+                        color: #333333;
+                  }
+
+                  .container {
+                        max-width: 600px;
+                        margin: 0 auto;
+                        padding: 20px;
+                        background-color: #ffffff;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                  }
+
+                  h1 {
+                        font-size: 28px;
+                        font-weight: bold;
+                        margin: 0;
+                        margin-bottom: 20px;
+                        color: #333333;
+                  }
+
+                  p {
+                        font-size: 16px;
+                        line-height: 24px;
+                        margin: 0;
+                        margin-bottom: 20px;
+                        color: #333333;
+                  }
+
+                  .button {
+                        display: inline-block;
+                        padding: 10px 20px;
+                        background-color: #007bff;
+                        color: #ffffff;
+                        text-decoration: none;
+                        border-radius: 4px;
+                        margin-top: 20px;
+                        border: none;
+                        font-size: 16px;
+                        font-weight: bold;
+                        cursor: pointer;
+                  }
+
+                  .button:hover {
+                        background-color: #0069d9;
+                  }
+               </style>
+            </head>
+            <body>
+               <div class='container'>
+                  <h1>Account Deactivated</h1>
+                  <p>Dear {$name},</p>
+                  <p>We are sorry to inform you that your account on BeCare has been deactivated by the administrator.</p>
+                  <p>If you have any questions or concerns, please contact us at becarecs11@gmail.com.</p>
+                  <p>Best regards,</p>
+                  <p>The BeCare Team</p>
+               </div>
+            </body>
+            </html>
+                  
+  " ;
+  
+  }else if($bodyFlag == 7){
+   $mail->Subject ="Verify Your BeCare Account";  
+   $email_template = "
+         <!DOCTYPE html>
+         <html>
+         <head>
+            <title>BeCare Account Verification</title>
+            <style>
+               body {
+                  font-family: Arial, sans-serif;
+                  margin: 0;
+                  padding: 0;
+                  background-color: #f4f4f4;
+                  color: #333;
+               }
+               .container {
+                  max-width: 600px;
+                  margin: 0 auto;
+                  padding: 20px;
+                  background-color: #ffffff;
+                  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                  
+               }
+               h1 {
+                  font-size: 28px;
+                  font-weight: bold;
+                  margin: 0;
+                  margin-bottom: 20px;
+                  color: #333333;
+               }
+
+               p {
+                     font-size: 16px;
+                     line-height: 24px;
+                     margin: 0;
+                     margin-bottom: 20px;
+                     color: #333333;
+               }
+
+               .btn {
+                 display: inline-block;
+                 padding: 10px 20px;
+                 background-color: #007bff;
+                 color: #ffffff;
+                 text-decoration: none;
+                 border-radius: 4px;
+                 font-size: 16px;
+                 font-weight: bold;
+               }
+               .btn:hover {
+                 background-color: #0069d9;
+               }
+
+            </style>
+         </head>
+         <body>
+            <div class='container'>
+               <h1>Welcome to Be Care</h1>
+               <h2>Verify Your Email Address</h2>
+               <p>Dear {$name},</p>
+               <p>Thank you for signing up for Be Care. To complete your registration, please verify your email address by clicking the button below:</p>
+               <p><a href='http://localhost/be-care/Pages/verifyEmailAddress/$token/$other' style='color:white' class='btn' >Verify Email Address</a></p>
+               <p>If you did not sign up for Be Care, please ignore this email.</p>
+               <p>Thank you,</p>
+               <p>The Be Care Team</p>
+            </div>
+         </body>
+         </html>
+   
+               
+" ;
+
+}
              $mail->Body  =$email_template;
              $mail->send();
              return true;
@@ -149,14 +581,5 @@
 
     }
 
-    function generateVerificationCode() {
-       $length = 10; // Length of the verification code
-       $characters = '0123456789'; // Characters to use for the verification code
-       $verificationCode = '';
-                  for ($i = 0; $i < $length; $i++) {
-                    $verificationCode .= $characters[rand(0, strlen($characters) - 1)];
-                  }
-                  return $verificationCode;
-                }
                 
 ?>

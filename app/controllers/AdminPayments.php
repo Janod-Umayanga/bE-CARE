@@ -1160,7 +1160,7 @@ public function medInstructorRegistrationViewMore($id)
        
 
 
-        $pdf->Cell(70, 10, 'Service Provider Name', 1 , 0, 'C',1);
+        $pdf->Cell(109, 10, 'Service Provider Name', 1 , 0, 'C',1);
         $pdf->Cell(30, 10, 'Total Fee', 1 , 0, 'C',1);
         $pdf->Cell(60, 10, 'Service Provider Fee', 1 , 0, 'C',1);
         $pdf->Cell(30, 10, 'Profit', 1 , 0, 'C',1);
@@ -1176,7 +1176,7 @@ public function medInstructorRegistrationViewMore($id)
                 if($row->gender=='Male'){$gend='Mr.';}
                 elseif($row->gender=='Female'){$gend='Mrs.';}
 
-            $pdf->Cell(70,10, $gend. $row->first_name.' '. $row->last_name, 1 , 0, 'C');
+            $pdf->Cell(109,10, $gend. $row->first_name.' '. $row->last_name, 1 , 0, 'C');
            
           }
           
@@ -1186,17 +1186,17 @@ public function medInstructorRegistrationViewMore($id)
               if($row->gender=='Male'){$gend='Mr.';}
               elseif($row->gender=='Female'){$gend='Mrs.';}
 
-               $pdf->Cell(70,10, $gend. $row->first_name.' '. $row->last_name, 1 , 0, 'C');
+               $pdf->Cell(109,10, $gend. $row->first_name.' '. $row->last_name, 1 , 0, 'C');
        
             }
        
             if(!empty($row->nutritionist_id)){
-                $pdf->Cell(70,10, 'Dr. '. $row->nutritionist_first_name.' '. $row->nutritionist_last_name, 1 , 0, 'C');
+                $pdf->Cell(109,10, 'Dr. '. $row->nutritionist_first_name.' '. $row->nutritionist_last_name, 1 , 0, 'C');
        
             }
        
             if(!empty($row->counsellor_id)){
-                $pdf->Cell(70,10, 'Dr. '. $row->counsellor_first_name.' '. $row->counsellor_last_name, 1 , 0, 'C');
+                $pdf->Cell(109,10, 'Dr. '. $row->counsellor_first_name.' '. $row->counsellor_last_name, 1 , 0, 'C');
        
             }
        
@@ -1206,7 +1206,7 @@ public function medInstructorRegistrationViewMore($id)
             
           
           else{
-            $pdf->Cell(70,10,'Dr '. $row->first_name.' '. $row->last_name, 1 , 0, 'C');
+            $pdf->Cell(109,10,'Dr '. $row->first_name.' '. $row->last_name, 1 , 0, 'C');
            
           }
  

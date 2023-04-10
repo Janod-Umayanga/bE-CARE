@@ -37,7 +37,7 @@
                     <div class="left"> <br><br>
 
                         <label>Email</label><br>
-                        <input type="text"  name="email" id="email"  value="<?php if(isset($_GET['email'])){ echo $_GET['email'];} ?>" >
+                        <input type="text"  name="email" id="email"  value="<?php echo $_SESSION['email_reset_password'] ?>" >
                         
                          <label>New Password</label>
                          <input type="password" name="new_pwd" id="password"  >

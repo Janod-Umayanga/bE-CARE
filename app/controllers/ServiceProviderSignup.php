@@ -172,7 +172,11 @@ class ServiceProviderSignup extends Controller{
             
          $data['d_password']=password_hash($data['d_password'],PASSWORD_DEFAULT);
           if($this->serviceProviderSignupModel->signupDoctor($data)){
-                  $this->view('inc/v_pending',$data); 
+              $doctorDetails=$this->serviceProviderSignupModel->getLatestReqDoctorID();
+              sendMail($data['d_email'],$data['d_first_name'],2, 7,$doctorDetails->requested_doctor_id);
+
+              redirect('Pages/verify_email');
+              //    $this->view('inc/v_pending',$data); 
             }else{
                 die('Error creating');
             }  
@@ -384,7 +388,11 @@ class ServiceProviderSignup extends Controller{
                
                $data['c_password']=password_hash($data['c_password'],PASSWORD_DEFAULT);
                 if($this->serviceProviderSignupModel->signupCounsellor($data)){
-                        $this->view('inc/v_pending',$data); 
+                      $counsellorDetails=$this->serviceProviderSignupModel->getLatestReqCounsellorID();
+                      sendMail($data['c_email'],$data['c_first_name'],3, 7,$counsellorDetails->requested_counsellor_id);
+        
+                      redirect('Pages/verify_email');
+    
                   }else{
                       die('Error creating');
                   }  
@@ -599,7 +607,11 @@ class ServiceProviderSignup extends Controller{
                
             $data['m_password']=password_hash($data['m_password'],PASSWORD_DEFAULT);
              if($this->serviceProviderSignupModel->signupMeditationInstructor($data)){
-                     $this->view('inc/v_pending',$data);  
+                  $meditationInstructorDetails=$this->serviceProviderSignupModel->getLatestReqMeditationInstructorID();
+                  sendMail($data['m_email'],$data['m_first_name'],4, 7,$meditationInstructorDetails->requested_meditation_instructor_id);
+
+                  redirect('Pages/verify_email');
+                  
                }else{
   //                 die('Error creating');
                }  
@@ -816,7 +828,11 @@ class ServiceProviderSignup extends Controller{
                  
             $data['p_password']=password_hash($data['p_password'],PASSWORD_DEFAULT);
              if($this->serviceProviderSignupModel->signupPharmacist($data)){
-                  $this->view('inc/v_pending',$data);
+                  $pharmacistDetails=$this->serviceProviderSignupModel->getLatestReqPharmacistID();
+                  sendMail($data['p_email'],$data['p_first_name'],6, 7,$pharmacistDetails->requested_pharmacist_id);
+
+                  redirect('Pages/verify_email');
+             
                }else{
                    die('Error creating');
                }  
@@ -1027,7 +1043,11 @@ class ServiceProviderSignup extends Controller{
               
             $data['n_password']=password_hash($data['n_password'],PASSWORD_DEFAULT);
              if($this->serviceProviderSignupModel->signupNutritionist($data)){
-                   $this->view('inc/v_pending',$data);  
+                $nutritionistDetails=$this->serviceProviderSignupModel->getLatestReqNutritionistID();
+                sendMail($data['n_email'],$data['n_first_name'],2, 7,$nutritionistDetails->requested_nutritionist_id);
+
+                redirect('Pages/verify_email');
+             
                }else{
                    die('Error creating');
                }  

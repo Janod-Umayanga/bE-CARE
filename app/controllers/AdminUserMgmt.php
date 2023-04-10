@@ -802,8 +802,11 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
 
 
        if(empty($data['first_name_err']) && empty($data['last_name_err']) && empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])&& empty($data['gender_err'])){
-            if($this->adminUserMgmtModel->addPatient($data)){
-                sendMail($data['email'],$data['first_name'],'', 2,'');
+           $password=$data['password'];
+           $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
+         
+           if($this->adminUserMgmtModel->addPatient($data)){
+                sendMail($data['email'],$data['first_name'],'', 2,$password);
                 redirect('AdminUserMgmt/patient'); 
             }else{
               $this->view('Admin/AdminUserMgmt/Patient/v_patientAddNew',$data);
@@ -892,7 +895,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
              'qualification_file'=>$_FILES['qualification_file'],
              'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
              
-         
+          
              'first_name_err'=>'',
              'last_name_err'=>'',
              'nic_err'=>'',
@@ -1023,10 +1026,12 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
    
    
           if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['city_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['slmc_reg_number_err'])&& empty($data['type_err'])&& empty($data['specialization_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
-               
+            $password=$data['password'];
+      
             $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
              if($this->adminUserMgmtModel->addDoctor($data)){
-                        sendMail($data['email'],$data['first_name'],'', 2,'');
+          
+                        sendMail($data['email'],$data['first_name'],'', 2, $password);
                         redirect('AdminUserMgmt/doctor'); 
                }else{
                    die('Error creating');
@@ -1241,11 +1246,11 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
          
                 if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['city_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['slmc_reg_number_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
                
-                  
+                  $password=$data['password'];
                   $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
                    if($this->adminUserMgmtModel->addCounsellor($data)){
-                           sendMail($data['email'],$data['first_name'],'', 2,'');
-                           redirect('AdminUserMgmt/counsellor'); 
+                    sendMail($data['email'],$data['first_name'],'', 2,$password);
+                    redirect('AdminUserMgmt/counsellor'); 
                      }else{
                          die('Error creating');
                      }  
@@ -1408,11 +1413,11 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
    
           if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err']) && empty($data['gender_err'])){
      
-            
+            $password=$data['password'];
             $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
              if($this->adminUserMgmtModel->addAdmin($data)){
-                      sendMail($data['email'],$data['first_name'],'', 2,'');
-                      redirect('AdminUserMgmt/admin'); 
+                    sendMail($data['email'],$data['first_name'],'', 2,$password);
+                    redirect('AdminUserMgmt/admin'); 
                }else{
                    die('Error creating');
                }  
@@ -1624,15 +1629,15 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
           
           if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['city_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['address_err'])&& empty($data['fee_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
                
-        
-               
+            $password=$data['password'];
             $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
-             if($this->adminUserMgmtModel->addMeditationInstructor($data)){
-                       sendMail($data['email'],$data['first_name'],'', 2,'');
-                       redirect('AdminUserMgmt/meditationInstructor'); 
-               }else{
-                   die('Error creating');
-               }  
+         
+            if($this->adminUserMgmtModel->addMeditationInstructor($data)){
+                  sendMail($data['email'],$data['first_name'],'', 2,$password);
+                  redirect('AdminUserMgmt/meditationInstructor'); 
+            }else{
+                  die('Error creating');
+            }  
           
           }else{
               $this->view('Admin/AdminUserMgmt/MeditationInstructor/v_medInstrAddNew',$data);
@@ -1847,11 +1852,11 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
              
           if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['city_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['slmc_reg_number_err'])&& empty($data['pharmacy_name_err'])&& empty($data['address_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
                
-                 
+            $password=$data['password'];
             $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
              if($this->adminUserMgmtModel->addPharmacist($data)){
-                     sendMail($data['email'],$data['first_name'],'', 2,'');
-                     redirect('AdminUserMgmt/pharmacist'); 
+                  sendMail($data['email'],$data['first_name'],'', 2,$password);
+                  redirect('AdminUserMgmt/pharmacist'); 
                }else{
                    die('Error creating');
                }  
@@ -2063,11 +2068,12 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
    
         
           if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['slmc_reg_number_err'])&& empty($data['fee_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
-              
+           
+            $password=$data['password'];
             $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
              if($this->adminUserMgmtModel->addNutritionist($data)){
-                        sendMail($data['email'],$data['first_name'],'', 2,'');
-                        redirect('AdminUserMgmt/nutritionist'); 
+                    sendMail($data['email'],$data['first_name'],'', 2,$password);
+                    redirect('AdminUserMgmt/nutritionist'); 
                }else{
                    die('Error creating');
                }  
@@ -2138,9 +2144,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                 if($_SERVER['REQUEST_METHOD']=='GET'){
                   $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
             
-                     
+                      $patientDetails=$this->adminUserMgmtModel->getPatientDetails($id);
                       $patient= $this->adminUserMgmtModel->deactivatedPatient($id);
-        
+                      sendMail($patientDetails->email,$patientDetails->first_name,'', 6,'');
+      
                       $data=[                      
                         
                       ];
@@ -2167,9 +2174,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
               if($_SERVER['REQUEST_METHOD']=='GET'){
                 $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
           
-                   
+                $patientDetails=$this->adminUserMgmtModel->getPatientDetails($id);
                 $patient= $this->adminUserMgmtModel->activatedPatient($id);
-      
+                sendMail($patientDetails->email,$patientDetails->first_name,'', 5,'');
+
                     $data=[                      
                       
                     ];
@@ -2198,9 +2206,11 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                 if($_SERVER['REQUEST_METHOD']=='GET'){
                   $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
             
-                     
+          
+                      $adminDetails=$this->adminUserMgmtModel->getAdminDetails($id);
                       $admin= $this->adminUserMgmtModel->deactivatedAdmin($id);
-        
+                      sendMail($adminDetails->email,$adminDetails->first_name,'', 6,'');
+      
                       $data=[                      
                         
                       ];
@@ -2228,8 +2238,11 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                 $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
           
                    
+                $adminDetails=$this->adminUserMgmtModel->getAdminDetails($id);
                 $admin= $this->adminUserMgmtModel->activatedAdmin($id);
-      
+                sendMail($adminDetails->email,$adminDetails->first_name,'', 5,'');
+
+            
                     $data=[                      
                       
                     ];
@@ -2261,8 +2274,11 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                   $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
             
                      
+                      $doctorDetails=$this->adminUserMgmtModel->getDoctorDetails($id);
                       $doctor= $this->adminUserMgmtModel->deactivatedDoctor($id);
-        
+                      sendMail($doctorDetails->email,$doctorDetails->first_name,'', 6,'');
+      
+
                       $data=[                      
                         
                       ];
@@ -2289,9 +2305,12 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
               if($_SERVER['REQUEST_METHOD']=='GET'){
                 $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
           
-                   
+                 
+                $doctorDetails=$this->adminUserMgmtModel->getDoctorDetails($id);
                 $doctor= $this->adminUserMgmtModel->activatedDoctor($id);
-      
+                sendMail($doctorDetails->email,$doctorDetails->first_name,'', 5,'');
+  
+               
                     $data=[                      
                       
                     ];
@@ -2319,9 +2338,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                 if($_SERVER['REQUEST_METHOD']=='GET'){
                   $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
             
-                     
+                      $counsellorDetails=$this->adminUserMgmtModel->getCounsellorDetails($id);
                       $counsellor= $this->adminUserMgmtModel->deactivatedCounsellor($id);
-        
+                      sendMail($counsellorDetails->email,$counsellorDetails->first_name,'', 6,'');
+      
                       $data=[                      
                         
                       ];
@@ -2348,9 +2368,11 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
               if($_SERVER['REQUEST_METHOD']=='GET'){
                 $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
           
-                   
+               
+                $counsellorDetails=$this->adminUserMgmtModel->getCounsellorDetails($id);
                 $counsellor= $this->adminUserMgmtModel->activatedCounsellor($id);
-      
+                sendMail($counsellorDetails->email,$counsellorDetails->first_name,'', 5,'');
+
                     $data=[                      
                       
                     ];
@@ -2378,9 +2400,11 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                if($_SERVER['REQUEST_METHOD']=='GET'){
                  $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
            
-                    
+           
+                     $nutritionistDetails=$this->adminUserMgmtModel->getNutritionistDetails($id);
                      $nutritionist= $this->adminUserMgmtModel->deactivatedNutritionist($id);
-       
+                     sendMail($nutritionistDetails->email,$nutritionistDetails->first_name,'', 6,'');
+     
                      $data=[                      
                        
                      ];
@@ -2408,8 +2432,11 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
          
                   
-               $nutritionist= $this->adminUserMgmtModel->activatedNutritionist($id);
-     
+                $nutritionistDetails=$this->adminUserMgmtModel->getNutritionistDetails($id);
+                $nutritionist= $this->adminUserMgmtModel->activatedNutritionist($id);
+                sendMail($nutritionistDetails->email,$nutritionistDetails->first_name,'', 5,'');
+
+             
                    $data=[                      
                      
                    ];
@@ -2437,9 +2464,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                 if($_SERVER['REQUEST_METHOD']=='GET'){
                   $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
             
-                     
+                      $pharmacistDetails=$this->adminUserMgmtModel->getPharmacistDetails($id);
                       $pharmacist= $this->adminUserMgmtModel->deactivatedPharmacist($id);
-        
+                      sendMail($pharmacistDetails->email,$pharmacistDetails->first_name,'', 6,'');
+      
                       $data=[                      
                         
                       ];
@@ -2467,8 +2495,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                 $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
           
                    
+                $pharmacistDetails=$this->adminUserMgmtModel->getPharmacistDetails($id);
                 $pharmacist= $this->adminUserMgmtModel->activatedPharmacist($id);
-      
+                sendMail($pharmacistDetails->email,$pharmacistDetails->first_name,'', 5,'');
+
                     $data=[                      
                       
                     ];
@@ -2497,8 +2527,11 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                   $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
             
                      
+                      $meditationInstructorDetails=$this->adminUserMgmtModel-> getMeditationInstructorDetails($id);
                       $meditationInstructor= $this->adminUserMgmtModel->deactivatedMeditationInstructor($id);
-        
+                      sendMail($meditationInstructorDetails->email,$meditationInstructorDetails->first_name,'', 6,'');
+     
+
                       $data=[                      
                         
                       ];
@@ -2525,9 +2558,12 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
               if($_SERVER['REQUEST_METHOD']=='GET'){
                 $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
           
-                   
+                
+                $meditationInstructorDetails=$this->adminUserMgmtModel->getMeditationInstructorDetails($id);
                 $meditationInstructor= $this->adminUserMgmtModel->activatedMeditationInstructor($id);
-      
+                sendMail($meditationInstructorDetails->email,$meditationInstructorDetails->first_name,'', 5,'');
+   
+     
                     $data=[                      
                       
                     ];

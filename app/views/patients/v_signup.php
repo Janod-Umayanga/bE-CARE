@@ -37,6 +37,7 @@
                     <div class="topic-of-form">
                         <h1>Signup..</h1>
                         <p>Already have an account <a href="<?php echo URLROOT ?>/Login/login">Login</a></p>
+                        <br>
                     </div>
                     <div class="diet-form-inputs-and-buttons">
                         <div class="left">

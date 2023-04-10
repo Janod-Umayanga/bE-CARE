@@ -158,8 +158,43 @@
       } 
 
      
+      public function getLatestReqDoctorID()
+      {
+        $this->db->query('SELECT * FROM requested_doctor ORDER BY requested_doctor_id DESC');
+       
+        return $this->db->single();
+      }
+
+      public function getLatestReqCounsellorID()
+      {
+        $this->db->query('SELECT * FROM requested_counsellor ORDER BY requested_counsellor_id DESC');
+       
+        return $this->db->single();
+      }
+
+      public function getLatestReqMeditationInstructorID()
+      {
+        $this->db->query('SELECT * FROM requested_meditation_instructor ORDER BY requested_meditation_instructor_id DESC');
+       
+        return $this->db->single();
+      }
+
+      public function getLatestReqNutritionistID()
+      {
+        $this->db->query('SELECT * FROM requested_nutritionist ORDER BY requested_nutritionist_id DESC');
+       
+        return $this->db->single();
+      }
+
+      public function getLatestReqPharmacistID()
+      {
+        $this->db->query('SELECT * FROM requested_pharmacist ORDER BY requested_pharmacist_id DESC');
+       
+        return $this->db->single();
+      }
 
 
+      
    }
 
 

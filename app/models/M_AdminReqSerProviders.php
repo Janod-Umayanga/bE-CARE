@@ -12,8 +12,9 @@
 
       public function getNoOfReqDoctors()
       {
-        $this->db->query('SELECT COUNT(requested_doctor_id) as doctor_count FROM requested_doctor');
-       
+        $this->db->query('SELECT COUNT(requested_doctor_id) as doctor_count FROM requested_doctor WHERE email_verified_flag=:email_verified_flag');
+        $this->db->bind(':email_verified_flag',1);
+        
         $row= $this->db->single();
 
         if($this->db->rowCount() >0){
@@ -26,8 +27,9 @@
       
       public function getNoOfReqCounsellors()
       {
-        $this->db->query('SELECT COUNT(requested_counsellor_id) as counsellor_count FROM requested_counsellor');
-       
+        $this->db->query('SELECT COUNT(requested_counsellor_id) as counsellor_count FROM requested_counsellor WHERE email_verified_flag=:email_verified_flag');
+        $this->db->bind(':email_verified_flag',1);
+      
         $row= $this->db->single();
 
         if($this->db->rowCount() >0){
@@ -40,7 +42,8 @@
       
       public function getNoOfReqNutritionist()
       {
-        $this->db->query('SELECT COUNT(requested_nutritionist_id) as nutritionist_count FROM requested_nutritionist');
+        $this->db->query('SELECT COUNT(requested_nutritionist_id) as nutritionist_count FROM requested_nutritionist WHERE email_verified_flag=:email_verified_flag');
+        $this->db->bind(':email_verified_flag',1);
        
         $row= $this->db->single();
 
@@ -55,7 +58,8 @@
       
       public function getNoOfReqMeditationInstr()
       {
-        $this->db->query('SELECT COUNT(requested_meditation_instructor_id) as meditation_instructor_count FROM requested_meditation_instructor');
+        $this->db->query('SELECT COUNT(requested_meditation_instructor_id) as meditation_instructor_count FROM requested_meditation_instructor WHERE email_verified_flag=:email_verified_flag');
+        $this->db->bind(':email_verified_flag',1);
        
         $row= $this->db->single();
 
@@ -69,8 +73,9 @@
       
       public function getNoOfReqPharmacist()
       {
-        $this->db->query('SELECT COUNT(requested_pharmacist_id) as pharmacist_count FROM requested_pharmacist');
-       
+        $this->db->query('SELECT COUNT(requested_pharmacist_id) as pharmacist_count FROM requested_pharmacist WHERE email_verified_flag=:email_verified_flag');
+        $this->db->bind(':email_verified_flag',1);
+      
         $row= $this->db->single();
 
         if($this->db->rowCount() >0){
@@ -84,15 +89,18 @@
 
       public function getReqDoctors()
       {
-        $this->db->query('SELECT *  FROM requested_doctor');
-       
+        $this->db->query('SELECT *  FROM requested_doctor WHERE email_verified_flag=:email_verified_flag');
+        $this->db->bind(':email_verified_flag',1);
+      
         $result=$this->db->resultSet();
          return $result;
       } 
 
       public function getSearchReqDoctors($search)
       {
-        $this->db->query("SELECT * FROM requested_doctor WHERE CONCAT(first_name,last_name,city,type,specialization) LIKE '%$search%'");
+        $this->db->query("SELECT * FROM requested_doctor WHERE CONCAT(first_name,last_name,city,type,specialization) LIKE '%$search%' AND email_verified_flag=:email_verified_flag");
+        $this->db->bind(':email_verified_flag',1);
+      
         $result=$this->db->resultSet();
          return $result;
       } 
@@ -163,15 +171,18 @@
 
       public function getReqCounsellors()
       {
-        $this->db->query('SELECT *  FROM requested_counsellor');
-       
+        $this->db->query('SELECT *  FROM requested_counsellor WHERE email_verified_flag=:email_verified_flag');
+        $this->db->bind(':email_verified_flag',1);
+      
         $result=$this->db->resultSet();
          return $result;
       } 
 
       public function getSearchReqCounsellors($search)
       {
-        $this->db->query("SELECT * FROM requested_counsellor WHERE CONCAT(first_name,last_name,city) LIKE '%$search%'");
+        $this->db->query("SELECT * FROM requested_counsellor WHERE CONCAT(first_name,last_name,city) LIKE '%$search%' AND email_verified_flag=:email_verified_flag");
+        $this->db->bind(':email_verified_flag',1);
+      
         $result=$this->db->resultSet();
          return $result;
       } 
@@ -239,7 +250,8 @@
 
       public function getReqNutritionists()
       {
-        $this->db->query('SELECT *  FROM requested_nutritionist');
+        $this->db->query('SELECT *  FROM requested_nutritionist WHERE email_verified_flag=:email_verified_flag');
+        $this->db->bind(':email_verified_flag',1);
        
         $result=$this->db->resultSet();
          return $result;
@@ -247,7 +259,9 @@
 
       public function getSearchReqNutritionist($search)
       {
-        $this->db->query("SELECT * FROM requested_nutritionist WHERE CONCAT(first_name,last_name) LIKE '%$search%'");
+        $this->db->query("SELECT * FROM requested_nutritionist WHERE CONCAT(first_name,last_name) LIKE '%$search%' AND email_verified_flag=:email_verified_flag");
+        $this->db->bind(':email_verified_flag',1);
+      
         $result=$this->db->resultSet();
          return $result;
       } 
@@ -321,15 +335,18 @@
       
       public function getReqMeditationInstructors()
       {
-        $this->db->query('SELECT *  FROM requested_meditation_instructor');
-       
+        $this->db->query('SELECT *  FROM requested_meditation_instructor WHERE email_verified_flag=:email_verified_flag');
+        $this->db->bind(':email_verified_flag',1);
+      
         $result=$this->db->resultSet();
          return $result;
       } 
 
       public function getSearchReqMeditationInstructors($search)
       {
-        $this->db->query("SELECT * FROM requested_meditation_instructor WHERE CONCAT(first_name,last_name,city,address) LIKE '%$search%'");
+        $this->db->query("SELECT * FROM requested_meditation_instructor WHERE CONCAT(first_name,last_name,city,address) LIKE '%$search%' AND email_verified_flag=:email_verified_flag");
+        $this->db->bind(':email_verified_flag',1);
+      
         $result=$this->db->resultSet();
          return $result;
       } 
@@ -397,8 +414,9 @@
       
       public function getReqPharmacists()
       {
-        $this->db->query('SELECT *  FROM requested_pharmacist');
-       
+        $this->db->query('SELECT *  FROM requested_pharmacist WHERE email_verified_flag=:email_verified_flag');
+        $this->db->bind(':email_verified_flag',1);
+         
         $result=$this->db->resultSet();
          return $result;
       } 
@@ -406,7 +424,9 @@
 
       public function getSearchReqPharmacists($search)
       {
-        $this->db->query("SELECT * FROM requested_doctor WHERE CONCAT(first_name,last_name,city,type,specialization) LIKE '%$search%'");
+        $this->db->query("SELECT * FROM requested_doctor WHERE CONCAT(first_name,last_name,city,type,specialization) LIKE '%$search%' AND email_verified_flag=:email_verified_flag");
+        $this->db->bind(':email_verified_flag',1);
+      
         $result=$this->db->resultSet();
          return $result;
       } 

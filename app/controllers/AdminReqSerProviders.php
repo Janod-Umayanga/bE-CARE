@@ -178,18 +178,12 @@ class AdminReqSerProviders extends Controller{
   public function  adminVerifyReqDoctor($doctor_id)
   {
     if(isset($_SESSION['admin_id'])) {  
-      $to ='geenathweer1@gmail.com'; /*$_POST['email'];*/ 
-      $subject = 'Verify your email address';
-      $message = 'Hello ' . 'Geenath' . ',<br><br>Please click the following link to verify your email address:<br><a href="http://localhost/verify.php?">Verify your email address</a><br><br>Thanks!';
-      $headers = 'From: myemail@example.com' . "\r\n" .
-                 'Content-type: text/html; charset=UTF-8' . "\r\n" .
-                 'X-Mailer: PHP/' . phpversion();
-      
-      mail($to, $subject, $message, $headers);
-      
+  
+    $doctorDetails=$this->adminReqSerProvidersModel->getReqDoctorDetails($doctor_id);
     $verifydoctor= $this->adminReqSerProvidersModel->VerifyReqDoctor($doctor_id);
     $doctor= $this->adminReqSerProvidersModel->getReqDoctors();
-    
+    sendMail($doctorDetails->email,$doctorDetails->first_name,'', 3,'');
+
     $data=[                      
       'doctor'=>$doctor,
       'search'=>'',
@@ -206,10 +200,12 @@ class AdminReqSerProviders extends Controller{
   {
   
     if(isset($_SESSION['admin_id'])) {  
-  
+
+    $doctorDetails=$this->adminReqSerProvidersModel->getReqDoctorDetails($doctor_id);
     $notverifydoctor= $this->adminReqSerProvidersModel->NotVerifyReqDoctor($doctor_id);
     $doctor= $this->adminReqSerProvidersModel->getReqDoctors();
-   
+    sendMail($doctorDetails->email,$doctorDetails->first_name,'', 4,'');
+  
     $data=[                      
       'doctor'=>$doctor,
       'search'=>'',
@@ -272,10 +268,12 @@ public function  adminViewMoreReqPharmacist($pharmacist_id)
 public function  adminVerifyReqPharmacist($pharmacist_id)
 {
   if(isset($_SESSION['admin_id'])) {  
-  
+
+  $pharmacistDetails=$this->adminReqSerProvidersModel->getReqPharmacistDetails($pharmacist_id);
   $verifypharmacist= $this->adminReqSerProvidersModel->VerifyReqPharmacist($pharmacist_id);
   $pharmacist= $this->adminReqSerProvidersModel->getReqPharmacists();
- 
+  sendMail($pharmacistDetails->email,$pharmacistDetails->first_name,'', 3,'');
+
   $data=[                      
     'pharmacist'=>$pharmacist,
     'search'=>'',
@@ -292,9 +290,12 @@ public function  adminNotVerifyReqPharmacist($pharmacist_id)
 {
   if(isset($_SESSION['admin_id'])) {  
   
+  $pharmacistDetails=$this->adminReqSerProvidersModel->getReqPharmacistDetails($pharmacist_id);
   $notverifypharmacist= $this->adminReqSerProvidersModel->NotVerifyReqPharmacist($pharmacist_id);
   $pharmacist= $this->adminReqSerProvidersModel->getReqPharmacists();
+  sendMail($pharmacistDetails->email,$pharmacistDetails->first_name,'', 4,'');
    
+
     $data=[                      
       'pharmacist'=>$pharmacist,
       'search'=>'',
@@ -361,8 +362,11 @@ public function  adminVerifyReqCounsellor($counsellor_id)
 {
   if(isset($_SESSION['admin_id'])) {  
   
+  $counsellorDetails=$this->adminReqSerProvidersModel->getReqCounsellorDetails($counsellor_id);
   $verifycounsellor= $this->adminReqSerProvidersModel->VerifyReqCounsellor($counsellor_id);
   $counsellor= $this->adminReqSerProvidersModel->getReqCounsellors();
+  sendMail($counsellorDetails->email,$counsellorDetails->first_name,'', 3,'');
+
  
   $data=[                      
     'counsellor'=>$counsellor,
@@ -380,9 +384,12 @@ public function  adminNotVerifyReqCounsellor($counsellor_id)
 {
   if(isset($_SESSION['admin_id'])) {  
   
+  $counsellorDetails=$this->adminReqSerProvidersModel->getReqCounsellorDetails($counsellor_id);
   $notverifycounsellor= $this->adminReqSerProvidersModel->NotVerifyReqCounsellor($counsellor_id);
   $counsellor= $this->adminReqSerProvidersModel->getReqCounsellors();
-   
+  sendMail($counsellorDetails->email,$counsellorDetails->first_name,'', 4,'');
+ 
+  
     $data=[                      
       'counsellor'=>$counsellor,
       'search'=>'',
@@ -448,9 +455,11 @@ public function  adminVerifyReqNutritionist($nutritionist_id)
 {
   if(isset($_SESSION['admin_id'])) {  
   
+  $nutritionistDetails=$this->adminReqSerProvidersModel->getReqNutritionistDetails($nutritionist_id);
   $verifynutritionist= $this->adminReqSerProvidersModel->VerifyReqNutritionist($nutritionist_id);
   $nutritionist= $this->adminReqSerProvidersModel->getReqNutritionists();
- 
+  sendMail($nutritionistDetails->email,$nutritionistDetails->first_name,'', 3,'');
+
   $data=[                      
     'nutritionist'=>$nutritionist,
     'search'=>'',
@@ -466,10 +475,12 @@ public function  adminVerifyReqNutritionist($nutritionist_id)
 public function  adminNotVerifyReqNutritionist($nutritionist_id)
 {
   if(isset($_SESSION['admin_id'])) {  
-  
+
+  $nutritionistDetails=$this->adminReqSerProvidersModel->getReqNutritionistDetails($nutritionist_id);
   $notverifynutritionist= $this->adminReqSerProvidersModel->NotVerifyReqNutritionist($nutritionist_id);
   $nutritionist= $this->adminReqSerProvidersModel->getReqNutritionists();
-   
+  sendMail($nutritionistDetails->email,$nutritionistDetails->first_name,'', 4,'');
+    
     $data=[                      
       'nutritionist'=>$nutritionist,
       'search'=>'',
@@ -534,11 +545,12 @@ public function  adminViewMoreReqMeditationInstructor($meditationInstructor_id)
 public function  adminVerifyReqMeditationInstructor($meditationInstructor_id)
 {
   if(isset($_SESSION['admin_id'])) {  
-  
+
+  $meditationInstructorDetails=$this->adminReqSerProvidersModel->getReqMeditationInstructorDetails($meditationInstructor_id);
   $verifymeditationInstructor= $this->adminReqSerProvidersModel->VerifyReqMeditationInstructor($meditationInstructor_id);
- 
   $meditationInstructor= $this->adminReqSerProvidersModel->getReqmeditationInstructors();
- 
+  sendMail($meditationInstructorDetails->email,$meditationInstructorDetails->first_name,'', 3,'');
+
   $data=[                      
     'meditationInstructor'=>$meditationInstructor,
     'search'=>'',
@@ -556,9 +568,10 @@ public function  adminNotVerifyReqMeditationInstructor($meditationInstructor_id)
 
   if(isset($_SESSION['admin_id'])) {  
   
-
+  $meditationInstructorDetails=$this->adminReqSerProvidersModel->getReqMeditationInstructorDetails($meditationInstructor_id);
   $notverifymeditationInstructor= $this->adminReqSerProvidersModel->NotVerifyReqMeditationInstructor($meditationInstructor_id);
   $meditationInstructor= $this->adminReqSerProvidersModel->getReqmeditationInstructors();
+  sendMail($meditationInstructorDetails->email,$meditationInstructorDetails->first_name,'', 4,'');
    
     $data=[                      
       'meditationInstructor'=>$meditationInstructor,

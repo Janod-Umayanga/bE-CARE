@@ -9,8 +9,8 @@
 
         // Register patient
         public function register($data) {
-            $this->db->query('INSERT INTO patient(first_name, last_name, nic, contact_number, gender, email, password)
-            VALUES(:first_name, :last_name, :nic, :contact_number, :gender, :email, :password)');
+            $this->db->query('INSERT INTO patient(first_name, last_name, nic, contact_number, gender, email, password,delete_flag)
+            VALUES(:first_name, :last_name, :nic, :contact_number, :gender, :email, :password, :delete_flag)');
             $this->db->bind(':first_name', $data['fname']);
             $this->db->bind(':last_name', $data['lname']);
             $this->db->bind(':nic', $data['nic']);
@@ -18,6 +18,7 @@
             $this->db->bind(':gender', $data['gender']);
             $this->db->bind(':email', $data['email']);
             $this->db->bind(':password', $data['password']);
+            $this->db->bind(':delete_flag', 1);
 
             if($this->db->execute()) {
                 return true;
@@ -178,7 +179,15 @@
             return false;
         } 
       }
+    
+    //Get latest patient information  
       
+    public function getLatestPatientID() {
+        $this->db->query('SELECT * FROM patient ORDER BY patient_id DESC');
+       
+        return $this->db->single();
+    }
+
 
     }
 

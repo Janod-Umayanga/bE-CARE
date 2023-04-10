@@ -117,7 +117,10 @@
                     // Register patient
                     if($this->patientModel->register($data)) {
                         $_SESSION['signed_up'] = true;
-                        redirect('Login/login');
+                        $patientDetails=$this->patientModel->getLatestPatientID();
+                        sendMail($data['email'],$data['fname'],1, 7,$patientDetails->patient_id);
+       
+                        redirect('Pages/verify_email');
                     }
                     else {
                         die('Something went wrong');

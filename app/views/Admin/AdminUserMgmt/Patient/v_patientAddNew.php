@@ -60,7 +60,7 @@
 
 
                         <label for="confirm_password">Confirm Password</label>
-                        <input type="text" id="confirm_password" name="confirm_password" value="<?php echo $data['confirm_password'] ?>">
+                        <input type="password" id="confirm_password" name="confirm_password" value="<?php echo $data['confirm_password'] ?>">
                         <span class="form-invalid"><?php echo $data['confirm_password_err'] ?></span>
 
 
