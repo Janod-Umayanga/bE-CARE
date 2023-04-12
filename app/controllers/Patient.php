@@ -395,6 +395,8 @@
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
                 $doctors = $this->doctorModel->getDoctors(trim($_POST['search']), trim($_POST['specialization']), trim($_POST['city']), trim($_POST['day']));
+
+                // echo json_encode($doctors);
             }
             else {
                 // Show all doctors
