@@ -60,9 +60,14 @@
                             <button>Submit</button>
                         </div>
                         <div class="right">
+                        
                             <label for="gender">Gender</label>
-                            <input type="text" id="gender" name="gender"  value="<?php if(isset($data['gender'])){echo $data['gender'];} ?>">
+                            <select name="gender" id="gender" >
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
                             <span class="form-invalid"><?php if(isset($data['gender_err'])){echo $data['gender_err'];} ?></span>
+
 
                             <label for="email">Email</label>
                             <input type="email" id="email" name="email"  value="<?php if(isset($data['email'])){echo $data['email'];} ?>">

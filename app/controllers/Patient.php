@@ -65,19 +65,28 @@
                 // Validate name
                 if(empty($data['fname'])) {
                     $data['fname_err'] = 'First name required';
+                }else if(validateFirstName($data['fname'])!="true"){
+                    $data['fname_err']=validateFirstName($data['fname']);
                 }
+
                 if(empty($data['lname'])) {
                     $data['lname_err'] = 'Last name required';
-                }
+                }else if(validateLastName($data['lname'])!="true"){
+                    $data['lname_err']=validateLastName($data['lname']);
+                   }
 
                 // Validate nic
                 if(empty($data['nic'])) {
                     $data['nic_err'] = 'NIC required';
+                }else if(validateNIC($data['nic'])!="true"){
+                    $data['nic_err']=validateNIC($data['nic']);
                 }
 
                 // Validate contact number
                 if(empty($data['cnumber'])) {
                     $data['cnumber_err'] = 'Contact number required';
+                }else if(validateContactNumber($data['cnumber'])!="true"){
+                    $data['cnumber_err']=validateContactNumber($data['cnumber']);
                 }
 
                 // Validate gender
@@ -88,7 +97,10 @@
                 // Validate email
                 if(empty($data['email'])) {
                     $data['email_err'] = 'Email required';
+                }else if(validateEmail($data['email'])!="true"){
+                    $data['email_err']=validateEmail($data['email']);
                 }
+                
                 else {
                     //check for existing emails
                     if($this->patientModel->findPatientByEmail($data['email'])) {
@@ -99,9 +111,13 @@
                 // Validate password
                 if(empty($data['password'])) {
                     $data['password_err'] = 'Password required';
+                }else if(validatePassword($data['password'])!="true"){
+                    $data['password_err']=validatePassword($data['password']);
                 }
                 else if(empty($data['password_confirmation'])) {
                     $data['password_confirmation_err'] = 'Password confirmation required';
+                }else if(validatePassword($data['password_confirmation'])!="true"){
+                    $data['password_confirmation_err']=validatePassword($data['password_confirmation']);
                 }
                 else {
                     if($data['password'] != $data['password_confirmation']) {

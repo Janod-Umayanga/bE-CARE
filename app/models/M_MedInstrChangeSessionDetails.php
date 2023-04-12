@@ -50,7 +50,7 @@ class M_MedInstrChangeSessionDetails{
   public function medInstraddNewSession($id,$data)
   {
    
-    $this->db->query('INSERT INTO session (title,description,date,starting_time,ending_time,address,fee,noOfParticipants,meditation_instructor_id) VALUES (:title,:description,:date,:starting_time,:ending_time,:address,:fee,:noOfParticipants,:id)');
+    $this->db->query('INSERT INTO session (title,description,date,starting_time,ending_time,address,registration_fee,noOfParticipants,meditation_instructor_id) VALUES (:title,:description,:date,:starting_time,:ending_time,:address,:fee,:noOfParticipants,:id)');
     $this->db->bind(':title',$data['title']);
     $this->db->bind(':description',$data['description']);
     $this->db->bind(':date',$data['date']);
@@ -81,7 +81,7 @@ class M_MedInstrChangeSessionDetails{
 
   public function medInstrupdateSession($id,$sessionId,$data)
   {
-    $this->db->query('UPDATE session SET title=:title,date=:date,starting_time=:starting_time,ending_time=:ending_time,address=:address,fee=:fee,noOfParticipants=:noOfParticipants,description=:description,meditation_instructor_id=:id WHERE session_id=:sessionId');
+    $this->db->query('UPDATE session SET title=:title,date=:date,starting_time=:starting_time,ending_time=:ending_time,address=:address,registration_fee=:fee,noOfParticipants=:noOfParticipants,description=:description,meditation_instructor_id=:id WHERE session_id=:sessionId');
     $this->db->bind(':title',$data['title']);
     $this->db->bind(':description',$data['description']);
     $this->db->bind(':date',$data['date']);

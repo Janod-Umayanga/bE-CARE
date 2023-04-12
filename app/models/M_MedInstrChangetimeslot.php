@@ -181,7 +181,6 @@
         $days_to_add_count = 0;
 
         $rows = $this->db->resultSet();
-        echo ($this->db->rowCount());
         if($this->db->rowCount() < 4) {
             $days_to_add_count = 4 - $this->db->rowCount();
             return $this->createAppointmentDays($day, $starting_time,$ending_time,$fee,$address,$noOfParticipants, $meditation_instructor_id,$med_timeslot_id, $days_to_add_count);
