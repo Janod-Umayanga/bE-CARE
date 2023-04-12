@@ -240,7 +240,26 @@
     }
 
     // If all checks pass, return true
-    return true;
-}
+    return "true";
+
+  }
+
+
+
+  function validatePharmacyName($pharmacyName) {
+   // Check that the name contains only letters, numbers, and spaces
+    if (!preg_match('/^[a-zA-Z0-9\s]+$/', $pharmacyName)) {
+      return 'pharmacy name should only contain letters, numbers, and spaces';
+    }
+    
+    // Check if the length of the pharmacy name is between 2 and 50 characters
+    if (strlen($pharmacyName) < 2 || strlen($pharmacyName) > 50) {
+      return 'pharmacy name must be between 2 and 50 characters';
+    }
+    
+    // If all checks pass, return true
+    return "true";
+  }
+
 
  ?>

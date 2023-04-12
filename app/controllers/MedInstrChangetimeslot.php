@@ -113,14 +113,20 @@ class MedInstrChangetimeslot extends Controller{
 
         if(empty($data['fee'])){
           $data['fee_err']='Please enter a fee';
-        }
+        }else if(validateFee($data['fee'])!="true"){
+          $data['fee_err']=validateFee($data['fee']);
+         }
 
         if(empty($data['address'])){
            $data['address_err']='Please enter a address';
-        } 
+        }else if(validateAddress($data['address'])!="true"){
+          $data['address_err']=validateAddress($data['address']);
+         } 
        
         if(empty($data['noOfParticipants'])){
           $data['noOfParticipants_err']='Please enter a no Of Participants';
+       }else if(validateMaxParticipants($data['noOfParticipants'])!="true"){
+        $data['noOfParticipants_err']=validateMaxParticipants($data['noOfParticipants']);
        } 
        
 
@@ -348,15 +354,22 @@ public function updateFutureTimeslot($timeslot_id)
 
       if(empty($data['fee'])){
         $data['fee_err']='Please enter a fee';
-      }
+      }else if(validateFee($data['fee'])!="true"){
+        $data['fee_err']=validateFee($data['fee']);
+       }
 
       if(empty($data['address'])){
          $data['address_err']='Please enter a address';
-      } 
+      }else if(validateAddress($data['address'])!="true"){
+        $data['address_err']=validateAddress($data['address']);
+       } 
      
       if(empty($data['noOfParticipants'])){
         $data['noOfParticipants_err']='Please enter a no Of Participants';
-     } 
+     }else if(validateMaxParticipants($data['noOfParticipants'])!="true"){
+        $data['noOfParticipants_err']=validateMaxParticipants($data['noOfParticipants']);
+      }
+     
      
 
       if(empty($data['appointment_day_err']) && empty($data['starting_time_err']) && empty($data['ending_time_err']) && empty($data['fee_err']) && empty($data['address_err']) && empty($data['noOfParticipants_err']) ){

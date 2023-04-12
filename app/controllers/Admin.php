@@ -83,7 +83,12 @@ class Admin extends Controller{
 
        if(empty($data['current_password'])){
          $data['current_password_err']='Please enter a current password';
-       }else{
+       
+       }else if(validatePassword($data['current_password'])!="true"){
+        $data['current_password_err']=validatePassword($data['current_password']);
+       }
+       
+       else{
           if($this->userModel->findUserPWMatch($id,$data['current_password'])){
      
          }else{
@@ -97,11 +102,17 @@ class Admin extends Controller{
 
        if(empty($data['new_password'])){
           $data['new_password_err']='Please enter a new password';
+       
+       }else if(validatePassword($data['new_password'])!="true"){
+        $data['new_password_err']=validatePassword($data['new_password']);
        } 
        
        if(empty($data['retype_new_password'])){
         $data['retype_new_password_err']='Please retype new password';
-     } 
+      }
+      else if(validatePassword($data['retype_new_password'])!="true"){
+       $data['retype_new_password_err']=validatePassword($data['retype_new_password']);
+      }
 
        if(empty($data['current_password_err']) && empty($data['retype_new_password_err']) && empty($data['new_password_err'])){
      
@@ -207,6 +218,7 @@ class Admin extends Controller{
 
         if(empty($data['bank_name'])){
           $data['bank_name_err']='bank name can not be empty';
+
       }else if(validateBankBranch($data['bank_name'])!="true"){
         $data['bank_name_err']=validateBankBranch($data['bank_name']);
        }

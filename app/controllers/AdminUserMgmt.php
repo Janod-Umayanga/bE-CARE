@@ -770,31 +770,48 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
       } 
        if(empty($data['first_name'])){
           $data['first_name_err']='first name can not be empty';
+       }else if(validateFirstName($data['first_name'])!="true"){
+        $data['first_name_err']=validateFirstName($data['first_name']);
        }
       
        if(empty($data['last_name'])){
           $data['last_name_err']='last name can not be empty';
+       }else if(validateLastName($data['last_name'])!="true"){
+        $data['last_name_err']=validateLastName($data['last_name']);
        }
     
+
        if(empty($data['nic'])){
         $data['nic_err']='nic can not be empty';
+       }else if(validateNIC($data['nic'])!="true"){
+        $data['nic_err']=validateNIC($data['nic']);
        }
+
     
         if(empty($data['contact_number'])){
           $data['contact_number_err']='contact number can not be empty';
+        }else if(validateContactNumber($data['contact_number'])!="true"){
+          $data['contact_number_err']=validateContactNumber($data['contact_number']);
         }
     
         if(empty($data['email'])){
           $data['email_err']='email can not be empty';
-      }
+        }else if(validateEmail($data['email'])!="true"){
+          $data['email_err']=validateEmail($data['email']);
+         }
       
       if(empty($data['password'])){
           $data['password_err']='password can not be empty';
-      }
+      }else if(validatePassword($data['password'])!="true"){
+        $data['password_err']=validatePassword($data['password']);
+       }
     
       if(empty($data['confirm_password'])){
         $data['confirm_password_err']='confirm password can not be empty';
-      }
+      }else if(validatePassword($data['confirm_password'])!="true"){
+        $data['confirm_password_err']=validatePassword($data['confirm_password']);
+       }
+    
     
       if(empty($data['gender'])){
         $data['gender_err']='gender can not be empty';
@@ -945,55 +962,86 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
           }
           if(empty($data['first_name'])){
              $data['first_name_err']='first name can not be empty';
-          }
+          }else if(validateFirstName($data['first_name'])!="true"){
+            $data['first_name_err']=validateFirstName($data['first_name']);
+           }
          
           if(empty($data['last_name'])){
              $data['last_name_err']='last name can not be empty';
-          }
+          }else if(validateLastName($data['last_name'])!="true"){
+            $data['last_name_err']=validateLastName($data['last_name']);
+           }
        
           if(empty($data['nic'])){
             $data['nic_err']='nic can not be empty';
+         }else if(validateNIC($data['nic'])!="true"){
+          $data['nic_err']=validateNIC($data['nic']);
          }
         
          if(empty($data['contact_number'])){
             $data['contact_number_err']='contact number can not be empty';
-         }
+         }else if(validateContactNumber($data['contact_number'])!="true"){
+          $data['contact_number_err']=validateContactNumber($data['contact_number']);
+        }
+    
           
-            if(empty($data['email'])){
+          if(empty($data['email'])){
               $data['email_err']='email can not be empty';
-          }
+          }else if(validateEmail($data['email'])!="true"){
+            $data['email_err']=validateEmail($data['email']);
+           }
           
           if(empty($data['password'])){
               $data['password_err']='password can not be empty';
-          }
+          }else if(validatePassword($data['password'])!="true"){
+            $data['password_err']=validatePassword($data['password']);
+           }
         
           if(empty($data['confirm_password'])){
             $data['confirm_password_err']='confirm password  can not be empty';
-          }
+          }else if(validatePassword($data['confirm_password'])!="true"){
+            $data['confirm_password_err']=validatePassword($data['confirm_password']);
+           }
         
           if(empty($data['city'])){
             $data['city_err']='city can not be empty';
-          }
+          }else if(validateCity($data['city'])!="true"){
+            $data['city_err']=validateCity($data['city']);
+           }
 
-            if(empty($data['bank_name'])){
+          if(empty($data['bank_name'])){
               $data['bank_name_err']='bank name can not be empty';
-          }
+          }else if(validateBankName($data['bank_name'])!="true"){
+            $data['bank_name_err']=validateBankName($data['bank_name']);
+           }
           
           if(empty($data['account_holder_name'])){
               $data['account_holder_name_err']='account holder name can not be empty';
-          }
+          }else if(validateAccountHolderName($data['account_holder_name'])!="true"){
+            $data['account_holder_name_err']=validateAccountHolderName($data['account_holder_name']);
+           }
+          
         
           if(empty($data['branch'])){
             $data['branch_err']='branch name can not be empty';
-          }
+          }else if(validateBankBranch($data['branch'])!="true"){
+            $data['branch_err']=validateBankBranch($data['branch']);
+           }
+          
         
           if(empty($data['account_number'])){
             $data['account_number_err']='account number can not be empty';
-          }
+          }else if(validateAccountNumber($data['account_number'])!="true"){
+            $data['account_number_err']=validateAccountNumber($data['account_number']);
+           }
+          
 
           if(empty($data['slmc_reg_number'])){
             $data['slmc_reg_number_err']='slmc reg number can not be empty';
+         }else if(validateSlmcRegisterNumber($data['slmc_reg_number'])!="true"){
+          $data['slmc_reg_number_err']=validateSlmcRegisterNumber($data['slmc_reg_number']);
          }
+        
         
           if(empty($data['type'])){
               $data['type_err']='type can not be empty';
@@ -1001,8 +1049,12 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
         
           if(empty($data['specialization'])){
             $data['specialization_err']='specialization can not be empty';
-          }
+          }else if(validateSpecialization($data['specialization'])!="true"){
+            $data['specialization_err']=validateSpecialization($data['specialization']);
+           }
           
+          
+
           if(empty($data['gender'])){
             $data['gender_err']='gender can not be empty';
           }
@@ -1168,55 +1220,83 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
        
                 if(empty($data['first_name'])){
                   $data['first_name_err']='first name can not be empty';
+               }else if(validateFirstName($data['first_name'])!="true"){
+                $data['first_name_err']=validateFirstName($data['first_name']);
                }
               
                if(empty($data['last_name'])){
                   $data['last_name_err']='last name can not be empty';
+               }else if(validateLastName($data['last_name'])!="true"){
+                $data['last_name_err']=validateLastName($data['last_name']);
                }
             
                if(empty($data['nic'])){
                  $data['nic_err']='nic can not be empty';
-              }
+              }else if(validateNIC($data['nic'])!="true"){
+                $data['nic_err']=validateNIC($data['nic']);
+               }
              
               if(empty($data['contact_number'])){
                  $data['contact_number_err']='contact number can not be empty';
+              }else if(validateContactNumber($data['contact_number'])!="true"){
+                $data['contact_number_err']=validateContactNumber($data['contact_number']);
               }
                
-                 if(empty($data['email'])){
+               if(empty($data['email'])){
                    $data['email_err']='email can not be empty';
+               }else if(validateEmail($data['email'])!="true"){
+                $data['email_err']=validateEmail($data['email']);
                }
                
                if(empty($data['password'])){
                    $data['password_err']='password can not be empty';
+               }else if(validatePassword($data['password'])!="true"){
+                $data['password_err']=validatePassword($data['password']);
                }
              
                if(empty($data['confirm_password'])){
                  $data['confirm_password_err']='confirm password  can not be empty';
+               }else if(validatePassword($data['confirm_password'])!="true"){
+                $data['confirm_password_err']=validatePassword($data['confirm_password']);
                }
              
                if(empty($data['city'])){
                  $data['city_err']='city can not be empty';
+               }else if(validateCity($data['city'])!="true"){
+                $data['city_err']=validateCity($data['city']);
                }
      
                  if(empty($data['bank_name'])){
                    $data['bank_name_err']='bank name can not be empty';
+               }else if(validateBankName($data['bank_name'])!="true"){
+                $data['bank_name_err']=validateBankName($data['bank_name']);
                }
                
                if(empty($data['account_holder_name'])){
                    $data['account_holder_name_err']='account_holder name can not be empty';
+               }else if(validateAccountHolderName($data['account_holder_name'])!="true"){
+                $data['account_holder_name_err']=validateAccountHolderName($data['account_holder_name']);
                }
              
                if(empty($data['branch'])){
                  $data['branch_err']='branch name can not be empty';
+               }else if(validateBankBranch($data['branch'])!="true"){
+                $data['branch_err']=validateBankBranch($data['branch']);
                }
+              
              
                if(empty($data['account_number'])){
                  $data['account_number_err']='last name can not be empty';
+               }else if(validateAccountNumber($data['account_number'])!="true"){
+                $data['account_number_err']=validateAccountNumber($data['account_number']);
                }
      
                if(empty($data['slmc_reg_number'])){
                  $data['slmc_reg_number_err']='slmc reg number can not be empty';
-              }
+              }else if(validateSlmcRegisterNumber($data['slmc_reg_number'])!="true"){
+                $data['slmc_reg_number_err']=validateSlmcRegisterNumber($data['slmc_reg_number']);
+               }
+              
              
                
                if(empty($data['gender'])){
@@ -1352,47 +1432,72 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
          
           if(empty($data['first_name'])){
             $data['first_name_err']='first name can not be empty';
+         }else if(validateFirstName($data['first_name'])!="true"){
+          $data['first_name_err']=validateFirstName($data['first_name']);
          }
         
          if(empty($data['last_name'])){
             $data['last_name_err']='last name can not be empty';
+         }else if(validateLastName($data['last_name'])!="true"){
+          $data['last_name_err']=validateLastName($data['last_name']);
          }
       
          if(empty($data['nic'])){
            $data['nic_err']='nic can not be empty';
-        }
+        }else if(validateNIC($data['nic'])!="true"){
+          $data['nic_err']=validateNIC($data['nic']);
+         }
+  
        
         if(empty($data['contact_number'])){
            $data['contact_number_err']='contact number can not be empty';
+        }else if(validateContactNumber($data['contact_number'])!="true"){
+          $data['contact_number_err']=validateContactNumber($data['contact_number']);
         }
          
-           if(empty($data['email'])){
+         if(empty($data['email'])){
              $data['email_err']='email can not be empty';
+         }else if(validateEmail($data['email'])!="true"){
+          $data['email_err']=validateEmail($data['email']);
          }
          
          if(empty($data['password'])){
              $data['password_err']='password can not be empty';
+         }else if(validatePassword($data['password'])!="true"){
+          $data['password_err']=validatePassword($data['password']);
          }
        
          if(empty($data['confirm_password'])){
            $data['confirm_password_err']='confirm password  can not be empty';
+         }else if(validatePassword($data['confirm_password'])!="true"){
+          $data['confirm_password_err']=validatePassword($data['confirm_password']);
          }
+      
        
          if(empty($data['bank_name'])){
              $data['bank_name_err']='bank name can not be empty';
+         }else if(validateBankName($data['bank_name'])!="true"){
+          $data['bank_name_err']=validateBankName($data['bank_name']);
          }
          
          if(empty($data['account_holder_name'])){
              $data['account_holder_name_err']='account_holder name can not be empty';
+         }else if(validateAccountHolderName($data['account_holder_name'])!="true"){
+          $data['account_holder_name_err']=validateAccountHolderName($data['account_holder_name']);
          }
        
          if(empty($data['branch'])){
            $data['branch_err']='branch name can not be empty';
+         }else if(validateBankBranch($data['branch'])!="true"){
+          $data['branch_err']=validateBankBranch($data['branch']);
          }
        
          if(empty($data['account_number'])){
            $data['account_number_err']='account_number can not be empty';
+         }else if(validateAccountNumber($data['account_number'])!="true"){
+          $data['account_number_err']=validateAccountNumber($data['account_number']);
          }
+        
 
          if(empty($data['gender'])){
            $data['gender_err']='gender can not be empty';
@@ -1545,58 +1650,90 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
  
           if(empty($data['first_name'])){
             $data['first_name_err']='first name can not be empty';
+         }else if(validateFirstName($data['first_name'])!="true"){
+          $data['first_name_err']=validateFirstName($data['first_name']);
          }
+        
         
          if(empty($data['last_name'])){
             $data['last_name_err']='last name can not be empty';
+         }else if(validateLastName($data['last_name'])!="true"){
+          $data['last_name_err']=validateLastName($data['last_name']);
          }
       
          if(empty($data['nic'])){
            $data['nic_err']='nic can not be empty';
-        }
+        }else if(validateNIC($data['nic'])!="true"){
+          $data['nic_err']=validateNIC($data['nic']);
+         }
        
         if(empty($data['contact_number'])){
            $data['contact_number_err']='contact number can not be empty';
+        }else if(validateContactNumber($data['contact_number'])!="true"){
+          $data['contact_number_err']=validateContactNumber($data['contact_number']);
         }
          
-           if(empty($data['email'])){
+         if(empty($data['email'])){
              $data['email_err']='email can not be empty';
+         }else if(validateEmail($data['email'])!="true"){
+          $data['email_err']=validateEmail($data['email']);
          }
          
          if(empty($data['password'])){
              $data['password_err']='password can not be empty';
+         }else if(validatePassword($data['password'])!="true"){
+          $data['password_err']=validatePassword($data['password']);
          }
        
          if(empty($data['confirm_password'])){
            $data['confirm_password_err']='confirm password  can not be empty';
+         }else if(validatePassword($data['confirm_password'])!="true"){
+          $data['confirm_password_err']=validatePassword($data['confirm_password']);
          }
        
          if(empty($data['city'])){
            $data['city_err']='city can not be empty';
+         }else if(validateCity($data['city'])!="true"){
+          $data['city_err']=validateCity($data['city']);
          }
 
-           if(empty($data['bank_name'])){
+         if(empty($data['bank_name'])){
              $data['bank_name_err']='bank name can not be empty';
+         }else if(validateBankName($data['bank_name'])!="true"){
+          $data['bank_name_err']=validateBankName($data['bank_name']);
          }
          
          if(empty($data['account_holder_name'])){
              $data['account_holder_name_err']='account_holder name can not be empty';
+         }else if(validateAccountHolderName($data['account_holder_name'])!="true"){
+          $data['account_holder_name_err']=validateAccountHolderName($data['account_holder_name']);
          }
+        
        
          if(empty($data['branch'])){
            $data['branch_err']='branch name can not be empty';
+         }else if(validateBankBranch($data['branch'])!="true"){
+          $data['branch_err']=validateBankBranch($data['branch']);
          }
        
          if(empty($data['account_number'])){
            $data['account_number_err']='account_number can not be empty';
+         }else if(validateAccountNumber($data['account_number'])!="true"){
+          $data['account_number_err']=validateAccountNumber($data['account_number']);
          }
+        
 
          if(empty($data['address'])){
            $data['address_err']='address can not be empty';
-        }
+        }else if(validateAddress($data['address'])!="true"){
+          $data['address_err']=validateAddress($data['address']);
+         }
+        
        
          if(empty($data['fee'])){
              $data['fee_err']='fee can not be empty';
+         }else if(validateFee($data['fee'])!="true"){
+          $data['fee_err']=validateFee($data['fee']);
          }
        
         
@@ -1769,62 +1906,97 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
  
           if(empty($data['first_name'])){
             $data['first_name_err']='first name can not be empty';
+         }else if(validateFirstName($data['first_name'])!="true"){
+          $data['first_name_err']=validateFirstName($data['first_name']);
          }
         
          if(empty($data['last_name'])){
             $data['last_name_err']='last name can not be empty';
+         }else if(validateLastName($data['last_name'])!="true"){
+          $data['last_name_err']=validateLastName($data['last_name']);
          }
       
          if(empty($data['nic'])){
            $data['nic_err']='nic can not be empty';
-        }
+        }else if(validateNIC($data['nic'])!="true"){
+          $data['nic_err']=validateNIC($data['nic']);
+         }
        
         if(empty($data['contact_number'])){
            $data['contact_number_err']='contact number can not be empty';
+        }else if(validateContactNumber($data['contact_number'])!="true"){
+          $data['contact_number_err']=validateContactNumber($data['contact_number']);
         }
          
            if(empty($data['email'])){
              $data['email_err']='email can not be empty';
+         }else if(validateEmail($data['email'])!="true"){
+          $data['email_err']=validateEmail($data['email']);
          }
          
          if(empty($data['password'])){
              $data['password_err']='password can not be empty';
+         }else if(validatePassword($data['password'])!="true"){
+          $data['password_err']=validatePassword($data['password']);
          }
        
          if(empty($data['confirm_password'])){
            $data['confirm_password_err']='confirm password  can not be empty';
+         }else if(validatePassword($data['confirm_password'])!="true"){
+          $data['confirm_password_err']=validatePassword($data['confirm_password']);
          }
        
          if(empty($data['city'])){
            $data['city_err']='city can not be empty';
+         }else if(validateCity($data['city'])!="true"){
+          $data['city_err']=validateCity($data['city']);
          }
 
            if(empty($data['bank_name'])){
              $data['bank_name_err']='bank name can not be empty';
+         }else if(validateBankName($data['bank_name'])!="true"){
+          $data['bank_name_err']=validateBankName($data['bank_name']);
          }
          
          if(empty($data['account_holder_name'])){
              $data['account_holder_name_err']='account_holder name can not be empty';
+         }else if(validateAccountHolderName($data['account_holder_name'])!="true"){
+          $data['account_holder_name_err']=validateAccountHolderName($data['account_holder_name']);
          }
        
          if(empty($data['branch'])){
            $data['branch_err']='branch name can not be empty';
+         }else if(validateBankBranch($data['branch'])!="true"){
+          $data['branch_err']=validateBankBranch($data['branch']);
          }
+        
        
          if(empty($data['account_number'])){
            $data['account_number_err']='last name can not be empty';
+         }else if(validateAccountNumber($data['account_number'])!="true"){
+          $data['account_number_err']=validateAccountNumber($data['account_number']);
          }
+        
+
 
          if(empty($data['slmc_reg_number'])){
            $data['slmc_reg_number_err']='slmc reg number can not be empty';
-        }
+        }else if(validateSlmcRegisterNumber($data['slmc_reg_number'])!="true"){
+          $data['slmc_reg_number_err']=validateSlmcRegisterNumber($data['slmc_reg_number']);
+         }
+        
        
          if(empty($data['pharmacy_name'])){
              $data['pharmacy_name_err']='pharmacy name can not be empty';
+         }else if(validatePharmacyName($data['pharmacy_name'])!="true"){
+          $data['pharmacy_name_err']=validatePharmacyName($data['pharmacy_name']);
          }
+        
        
          if(empty($data['address'])){
            $data['address_err']='address can not be empty';
+         }else if(validateAddress($data['address'])!="true"){
+          $data['address_err']=validateAddress($data['address']);
          }
          
          if(empty($data['gender'])){
@@ -1991,54 +2163,83 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
  
           if(empty($data['first_name'])){
             $data['first_name_err']='first name can not be empty';
+         }else if(validateFirstName($data['first_name'])!="true"){
+          $data['first_name_err']=validateFirstName($data['first_name']);
          }
         
          if(empty($data['last_name'])){
             $data['last_name_err']='last name can not be empty';
+         }else if(validateLastName($data['last_name'])!="true"){
+          $data['last_name_err']=validateLastName($data['last_name']);
          }
+      
+  
       
          if(empty($data['nic'])){
            $data['nic_err']='nic can not be empty';
-        }
+        }else if(validateNIC($data['nic'])!="true"){
+          $data['nic_err']=validateNIC($data['nic']);
+         }
        
         if(empty($data['contact_number'])){
            $data['contact_number_err']='contact number can not be empty';
+        }else if(validateContactNumber($data['contact_number'])!="true"){
+          $data['contact_number_err']=validateContactNumber($data['contact_number']);
         }
          
            if(empty($data['email'])){
              $data['email_err']='email can not be empty';
+         }else if(validateEmail($data['email'])!="true"){
+          $data['email_err']=validateEmail($data['email']);
          }
          
          if(empty($data['password'])){
              $data['password_err']='password can not be empty';
+         }else if(validatePassword($data['password'])!="true"){
+          $data['password_err']=validatePassword($data['password']);
          }
+      
        
          if(empty($data['confirm_password'])){
            $data['confirm_password_err']='confirm password  can not be empty';
+         }else if(validatePassword($data['confirm_password'])!="true"){
+          $data['confirm_password_err']=validatePassword($data['confirm_password']);
          }
        
          if(empty($data['bank_name'])){
              $data['bank_name_err']='bank name can not be empty';
+         }else if(validateBankName($data['bank_name'])!="true"){
+          $data['bank_name_err']=validateBankName($data['bank_name']);
          }
          
          if(empty($data['account_holder_name'])){
              $data['account_holder_name_err']='account holder name can not be empty';
+         }else if(validateAccountHolderName($data['account_holder_name'])!="true"){
+          $data['account_holder_name_err']=validateAccountHolderName($data['account_holder_name']);
          }
        
          if(empty($data['branch'])){
            $data['branch_err']='branch name can not be empty';
+         }else if(validateBankBranch($data['branch'])!="true"){
+          $data['branch_err']=validateBankBranch($data['branch']);
          }
        
          if(empty($data['account_number'])){
            $data['account_number_err']='account number can not be empty';
+         }else if(validateAccountNumber($data['account_number'])!="true"){
+          $data['account_number_err']=validateAccountNumber($data['account_number']);
          }
 
          if(empty($data['slmc_reg_number'])){
            $data['slmc_reg_number_err']='slmc reg number can not be empty';
-        }
+        }else if(validateSlmcRegisterNumber($data['slmc_reg_number'])!="true"){
+          $data['slmc_reg_number_err']=validateSlmcRegisterNumber($data['slmc_reg_number']);
+         }
        
          if(empty($data['fee'])){
              $data['fee_err']='fee can not be empty';
+         }else if(validateFee($data['fee'])!="true"){
+          $data['fee_err']=validateFee($data['fee']);
          }
        
          
