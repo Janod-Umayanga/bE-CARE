@@ -15,27 +15,79 @@ class Complaint extends Controller{
  
     $data=[                      
      'subject'=>trim($_POST['subject']),
-     'description'=>trim($_POST['description']),
-     'meditation_instructor_id'=>$_SESSION['MedInstr_id'],
+     'complaint'=>trim($_POST['complaint']),
+     'usertype'=>trim($_POST['usertype']),
 
      'subject_err'=>'',
-     'description_err'=>''
+     'complaint_err'=>''
      
      
    ];
 
-   if(empty($data['subject_err']) && empty($data['description_err'])){
+   if(empty($data['subject_err']) && empty($data['complaint_err'])){
 
-     $addcomplaint=$this->complaintModel->addComplaint($data);
+        if($data['usertype']=='patient'){
+          $id=$_SESSION['patient_id'];
+          $addcomplaint=$this->complaintModel->addComplaintPatient($data,$id);
+          if($addcomplaint){
+            redirect('Pages/index',$data);  
+          }else{
+            $this->view('pages/v_complaint',$data);    
+        }
+     
 
-      if($addcomplaint){
-          flash('reg_flash', 'Complaint added successfully!');
-            $this->view('MedInstrDashBoard/v_medInstrDashBoard',$data);    
-                    
+        }else if($data['usertype']=='doctor'){
+          $id=$_SESSION['doctor_id'];
+          $addcomplaint=$this->complaintModel->addComplaintDoctor($data,$id);
+          if($addcomplaint){
+            redirect('Doctor/dashboard',$data);  
+          }else{
+            $this->view('pages/v_complaint',$data);    
+        }
+
+        }else if($data['usertype']=='counsellor'){
+         
+          $id=$_SESSION['counsellor_id'];
+          $addcomplaint=$this->complaintModel->addComplaintCounsellor($data,$id);
+          if($addcomplaint){
+              redirect('Counsellor/dashboard',$data);  
+          }else{
+            $this->view('pages/v_complaint',$data);    
+        }
+
+        }else if($data['usertype']=='MedInstr'){
+         
+          $id=$_SESSION['MedInstr_id'];
+          $addcomplaint=$this->complaintModel->addComplaintMedInstr($data,$id);
+          if($addcomplaint){
+             redirect('MedInstrDashBoard/medInstrDashBoard',$data);  
+          }else{
+            $this->view('pages/v_complaint',$data);    
+        }
+
+        }else if($data['usertype']=='nutritionist'){
+          
+          $id=$_SESSION['nutritionist_id'];
+          $addcomplaint=$this->complaintModel->addComplaintNutritionist($data,$id);
+          if($addcomplaint){
+            redirect('Nutritionist/nutritionistDashBoard',$data);  
+          }else{
+            $this->view('pages/v_complaint',$data);    
+        }
+
+        }else if($data['usertype']=='pharmacist'){
+          
+          $id=$_SESSION['pharmacist_id'];
+          $addcomplaint=$this->complaintModel->addComplaintPharmacist($data,$id);
+          if($addcomplaint){
+            redirect('Pharmacist/pharmacistDashBoard',$data);  
+          }else{
+            $this->view('pages/v_complaint',$data);    
+          }
+        }
+
+    
             
-     }else{
-         $this->view('pages/v_complaint',$data);    
-     }
    }else{
       $this->view('pages/v_complaint',$data);  
     
@@ -44,12 +96,12 @@ class Complaint extends Controller{
   }else{
     $data=[                      
       'subject'=>'',
-      'description'=>'',
+      'complaint'=>'',
       'meditation_instructor_id'=>'',
 
       
      'subject_err'=>'',
-     'description_err'=>''
+     'complaint_err'=>''
      
     ];
     
