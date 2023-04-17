@@ -30,10 +30,10 @@
     </section>
 
     <section class="our-services-container theme" id="our-services-container">
-        <dev class="service-topic">
+        <div class="service-topic">
             <span class="line"></span>
             <h2>Our Services</h2>
-        </dev>
+        </div>
         <div class="card-container-forservices" id="to-be-show-more">
             <a href="<?php echo URLROOT ?>/Patient/findDoctor" class="card">
                 <img src="<?php echo URLROOT; ?>/img/sevices-images/channel-a-doctor.jpg" alt="">

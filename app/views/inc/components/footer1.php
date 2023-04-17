@@ -16,13 +16,13 @@
                     <li>
                         <a href="#">Service</a>
                     </li>
-                    <?php if (isset($_SESSION['patient_id'])): ?>
+                    <?php if (isset($_SESSION['patient_id']) || isset($_SESSION['MedInstr_id']) || isset($_SESSION['doctor_id']) || isset($_SESSION['counsellor_id']) || isset($_SESSION['nutritionist_id']) || isset($_SESSION['pharmacist_id'])  ): ?>
                         <li>
-                            <a href="<?php echo URLROOT ?>/Patient/complaints">Complaint</a>
+                            <a href="<?php echo URLROOT ?>/Complaint/complaint">Complaint</a>
                         </li>
-                    <?php else: ?>
+                    <?php elseif(!isset($_SESSION['admin_id']) ): ?>
                         <li>
-                            <a href="<?php echo URLROOT ?>/Patient/login">Complaint</a>
+                            <a href="<?php echo URLROOT ?>/Login/login">Complaint</a>
                         </li>
                     <?php endif; ?>
                 </ul>
