@@ -194,8 +194,13 @@
 
         // pay for order
         public function payForOrder($data) {
-            $this->db->query('UPDATE accept_order SET paid_amount = :paid_amount WHERE order_id = :order_id');
+            // current timestamp
+            date_default_timezone_set("Asia/Kolkata");
+            $timestamp = date("Y-m-d H:i:s");
+
+            $this->db->query('UPDATE accept_order SET paid_amount = :paid_amount, paid_time = :paid_time WHERE order_id = :order_id');
             $this->db->bind(':paid_amount', $data['fee']+$data['fee']*0.1);
+            $this->db->bind(':paid_time', $timestamp);
             $this->db->bind(':order_id', $data['order_id']);
 
             if($this->db->execute()) {

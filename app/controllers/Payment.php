@@ -6,54 +6,54 @@
             $this->paymentModel = $this->model('M_Payment');
         }
 
-        // Verify the payment
-        public function verify() {
-            $merchant_id         = $_POST['merchant_id'];
-            $order_id            = $_POST['order_id'];
-            $payhere_amount      = $_POST['payhere_amount'];
-            $payhere_currency    = $_POST['payhere_currency'];
-            $status_code         = $_POST['status_code'];
-            $md5sig              = $_POST['md5sig'];
+        // // Verify the payment
+        // public function verify() {
+        //     $merchant_id         = $_POST['merchant_id'];
+        //     $order_id            = $_POST['order_id'];
+        //     $payhere_amount      = $_POST['payhere_amount'];
+        //     $payhere_currency    = $_POST['payhere_currency'];
+        //     $status_code         = $_POST['status_code'];
+        //     $md5sig              = $_POST['md5sig'];
 
-            // $data = [
-            //     'name' => trim($_POST['name']),
-            //     'age' => trim($_POST['age']),
-            //     'gender' => trim($_POST['gender']),
-            //     'cnumber' => trim($_POST['cnumber']),
-            //     'weight' => trim($_POST['weight']),
-            //     'height' => trim($_POST['height']),
-            //     'marital_status' => trim($_POST['marital_status']),
-            //     'medical_details' => trim($_POST['medical_details']),
-            //     'allergies' => trim($_POST['allergies']),
-            //     'sleeping_hours' => trim($_POST['sleeping_hours']),
-            //     'water_consumption_per_day' => trim($_POST['water_consumption_per_day']),
-            //     'goal' => trim($_POST['goal']),
-            //     'nutritionist_id' => trim($_POST['nutritionist_id']),
-            //     'fee' => trim($_POST['fee'])
-            // ];
+        //     // $data = [
+        //     //     'name' => trim($_POST['name']),
+        //     //     'age' => trim($_POST['age']),
+        //     //     'gender' => trim($_POST['gender']),
+        //     //     'cnumber' => trim($_POST['cnumber']),
+        //     //     'weight' => trim($_POST['weight']),
+        //     //     'height' => trim($_POST['height']),
+        //     //     'marital_status' => trim($_POST['marital_status']),
+        //     //     'medical_details' => trim($_POST['medical_details']),
+        //     //     'allergies' => trim($_POST['allergies']),
+        //     //     'sleeping_hours' => trim($_POST['sleeping_hours']),
+        //     //     'water_consumption_per_day' => trim($_POST['water_consumption_per_day']),
+        //     //     'goal' => trim($_POST['goal']),
+        //     //     'nutritionist_id' => trim($_POST['nutritionist_id']),
+        //     //     'fee' => trim($_POST['fee'])
+        //     // ];
 
-            $merchant_secret = 'NDA0MzQyMjc0NzQxMjQ5NjY4MTUxNTU5NjIzMjc4OTE3NjE4MTIx'; // Replace with your Merchant Secret (Can be found on your PayHere account's Settings page)
+        //     $merchant_secret = 'NDA0MzQyMjc0NzQxMjQ5NjY4MTUxNTU5NjIzMjc4OTE3NjE4MTIx'; // Replace with your Merchant Secret (Can be found on your PayHere account's Settings page)
 
-            $local_md5sig = strtoupper(
-                md5(
-                    $merchant_id . 
-                    $order_id . 
-                    $payhere_amount . 
-                    $payhere_currency . 
-                    $status_code . 
-                    strtoupper(md5($merchant_secret)) 
-                ) 
-            );
+        //     $local_md5sig = strtoupper(
+        //         md5(
+        //             $merchant_id . 
+        //             $order_id . 
+        //             $payhere_amount . 
+        //             $payhere_currency . 
+        //             $status_code . 
+        //             strtoupper(md5($merchant_secret)) 
+        //         ) 
+        //     );
                 
-            if (($local_md5sig === $md5sig) AND ($status_code == 2) ){
-                    //TODO: Update your database as payment success
-                    // Create order
-                    // $this->create($data);
-            }
-        }
+        //     if (($local_md5sig === $md5sig) AND ($status_code == 2) ){
+        //             //TODO: Update your database as payment success
+        //             // Create order
+        //             // $this->create($data);
+        //     }
+        // }
 
-        // Channel doctor
-        public function createDoctorChannel() {
+        // Pay for the doctor channel
+        public function payforDoctorChannel() {
             if(isset($_SESSION['patient_id'])) {
                 if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     // Form is submitting
@@ -75,15 +75,66 @@
                         'ending_time' => trim($_POST['ending_time']),
                         'fee' => trim($_POST['fee']),
                     ];
+
+                    // Set your test stripe API key for the payment process
+                    \Stripe\Stripe::setApiKey(STRIPEKEY);
+
+                    // Create a payment session
+                    $session = \Stripe\Checkout\Session::create([
+                        'payment_method_types' => ['card'],
+                        'line_items' => [[
+                            'price_data' => [
+                              'currency' => 'lkr',
+                              'product' => 'prod_NjDnZBvY5IcHEB',
+                              'unit_amount' => ($data['fee'] + $data['fee']*0.1)*100, 
+                            ],
+                            'quantity' => 1,
+                          ]],
+                        'mode' => 'payment',
+                        'success_url' => URLROOT.'/Payment/createDoctorChannel/'.$data['name'].'/'.$data['age'].'/'.$data['cnumber'].'/'.$data['gender'].'/'.$data['doctor_id'].'/'.$data['channel_day_id'].'/'.$data['date'].'/'.$data['starting_time'].'/'.$data['time'].'/'.$data['duration'].'/'.$data['ending_time'].'/'.$data['fee'],
+                        'cancel_url' => URLROOT.'/Payment/paymentUnsuccess/',
+                      ]);
+
+                    // Redirect the user to the Stripe payment gateway
+                    header('Location: '. $session->url);
+                    exit;
     
-                    // Create apppointment
-                    if($this->paymentModel->createDoctorChannel($data, $_SESSION['patient_id'])) {
-                        $_SESSION['channel_created'] = true;
-                        redirect('Pages/index');
-                    }
-                    else {
-                        die('Something went wrong');
-                    }   
+                    
+                }
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
+
+        // Create doctor channel after the payment is successful
+        public function createDoctorChannel($name, $age, $cnumber, $gender, $doctor_id, $channel_day_id, $date, $starting_time, $time, $duration, $ending_time, $fee) {
+
+            if(isset($_SESSION['patient_id'])) {
+                $data = [
+                    'name' => $name,
+                    'age' => $age,
+                    'gender' => $gender,
+                    'cnumber' => $cnumber,
+                    'doctor_id' => $doctor_id,
+                    'channel_day_id' => $channel_day_id,
+                    'date' => $date,
+                    'starting_time' => $starting_time,
+                    'time' => $time,
+                    'duration' => $duration,
+                    'ending_time' => $ending_time,
+                    'fee' => $fee,
+                ];
+
+                // Create apppointment
+                if($this->paymentModel->createDoctorChannel($data, $_SESSION['patient_id'])) {
+                    $_SESSION['channel_created'] = true;
+                    redirect('Pages/index');
+                }
+                else {
+                    die('Something went wrong');
                 }
             }
             else {
@@ -94,7 +145,7 @@
         }
 
         // Channel counsellor
-        public function createCounsellorChannel() {
+        public function payforCounsellorChannel() {
             if(isset($_SESSION['patient_id'])) {
                 if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     // Form is submitting
@@ -117,14 +168,63 @@
                         'fee' => trim($_POST['fee']),
                     ];
     
-                    // Create apppointment
-                    if($this->paymentModel->createCounsellorChannel($data, $_SESSION['patient_id'])) {
-                        $_SESSION['channel_created'] = true;
-                        redirect('Pages/index');
-                    }
-                    else {
-                        die('Something went wrong');
-                    }   
+                    // Set your test stripe API key for the payment process
+                    \Stripe\Stripe::setApiKey(STRIPEKEY);
+
+                    // Create a payment session
+                    $session = \Stripe\Checkout\Session::create([
+                        'payment_method_types' => ['card'],
+                        'line_items' => [[
+                            'price_data' => [
+                              'currency' => 'lkr',
+                              'product' => 'prod_NjF8UkIzYG02Ks',
+                              'unit_amount' => ($data['fee'] + $data['fee']*0.1)*100, 
+                            ],
+                            'quantity' => 1,
+                          ]],
+                        'mode' => 'payment',
+                        'success_url' => URLROOT.'/Payment/createCounsellorChannel/'.$data['name'].'/'.$data['age'].'/'.$data['cnumber'].'/'.$data['gender'].'/'.$data['counsellor_id'].'/'.$data['channel_day_id'].'/'.$data['date'].'/'.$data['starting_time'].'/'.$data['time'].'/'.$data['duration'].'/'.$data['ending_time'].'/'.$data['fee'],
+                        'cancel_url' => URLROOT.'/Payment/paymentUnsuccess/',
+                      ]);
+
+                    // Redirect the user to the Stripe payment gateway
+                    header('Location: '. $session->url);
+                    exit;  
+                }
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
+
+        // Create counsellor channel after the payment is successful
+        public function createCounsellorChannel($name, $age, $cnumber, $gender, $counsellor_id, $channel_day_id, $date, $starting_time, $time, $duration, $ending_time, $fee) {
+
+            if(isset($_SESSION['patient_id'])) {
+                $data = [
+                    'name' => $name,
+                    'age' => $age,
+                    'gender' => $gender,
+                    'cnumber' => $cnumber,
+                    'counsellor_id' => $counsellor_id,
+                    'channel_day_id' => $channel_day_id,
+                    'date' => $date,
+                    'starting_time' => $starting_time,
+                    'time' => $time,
+                    'duration' => $duration,
+                    'ending_time' => $ending_time,
+                    'fee' => $fee,
+                ];
+
+                // Create apppointment
+                if($this->paymentModel->createCounsellorChannel($data, $_SESSION['patient_id'])) {
+                    $_SESSION['channel_created'] = true;
+                    redirect('Pages/index');
+                }
+                else {
+                    die('Something went wrong');
                 }
             }
             else {
@@ -135,7 +235,7 @@
         }
 
         // Register for the session
-        public function createSessionRegister() {
+        public function payforSessionRegister() {
                 if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     // Form is submitting
     
@@ -163,7 +263,7 @@
         }
         
         // Request a diet plan
-        public function createDietPlanRequest() {
+        public function payforDietPlanRequest() {
             if(isset($_SESSION['patient_id'])) {
                 if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     // Form is submitting
@@ -188,14 +288,65 @@
                         'fee' => trim($_POST['fee']),
                     ];
     
-                    // Create apppointment
-                    if($this->paymentModel->createDietPlanRequest($data, $_SESSION['patient_id'])) {
-                        $_SESSION['diet_plan_request_created'] = true;
-                        redirect('Pages/index');
-                    }
-                    else {
-                        die('Something went wrong');
-                    }   
+                    // Set your test stripe API key for the payment process
+                    \Stripe\Stripe::setApiKey(STRIPEKEY);
+
+                    // Create a payment session
+                    $session = \Stripe\Checkout\Session::create([
+                        'payment_method_types' => ['card'],
+                        'line_items' => [[
+                            'price_data' => [
+                              'currency' => 'lkr',
+                              'product' => 'prod_NjHprCSGGelbIy',
+                              'unit_amount' => ($data['fee'] + $data['fee']*0.1)*100, 
+                            ],
+                            'quantity' => 1,
+                          ]],
+                        'mode' => 'payment',
+                        'success_url' => URLROOT.'/Payment/createDietPlanRequest/'.$data['name'].'/'.$data['age'].'/'.$data['gender'].'/'.$data['cnumber'].'/'.$data['weight'].'/'.$data['height'].'/'.$data['marital_status'].'/'.$data['medical_details'].'/'.$data['allergies'].'/'.$data['sleeping_hours'].'/'.$data['water_consumption_per_day'].'/'.$data['goal'].'/'.$data['nutritionist_id'].'/'.$data['fee'],
+                        'cancel_url' => URLROOT.'/Payment/paymentUnsuccess/',
+                      ]);
+
+                    // Redirect the user to the Stripe payment gateway
+                    header('Location: '. $session->url);
+                    exit; 
+                }
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
+
+        // Create diet plan request after the payment is successful
+        public function createDietPlanRequest($name, $age, $gender, $cnumber, $weight, $height, $marital_status, $medical_details, $allergies, $sleeping_hours, $water_consumption_per_day, $goal, $nutritionist_id, $fee) {
+
+            if(isset($_SESSION['patient_id'])) {
+                $data = [
+                    'name' => $name,
+                    'age' => $age,
+                    'gender' => $gender,
+                    'cnumber' => $cnumber,
+                    'weight' => $weight,
+                    'height' => $height,
+                    'marital_status' => $marital_status,
+                    'medical_details' => $medical_details,
+                    'allergies' => $allergies,
+                    'sleeping_hours' => $sleeping_hours,
+                    'water_consumption_per_day' => $water_consumption_per_day,
+                    'goal' => $goal,
+                    'nutritionist_id' => $nutritionist_id,
+                    'fee' => $fee,
+                ];
+
+                // Create diet plan request
+                if($this->paymentModel->createDietPlanRequest($data, $_SESSION['patient_id'])) {
+                    $_SESSION['diet_plan_request_created'] = true;
+                    redirect('Pages/index');
+                }
+                else {
+                    die('Something went wrong');
                 }
             }
             else {
@@ -219,23 +370,30 @@
                         'fee' => trim($_POST['fee']),
                         'email' => trim($_POST['email'])
                     ];
-    
-                    // Create apppointment
-                    if($this->paymentModel->payForOrder($data)) {
-                        $_SESSION['paid_for_order'] = true;
 
-                        // Send email notification to the pharmacy
-                        $to = $data['email'];
-                        $subject = "Order Payment";
-                        $message = "Customer paid for the medicine order. You can now deliver the medicine.";
-                        $headers = "From: " . SITENAME . " <" . EMAIL . ">" . "\r\n" .'Reply-To: ' . EMAIL . "\r\n" .'X-Mailer: PHP/' . phpversion();
-                        mail($to, $subject, $message, $headers);
+                    // Set your test stripe API key for the payment process
+                    \Stripe\Stripe::setApiKey(STRIPEKEY);
 
-                        redirect('Pages/index');
-                    }
-                    else {
-                        die('Something went wrong');
-                    }   
+                    // Create a payment session
+                    $session = \Stripe\Checkout\Session::create([
+                        'payment_method_types' => ['card'],
+                        'line_items' => [[
+                            'price_data' => [
+                              'currency' => 'lkr',
+                              'product' => 'prod_NiyD9NFPFoALOm',
+                              'unit_amount' => ($data['fee'] + $data['fee']*0.1)*100, 
+                            ],
+                            'quantity' => 1,
+                          ]],
+                        'mode' => 'payment',
+                        'success_url' => URLROOT.'/Payment/createOrder/'.$data['order_id'].'/'.$data['fee'].'/'.$data['email'],
+                        'cancel_url' => URLROOT.'/Payment/paymentUnsuccess/',
+                      ]);
+
+                    // Redirect the user to the Stripe payment gateway
+                    header('Location: '. $session->url);
+                    exit;
+  
                 }
             }
             else {
@@ -243,6 +401,35 @@
                 // Redirect to login
                 redirect('Login/login');
             }
+        }
+
+        // Create order after the payment is success
+        public function createOrder($order_id, $fee, $email) {
+
+            $data = [
+                'order_id' => $order_id,
+                'fee' => $fee,
+            ];
+
+            // Create order
+            if($this->paymentModel->payForOrder($data)) {
+                $_SESSION['paid_for_order'] = true;
+
+                $name = "";
+                $bodyFlag = 8;
+
+                // Send email notification to the pharmacist
+                sendMail($email,$name,"",$bodyFlag,"");
+
+                redirect('Pages/index');
+            }
+            else {
+                die('Something went wrong');
+            } 
+        }
+
+        public function paymentUnsuccess() {
+            $this->view('patients/v_payment_unsuccess');
         }
 
     }

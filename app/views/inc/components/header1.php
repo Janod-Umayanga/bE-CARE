@@ -43,12 +43,12 @@
                         <li>
                             <a id="navigation-link" class="navigation-link theme" href="#">About</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a id="navigation-link" class="navigation-link theme" href="#">Service</a>
                         </li>
                         <li>
                             <a id="navigation-link" class="navigation-link theme" href="#">Content</a>
-                        </li>
+                        </li> -->
                     </div>
                     <div class="button-container">
                         <p class="register-approach">Register for the system</p> <!-- This only appear when view width fits for mobile-->

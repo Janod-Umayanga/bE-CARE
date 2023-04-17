@@ -43,7 +43,7 @@
                     <h3>Total Rs. <?php echo $data['fee']+$data['fee']*0.1 ?></h3>
                 </div>
             </div>
-            <form action="<?php echo URLROOT ?>/Payment/createCounsellorChannel" method="POST">
+            <form action="<?php echo URLROOT ?>/Payment/payforCounsellorChannel" method="POST">
                 <input type="hidden" name="fee" value="<?php echo $data['fee'] ?>">
                 <input type="hidden" name="counsellor_id" value="<?php echo $data['counsellor_id'] ?>">
                 <input type="hidden" name="channel_day_id" value="<?php echo $data['channel_day_id'] ?>">

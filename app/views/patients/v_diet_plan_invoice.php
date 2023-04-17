@@ -43,7 +43,7 @@
                     <h3>Total Rs. <?php echo $data['fee']+$data['fee']*0.1 ?></h3>
                 </div>
             </div>
-            <form action="<?php echo URLROOT ?>/Payment/createDietPlanRequest" method="POST">
+            <form action="<?php echo URLROOT ?>/Payment/payforDietPlanRequest" method="POST">
                 <input type="hidden" name="name" value="<?php echo $data['name'] ?>">
                 <input type="hidden" name="age" value="<?php echo $data['age'] ?>">
                 <input type="hidden" name="gender" value="<?php echo $data['name'] ?>">

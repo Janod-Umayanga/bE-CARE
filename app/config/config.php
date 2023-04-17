@@ -4,7 +4,7 @@
     define('DB_HOST', 'localhost');
     define('DB_USER', 'root');
     define('DB_PASSWORD', '');
-    define('DB_NAME', 'be_care'); //Change database name  
+    define('DB_NAME', 'be_care_new'); //Change database name  
 
 
     // APPROOT
@@ -18,5 +18,8 @@
 
     // PUBLIC ROOT
     define('PUBROOT', dirname(dirname(dirname(__FILE__))).'/public');
+
+    // STRIPE SECRET KEY
+    define('STRIPEKEY', 'sk_test_51MxM0YFreLlEoqoAwtLnDCINkRy19QaosEreWjO9ByEjL2m1jnfONTdBs50AwQDalOp3OxAx8yto7HRbXXwt5dkt00YlmkxciY');
 
 ?>

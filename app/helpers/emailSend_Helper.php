@@ -17,6 +17,8 @@
        // $flag =6 Your BeCare account has been deactivated
        // $flag =7 Verify Your BeCare Account
 
+       // $flag =8 Notification for pharmacist(Patient paid for medicine order)
+
                         // //Server settings
       $mail = new PHPMailer(true);
                         
@@ -567,6 +569,77 @@
          </html>
    
                
+" ;
+
+}else if($bodyFlag == 8){
+  $mail->Subject ="Patient paid for medicine order";  
+  $email_template = "
+        <!DOCTYPE html>
+        <html>
+        <head>
+           <title>BeCare Account Verification</title>
+           <style>
+              body {
+                 font-family: Arial, sans-serif;
+                 margin: 0;
+                 padding: 0;
+                 background-color: #f4f4f4;
+                 color: #333;
+              }
+              .container {
+                 max-width: 600px;
+                 margin: 0 auto;
+                 padding: 20px;
+                 background-color: #ffffff;
+                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                 
+              }
+              h1 {
+                 font-size: 28px;
+                 font-weight: bold;
+                 margin: 0;
+                 margin-bottom: 20px;
+                 color: #333333;
+              }
+
+              p {
+                    font-size: 16px;
+                    line-height: 24px;
+                    margin: 0;
+                    margin-bottom: 20px;
+                    color: #333333;
+              }
+
+              .btn {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #007bff;
+                color: #ffffff;
+                text-decoration: none;
+                border-radius: 4px;
+                font-size: 16px;
+                font-weight: bold;
+              }
+              .btn:hover {
+                background-color: #0069d9;
+              }
+
+           </style>
+        </head>
+        <body>
+           <div class='container'>
+              <h1>Be Care notification</h1>
+              <h2>Patient paid for medicine order</h2>
+              <p>Dear {$name},</p>
+              <p>Patient paid for the medicine order and now you can preceed with deliver. Click below for details</p>
+              <p><a href='http://localhost/be-care/Pages' style='color:white' class='btn' >Order Details</a></p>
+              <p>Thank you,</p>
+              <p>The Be Care Team</p>
+           </div>
+        </body>
+        </html>
+  
+              
 " ;
 
 }

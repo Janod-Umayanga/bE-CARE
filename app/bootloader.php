@@ -8,6 +8,7 @@
     require_once 'libraries/Controller.php';
     require_once 'libraries/Database.php';
     require_once 'libraries/fpdf/fpdf.php';
+    require_once 'libraries/stripe-php-master/init.php';
  
 
     // Load helpers

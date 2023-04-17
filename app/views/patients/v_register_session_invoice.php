@@ -43,7 +43,7 @@
                     <h3>Total Rs. <?php echo $data['fee']+$data['fee']*0.1 ?></h3>
                 </div>
             </div>
-            <form action="<?php echo URLROOT ?>/Payment/createSessionRegister" method="POST">
+            <form action="<?php echo URLROOT ?>/Payment/payforSessionRegister" method="POST">
                 <input type="hidden" name="fee" value="<?php echo $data['fee'] ?>">
                 <input type="hidden" name="session_id" value="<?php echo $data['session_id'] ?>">
                 <input type="hidden" id="name" name="name" value="<?php echo $data['name'] ?>">
