@@ -19,7 +19,7 @@
     <section class="table-section theme">
         <div class="table-container theme">
             <div class="table-topic-main">
-                <h1>Doctor Channeling History</h1>
+                <h1>Counsellor Channeling History</h1>
             </div>
             <div class="table">
                 <table cellspacing="0" cellpadding="0">
@@ -28,7 +28,7 @@
                         <th>Time</th>
                         <th>Your Number</th>
                         <th>Paid Amount</th>
-                        <th>Doctor's Name</th>
+                        <th>Counsellor's Name</th>
                         <th>Venue</th>
                         <th>Appointment made on</th>
                     </tr>

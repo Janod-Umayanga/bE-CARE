@@ -19,7 +19,7 @@
     <section class="table-section theme">
         <div class="table-container theme">
             <div class="table-topic-main">
-                <h1>Doctor Channeling History</h1>
+                <h1>Counsellor Appointments</h1>
             </div>
             <div class="table">
                 <table cellspacing="0" cellpadding="0">
@@ -28,12 +28,12 @@
                         <th>Time</th>
                         <th>Your Number</th>
                         <th>Paid Amount</th>
-                        <th>Doctor's Name</th>
+                        <th>Counsellor's Name</th>
                         <th>Venue</th>
                         <th>Appointment made on</th>
                     </tr>
                     <?php foreach($data['appointments'] as $appointment): ?>
-                        <?php if($appointment->date < $data['currentDate'] || ($appointment->date == $data['currentDate'] && $appointment->time < $data['currentTime'])): ?>
+                        <?php if($appointment->date > $data['currentDate'] || ($appointment->date == $data['currentDate'] && $appointment->time >= $data['currentTime'])): ?>
                     <tr>
                         <td><?php echo $appointment->date ?></td>
                         <td><?php echo $appointment->time ?></td>

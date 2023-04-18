@@ -61,7 +61,7 @@
                     <div class="right">
                         <p>City : <?php  echo $meditation_instructor->city ?></p>
                         <h2>Meditation Instructor</h2>
-                        <form action="<?php echo URLROOT ?>/Patient/getMeditationIsnstructorId" method="POST">
+                        <form action="<?php echo URLROOT ?>/Patient/getMeditationInstructorId" method="POST">
                             <input type="hidden" name="meditation_instructor_id" id="meditation_instructor_id" value="<?php echo $meditation_instructor->meditation_instructor_id ?>">
                             <button class="channel-butten">Select</button>
                         </form>

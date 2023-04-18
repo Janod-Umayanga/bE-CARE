@@ -51,7 +51,7 @@
                 <img src="<?php echo URLROOT; ?>/img/sevices-images/find-a-nutritionist.jpg" alt="">
                 <p>******<br>Find a Nutritionist</p>
             </a>
-            <a href="<?php echo URLROOT ?>/Patient/findMedidationInstructor" class="card">
+            <a href="<?php echo URLROOT ?>/Patient/findMeditationInstructor" class="card">
                 <img src="<?php echo URLROOT; ?>/img/sevices-images/find-a-meditation-instructor.jpg" alt="">
                 <p>******<br>Find a Meditation Instructor</p>
             </a>

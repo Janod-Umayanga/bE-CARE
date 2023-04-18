@@ -14,6 +14,7 @@
         private $doctorTimeslotModel;
         private $sessionModel;
         private $meditationInstructorModel;
+        private $meditationInstructorTimeslotModel;
         public function __construct() {
             $this->patientModel = $this->model('M_Patient');
             $this->complaintModel = $this->model('M_Complaint');
@@ -28,6 +29,7 @@
             $this->doctorTimeslotModel = $this->model('M_Doctor_Timeslot');
             $this->sessionModel = $this->model('M_Session');
             $this->meditationInstructorModel = $this->model('M_Meditation_Instructor');
+            $this->meditationInstructorTimeslotModel = $this->model('M_Meditation_Instructor_Timeslot');
         }
 
         public function signup() {
@@ -218,19 +220,27 @@
                 // Validate name
                 if(empty($data['fname'])) {
                     $data['fname_err'] = 'First name required';
+                } else if(validateFirstName($data['fname'])!="true"){
+                    $data['fname_err']=validateFirstName($data['fname']);
                 }
                 if(empty($data['lname'])) {
                     $data['lname_err'] = 'Last name required';
+                } else if(validateLastName($data['lname'])!="true"){
+                    $data['lname_err']=validateLastName($data['lname']);
                 }
 
                 // Validate nic
                 if(empty($data['nic'])) {
                     $data['nic_err'] = 'NIC required';
+                } else if(validateNIC($data['nic'])!="true"){
+                    $data['nic_err']=validateNIC($data['nic']);
                 }
 
                 // Validate contact number
                 if(empty($data['cnumber'])) {
                     $data['cnumber_err'] = 'Contact number required';
+                } else if(validateContactNumber($data['cnumber'])!="true"){
+                    $data['cnumber_err']=validateContactNumber($data['cnumber']);
                 }
 
                 // Validate gender
@@ -306,6 +316,8 @@
                 }
                 if(empty($data['newpw'])) {
                     $data['newpw_err'] = 'Enter a new password';
+                } else if(validatePassword($data['newpw'])!="true"){
+                    $data['newpw_err']=validatePassword($data['newpw']);
                 }
                 else if(empty($data['password_confirmation'])) {
                     $data['password_confirmation_err'] = 'Password confirmation required';
@@ -806,7 +818,7 @@
             }
         }
 
-        // View doctor appointments
+        // View counsellor appointments
         public function viewCounsellorAppointments() {
             if(isset($_SESSION['patient_id'])) {
                 // Get current date and time
@@ -822,7 +834,7 @@
                 ];
 
                 // Load view
-                $this->view('patients/v_doctor_appointments', $data);
+                $this->view('patients/v_counsellor_appointments', $data);
             }
             else {
                 $_SESSION['need_login'] = true;
@@ -831,14 +843,14 @@
             }
         }
 
-        // View doctor channeling history
+        // View counsellor channeling history
         public function viewCounsellorChannelingHistory() {
             if(isset($_SESSION['patient_id'])) {
                 // Get current date and time
                 date_default_timezone_set("Asia/Kolkata");
                 $currentDate = date("Y-m-d");
                 $currentTime = date("H:i:s");
-                // Show all doctor appointments
+                // Show all counsellor appointments
                 $appointments = $this->doctorChannelModel->getAllCounsellorChannels($_SESSION['patient_id']);
                 $data = [
                     'appointments' => $appointments,
@@ -847,7 +859,7 @@
                 ];
 
                 // Load view
-                $this->view('patients/v_doctor_channeling_history', $data);
+                $this->view('patients/v_counsellor_channeling_history', $data);
             }
             else {
                 $_SESSION['need_login'] = true;
@@ -865,7 +877,7 @@
                 $nutritionists = $this->nutritionistModel->getNutritionists(trim($_POST['search']));
             }
             else {
-                // Show all doctors
+                // Show all nutritionists
                 $nutritionists = $this->nutritionistModel->getAllNutritionists();
             }
             $data = [
@@ -884,7 +896,7 @@
                 $fee = trim($_POST['fee']);
                 $_SERVER['REQUEST_METHOD'] = '';
 
-                // Pass the pharmacist id for order medicine
+                // Pass the nutritionist id for order medicine
                 $this->requestDietPlan($nutritionist_id, $fee);
             }
         }
@@ -1068,7 +1080,7 @@
             }
         }
 
-        // View counsellor profile
+        // View nutritionist profile
         public function viewNutritionistProfile($nutritionist_id) {
             $nutritionist = $this->nutritionistModel->getNutritionistById($nutritionist_id);
             $data = [
@@ -1185,11 +1197,15 @@
                     // Validate address
                     if(empty($data['address'])) {
                         $data['address_err'] = 'Address required';
+                    } else if(validateAddress($data['address']) != "true") {
+                        $data['address_err'] = validateAddress($data['address']);
                     }
     
                     // Validate contact number
                     if(empty($data['cnumber'])) {
                         $data['cnumber_err'] = 'Contact number required';
+                    } else if(validateContactNumber($data['cnumber']) != "true") {
+                        $data['cnumber_err'] = validateContactNumber($data['cnumber']);
                     }
     
                     // Validate prescription and upload
@@ -1283,7 +1299,7 @@
         }
 
          // View and search meditation instructors
-         public function findMedidationInstructor() {
+         public function findMeditationInstructor() {
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Search using the given keyword
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -1291,7 +1307,7 @@
                 $meditation_instructors = $this->meditationInstructorModel->getMeditationInstructors(trim($_POST['search']), trim($_POST['city']));
             }
             else {
-                // Show all doctors
+                // Show all meditation instructors
                 $meditation_instructors = $this->meditationInstructorModel->getAllMeditationInstructors();
             }
             $data = [
@@ -1302,8 +1318,8 @@
             $this->view('patients/v_meditation_instructors', $data);
         }
 
-        // Get doctor id needed for viewing doctor timeslots
-        public function getMedidationInstructorId(){
+        // Get meditation instructor id needed for viewing meditaion instructor timeslots
+        public function getMeditationInstructorId(){
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 $meditation_instructor_id = trim($_POST['meditation_instructor_id']);
@@ -1315,15 +1331,24 @@
         }
 
         // View doctor timeslots
-        public function viewMeditationInstructorTimeslots($doctor_id) {
-            $timeslots = $this->doctorTimeslotModel->getAllDoctorTimeslots($doctor_id);
+        public function viewMeditationInstructorTimeslots($meditation_instructor_id) {
+            $timeslots = $this->meditationInstructorTimeslotModel->getAllMeditationInstructorTimeslots($meditation_instructor_id);
+
+            // Check if all timeslots have 4 days or else need to add upto 4 days
+            foreach($timeslots as $timeslot) {
+                $channeling_days = $this->meditationInstructorTimeslotModel->getChannelingDays($timeslot->med_timeslot_id, $timeslot->meditation_instructor_id, $timeslot->appointment_day, $timeslot->starting_time, $timeslot->ending_time, $timeslot->fee, $timeslot->address, $timeslot->noOfParticipants);
+                
+            }
+
+            $timeslots = $this->meditationInstructorTimeslotModel->getAllMeditationInstructorAppointmentTimeslots($meditation_instructor_id);
+
             $data = [
                 'timeslots' => $timeslots,
-                'doctor_id' => $doctor_id
+                'meditation_instructor_id' => $meditation_instructor_id
             ];
 
             // Load view
-            $this->view('patients/v_doctor_timeslots', $data);
+            $this->view('patients/v_meditation_instructor_timeslots', $data);
         }
 
         // View doctor profile
