@@ -507,16 +507,22 @@
                     // Validate name
                     if(empty($data['name'])) {
                         $data['name_err'] = 'Name required';
+                    }else if(validateFirstName($data['name']) != "true") {
+                        $data['name_err'] = validateFirstName($data['name']);
                     }
     
                     // Validate address
                     if(empty($data['age'])) {
                         $data['age_err'] = 'Age required';
+                    }else if(validatePostitiveNumber($data['age']) != "true") {
+                        $data['age_err'] = 'Age must be a positive number';
                     }
     
                     // Validate contact number
                     if(empty($data['cnumber'])) {
                         $data['cnumber_err'] = 'Contact number required';
+                    }else if(validateContactNumber($data['cnumber']) != "true") {
+                        $data['cnumber_err'] = validateContactNumber($data['cnumber']);
                     }
     
                     // Validate gneder
@@ -631,7 +637,7 @@
                 // Search using the given keyword
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-                $counsellors = $this->counsellorModel->getCounsellors(trim($_POST['search']));
+                $counsellors = $this->counsellorModel->getCounsellors(trim($_POST['search']), trim($_POST['city']));
             }
             else {
                 // Show all counsellors
@@ -726,16 +732,22 @@
                     // Validate name
                     if(empty($data['name'])) {
                         $data['name_err'] = 'Name required';
+                    } else if(validateFirstName($data['name']) != "true") {
+                        $data['name_err'] = validateFirstName($data['name']);
                     }
     
                     // Validate address
                     if(empty($data['age'])) {
                         $data['age_err'] = 'Age required';
+                    }else if(validatePostitiveNumber($data['age']) != "true") {
+                        $data['age_err'] = 'Age must be a positive number';
                     }
     
                     // Validate contact number
                     if(empty($data['cnumber'])) {
                         $data['cnumber_err'] = 'Contact number required';
+                    } else if(validateContactNumber($data['cnumber']) != "true") {
+                        $data['cnumber_err'] = validateContactNumber($data['cnumber']);
                     }
     
                     // Validate gneder
@@ -922,11 +934,15 @@
                     // Validate name
                     if(empty($data['name'])) {
                         $data['name_err'] = 'Name required';
+                    } else if(validateFirstName($data['name']) != "true") {
+                        $data['name_err'] = validateFirstName($data['name']);
                     }
     
                     // Validate age
                     if(empty($data['age'])) {
                         $data['age_err'] = 'Age required';
+                    }else if(validatePostitiveNumber($data['age']) != "true") {
+                        $data['age_err'] = 'Age must be a positive number';
                     }
 
                     // Validate gender
@@ -937,16 +953,22 @@
                     // Validate contact number
                     if(empty($data['cnumber'])) {
                         $data['cnumber_err'] = 'Contact number required';
+                    } else if(validateContactNumber($data['cnumber']) != "true") {
+                        $data['cnumber_err'] = validateContactNumber($data['cnumber']);
                     }
     
                     // Validate weight
                     if(empty($data['weight'])) {
                         $data['weight_err'] = 'Weight required';
+                    }else if(validatePostitiveNumber($data['weight']) != "true") {
+                        $data['weight_err'] = 'Weight must be a positive number';
                     }
 
                     // Validate height
                     if(empty($data['height'])) {
                         $data['height_err'] = 'Height required';
+                    }else if(validatePostitiveNumber($data['height']) != "true") {
+                        $data['height_err'] = 'Height must be a positive number';
                     }
 
                     // Validate marital_status
@@ -967,11 +989,15 @@
                     // Validate sleeping_hours
                     if(empty($data['sleeping_hours'])) {
                         $data['sleeping_hours_err'] = 'Sleeping hours required';
+                    }else if(validatePostitiveNumber($data['sleeping_hours']) != "true") {
+                        $data['sleeping_hours_err'] = 'Sleeping hours must be a positive number';
                     }
 
                     // Validate water_consumption_per_day
                     if(empty($data['water_consumption_per_day'])) {
                         $data['water_consumption_per_day_err'] = 'Water consumption required';
+                    }else if(validatePostitiveNumber($data['water_consumption_per_day']) != "true") {
+                        $data['water_consumption_per_day_err'] = 'Water consumption must be a positive number';
                     }
 
                     // Validate goal

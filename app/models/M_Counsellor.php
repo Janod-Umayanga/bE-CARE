@@ -9,14 +9,14 @@
 
         // Get All counsellors
         public function getAllCounsellors() {
-            $this->db->query('SELECT * FROM counsellor');
+            $this->db->query('SELECT * FROM counsellor WHERE delete_flag = 0');
 
             return $this->db->resultSet();
         }
 
         // Get counsellors by a filter
-        public function getCounsellors($filter) {
-            $this->db->query("SELECT * FROM counsellor WHERE CONCAT(first_name,last_name) LIKE '%$filter%'");
+        public function getCounsellors($filter, $city) {
+            $this->db->query("SELECT * FROM counsellor WHERE CONCAT(first_name,last_name) LIKE '%$filter%' AND city LIKE '%$city%' AND delete_flag = 0");
 
             return $this->db->resultSet();
         }
