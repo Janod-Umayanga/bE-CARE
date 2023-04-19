@@ -428,6 +428,92 @@
             } 
         }
 
+        // Pay for the doctor channel
+        public function payforMeditationInstructorRegistration() {
+            if(isset($_SESSION['patient_id'])) {
+                if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    // Form is submitting
+    
+                    $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    
+                    // Inserted form
+                    $data = [
+                        'name' => trim($_POST['name']),
+                        'age' => trim($_POST['age']),
+                        'cnumber' => trim($_POST['cnumber']),
+                        'gender' => trim($_POST['gender']),
+                        'meditation_instructor_id' =>trim($_POST['meditation_instructor_id']),
+                        'appointment_day_id' => trim($_POST['appointment_day_id']),
+                        'noOfParticipants' => trim($_POST['noOfParticipants']),
+                        'current_participants' => trim($_POST['current_participants']),
+                        'fee' => trim($_POST['fee']),
+                    ];
+
+                    // Set your test stripe API key for the payment process
+                    \Stripe\Stripe::setApiKey(STRIPEKEY);
+
+                    // Create a payment session
+                    $session = \Stripe\Checkout\Session::create([
+                        'payment_method_types' => ['card'],
+                        'line_items' => [[
+                            'price_data' => [
+                              'currency' => 'lkr',
+                              'product' => 'prod_Njzkt9hxfrJfd0',
+                              'unit_amount' => ($data['fee'] + $data['fee']*0.1)*100, 
+                            ],
+                            'quantity' => 1,
+                          ]],
+                        'mode' => 'payment',
+                        'success_url' => URLROOT.'/Payment/createMeditationInstructorRegistration/'.$data['name'].'/'.$data['age'].'/'.$data['cnumber'].'/'.$data['gender'].'/'.$data['meditation_instructor_id'].'/'.$data['appointment_day_id'].'/'.$data['noOfParticipants'].'/'.$data['current_participants'].'/'.$data['fee'],
+                        'cancel_url' => URLROOT.'/Payment/paymentUnsuccess/',
+                      ]);
+
+                    // Redirect the user to the Stripe payment gateway
+                    header('Location: '. $session->url);
+                    exit;
+    
+                    
+                }
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
+
+        // Create doctor channel after the payment is successful
+        public function createMeditationInstructorRegistration($name, $age, $cnumber, $gender, $meditation_instructor_id, $appointment_day_id, $noOfParticipants, $current_participants, $fee) {
+
+            if(isset($_SESSION['patient_id'])) {
+                $data = [
+                    'name' => $name,
+                    'age' => $age,
+                    'gender' => $gender,
+                    'cnumber' => $cnumber,
+                    'meditation_instructor_id' => $meditation_instructor_id,
+                    'appointment_day_id' => $appointment_day_id,
+                    'noOfParticipants' => $noOfParticipants,
+                    'current_participants' => $current_participants,
+                    'fee' => $fee,
+                ];
+
+                // Create apppointment
+                if($this->paymentModel->createMeditationInstructorRegistration($data, $_SESSION['patient_id'])) {
+                    $_SESSION['channel_created'] = true;
+                    redirect('Pages/index');
+                }
+                else {
+                    die('Something went wrong');
+                }
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
+
         public function paymentUnsuccess() {
             $this->view('patients/v_payment_unsuccess');
         }

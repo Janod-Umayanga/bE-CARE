@@ -40,12 +40,13 @@
                         <p><i class="fa-solid fa-calendar-days"></i> <?php echo $timeslot->date ?></p>
                         <p><i class="fa-solid fa-clock"></i> <?php echo $timeslot->starting_time ?> - <?php  echo $timeslot->ending_time ?></p>
                         <p><i class="fa-solid fa-location-dot"></i><?php echo $timeslot->address ?></p>
+                        <p><i class="fa-solid fa-person"></i><?php echo $timeslot->current_participants ?> out of <?php echo $timeslot->noOfParticipants ?> participants have been registered</p>
                         <p><i class="fa-solid fa-phone-volume"></i><?php echo $timeslot->contact_number ?></p>
                         <p><i class="fa-solid fa-circle-dollar-to-slot"></i>Rs. <?php echo $timeslot->fee ?></p>
                     </div>
                     <div class="top-box"></div>
                     <div class="bottom-box"></div>
-                    <form action="<?php echo URLROOT ?>/Patient/registerForMeditationInstructor/<?php echo $timeslot->meditation_instructor_id ?>/<?php echo $timeslot->med_ins_appointment_day_id ?>/<?php echo $timeslot->date ?>/<?php echo $timeslot->starting_time ?>/<?php echo $timeslot->current_participants ?>/<?php echo $timeslot->noOfParticipants ?>/<?php echo $timeslot->fee ?>">
+                    <form action="<?php echo URLROOT ?>/Patient/registerForMeditationInstructor/<?php echo $timeslot->meditation_instructor_id ?>/<?php echo $timeslot->med_ins_appointment_day_id ?>/<?php echo $timeslot->noOfParticipants ?>/<?php echo $timeslot->current_participants ?>/<?php echo $timeslot->fee ?>">
                         <?php if($timeslot->active == 0): ?>
                             <button class="main-button" disabled>Unavailable</button>
                         <?php else: ?>

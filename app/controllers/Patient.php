@@ -1362,6 +1362,111 @@
             $this->view('patients/v_meditation_instructor_profile', $data);
         }
 
+        // Register for meditation instructor
+        public function registerForMeditationInstructor($meditation_instructor_id, $appointment_day_id, $noOfParticipants, $current_participants, $fee) {
+            if(isset($_SESSION['patient_id'])) {
+                $loggedPatient = $this->patientModel->getPatientById($_SESSION['patient_id']);
+
+                if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    // Form is submitting
+    
+                    // Data validation
+                    $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    
+                    // Inserted form
+                    $data = [
+                        'name' => trim($_POST['name']),
+                        'age' => trim($_POST['age']),
+                        'cnumber' => trim($_POST['cnumber']),
+                        'gender' => trim($_POST['gender']),
+                        'meditation_instructor_id' => $meditation_instructor_id,
+                        'appointment_day_id' => $appointment_day_id,
+                        'noOfParticipants' => $noOfParticipants,
+                        'current_participants' => $current_participants,
+                        'fee' => $fee,
+    
+                        'name_err' => '',
+                        'age_err' => '',
+                        'cnumber_err' => '',
+                        'gender_err' => ''
+                    ];
+    
+                    // Validate each input
+    
+                    // Validate name
+                    if(empty($data['name'])) {
+                        $data['name_err'] = 'Name required';
+                    }else if(validateFirstName($data['name']) != "true") {
+                        $data['name_err'] = validateFirstName($data['name']);
+                    }
+    
+                    // Validate address
+                    if(empty($data['age'])) {
+                        $data['age_err'] = 'Age required';
+                    }else if(validatePostitiveNumber($data['age']) != "true") {
+                        $data['age_err'] = 'Age must be a positive number';
+                    }
+    
+                    // Validate contact number
+                    if(empty($data['cnumber'])) {
+                        $data['cnumber_err'] = 'Contact number required';
+                    }else if(validateContactNumber($data['cnumber']) != "true") {
+                        $data['cnumber_err'] = validateContactNumber($data['cnumber']);
+                    }
+    
+                    // Validate gneder
+                    if(empty($data['gender'])) {
+                        $data['gender_err'] = 'Gender required';
+                    }
+    
+                    // Create order after validation
+                    if(empty($data['name_err']) && empty($data['age_err']) && empty($data['cnumber_err']) && empty($data['gender_err'])) {
+                        // Load invoice view
+                        $this->view('patients/v_register_for_meditation_instructor_invoice', $data);
+                        // // Create order
+                        // if($this->doctorChannelModel->createDoctorChannel($data, $_SESSION['patient_id'])) {
+                        //     $_SESSION['channel_created'] = true;
+                        //     redirect('Pages/index');
+                        // }
+                        // else {
+                        //     die('Something went wrong');
+                        // }
+                    }
+                    else {
+                        // Load view
+                         $this->view('patients/v_register_for_meditation_instructor', $data);
+                    }
+                }
+                else {
+                    $data = [
+                        'name' => $loggedPatient->first_name,
+                        'age' => '',
+                        'cnumber' => $loggedPatient->contact_number,
+                        'gender' => '',
+                        'meditation_instructor_id' => $meditation_instructor_id,
+                        'appointment_day_id' => $appointment_day_id,
+                        'noOfParticipants' => $noOfParticipants,
+                        'current_participants' => $current_participants,
+                        'fee' => $fee,
+    
+                        'name_err' => '',
+                        'age_err' => '',
+                        'cnumber_err' => '',
+                        'gender_err' => ''
+                    ];
+    
+                    // Load view
+                    $this->view('patients/v_register_for_meditation_instructor', $data);
+                }
+                $data = [];
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
+
         // View sessions
         public function findSession() {
             // Show all sessions
