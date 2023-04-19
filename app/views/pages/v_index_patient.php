@@ -83,6 +83,14 @@
                 <img src="<?php echo URLROOT; ?>/img/sevices-images/diet plans.jpg" alt="">
                 <p>******<br>Your Diet Plans</p>
             </a>
+            <a href="<?php echo URLROOT ?>/Patient/viewMeditationInstructorAppointments" class="card">
+                <img src="<?php echo URLROOT; ?>/img/sevices-images/meditation instructor appointments.jpg" alt="">
+                <p>******<br>Your Meditation Instructor Appointments</p>
+            </a>
+            <a href="<?php echo URLROOT ?>/Patient/viewMeditationInstructorHistory" class="card">
+                <img src="<?php echo URLROOT; ?>/img/sevices-images/Meditating history.jpg" alt="">
+                <p>******<br>Your Meditation Instructing History</p>
+            </a>
             <a href="<?php echo URLROOT ?>/Patient/viewRegisteredSessions" class="card">
                 <img src="<?php echo URLROOT; ?>/img/sevices-images/registered sessions.jpg" alt="">
                 <p>******<br>Your Registered Sessions</p>

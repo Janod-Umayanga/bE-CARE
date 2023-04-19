@@ -15,6 +15,7 @@
         private $sessionModel;
         private $meditationInstructorModel;
         private $meditationInstructorTimeslotModel;
+        private $meditationInstructorAppointmentModel;
         public function __construct() {
             $this->patientModel = $this->model('M_Patient');
             $this->complaintModel = $this->model('M_Complaint');
@@ -30,6 +31,7 @@
             $this->sessionModel = $this->model('M_Session');
             $this->meditationInstructorModel = $this->model('M_Meditation_Instructor');
             $this->meditationInstructorTimeslotModel = $this->model('M_Meditation_Instructor_Timeslot');
+            $this->meditationInstructorAppointmentModel = $this->model('M_Meditation_Instructor_Appointment');
         }
 
         public function signup() {
@@ -1459,6 +1461,56 @@
                     $this->view('patients/v_register_for_meditation_instructor', $data);
                 }
                 $data = [];
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
+
+        // View doctor appointments
+        public function viewMeditationInstructorAppointments() {
+            if(isset($_SESSION['patient_id'])) {
+                // Get current date and time
+                date_default_timezone_set("Asia/Kolkata");
+                $currentDate = date("Y-m-d");
+                $currentTime = date("H:i:s");
+                // Show all doctor appointments
+                $appointments = $this->meditationInstructorAppointmentModel->getAllMeditationInstructorAppointments($_SESSION['patient_id']);
+                $data = [
+                    'appointments' => $appointments,
+                    'currentDate' => $currentDate,
+                    'currentTime' => $currentTime
+                ];
+
+                // Load view
+                $this->view('patients/v_meditation_instructor_appointments', $data);
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
+
+        // View doctor channeling history
+        public function viewMeditationInstructorHistory() {
+            if(isset($_SESSION['patient_id'])) {
+                // Get current date and time
+                date_default_timezone_set("Asia/Kolkata");
+                $currentDate = date("Y-m-d");
+                $currentTime = date("H:i:s");
+                // Show all doctor appointments
+                $appointments = $this->meditationInstructorAppointmentModel->getAllMeditationInstructorAppointments($_SESSION['patient_id']);
+                $data = [
+                    'appointments' => $appointments,
+                    'currentDate' => $currentDate,
+                    'currentTime' => $currentTime
+                ];
+
+                // Load view
+                $this->view('patients/v_meditation_instructing_history', $data);
             }
             else {
                 $_SESSION['need_login'] = true;
