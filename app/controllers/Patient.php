@@ -1544,7 +1544,7 @@
         }
 
         // Register for a session
-        public function registerSession($session_id, $fee) {
+        public function registerSession($session_id, $fee, $noOfParticipants, $current_participants) {
                 if(isset($_SESSION['patient_id'])) {
                     $loggedPatient = $this->patientModel->getPatientById($_SESSION['patient_id']);
                 }
@@ -1563,6 +1563,8 @@
                         'gender' => trim($_POST['gender']),
                         'session_id' => $session_id,
                         'fee' => $fee,
+                        'noOfParticipants' => $noOfParticipants,
+                        'current_participants' => $current_participants,
     
                         'name_err' => '',
                         'age_err' => '',
@@ -1618,6 +1620,8 @@
                             'gender' => '',
                             'session_id' => $session_id,
                             'fee' => $fee,
+                            'noOfParticipants' => $noOfParticipants,
+                            'current_participants' => $current_participants,
         
                             'name_err' => '',
                             'age_err' => '',
@@ -1633,6 +1637,8 @@
                             'gender' => '',
                             'session_id' => $session_id,
                             'fee' => $fee,
+                            'noOfParticipants' => $noOfParticipants,
+                            'current_participants' => $current_participants,
         
                             'name_err' => '',
                             'age_err' => '',

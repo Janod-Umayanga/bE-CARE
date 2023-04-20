@@ -25,9 +25,9 @@
                     <h2><?php echo $session->title ?></h2>
                     <p><?php echo $session->description ?></p>
                     <div class="icon-container">
-                        <i class="fa-brands fa-facebook"></i>
+                        <!-- <i class="fa-brands fa-facebook"></i>
                         <i class="fa-brands fa-linkedin"></i>
-                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-twitter"></i> -->
                     </div>
                     <div class="inner-circle-for-initials">
                         <h1>CS</h1>
@@ -36,9 +36,13 @@
             </div>
             <div class="bottom">
                 <p>*******</p>
-                <h3>This session will be conducted by Dr. <?php echo $session->first_name ?> <?php echo $session->last_name ?> on <?php echo $session->date ?> during <?php echo $session->starting_time ?> to <?php echo $session->ending_time ?> at <?php echo $session->address ?></h3>
-                <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $session->session_id ?>/<?php echo $session->registration_fee ?>">
-                    <button>Register</button>
+                <h3>This session will be conducted by Dr. <?php echo $session->first_name ?> <?php echo $session->last_name ?> on <?php echo $session->date ?> during <?php echo $session->starting_time ?> to <?php echo $session->ending_time ?> at <?php echo $session->address ?>. Currently <?php echo $session->current_participants ?> out of <?php echo $session->noOfParticipants ?> have been registered.</h3>
+                <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $session->session_id ?>/<?php echo $session->registration_fee ?>/<?php echo $session->noOfParticipants ?>/<?php echo $session->current_participants ?>">
+                    <?php if($session->active == 0): ?>
+                        <button class="main-button" disabled>Unavailable</button>
+                    <?php else: ?>
+                        <button class="main-button">Register</button>
+                    <?php endif; ?>
                 </form>
             </div>
         </div>
@@ -53,9 +57,9 @@
                     <h2><?php echo $session->title ?></h2>
                     <p><?php echo $session->description ?></p>
                     <div class="icon-container">
-                        <i class="fa-brands fa-facebook"></i>
+                        <!-- <i class="fa-brands fa-facebook"></i>
                         <i class="fa-brands fa-linkedin"></i>
-                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-twitter"></i> -->
                     </div>
                     <div class="inner-circle-for-initials">
                         <h1>NS</h1>
@@ -64,9 +68,13 @@
             </div>
             <div class="bottom">
                 <p>*******</p>
-                <h3>This session will be conducted by Dr. <?php echo $session->first_name ?> <?php echo $session->last_name ?> on <?php echo $session->date ?> during <?php echo $session->starting_time ?> to <?php echo $session->ending_time ?> at <?php echo $session->address ?></h3>
-                <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $session->session_id ?>/<?php echo $session->registration_fee ?>">
-                    <button>Register</button>
+                <h3>This session will be conducted by Dr. <?php echo $session->first_name ?> <?php echo $session->last_name ?> on <?php echo $session->date ?> during <?php echo $session->starting_time ?> to <?php echo $session->ending_time ?> at <?php echo $session->address ?>. Currently <?php echo $session->current_participants ?> out of <?php echo $session->noOfParticipants ?> have been registered.</h3>
+                <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $session->session_id ?>/<?php echo $session->registration_fee ?>/<?php echo $session->noOfParticipants ?>/<?php echo $session->current_participants ?>">
+                    <?php if($session->active == 0): ?>
+                        <button class="main-button" disabled>Unavailable</button>
+                    <?php else: ?>
+                        <button class="main-button">Register</button>
+                    <?php endif; ?>
                 </form>
             </div>
         </div>
@@ -81,9 +89,9 @@
                     <h2><?php echo $session->title ?></h2>
                     <p><?php echo $session->description ?></p>
                     <div class="icon-container">
-                        <i class="fa-brands fa-facebook"></i>
+                        <!-- <i class="fa-brands fa-facebook"></i>
                         <i class="fa-brands fa-linkedin"></i>
-                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-twitter"></i> -->
                     </div>
                     <div class="inner-circle-for-initials">
                         <h1>MS</h1>
@@ -92,9 +100,13 @@
             </div>
             <div class="bottom">
                 <p>*******</p>
-                <h3>This session will be conducted by <?php echo $session->gender ?>. <?php echo $session->first_name ?> <?php echo $session->last_name ?> on <?php echo $session->date ?> during <?php echo $session->starting_time ?> to <?php echo $session->ending_time ?> at <?php echo $session->address ?></h3>
-                <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $session->session_id ?>/<?php echo $session->registration_fee ?>">
-                    <button>Register</button>
+                <h3>This session will be conducted by <?php echo $session->gender ?>. <?php echo $session->first_name ?> <?php echo $session->last_name ?> on <?php echo $session->date ?> during <?php echo $session->starting_time ?> to <?php echo $session->ending_time ?> at <?php echo $session->address ?>. Currently <?php echo $session->current_participants ?> out of <?php echo $session->noOfParticipants ?> have been registered.</h3>
+                <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $session->session_id ?>/<?php echo $session->registration_fee ?>/<?php echo $session->noOfParticipants ?>/<?php echo $session->current_participants ?>">
+                    <?php if($session->active == 0): ?>
+                        <button class="main-button" disabled>Unavailable</button>
+                    <?php else: ?>
+                        <button class="main-button">Register</button>
+                    <?php endif; ?>
                 </form>
             </div>
         </div>

@@ -249,6 +249,8 @@
                         'gender' => trim($_POST['gender']),
                         'session_id' =>trim($_POST['session_id']),
                         'fee' => trim($_POST['fee']),
+                        'noOfParticipants' => trim($_POST['noOfParticipants']),
+                        'current_participants' => trim($_POST['current_participants']),
                     ];
 
                     // Set your test stripe API key for the payment process
@@ -266,7 +268,7 @@
                             'quantity' => 1,
                           ]],
                         'mode' => 'payment',
-                        'success_url' => URLROOT.'/Payment/createSessionRegister/'.$data['name'].'/'.$data['age'].'/'.$data['cnumber'].'/'.$data['gender'].'/'.$data['session_id'].'/'.$data['fee'],
+                        'success_url' => URLROOT.'/Payment/createSessionRegister/'.$data['name'].'/'.$data['age'].'/'.$data['cnumber'].'/'.$data['gender'].'/'.$data['session_id'].'/'.$data['fee'].'/'.$data['noOfParticipants'].'/'.$data['current_participants'],
                         'cancel_url' => URLROOT.'/Payment/paymentUnsuccess/',
                       ]);
 
@@ -279,7 +281,7 @@
         }
 
         // Create session register after the payment is successful
-        public function createSessionRegister($name, $age, $cnumber, $gender, $session_id, $fee) {
+        public function createSessionRegister($name, $age, $cnumber, $gender, $session_id, $fee, $noOfParticipants, $current_participants) {
 
                 $data = [
                     'name' => $name,
@@ -288,6 +290,8 @@
                     'cnumber' => $cnumber,
                     'session_id' => $session_id,
                     'fee' => $fee,
+                    'noOfParticipants' => $noOfParticipants,
+                    'current_participants' => $current_participants,
                 ];
 
                 // Create session register

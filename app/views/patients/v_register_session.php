@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="login-page-rightside">
-            <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $data['session_id'] ?>/<?php echo $data['fee'] ?>" method="POST">
+            <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $data['session_id'] ?>/<?php echo $data['fee'] ?>/<?php echo $data['noOfParticipants'] ?>/<?php echo $data['current_participants'] ?>" method="POST">
                 <div class="topic-of-form">
                     <h1>Register For The Session</h1>
                 </div>

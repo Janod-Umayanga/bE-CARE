@@ -175,6 +175,9 @@
 
         // Create session register
         public function createSessionRegister($data) {
+            // Increment the current mumber of participants
+            $current_participants = $data['current_participants'] + 1;
+
             $this->db->query('INSERT INTO session_register (name, age, contact_number, gender, paid_amount, session_id, patient_id) VALUES (:name, :age, :contact_number, :gender, :paid_amount, :session_id, :patient_id)');
             $this->db->bind(':name', $data['name']);
             $this->db->bind(':age', $data['age']);
@@ -183,6 +186,44 @@
             $this->db->bind(':paid_amount', $data['fee']+$data['fee']*0.1);
             $this->db->bind(':session_id', $data['session_id']);
             $this->db->bind(':patient_id', $_SESSION['patient_id']);
+
+            // Check if the session would be full after incrementing
+            if($current_participants >= $data['noOfParticipants']) { 
+                if($this->db->execute()) {
+                    if($this->updateCurrentSessionParticipants($data, $current_participants)) {
+                        return $this->disableSession($data);
+                    }
+                }
+                else {
+                    return false;
+                }
+            }
+            else if($this->db->execute()) {
+                return $this->updateCurrentSessionParticipants($data, $current_participants);
+            }
+            else {
+                return false;
+            }
+        }
+
+        // Update current number of participants
+        public function updateCurrentSessionParticipants($data, $current_participants) {
+            $this->db->query('UPDATE session SET current_participants = :current_participants WHERE session_id = :session_id');
+            $this->db->bind(':current_participants', $current_participants);
+            $this->db->bind(':session_id', $data['session_id']);
+
+            if($this->db->execute()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        // Disable the session
+        public function disableSession($data) {
+            $this->db->query('UPDATE session SET active = 0 WHERE session_id = :session_id');
+            $this->db->bind(':session_id', $data['session_id']);
 
             if($this->db->execute()) {
                 return true;
@@ -245,7 +286,7 @@
             }
         }
 
-        // Update current channel time
+        // Update current number of participants
         public function updateCurrentParticipants($data, $current_participants) {
             $this->db->query('UPDATE med_ins_appointment_day SET current_participants = :current_participants WHERE med_ins_appointment_day_id = :med_ins_appointment_day_id');
             $this->db->bind(':current_participants', $current_participants);
