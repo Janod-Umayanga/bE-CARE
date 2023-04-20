@@ -36,7 +36,7 @@
                         <span class="form-invalid"><?php echo $data['name_err'] ?></span>
 
                         <label for="age">Age</label>
-                        <input type="text" id="age" name="age" value="<?php echo $data['age'] ?>">
+                        <input type="number" id="age" name="age" value="<?php echo $data['age'] ?>">
                         <span class="form-invalid"><?php echo $data['age_err'] ?></span>
 
                         <label for="">Gender</label>
@@ -47,7 +47,7 @@
                         <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
 
                         <label for="cnumber">Contact number</label>
-                        <input type="text" id="cnumber" name="cnumber" value="<?php echo $data['cnumber'] ?>">
+                        <input type="number" id="cnumber" name="cnumber" value="<?php echo $data['cnumber'] ?>">
                         <span class="form-invalid"><?php echo $data['cnumber_err'] ?></span>
 
                     <button>Submit</button>

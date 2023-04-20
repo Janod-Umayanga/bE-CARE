@@ -30,14 +30,14 @@
                         <i class="fa-brands fa-twitter"></i>
                     </div>
                     <div class="inner-circle-for-initials">
-                        <h1>SL</h1>
+                        <h1>CS</h1>
                     </div>
                 </div>
             </div>
             <div class="bottom">
                 <p>*******</p>
                 <h3>This session will be conducted by Dr. <?php echo $session->first_name ?> <?php echo $session->last_name ?> on <?php echo $session->date ?> during <?php echo $session->starting_time ?> to <?php echo $session->ending_time ?> at <?php echo $session->address ?></h3>
-                <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $session->sesion_id ?>/<?php echo $session->registration_fee ?>">
+                <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $session->session_id ?>/<?php echo $session->registration_fee ?>">
                     <button>Register</button>
                 </form>
             </div>
@@ -58,14 +58,14 @@
                         <i class="fa-brands fa-twitter"></i>
                     </div>
                     <div class="inner-circle-for-initials">
-                        <h1>SL</h1>
+                        <h1>NS</h1>
                     </div>
                 </div>
             </div>
             <div class="bottom">
                 <p>*******</p>
                 <h3>This session will be conducted by Dr. <?php echo $session->first_name ?> <?php echo $session->last_name ?> on <?php echo $session->date ?> during <?php echo $session->starting_time ?> to <?php echo $session->ending_time ?> at <?php echo $session->address ?></h3>
-                <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $session->sesion_id ?>/<?php echo $session->registration_fee ?>">
+                <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $session->session_id ?>/<?php echo $session->registration_fee ?>">
                     <button>Register</button>
                 </form>
             </div>
@@ -86,14 +86,14 @@
                         <i class="fa-brands fa-twitter"></i>
                     </div>
                     <div class="inner-circle-for-initials">
-                        <h1>SL</h1>
+                        <h1>MS</h1>
                     </div>
                 </div>
             </div>
             <div class="bottom">
                 <p>*******</p>
                 <h3>This session will be conducted by <?php echo $session->gender ?>. <?php echo $session->first_name ?> <?php echo $session->last_name ?> on <?php echo $session->date ?> during <?php echo $session->starting_time ?> to <?php echo $session->ending_time ?> at <?php echo $session->address ?></h3>
-                <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $session->sesion_id ?>/<?php echo $session->registration_fee ?>">
+                <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $session->session_id ?>/<?php echo $session->registration_fee ?>">
                     <button>Register</button>
                 </form>
             </div>

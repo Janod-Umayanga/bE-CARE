@@ -1575,16 +1575,22 @@
                     // Validate name
                     if(empty($data['name'])) {
                         $data['name_err'] = 'Name required';
+                    } else if(validateFirstName($data['name']) != "true") {
+                        $data['name_err'] = validateFirstName($data['name']);
                     }
     
                     // Validate address
                     if(empty($data['age'])) {
                         $data['age_err'] = 'Age required';
+                    } else if(validatePostitiveNumber($data['age']) != "true") {
+                        $data['age_err'] = validatePostitiveNumber($data['age']);
                     }
     
                     // Validate contact number
                     if(empty($data['cnumber'])) {
                         $data['cnumber_err'] = 'Contact number required';
+                    } else if(validateContactNumber($data['cnumber']) != "true") {
+                        $data['cnumber_err'] = validateContactNumber($data['cnumber']);
                     }
     
                     // Validate gneder

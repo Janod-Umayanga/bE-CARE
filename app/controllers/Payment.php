@@ -250,16 +250,56 @@
                         'session_id' =>trim($_POST['session_id']),
                         'fee' => trim($_POST['fee']),
                     ];
+
+                    // Set your test stripe API key for the payment process
+                    \Stripe\Stripe::setApiKey(STRIPEKEY);
+
+                    // Create a payment session
+                    $session = \Stripe\Checkout\Session::create([
+                        'payment_method_types' => ['card'],
+                        'line_items' => [[
+                            'price_data' => [
+                              'currency' => 'lkr',
+                              'product' => 'prod_NkO72NWCWePJn4',
+                              'unit_amount' => ($data['fee'] + $data['fee']*0.1)*100, 
+                            ],
+                            'quantity' => 1,
+                          ]],
+                        'mode' => 'payment',
+                        'success_url' => URLROOT.'/Payment/createSessionRegister/'.$data['name'].'/'.$data['age'].'/'.$data['cnumber'].'/'.$data['gender'].'/'.$data['session_id'].'/'.$data['fee'],
+                        'cancel_url' => URLROOT.'/Payment/paymentUnsuccess/',
+                      ]);
+
+                    // Redirect the user to the Stripe payment gateway
+                    header('Location: '. $session->url);
+                    exit;
     
-                    // Create session register
-                    if($this->paymentModel->createSessionRegister($data)) {
-                        $_SESSION['session_register_created'] = true;
-                        redirect('Pages/index');
-                    }
-                    else {
-                        die('Something went wrong');
-                    }   
+                      
                 }
+        }
+
+        // Create session register after the payment is successful
+        public function createSessionRegister($name, $age, $cnumber, $gender, $session_id, $fee) {
+
+                $data = [
+                    'name' => $name,
+                    'age' => $age,
+                    'gender' => $gender,
+                    'cnumber' => $cnumber,
+                    'session_id' => $session_id,
+                    'fee' => $fee,
+                ];
+
+                // Create session register
+                if($this->paymentModel->createSessionRegister($data)) {
+                    $_SESSION['channel_created'] = true;
+                    // $_SESSION['session_register_created'] = true;
+                    redirect('Pages/index');
+                }
+                else {
+                    die('Something went wrong');
+                } 
+            
         }
         
         // Request a diet plan
