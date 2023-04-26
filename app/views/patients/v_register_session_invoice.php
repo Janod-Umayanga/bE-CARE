@@ -50,6 +50,9 @@
                 <input type="hidden" id="age" name="age" value="<?php echo $data['age'] ?>">
                 <input type="hidden" id="gender" name="gender" value="<?php echo $data['gender'] ?>">
                 <input type="hidden" id="cnumber" name="cnumber" value="<?php echo $data['cnumber'] ?>">
+                <input type="hidden" name="noOfParticipants" value="<?php echo $data['noOfParticipants'] ?>">
+                <input type="hidden" name="current_participants" value="<?php echo $data['current_participants'] ?>">
+
                 <button>Pay here</button>
             </form>
         </div>

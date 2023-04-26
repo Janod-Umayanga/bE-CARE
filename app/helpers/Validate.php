@@ -261,5 +261,15 @@
     return "true";
   }
 
+  function validatePostitiveNumber($number) {
+    // Check if the given number is a positive number
+    if ($number <= 0) {
+      return "Cannot be a negative number or zero";
+    }
+    
+    // If all checks pass, return true
+    return "true";
+  }
+
 
  ?>

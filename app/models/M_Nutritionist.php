@@ -9,14 +9,14 @@
 
         // Get All nutritionists
         public function getAllNutritionists() {
-            $this->db->query('SELECT * FROM nutritionist');
+            $this->db->query('SELECT * FROM nutritionist WHERE delete_flag = 0');
 
             return $this->db->resultSet();
         }
 
         // Get nutritionists by a filter
         public function getNutritionists($filter) {
-            $this->db->query("SELECT * FROM nutritionist WHERE CONCAT(first_name,last_name) LIKE '%$filter%'");
+            $this->db->query("SELECT * FROM nutritionist WHERE CONCAT(first_name,last_name) LIKE '%$filter%' AND delete_flag = 0");
 
             return $this->db->resultSet();
         }

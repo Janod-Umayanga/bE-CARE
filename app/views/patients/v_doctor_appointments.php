@@ -19,7 +19,7 @@
     <section class="table-section theme">
         <div class="table-container theme">
             <div class="table-topic-main">
-                <h1>Appointments</h1>
+                <h1>Doctor Appointments</h1>
             </div>
             <div class="table">
                 <table cellspacing="0" cellpadding="0">

@@ -175,6 +175,9 @@
 
         // Create session register
         public function createSessionRegister($data) {
+            // Increment the current mumber of participants
+            $current_participants = $data['current_participants'] + 1;
+
             $this->db->query('INSERT INTO session_register (name, age, contact_number, gender, paid_amount, session_id, patient_id) VALUES (:name, :age, :contact_number, :gender, :paid_amount, :session_id, :patient_id)');
             $this->db->bind(':name', $data['name']);
             $this->db->bind(':age', $data['age']);
@@ -183,6 +186,44 @@
             $this->db->bind(':paid_amount', $data['fee']+$data['fee']*0.1);
             $this->db->bind(':session_id', $data['session_id']);
             $this->db->bind(':patient_id', $_SESSION['patient_id']);
+
+            // Check if the session would be full after incrementing
+            if($current_participants >= $data['noOfParticipants']) { 
+                if($this->db->execute()) {
+                    if($this->updateCurrentSessionParticipants($data, $current_participants)) {
+                        return $this->disableSession($data);
+                    }
+                }
+                else {
+                    return false;
+                }
+            }
+            else if($this->db->execute()) {
+                return $this->updateCurrentSessionParticipants($data, $current_participants);
+            }
+            else {
+                return false;
+            }
+        }
+
+        // Update current number of participants
+        public function updateCurrentSessionParticipants($data, $current_participants) {
+            $this->db->query('UPDATE session SET current_participants = :current_participants WHERE session_id = :session_id');
+            $this->db->bind(':current_participants', $current_participants);
+            $this->db->bind(':session_id', $data['session_id']);
+
+            if($this->db->execute()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        // Disable the session
+        public function disableSession($data) {
+            $this->db->query('UPDATE session SET active = 0 WHERE session_id = :session_id');
+            $this->db->bind(':session_id', $data['session_id']);
 
             if($this->db->execute()) {
                 return true;
@@ -202,6 +243,67 @@
             $this->db->bind(':paid_amount', $data['fee']+$data['fee']*0.1);
             $this->db->bind(':paid_time', $timestamp);
             $this->db->bind(':order_id', $data['order_id']);
+
+            if($this->db->execute()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        // Create meditation instructor registration
+        public function createMeditationInstructorRegistration($data, $patient_id) {
+            // Increment the current mumber of participants
+            $current_participants = $data['current_participants'] + 1;
+            
+            $this->db->query('INSERT INTO med_ins_register (name, age, contact_number, gender, paid_amount, meditation_instructor_id, med_ins_appointment_day_id, patient_id) VALUES (:name, :age, :contact_number, :gender, :paid_amount, :meditation_instructor_id, :med_ins_appointment_day_id, :patient_id)');
+            $this->db->bind(':name', $data['name']);
+            $this->db->bind(':age', $data['age']);
+            $this->db->bind(':contact_number', $data['cnumber']);
+            $this->db->bind(':gender', $data['gender']);
+            $this->db->bind(':paid_amount', $data['fee']+$data['fee']*0.1);
+            $this->db->bind(':meditation_instructor_id', $data['meditation_instructor_id']);
+            $this->db->bind(':med_ins_appointment_day_id', $data['appointment_day_id']);
+            $this->db->bind(':patient_id', $patient_id);
+
+            // Check if the timeslot would be full after incrementing
+            if($current_participants >= $data['noOfParticipants']) { 
+                if($this->db->execute()) {
+                    if($this->updateCurrentParticipants($data, $current_participants)) {
+                        return $this->disableAppointmentDay($data);
+                    }
+                }
+                else {
+                    return false;
+                }
+            }
+            else if($this->db->execute()) {
+                return $this->updateCurrentParticipants($data, $current_participants);
+            }
+            else {
+                return false;
+            }
+        }
+
+        // Update current number of participants
+        public function updateCurrentParticipants($data, $current_participants) {
+            $this->db->query('UPDATE med_ins_appointment_day SET current_participants = :current_participants WHERE med_ins_appointment_day_id = :med_ins_appointment_day_id');
+            $this->db->bind(':current_participants', $current_participants);
+            $this->db->bind(':med_ins_appointment_day_id', $data['appointment_day_id']);
+
+            if($this->db->execute()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        // Disable the appointment day for meditation instructing
+        public function disableAppointmentDay($data) {
+            $this->db->query('UPDATE med_ins_appointment_day SET active = 0 WHERE med_ins_appointment_day_id = :med_ins_appointment_day_id');
+            $this->db->bind(':med_ins_appointment_day_id', $data['appointment_day_id']);
 
             if($this->db->execute()) {
                 return true;

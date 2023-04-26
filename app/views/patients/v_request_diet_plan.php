@@ -33,7 +33,7 @@
                         <span class="form-invalid"><?php echo $data['name_err'] ?></span>
 
                         <label for="age">Age</label>
-                        <input type="text" id="age" name="age" value="<?php echo $data['age'] ?>">
+                        <input type="number" id="age" name="age" value="<?php echo $data['age'] ?>">
                         <span class="form-invalid"><?php echo $data['age_err'] ?></span>
 
                         <label for="gender">Gender</label>

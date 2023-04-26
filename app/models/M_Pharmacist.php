@@ -9,14 +9,14 @@
 
         // Get All pharmacists
         public function getAllPharmacists() {
-            $this->db->query('SELECT * FROM pharmacist');
+            $this->db->query('SELECT * FROM pharmacist WHERE delete_flag = 0');
 
             return $this->db->resultSet();
         }
 
         // Get pharmacists by a filter
         public function getPharmacists($name, $city) {
-            $this->db->query("SELECT * FROM pharmacist WHERE CONCAT(pharmacy_name) LIKE '%$name%' AND city LIKE '%$city%'");
+            $this->db->query("SELECT * FROM pharmacist WHERE CONCAT(pharmacy_name) LIKE '%$name%' AND city LIKE '%$city%' AND delete_flag = 0");
 
             return $this->db->resultSet();
         }

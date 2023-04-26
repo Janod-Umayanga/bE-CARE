@@ -9,14 +9,14 @@
 
         // Get All doctors
         public function getAllDoctors() {
-            $this->db->query('SELECT * FROM doctor');
+            $this->db->query('SELECT * FROM doctor WHERE delete_flag = 0');
 
             return $this->db->resultSet();
         }
 
         // Get doctors by a filter
         public function getDoctors($name, $specialization, $city, $day) {
-            $this->db->query("SELECT * FROM doctor WHERE CONCAT(first_name,last_name) LIKE '%$name%' AND specialization LIKE '%$specialization%' AND city LIKE '%$city%'");
+            $this->db->query("SELECT * FROM doctor WHERE CONCAT(first_name,last_name) LIKE '%$name%' AND specialization LIKE '%$specialization%' AND city LIKE '%$city%' AND delete_flag = 0");
 
             $today = date("Y-m-d");
             $tommorow = date("Y-m-d", strtotime('tomorrow'));
