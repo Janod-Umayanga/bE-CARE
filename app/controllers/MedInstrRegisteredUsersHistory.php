@@ -7,7 +7,7 @@ class MedInstrRegisteredUsersHistory extends Controller{
     $this->medInstrRegisteredUsersHistoryModel = $this->model('M_MedInstrRegisteredUsersHistory');
   }
 
-  
+  //Med Instr Registered Users History  
   public function medInstrRegisteredUsersHistory()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -27,6 +27,7 @@ class MedInstrRegisteredUsersHistory extends Controller{
 
   }
   
+  // search Med Instr Registered Users History
  public function  searchMedInstrRegisteredUsersHistory()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -59,7 +60,7 @@ class MedInstrRegisteredUsersHistory extends Controller{
   }
 
 
-
+  //view More MedInstr Registered Users History
   public function viewMoreMedInstrRegisteredUsersHistory($med_timeslot_id)
   {
     if(isset($_SESSION['MedInstr_id'])) {  

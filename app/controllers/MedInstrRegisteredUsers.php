@@ -7,6 +7,7 @@ class MedInstrRegisteredUsers extends Controller{
     $this->medInstrRegisteredUsersModel = $this->model('M_MedInstrRegisteredUsers');
   }
 
+  //Med Instr RegisteredUsers
   public function medInstrRegisteredUsers()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -36,7 +37,7 @@ class MedInstrRegisteredUsers extends Controller{
 
   }
 
-  
+  //Monday Registered Users
   public function mondayRegisteredUsers()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -55,6 +56,7 @@ class MedInstrRegisteredUsers extends Controller{
   }
   }
   
+  //Tuesday Registered Users
   public function tuesdayRegisteredUsers()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -73,6 +75,7 @@ class MedInstrRegisteredUsers extends Controller{
 
   }
 
+  //Wednesday Registered Users
   public function wednesdayRegisteredUsers()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -91,7 +94,7 @@ class MedInstrRegisteredUsers extends Controller{
 
   }
 
-
+ //Thursday Registered Users
   public function thursdayRegisteredUsers()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -110,6 +113,7 @@ class MedInstrRegisteredUsers extends Controller{
   }
   }
 
+  //Friday Registered Users
   public function fridayRegisteredUsers()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -126,8 +130,9 @@ class MedInstrRegisteredUsers extends Controller{
     redirect('Login/login');  
   }
 
-  }
+ }
 
+ //Saturday Registered Users
   public function saturdayRegisteredUsers()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -146,7 +151,7 @@ class MedInstrRegisteredUsers extends Controller{
   }
   }
 
-
+ //Sunday Registered Users
   public function sundayRegisteredUsers()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -165,6 +170,7 @@ class MedInstrRegisteredUsers extends Controller{
 
   }
 
+  //Search MedInstr RegisteredUsers Monday
   public function  searchMedInstrRegisteredUsersMonday()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -197,7 +203,7 @@ class MedInstrRegisteredUsers extends Controller{
 }
   }
 
-
+ //Search MedInstr RegisteredUsers Tuesday
   public function  searchMedInstrRegisteredUsersTuesday()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -230,6 +236,7 @@ class MedInstrRegisteredUsers extends Controller{
 } 
   }
 
+  //Search MedInstr RegisteredUsers Wednesday
   public function  searchMedInstrRegisteredUsersWedneasday()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -262,6 +269,7 @@ class MedInstrRegisteredUsers extends Controller{
 } 
   }
 
+  //search MedInstr RegisteredUsers Thursday
   public function  searchMedInstrRegisteredUsersThursday()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -294,6 +302,7 @@ class MedInstrRegisteredUsers extends Controller{
 } 
   }
 
+  //search MedInstr RegisteredUsers Friday
   public function  searchMedInstrRegisteredUsersFriday()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -326,6 +335,7 @@ class MedInstrRegisteredUsers extends Controller{
 } 
   }
 
+  //search MedInstr RegisteredUsers Saturday
   public function  searchMedInstrRegisteredUsersSaturday()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -358,7 +368,7 @@ class MedInstrRegisteredUsers extends Controller{
 } 
   }
 
-
+  //search MedInstr RegisteredUsers Sunday
   public function  searchMedInstrRegisteredUsersSunday()
   {
     if(isset($_SESSION['MedInstr_id'])) {  

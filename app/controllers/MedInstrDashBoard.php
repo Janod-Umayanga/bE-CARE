@@ -7,6 +7,7 @@ class MedInstrDashBoard extends Controller{
     $this->medInstrDashBoardModel = $this->model('M_MedInstrDashBoard');
   }
 
+  //Meditation Instructor Dashboard
   public function medInstrDashBoard()
   {
     if(isset($_SESSION['MedInstr_id'])) {  

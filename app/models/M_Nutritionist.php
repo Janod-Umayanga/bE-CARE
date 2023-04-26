@@ -223,7 +223,7 @@
        
             $this->db->query('UPDATE nutritionist set password = :password WHERE nutritionist_id = :id');
             $this->db->bind(':password', $data['password']);
-            $this->db->bind(':id', $data['nutritionist_id']);
+            $this->db->bind(':id', $data['user_id']);
                 
     
             if($this->db->execute()){

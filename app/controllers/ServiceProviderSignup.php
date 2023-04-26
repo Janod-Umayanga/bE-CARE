@@ -14,8 +14,7 @@ class ServiceProviderSignup extends Controller{
     public function  signupDoctor()
     {
       
-  
-     if($_SERVER['REQUEST_METHOD']=='POST'){
+       if($_SERVER['REQUEST_METHOD']=='POST'){
         $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $_SESSION['signup_form_number'] = 1;
         $data=[
@@ -203,7 +202,7 @@ class ServiceProviderSignup extends Controller{
           if($this->serviceProviderSignupModel->signupDoctor($data)){
               $doctorDetails=$this->serviceProviderSignupModel->getLatestReqDoctorID();
               sendMail($data['d_email'],$data['d_first_name'],2, 7,$doctorDetails->requested_doctor_id);
-
+                                          //role=2                     
               redirect('Pages/verify_email');
               //    $this->view('inc/v_pending',$data); 
             }else{
@@ -447,7 +446,7 @@ class ServiceProviderSignup extends Controller{
                 if($this->serviceProviderSignupModel->signupCounsellor($data)){
                       $counsellorDetails=$this->serviceProviderSignupModel->getLatestReqCounsellorID();
                       sendMail($data['c_email'],$data['c_first_name'],3, 7,$counsellorDetails->requested_counsellor_id);
-        
+                                              //role=3
                       redirect('Pages/verify_email');
     
                   }else{
@@ -695,7 +694,7 @@ class ServiceProviderSignup extends Controller{
              if($this->serviceProviderSignupModel->signupMeditationInstructor($data)){
                   $meditationInstructorDetails=$this->serviceProviderSignupModel->getLatestReqMeditationInstructorID();
                   sendMail($data['m_email'],$data['m_first_name'],4, 7,$meditationInstructorDetails->requested_meditation_instructor_id);
-
+                                //role=4
                   redirect('Pages/verify_email');
                   
                }else{
@@ -950,7 +949,7 @@ class ServiceProviderSignup extends Controller{
              if($this->serviceProviderSignupModel->signupPharmacist($data)){
                   $pharmacistDetails=$this->serviceProviderSignupModel->getLatestReqPharmacistID();
                   sendMail($data['p_email'],$data['p_first_name'],6, 7,$pharmacistDetails->requested_pharmacist_id);
-
+                                                     //role=6
                   redirect('Pages/verify_email');
              
                }else{
@@ -1192,8 +1191,8 @@ class ServiceProviderSignup extends Controller{
             $data['n_password']=password_hash($data['n_password'],PASSWORD_DEFAULT);
              if($this->serviceProviderSignupModel->signupNutritionist($data)){
                 $nutritionistDetails=$this->serviceProviderSignupModel->getLatestReqNutritionistID();
-                sendMail($data['n_email'],$data['n_first_name'],2, 7,$nutritionistDetails->requested_nutritionist_id);
-
+                sendMail($data['n_email'],$data['n_first_name'],5, 7,$nutritionistDetails->requested_nutritionist_id);
+                                                         //role=5
                 redirect('Pages/verify_email');
              
                }else{

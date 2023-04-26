@@ -6,12 +6,12 @@ class AdminDashboard extends Controller{
     $this->adminDashboardModel = $this->model('M_AdminDashboard');
   }
 
+  //Admin DashBoard
   public function adminDashBoard()
   {
-//    $user= $this->userModel->findUserByID();
+
   if(isset($_SESSION['admin_id'])) {  
   
-   
    $data=[                      
      'user'=>''
    ];

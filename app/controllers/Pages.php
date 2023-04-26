@@ -6,6 +6,7 @@
             $this->pagesModel = $this->model('M_Pages');
         }
 
+        //index
         public function index() {
             $data = [];
 

@@ -32,12 +32,13 @@
 
         <div class="card-container-forservices" id="to-be-show-more">
              
-            
+            <!-- No of Solved Complaint -->
             <a href="<?php echo URLROOT;?>/AdminComplaintMgmt/solvedComplaint" class="card">
                 <img src="<?php echo URLROOT;?>/img/adminComplaintManagement/solved.jpeg" alt="">
                 <h2>Solved - <?php echo $data["solvedComplaint"]->solvedComplaint_count ?> </h2>
             </a>
             
+            <!-- No of UnSolved Complaint -->
             <a href="<?php echo URLROOT;?>/AdminComplaintMgmt/unsolvedComplaint" class="card">
                 <img src="<?php echo URLROOT;?>/img/adminComplaintManagement/unsolved.jpeg" alt="">
                 <h2>Unsolved - <?php echo $data["unsolvedComplaint"]->unsolvedComplaint_count ?> </h2>     

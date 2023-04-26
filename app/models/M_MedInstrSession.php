@@ -9,7 +9,8 @@
        
 
       }
-
+      
+      //find No Of Old Session
       public function  findNoOfOldSession($id)
       {
         $current_date= date("Y-m-d");
@@ -24,7 +25,7 @@
       
       } 
 
-
+      //find No Of New Session
       public function findNoOfNewSession($id)
       {
         $current_date= date("Y-m-d");
@@ -39,7 +40,7 @@
       
       } 
 
-
+      //find Old Session
       public function findOldSession($id)
       {
         $current_date= date("Y-m-d");
@@ -54,7 +55,7 @@
       
       } 
               
-
+  //Search Old Session
   public function searchOldSession($id,$search)
   {
     $current_date= date("Y-m-d");
@@ -67,6 +68,7 @@
      return $result;
   } 
 
+  //View More Session
   public function viewMoreSession($session_id)
   {
     $this->db->query('SELECT * FROM session WHERE session_id=:session_id');
@@ -79,7 +81,7 @@
   
   } 
 
-  
+  //view Reg Users Session
   public function  viewRegUsersSession($session_id)
   {
     $this->db->query("SELECT * FROM session_register WHERE session_id=:session_id ORDER BY registered_date_and_time ASC");
@@ -90,23 +92,19 @@
      return $result;
   } 
 
+  //Search MedInstr Session RegUsers
   public function  searchMedInstrSessionRegUsers($session_id,$search)
-                  
   {
-    
     $this->db->query("SELECT * FROM session_register WHERE session_id=:session_id AND CONCAT(name,age) LIKE '%$search%' ORDER BY registered_date_and_time ASC");
     $this->db->bind(':session_id', $session_id);
     
   
-    
-  
-    $result=$this->db->resultSet();
+     $result=$this->db->resultSet();
      return $result;
   } 
 
   
-
-  
+  //Find New Session  
   public function findNewSession($id)
       {
         $current_date= date("Y-m-d");
@@ -121,7 +119,7 @@
       
       } 
               
-
+  //Search New Session
   public function searchNewSession($id,$search)
   {
     $current_date= date("Y-m-d");

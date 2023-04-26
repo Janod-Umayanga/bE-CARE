@@ -6920,4 +6920,77 @@ h4 {
 }
 
 
+
+@media (max-width: 727px) {
+    .view-profile-container-userMgmt .card {
+        width: 80%;
+        padding-bottom: 0;
+    }
+    .view-profile-container-userMgmt .card .main-image {
+        padding-top: 60px
+    }
+    .view-profile-container-userMgmt .card .bottom {
+        text-align: left;
+        margin-top: 0;
+        height: fit-content;
+        font-size: 14px;
+    }
+    .view-profile-container-userMgmt .card .bottom ul {
+        padding: 0 20px;
+        overflow: auto;
+    }
+}
+
+
+
+@media (max-width: 727px) {
+    .view-profile-container-userMgmtDoctorVM
+ .card {
+        width: 80%;
+        padding-bottom: 0;
+    }
+    .view-profile-container-userMgmtDoctorVM
+ .card .main-image {
+        padding-top: 60px
+    }
+    .view-profile-container-userMgmtDoctorVM
+ .card .bottom {
+        text-align: left;
+        margin-top: 0;
+        height: fit-content;
+        font-size: 14px;
+    }
+    .view-profile-container-userMgmtDoctorVM
+ .card .bottom ul {
+        padding: 0 20px;
+        overflow: auto;
+    }
+}
+
+
+@media (max-width: 727px) {
+    .view-profile-container-requestedSP
+ .card {
+        width: 80%;
+        padding-bottom: 0;
+    }
+    .view-profile-container-requestedSP
+ .card .main-image {
+        padding-top: 60px
+    }
+    .view-profile-container-requestedSP
+ .card .bottom {
+        text-align: left;
+        margin-top: 0;
+        height: fit-content;
+        font-size: 14px;
+    }
+    .view-profile-container-requestedSP
+ .card .bottom ul {
+        padding: 0 20px;
+        overflow: auto;
+    }
+}
+
+
 /* Responsive precess ends here */

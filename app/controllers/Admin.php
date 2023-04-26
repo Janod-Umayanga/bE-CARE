@@ -7,6 +7,7 @@ class Admin extends Controller{
     $this->userModel = $this->model('M_Admin');
   }
 
+  // Admin Profile
   public function profile()
   {
    if(isset($_SESSION['admin_id'])) {
@@ -44,12 +45,12 @@ class Admin extends Controller{
 
   }
 
+
+  // Admin Change Passsword
   public function changePW()
   {
-  
     if(isset($_SESSION['admin_id'])) {
-  
-     //  $user= $this->userModel->changeUserPW($_SESSION['admin_id']);
+ 
       $data=[                      
         'current_password_err'=>'',
         'retype_new_password_err'=>'' ,
@@ -61,9 +62,9 @@ class Admin extends Controller{
       redirect('Login/login');  
   }
 
-
   }
 
+  //Admin Update Password
   public function updatePW($id){
   
     if(isset($_SESSION['admin_id'])) {
@@ -89,7 +90,7 @@ class Admin extends Controller{
        }
        
        else{
-          if($this->userModel->findUserPWMatch($id,$data['current_password'])){
+         if($this->userModel->findUserPWMatch($id,$data['current_password'])){
      
          }else{
                 $data['current_password_err']='Current password is incorrect';
@@ -149,7 +150,7 @@ class Admin extends Controller{
 
 }
 
- 
+//  Check Admin logged in
   public function isLoggedIn(){
     if(isset($_SESSION['admin_id'])){
       return true;
@@ -157,7 +158,8 @@ class Admin extends Controller{
       return false;
     }
   }
-  
+
+  // Admin Edit profile
   public function editProfile($userId){
     if(isset($_SESSION['admin_id'])) {
   

@@ -7,6 +7,8 @@ class Complaint extends Controller{
     $this->complaintModel = $this->model('M_Complaint');
   }
 
+
+  //Complaint
   public function complaint()
   {
 
@@ -26,6 +28,8 @@ class Complaint extends Controller{
 
    if(empty($data['subject_err']) && empty($data['complaint_err'])){
 
+
+    //Patient
         if($data['usertype']=='patient'){
           $id=$_SESSION['patient_id'];
           $addcomplaint=$this->complaintModel->addComplaintPatient($data,$id);
@@ -35,7 +39,7 @@ class Complaint extends Controller{
             $this->view('pages/v_complaint',$data);    
         }
      
-
+    //Doctor
         }else if($data['usertype']=='doctor'){
           $id=$_SESSION['doctor_id'];
           $addcomplaint=$this->complaintModel->addComplaintDoctor($data,$id);
@@ -44,7 +48,7 @@ class Complaint extends Controller{
           }else{
             $this->view('pages/v_complaint',$data);    
         }
-
+    //Counsellor
         }else if($data['usertype']=='counsellor'){
          
           $id=$_SESSION['counsellor_id'];
@@ -54,7 +58,7 @@ class Complaint extends Controller{
           }else{
             $this->view('pages/v_complaint',$data);    
         }
-
+    //Meditation Instructor
         }else if($data['usertype']=='MedInstr'){
          
           $id=$_SESSION['MedInstr_id'];
@@ -64,7 +68,7 @@ class Complaint extends Controller{
           }else{
             $this->view('pages/v_complaint',$data);    
         }
-
+    //Nutritionist
         }else if($data['usertype']=='nutritionist'){
           
           $id=$_SESSION['nutritionist_id'];
@@ -75,6 +79,7 @@ class Complaint extends Controller{
             $this->view('pages/v_complaint',$data);    
         }
 
+    //Pharmacist    
         }else if($data['usertype']=='pharmacist'){
           
           $id=$_SESSION['pharmacist_id'];

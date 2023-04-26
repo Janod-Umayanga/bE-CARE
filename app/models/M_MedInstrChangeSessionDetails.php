@@ -9,6 +9,7 @@ class M_MedInstrChangeSessionDetails{
      $this->db=new Database();
    }
 
+   //Get Session Details
    public function getSessionDetails($id)
 
    { 
@@ -22,6 +23,7 @@ class M_MedInstrChangeSessionDetails{
       
    } 
 
+   //search Session Details
    public function searchSessionDetails($id,$search)
 
    { 
@@ -35,6 +37,7 @@ class M_MedInstrChangeSessionDetails{
       
    } 
 
+   //delete Session
    public function  deleteSession($session_id){
    
     $this->db->query('DELETE FROM session WHERE session_id=:id');
@@ -47,6 +50,7 @@ class M_MedInstrChangeSessionDetails{
     } 
   }
 
+  //medInstr add New Session
   public function medInstraddNewSession($id,$data)
   {
    
@@ -69,6 +73,7 @@ class M_MedInstrChangeSessionDetails{
 
   }
 
+  //view Session
   public function viewSession($sessionId)
   {
      
@@ -79,6 +84,7 @@ class M_MedInstrChangeSessionDetails{
     return $row;
   } 
 
+  //Med Instr update Session
   public function medInstrupdateSession($id,$sessionId,$data)
   {
     $this->db->query('UPDATE session SET title=:title,date=:date,starting_time=:starting_time,ending_time=:ending_time,address=:address,registration_fee=:fee,noOfParticipants=:noOfParticipants,description=:description,meditation_instructor_id=:id WHERE session_id=:sessionId');

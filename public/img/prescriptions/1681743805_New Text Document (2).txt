@@ -1,0 +1,49 @@
+1.
+(a)
+A = rand(2,3);
+log(A)
+size(log(A))
+
+
+(b)
+log(A')
+size(log(A'))
+
+(c)
+max(A)
+size(max(A))
+
+(d)
+sort(A')
+size(sort(A'))
+
+(e)
+sum(A)
+size(sum(A))
+
+(f)
+cumsum(A)
+size(cumsum(A))
+
+2.
+
+x = [-5:0.1:5];
+y = 2*x.^3 - 5*x.^2 + x - 3;
+plot(x, y, 'LineWidth', 8);
+xlabel('x', 'FontSize', 20);
+ylabel('p(x)', 'FontSize', 20);
+set(gca, 'FontSize', 20);
+
+
+
+3.
+
+2;
+function polynomial(x)
+
+  y = 2*x + 1;
+  disp(y);
+
+endfunction
+
+polynomial(5);

@@ -23,6 +23,10 @@
                 <h1><?php echo $data['first_name'] ?> <br> <?php echo $data['last_name'] ?></h1>
                 <div class="profile-icon"><?php echo substr($data['first_name'], 0,1) ?><?php echo substr($data['last_name'], 0,1) ?></div>
                 
+                 <!-- second argument is the starting position 
+                 third argument is the length of the extracted substring  -->
+
+
             </div>
             <div class="bottom">
                 <ul>

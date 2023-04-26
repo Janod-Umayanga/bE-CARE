@@ -2,13 +2,13 @@
 
 class MedInstrAddtimeslot extends Controller{
     private $medInstrAddtimeslotModel; 
+
     public function __construct(){
-    $this->medInstrAddtimeslotModel = $this->model('M_MedInstrAddtimeslot');
-  }
+         $this->medInstrAddtimeslotModel = $this->model('M_MedInstrAddtimeslot');
+    }
 
   
-
-
+ //Med Instr Add timeslot
   public function medInstrAddtimeslot()
   {
     if(isset($_SESSION['MedInstr_id'])) {  

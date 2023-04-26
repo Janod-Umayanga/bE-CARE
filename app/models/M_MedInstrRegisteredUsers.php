@@ -6,10 +6,9 @@
       public function __construct()
       {
         $this->db=new Database();
-       
-
       }
 
+      //find RegUsers Monday
       public function findRegUsersMonday($id)
       {
         $current_date= date("Y-m-d");
@@ -29,6 +28,7 @@
         }
       } 
 
+      //find RegUsers Tuesday
       public function findRegUsersTuesday($id)
       {
         $current_date= date("Y-m-d");
@@ -48,7 +48,7 @@
         }
       } 
 
-      
+      //find RegUsers Wednesday
       public function findRegUsersWednesday($id)
       {
         $current_date= date("Y-m-d");
@@ -68,6 +68,7 @@
         }
       } 
 
+      //find RegUsers Thursday
       public function findRegUsersThursday($id)
       {
         $current_date= date("Y-m-d");
@@ -87,6 +88,7 @@
         }
       } 
 
+      //find RegUsers Friday
       public function findRegUsersFriday($id)
       {
         $current_date= date("Y-m-d");
@@ -106,6 +108,7 @@
         }
       } 
    
+      //find RegUsers Saturday
       public function findRegUsersSaturday($id)
       {
         $current_date= date("Y-m-d");
@@ -125,6 +128,7 @@
         }
       } 
    
+      //find RegUsers Sunday
       public function findRegUsersSunday($id)
       {
         $current_date= date("Y-m-d");
@@ -145,6 +149,7 @@
 
     } 
 
+    //find All RegUsers Monday
     public function findAllRegUsersMonday($id)
     {
       $current_date= date("Y-m-d");
@@ -161,7 +166,7 @@
 
    } 
 
-
+   //find All RegUsers Tuesday
    public function findAllRegUsersTuesday($id)
    {
      $current_date= date("Y-m-d");
@@ -178,6 +183,7 @@
 
    }
    
+   //find All RegUsers Wednesday
    public function findAllRegUsersWednesday($id)
    {
      $current_date= date("Y-m-d");
@@ -194,6 +200,7 @@
 
   } 
 
+  //find All RegUsers Thursday
   public function findAllRegUsersThursday($id)
   {
     $current_date= date("Y-m-d");
@@ -210,7 +217,7 @@
 
  } 
 
-
+ //find All RegUsers Friday
  public function findAllRegUsersFriday($id)
  {
    $current_date= date("Y-m-d");
@@ -227,7 +234,7 @@
 
 } 
 
-
+//find All RegUsers Saturday
 public function findAllRegUsersSaturday($id)
 {
   $current_date= date("Y-m-d");
@@ -244,7 +251,7 @@ public function findAllRegUsersSaturday($id)
 
 } 
 
-
+//find All RegUsers Sunday
 public function findAllRegUsersSunday($id)
 {
   $current_date= date("Y-m-d");
@@ -261,6 +268,7 @@ public function findAllRegUsersSunday($id)
 
 } 
 
+//find med Channel Details
 public function  findmedChannelDetails()
 {
       
@@ -270,7 +278,7 @@ public function  findmedChannelDetails()
     return $result;
 } 
 
-
+//search All Reg Users Monday
 public function searchAllRegUsersMonday($search,$id)
 {
   $current_date= date("Y-m-d");
@@ -287,6 +295,7 @@ public function searchAllRegUsersMonday($search,$id)
 } 
 
 
+//search All RegUsers Tuesday
 public function searchAllRegUsersTuesday($search,$id)
 {
   $current_date= date("Y-m-d");
@@ -303,7 +312,7 @@ public function searchAllRegUsersTuesday($search,$id)
 } 
 
 
-
+//search All RegUsers Wednesday
 public function searchAllRegUsersWednesday($search,$id)
 {
   $current_date= date("Y-m-d");
@@ -321,7 +330,7 @@ public function searchAllRegUsersWednesday($search,$id)
 
 
 
-
+//search All RegUsers Thursday
 public function searchAllRegUsersThursday($search,$id)
 {
   $current_date= date("Y-m-d");
@@ -338,7 +347,7 @@ public function searchAllRegUsersThursday($search,$id)
 } 
 
 
-
+//search All RegUsers Friday
 public function searchAllRegUsersFriday($search,$id)
 {
   $current_date= date("Y-m-d");
@@ -355,7 +364,7 @@ public function searchAllRegUsersFriday($search,$id)
 } 
 
 
-
+//search All RegUsers Saturday
 public function searchAllRegUsersSaturday($search,$id)
 {
   $current_date= date("Y-m-d");
@@ -372,7 +381,7 @@ public function searchAllRegUsersSaturday($search,$id)
 } 
 
 
-
+//search All RegUsers Sunday
 public function searchAllRegUsersSunday($search,$id)
 {
   $current_date= date("Y-m-d");
