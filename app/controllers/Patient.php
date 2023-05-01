@@ -3,6 +3,7 @@
     class Patient extends Controller{
         private $patientModel;
         private $complaintModel;
+        private $feedbackModel;
         private $doctorModel;
         private $pharmacistModel;
         private $orderRequestModel;
@@ -19,6 +20,7 @@
         public function __construct() {
             $this->patientModel = $this->model('M_Patient');
             $this->complaintModel = $this->model('M_Complaint');
+            $this->feedbackModel = $this->model('M_Feedback');
             $this->doctorModel = $this->model('M_Doctor');
             $this->pharmacistModel = $this->model('M_Pharmacist');
             $this->orderRequestModel = $this->model('M_Order_Request');
@@ -416,6 +418,64 @@
                 // Load view
                 $this->view('patients/v_complaints', $data);
             }
+        }
+
+        // add feedback
+        public function addFeedback() {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // Form is submitting
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                // Inserted form
+                $data = [
+                    'feedback' => trim($_POST['feedback']),
+
+                    'feedback_err' => ''
+                ];
+
+                // Validate feedback
+                if(empty($data['feedback'])) {
+                    $data['feedback_err'] = 'feedback required';
+                }
+
+                // Add the feedback after validation
+                if(empty($data['feedback_err'])) {
+                    // Add feedback
+                    if($this->feedbackModel->createFeedback($data, $_SESSION['patient_id'])) {
+                        redirect('Pages/index');
+                    }
+                    else {
+                        die('Something went wrong');
+                    }
+                }
+                else {
+                    // Load view
+                     $this->view('patients/v_add_feedback', $data);
+                }
+            }
+            else {
+                // Initial form
+                $data = [
+                    'feedback' => '',
+
+                    'feedback_err' => ''
+                ];
+
+                // Load view
+                $this->view('patients/v_add_feedback', $data);
+            }
+        }
+
+        // View all feedbacks
+        public function viewFeedbacks() {
+            $feedbacks = $this->feedbackModel->getAllFeedbacks();
+
+            $data = [
+                'feedbacks' => $feedbacks
+            ];
+
+            // Load view
+            $this->view('patients/v_feedbacks', $data);
         }
 
         // View and search doctors

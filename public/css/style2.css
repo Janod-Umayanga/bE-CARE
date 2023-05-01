@@ -6357,6 +6357,140 @@ h4 {
 
 /************************************************** Table Page style ends *********************************************************/
 
+/*Feed back page */
+
+.feed-backs-section{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    overflow: hidden;
+    padding: 40px 20px 0px 20px;
+}
+.feed-backs-section.dark{
+    background-color: var(--hue-black);
+}
+
+.feed-backs-section h1{
+    color: #1D242B;
+    position: relative;
+}
+
+.feed-backs-section h1.dark{
+    color: var(--hue-white);
+}
+
+.feed-backs-section h1::after{
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 2px;
+    background-color: var(--hue-dark-blue);
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.feed-back-container{
+    width: 70vw;
+    height: 580px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 20px;
+    margin-top: 30px;
+}
+.feed-back-container.active{
+    height: fit-content;
+}
+.feed-back-card{
+    border-radius: 10px;
+    background-color: #f4f3f3;
+    text-align: center;
+    padding: 40px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.feed-back-card:hover{
+    background-color: #1D242B;
+}
+.feed-back-card:hover p{
+    color: #bfbaba;
+}
+.feed-back-card:hover i{
+    color: #FAFAFA;
+}
+.feed-back-card:hover h2{
+    color: #FAFAFA;
+}
+.feed-back-card h2{
+    color: var(--hue-black);
+    font-size: 20px;
+}
+.feed-back-card h2.dark{
+    color: rgba(255, 255, 255, 0.868);
+}
+
+.feed-back-card p{
+    font-size: 14px;
+    color: #4d4d52;
+}
+.feed-back-card p.dark{
+    color: #f4efef;
+}
+
+.feed-back-message-box{
+    width: 100%;
+    padding: 5px 20px;
+    position: relative;
+    margin-top: 10px;
+}
+
+.feed-back-card i{
+    font-size: 10px;
+    color: #48515a;
+}
+.feed-back-card i.dark{
+    color: #dbdee0;
+}
+
+.feed-back-card i:nth-child(1){
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.feed-back-card i:nth-child(2){
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.show-more-button-container-in-feedback{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0px 10px 30px 10px;
+}
+.show-more-button-container-in-feedback.dark{
+    background-color: var(--hue-black);
+}
+.feed-back-card.dark{
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    color: var(--hue-white);
+}
+
+
+
 
 
 
@@ -6916,6 +7050,23 @@ h4 {
     .view-profile-container .card .bottom ul {
         padding: 0 20px;
         overflow: auto;
+    }
+}
+
+@media(max-width: 1090px) {
+    .feed-back-container {
+        width: 100%;
+    }
+}
+@media(max-width: 893px) {
+    .feed-back-container {
+        grid-template-columns: auto auto;
+    }
+}
+@media(max-width: 600px) {
+    .feed-back-container {
+        grid-template-columns: auto;
+        height:400vh;
     }
 }
 

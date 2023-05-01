@@ -14,8 +14,18 @@
                         <a href="#">About</a>
                     </li>
                     <li>
-                        <a href="#">Service</a>
+                        <a href="<?php echo URLROOT ?>/Patient/viewFeedbacks">Feedbacks</a>
                     </li>
+                    <?php if (isset($_SESSION['patient_id'])): ?>
+                        <li>
+                            <a href="<?php echo URLROOT ?>/Patient/addFeedback">Add a feedback</a>
+                        </li>
+                    <?php else: ?>
+                        <?php $_SESSION['need_login']=true ?>
+                        <li>
+                            <a href="<?php echo URLROOT ?>/Login/login">Add a feedback</a>
+                        </li>
+                    <?php endif; ?>
                     <?php if (isset($_SESSION['patient_id']) || isset($_SESSION['MedInstr_id']) || isset($_SESSION['doctor_id']) || isset($_SESSION['counsellor_id']) || isset($_SESSION['nutritionist_id']) || isset($_SESSION['pharmacist_id'])  ): ?>
                         <li>
                             <a href="<?php echo URLROOT ?>/Complaint/complaint">Complaint</a>
