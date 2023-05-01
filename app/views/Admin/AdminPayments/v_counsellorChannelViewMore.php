@@ -16,7 +16,7 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <section class="view-profile-container-userMgmt theme">
+    <section class="view-profile-container-adminPayment theme">
         <div class="card">
             
             <div class="main-image">

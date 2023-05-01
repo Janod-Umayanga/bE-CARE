@@ -694,7 +694,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
     
     
       if(empty($data['gender'])){
-        $data['gender_err']='gender can not be empty';
+        $data['gender_err']='title can not be empty';
       }
 
 
@@ -785,7 +785,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
              'specialization'=>trim($_POST['specialization']),
              'gender'=>trim($_POST['gender']),
              'qualification_file'=>$_FILES['qualification_file'],
-             'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
+             'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT).'_'.$_FILES['qualification_file']['name'],
              
           
              'first_name_err'=>'',
@@ -931,7 +931,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
           
 
           if(empty($data['gender'])){
-            $data['gender_err']='gender can not be empty';
+            $data['gender_err']='title can not be empty';
           }
           
        
@@ -1049,8 +1049,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                    'slmc_reg_number'=>trim($_POST['slmc']),
                    'gender'=>trim($_POST['gender']),
                    'qualification_file'=>$_FILES['qualification_file'],
-                   'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
-                   
+                   'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT).'_'.$_FILES['qualification_file']['name'],
+         
                
                                        
                     'first_name_err'=>'',
@@ -1093,7 +1093,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                  
                 }
        
-                if(empty($data['first_name'])){
+               if(empty($data['first_name'])){
                   $data['first_name_err']='first name can not be empty';
                }else if(validateFirstName($data['first_name'])!="true"){
                 $data['first_name_err']=validateFirstName($data['first_name']);
@@ -1148,7 +1148,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                }
                
                if(empty($data['account_holder_name'])){
-                   $data['account_holder_name_err']='account_holder name can not be empty';
+                   $data['account_holder_name_err']='account holder name can not be empty';
                }else if(validateAccountHolderName($data['account_holder_name'])!="true"){
                 $data['account_holder_name_err']=validateAccountHolderName($data['account_holder_name']);
                }
@@ -1161,7 +1161,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
               
              
                if(empty($data['account_number'])){
-                 $data['account_number_err']='last name can not be empty';
+                 $data['account_number_err']='account number can not be empty';
                }else if(validateAccountNumber($data['account_number'])!="true"){
                 $data['account_number_err']=validateAccountNumber($data['account_number']);
                }
@@ -1175,7 +1175,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
              
                
                if(empty($data['gender'])){
-                 $data['gender_err']='gender can not be empty';
+                 $data['gender_err']='title can not be empty';
                }
                
                if(empty($data['qualification_file'])){
@@ -1356,7 +1356,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
          }
          
          if(empty($data['account_holder_name'])){
-             $data['account_holder_name_err']='account_holder name can not be empty';
+             $data['account_holder_name_err']='account holder name can not be empty';
          }else if(validateAccountHolderName($data['account_holder_name'])!="true"){
           $data['account_holder_name_err']=validateAccountHolderName($data['account_holder_name']);
          }
@@ -1368,14 +1368,14 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
          }
        
          if(empty($data['account_number'])){
-           $data['account_number_err']='account_number can not be empty';
+           $data['account_number_err']='account number can not be empty';
          }else if(validateAccountNumber($data['account_number'])!="true"){
           $data['account_number_err']=validateAccountNumber($data['account_number']);
          }
         
 
          if(empty($data['gender'])){
-           $data['gender_err']='gender can not be empty';
+           $data['gender_err']='title can not be empty';
          }
          
       
@@ -1480,8 +1480,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
              'fee'=>trim($_POST['fee']),
              'gender'=>trim($_POST['gender']),
              'qualification_file'=>$_FILES['qualification_file'],
-             'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
-             
+             'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT).'_'.$_FILES['qualification_file']['name'],
+         
          
              'first_name_err'=>'',
              'last_name_err'=>'',
@@ -1579,7 +1579,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
          }
          
          if(empty($data['account_holder_name'])){
-             $data['account_holder_name_err']='account_holder name can not be empty';
+             $data['account_holder_name_err']='account holder name can not be empty';
          }else if(validateAccountHolderName($data['account_holder_name'])!="true"){
           $data['account_holder_name_err']=validateAccountHolderName($data['account_holder_name']);
          }
@@ -1592,7 +1592,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
          }
        
          if(empty($data['account_number'])){
-           $data['account_number_err']='account_number can not be empty';
+           $data['account_number_err']='account number can not be empty';
          }else if(validateAccountNumber($data['account_number'])!="true"){
           $data['account_number_err']=validateAccountNumber($data['account_number']);
          }
@@ -1613,7 +1613,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
        
         
          if(empty($data['gender'])){
-           $data['gender_err']='gender can not be empty';
+           $data['gender_err']='title can not be empty';
          }
          
          if(empty($data['qualification_file'])){
@@ -1735,8 +1735,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
              'address'=>trim($_POST['address']),
              'gender'=>trim($_POST['gender']),
              'qualification_file'=>$_FILES['qualification_file'],
-             'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
-             
+             'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT).'_'.$_FILES['qualification_file']['name'],
+          
          
              'first_name_err'=>'',
              'last_name_err'=>'',
@@ -1834,7 +1834,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
          }
          
          if(empty($data['account_holder_name'])){
-             $data['account_holder_name_err']='account_holder name can not be empty';
+             $data['account_holder_name_err']='account holder name can not be empty';
          }else if(validateAccountHolderName($data['account_holder_name'])!="true"){
           $data['account_holder_name_err']=validateAccountHolderName($data['account_holder_name']);
          }
@@ -1847,7 +1847,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
         
        
          if(empty($data['account_number'])){
-           $data['account_number_err']='last name can not be empty';
+           $data['account_number_err']='account number can not be empty';
          }else if(validateAccountNumber($data['account_number'])!="true"){
           $data['account_number_err']=validateAccountNumber($data['account_number']);
          }
@@ -1875,7 +1875,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
          }
          
          if(empty($data['gender'])){
-           $data['gender_err']='gender can not be empty';
+           $data['gender_err']='title can not be empty';
          }
          
          if(empty($data['qualification_file'])){
@@ -1993,8 +1993,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
              'fee'=>trim($_POST['fee']),
              'gender'=>trim($_POST['gender']),
              'qualification_file'=>$_FILES['qualification_file'],
-             'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
-             
+             'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT).'_'.$_FILES['qualification_file']['name'],
+           
          
             
              'first_name_err'=>'',
@@ -2119,7 +2119,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
        
          
          if(empty($data['gender'])){
-           $data['gender_err']='gender can not be empty';
+           $data['gender_err']='title can not be empty';
          }
          
          if(empty($data['qualification_file'])){

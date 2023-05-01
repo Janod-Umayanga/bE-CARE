@@ -19,9 +19,8 @@
                 <a href="<?php echo URLROOT ?>/AdminUserMgmt/Patient" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Patient</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Fill these details to add new patient</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
-                </div>
+                    <h2>Fill these details to add a new patient</h2>
+                    <p>After successfully creating a new patient account, the relevant patient will receive an email with their username and password for login.</p>  </div>
             </div>
         </div>
         <div class="diet-plan-rightside">
@@ -63,12 +62,12 @@
                         <input type="password" id="confirm_password" name="confirm_password" value="<?php echo $data['confirm_password'] ?>">
                         <span class="form-invalid"><?php echo $data['confirm_password_err'] ?></span>
 
-
-                        <label for="gender">Gender</label>
-                                <select name="gender" id="gender" >
-                                   <option value="Male">Male</option>
-                                   <option value="Female">Female</option>
-                                </select>
+                        <label for="gender">Title</label>
+                        <select name="gender" id="gender" >
+                            <option value="">Title</option>
+                            <option value="Mr">Mr</option>
+                            <option value="Ms">Ms</option>
+                        </select>
                         <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
 
                         

@@ -19,9 +19,9 @@
                 <a href="<?php echo URLROOT ?>/MedInstrChangetimeslot/medInstrChangetimeslot" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Change Timeslot</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Fill these details to add new timeslot</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
-                </div>
+                    <h2>Fill these details to update timeslot</h2>
+                    <p>Click the "Update" button to save your changes and update timeslot.</p>
+               </div>
             </div>
         </div>
         <div class="diet-plan-rightside">

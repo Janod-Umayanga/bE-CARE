@@ -16,7 +16,7 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <section class="view-profile-container-userMgmt theme">
+    <section class="view-profile-container-adminPayment theme">
         <div class="card">
             
             <div class="main-image">
@@ -39,8 +39,8 @@
 
                     <li>Payment Date & Time - <?php echo $data['medInstructorRegistration']->paid_time?></li>
                    
-                    <li>Doctor Email - <a href="mailto:<?php echo $data['medInstructorRegistration']->email ?>"><?php echo $data['medInstructorRegistration']->email ?></a></li>
-                    <li>Doctor Contact number - <?php echo $data['medInstructorRegistration']->contact_number ?></li>
+                    <li>Meditation Instructor Email - <a href="mailto:<?php echo $data['medInstructorRegistration']->email ?>"><?php echo $data['medInstructorRegistration']->email ?></a></li>
+                    <li>Meditation Instructor Contact number - <?php echo $data['medInstructorRegistration']->contact_number ?></li>
                    
                     <li>Patient Name -<?php echo $data['medInstructorRegistration']->name ?></a></li>
                     <li>Patient Contact Number - <?php echo $data['medInstructorRegistration']->contact_number ?></li>

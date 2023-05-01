@@ -410,8 +410,7 @@ public function profile() {
          $changeUserPW=$this->doctorModel->changePW($data);
  
            if($changeUserPW){
-             flash('reg_flash', 'You are succesfully changed Password!');
-             redirect('Doctor/changePassword');    
+              redirect('Doctor/changePassword');    
              
            }
            else{

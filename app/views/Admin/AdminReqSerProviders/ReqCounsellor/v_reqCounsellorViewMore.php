@@ -36,7 +36,7 @@
                     <li>SLMC number - <?php echo $data['counsellor']->slmc_reg_number ?></li>
                    
                     <li>NIC - <?php echo $data['counsellor']->nic ?></li>
-                    <li>Gender - <?php echo $data['counsellor']->gender ?></li>
+                    <li>Title - <?php echo $data['counsellor']->gender ?></li>
                     <li>City - <?php echo $data['counsellor']->city ?></li>
                    
                     <li>Bank Name - <?php echo $data['counsellor']->bank_name ?></li>

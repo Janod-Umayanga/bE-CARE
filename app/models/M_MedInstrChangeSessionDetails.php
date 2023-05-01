@@ -28,7 +28,7 @@ class M_MedInstrChangeSessionDetails{
 
    { 
          $current_date= date("Y-m-d");
-         $this->db->query("SELECT * FROM session WHERE meditation_instructor_id=:id AND date>=:current_date AND  session_id NOT IN (SELECT session_id from session_register) AND CONCAT(title,date,address, fee) LIKE '%$search%' ORDER BY date ASC");
+         $this->db->query("SELECT * FROM session WHERE meditation_instructor_id=:id AND date>=:current_date AND  session_id NOT IN (SELECT session_id from session_register) AND CONCAT(title,date,address, registration_fee) LIKE '%$search%' ORDER BY date ASC");
          $this->db->bind(':id',$id);
          $this->db->bind(':current_date',$current_date);
         

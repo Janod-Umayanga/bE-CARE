@@ -43,12 +43,13 @@
                 <h1><?php echo $timeslot->appointment_day ?>                <?php echo $timeslot->starting_time ?>  -  <?php echo $timeslot->ending_time ?></h1>
                
                 
+                 
+                        <?php if($timeslot->continue_flag==1){ ?>
+                 
                             <form  action="<?php echo URLROOT;?>/MedInstrChangeTimeslot/viewTimeslot/<?php echo $timeslot->med_timeslot_id ?>" method="post">
                                     <button class="update"  name="updatetimeslot">Update future Time slots</button>
                             </form>
 
-                        <?php if($timeslot->continue_flag==1){ ?>
-                        
                             <form  action="<?php echo URLROOT;?>/MedInstrChangeTimeslot/stopCreatingRecurringTimeslot/<?php echo $timeslot->med_timeslot_id ?>" method="post">
                                     <button class="create"  name="updatetimeslot">Stop Creating Recurring Time Slots  </button>
                             </form>
@@ -74,7 +75,7 @@
                         <th>Date</th>
                         <th>Starting time</th>
                         <th>Ending Time</th>
-                        <th>No of Participants</th>
+                        <th>Max no. Participants</th>
                         <th></th>
                    
                     </tr>

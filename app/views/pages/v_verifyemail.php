@@ -20,8 +20,8 @@
                 <a href="<?php echo URLROOT ?>/Login/login" class="page-change-button"><i class="fa-solid fa-arrow-left"></i>Back to Login</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Enter your login details to get into the application</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                    <h2></h2>
+                    <p></p>
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="form-inputs-and-buttons">
-                      <h1>- Please Verify your Email - </h1>
+                      <h1>- To complete the registration process, please confirm your email address by clicking on the verification link sent to your registered email -</h1>
                 </div>
 
             </form>

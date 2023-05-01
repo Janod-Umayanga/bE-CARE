@@ -37,7 +37,7 @@
                     <li>Registered date - <?php echo $data['admin']->registered_date ?></li>
                    
                     <li>NIC - <?php echo $data['admin']->nic ?></li>
-                    <li>Gender - <?php echo $data['admin']->gender ?></li>
+                    <li>Title - <?php echo $data['admin']->gender ?></li>
                     <li>Bank Name - <?php echo $data['admin']->bank_name ?></li>
                  
                     <li>Account holder Name - <?php echo $data['admin']->account_holder_name ?></li>

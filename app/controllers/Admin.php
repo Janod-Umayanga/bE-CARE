@@ -209,6 +209,8 @@ class Admin extends Controller{
 
        if(empty($data['nic'])){
         $data['nic_err']='nic can not be empty';
+        }else if(validateNic($data['nic'])!="true"){
+          $data['nic_err']=validateNic($data['nic']);
         }
 
         if(empty($data['contact_number'])){
@@ -221,8 +223,8 @@ class Admin extends Controller{
         if(empty($data['bank_name'])){
           $data['bank_name_err']='bank name can not be empty';
 
-      }else if(validateBankBranch($data['bank_name'])!="true"){
-        $data['bank_name_err']=validateBankBranch($data['bank_name']);
+      }else if(validateBankName($data['bank_name'])!="true"){
+        $data['bank_name_err']=validateBankName($data['bank_name']);
        }
 
       if(empty($data['account_holder_name'])){
@@ -237,7 +239,7 @@ class Admin extends Controller{
           $data['branch_err']='branch name can not be empty';
       
         }else if(validateBankBranch($data['branch'])!="true"){
-        $data['branch_err']=validateBankName($data['branch']);
+        $data['branch_err']=validateBankBranch($data['branch']);
        }
 
 
@@ -248,7 +250,7 @@ class Admin extends Controller{
        }
      
       if(empty($data['gender'])){
-        $data['gender_err']='gender can not be empty';
+        $data['gender_err']='Title can not be empty';
       }
 
        if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['gender_err'])){

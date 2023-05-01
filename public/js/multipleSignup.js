@@ -4,6 +4,7 @@ const nextButtonElement = document.getElementById('next-button-status')
 const previousButtonElement = document.getElementById('previous-button-status')
 const formNumber = document.getElementById('formNumber')
 let currentIndex = 0
+
 function setFormNumber() {
     if (formNumber){
         currentIndex = formNumber.innerText
@@ -12,6 +13,7 @@ function setFormNumber() {
     }
     
 }
+
 const forms = [
     {
         text: 'Patient',

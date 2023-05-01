@@ -26,6 +26,24 @@ class Complaint extends Controller{
      
    ];
 
+    if(empty($data['subject'])){
+       $data['subject_err']='Please enter a subject';
+    }
+    else if(validateSubject($data['subject'])!="true"){
+       $data['subject_err']=validateSubject($data['subject']);
+    }
+     
+ 
+    if(empty($data['complaint'])){
+       $data['complaint_err']='Please enter a complaint';
+    } 
+    else if(validateComplaint($data['complaint'])!="true"){
+      $data['complaint_err']=validateComplaint($data['complaint']);
+    }
+  
+
+
+
    if(empty($data['subject_err']) && empty($data['complaint_err'])){
 
 

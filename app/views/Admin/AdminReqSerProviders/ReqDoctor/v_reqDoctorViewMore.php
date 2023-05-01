@@ -37,7 +37,7 @@
                     <li>SLMC number - <?php echo $data['doctor']->slmc_reg_number ?></li>
                    
                     <li>NIC - <?php echo $data['doctor']->nic ?></li>
-                    <li>Gender - <?php echo $data['doctor']->gender ?></li>
+                    <li>Title - <?php echo $data['doctor']->gender ?></li>
                     <li>City - <?php echo $data['doctor']->city ?></li>
                    
                     <li>Bank Name - <?php echo $data['doctor']->bank_name ?></li>

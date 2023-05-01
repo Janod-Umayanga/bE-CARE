@@ -248,7 +248,7 @@ class MedInstr extends Controller{
        }
 
       if(empty($data['gender'])){
-          $data['gender_err']='gender can not be empty';
+          $data['gender_err']='title can not be empty';
       }
 
        if(empty($data['account_number'])){

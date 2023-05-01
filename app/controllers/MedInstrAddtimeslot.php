@@ -50,7 +50,7 @@ class MedInstrAddtimeslot extends Controller{
         } 
 
         if(empty($data['fee'])){
-          $data['fee_err']='Please enyer a fee';
+          $data['fee_err']='Please enter a fee';
         }else if(validateFee($data['fee'])!="true"){
           $data['fee_err']=validateFee($data['fee']);
          }
@@ -63,7 +63,7 @@ class MedInstrAddtimeslot extends Controller{
         } 
        
         if(empty($data['noOfParticipants'])){
-          $data['noOfParticipants_err']='Please enter a noOfParticipants';
+          $data['noOfParticipants_err']='Please enter no of Participants';
         }else if(validateMaxParticipants($data['noOfParticipants'])!="true"){
           $data['noOfParticipants_err']=validateMaxParticipants($data['noOfParticipants']);
         }

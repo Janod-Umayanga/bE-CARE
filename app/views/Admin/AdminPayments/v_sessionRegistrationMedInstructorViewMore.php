@@ -16,7 +16,7 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <section class="view-profile-container-userMgmt theme">
+    <section class="view-profile-container-adminPayment theme">
         <div class="card">
             
             <div class="main-image">
@@ -31,9 +31,11 @@
                 <?php 
                 if($data['sessionRegistration']->gender=='Male'){
                    $gender='Mr.';
-                }else if($data['sessionRegistration']->gender=='Female'){}
+                }else if($data['sessionRegistration']->gender=='Female'){
                    $gender='Mrs.';
+                }   
                 ?>
+                   
 
                 <h1><?php echo $gender ?> <?php echo $data['sessionRegistration']->first_name ?> <br> <?php echo $data['sessionRegistration']->last_name ?></h1>
                 <h3>Meditation Instructor</h3>

@@ -492,13 +492,9 @@
             $_SESSION['admin_email'] = $admin->email;
             $_SESSION['admin_name'] = $admin->first_name;
             $_SESSION['first_time_logged_Admin'] = true;
-
-            if($admin->gender=='Male'){
-                $_SESSION['admin_gender']='Mr.';
-            }else if($admin->gender=='Female'){
-                 $_SESSION['admin_gender']='Ms.';
-            }  
-
+            $_SESSION['admin_gender']=$admin->gender;
+   
+    
             redirect('AdminDashboard/adminDashBoard');
         }
 
@@ -509,12 +505,8 @@
             $_SESSION['MedInstr_address']=$medInstr->address;
             $_SESSION['MedInstr_fee']=$medInstr->fee;
             $_SESSION['first_time_logged_MedInstr'] = true; 
+            $_SESSION['MedInstr_gender']=$medInstr->gender;
             
-            if($medInstr->gender=='Male'){
-               $_SESSION['MedInstr_gender']='Mr.';
-            }else if($medInstr->gender=='Female'){
-                $_SESSION['MedInstr_gender']='Ms.';
-            }  
            
            redirect('MedInstrDashBoard/medInstrDashBoard');
           
@@ -543,16 +535,8 @@
             $_SESSION['nutritionist_email'] = $nutritionist->email;
             $_SESSION['nutritionist_name'] = $nutritionist->first_name;
             $_SESSION['first_time_logged'] = true;
+            $_SESSION['nutritionist_gender']=$nutritionist->gender;
 
-            // $data=[];
-        
-            // //redirect('Nutritionist/dashboard');
-            // $this->view('nutritionist/v_dashboard',$data);
-             if($nutritionist->gender=='Male'){
-                $_SESSION['nutritionist_gender']='Mr.';
-             }else if($nutritionist->gender=='Female'){
-                 $_SESSION['nutritionist_gender']='Ms.';
-             }  
 
             redirect('Nutritionist/nutritionistDashBoard');
         }
@@ -562,14 +546,9 @@
             $_SESSION['pharmacist_email'] = $pharmacist->email;
             $_SESSION['pharmacist_name'] = $pharmacist->first_name;
             $_SESSION['first_time_logged'] = true;
+            $_SESSION['pharmacist_gender']=$pharmacist->gender;
             
-            if($pharmacist->gender=='Male'){
-                $_SESSION['pharmacist_gender']='Mr.';
-             }else if($pharmacist->gender=='Female'){
-                 $_SESSION['pharmacist_gender']='Ms.';
-             } 
-            
-        
+                    
              redirect('Pharmacist/pharmacistDashBoard');
         }
 
