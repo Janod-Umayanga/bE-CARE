@@ -7,21 +7,19 @@
       {
         $this->db=new Database();
        
-
       }
 
+      //MedInstr timeslot
       public function medInstrtimeslot($id)
       {
        
         $this->db->query('SELECT * FROM med_timeslot WHERE meditation_instructor_id=:id');
         $this->db->bind(':id', $id);
         return $this->db->resultSet();
-        
-        
-      
+          
       } 
 
-      
+      //MedInstr appointment day
       public function medInstrappointmentday($id)
       {
         $current_timestamp = time();
@@ -33,6 +31,7 @@
                  
       }  
 
+      //Med Instr disable appointment day
       public function  medInstrdisableappointmentday($appointment_day_id)
       {
             $this->db->query('UPDATE med_ins_appointment_day SET active=:active WHERE med_ins_appointment_day_id=:med_ins_appointment_day_id');
@@ -48,6 +47,7 @@
         
       }  
      
+      //Med Instr enable appointment day
       public function  medInstrenableappointmentday($appointment_day_id)
       {
             $this->db->query('UPDATE med_ins_appointment_day SET active=:active WHERE med_ins_appointment_day_id=:med_ins_appointment_day_id');
@@ -63,7 +63,7 @@
         
       }  
 
-           
+      //Stop Create Recurring Timeslot     
       public function  stopCreateRecurringTimeslot($timeslot_id)
       {
             $this->db->query('UPDATE med_timeslot SET continue_flag=:continue_flag WHERE med_timeslot_id=:med_timeslot_id');
@@ -80,6 +80,7 @@
       }  
 
 
+      //Create Recurring Timeslot
       public function  createRecurringTimeslot($timeslot_id)
       {
             $this->db->query('UPDATE med_timeslot SET continue_flag=:continue_flag WHERE med_timeslot_id=:med_timeslot_id');
@@ -95,7 +96,7 @@
         
       }  
 
-
+      //Search MedInstr Timeslot
       public function searchMedInstrTimeslot($search,$id)
       {
          
@@ -106,7 +107,7 @@
         return $result;
       } 
     
-       
+      //View Appointment day 
       public function  viewappointmentday($appointment_day_id)
       {
          
@@ -118,7 +119,7 @@
       } 
       
 
-   
+      //View timeslot
       public function  viewtimeslot($timeslot_id)
      {
        
@@ -129,7 +130,7 @@
         return $row;
       } 
 
-
+      //Update appointment day
       public function updateappointmentday($data,$appointment_day_id)
       {
         
@@ -149,6 +150,7 @@
         } 
       } 
 
+      //Update Timeslot
       public function updateTimeslot($data,$timeslot_id)
       {
         
@@ -169,6 +171,7 @@
       } 
 
      
+      //Get Channeling Days
       public function getChannelingDays($med_timeslot_id,$day, $starting_time,$ending_time,$fee,$address,$noOfParticipants, $meditation_instructor_id) {
       
         $current_timestamp = time();
@@ -181,6 +184,8 @@
         $days_to_add_count = 0;
 
         $rows = $this->db->resultSet();
+
+        //Check if the rowCount() < 4 
         if($this->db->rowCount() < 4) {
             $days_to_add_count = 4 - $this->db->rowCount();
             return $this->createAppointmentDays($day, $starting_time,$ending_time,$fee,$address,$noOfParticipants, $meditation_instructor_id,$med_timeslot_id, $days_to_add_count);
@@ -193,7 +198,8 @@
       // create channel days
       public function createAppointmentDays($day, $starting_time,$ending_time,$fee,$address,$noOfParticipants, $meditation_instructor_id,$timeslot_id, $days_to_add_count) {
         $count = 0;
-        foreach (range(1, $days_to_add_count) as $i) {
+
+        foreach (range(1, $days_to_add_count) as $i) { //Range of numbers starting from 1 to $days_to_add_count
             if($i==4) {
                 $mod_string = 'next '.$day;
             }
@@ -206,10 +212,15 @@
             if($i==1) {
                 $mod_string = 'fourth '.$day;
             }
-            $appointment_day = new DateTime();
-            $appointment_day->modify($mod_string);
+            
+            //creates a DateTime object representing the current date and time based on the  server's system clock.
+            $appointment_day = new DateTime();  
+            
+            //modify appointment_day
+            $appointment_day->modify($mod_string); 
+
             $this->db->query('INSERT INTO med_ins_appointment_day (date, day,active,starting_time,ending_time,fee, address,noOfParticipants, med_timeslot_id, meditation_instructor_id) VALUES (:date,:day, :active, :starting_time,:ending_time,:fee, :address,:noOfParticipants,:med_timeslot_id, :meditation_instructor_id)');
-            $this->db->bind(':date', $appointment_day->format('Y-m-d'));
+            $this->db->bind(':date', $appointment_day->format('Y-m-d'));     //  modified appointment day
             $this->db->bind(':day', $day);
             $this->db->bind(':active', 1);
             $this->db->bind(':starting_time', $starting_time);
@@ -225,6 +236,7 @@
                 $count = $count + 1;
             }
         }
+   
         if($count == $days_to_add_count) {
             return true;
         }

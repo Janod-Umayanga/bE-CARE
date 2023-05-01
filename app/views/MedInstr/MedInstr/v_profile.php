@@ -23,8 +23,8 @@
                 <a href="<?php echo URLROOT ?>/MedInstrDashBoard/medInstrDashBoard" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Home page</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Enter your login details to get into the application</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                    <h2>Update your profile with the relevant details</h2>
+                    <p>Click the "Update" button to save your changes and update your profile information.</p>
                 </div>
             </div>
         </div>
@@ -67,17 +67,18 @@
                         <span class="form-invalid"><?php echo $data['city_err'] ?></span>
 
 
-                        <button type="submit" >Submit</button> 
+                        <button type="submit" >Update</button> 
                     </div>
     
                     <div class="right">
                       
        
                         
-                        <label for="gender">Gender</label>
+                        <label for="gender">Title</label>
                         <select name="gender" id="gender" >
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
+                           <option value="">Title</option>
+                           <option value="Mr">Mr</option>
+                           <option value="Ms">Ms</option>
                         </select>
                         <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
 

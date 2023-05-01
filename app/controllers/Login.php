@@ -492,13 +492,9 @@
             $_SESSION['admin_email'] = $admin->email;
             $_SESSION['admin_name'] = $admin->first_name;
             $_SESSION['first_time_logged_Admin'] = true;
-
-            if($admin->gender=='Male'){
-                $_SESSION['admin_gender']='Mr.';
-            }else if($admin->gender=='Female'){
-                 $_SESSION['admin_gender']='Ms.';
-            }  
-
+            $_SESSION['admin_gender']=$admin->gender;
+   
+    
             redirect('AdminDashboard/adminDashBoard');
         }
 
@@ -509,12 +505,8 @@
             $_SESSION['MedInstr_address']=$medInstr->address;
             $_SESSION['MedInstr_fee']=$medInstr->fee;
             $_SESSION['first_time_logged_MedInstr'] = true; 
+            $_SESSION['MedInstr_gender']=$medInstr->gender;
             
-            if($medInstr->gender=='Male'){
-               $_SESSION['MedInstr_gender']='Mr.';
-            }else if($medInstr->gender=='Female'){
-                $_SESSION['MedInstr_gender']='Ms.';
-            }  
            
            redirect('MedInstrDashBoard/medInstrDashBoard');
           
@@ -543,16 +535,8 @@
             $_SESSION['nutritionist_email'] = $nutritionist->email;
             $_SESSION['nutritionist_name'] = $nutritionist->first_name;
             $_SESSION['first_time_logged'] = true;
+            $_SESSION['nutritionist_gender']=$nutritionist->gender;
 
-            // $data=[];
-        
-            // //redirect('Nutritionist/dashboard');
-            // $this->view('nutritionist/v_dashboard',$data);
-             if($nutritionist->gender=='Male'){
-                $_SESSION['nutritionist_gender']='Mr.';
-             }else if($nutritionist->gender=='Female'){
-                 $_SESSION['nutritionist_gender']='Ms.';
-             }  
 
             redirect('Nutritionist/nutritionistDashBoard');
         }
@@ -562,14 +546,9 @@
             $_SESSION['pharmacist_email'] = $pharmacist->email;
             $_SESSION['pharmacist_name'] = $pharmacist->first_name;
             $_SESSION['first_time_logged'] = true;
+            $_SESSION['pharmacist_gender']=$pharmacist->gender;
             
-            if($pharmacist->gender=='Male'){
-                $_SESSION['pharmacist_gender']='Mr.';
-             }else if($pharmacist->gender=='Female'){
-                 $_SESSION['pharmacist_gender']='Ms.';
-             } 
-            
-        
+                    
              redirect('Pharmacist/pharmacistDashBoard');
         }
 
@@ -649,15 +628,15 @@
         }    
 
 
-
+        //forgot Password
 
         public function forgotPassword() {
-       
+          
           if($_SERVER['REQUEST_METHOD']=='POST'){
           
               $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                  
-                $email = $_POST['forgot_email'];
+                $email = $_POST['forgot_email']; 
                        
                 if(isset($_POST['usertype'])){
                     $_SESSION['usertype'] = $_POST['usertype'];
@@ -668,6 +647,7 @@
                     $_SESSION['email_reset_password'] = $_POST['forgot_email'];
                 }
 
+               
 
                 if(empty($email)){
                     $data = [
@@ -681,25 +661,31 @@
 
                  $token = md5(rand());
                  
-         
+                 //Patient
                  if($userType=='patient'){
                     $row = $this->patientModel->findPatientByEmail($email);
-                
+          
+                 //Doctor   
                  }else if($userType=='doctor'){
                     $row = $this->doctorModel->findDoctorByEmail($email);
                 
+                 //Counsellor    
                  }else if($userType=='counsellor'){
                     $row = $this->counsellorModel->findCounsellorByEmail($email);
                 
+                 //Pharmacist   
                  }else if($userType=='pharmacist'){
                     $row = $this->pharmacistModel->findPharmacistByEmail($email);
                 
+                //Nutritionist    
                  }else if($userType=='nutritionist'){
                     $row = $this->nutritionistModel->findNutritionistByEmail($email);
                 
+                //Meditation Instructor    
                  }else if($userType=='meditation_instructor'){
                     $row = $this->medInstrModel->findUserByEmail($email);
                 
+                //Admin    
                  }else if($userType=='admin'){
                     $row = $this->adminModel->findUserByEmail($email);
             
@@ -708,25 +694,32 @@
                 if($row) {
                     $name = $row->first_name; 
                   
+                     //Patient
                      if($userType=='patient'){
                         $updateResult= $this->patientModel->setToken($token,$email);
                     
+                     //Doctor   
                      }else if($userType=='doctor'){
                         $updateResult= $this->doctorModel->setToken($token,$email);
                     
+                    //Counsellor    
                      }else if($userType=='counsellor'){
                         $updateResult= $this->counsellorModel->setToken($token,$email);
                     
+                    //Pharmacist  
                      }else if($userType=='pharmacist'){
                         $updateResult= $this->pharmacistModel->setToken($token,$email);
                     
+                    //Nutritionist  
                      }else if($userType=='nutritionist'){
                         $updateResult= $this->nutritionistModel->setToken($token,$email);
                     
-                     }else if($userType=='meditation_instructor'){
+                    //Meditation Instructor    
+                    }else if($userType=='meditation_instructor'){
                         $updateResult= $this->medInstrModel->setToken($token,$email);
-                    
-                     }else if($userType=='admin'){
+           
+                    //Admin    
+                    }else if($userType=='admin'){
                         $updateResult= $this->adminModel->setToken($token,$email);
                 
                      }
@@ -788,50 +781,54 @@
              }
        }
 
-
+        //Reset password
        public function reset_password()
        {
-       
-          if($_SERVER['REQUEST_METHOD']=='POST'){
-             
+          
+           if($_SERVER['REQUEST_METHOD']=='POST'){
+           
               $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-                 
-                               
+                         
                         $email=$_SESSION['email_reset_password'];
                         $userType=$_SESSION['usertype'];
-
-                     
+          
+                    //patient    
                     if($userType=='patient'){
                         $userRow=$this->patientModel->findPatientByEmail($email);
                         $tokenExpire = $this->patientModel->checkToken($email);
                         $userId=$userRow -> patient_id;
                        
-                     
+                     //doctor
                      }else if($userType=='doctor'){
                         $userRow=$this->doctorModel->findDoctorByEmail($email);
                         $tokenExpire = $this->doctorModel->checkToken($email);
                         $userId=$userRow -> doctor_id;
                      
+                     //counsellor   
                      }else if($userType=='counsellor'){
                         $userRow=$this->counsellorModel->findCounsellorByEmail($email);
                         $tokenExpire = $this->counsellorModel->checkToken($email);
                         $userId=$userRow -> counsellor_id;
                      
+                     //pharmacist   
                      }else if($userType=='pharmacist'){
                         $userRow=$this->pharmacistModel->findPharmacistByEmail($email);
                         $tokenExpire = $this->pharmacistModel->checkToken($email);
                         $userId=$userRow -> pharmacist_id;
                      
+                     //nutritionist   
                      }else if($userType=='nutritionist'){
                         $userRow=$this->nutritionistModel->findNutritionistByEmail($email);
                         $tokenExpire = $this->nutritionistModel->checkToken($email);
                         $userId=$userRow -> nutritionist_id;
                      
+                     //meditation_instructor   
                      }else if($userType=='meditation_instructor'){
                         $userRow=$this->medInstrModel->findUserByEmail($email);
                         $tokenExpire = $this->medInstrModel->checkToken($email);
                         $userId=$userRow -> meditation_instructor_id;
  
+                     //admin   
                      }else if($userType=='admin'){
                         $userRow=$this->adminModel->findUserByEmail($email);
                         $tokenExpire = $this->adminModel->checkToken($email);
@@ -839,11 +836,6 @@
                      }
     
                       
-                     
-
-                      
-                
-
                      $token=$_SESSION['password_Token'];
                     
                       $data = [
@@ -889,37 +881,43 @@
                
                     $data['password']=password_hash($data['password'],PASSWORD_DEFAULT);
           
-
+                    //patient
                     if($userType=='patient'){
                         $resetPW=$this->patientModel->changePW($data);
                         $token = md5(rand());
                         $this->patientModel->setToken($token,$email);
                     
+                    //doctor    
                      }else if($userType=='doctor'){
                         $resetPW=$this->doctorModel->changePW($data);
                         $token = md5(rand());
                         $this->doctorModel->setToken($token,$email);
                     
+                    //counsellor    
                      }else if($userType=='counsellor'){
                         $resetPW=$this->counsellorModel->changePW($data);
                         $token = md5(rand());
                         $this->counsellorModel->setToken($token,$email);
                     
+                     //pharmacist
                      }else if($userType=='pharmacist'){
                         $resetPW=$this->pharmacistModel->changePW($data);
                         $token = md5(rand());
                         $this->pharmacistModel->setToken($token,$email);
                     
+                      //nutritionist
                      }else if($userType=='nutritionist'){
                         $resetPW=$this->nutritionistModel->changePW($data);
                         $token = md5(rand());
                         $this->nutritionistModel->setToken($token,$email);
                     
+                      //meditation_instructor  
                      }else if($userType=='meditation_instructor'){
                         $resetPW=$this->medInstrModel->changePW($data);
                         $token = md5(rand());
                         $this->medInstrModel->setToken($token,$email);
                     
+                      //admin   
                      }else if($userType=='admin'){
                         $resetPW=$this->adminModel->changePW($data);
                         $token = md5(rand());

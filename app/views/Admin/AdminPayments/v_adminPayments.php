@@ -24,64 +24,17 @@
             <div class="table-topic-main">
                 <h1>Payments</h1>
               
-                <?php if(empty($data['profit']->profit)){$data['profit']->profit=0; } ?>
+                          
              
-                <?php $check=0; ?> 
-                     
-                    <?php if(($data['profit']->profit!=0) && (isset($data['correctservice']) ) ){ 
-                      if($data['correctservice']=='medInstructorRegistration' || $data['correctservice']=='pharmacistOrder'){
-                           if($data['profit']->gender=='Male'){
-                            $gend='Mr';
-                           }else{
-                            $gend='Mrs';
-                           }
-                           $check=1;
-                       ?>
-                             
-                    <h1>  <?php if(empty($data['search'])){?>  <?php echo $data['period'] ?>  <?php echo $data['profit']->no ?> <?php echo $data['service'] ?> , Rs. <?php echo Round($data['profit']->profit,2) ?> Profit</h1>
-                          <?php  }?>
-                     
-
-                    <?php }
+            <h1>
+                <?php if(empty($data['search'])){ ?> 
                 
-                     else if($data['correctservice']=='sessionRegistration'){
-                        $check=1;
-                        
-                        if(isset($data['profit']->nutritionist_name)){
-                            $name=$data['profit']->nutritionist_name;
-                            $gendr='Dr.';
-                        }else if(isset($data['profit']->meditation_instructor_name)){
-                            $name=$data['profit']->meditation_instructor_name;
-                            
-                            if($data['profit']->meditation_instructor_gender=='Male'){
-                               $gendr='Mr.';
-                       
-                            }else{
-                                $gendr='Mrs.';
-                       
-                            }
-                           
-                        }else if(isset($data['profit']->counsellor_name)){
-                            $name=$data['profit']->counsellor_name;
-                            $gendr='Dr.';
-                        }                         
-                    ?>    
-                    <h1>  <?php if(empty($data['search'])){ ?>  <?php echo $data['period'] ?>  <?php echo $data['profit']->no ?> <?php echo $data['service'] ?> , Rs. <?php echo Round($data['profit']->profit,2) ?> Profit</h1>
-                          <?php  }?>
-                     
-                    <?php
-                     }
-                
-                   } ?>   
-                    
-              
-                    <?php if(($data['profit']->profit!=0) && $check!=1 ){ ?>
-                       
-                       <h1>  <?php if(empty($data['search'])){ ?>  <?php echo $data['period'] ?>  <?php echo $data['profit']->no ?> <?php echo $data['service'] ?> , Rs. <?php echo Round($data['profit']->profit,2) ?> Profit</h1>
-                       <?php  }?>
-                   
-                    <?php $check=0;  } ?>   
+                <?php if(empty($data['profit']->profit)){$data['profit']->profit=0; } ?>
+                <?php echo $data['period'] ?>  <?php echo $data['profit']->no ?> <?php echo $data['service'] ?> , Rs. <?php echo Round($data['profit']->profit,2) ?> Profit
+         
+            <?php } ?>        
             
+            </h1>
 
             </div>
             <div class="search-section">
@@ -113,11 +66,13 @@
 
                 
                </form>
+
+               <!-- Generate Report Button -->
           
                <?php if(empty($data['search']) ): ?>
 
-                 <form  action="<?php echo URLROOT?>/AdminPayments/generateReport" method="POST">
-                             <button class="view-more" type="submit"><i class="fa-solid fa-file-invoice">Generate Report</i></button>
+                  <form  action="<?php echo URLROOT?>/AdminPayments/generateReport" method="POST">
+                         <button class="view-more" type="submit"><i class="fa-solid fa-file-invoice">Generate Report</i></button>
                   </form>
                   
                <?php endif ?>
@@ -137,7 +92,9 @@
                         <th>Date</th>
                         <th></th>
                     </tr>
-                   
+
+                    <!-- Doctor Channel Payments Table -->
+                    
                     <?php if($_SESSION['payment_table']=='doctorChannelPayments'): ?>
 
                      <?php foreach($data['docChannel'] as $docChannel): ?>
@@ -161,7 +118,7 @@
 
                    <?php endif; ?>
 
-                   <!-- Counsellor Channel -->
+                   <!-- Counsellor Channel Payments Table-->
 
                    <?php if($_SESSION['payment_table']=='counsellorChannelPayments'): ?>
 
@@ -190,7 +147,7 @@
 
                     <?php endif; ?>
 
-                    <!-- Nutritionist Diet Plan -->
+                    <!-- Nutritionist Diet Plan Payments Table-->
 
                     <?php if($_SESSION['payment_table']=='nutritionistDietPlanPayments'): ?>
 
@@ -220,14 +177,22 @@
                     <?php endif; ?>
 
                  
-                    <!-- Pharmacist Order -->
+                    <!-- Pharmacist Order Payments Table-->
 
                     <?php if($_SESSION['payment_table']=='pharmacistOrderPayments'): ?>
 
                     <?php foreach($data['pharmacistOrder'] as $pharmacistOrder): ?>
 
+                    <?php 
+                      if($pharmacistOrder->gender=='Male'){
+                          $gend='Mr.';
+                      }else if($pharmacistOrder->gender=='Female'){
+                          $gend='Mrs.';
+                      }    
+                    ?>    
+
                     <tr>
-                    <td><?php echo $gend ?>. <?php echo $pharmacistOrder->first_name?> <?php echo $pharmacistOrder->last_name?></td>
+                    <td><?php echo $gend ?> <?php echo $pharmacistOrder->first_name?> <?php echo $pharmacistOrder->last_name?></td>
                     <td><?php echo Round($pharmacistOrder->charge,2)?></td>
                     <td><?php echo Round(($pharmacistOrder->charge/110)*100,2)?></td>
                     <td><?php echo Round(($pharmacistOrder->charge/110)*10,2)?></td>
@@ -252,7 +217,7 @@
 
 
 
-                   <!-- Med Instructor Registration -->
+                   <!-- Med Instructor Registration Payments Table-->
 
                    <?php if($_SESSION['payment_table']=='medInstructorRegistrationPayments'): ?>
 
@@ -290,7 +255,7 @@
                     <?php endif; ?>
 
 
-                    
+                    <!-- Session Registration Counsellor table -->
 
                    <?php if($_SESSION['payment_table']=='sessionRegistrationPayments'): ?>
 
@@ -317,6 +282,7 @@
 
                     </tr>
 
+                     <!-- Session Registration Nutritionist table -->
 
                    <?php }else if(isset($session_registration->nutritionist_id)){ ?> 
 
@@ -340,6 +306,7 @@
 
                     </tr>
 
+                     <!-- Session Registration Meditation Instructor table -->
 
                    <?php }else if(isset($session_registration->meditation_instructor_id)){ ?> 
                     

@@ -393,7 +393,6 @@
               $changeUserPW=$this->counsellorModel->changePW($data);
       
                 if($changeUserPW){
-                  flash('reg_flash', 'You are succesfully changed Password!');
                   redirect('counsellor/changePassword');    
                   
                 }

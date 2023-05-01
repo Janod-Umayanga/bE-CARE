@@ -132,9 +132,9 @@
       public function changePW($data){
 
        
-        $this->db->query('UPDATE admin set password = :password WHERE admin_id = :id');
+        $this->db->query('UPDATE admin set password= :password WHERE admin_id = :id');
         $this->db->bind(':password', $data['password']);
-        $this->db->bind(':id', $data['admin_id']);
+        $this->db->bind(':id', $data['user_id']);
             
 
         if($this->db->execute()){
@@ -143,6 +143,9 @@
             return false;
         } 
       }
+      
+
+
       
       public function setToken($token,$email)
       {

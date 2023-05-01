@@ -5,6 +5,8 @@ class MedInstr extends Controller{
   public function __construct(){
     $this->userModel = $this->model('M_MedInstr');
   }
+
+  //Meditation Instructor Profile
   public function profile()
   {
    if(isset($_SESSION['MedInstr_id'])) {  
@@ -46,6 +48,7 @@ class MedInstr extends Controller{
 
   }
 
+  //Change Password
   public function changePW()
   {
    if(isset($_SESSION['MedInstr_id'])) {  
@@ -64,6 +67,7 @@ class MedInstr extends Controller{
 
   }
 
+  //Update Password
   public function updatePW($id){
   
    if(isset($_SESSION['MedInstr_id'])) {  
@@ -149,8 +153,7 @@ class MedInstr extends Controller{
 }
 
   
-
-  
+// is LoggedIn 
   public function isLoggedIn(){
     if(isset($_SESSION['MedInstr_id'])){
       return true;
@@ -159,6 +162,7 @@ class MedInstr extends Controller{
     }
   }
   
+ // edit Profile
   public function editProfile($userId){
   
    if(isset($_SESSION['MedInstr_id'])) {  
@@ -244,7 +248,7 @@ class MedInstr extends Controller{
        }
 
       if(empty($data['gender'])){
-          $data['gender_err']='gender can not be empty';
+          $data['gender_err']='title can not be empty';
       }
 
        if(empty($data['account_number'])){

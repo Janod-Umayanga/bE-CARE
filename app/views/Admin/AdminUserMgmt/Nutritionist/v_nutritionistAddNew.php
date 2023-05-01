@@ -20,7 +20,10 @@
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
                     <h2>Fill these details to add new Nutritionist</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+
+                    <p>A nutritionist's qualification file may include MBBS degree certifications, continuing education certificates, professional memberships, and other relevant documentation, such as awards or publications.</p>
+
+                    <p>After successfully creating the nutritionist's account, the relevant nutritionist will receive an email with their username and password for login</p>
                 </div>
             </div>
         </div>
@@ -53,16 +56,17 @@
                         <span class="form-invalid"><?php echo $data['email_err'] ?></span>
 
                         
-                        <label for="gender">Gender</label>
+                        <label for="gender">Title</label>
                         <select name="gender" id="gender" >
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
+                            <option value="">Title</option>
+                            <option value="Mr">Mr</option>
+                            <option value="Ms">Ms</option>
                         </select>
                         <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
 
                         <label for="fee">Fee</label>
                         <input type="text" id="fee" name="fee" value="<?php echo $data['fee'] ?>">
-                        <span class="form-invalid"><?php echo $data['fee'] ?></span>
+                        <span class="form-invalid"><?php echo $data['fee_err'] ?></span>
         
                                   
                         <button type="submit" >Submit</button> 

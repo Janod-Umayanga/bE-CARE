@@ -8,24 +8,7 @@
         $this->db=new Database();
       } 
 
-    //   public function register($data)
-    //   {
-    //     $this->db->query('INSERT INTO Users(profile_image,name,email,password) VALUES (:profile_image,:name,:email,:password)');
-    //     $this->db->bind(':profile_image',$data['profile_image_name']);  
-    //     $this->db->bind(':name',$data['name']);  
-    //     $this->db->bind(':email',$data['email']);  
-    //     $this->db->bind(':password',$data['password']);  
-
-    //     if($this->db->execute()){
-    //          return true;  
-    //     }else{
-    //         return false; 
-    //     }    
-
-
-    //   }
-
-
+      //find User By Email
       public function findUserByEmail($email)
       {
         $this->db->query('SELECT * FROM meditation_instructor WHERE email= :email');
@@ -40,6 +23,7 @@
         }
     }
 
+      //login
      public function login($email,$password){
           $this->db->query('SELECT * FROM meditation_instructor WHERE email=:email');
           $this->db->bind(':email',$email);
@@ -53,6 +37,7 @@
           }  
       }    
      
+      //is Deactivate Account
       public function isDeactivateAccount($email){
         $this->db->query('SELECT delete_flag FROM meditation_instructor WHERE email=:email');
         $this->db->bind(':email',$email);
@@ -67,7 +52,7 @@
     }    
   
 
-
+      //find User By ID
       public function findUserByID($id)
       {
         $this->db->query('SELECT * FROM meditation_instructor WHERE meditation_instructor_id= :id');
@@ -82,7 +67,7 @@
         }
        }
 
-       
+       //get User By Id
        public function getUserById($postId)
       {
         $this->db->query("SELECT Posts.id as post_id, Posts.image as image, Users.id as user_id, Users.name as user_name, Posts.title as title, Posts.body as body,
@@ -94,6 +79,7 @@
  
       }
 
+      //edit User
        public function editUser($data){
         $this->db->query('UPDATE meditation_instructor set first_name=:first_name, last_name = :last_name, nic = :nic, contact_number=:contact_number, bank_name = :bank_name, account_holder_name = :account_holder_name, branch=:branch, account_number = :account_number, gender = :gender, city=:city, address = :address, fee = :fee WHERE meditation_instructor_id = :id');
         $this->db->bind(':first_name', $data['first_name']);
@@ -120,7 +106,7 @@
         } 
       }
       
-
+      //find User PW Match
       public function findUserPWMatch($id,$password){
         $this->db->query('SELECT password FROM meditation_instructor WHERE meditation_instructor_id=:id');
         $this->db->bind(':id',$id);
@@ -135,9 +121,8 @@
 
       }
 
+      //changePW
       public function changePW($data){
-
-       
         $this->db->query('UPDATE meditation_instructor set password = :password WHERE meditation_instructor_id = :id');
         $this->db->bind(':password', $data['password']);
         
@@ -157,6 +142,7 @@
         } 
       }
       
+     // Set Token
       public function setToken($token,$email)
       {
           $this->db->query('UPDATE meditation_instructor set verify_token=:token WHERE email = :email');
@@ -170,6 +156,7 @@
           }    
       } 
   
+      //Check Token
       public function checkToken($email) {
         
         $this->db->query("SELECT verify_token FROM meditation_instructor WHERE email = :email");

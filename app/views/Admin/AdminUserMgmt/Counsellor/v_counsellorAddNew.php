@@ -20,7 +20,10 @@
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
                     <h2>Fill these details to add new Counsellor</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                 
+                    <p>The counselor's qualification file should include MBBS degree certificates, license or certification , specialization certificates, continuing education certificates, and proof of professional memberships , Additional relevant documents.</p>
+
+                    <p>After successfully creating the counselor's account, the relevant counselor will receive an email with their username and password for login</p>
                 </div>
             </div>
         </div>
@@ -53,19 +56,29 @@
                         <span class="form-invalid"><?php echo $data['email_err'] ?></span>
 
                         
-                        <label for="gender">Gender</label>
+                        <label for="gender">Title</label>
                         <select name="gender" id="gender" >
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
+                            <option value="">Title</option>
+                            <option value="Mr">Mr</option>
+                            <option value="Ms">Ms</option>
                         </select>
                         <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
 
-
+ 
                         <label for="city">City</label>
-                        <input type="text" id="city" name="city" value="<?php echo $data['city'] ?>">
+                        <select name="city" id="city">
+                            <option value="">City</option>
+                            <option value="Colombo">Colombo</option>
+                            <option value="Galle">Galle</option>
+                            <option value="Kandy">Kandy</option>
+                            <option value="Malabe">Malabe</option>
+                            <option value="Matara">Matara</option>
+                            <option value="Nugegoda">Nugegoda</option>
+                            <option value="Ratnapura">Ratnapura</option>
+                            <option value="Trincomalee">Trincomalee</option>
+                        </select>
                         <span class="form-invalid"><?php echo $data['city_err'] ?></span>
-
-            
+                     
                         <button type="submit" >Submit</button> 
                     </div>
                     <div class="right">

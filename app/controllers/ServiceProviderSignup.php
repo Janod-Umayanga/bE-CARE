@@ -14,8 +14,7 @@ class ServiceProviderSignup extends Controller{
     public function  signupDoctor()
     {
       
-  
-     if($_SERVER['REQUEST_METHOD']=='POST'){
+       if($_SERVER['REQUEST_METHOD']=='POST'){
         $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $_SESSION['signup_form_number'] = 1;
         $data=[
@@ -36,7 +35,7 @@ class ServiceProviderSignup extends Controller{
           'd_specialization'=>trim($_POST['specialization']),
           'd_gender'=>trim($_POST['gender']),
           'd_qualification_file'=>$_FILES['qualification_file'],
-          'd_qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
+          'd_qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT).'_'.$_FILES['qualification_file']['name'],
           
       
           'd_first_name_err'=>'',
@@ -176,7 +175,7 @@ class ServiceProviderSignup extends Controller{
        }
        
        if(empty($data['d_gender'])){
-         $data['d_gender_err']='gender can not be empty';
+         $data['d_gender_err']='Title can not be empty';
        }
        
     
@@ -203,7 +202,7 @@ class ServiceProviderSignup extends Controller{
           if($this->serviceProviderSignupModel->signupDoctor($data)){
               $doctorDetails=$this->serviceProviderSignupModel->getLatestReqDoctorID();
               sendMail($data['d_email'],$data['d_first_name'],2, 7,$doctorDetails->requested_doctor_id);
-
+                                          //role=2                     
               redirect('Pages/verify_email');
               //    $this->view('inc/v_pending',$data); 
             }else{
@@ -291,7 +290,7 @@ class ServiceProviderSignup extends Controller{
                 'c_slmc_reg_number'=>trim($_POST['slmc']),
                 'c_gender'=>trim($_POST['gender']),
                 'c_qualification_file'=>$_FILES['qualification_file'],
-                'c_qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
+                'c_qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT).'_'.$_FILES['qualification_file']['name'],
                 
             
                                     
@@ -390,7 +389,7 @@ class ServiceProviderSignup extends Controller{
              }
             
             if(empty($data['c_account_holder_name'])){
-                $data['c_account_holder_name_err']='account_holder name can not be empty';
+                $data['c_account_holder_name_err']='account holder name can not be empty';
             }else if(validateAccountHolderName($data['c_account_holder_name'])!="true"){
               $data['c_account_holder_name_err']=validateAccountHolderName($data['c_account_holder_name']);
              }
@@ -403,7 +402,7 @@ class ServiceProviderSignup extends Controller{
              }
           
             if(empty($data['c_account_number'])){
-              $data['c_account_number_err']='last name can not be empty';
+              $data['c_account_number_err']='account number can not be empty';
             }else if(validateAccountNumber($data['c_account_number'])!="true"){
               $data['c_account_number_err']=validateAccountNumber($data['c_account_number']);
              }
@@ -417,7 +416,7 @@ class ServiceProviderSignup extends Controller{
           
             
             if(empty($data['c_gender'])){
-              $data['c_gender_err']='gender can not be empty';
+              $data['c_gender_err']='Title can not be empty';
             }
             
             if(empty($data['c_qualification_file'])){
@@ -447,7 +446,7 @@ class ServiceProviderSignup extends Controller{
                 if($this->serviceProviderSignupModel->signupCounsellor($data)){
                       $counsellorDetails=$this->serviceProviderSignupModel->getLatestReqCounsellorID();
                       sendMail($data['c_email'],$data['c_first_name'],3, 7,$counsellorDetails->requested_counsellor_id);
-        
+                                              //role=3
                       redirect('Pages/verify_email');
     
                   }else{
@@ -531,7 +530,7 @@ class ServiceProviderSignup extends Controller{
              'm_fee'=>trim($_POST['fee']),
              'm_gender'=>trim($_POST['gender']),
              'm_qualification_file'=>$_FILES['qualification_file'],
-             'm_qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
+             'm_qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT).'_'.$_FILES['qualification_file']['name'],
              
          
              'm_first_name_err'=>'',
@@ -630,7 +629,7 @@ class ServiceProviderSignup extends Controller{
          }
          
          if(empty($data['m_account_holder_name'])){
-             $data['m_account_holder_name_err']='account_holder name can not be empty';
+             $data['m_account_holder_name_err']='account holder name can not be empty';
          }else if(validateAccountHolderName($data['m_account_holder_name'])!="true"){
           $data['m_account_holder_name_err']=validateAccountHolderName($data['m_account_holder_name']);
          }
@@ -642,7 +641,7 @@ class ServiceProviderSignup extends Controller{
          }
        
          if(empty($data['m_account_number'])){
-           $data['m_account_number_err']='account_number can not be empty';
+           $data['m_account_number_err']='account number can not be empty';
          }else if(validateAccountNumber($data['m_account_number'])!="true"){
           $data['m_account_number_err']=validateAccountNumber($data['m_account_number']);
          }
@@ -661,7 +660,7 @@ class ServiceProviderSignup extends Controller{
        
         
          if(empty($data['m_gender'])){
-           $data['m_gender_err']='gender can not be empty';
+           $data['m_gender_err']='Title can not be empty';
          }
          
          if(empty($data['m_qualification_file'])){
@@ -695,7 +694,7 @@ class ServiceProviderSignup extends Controller{
              if($this->serviceProviderSignupModel->signupMeditationInstructor($data)){
                   $meditationInstructorDetails=$this->serviceProviderSignupModel->getLatestReqMeditationInstructorID();
                   sendMail($data['m_email'],$data['m_first_name'],4, 7,$meditationInstructorDetails->requested_meditation_instructor_id);
-
+                                //role=4
                   redirect('Pages/verify_email');
                   
                }else{
@@ -782,7 +781,7 @@ class ServiceProviderSignup extends Controller{
              'p_address'=>trim($_POST['address']),
              'p_gender'=>trim($_POST['gender']),
              'p_qualification_file'=>$_FILES['qualification_file'],
-             'p_qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
+             'p_qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT).'_'.$_FILES['qualification_file']['name'],
              
          
              'p_first_name_err'=>'',
@@ -818,7 +817,7 @@ class ServiceProviderSignup extends Controller{
             if(uploadFile($data['p_qualification_file']['tmp_name'],$data['p_qualification_file_name'],'/upload/pharmacist_qualification/')){
                        
             }else{  
-             $data['p_qualification_file_err']='Unsuccessful qualification_file uploading';
+             $data['p_qualification_file_err']='Unsuccessful qualification file uploading';
              
             }
           }else{
@@ -882,7 +881,7 @@ class ServiceProviderSignup extends Controller{
          }
          
          if(empty($data['p_account_holder_name'])){
-             $data['p_account_holder_name_err']='account_holder name can not be empty';
+             $data['p_account_holder_name_err']='account holder name can not be empty';
          }else if(validateAccountHolderName($data['p_account_holder_name'])!="true"){
           $data['p_account_holder_name_err']=validateAccountHolderName($data['p_account_holder_name']);
          }
@@ -895,7 +894,7 @@ class ServiceProviderSignup extends Controller{
         
        
          if(empty($data['p_account_number'])){
-           $data['p_account_number_err']='last name can not be empty';
+           $data['p_account_number_err']='account number can not be empty';
          }else if(validateAccountNumber($data['p_account_number'])!="true"){
           $data['p_account_number_err']=validateAccountNumber($data['p_account_number']);
          }
@@ -921,7 +920,7 @@ class ServiceProviderSignup extends Controller{
         
          
          if(empty($data['p_gender'])){
-           $data['p_gender_err']='gender can not be empty';
+           $data['p_gender_err']='Title can not be empty';
          }
          
          if(empty($data['p_qualification_file'])){
@@ -950,7 +949,7 @@ class ServiceProviderSignup extends Controller{
              if($this->serviceProviderSignupModel->signupPharmacist($data)){
                   $pharmacistDetails=$this->serviceProviderSignupModel->getLatestReqPharmacistID();
                   sendMail($data['p_email'],$data['p_first_name'],6, 7,$pharmacistDetails->requested_pharmacist_id);
-
+                                                     //role=6
                   redirect('Pages/verify_email');
              
                }else{
@@ -1038,7 +1037,7 @@ class ServiceProviderSignup extends Controller{
              'n_fee'=>trim($_POST['fee']),
              'n_gender'=>trim($_POST['gender']),
              'n_qualification_file'=>$_FILES['qualification_file'],
-             'n_qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
+             'n_qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT).'_'.$_FILES['qualification_file']['name'],
              
          
             
@@ -1163,7 +1162,7 @@ class ServiceProviderSignup extends Controller{
        
          
          if(empty($data['n_gender'])){
-           $data['n_gender_err']='gender can not be empty';
+           $data['n_gender_err']='Title can not be empty';
          }
          
          if(empty($data['n_qualification_file'])){
@@ -1192,8 +1191,8 @@ class ServiceProviderSignup extends Controller{
             $data['n_password']=password_hash($data['n_password'],PASSWORD_DEFAULT);
              if($this->serviceProviderSignupModel->signupNutritionist($data)){
                 $nutritionistDetails=$this->serviceProviderSignupModel->getLatestReqNutritionistID();
-                sendMail($data['n_email'],$data['n_first_name'],2, 7,$nutritionistDetails->requested_nutritionist_id);
-
+                sendMail($data['n_email'],$data['n_first_name'],5, 7,$nutritionistDetails->requested_nutritionist_id);
+                                                         //role=5
                 redirect('Pages/verify_email');
              
                }else{

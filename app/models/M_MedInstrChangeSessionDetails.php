@@ -9,6 +9,7 @@ class M_MedInstrChangeSessionDetails{
      $this->db=new Database();
    }
 
+   //Get Session Details
    public function getSessionDetails($id)
 
    { 
@@ -22,11 +23,12 @@ class M_MedInstrChangeSessionDetails{
       
    } 
 
+   //search Session Details
    public function searchSessionDetails($id,$search)
 
    { 
          $current_date= date("Y-m-d");
-         $this->db->query("SELECT * FROM session WHERE meditation_instructor_id=:id AND date>=:current_date AND  session_id NOT IN (SELECT session_id from session_register) AND CONCAT(title,date,address, fee) LIKE '%$search%' ORDER BY date ASC");
+         $this->db->query("SELECT * FROM session WHERE meditation_instructor_id=:id AND date>=:current_date AND  session_id NOT IN (SELECT session_id from session_register) AND CONCAT(title,date,address, registration_fee) LIKE '%$search%' ORDER BY date ASC");
          $this->db->bind(':id',$id);
          $this->db->bind(':current_date',$current_date);
         
@@ -35,6 +37,7 @@ class M_MedInstrChangeSessionDetails{
       
    } 
 
+   //delete Session
    public function  deleteSession($session_id){
    
     $this->db->query('DELETE FROM session WHERE session_id=:id');
@@ -47,6 +50,7 @@ class M_MedInstrChangeSessionDetails{
     } 
   }
 
+  //medInstr add New Session
   public function medInstraddNewSession($id,$data)
   {
    
@@ -69,6 +73,7 @@ class M_MedInstrChangeSessionDetails{
 
   }
 
+  //view Session
   public function viewSession($sessionId)
   {
      
@@ -79,6 +84,7 @@ class M_MedInstrChangeSessionDetails{
     return $row;
   } 
 
+  //Med Instr update Session
   public function medInstrupdateSession($id,$sessionId,$data)
   {
     $this->db->query('UPDATE session SET title=:title,date=:date,starting_time=:starting_time,ending_time=:ending_time,address=:address,registration_fee=:fee,noOfParticipants=:noOfParticipants,description=:description,meditation_instructor_id=:id WHERE session_id=:sessionId');

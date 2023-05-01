@@ -6,6 +6,7 @@ class MedInstrChangeSessionDetails extends Controller{
     $this->medInstrChangeSessionDetailsModel = $this->model('M_MedInstrChangeSessionDetails');
   }
 
+  //MedInstr Change Session Details
   public function medInstrChangeSessionDetails()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -22,6 +23,7 @@ class MedInstrChangeSessionDetails extends Controller{
 
   }
 
+  //Search MedInstr Change SessionDetails
   public function searchMedInstrChangeSessionDetails()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -52,7 +54,7 @@ class MedInstrChangeSessionDetails extends Controller{
   }
   }
 
-
+ //MedInstr Delete Session Details
   public function  medInstrDeleteSessionDetails($sessionId)
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -75,6 +77,8 @@ class MedInstrChangeSessionDetails extends Controller{
 
   }
 
+
+  //New MedInstr Session
   public function  newMedInstrSession()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -113,8 +117,7 @@ class MedInstrChangeSessionDetails extends Controller{
 
 
 
-
-
+  //Add New Med Instructor Session
   public function  addNewMedInstrSession()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -234,7 +237,7 @@ class MedInstrChangeSessionDetails extends Controller{
   }
  }
 
-
+   //Med Instructor view Session Details
     public function  medInstrviewSessionDetails($sessionId)
     {
 
@@ -272,11 +275,10 @@ class MedInstrChangeSessionDetails extends Controller{
     }else{
       redirect('Login/login');  
     }
-  
-
 
     }
 
+    //Med Instructor update SessionDetails
     public function  medInstrupdateSessionDetails($sessionId)
     {
       if(isset($_SESSION['MedInstr_id'])) {  

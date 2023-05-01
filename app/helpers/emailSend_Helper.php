@@ -19,28 +19,27 @@
 
        // $flag =8 Notification for pharmacist(Patient paid for medicine order)
 
-                        // //Server settings
+       // //Server settings
       $mail = new PHPMailer(true);
                         
       try{
           $mail->isSMTP();
                         
-                                                                //Send using SMTP
-          $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+                                                                      //Send using SMTP
+          $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
           $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-          $mail->Username   = 'becarecs11@gmail.com';                     //SMTP username
-          $mail->Password   = 'smxgohcohghpewpr'; 
-    
-                                                  //SMTP password
+          $mail->Username   = 'becarecs11@gmail.com';                 //SMTP username
+          $mail->Password   = 'smxgohcohghpewpr';                     //SMTP password
+      
           $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
           $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
                 
-                        //Recipients
-          $mail->setFrom('becarecs11@gmail.com','BeCare CS11');
+                        
+          $mail->setFrom('becarecs11@gmail.com','BeCare CS11');       //set from address of the email  
           $mail->addAddress($email, $name);               //Name is optional
                     
-          $mail->isHTML(true);
-          $mail->CharSet = 'UTF-8';
+          $mail->isHTML(true);                            // email format to HTML
+          $mail->CharSet = 'UTF-8';                      // character encoding of the email to UTF-8                
                         
                     
 
@@ -647,6 +646,7 @@
              $mail->send();
              return true;
 
+             
        }catch(Exception $e){
                echo "Message could not be sent: {$mail->ErrorInfo}";
        }

@@ -2274,7 +2274,7 @@ nav.dark {
     position: relative;
     padding: 7% 10%;
     text-align: right;
-    background-image: url('../img/adminRequestedServiceProviders/doctor.jpeg');
+    background-image: url('../img/view-profile-pictures/requestedSp.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     color: var(--hue-white);
@@ -2407,7 +2407,7 @@ nav.dark {
     position: relative;
     padding: 7% 10%;
     text-align: right;
-    background-image: url('../img/adminRequestedServiceProviders/doctor.jpeg');
+    background-image: url('../img/view-profile-pictures/requestedSp.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
     color: var(--hue-white);
@@ -2539,7 +2539,8 @@ nav.dark {
     position: relative;
     padding: 7% 10%;
     text-align: right;
-    background-image: url(../img/view-profile-pictures/view-profile-image.jpg);
+    background-image: url(../img/view-profile-pictures/admin-complaintMgmt.jpeg);
+    background-position-y:70%;
     background-size: cover;
     background-repeat: no-repeat;
     color: var(--hue-white);
@@ -2668,7 +2669,7 @@ nav.dark {
     position: relative;
     padding: 7% 10%;
     text-align: right;
-    background-image: url(../img/view-profile-pictures/view-profile-image.jpg);
+    background-image: url(../img/view-profile-pictures/usermgmt.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
     color: var(--hue-white);
@@ -2822,7 +2823,7 @@ nav.dark {
     position: relative;
     padding: 7% 10%;
     text-align: right;
-    background-image: url(../img/view-profile-pictures/view-profile-image.jpg);
+    background-image: url(../img/view-profile-pictures/usermgmt.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
     color: var(--hue-white);
@@ -5960,7 +5961,323 @@ h4 {
 }
 
 
+
 /************************************************** Table Page style ends *********************************************************/
+
+
+
+/************************************************** view-profile-container-medinstrHistory style starts ****************************************************/
+
+.view-profile-container-medinstrHistory {
+    width: 100%;
+    height: fit-content;
+    padding: 10vh 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dedede;
+    overflow: hidden;
+}
+
+.view-profile-container-medinstrHistory.dark {
+    background-color: var(--hue-black);
+}
+
+.view-profile-container-medinstrHistory .card {
+    width: 50%;
+    height: fit-content;
+    background-color: var(--hue-white);
+    overflow: hidden;
+    position: relative;
+}
+/* UserMgmt Admin */
+.view-profile-container-medinstrHistory .card .main-image {
+    width: 100%;
+    height: 250px;
+    position: relative;
+    padding: 7% 10%;
+    text-align: right;
+    background-image: url(../img/view-profile-pictures/medinstrHistory.jpeg);
+    background-position-y:35%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: var(--hue-white);
+}
+
+.view-profile-container-medinstrHistory .card .main-image p {
+    font-size: 14px;
+}
+
+.view-profile-container-medinstrHistory .card .main-image .profile-icon {
+    position: absolute;
+    bottom: 10px;
+    left: 2%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    background-color: #1D242B;
+    cursor: pointer;
+}
+
+.view-profile-container-medinstrHistory .card .main-image .social-media-icons {
+    position: absolute;
+    bottom: 15px;
+    right: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--hue-black);
+}
+
+.view-profile-container-medinstrHistory .card .main-image .social-media-icons i {
+    cursor: pointer;
+}
+
+.view-profile-container-medinstrHistory .card .bottom {
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    position: relative;
+}
+
+.view-profile-container-medinstrHistory .card .bottom ul {
+    width: 100%;
+}
+
+.view-profile-container-medinstrHistory .card .bottom ul li {
+    list-style: none;
+    margin-top: 20px;
+    border-bottom: 1px solid #d8d3d3;
+    font-weight: 700;
+    color: #1d242bb6;
+}
+
+.view-profile-container-medinstrHistory .card .bottom ul li a {
+    text-decoration: none;
+    color: #1d242bb6;
+}
+
+.view-profile-container-medinstrHistory .card .bottom ul .deactiveForm button {
+    padding: 8px 30px;
+    background-color: #e74c3c;
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+    margin-top: 30px;
+    cursor:pointer;
+}
+
+.view-profile-container-medinstrHistory .card .bottom ul .activeForm button {
+    padding: 8px 30px;
+    background-color: green;
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+    margin-top: 30px;
+    cursor:pointer;
+}
+
+.view-profile-container-medinstrHistory .card .bottom .bottom-line {
+    width: 100%;
+    height: 20px;
+    background-color: #0d5f84;
+    margin-top: 30px;
+}
+
+.view-profile-container-medinstrHistory .card .main-image .backto-doctors {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: #fafafacd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    gap: 10px;
+}
+
+.view-profile-container-medinstrHistory .card .main-image .backto-counsellors{
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: #fafafacd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    gap: 10px;
+    background-color: transparent;
+    border:none;
+    cursor:pointer;
+
+}
+
+
+/************************************************** View profile medinstrHistory style ends ****************************************************/
+
+
+
+
+
+/************************************************** view-profile-container-adminPayment style starts ****************************************************/
+
+.view-profile-container-adminPayment {
+    width: 100%;
+    height: fit-content;
+    padding: 10vh 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dedede;
+    overflow: hidden;
+}
+
+.view-profile-container-adminPayment.dark {
+    background-color: var(--hue-black);
+}
+
+.view-profile-container-adminPayment .card {
+    width: 50%;
+    height: fit-content;
+    background-color: var(--hue-white);
+    overflow: hidden;
+    position: relative;
+}
+/* UserMgmt Admin */
+.view-profile-container-adminPayment .card .main-image {
+    width: 100%;
+    height: 250px;
+    position: relative;
+    padding: 7% 10%;
+    text-align: right;
+    background-image: url(../img/view-profile-pictures/adminpayment.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: var(--hue-white);
+}
+
+.view-profile-container-adminPayment .card .main-image p {
+    font-size: 14px;
+}
+
+.view-profile-container-adminPayment .card .main-image .profile-icon {
+    position: absolute;
+    bottom: 10px;
+    left: 2%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    background-color: #1D242B;
+    cursor: pointer;
+}
+
+.view-profile-container-adminPayment .card .main-image .social-media-icons {
+    position: absolute;
+    bottom: 15px;
+    right: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--hue-black);
+}
+
+.view-profile-container-adminPayment .card .main-image .social-media-icons i {
+    cursor: pointer;
+}
+
+.view-profile-container-adminPayment .card .bottom {
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    position: relative;
+}
+
+.view-profile-container-adminPayment .card .bottom ul {
+    width: 100%;
+}
+
+.view-profile-container-adminPayment .card .bottom ul li {
+    list-style: none;
+    margin-top: 20px;
+    border-bottom: 1px solid #d8d3d3;
+    font-weight: 700;
+    color: #1d242bb6;
+}
+
+.view-profile-container-adminPayment .card .bottom ul li a {
+    text-decoration: none;
+    color: #1d242bb6;
+}
+
+.view-profile-container-adminPayment .card .bottom ul .deactiveForm button {
+    padding: 8px 30px;
+    background-color: #e74c3c;
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+    margin-top: 30px;
+    cursor:pointer;
+}
+
+.view-profile-container-adminPayment .card .bottom ul .activeForm button {
+    padding: 8px 30px;
+    background-color: green;
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+    margin-top: 30px;
+    cursor:pointer;
+}
+
+.view-profile-container-adminPayment .card .bottom .bottom-line {
+    width: 100%;
+    height: 20px;
+    background-color: #0d5f84;
+    margin-top: 30px;
+}
+
+.view-profile-container-adminPayment .card .main-image .backto-doctors {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: #fafafacd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    gap: 10px;
+}
+
+.view-profile-container-adminPayment .card .main-image .backto-counsellors{
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: #fafafacd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    gap: 10px;
+    background-color: transparent;
+    border:none;
+    cursor:pointer;
+
+}
+
+
+/************************************************** View profile adminPayment style ends ****************************************************/
+
+
 
 
 /************************************************** View profile Page style starts ****************************************************/
@@ -7070,5 +7387,120 @@ h4 {
     }
 }
 
+
+
+@media (max-width: 727px) {
+    .view-profile-container-userMgmt .card {
+        width: 80%;
+        padding-bottom: 0;
+    }
+    .view-profile-container-userMgmt .card .main-image {
+        padding-top: 60px
+    }
+    .view-profile-container-userMgmt .card .bottom {
+        text-align: left;
+        margin-top: 0;
+        height: fit-content;
+        font-size: 14px;
+    }
+    .view-profile-container-userMgmt .card .bottom ul {
+        padding: 0 20px;
+        overflow: auto;
+    }
+}
+
+
+
+@media (max-width: 727px) {
+    .view-profile-container-adminPayment .card {
+        width: 80%;
+        padding-bottom: 0;
+    }
+    .view-profile-container-adminPayment .card .main-image {
+        padding-top: 60px
+    }
+    .view-profile-container-adminPayment .card .bottom {
+        text-align: left;
+        margin-top: 0;
+        height: fit-content;
+        font-size: 14px;
+    }
+    .view-profile-container-adminPayment .card .bottom ul {
+        padding: 0 20px;
+        overflow: auto;
+    }
+}
+
+
+
+@media (max-width: 727px) {
+    .view-profile-container-userMgmtDoctorVM
+ .card {
+        width: 80%;
+        padding-bottom: 0;
+    }
+    .view-profile-container-userMgmtDoctorVM
+ .card .main-image {
+        padding-top: 60px
+    }
+    .view-profile-container-userMgmtDoctorVM
+ .card .bottom {
+        text-align: left;
+        margin-top: 0;
+        height: fit-content;
+        font-size: 14px;
+    }
+    .view-profile-container-userMgmtDoctorVM
+ .card .bottom ul {
+        padding: 0 20px;
+        overflow: auto;
+    }
+}
+
+
+@media (max-width: 727px) {
+    .view-profile-container-requestedSP
+ .card {
+        width: 80%;
+        padding-bottom: 0;
+    }
+    .view-profile-container-requestedSP
+ .card .main-image {
+        padding-top: 60px
+    }
+    .view-profile-container-requestedSP
+ .card .bottom {
+        text-align: left;
+        margin-top: 0;
+        height: fit-content;
+        font-size: 14px;
+    }
+    .view-profile-container-requestedSP
+ .card .bottom ul {
+        padding: 0 20px;
+        overflow: auto;
+    }
+}
+
+
+@media (max-width: 727px) {
+    .view-profile-container-userMgmt .card {
+        width: 80%;
+        padding-bottom: 0;
+    }
+    .view-profile-container-userMgmt .card .main-image {
+        padding-top: 60px
+    }
+    .view-profile-container-userMgmt .card .bottom {
+        text-align: left;
+        margin-top: 0;
+        height: fit-content;
+        font-size: 14px;
+    }
+    .view-profile-container-userMgmt .card .bottom ul {
+        padding: 0 20px;
+        overflow: auto;
+    }
+}
 
 /* Responsive precess ends here */

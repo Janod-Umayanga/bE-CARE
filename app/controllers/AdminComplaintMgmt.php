@@ -2,11 +2,12 @@
 
 class AdminComplaintMgmt extends Controller{
   private $adminComplaintMgmtModel;
+
   public function __construct(){
     $this->adminComplaintMgmtModel = $this->model('M_AdminComplaintMgmt');
   }
 
-
+ //Admin Complaint Mgmt
    public function adminComplaintMgmt()
    {
      if(isset($_SESSION['admin_id'])) {
@@ -25,6 +26,7 @@ class AdminComplaintMgmt extends Controller{
      }
     }
 
+   // Admin Solved Complaint 
     public function solvedComplaint()
     {
       if(isset($_SESSION['admin_id'])) {
@@ -53,6 +55,7 @@ class AdminComplaintMgmt extends Controller{
       }
      }
   
+    //Admin unsolvedComplaint 
     public function unsolvedComplaint()
     {
       if(isset($_SESSION['admin_id'])) {
@@ -81,6 +84,8 @@ class AdminComplaintMgmt extends Controller{
       }
      }
   
+     //View More Solved Complaint
+
    public function viewMoreS($complaintId){
 
     if(isset($_SESSION['admin_id'])) {
@@ -107,6 +112,8 @@ class AdminComplaintMgmt extends Controller{
     }
    
    } 
+
+        //View More Unsolved Complaint
 
    public function viewMoreUC($complaintId){
 
@@ -135,29 +142,32 @@ class AdminComplaintMgmt extends Controller{
    
    } 
 
+  
+    //Complaint Solved
+
+
      public function solved($id)
-   {
+     {
       if(isset($_SESSION['admin_id'])) {  
 
            if($_SERVER['REQUEST_METHOD']=='GET'){
              $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
        
-                
-                 $solved= $this->adminComplaintMgmtModel->setSolved($id);
+               
+               $solved= $this->adminComplaintMgmtModel->setSolved($id);
    
-                 $data=[                      
-                   
-                 ];
+                $data=[ ];
                 
-                 if($solved==true){
-                      redirect('AdminComplaintMgmt/adminComplaintMgmt');
-                 }
+                if($solved==true){
+                    redirect('AdminComplaintMgmt/adminComplaintMgmt');
+                }
            } 
        
-           }else{
-             redirect('Login/login');  
-           }
-   }
+      }else{
+           redirect('Login/login');  
+      }
+    }
+
 }
 
  ?>

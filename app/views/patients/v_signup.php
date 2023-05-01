@@ -33,7 +33,8 @@
             </div>
             <span id="formNumber" ><?php if(isset($_SESSION['signup_form_number'])){echo $_SESSION['signup_form_number'];}else{echo 0;} ?></span>
             <div class="form-container" id="form-container">
-                <form action="<?php echo URLROOT ?>/Patient/signup" method="POST" id="patient-form">
+               
+                  <form action="<?php echo URLROOT ?>/Patient/signup" method="POST" id="patient-form">
                     <div class="topic-of-form">
                         <h1>Signup..</h1>
                         <p>Already have an account <a href="<?php echo URLROOT ?>/Login/login">Login</a></p>
@@ -61,10 +62,11 @@
                         </div>
                         <div class="right">
                         
-                            <label for="gender">Gender</label>
+                            <label for="gender">Title</label>
                             <select name="gender" id="gender" >
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
+                                <option value="">Title</option>
+                                <option value="Mr">Mr</option>
+                                <option value="Ms">Ms</option>
                             </select>
                             <span class="form-invalid"><?php if(isset($data['gender_err'])){echo $data['gender_err'];} ?></span>
 
@@ -110,17 +112,29 @@
                             <span class="form-invalid"><?php if(isset($data['d_email_err'])){echo $data['d_email_err'];} ?></span>
 
                             
-                            <label for="gender">Gender</label>
+                            <label for="gender">Title</label>
                             <select name="gender" id="gender" >
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
+                                <option value="">Title</option>
+                                <option value="Mr">Mr</option>
+                                <option value="Ms">Ms</option>
                             </select>
                             <span class="form-invalid"><?php if(isset($data['d_gender_err'])){echo $data['d_gender_err'];} ?></span>
 
-
+      
                             <label for="city">City</label>
-                            <input type="text" id="city" name="city" value="<?php if(isset($data['d_city'])){echo $data['d_city'];} ?>">
-                            <span class="form-invalid"><?php if(isset($data['d_city_err'])){echo $data['d_city_err'];} ?></span>
+                            <select name="city" id="city">
+                                <option value="">City</option>
+                                <option value="Colombo">Colombo</option>
+                                <option value="Galle">Galle</option>
+                                <option value="Kandy">Kandy</option>
+                                <option value="Malabe">Malabe</option>
+                                <option value="Matara">Matara</option>
+                                <option value="Nugegoda">Nugegoda</option>
+                                <option value="Ratnapura">Ratnapura</option>
+                                <option value="Trincomalee">Trincomalee</option>
+                           </select>
+                           <span class="form-invalid"><?php if(isset($data['d_city_err'])){echo $data['d_city_err'];} ?></span>
+
 
                             <label for="slmc">SLMC registration Number</label>
                             <input type="text" id="slmc" name="slmc" value="<?php if(isset($data['d_slmc_reg_number'])){echo $data['d_slmc_reg_number'];} ?>">
@@ -142,9 +156,43 @@
                             <input type="file" id="qualification_file" name="qualification_file" value="<?php if(isset($data['d_qualification_file'])){echo $data['d_qualification_file'];} ?>">
                             <span class="form-invalid"><?php if(isset($data['d_qualification_file_err'])){echo $data['d_qualification_file_err'];} ?></span>
 
+                    
                             <label for="specialization">Specialization</label>
-                            <input type="text" id="specialization" name="specialization" value="<?php if(isset($data['d_specialization'])){echo $data['d_specialization'];} ?>">
+                            <select name="specialization" id="specialization">
+                                <option value="">Specialization</option>
+                                <option value="Allergist">Allergist</option>
+                                <option value="Anesthesiologist">Anesthesiologist</option>
+                                <option value="Cardiologist">Cardiologist</option>
+                                <option value="Dentist">Dentist</option>
+                                <option value="Dermatologist">Dermatologist</option>
+                                <option value="Endocrinologist">Endocrinologist</option>
+                                <option value="Gastroenterologist">Gastroenterologist</option>
+                                <option value="General Practitioner">General Practitioner</option>
+                                <option value="Geriatrician">Geriatrician</option>
+                                <option value="Gynecologist">Gynecologist</option>
+                                <option value="Hematologist">Hematologist</option>
+                                <option value="Infectious Disease Specialist">Infectious Disease Specialist</option>
+                                <option value="Internist">Internist</option>
+                                <option value="Nephrologist">Nephrologist</option>
+                                <option value="Neurologist">Neurologist</option>
+                                <option value="Obstetrician">Obstetrician</option>
+                                <option value="Oncologist">Oncologist</option>
+                                <option value="Ophthalmologist">Ophthalmologist</option>
+                                <option value="Orthopedic Surgeon">Orthopedic Surgeon</option>
+                                <option value="Otolaryngologist">Otolaryngologist</option>
+                                <option value="Pathologist">Pathologist</option>
+                                <option value="Pediatrician">Pediatrician</option>
+                                <option value="Physiatrist">Physiatrist</option>
+                                <option value="Plastic Surgeon">Plastic Surgeon</option>
+                                <option value="Psychiatrist">Psychiatrist</option>
+                                <option value="Pulmonologist">Pulmonologist</option>
+                                <option value="Radiologist">Radiologist</option>
+                                <option value="Rheumatologist">Rheumatologist</option>
+                                <option value="Surgeon">Surgeon</option>
+                                <option value="Urologist">Urologist</option>
+                            </select>
                             <span class="form-invalid"><?php if(isset($data['d_specialization_err'])){echo $data['d_specialization_err'];} ?></span>
+
 
                             <label for="password">Password</label>
                             <input type="password" id="password" name="password">
@@ -200,16 +248,27 @@
                             <span class="form-invalid"><?php if(isset($data['c_email_err'])){echo $data['c_email_err'];} ?></span>
 
                             
-                            <label for="gender">Gender</label>
+                            <label for="gender">Title</label>
                             <select name="gender" id="gender" >
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
+                                <option value="">Title</option>
+                                <option value="Mr">Mr</option>
+                                <option value="Ms">Ms</option>
                             </select>
                             <span class="form-invalid"><?php if(isset($data['c_gender_err'])){echo $data['c_gender_err'];} ?></span>
 
 
                             <label for="city">City</label>
-                            <input type="text" id="city" name="city" value="<?php if(isset($data['c_city'])){echo $data['c_city'];} ?>">
+                            <select name="city" id="city">
+                                <option value="">City</option>
+                                <option value="Colombo">Colombo</option>
+                                <option value="Galle">Galle</option>
+                                <option value="Kandy">Kandy</option>
+                                <option value="Malabe">Malabe</option>
+                                <option value="Matara">Matara</option>
+                                <option value="Nugegoda">Nugegoda</option>
+                                <option value="Ratnapura">Ratnapura</option>
+                                <option value="Trincomalee">Trincomalee</option>
+                            </select>
                             <span class="form-invalid"><?php if(isset($data['c_city_err'])){echo $data['c_city_err'];} ?></span>
 
 
@@ -281,19 +340,31 @@
                             <span class="form-invalid"><?php if(isset($data['p_email_err'])){echo $data['p_email_err'];} ?></span>
 
                             
-                            <label for="gender">Gender</label>
+                            <label for="gender">Title</label>
                             <select name="gender" id="gender" >
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
+                                <option value="">Title</option>
+                                <option value="Mr">Mr</option>
+                                <option value="Ms">Ms</option>
                             </select>
                             <span class="form-invalid"><?php if(isset($data['p_gender_err'])){echo $data['p_gender_err'];} ?></span>
 
 
                             <label for="city">City</label>
-                            <input type="text" id="city" name="city" value="<?php if(isset($data['p_city'])){echo $data['p_city'];} ?>">
+                            <select name="city" id="city">
+                                <option value="">City</option>
+                                <option value="Colombo">Colombo</option>
+                                <option value="Galle">Galle</option>
+                                <option value="Kandy">Kandy</option>
+                                <option value="Malabe">Malabe</option>
+                                <option value="Matara">Matara</option>
+                                <option value="Nugegoda">Nugegoda</option>
+                                <option value="Ratnapura">Ratnapura</option>
+                                <option value="Trincomalee">Trincomalee</option>
+                            </select>
                             <span class="form-invalid"><?php if(isset($data['p_city_err'])){echo $data['p_city_err'];} ?></span>
 
-                        
+
+
                             <label for="pharmacy_name">Pharmacy Name</label>
                             <input type="text" id="pharmacy_name" name="pharmacy_name" value="<?php if(isset($data['p_pharmacy_name'])){echo $data['p_pharmacy_name'];} ?>">
                             <span class="form-invalid"><?php if(isset($data['p_pharmacy_name_err'])){echo $data['p_pharmacy_name_err'];} ?></span>
@@ -370,10 +441,11 @@
                             <span class="form-invalid"><?php if(isset($data['n_email_err'])){echo $data['n_email_err'];} ?></span>
 
                             
-                            <label for="gender">Gender</label>
+                            <label for="gender">Title</label>
                             <select name="gender" id="gender" >
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
+                                <option value="">Title</option>
+                                <option value="Mr">Mr</option>
+                                <option value="Ms">Ms</option>
                             </select>
                             <span class="form-invalid"><?php if(isset($data['n_gender_err'])){echo $data['n_gender_err'];} ?></span>
 
@@ -452,18 +524,28 @@
                             <span class="form-invalid"><?php if(isset($data['m_email_err'])){echo $data['m_email_err'];} ?></span>
 
                             
-                            <label for="gender">Gender</label>
+                            <label for="gender">Title</label>
                             <select name="gender" id="gender" >
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
+                                <option value="">Title</option>
+                                <option value="Mr">Mr</option>
+                                <option value="Ms">Ms</option>
                             </select>
                             <span class="form-invalid"><?php if(isset($data['m_gender_err'])){echo $data['m_gender_err'];} ?></span>
 
 
                             <label for="city">City</label>
-                            <input type="text" id="city" name="city" value="<?php if(isset($data['m_city'])){echo $data['m_city'];} ?>">
+                            <select name="city" id="city">
+                                <option value="">City</option>
+                                <option value="Colombo">Colombo</option>
+                                <option value="Galle">Galle</option>
+                                <option value="Kandy">Kandy</option>
+                                <option value="Malabe">Malabe</option>
+                                <option value="Matara">Matara</option>
+                                <option value="Nugegoda">Nugegoda</option>
+                                <option value="Ratnapura">Ratnapura</option>
+                                <option value="Trincomalee">Trincomalee</option>
+                            </select>
                             <span class="form-invalid"><?php if(isset($data['m_city_err'])){echo $data['m_city_err'];} ?></span>
-
 
                             <label for="address">address</label>
                             <input type="text" id="address" name="address" value="<?php if(isset($data['m_address'])){echo $data['m_address'];} ?>">

@@ -112,7 +112,7 @@
        
             $this->db->query('UPDATE doctor set password = :password WHERE doctor_id = :id');
             $this->db->bind(':password', $data['password']);
-            $this->db->bind(':id', $data['doctor_id']);
+            $this->db->bind(':id', $data['user_id']);
                 
     
             if($this->db->execute()){

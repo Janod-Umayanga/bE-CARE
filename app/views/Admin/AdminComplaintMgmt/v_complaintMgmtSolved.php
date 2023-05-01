@@ -35,7 +35,7 @@
                     </tr>
                    
                      
-                    <?php foreach($data['complaint'] as $complaint): ?>
+        <?php foreach($data['complaint'] as $complaint): ?>
          
          <?php if($complaint->patient_id != NULL):
               

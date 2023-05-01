@@ -38,7 +38,7 @@
                     <li>SLMC number - <?php echo $data['nutritionist']->slmc_reg_number ?></li>
                    
                     <li>NIC - <?php echo $data['nutritionist']->nic ?></li>
-                    <li>Gender - <?php echo $data['nutritionist']->gender ?></li>
+                    <li>Title - <?php echo $data['nutritionist']->gender ?></li>
                     <li>Fee - <?php echo $data['nutritionist']->fee ?></li>
                    
                     <li>Bank Name - <?php echo $data['nutritionist']->bank_name ?></li>

@@ -22,8 +22,9 @@
                 <a href="<?php echo URLROOT ?>/AdminDashBoard/adminDashBoard" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Home page</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Enter your login details to get into the application</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                    <h2>Update your password with the relavent details</h2>
+                   
+                    <p>Make sure to choose a strong and secure password. Click the "Change Password" button to update your password.</p>
                 </div>
             </div>
         </div>
@@ -53,7 +54,7 @@
 
 
 
-                        <button type="submit" >Update</button> 
+                        <button type="submit" >Change Password</button> 
                     </div>
     
                   

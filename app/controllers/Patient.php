@@ -97,7 +97,7 @@
 
                 // Validate gender
                 if(empty($data['gender'])) {
-                    $data['gender_err'] = 'Gender required';
+                    $data['gender_err'] = 'Title required';
                 }
 
                 // Validate email
@@ -120,7 +120,7 @@
                 }else if(validatePassword($data['password'])!="true"){
                     $data['password_err']=validatePassword($data['password']);
                 }
-                else if(empty($data['password_confirmation'])) {
+                if(empty($data['password_confirmation'])) {
                     $data['password_confirmation_err'] = 'Password confirmation required';
                 }else if(validatePassword($data['password_confirmation'])!="true"){
                     $data['password_confirmation_err']=validatePassword($data['password_confirmation']);
@@ -249,7 +249,7 @@
 
                 // Validate gender
                 if(empty($data['gender'])) {
-                    $data['gender_err'] = 'Gender required';
+                    $data['gender_err'] = 'Title required';
                 }
 
                 // Update patient details after validation
