@@ -300,6 +300,14 @@
     return "true";
   }
 
+  function validateDate($date) {
+    $currentDate = date("Y-m-d");
+    if ($date < $currentDate) {
+       return "Date cannot be less than current date";
+    } else {
+       return "true";
+    }
+   }
 
 
  ?>

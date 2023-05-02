@@ -155,7 +155,9 @@ class MedInstrChangeSessionDetails extends Controller{
 
         if(empty($data['date'])){
           $data['date_err']='Please select a date';
-        }
+        }else if(validateDate($data['date'])!="true"){
+          $data['date_err']=validateDate($data['date']);
+         }
 
         if(empty($data['starting_time'])){
            $data['starting_time_err']='Please select a starting time';
@@ -191,7 +193,7 @@ class MedInstrChangeSessionDetails extends Controller{
 
 
 
-        if(empty($data['title_err']) && empty($data['date_err']) && empty($data['starting_time_err'])&& empty($data['ending_time_err'])&& empty($data['fee_err'])&& empty($data['address_err']) && empty($data['noOfParticipants_err'])&& empty($data['description_err'])){
+        if(empty($data['title_err']) && empty($data['date_err']) && empty($data['starting_time_err'])&& empty($data['ending_time_err'])&& empty($data['fee_err'])&& empty($data['address_err']) && empty($data['noOfParticipants_err']) && empty($data['description_err'])){
 
             $addnewSession=$this->medInstrChangeSessionDetailsModel->medInstraddNewSession($_SESSION['MedInstr_id'],$data);
 
@@ -317,7 +319,10 @@ class MedInstrChangeSessionDetails extends Controller{
 
             if(empty($data['date'])){
               $data['date_err']='Please select a date';
-            }
+            }else if(validateDate($data['date'])!="true"){
+              $data['date_err']=validateDate($data['date']);
+             }
+    
 
             if(empty($data['starting_time'])){
                $data['starting_time_err']='Please select a starting time';

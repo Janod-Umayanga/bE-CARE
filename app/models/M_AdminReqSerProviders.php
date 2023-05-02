@@ -267,7 +267,7 @@
       } 
 
       //Get Search Req Nutritionist
-      public function getSearchReqNutritionist($search)
+      public function getSearchReqNutritionists($search)
       {
         $this->db->query("SELECT * FROM requested_nutritionist WHERE CONCAT(first_name,last_name) LIKE '%$search%' AND email_verified_flag=:email_verified_flag");
         $this->db->bind(':email_verified_flag',1);
@@ -439,7 +439,7 @@
       //Get Search Req Pharmacists  
       public function getSearchReqPharmacists($search)
       {
-        $this->db->query("SELECT * FROM requested_doctor WHERE CONCAT(first_name,last_name,city,type,specialization) LIKE '%$search%' AND email_verified_flag=:email_verified_flag");
+        $this->db->query("SELECT * FROM requested_pharmacist WHERE CONCAT(first_name,last_name,city,address,pharmacy_name) LIKE '%$search%' AND email_verified_flag=:email_verified_flag");
         $this->db->bind(':email_verified_flag',1);
       
         $result=$this->db->resultSet();

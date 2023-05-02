@@ -5998,7 +5998,7 @@ h4 {
     padding: 7% 10%;
     text-align: right;
     background-image: url(../img/view-profile-pictures/medinstrHistory.jpeg);
-    background-position-y:35%;
+    background-position-y:5%;
     background-size: cover;
     background-repeat: no-repeat;
     color: var(--hue-white);
@@ -6120,6 +6120,162 @@ h4 {
 
 /************************************************** View profile medinstrHistory style ends ****************************************************/
 
+
+
+
+/************************************************** view-profile-container-medinstrSession style starts ****************************************************/
+
+.view-profile-container-medinstrSession {
+    width: 100%;
+    height: fit-content;
+    padding: 10vh 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dedede;
+    overflow: hidden;
+}
+
+.view-profile-container-medinstrSession.dark {
+    background-color: var(--hue-black);
+}
+
+.view-profile-container-medinstrSession .card {
+    width: 50%;
+    height: fit-content;
+    background-color: var(--hue-white);
+    overflow: hidden;
+    position: relative;
+}
+/* UserMgmt Admin */
+.view-profile-container-medinstrSession .card .main-image {
+    width: 100%;
+    height: 250px;
+    position: relative;
+    padding: 7% 10%;
+    text-align: right;
+    background-image: url(../img/view-profile-pictures/medinstrSession.jpeg);
+    background-position-y:85%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: var(--hue-white);
+}
+
+.view-profile-container-medinstrSession .card .main-image p {
+    font-size: 14px;
+}
+
+.view-profile-container-medinstrSession .card .main-image .profile-icon {
+    position: absolute;
+    bottom: 10px;
+    left: 2%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    background-color: #1D242B;
+    cursor: pointer;
+}
+
+.view-profile-container-medinstrSession .card .main-image .social-media-icons {
+    position: absolute;
+    bottom: 15px;
+    right: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--hue-black);
+}
+
+.view-profile-container-medinstrSession .card .main-image .social-media-icons i {
+    cursor: pointer;
+}
+
+.view-profile-container-medinstrSession .card .bottom {
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    position: relative;
+}
+
+.view-profile-container-medinstrSession .card .bottom ul {
+    width: 100%;
+}
+
+.view-profile-container-medinstrSession .card .bottom ul li {
+    list-style: none;
+    margin-top: 20px;
+    border-bottom: 1px solid #d8d3d3;
+    font-weight: 700;
+    color: #1d242bb6;
+}
+
+.view-profile-container-medinstrSession .card .bottom ul li a {
+    text-decoration: none;
+    color: #1d242bb6;
+}
+
+.view-profile-container-medinstrSession .card .bottom ul .deactiveForm button {
+    padding: 8px 30px;
+    background-color: #e74c3c;
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+    margin-top: 30px;
+    cursor:pointer;
+}
+
+.view-profile-container-medinstrSession .card .bottom ul .activeForm button {
+    padding: 8px 30px;
+    background-color: green;
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+    margin-top: 30px;
+    cursor:pointer;
+}
+
+.view-profile-container-medinstrSession .card .bottom .bottom-line {
+    width: 100%;
+    height: 20px;
+    background-color: #0d5f84;
+    margin-top: 30px;
+}
+
+.view-profile-container-medinstrSession .card .main-image .backto-doctors {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: #fafafacd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    gap: 10px;
+}
+
+.view-profile-container-medinstrSession .card .main-image .backto-counsellors{
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: #fafafacd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    gap: 10px;
+    background-color: transparent;
+    border:none;
+    cursor:pointer;
+
+}
+
+
+/************************************************** View profile medinstrSession style ends ****************************************************/
 
 
 

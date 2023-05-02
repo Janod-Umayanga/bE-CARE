@@ -512,7 +512,7 @@ public function  adminSearchReqMeditationInstructor()
     $_GET=filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
 
         $search=trim($_GET['search']);
-        echo $search; 
+       
         $meditationInstructor= $this->adminReqSerProvidersModel->getSearchReqMeditationInstructors($search);
         
         $data=[                      

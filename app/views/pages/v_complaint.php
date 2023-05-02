@@ -40,8 +40,8 @@
 
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Enter your login details to get into the application</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                    <h2>Fill these details to add new complaint</h2>
+                    <p>Click the "Submit" button to save your changes and add new complaint.</p>
                 </div>
             </div>
         </div>

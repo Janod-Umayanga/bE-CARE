@@ -16,7 +16,7 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <section class="view-profile-container-medinstrHistory theme">
+    <section class="view-profile-container-medinstrSession theme">
         <div class="card">
             <div class="main-image">
                 <a href="<?php echo URLROOT ?>/MedInstrSession/medInstrNewSession" class="backto-doctors"><i class="fa-solid fa-arrow-left"></i>Back to New Sessions</a>

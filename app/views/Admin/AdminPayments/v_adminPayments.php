@@ -183,16 +183,9 @@
 
                     <?php foreach($data['pharmacistOrder'] as $pharmacistOrder): ?>
 
-                    <?php 
-                      if($pharmacistOrder->gender=='Male'){
-                          $gend='Mr.';
-                      }else if($pharmacistOrder->gender=='Female'){
-                          $gend='Mrs.';
-                      }    
-                    ?>    
 
                     <tr>
-                    <td><?php echo $gend ?> <?php echo $pharmacistOrder->first_name?> <?php echo $pharmacistOrder->last_name?></td>
+                    <td><?php echo $pharmacistOrder->gender ?>. <?php echo $pharmacistOrder->first_name?> <?php echo $pharmacistOrder->last_name?></td>
                     <td><?php echo Round($pharmacistOrder->charge,2)?></td>
                     <td><?php echo Round(($pharmacistOrder->charge/110)*100,2)?></td>
                     <td><?php echo Round(($pharmacistOrder->charge/110)*10,2)?></td>
@@ -223,16 +216,9 @@
 
                     <?php foreach($data['medInstructorRegistration'] as $medInstructorRegistration): ?>
 
-                    <?php 
-                      if($medInstructorRegistration->gender=='Male'){
-                          $gender='Mr.';
-                      }else if($medInstructorRegistration->gender=='Female'){
-                          $gender='Mrs.';
-                      }    
-                    ?>    
 
                     <tr>
-                    <td><?php echo $gender ?> <?php echo $medInstructorRegistration->first_name?> <?php echo $medInstructorRegistration->last_name?></td>
+                    <td><?php echo $medInstructorRegistration->gender ?> <?php echo $medInstructorRegistration->first_name?> <?php echo $medInstructorRegistration->last_name?></td>
                     <td><?php echo Round($medInstructorRegistration->paid_amount,2)?></td>
                     <td><?php echo Round(($medInstructorRegistration->paid_amount/110)*100,2)?></td>
                     <td><?php echo Round(($medInstructorRegistration->paid_amount/110)*10,2)?></td>
@@ -310,15 +296,9 @@
 
                    <?php }else if(isset($session_registration->meditation_instructor_id)){ ?> 
                     
-                    <?php 
-                    
-                   
-                    if($session_registration->gender=='Male'){$medInstr_gender="Mr.";}else{$medInstr_gender="Mrs.";}
-
-                    ?>
-
+            
                     <tr>
-                    <td><?php echo $medInstr_gender ?> <?php echo $session_registration->first_name?> <?php echo $session_registration->last_name?></td>
+                    <td><?php echo $session_registration->gender?> . <?php echo $session_registration->first_name?> <?php echo $session_registration->last_name?></td>
                     <td><?php echo Round($session_registration->paid_amount,2)?></td>
                     <td><?php echo Round(($session_registration->paid_amount/110)*100,2)?></td>
                     <td><?php echo Round(($session_registration->paid_amount/110)*10,2)?></td>
