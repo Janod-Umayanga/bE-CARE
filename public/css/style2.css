@@ -6831,8 +6831,8 @@ h4 {
     position: relative;
     align-items: center;
     justify-content: center;
-    background-image: url(../img/counsellorSession/counsellorpic.jpg);
-    background-position-y: 30%;
+    background-image: url(../img/counsellorSession/csession.jpg);
+    background-position-y: 50%;
     background-size: cover;
     overflow: hidden;
 }
