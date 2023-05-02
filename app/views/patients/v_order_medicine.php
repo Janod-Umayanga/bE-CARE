@@ -40,7 +40,7 @@
                         <span class="form-invalid"><?php echo $data['address_err'] ?></span>
 
                         <label for="cnumber">Contact number</label>
-                        <input type="text" id="cnumber" name="cnumber" value="<?php echo $data['cnumber'] ?>">
+                        <input type="number" id="cnumber" name="cnumber" value="<?php echo $data['cnumber'] ?>">
                         <span class="form-invalid"><?php echo $data['cnumber_err'] ?></span>
 
                         <label for="prescription">Upload Prescription</label>

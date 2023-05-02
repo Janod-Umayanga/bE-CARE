@@ -24,12 +24,22 @@ function changeTheme() {
         darkThemeElements.forEach((element) => {
             element.classList.add('dark')
         })
+        sessionStorage.setItem('theme', 'dark')
     } else {
         changeThemeButtonElement.className = "fa-solid fa-moon"
         darkThemeElements.forEach((element) => {
             element.classList.remove('dark')
         })
+        sessionStorage.setItem('theme', 'light')
     }
+}
+
+const theme = sessionStorage.getItem('theme')
+if (theme == 'dark') {
+    changeThemeButtonElement.className = "fa-solid fa-sun"
+    darkThemeElements.forEach((element) => {
+        element.classList.add('dark')
+    })
 }
 
 /* Dark theme process ends here */

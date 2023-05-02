@@ -23,37 +23,22 @@
             </div>
             <div class="bottom">
                 <ul>
-                    <li>Name - <?php echo #$data['plans']->request_diet_plan_id 
-                    'Shashikala Wijesiri'?></li>
-                    <li>Age - <?php echo #$data['plans']->name 
-                    '28 years old'?></li>
-                     <li>Gender - <?php echo #$data['plans']->contact_number 
-                    'Female'?></li>
-                     <li>Contact Number - <?php echo #$data['plans']->gender 
-                     '0757523975'?></li>
-                    <li>Weight - <?php echo #$data['plans']->age
-                    '69 Kg'?></li>
-                   
-                   
-                    <li>Weight - <?php echo #$data['plans']->weight 
-                    'melani@gmail.com'?></li>
-                    <li>Marital Status - <?php echo #$data['plans']->height 
-                    'Unmarried'?></li>
-                    <li>Medical Details - <?php echo #$data['plans']->martial_status 
-                    'No any other diseases'?></li>
-                    <li>Allergies - <?php echo #$data['plans']->medical_details 
-                    'No allergies'?></li>
-                    <li>Sleeping hours - <?php echo #$data['plans']->allergies
-                    '5 hours' ?></li>
-                    <li>Water Consumption(per day) - <?php echo #$data['plans']->sleeping_hours 
-                    '2 L'?></li>
-                    <li>Goals - <?php echo #$data['plans']->water_consumption_per_day
-                    'I want to lose my weight'?></li>
-                   
+                    <li>Name - <?php echo $data['more']->name ?></li>
+                    <li>Age - <?php echo $data['more']->age ?></li>
+                    <li>Gender - <?php echo $data['more']->gender ?></li>
+                    <li>Contact Number - <?php echo $data['more']->contact_number ?></li>
+                    <li>Weight - <?php echo $data['more']->weight?></li>   
+                    <li>Height - <?php echo $data['more']->height ?></li>
+                    <li>Marital Status - <?php echo $data['more']->marital_status ?></li>
+                    <li>Medical Details - <?php echo $data['more']->medical_details ?></li>
+                    <li>Allergies - <?php echo $data['more']->allergies ?></li>
+                    <li>Sleeping hours - <?php echo $data['more']->sleeping_hours?></li>
+                    <li>Water Consumption(per day) - <?php echo $data['more']->water_consumption_per_day ?></li>
+                    <li>Goals - <?php echo $data['more']->goal ?></li>
                 </ul>
                 <div class="bottom-line"></div>
             </div>
-        </div>
+        </div>  
     </section>
 
     <?php require APPROOT.'/views/inc/components/footer1.php'; ?>

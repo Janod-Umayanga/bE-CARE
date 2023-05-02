@@ -30,10 +30,10 @@
     </section>
 
     <section class="our-services-container theme" id="our-services-container">
-        <dev class="service-topic">
+        <div class="service-topic">
             <span class="line"></span>
             <h2>Our Services</h2>
-        </dev>
+        </div>
         <div class="card-container-forservices" id="to-be-show-more">
             <a href="<?php echo URLROOT ?>/Patient/findDoctor" class="card">
                 <img src="<?php echo URLROOT; ?>/img/sevices-images/channel-a-doctor.jpg" alt="">
@@ -51,7 +51,7 @@
                 <img src="<?php echo URLROOT; ?>/img/sevices-images/find-a-nutritionist.jpg" alt="">
                 <p>******<br>Find a Nutritionist</p>
             </a>
-            <a href="<?php echo URLROOT ?>/Patient/findMedidationInstructor" class="card">
+            <a href="<?php echo URLROOT ?>/Patient/findMeditationInstructor" class="card">
                 <img src="<?php echo URLROOT; ?>/img/sevices-images/find-a-meditation-instructor.jpg" alt="">
                 <p>******<br>Find a Meditation Instructor</p>
             </a>
@@ -71,6 +71,30 @@
                 <img src="<?php echo URLROOT; ?>/img/sevices-images/Your Orders.jpg" alt="">
                 <p>******<br>Your Orders</p>
             </a>
+            <a href="<?php echo URLROOT ?>/Patient/viewCounsellorAppointments" class="card">
+                <img src="<?php echo URLROOT; ?>/img/sevices-images/counsellor appointments.jpg" alt="">
+                <p>******<br>Your Counsellor Appointments</p>
+            </a>
+            <a href="<?php echo URLROOT ?>/Patient/viewCounsellorChannelingHistory" class="card">
+                <img src="<?php echo URLROOT; ?>/img/sevices-images/counsellor history.jpg" alt="">
+                <p>******<br>Your Counsellor Channeling History</p>
+            </a>
+            <a href="<?php echo URLROOT ?>/Patient/viewDietPlans" class="card">
+                <img src="<?php echo URLROOT; ?>/img/sevices-images/diet plans.jpg" alt="">
+                <p>******<br>Your Diet Plans</p>
+            </a>
+            <a href="<?php echo URLROOT ?>/Patient/viewMeditationInstructorAppointments" class="card">
+                <img src="<?php echo URLROOT; ?>/img/sevices-images/meditation instructor appointments.jpg" alt="">
+                <p>******<br>Your Meditation Instructor Appointments</p>
+            </a>
+            <a href="<?php echo URLROOT ?>/Patient/viewMeditationInstructorHistory" class="card">
+                <img src="<?php echo URLROOT; ?>/img/sevices-images/Meditating history.jpg" alt="">
+                <p>******<br>Your Meditation Instructing History</p>
+            </a>
+            <a href="<?php echo URLROOT ?>/Patient/viewRegisteredSessions" class="card">
+                <img src="<?php echo URLROOT; ?>/img/sevices-images/registered sessions.jpg" alt="">
+                <p>******<br>Your Registered Sessions</p>
+            </a>
         </div>
         <button id="show-button" class="show-button" onclick="showMore()"><span id="show-text">Show More</span><i class="fa-solid fa-angle-down" id="icon-more-orless"></i></button>
     </section>
@@ -78,6 +102,7 @@
     <!-- For push notifications -->
     <span id="isPatientLoggedIn"><?php if(isset($_SESSION['first_time_logged'])){echo $_SESSION['first_time_logged']; unset($_SESSION['first_time_logged']);}?></span>
     <span id="isOrderSent"><?php if(isset($_SESSION['order_sent'])){echo $_SESSION['order_sent']; unset($_SESSION['order_sent']);}?></span>
+    <span id="isPaidForOrder"><?php if(isset($_SESSION['paid_for_order'])){echo $_SESSION['paid_for_order']; unset($_SESSION['paid_for_order']);}?></span>
     <span id="isChannelCreated"><?php if(isset($_SESSION['channel_created'])){echo $_SESSION['channel_created']; unset($_SESSION['channel_created']);}?></span>
     <span id="isLoggedOut"><?php if(isset($_SESSION['logout'])){echo $_SESSION['logout']; unset($_SESSION['logout']);}?></span>
     <?php require APPROOT.'/views/inc/components/footer1.php'; ?>

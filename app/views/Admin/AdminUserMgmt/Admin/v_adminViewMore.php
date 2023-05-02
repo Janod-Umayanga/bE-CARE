@@ -37,14 +37,15 @@
                     <li>Registered date - <?php echo $data['admin']->registered_date ?></li>
                    
                     <li>NIC - <?php echo $data['admin']->nic ?></li>
-                    <li>Gender - <?php echo $data['admin']->gender ?></li>
+                    <li>Title - <?php echo $data['admin']->gender ?></li>
                     <li>Bank Name - <?php echo $data['admin']->bank_name ?></li>
                  
                     <li>Account holder Name - <?php echo $data['admin']->account_holder_name ?></li>
                     <li>Branch - <?php echo $data['admin']->branch ?></li>
                     <li>Account Number - <?php echo $data['admin']->account_number ?></li>
                 
-                    
+
+                    <?php if($data['admin']->admin_id!=1): ?>
                       
                     <?php if($data['admin']->delete_flag==0): ?>
                         <form class="deactiveForm" action="<?php echo URLROOT;?>/AdminUserMgmt/adminDeactivatedAdmin/<?php echo $data['admin']->admin_id ?>" method="GET">
@@ -59,6 +60,8 @@
                     
                      <?php endif?> 
                    
+                     <?php endif?>
+
                 </ul>
                 <div class="bottom-line"></div>
             </div>

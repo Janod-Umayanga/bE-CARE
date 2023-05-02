@@ -26,50 +26,153 @@
                 <div class="search-bar">
                  
                     <form class="searchform" action="<?php echo URLROOT;?>/MedInstrChangeTimeslot/searchMedInstrChangeTimeslot" method="GET">
-                       <input type="text" name="search" value="<?php echo $data['search'] ?>"  placeholder="Filter timeslot by day date address fee starting time ending time">
+                       <input type="text" name="search" value="<?php echo $data['search'] ?>"  placeholder="Filter timeslot by day starting time ending time">
                        <button  type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
 
                 </div>
             </div>
           
+            <?php if(!empty($data['timeslot'])){ ?>
+
+            <?php foreach($data['timeslot'] as $timeslot): ?>
+              
+            <div class="timeslot-section"> 
+                <div class="timeslot-bar">      
+            
+                <h1><?php echo $timeslot->appointment_day ?>                <?php echo $timeslot->starting_time ?>  -  <?php echo $timeslot->ending_time ?></h1>
+               
+                
+                 
+                        <?php if($timeslot->continue_flag==1){ ?>
+                 
+                            <form  action="<?php echo URLROOT;?>/MedInstrChangeTimeslot/viewTimeslot/<?php echo $timeslot->med_timeslot_id ?>" method="post">
+                                    <button class="update"  name="updatetimeslot">Update future Time slots</button>
+                            </form>
+
+                            <form  action="<?php echo URLROOT;?>/MedInstrChangeTimeslot/stopCreatingRecurringTimeslot/<?php echo $timeslot->med_timeslot_id ?>" method="post">
+                                    <button class="create"  name="updatetimeslot">Stop Creating Recurring Time Slots  </button>
+                            </form>
+
+                        <?php }elseif($timeslot->continue_flag==0){ ?>
+                                                                                        
+                            <form  action="<?php echo URLROOT;?>/MedInstrChangeTimeslot/creatingRecurringTimeslot/<?php echo $timeslot->med_timeslot_id ?>" method="post">
+                                    <button class="create"  name="updatetimeslot">Creating Recurring Time Slots  </button>
+                            </form>
+
+                            
+                            
+                        <?php } ?>
+                 </div>       
+            </div>            
+                            
             <div class="table">
                 <table cellspacing="0" cellpadding="0">
-                    <tr>
+                   
+                    
+                
+                   <tr>
                         <th>Date</th>
-                        <th>Starting Time</th>
+                        <th>Starting time</th>
                         <th>Ending Time</th>
-                        <th>Day</th>
+                        <th>Max no. Participants</th>
                         <th></th>
+                   
                     </tr>
                    
                                   
-                    <?php foreach($data['timeslot'] as $timeslot): ?>
+                    <?php foreach($data['appointmentday'] as $appointmentday): ?>
                     
+                  <?php if($appointmentday->med_timeslot_id==$timeslot->med_timeslot_id){  ?>
+
                     <tr>
-                    <td><?php echo $timeslot->date ?></td>
-                    <td><?php echo $timeslot->starting_time ?></td>
-                    <td><?php echo $timeslot->ending_time ?></td>
-                    <td><?php echo $timeslot->appointment_day ?></td>
-                    
+                    <td><?php echo $appointmentday->date ?></td>
+                    <td><?php echo $appointmentday->starting_time ?></td>
+                    <td><?php echo $appointmentday->ending_time ?></td>
+                    <td><?php echo $appointmentday->noOfParticipants ?></td>
                     
                     <td>
-                        <form  action="<?php echo URLROOT;?>/MedInstrChangeTimeslot/medInstrViewtimeslot/<?php echo $timeslot->med_timeslot_id ?>" method="post">
-                                <button class="update"  name="updatetimeslot">Update</button>
+                    <?php if($appointmentday->active==1){ ?>  
+                    
+                        <form  action="<?php echo URLROOT;?>/MedInstrChangeTimeslot/viewAppointmentDay/<?php echo $appointmentday->med_ins_appointment_day_id ?>" method="post">
+                                <button class="update"  name="updateAppointment">Update</button>
                         </form>
                    
-                        <form action="<?php echo URLROOT;?>/MedInstrChangeTimeslot/deleteMedInstrChangeTimeslot/<?php echo $timeslot->med_timeslot_id ?>" method="post">
-                                <button class="delete"  name="deletetimeslot">Delete</button>
+                        
+                        <form action="<?php echo URLROOT;?>/MedInstrChangeTimeslot/disableAppointmentDay/<?php echo $appointmentday->med_ins_appointment_day_id ?>" method="post">
+                                <button class="delete"  name="disableAppointment">Disable</button>
                         </form>
-                    </td>
 
+                        
+                    <?php }else if($appointmentday->active==0){ ?>
+
+                     
+                          <form action="<?php echo URLROOT;?>/MedInstrChangeTimeslot/enableAppointmentDay/<?php echo $appointmentday->med_ins_appointment_day_id ?>" method="post">
+                                <button class="update"  name="activateAppointment">Activate</button>
+                            </form>
+                     
+                     
+                      <?php } ?>
+
+                    </td>
+                    
                     </tr>
-                              
+                   
+                    <?php } ?>
+                    
                    <?php endforeach;?>
 
+              
                   </table>
             </div>
-        </div>
+         <?php endforeach;?>
+
+     <?php }elseif(empty($data['timeslot'])){ ?>
+
+
+<!--  -->
+
+                              
+              <div class="table">
+                  <table cellspacing="0" cellpadding="0">
+                     
+                      
+                  
+                     <tr>
+                          <th>Date</th>
+                          <th>Starting time</th>
+                          <th>Ending Time</th>
+                          <th>No of Participants</th>
+                          <th></th>
+                     
+                      </tr>
+                     
+                                    
+                      <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      
+                      <td>
+  
+                      </td>
+                      
+                      </tr>
+  
+                
+                    </table>
+              </div>
+
+
+           <!--  -->
+
+
+
+
+    <?php } ?>
+      
+      </div>
     </section>
 
     <?php require APPROOT.'/views/inc/components/footer1.php'; ?>

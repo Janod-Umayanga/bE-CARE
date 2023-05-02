@@ -7,6 +7,7 @@ class Admin extends Controller{
     $this->userModel = $this->model('M_Admin');
   }
 
+  // Admin Profile
   public function profile()
   {
    if(isset($_SESSION['admin_id'])) {
@@ -44,12 +45,12 @@ class Admin extends Controller{
 
   }
 
+
+  // Admin Change Passsword
   public function changePW()
   {
-  
     if(isset($_SESSION['admin_id'])) {
-  
-     //  $user= $this->userModel->changeUserPW($_SESSION['admin_id']);
+ 
       $data=[                      
         'current_password_err'=>'',
         'retype_new_password_err'=>'' ,
@@ -61,9 +62,9 @@ class Admin extends Controller{
       redirect('Login/login');  
   }
 
-
   }
 
+  //Admin Update Password
   public function updatePW($id){
   
     if(isset($_SESSION['admin_id'])) {
@@ -83,8 +84,13 @@ class Admin extends Controller{
 
        if(empty($data['current_password'])){
          $data['current_password_err']='Please enter a current password';
-       }else{
-          if($this->userModel->findUserPWMatch($id,$data['current_password'])){
+       
+       }else if(validatePassword($data['current_password'])!="true"){
+        $data['current_password_err']=validatePassword($data['current_password']);
+       }
+       
+       else{
+         if($this->userModel->findUserPWMatch($id,$data['current_password'])){
      
          }else{
                 $data['current_password_err']='Current password is incorrect';
@@ -97,11 +103,17 @@ class Admin extends Controller{
 
        if(empty($data['new_password'])){
           $data['new_password_err']='Please enter a new password';
+       
+       }else if(validatePassword($data['new_password'])!="true"){
+        $data['new_password_err']=validatePassword($data['new_password']);
        } 
        
        if(empty($data['retype_new_password'])){
         $data['retype_new_password_err']='Please retype new password';
-     } 
+      }
+      else if(validatePassword($data['retype_new_password'])!="true"){
+       $data['retype_new_password_err']=validatePassword($data['retype_new_password']);
+      }
 
        if(empty($data['current_password_err']) && empty($data['retype_new_password_err']) && empty($data['new_password_err'])){
      
@@ -138,7 +150,7 @@ class Admin extends Controller{
 
 }
 
- 
+//  Check Admin logged in
   public function isLoggedIn(){
     if(isset($_SESSION['admin_id'])){
       return true;
@@ -146,7 +158,8 @@ class Admin extends Controller{
       return false;
     }
   }
-  
+
+  // Admin Edit profile
   public function editProfile($userId){
     if(isset($_SESSION['admin_id'])) {
   
@@ -182,38 +195,62 @@ class Admin extends Controller{
       
        if(empty($data['first_name'])){
           $data['first_name_err']='first name can not be empty';
+       
+       }else if(validateFirstName($data['first_name'])!="true"){
+        $data['first_name_err']=validateFirstName($data['first_name']);
        }
 
        if(empty($data['last_name'])){
           $data['last_name_err']='last name can not be empty';
+       
+        }else if(validateLastName($data['last_name'])!="true"){
+        $data['last_name_err']=validateLastName($data['last_name']);
        }
 
        if(empty($data['nic'])){
         $data['nic_err']='nic can not be empty';
+        }else if(validateNic($data['nic'])!="true"){
+          $data['nic_err']=validateNic($data['nic']);
         }
 
         if(empty($data['contact_number'])){
-            $data['contact_number_err']='contact_number can not be empty';
-        }
+             $data['contact_number_err']='contact_number can not be empty';
+        
+          }else if(validateContactNumber($data['contact_number'])!="true"){
+             $data['contact_number_err']=validateContactNumber($data['contact_number']);
+         }
 
         if(empty($data['bank_name'])){
           $data['bank_name_err']='bank name can not be empty';
-      }
+
+      }else if(validateBankName($data['bank_name'])!="true"){
+        $data['bank_name_err']=validateBankName($data['bank_name']);
+       }
 
       if(empty($data['account_holder_name'])){
           $data['account_holder_name_err']='account_holder_name can not be empty';
-      }
+
+        }else if(validateAccountHolderName($data['account_holder_name'])!="true"){
+        $data['account_holder_name_err']=validateAccountHolderName($data['account_holder_name']);
+       }
+
 
         if(empty($data['branch'])){
           $data['branch_err']='branch name can not be empty';
-      }
+      
+        }else if(validateBankBranch($data['branch'])!="true"){
+        $data['branch_err']=validateBankBranch($data['branch']);
+       }
+
 
       if(empty($data['account_number'])){
           $data['account_number_err']='account_number can not be empty';
-      }
+      }else if(validateAccountNumber($data['account_number'])!="true"){
+        $data['account_number_err']=validateAccountNumber($data['account_number']);
+       }
      
       if(empty($data['gender'])){
-        $data['gender_err']='gender can not be empty';
+        $data['gender_err']='Title can not be empty';
       }
 
        if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['gender_err'])){

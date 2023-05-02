@@ -43,12 +43,15 @@
                     <h3>Total Rs. <?php echo $data['fee']+$data['fee']*0.1 ?></h3>
                 </div>
             </div>
-            <form action="<?php echo URLROOT ?>/Payment/createDoctorChannel" method="POST">
+            <form action="<?php echo URLROOT ?>/Payment/payforDoctorChannel" method="POST">
                 <input type="hidden" name="fee" value="<?php echo $data['fee'] ?>">
                 <input type="hidden" name="doctor_id" value="<?php echo $data['doctor_id'] ?>">
                 <input type="hidden" name="channel_day_id" value="<?php echo $data['channel_day_id'] ?>">
                 <input type="hidden" name="date" value="<?php echo $data['date'] ?>">
+                <input type="hidden" name="starting_time" value="<?php echo $data['starting_time'] ?>">
                 <input type="hidden" name="time" value="<?php echo $data['time'] ?>">
+                <input type="hidden" name="duration" value="<?php echo $data['duration'] ?>">
+                <input type="hidden" name="ending_time" value="<?php echo $data['ending_time'] ?>">
                 <input type="hidden" id="name" name="name" value="<?php echo $data['name'] ?>">
                 <input type="hidden" id="age" name="age" value="<?php echo $data['age'] ?>">
                 <input type="hidden" id="gender" name="gender" value="<?php echo $data['gender'] ?>">

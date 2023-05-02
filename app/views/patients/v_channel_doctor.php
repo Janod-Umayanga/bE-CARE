@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="login-page-rightside">
-            <form action="<?php echo URLROOT ?>/Patient/channelDoctor/<?php echo $data['doctor_id'] ?>/<?php echo $data['channel_day_id'] ?>/<?php echo $data['date'] ?>/<?php echo $data['time'] ?>/<?php echo $data['fee'] ?>" method="POST">
+            <form action="<?php echo URLROOT ?>/Patient/channelDoctor/<?php echo $data['doctor_id'] ?>/<?php echo $data['channel_day_id'] ?>/<?php echo $data['date'] ?>/<?php echo $data['starting_time'] ?>/<?php echo $data['time'] ?>/<?php echo $data['duration'] ?>/<?php echo $data['ending_time'] ?>/<?php echo $data['fee'] ?>" method="POST">
                 <div class="topic-of-form">
                     <h1>Make an Appointment</h1>
                 </div>
@@ -36,7 +36,7 @@
                         <span class="form-invalid"><?php echo $data['name_err'] ?></span>
 
                         <label for="age">Age</label>
-                        <input type="text" id="age" name="age" value="<?php echo $data['age'] ?>">
+                        <input type="number" id="age" name="age" value="<?php echo $data['age'] ?>">
                         <span class="form-invalid"><?php echo $data['age_err'] ?></span>
 
                         <label for="">Gender</label>
@@ -47,7 +47,7 @@
                         <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
 
                         <label for="cnumber">Contact number</label>
-                        <input type="text" id="cnumber" name="cnumber" value="<?php echo $data['cnumber'] ?>">
+                        <input type="number" id="cnumber" name="cnumber" value="<?php echo $data['cnumber'] ?>">
                         <span class="form-invalid"><?php echo $data['cnumber_err'] ?></span>
 
                     <button>Submit</button>

@@ -51,12 +51,12 @@
                         <td><?php echo $medChannel->date ?></td>
                         <td><?php echo $medChannel->starting_time ?></td>
                         <td><?php echo $medChannel->ending_time ?></td>
-                        <td><?php echo $medChannel->appointment_day ?></td>
+                        <td><?php echo $medChannel->day ?></td>
                         <td><?php echo $medChannel->name ?></td>
 
                         
                          <td>
-                           <form  action="<?php echo URLROOT;?>/MedInstrRegisteredUsersHistory/viewMoreMedInstrRegisteredUsersHistory/<?php echo $medChannel->med_timeslot_id?>" method="post">
+                           <form  action="<?php echo URLROOT;?>/MedInstrRegisteredUsersHistory/viewMoreMedInstrRegisteredUsersHistory/<?php echo $medChannel->med_ins_appointment_day_id?>" method="post">
                                <button class="view-more"><i class="fa-solid fa-circle-info"></i></button>
                            </form>
                          </td>

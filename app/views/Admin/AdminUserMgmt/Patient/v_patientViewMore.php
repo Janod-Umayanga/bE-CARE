@@ -37,7 +37,7 @@
                     <li>Registered date - <?php echo $data['patient']->registered_date ?></li>
                    
                     <li>NIC - <?php echo $data['patient']->nic ?></li>
-                    <li>Gender - <?php echo $data['patient']->gender ?></li>
+                    <li>Title - <?php echo $data['patient']->gender ?></li>
                     
                    
                     <?php if($data['patient']->delete_flag==0): ?>

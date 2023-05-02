@@ -16,7 +16,7 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <section class="view-profile-container theme">
+    <section class="view-profile-container-medinstrHistory theme">
         <div class="card">
             <div class="main-image">
                 <a href="<?php echo URLROOT ?>/MedInstrRegisteredUsersHistory/medInstrRegisteredUsersHistory" class="backto-doctors"><i class="fa-solid fa-arrow-left"></i>Back to Registered Users History</a>
@@ -34,10 +34,10 @@
                     <li>Date - <?php echo $data['medChannel']->date ?></li>
                     <li>Starting Time - <?php echo $data['medChannel']->starting_time ?></li>
                     <li>Ending Time - <?php echo $data['medChannel']->ending_time ?></li>
-                    <li>Day - <?php echo $data['medChannel']->appointment_day?></li>
+                    <li>Day - <?php echo $data['medChannel']->day?></li>
                    
                     <li>Gender - <?php echo $data['medChannel']->gender ?></li>
-                    <li>Registered date - <?php echo $data['medChannel']->reg_date ?></li>
+                    <li>Registered date - <?php echo $data['medChannel']->registered_date_and_time ?></li>
                     <li>Fee - <?php echo $data['medChannel']->fee ?></li>
                     <li>Address - <?php echo $data['medChannel']->address ?></li>
                    

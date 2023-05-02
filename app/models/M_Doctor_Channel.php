@@ -53,6 +53,14 @@
 
             return $this->db->resultSet();
         }
+
+        // get all counsellor channels
+        public function getAllCounsellorChannels($patient_id) {
+            $this->db->query('SELECT counsellor_channel.*, counsellor_timeslot.*, counsellor.*, counsellor_channel_day.* FROM counsellor_channel INNER JOIN counsellor_channel_day ON counsellor_channel.counsellor_channel_day_id = counsellor_channel_day.counsellor_channel_day_id Inner JOIN counsellor_timeslot ON counsellor_channel_day.counsellor_timeslot_id = counsellor_timeslot.counsellor_timeslot_id INNER JOIN counsellor ON counsellor_timeslot.counsellor_id = counsellor.counsellor_id WHERE counsellor_channel.patient_id = :patient_id');
+            $this->db->bind(':patient_id', $patient_id);
+
+            return $this->db->resultSet();
+        }
     }
 
 ?>

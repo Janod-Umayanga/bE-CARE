@@ -20,7 +20,7 @@
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
                     <h2>Fill these details to add new timeslot</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                    <p>Click the "Submit" button to save your changes and add new timeslot.</p>
                 </div>
             </div>
         </div>
@@ -29,10 +29,7 @@
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left">
 
-                        <label for="month">Month</label>
-                        <input type="month" id="month" name="month" value="<?php echo $data['month'] ?>">
-                        <span class="form-invalid"><?php echo $data['month_err'] ?></span>
-
+                    
                         <label for="day">Day</label>
                                 <select name="day" id="day" >
                                 <option value="Monday">Monday</option>
@@ -58,13 +55,18 @@
                         <input type="number" id="fee" name="fee" value="<?php echo $data['fee'] ?>">
                         <span class="form-invalid"><?php echo $data['fee_err'] ?></span>
 
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" value="<?php echo $data['address'] ?>">
+                        <span class="form-invalid"><?php echo $data['address_err'] ?></span>
+
                         <button>Submit</button>
                     </div>
                     <div class="right">
                         
-                        <label for="address">Address</label>
-                        <input type="text" id="address" name="address" value="<?php echo $data['address'] ?>">
-                        <span class="form-invalid"><?php echo $data['address_err'] ?></span>
+                      
+                        <label for="noOfParticipants">No Of Participants</label>
+                        <input type="text" id="noOfParticipants" name="noOfParticipants" value="<?php echo $data['noOfParticipants'] ?>">
+                        <span class="form-invalid"><?php echo $data['noOfParticipants_err'] ?></span>
 
                         
                     </div>

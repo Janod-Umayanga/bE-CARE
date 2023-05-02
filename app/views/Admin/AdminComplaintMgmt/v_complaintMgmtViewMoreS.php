@@ -16,13 +16,17 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <section class="view-profile-container theme">
+    <section class="view-profile-container-complaintMgmtViewMore theme">
         <div class="card">
             <div class="main-image">
                 <a href="<?php echo URLROOT ?>/AdminComplaintMgmt/solvedComplaint" class="backto-doctors"><i class="fa-solid fa-arrow-left"></i>Back to Solved Complaints</a>
                 <h1><?php echo $data['first_name'] ?> <br> <?php echo $data['last_name'] ?></h1>
                 <div class="profile-icon"><?php echo substr($data['first_name'], 0,1) ?><?php echo substr($data['last_name'], 0,1) ?></div>
                 
+                 <!-- second argument is the starting position 
+                 third argument is the length of the extracted substring  -->
+
+
             </div>
             <div class="bottom">
                 <ul>

@@ -11,6 +11,7 @@
     <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
     <script defer src="<?php echo URLROOT; ?>/js/pushNotificationforLogin.js"></script>
+    <script defer src="<?php echo URLROOT; ?>/js/login.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -50,7 +51,8 @@
                     <label for="password">Password</label>
                         <input type="password" id="password" name="password" value="<?php echo $data['password'] ?>">
                         <span class="form-invalid"><?php echo $data['password_err'] ?></span>
-                    <a href="#">Forgot password?</a>
+                    <a href="<?php echo URLROOT ?>/Login/forgotPassword">Forgot password?</a>
+                  
                     <button>Log In</button>
                 </div>
             </form>

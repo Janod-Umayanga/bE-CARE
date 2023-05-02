@@ -37,7 +37,7 @@
                     <li>Registered date - <?php echo $data['meditationInstructor']->registered_date ?></li>
                    
                     <li>NIC - <?php echo $data['meditationInstructor']->nic ?></li>
-                    <li>Gender - <?php echo $data['meditationInstructor']->gender ?></li>
+                    <li>Title - <?php echo $data['meditationInstructor']->gender ?></li>
                     <li>City - <?php echo $data['meditationInstructor']->city ?></li>
                    
                     <li>Address - <?php echo $data['meditationInstructor']->address ?></li>
@@ -49,7 +49,7 @@
                     <li>Branch - <?php echo $data['meditationInstructor']->branch ?></li>
                    
                     <li>Account Number - <?php echo $data['meditationInstructor']->account_number ?></li>
-                     <li>Qualification File -   <button class="qualification"><a download="<?php echo $data['meditationInstructor']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/meditationInstructor_qualification/<?php echo  $data['meditationInstructor']->qualification_file ?>">Download</a></button>
+                    <li>Qualification File -   <button class="qualification"><a download="<?php echo $data['meditationInstructor']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/meditationInstructor_qualification/<?php echo  $data['meditationInstructor']->qualification_file ?>">Download</a></button>
                </li>
                           
                     <?php if($data['meditationInstructor']->delete_flag==0): ?>

@@ -28,11 +28,26 @@
             <div class="table">
                 <table cellspacing="0" cellpadding="0">
                     <tr>
-                    <th>Diet Plan ID</th> 
-                        <th>Issued Date and Time</th> 
+                    <th>Contact Number:- </th> 
+                        <th>Delivery Address:- </th> 
                         <th></th>
                     </tr>
-                   
+                    <?php foreach($data['sellinghis'] as $sellinghis): ?>
+                    <tr>
+                        <td><?php echo $sellinghis->contact_number;?></td>
+                        <td><?php echo $sellinghis->delivery_address;?></td>
+                        <td>
+
+                        <form action="<?php echo URLROOT; ?>/Pharmacist/pharmacistViewSellingHistoryMore" method="post">
+                               <input type="hidden" name="diet_plan_id" value="<?php echo $sellinghis->order_id; ?>">
+                              <button class="view" name="submit">View</button>
+                        </form>
+
+
+                        
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
                 </table>
             </div>
         </div>

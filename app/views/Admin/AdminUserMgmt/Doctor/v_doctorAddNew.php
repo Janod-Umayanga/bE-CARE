@@ -19,13 +19,16 @@
                 <a href="<?php echo URLROOT ?>/AdminUserMgmt/Doctor" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Doctor</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Fill these details to add new Doctor</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                    <h2>Fill these details to add a new Doctor</h2>
+                     <p>The qualification file should include MBBS degree certificates, license or registration certificates, specialization certificates, continuing education certificates, professional memberships and any other relevant documentation as per the requirements of the Be Care web application.</p>
+                    <p>After successfully creating a new doctor account, the relevant doctor will receive an email with their username and password for login.</p>
                 </div>
             </div>
         </div>
         <div class="diet-plan-rightside">
-            <form action="<?php echo URLROOT ?>/AdminUserMgmt/addnewDoctor" method="POST" enctype="multipart/form-data">
+           <div class="form-container" id="form-container">
+           
+           <form action="<?php echo URLROOT ?>/AdminUserMgmt/addnewDoctor" method="POST" enctype="multipart/form-data">
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left"> <br><br><br>
 
@@ -51,16 +54,28 @@
                         <span class="form-invalid"><?php echo $data['email_err'] ?></span>
 
                         
-                        <label for="gender">Gender</label>
+                        <label for="gender">Title</label>
                         <select name="gender" id="gender" >
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
+                            <option value="">Title</option>
+                            <option value="Mr">Mr</option>
+                            <option value="Ms">Ms</option>
                         </select>
                         <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
-
+             
+                        
 
                         <label for="city">City</label>
-                        <input type="text" id="city" name="city" value="<?php echo $data['city'] ?>">
+                        <select name="city" id="city">
+                            <option value="">City</option>
+                            <option value="Colombo">Colombo</option>
+                            <option value="Galle">Galle</option>
+                            <option value="Kandy">Kandy</option>
+                            <option value="Malabe">Malabe</option>
+                            <option value="Matara">Matara</option>
+                            <option value="Nugegoda">Nugegoda</option>
+                            <option value="Ratnapura">Ratnapura</option>
+                            <option value="Trincomalee">Trincomalee</option>
+                        </select>
                         <span class="form-invalid"><?php echo $data['city_err'] ?></span>
 
                         <label for="slmc">SLMC registration Number</label>
@@ -84,9 +99,43 @@
                         <input type="file" id="qualification_file" name="qualification_file" value="<?php echo $data['qualification_file'] ?>">
                         <span class="form-invalid"><?php echo $data['qualification_file_err'] ?></span>
 
+                        
                         <label for="specialization">Specialization</label>
-                        <input type="text" id="specialization" name="specialization" value="<?php echo $data['specialization'] ?>">
-                        <span class="form-invalid"><?php echo $data['specialization_err'] ?></span>
+                        <select name="specialization" id="specialization">
+                            <option value="">Specialization</option>
+                            <option value="Allergist">Allergist</option>
+                            <option value="Anesthesiologist">Anesthesiologist</option>
+                            <option value="Cardiologist">Cardiologist</option>
+                            <option value="Dentist">Dentist</option>
+                            <option value="Dermatologist">Dermatologist</option>
+                            <option value="Endocrinologist">Endocrinologist</option>
+                            <option value="Gastroenterologist">Gastroenterologist</option>
+                            <option value="General Practitioner">General Practitioner</option>
+                            <option value="Geriatrician">Geriatrician</option>
+                            <option value="Gynecologist">Gynecologist</option>
+                            <option value="Hematologist">Hematologist</option>
+                            <option value="Infectious Disease Specialist">Infectious Disease Specialist</option>
+                            <option value="Internist">Internist</option>
+                            <option value="Nephrologist">Nephrologist</option>
+                            <option value="Neurologist">Neurologist</option>
+                            <option value="Obstetrician">Obstetrician</option>
+                            <option value="Oncologist">Oncologist</option>
+                            <option value="Ophthalmologist">Ophthalmologist</option>
+                            <option value="Orthopedic Surgeon">Orthopedic Surgeon</option>
+                            <option value="Otolaryngologist">Otolaryngologist</option>
+                            <option value="Pathologist">Pathologist</option>
+                            <option value="Pediatrician">Pediatrician</option>
+                            <option value="Physiatrist">Physiatrist</option>
+                            <option value="Plastic Surgeon">Plastic Surgeon</option>
+                            <option value="Psychiatrist">Psychiatrist</option>
+                            <option value="Pulmonologist">Pulmonologist</option>
+                            <option value="Radiologist">Radiologist</option>
+                            <option value="Rheumatologist">Rheumatologist</option>
+                            <option value="Surgeon">Surgeon</option>
+                            <option value="Urologist">Urologist</option>
+                       </select>
+                       <span class="form-invalid"><?php echo $data['specialization_err'] ?></span>
+
 
                         <label for="password">Password</label>
                         <input type="password" id="password" name="password">
@@ -121,6 +170,7 @@
                 </div>
             </form>
         </div>
+        </div> 
     </section>  
 </body>
 </html>

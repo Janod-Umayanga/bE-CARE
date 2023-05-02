@@ -18,4 +18,7 @@
     // PUBLIC ROOT
     define('PUBROOT', dirname(dirname(dirname(__FILE__))).'/public');
 
+    // STRIPE SECRET KEY
+    define('STRIPEKEY', 'sk_test_51MxM0YFreLlEoqoAwtLnDCINkRy19QaosEreWjO9ByEjL2m1jnfONTdBs50AwQDalOp3OxAx8yto7HRbXXwt5dkt00YlmkxciY');
+
 ?>

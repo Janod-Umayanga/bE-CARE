@@ -20,11 +20,18 @@
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
                     <h2>Fill these details to add new Pharmacist</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                    <p>A pharmacist's qualification file should include  pharmacist license, and relevant certificates, and professional memberships, Additional documentation.</p>
+
+                    <p>Delivery service availability is a mandatory requirement for a pharmacy to be registered.</p>
+
+                    <p>After successfully creating the pharmacist's account, the relevant      pharmacist will receive an email with their username and password for login
+                    </p>
                 </div>
             </div>
         </div>
         <div class="diet-plan-rightside">
+           <div class="form-container" id="form-container">
+        
             <form action="<?php echo URLROOT ?>/AdminUserMgmt/addnewPharmacist" method="POST" enctype="multipart/form-data">
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left"> <br><br><br>
@@ -51,22 +58,35 @@
                         <span class="form-invalid"><?php echo $data['email_err'] ?></span>
 
                         
-                        <label for="gender">Gender</label>
+                        <label for="gender">Title</label>
                         <select name="gender" id="gender" >
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
+                            <option value="">Title</option>
+                            <option value="Mr">Mr</option>
+                            <option value="Ms">Ms</option>
                         </select>
                         <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
 
-
+                      
                         <label for="city">City</label>
-                        <input type="text" id="city" name="city" value="<?php echo $data['city'] ?>">
+                        <select name="city" id="city">
+                            <option value="">City</option>
+                            <option value="Colombo">Colombo</option>
+                            <option value="Galle">Galle</option>
+                            <option value="Kandy">Kandy</option>
+                            <option value="Malabe">Malabe</option>
+                            <option value="Matara">Matara</option>
+                            <option value="Nugegoda">Nugegoda</option>
+                            <option value="Ratnapura">Ratnapura</option>
+                            <option value="Trincomalee">Trincomalee</option>
+                        </select>
                         <span class="form-invalid"><?php echo $data['city_err'] ?></span>
 
-                        <label for="pharmacy_name">contact Number</label>
+
+                        <label for="pharmacy Name">Pharmacy Name</label>
                         <input type="text" id="pharmacy_name" name="pharmacy_name" value="<?php echo $data['pharmacy_name'] ?>">
                         <span class="form-invalid"><?php echo $data['pharmacy_name_err'] ?></span>
 
+                        
                        <button type="submit" >Submit</button> 
                     </div>
                     <div class="right">
@@ -117,6 +137,7 @@
                     </div>
                 </div>
             </form>
+          </div>  
         </div>
     </section>  
 </body>

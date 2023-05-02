@@ -3,6 +3,7 @@
     class Patient extends Controller{
         private $patientModel;
         private $complaintModel;
+        private $feedbackModel;
         private $doctorModel;
         private $pharmacistModel;
         private $orderRequestModel;
@@ -14,9 +15,12 @@
         private $doctorTimeslotModel;
         private $sessionModel;
         private $meditationInstructorModel;
+        private $meditationInstructorTimeslotModel;
+        private $meditationInstructorAppointmentModel;
         public function __construct() {
             $this->patientModel = $this->model('M_Patient');
             $this->complaintModel = $this->model('M_Complaint');
+            $this->feedbackModel = $this->model('M_Feedback');
             $this->doctorModel = $this->model('M_Doctor');
             $this->pharmacistModel = $this->model('M_Pharmacist');
             $this->orderRequestModel = $this->model('M_Order_Request');
@@ -28,6 +32,8 @@
             $this->doctorTimeslotModel = $this->model('M_Doctor_Timeslot');
             $this->sessionModel = $this->model('M_Session');
             $this->meditationInstructorModel = $this->model('M_Meditation_Instructor');
+            $this->meditationInstructorTimeslotModel = $this->model('M_Meditation_Instructor_Timeslot');
+            $this->meditationInstructorAppointmentModel = $this->model('M_Meditation_Instructor_Appointment');
         }
 
         public function signup() {
@@ -65,30 +71,42 @@
                 // Validate name
                 if(empty($data['fname'])) {
                     $data['fname_err'] = 'First name required';
+                }else if(validateFirstName($data['fname'])!="true"){
+                    $data['fname_err']=validateFirstName($data['fname']);
                 }
+
                 if(empty($data['lname'])) {
                     $data['lname_err'] = 'Last name required';
-                }
+                }else if(validateLastName($data['lname'])!="true"){
+                    $data['lname_err']=validateLastName($data['lname']);
+                   }
 
                 // Validate nic
                 if(empty($data['nic'])) {
                     $data['nic_err'] = 'NIC required';
+                }else if(validateNIC($data['nic'])!="true"){
+                    $data['nic_err']=validateNIC($data['nic']);
                 }
 
                 // Validate contact number
                 if(empty($data['cnumber'])) {
                     $data['cnumber_err'] = 'Contact number required';
+                }else if(validateContactNumber($data['cnumber'])!="true"){
+                    $data['cnumber_err']=validateContactNumber($data['cnumber']);
                 }
 
                 // Validate gender
                 if(empty($data['gender'])) {
-                    $data['gender_err'] = 'Gender required';
+                    $data['gender_err'] = 'Title required';
                 }
 
                 // Validate email
                 if(empty($data['email'])) {
                     $data['email_err'] = 'Email required';
+                }else if(validateEmail($data['email'])!="true"){
+                    $data['email_err']=validateEmail($data['email']);
                 }
+                
                 else {
                     //check for existing emails
                     if($this->patientModel->findPatientByEmail($data['email'])) {
@@ -99,9 +117,13 @@
                 // Validate password
                 if(empty($data['password'])) {
                     $data['password_err'] = 'Password required';
+                }else if(validatePassword($data['password'])!="true"){
+                    $data['password_err']=validatePassword($data['password']);
                 }
-                else if(empty($data['password_confirmation'])) {
+                if(empty($data['password_confirmation'])) {
                     $data['password_confirmation_err'] = 'Password confirmation required';
+                }else if(validatePassword($data['password_confirmation'])!="true"){
+                    $data['password_confirmation_err']=validatePassword($data['password_confirmation']);
                 }
                 else {
                     if($data['password'] != $data['password_confirmation']) {
@@ -117,7 +139,10 @@
                     // Register patient
                     if($this->patientModel->register($data)) {
                         $_SESSION['signed_up'] = true;
-                        redirect('Login/login');
+                        $patientDetails=$this->patientModel->getLatestPatientID();
+                        sendMail($data['email'],$data['fname'],1, 7,$patientDetails->patient_id);
+       
+                        redirect('Pages/verify_email');
                     }
                     else {
                         die('Something went wrong');
@@ -199,24 +224,32 @@
                 // Validate name
                 if(empty($data['fname'])) {
                     $data['fname_err'] = 'First name required';
+                } else if(validateFirstName($data['fname'])!="true"){
+                    $data['fname_err']=validateFirstName($data['fname']);
                 }
                 if(empty($data['lname'])) {
                     $data['lname_err'] = 'Last name required';
+                } else if(validateLastName($data['lname'])!="true"){
+                    $data['lname_err']=validateLastName($data['lname']);
                 }
 
                 // Validate nic
                 if(empty($data['nic'])) {
                     $data['nic_err'] = 'NIC required';
+                } else if(validateNIC($data['nic'])!="true"){
+                    $data['nic_err']=validateNIC($data['nic']);
                 }
 
                 // Validate contact number
                 if(empty($data['cnumber'])) {
                     $data['cnumber_err'] = 'Contact number required';
+                } else if(validateContactNumber($data['cnumber'])!="true"){
+                    $data['cnumber_err']=validateContactNumber($data['cnumber']);
                 }
 
                 // Validate gender
                 if(empty($data['gender'])) {
-                    $data['gender_err'] = 'Gender required';
+                    $data['gender_err'] = 'Title required';
                 }
 
                 // Update patient details after validation
@@ -287,6 +320,8 @@
                 }
                 if(empty($data['newpw'])) {
                     $data['newpw_err'] = 'Enter a new password';
+                } else if(validatePassword($data['newpw'])!="true"){
+                    $data['newpw_err']=validatePassword($data['newpw']);
                 }
                 else if(empty($data['password_confirmation'])) {
                     $data['password_confirmation_err'] = 'Password confirmation required';
@@ -385,6 +420,64 @@
             }
         }
 
+        // add feedback
+        public function addFeedback() {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // Form is submitting
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                // Inserted form
+                $data = [
+                    'feedback' => trim($_POST['feedback']),
+
+                    'feedback_err' => ''
+                ];
+
+                // Validate feedback
+                if(empty($data['feedback'])) {
+                    $data['feedback_err'] = 'feedback required';
+                }
+
+                // Add the feedback after validation
+                if(empty($data['feedback_err'])) {
+                    // Add feedback
+                    if($this->feedbackModel->createFeedback($data, $_SESSION['patient_id'])) {
+                        redirect('Pages/index');
+                    }
+                    else {
+                        die('Something went wrong');
+                    }
+                }
+                else {
+                    // Load view
+                     $this->view('patients/v_add_feedback', $data);
+                }
+            }
+            else {
+                // Initial form
+                $data = [
+                    'feedback' => '',
+
+                    'feedback_err' => ''
+                ];
+
+                // Load view
+                $this->view('patients/v_add_feedback', $data);
+            }
+        }
+
+        // View all feedbacks
+        public function viewFeedbacks() {
+            $feedbacks = $this->feedbackModel->getAllFeedbacks();
+
+            $data = [
+                'feedbacks' => $feedbacks
+            ];
+
+            // Load view
+            $this->view('patients/v_feedbacks', $data);
+        }
+
         // View and search doctors
         public function findDoctor() {
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -392,6 +485,8 @@
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
                 $doctors = $this->doctorModel->getDoctors(trim($_POST['search']), trim($_POST['specialization']), trim($_POST['city']), trim($_POST['day']));
+
+                // echo json_encode($doctors);
             }
             else {
                 // Show all doctors
@@ -420,6 +515,15 @@
         // View doctor timeslots
         public function viewDoctorTimeslots($doctor_id) {
             $timeslots = $this->doctorTimeslotModel->getAllDoctorTimeslots($doctor_id);
+            
+            // Check if all timeslots have 4 days or else need to add upto 4 days
+            foreach($timeslots as $timeslot) {
+                $channeling_days = $this->doctorTimeslotModel->getChannelingDays($timeslot->doctor_timeslot_id, $timeslot->doctor_id, $timeslot->channeling_day, $timeslot->starting_time);
+                
+            }
+
+            $timeslots = $this->doctorTimeslotModel->getAllDoctorChannelingTimeslots($doctor_id);
+
             $data = [
                 'timeslots' => $timeslots,
                 'doctor_id' => $doctor_id
@@ -441,7 +545,7 @@
         }
 
         // Channel doctor
-        public function channelDoctor($doctor_id, $channel_day_id, $date, $time, $fee) {
+        public function channelDoctor($doctor_id, $channel_day_id, $date, $starting_time, $time, $duration, $ending_time, $fee) {
             if(isset($_SESSION['patient_id'])) {
                 $loggedPatient = $this->patientModel->getPatientById($_SESSION['patient_id']);
 
@@ -460,7 +564,10 @@
                         'doctor_id' => $doctor_id,
                         'channel_day_id' => $channel_day_id,
                         'date' => $date,
+                        'starting_time' => $starting_time,
                         'time' => $time,
+                        'duration' => $duration,
+                        'ending_time' => $ending_time,
                         'fee' => $fee,
     
                         'name_err' => '',
@@ -474,16 +581,22 @@
                     // Validate name
                     if(empty($data['name'])) {
                         $data['name_err'] = 'Name required';
+                    }else if(validateFirstName($data['name']) != "true") {
+                        $data['name_err'] = validateFirstName($data['name']);
                     }
     
                     // Validate address
                     if(empty($data['age'])) {
                         $data['age_err'] = 'Age required';
+                    }else if(validatePostitiveNumber($data['age']) != "true") {
+                        $data['age_err'] = 'Age must be a positive number';
                     }
     
                     // Validate contact number
                     if(empty($data['cnumber'])) {
                         $data['cnumber_err'] = 'Contact number required';
+                    }else if(validateContactNumber($data['cnumber']) != "true") {
+                        $data['cnumber_err'] = validateContactNumber($data['cnumber']);
                     }
     
                     // Validate gneder
@@ -518,7 +631,10 @@
                         'doctor_id' => $doctor_id,
                         'channel_day_id' => $channel_day_id,
                         'date' => $date,
+                        'starting_time' => $starting_time,
                         'time' => $time,
+                        'duration' => $duration,
+                        'ending_time' => $ending_time,
                         'fee' => $fee,
     
                         'name_err' => '',
@@ -595,7 +711,7 @@
                 // Search using the given keyword
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-                $counsellors = $this->counsellorModel->getCounsellors(trim($_POST['search']));
+                $counsellors = $this->counsellorModel->getCounsellors(trim($_POST['search']), trim($_POST['city']));
             }
             else {
                 // Show all counsellors
@@ -621,9 +737,18 @@
             }
         }
 
-        // View doctor timeslots
+        // View counsellor timeslots
         public function viewCounsellorTimeslots($counsellor_id) {
             $timeslots = $this->counsellorTimeslotModel->getAllCounsellorTimeslots($counsellor_id);
+
+            // Check if all timeslots have 4 days or else need to add upto 4 days
+            foreach($timeslots as $timeslot) {
+                $channeling_days = $this->counsellorTimeslotModel->getChannelingDays($timeslot->counsellor_timeslot_id, $timeslot->counsellor_id, $timeslot->channeling_day, $timeslot->starting_time);
+                
+            }
+
+            $timeslots = $this->counsellorTimeslotModel->getAllCounsellorChannelingTimeslots($counsellor_id);
+            
             $data = [
                 'timeslots' => $timeslots,
                 'counsellor_id' => $counsellor_id
@@ -644,6 +769,167 @@
             $this->view('patients/v_counsellor_profile', $data);
         }
 
+        // Channel counsellor
+        public function channelCounsellor($counsellor_id, $channel_day_id, $date, $starting_time, $time, $duration, $ending_time, $fee) {
+            if(isset($_SESSION['patient_id'])) {
+                $loggedPatient = $this->patientModel->getPatientById($_SESSION['patient_id']);
+
+                if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    // Form is submitting
+    
+                    // Data validation
+                    $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    
+                    // Inserted form
+                    $data = [
+                        'name' => trim($_POST['name']),
+                        'age' => trim($_POST['age']),
+                        'cnumber' => trim($_POST['cnumber']),
+                        'gender' => trim($_POST['gender']),
+                        'counsellor_id' => $counsellor_id,
+                        'channel_day_id' => $channel_day_id,
+                        'date' => $date,
+                        'starting_time' => $starting_time,
+                        'time' => $time,
+                        'duration' => $duration,
+                        'ending_time' => $ending_time,
+                        'fee' => $fee,
+    
+                        'name_err' => '',
+                        'age_err' => '',
+                        'cnumber_err' => '',
+                        'gender_err' => ''
+                    ];
+    
+                    // Validate each input
+    
+                    // Validate name
+                    if(empty($data['name'])) {
+                        $data['name_err'] = 'Name required';
+                    } else if(validateFirstName($data['name']) != "true") {
+                        $data['name_err'] = validateFirstName($data['name']);
+                    }
+    
+                    // Validate address
+                    if(empty($data['age'])) {
+                        $data['age_err'] = 'Age required';
+                    }else if(validatePostitiveNumber($data['age']) != "true") {
+                        $data['age_err'] = 'Age must be a positive number';
+                    }
+    
+                    // Validate contact number
+                    if(empty($data['cnumber'])) {
+                        $data['cnumber_err'] = 'Contact number required';
+                    } else if(validateContactNumber($data['cnumber']) != "true") {
+                        $data['cnumber_err'] = validateContactNumber($data['cnumber']);
+                    }
+    
+                    // Validate gneder
+                    if(empty($data['gender'])) {
+                        $data['gender_err'] = 'Gender required';
+                    }
+    
+                    // Create order after validation
+                    if(empty($data['name_err']) && empty($data['age_err']) && empty($data['cnumber_err']) && empty($data['gender_err'])) {
+                        // Load invoice view
+                        $this->view('patients/v_channel_counsellor_invoice', $data);
+                        // // Create order
+                        // if($this->doctorChannelModel->createDoctorChannel($data, $_SESSION['patient_id'])) {
+                        //     $_SESSION['channel_created'] = true;
+                        //     redirect('Pages/index');
+                        // }
+                        // else {
+                        //     die('Something went wrong');
+                        // }
+                    }
+                    else {
+                        // Load view
+                         $this->view('patients/v_channel_counsellor', $data);
+                    }
+                }
+                else {
+                    $data = [
+                        'name' => $loggedPatient->first_name,
+                        'age' => '',
+                        'cnumber' => $loggedPatient->contact_number,
+                        'gender' => '',
+                        'counsellor_id' => $counsellor_id,
+                        'channel_day_id' => $channel_day_id,
+                        'date' => $date,
+                        'starting_time' => $starting_time,
+                        'time' => $time,
+                        'duration' => $duration,
+                        'ending_time' => $ending_time,
+                        'fee' => $fee,
+    
+                        'name_err' => '',
+                        'age_err' => '',
+                        'cnumber_err' => '',
+                        'gender_err' => ''
+                    ];
+    
+                    // Load view
+                    $this->view('patients/v_channel_counsellor', $data);
+                }
+                $data = [];
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
+
+        // View counsellor appointments
+        public function viewCounsellorAppointments() {
+            if(isset($_SESSION['patient_id'])) {
+                // Get current date and time
+                date_default_timezone_set("Asia/Kolkata");
+                $currentDate = date("Y-m-d");
+                $currentTime = date("H:i:s");
+                // Show all doctor appointments
+                $appointments = $this->doctorChannelModel->getAllCounsellorChannels($_SESSION['patient_id']);
+                $data = [
+                    'appointments' => $appointments,
+                    'currentDate' => $currentDate,
+                    'currentTime' => $currentTime
+                ];
+
+                // Load view
+                $this->view('patients/v_counsellor_appointments', $data);
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
+
+        // View counsellor channeling history
+        public function viewCounsellorChannelingHistory() {
+            if(isset($_SESSION['patient_id'])) {
+                // Get current date and time
+                date_default_timezone_set("Asia/Kolkata");
+                $currentDate = date("Y-m-d");
+                $currentTime = date("H:i:s");
+                // Show all counsellor appointments
+                $appointments = $this->doctorChannelModel->getAllCounsellorChannels($_SESSION['patient_id']);
+                $data = [
+                    'appointments' => $appointments,
+                    'currentDate' => $currentDate,
+                    'currentTime' => $currentTime
+                ];
+
+                // Load view
+                $this->view('patients/v_counsellor_channeling_history', $data);
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
+
         // View and search nutritionists
         public function findNutritionist() {
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -653,7 +939,7 @@
                 $nutritionists = $this->nutritionistModel->getNutritionists(trim($_POST['search']));
             }
             else {
-                // Show all doctors
+                // Show all nutritionists
                 $nutritionists = $this->nutritionistModel->getAllNutritionists();
             }
             $data = [
@@ -672,7 +958,7 @@
                 $fee = trim($_POST['fee']);
                 $_SERVER['REQUEST_METHOD'] = '';
 
-                // Pass the pharmacist id for order medicine
+                // Pass the nutritionist id for order medicine
                 $this->requestDietPlan($nutritionist_id, $fee);
             }
         }
@@ -684,24 +970,7 @@
 
                 if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     // Form is submitting
-    
-                    // Data validation
                     $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-                    $merchant_id = "1221976";
-                    $order_id = "ItemNo12345";
-                    $amount = $fee;
-                    $currency = "LKR";
-                    $merchant_secret = 'NDA0MzQyMjc0NzQxMjQ5NjY4MTUxNTU5NjIzMjc4OTE3NjE4MTIx';
-                    $hash = strtoupper(
-                        md5(
-                            $merchant_id . 
-                            $order_id . 
-                            number_format($amount, 2, '.', '') . 
-                            $currency .  
-                            strtoupper(md5($merchant_secret)) 
-                        ) 
-                    );
     
                     // Inserted form
                     $data = [
@@ -719,8 +988,6 @@
                         'goal' => trim($_POST['goal']),
                         'nutritionist_id' => $nutritionist_id,
                         'fee' => $fee,
-                        'hash' => $hash,
-                        'order_id' => $order_id,
     
                         'name_err' => '',
                         'age_err' => '',
@@ -741,11 +1008,15 @@
                     // Validate name
                     if(empty($data['name'])) {
                         $data['name_err'] = 'Name required';
+                    } else if(validateFirstName($data['name']) != "true") {
+                        $data['name_err'] = validateFirstName($data['name']);
                     }
     
                     // Validate age
                     if(empty($data['age'])) {
                         $data['age_err'] = 'Age required';
+                    }else if(validatePostitiveNumber($data['age']) != "true") {
+                        $data['age_err'] = 'Age must be a positive number';
                     }
 
                     // Validate gender
@@ -756,16 +1027,22 @@
                     // Validate contact number
                     if(empty($data['cnumber'])) {
                         $data['cnumber_err'] = 'Contact number required';
+                    } else if(validateContactNumber($data['cnumber']) != "true") {
+                        $data['cnumber_err'] = validateContactNumber($data['cnumber']);
                     }
     
                     // Validate weight
                     if(empty($data['weight'])) {
                         $data['weight_err'] = 'Weight required';
+                    }else if(validatePostitiveNumber($data['weight']) != "true") {
+                        $data['weight_err'] = 'Weight must be a positive number';
                     }
 
                     // Validate height
                     if(empty($data['height'])) {
                         $data['height_err'] = 'Height required';
+                    }else if(validatePostitiveNumber($data['height']) != "true") {
+                        $data['height_err'] = 'Height must be a positive number';
                     }
 
                     // Validate marital_status
@@ -786,11 +1063,15 @@
                     // Validate sleeping_hours
                     if(empty($data['sleeping_hours'])) {
                         $data['sleeping_hours_err'] = 'Sleeping hours required';
+                    }else if(validatePostitiveNumber($data['sleeping_hours']) != "true") {
+                        $data['sleeping_hours_err'] = 'Sleeping hours must be a positive number';
                     }
 
                     // Validate water_consumption_per_day
                     if(empty($data['water_consumption_per_day'])) {
                         $data['water_consumption_per_day_err'] = 'Water consumption required';
+                    }else if(validatePostitiveNumber($data['water_consumption_per_day']) != "true") {
+                        $data['water_consumption_per_day_err'] = 'Water consumption must be a positive number';
                     }
 
                     // Validate goal
@@ -804,7 +1085,7 @@
                         
 
                         // Load payment information view
-                        $this->view('patients/v_payment_diet_plan', $data);
+                        $this->view('patients/v_diet_plan_invoice', $data);
                         // // Create order
                         // if($this->requestDietPlanModel->createDietPlanRequest($data, $_SESSION['patient_id'])) {
                         //     redirect('Pages/index');
@@ -834,8 +1115,6 @@
                         'goal' => '',
                         'nutritionist_id' => $nutritionist_id,
                         'fee' => $fee,
-                        'hash' => '',
-                        'order_id' => '',
     
                         'name_err' => '',
                         'age_err' => '',
@@ -863,7 +1142,7 @@
             }
         }
 
-        // View counsellor profile
+        // View nutritionist profile
         public function viewNutritionistProfile($nutritionist_id) {
             $nutritionist = $this->nutritionistModel->getNutritionistById($nutritionist_id);
             $data = [
@@ -872,6 +1151,44 @@
 
             // Load view
             $this->view('patients/v_nutritionist_profile', $data);
+        }
+
+        // View diet plans
+        public function viewDietPlans() {
+            if(isset($_SESSION['patient_id'])) {
+                $requests = $this->requestDietPlanModel->getAllDietPlanRequests($_SESSION['patient_id']);
+                $dietplans = $this->requestDietPlanModel->getAllDietPlans($_SESSION['patient_id']);
+                $data = [
+                    'requests' => $requests,
+                    'dietplans' => $dietplans
+                ];
+
+                // Load view
+                $this->view('patients/v_diet_plans', $data);
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
+
+        // View diet plan details
+        public function viewDietPlanDetails($diet_plan_id) {
+            if(isset($_SESSION['patient_id'])) {
+            $request = $this->requestDietPlanModel->getDietPlanRequestById($diet_plan_id);
+            $data = [
+                'request' => $request
+            ];
+
+            // Load view
+            $this->view('patients/v_diet_plan_details', $data);
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
         }
 
         // View pharmacies
@@ -942,11 +1259,15 @@
                     // Validate address
                     if(empty($data['address'])) {
                         $data['address_err'] = 'Address required';
+                    } else if(validateAddress($data['address']) != "true") {
+                        $data['address_err'] = validateAddress($data['address']);
                     }
     
                     // Validate contact number
                     if(empty($data['cnumber'])) {
                         $data['cnumber_err'] = 'Contact number required';
+                    } else if(validateContactNumber($data['cnumber']) != "true") {
+                        $data['cnumber_err'] = validateContactNumber($data['cnumber']);
                     }
     
                     // Validate prescription and upload
@@ -1020,8 +1341,27 @@
             }
         }
 
+        // pay for order
+        public function payForOrder($order_id, $fee, $email) {
+            if(isset($_SESSION['patient_id'])) {
+                $data = [
+                    'order_id' => $order_id,
+                    'fee' => $fee,
+                    'email' => $email
+                ];
+
+                // Load view
+                $this->view('patients/v_pay_order_invoice', $data);
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
+
          // View and search meditation instructors
-         public function findMedidationInstructor() {
+         public function findMeditationInstructor() {
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Search using the given keyword
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -1029,7 +1369,7 @@
                 $meditation_instructors = $this->meditationInstructorModel->getMeditationInstructors(trim($_POST['search']), trim($_POST['city']));
             }
             else {
-                // Show all doctors
+                // Show all meditation instructors
                 $meditation_instructors = $this->meditationInstructorModel->getAllMeditationInstructors();
             }
             $data = [
@@ -1040,8 +1380,8 @@
             $this->view('patients/v_meditation_instructors', $data);
         }
 
-        // Get doctor id needed for viewing doctor timeslots
-        public function getMedidationInstructorId(){
+        // Get meditation instructor id needed for viewing meditaion instructor timeslots
+        public function getMeditationInstructorId(){
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 $meditation_instructor_id = trim($_POST['meditation_instructor_id']);
@@ -1053,15 +1393,24 @@
         }
 
         // View doctor timeslots
-        public function viewMeditationInstructorTimeslots($doctor_id) {
-            $timeslots = $this->doctorTimeslotModel->getAllDoctorTimeslots($doctor_id);
+        public function viewMeditationInstructorTimeslots($meditation_instructor_id) {
+            $timeslots = $this->meditationInstructorTimeslotModel->getAllMeditationInstructorTimeslots($meditation_instructor_id);
+
+            // Check if all timeslots have 4 days or else need to add upto 4 days
+            foreach($timeslots as $timeslot) {
+                $channeling_days = $this->meditationInstructorTimeslotModel->getChannelingDays($timeslot->med_timeslot_id, $timeslot->meditation_instructor_id, $timeslot->appointment_day, $timeslot->starting_time, $timeslot->ending_time, $timeslot->fee, $timeslot->address, $timeslot->noOfParticipants);
+                
+            }
+
+            $timeslots = $this->meditationInstructorTimeslotModel->getAllMeditationInstructorAppointmentTimeslots($meditation_instructor_id);
+
             $data = [
                 'timeslots' => $timeslots,
-                'doctor_id' => $doctor_id
+                'meditation_instructor_id' => $meditation_instructor_id
             ];
 
             // Load view
-            $this->view('patients/v_doctor_timeslots', $data);
+            $this->view('patients/v_meditation_instructor_timeslots', $data);
         }
 
         // View doctor profile
@@ -1073,6 +1422,161 @@
 
             // Load view
             $this->view('patients/v_meditation_instructor_profile', $data);
+        }
+
+        // Register for meditation instructor
+        public function registerForMeditationInstructor($meditation_instructor_id, $appointment_day_id, $noOfParticipants, $current_participants, $fee) {
+            if(isset($_SESSION['patient_id'])) {
+                $loggedPatient = $this->patientModel->getPatientById($_SESSION['patient_id']);
+
+                if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    // Form is submitting
+    
+                    // Data validation
+                    $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    
+                    // Inserted form
+                    $data = [
+                        'name' => trim($_POST['name']),
+                        'age' => trim($_POST['age']),
+                        'cnumber' => trim($_POST['cnumber']),
+                        'gender' => trim($_POST['gender']),
+                        'meditation_instructor_id' => $meditation_instructor_id,
+                        'appointment_day_id' => $appointment_day_id,
+                        'noOfParticipants' => $noOfParticipants,
+                        'current_participants' => $current_participants,
+                        'fee' => $fee,
+    
+                        'name_err' => '',
+                        'age_err' => '',
+                        'cnumber_err' => '',
+                        'gender_err' => ''
+                    ];
+    
+                    // Validate each input
+    
+                    // Validate name
+                    if(empty($data['name'])) {
+                        $data['name_err'] = 'Name required';
+                    }else if(validateFirstName($data['name']) != "true") {
+                        $data['name_err'] = validateFirstName($data['name']);
+                    }
+    
+                    // Validate address
+                    if(empty($data['age'])) {
+                        $data['age_err'] = 'Age required';
+                    }else if(validatePostitiveNumber($data['age']) != "true") {
+                        $data['age_err'] = 'Age must be a positive number';
+                    }
+    
+                    // Validate contact number
+                    if(empty($data['cnumber'])) {
+                        $data['cnumber_err'] = 'Contact number required';
+                    }else if(validateContactNumber($data['cnumber']) != "true") {
+                        $data['cnumber_err'] = validateContactNumber($data['cnumber']);
+                    }
+    
+                    // Validate gneder
+                    if(empty($data['gender'])) {
+                        $data['gender_err'] = 'Gender required';
+                    }
+    
+                    // Create order after validation
+                    if(empty($data['name_err']) && empty($data['age_err']) && empty($data['cnumber_err']) && empty($data['gender_err'])) {
+                        // Load invoice view
+                        $this->view('patients/v_register_for_meditation_instructor_invoice', $data);
+                        // // Create order
+                        // if($this->doctorChannelModel->createDoctorChannel($data, $_SESSION['patient_id'])) {
+                        //     $_SESSION['channel_created'] = true;
+                        //     redirect('Pages/index');
+                        // }
+                        // else {
+                        //     die('Something went wrong');
+                        // }
+                    }
+                    else {
+                        // Load view
+                         $this->view('patients/v_register_for_meditation_instructor', $data);
+                    }
+                }
+                else {
+                    $data = [
+                        'name' => $loggedPatient->first_name,
+                        'age' => '',
+                        'cnumber' => $loggedPatient->contact_number,
+                        'gender' => '',
+                        'meditation_instructor_id' => $meditation_instructor_id,
+                        'appointment_day_id' => $appointment_day_id,
+                        'noOfParticipants' => $noOfParticipants,
+                        'current_participants' => $current_participants,
+                        'fee' => $fee,
+    
+                        'name_err' => '',
+                        'age_err' => '',
+                        'cnumber_err' => '',
+                        'gender_err' => ''
+                    ];
+    
+                    // Load view
+                    $this->view('patients/v_register_for_meditation_instructor', $data);
+                }
+                $data = [];
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
+
+        // View doctor appointments
+        public function viewMeditationInstructorAppointments() {
+            if(isset($_SESSION['patient_id'])) {
+                // Get current date and time
+                date_default_timezone_set("Asia/Kolkata");
+                $currentDate = date("Y-m-d");
+                $currentTime = date("H:i:s");
+                // Show all doctor appointments
+                $appointments = $this->meditationInstructorAppointmentModel->getAllMeditationInstructorAppointments($_SESSION['patient_id']);
+                $data = [
+                    'appointments' => $appointments,
+                    'currentDate' => $currentDate,
+                    'currentTime' => $currentTime
+                ];
+
+                // Load view
+                $this->view('patients/v_meditation_instructor_appointments', $data);
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
+
+        // View doctor channeling history
+        public function viewMeditationInstructorHistory() {
+            if(isset($_SESSION['patient_id'])) {
+                // Get current date and time
+                date_default_timezone_set("Asia/Kolkata");
+                $currentDate = date("Y-m-d");
+                $currentTime = date("H:i:s");
+                // Show all doctor appointments
+                $appointments = $this->meditationInstructorAppointmentModel->getAllMeditationInstructorAppointments($_SESSION['patient_id']);
+                $data = [
+                    'appointments' => $appointments,
+                    'currentDate' => $currentDate,
+                    'currentTime' => $currentTime
+                ];
+
+                // Load view
+                $this->view('patients/v_meditation_instructing_history', $data);
+            }
+            else {
+                $_SESSION['need_login'] = true;
+                // Redirect to login
+                redirect('Login/login');
+            }
         }
 
         // View sessions
@@ -1097,6 +1601,209 @@
 
             // Load view
             $this->view('patients/v_sessions', $data);
+        }
+
+        // Register for a session
+        public function registerSession($session_id, $fee, $noOfParticipants, $current_participants) {
+                if(isset($_SESSION['patient_id'])) {
+                    $loggedPatient = $this->patientModel->getPatientById($_SESSION['patient_id']);
+                }
+                
+                if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    // Form is submitting
+    
+                    // Data validation
+                    $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    
+                    // Inserted form
+                    $data = [
+                        'name' => trim($_POST['name']),
+                        'age' => trim($_POST['age']),
+                        'cnumber' => trim($_POST['cnumber']),
+                        'gender' => trim($_POST['gender']),
+                        'session_id' => $session_id,
+                        'fee' => $fee,
+                        'noOfParticipants' => $noOfParticipants,
+                        'current_participants' => $current_participants,
+    
+                        'name_err' => '',
+                        'age_err' => '',
+                        'cnumber_err' => '',
+                        'gender_err' => ''
+                    ];
+    
+                    // Validate each input
+    
+                    // Validate name
+                    if(empty($data['name'])) {
+                        $data['name_err'] = 'Name required';
+                    } else if(validateFirstName($data['name']) != "true") {
+                        $data['name_err'] = validateFirstName($data['name']);
+                    }
+    
+                    // Validate address
+                    if(empty($data['age'])) {
+                        $data['age_err'] = 'Age required';
+                    } else if(validatePostitiveNumber($data['age']) != "true") {
+                        $data['age_err'] = validatePostitiveNumber($data['age']);
+                    }
+    
+                    // Validate contact number
+                    if(empty($data['cnumber'])) {
+                        $data['cnumber_err'] = 'Contact number required';
+                    } else if(validateContactNumber($data['cnumber']) != "true") {
+                        $data['cnumber_err'] = validateContactNumber($data['cnumber']);
+                    }
+    
+                    // Validate gneder
+                    if(empty($data['gender'])) {
+                        $data['gender_err'] = 'Gender required';
+                    }
+    
+                    // Create order after validation
+                    if(empty($data['name_err']) && empty($data['age_err']) && empty($data['cnumber_err']) && empty($data['gender_err'])) {
+                        // Load invoice view
+                        $this->view('patients/v_register_session_invoice', $data);
+                    }
+                    else {
+                        // Load view
+                         $this->view('patients/v_register_session', $data);
+                    }
+                }
+                else {
+                    // check if there is a logged patient
+                    if(isset($_SESSION['patient_id'])) {
+                        $data = [
+                            'name' => $loggedPatient->first_name,
+                            'age' => '',
+                            'cnumber' => $loggedPatient->contact_number,
+                            'gender' => '',
+                            'session_id' => $session_id,
+                            'fee' => $fee,
+                            'noOfParticipants' => $noOfParticipants,
+                            'current_participants' => $current_participants,
+        
+                            'name_err' => '',
+                            'age_err' => '',
+                            'cnumber_err' => '',
+                            'gender_err' => ''
+                        ];
+                    }
+                    else{
+                        $data = [
+                            'name' => '',
+                            'age' => '',
+                            'cnumber' => '',
+                            'gender' => '',
+                            'session_id' => $session_id,
+                            'fee' => $fee,
+                            'noOfParticipants' => $noOfParticipants,
+                            'current_participants' => $current_participants,
+        
+                            'name_err' => '',
+                            'age_err' => '',
+                            'cnumber_err' => '',
+                            'gender_err' => ''
+                        ];
+                    }
+    
+                    // Load view
+                    $this->view('patients/v_register_session', $data);
+                }
+        }
+
+        // View registered sessions
+        public function viewRegisteredSessions() {
+            if(isset($_SESSION['patient_id'])) {
+                $registered_sessions = $this->sessionModel->getRegisteredSessions($_SESSION['patient_id']);
+
+                // Get current date and time
+                date_default_timezone_set("Asia/Kolkata");
+                $currentDate = date("Y-m-d");
+                $currentTime = date("H:i:s");
+                $data = [
+                    'registered_sessions' => $registered_sessions,
+                    'currentDate' => $currentDate,
+                    'currentTime' => $currentTime
+                ];
+    
+                // Load view
+                $this->view('patients/v_registered_sessions', $data);
+            }
+            else {
+                if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    // Form is submitting
+                    $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    
+                    // Inserted form
+                    $data = [
+                        'cnumber' => trim($_POST['cnumber']),
+    
+                        'cnumber_err' => '',
+                    ];
+
+                    // Validate contact number
+                    if(empty($data['cnumber'])) {
+                        $data['cnumber_err'] = 'Contact number for given session required';
+                    }
+                    else {
+                        //check for existing emails
+                        if(!($this->sessionModel->findByNumber($data['cnumber']))) {
+                            $data['cnumber_err'] = 'No such contact number given for a session';
+                        }
+                    }
+
+                    // Get sessions after validation
+                    if(empty($data['cnumber_err'])) {
+                        $registered_sessions = $this->sessionModel->getRegisteredSessionsByNumber($data['cnumber']);
+
+                        // Get current date and time
+                        date_default_timezone_set("Asia/Kolkata");
+                        $currentDate = date("Y-m-d");
+                        $currentTime = date("H:i:s");
+                        $data = [
+                            'registered_sessions' => $registered_sessions,
+                            'currentDate' => $currentDate,
+                            'currentTime' => $currentTime
+                        ];
+    
+                        // Load view
+                        $this->view('patients/v_registered_sessions', $data);
+                    }
+                    else {
+                        // Load view
+                        $this->view('patients/v_registered_sessions_visitor', $data);
+                    }
+
+                    // Get current date and time
+                    date_default_timezone_set("Asia/Kolkata");
+                    $currentDate = date("Y-m-d");
+                    $currentTime = date("H:i:s");
+
+                    
+                }
+                else {
+                    $data = [
+                        'cnumber' => '',
+    
+                        'cnumber_err' => '',
+                    ];
+
+                    // Load view
+                    $this->view('patients/v_registered_sessions_visitor', $data);
+                }
+            }
+        }
+
+        // View session details
+        public function viewSessionDetails($session_id) {
+            $session = $this->sessionModel->getSessionById($session_id);
+            $data = [
+                'session' => $session
+            ];
+
+            // Load view
+            $this->view('patients/v_session_details', $data);
         }
 
     }

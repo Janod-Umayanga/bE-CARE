@@ -16,7 +16,7 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <section class="view-profile-container theme">
+    <section class="view-profile-container-medinstrHistory theme">
         <div class="card">
             <div class="main-image">
                 <a href="<?php echo URLROOT ?>/MedInstrSession/medInstrNewSession" class="backto-doctors"><i class="fa-solid fa-arrow-left"></i>Back to New Sessions</a>
@@ -27,9 +27,11 @@
                 <ul>
                     <li>Starting Time - <?php echo $data['newSession']->starting_time ?></li>
                     <li>Ending Time - <?php echo $data['newSession']->ending_time ?></li>
-                    <li>Fee - <?php echo $data['newSession']->fee ?></li>
+                    <li>Fee - <?php echo $data['newSession']->registration_fee ?></li>
                     <li>Address - <?php echo $data['newSession']->address ?></li>
+                    <li>Maximum No of Participants - <?php echo $data['newSession']->noOfParticipants ?></li>
                    
+            
                 </ul>
                 <div class="bottom-line"></div>
             </div>

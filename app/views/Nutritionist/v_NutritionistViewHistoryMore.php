@@ -23,14 +23,10 @@
             </div>
             <div class="bottom">
                 <ul>
-                    <li>Diet Plan ID <?php echo #$data['plans']->request_diet_plan_id 
-                    '01'?></li>
-                    <li>Description - <?php echo #$data['plans']->name 
-                    'Eat healthy foods and increase vitamin D and Calcium.'?></li>
-                     <li>Diet Plan - <?php echo #$data['plans']->contact_number 
-                    '<a href="diet-plan.pdf" download="">Click here</a>'?></li>
-                     <li>Issued Date and Time - <?php echo #$data['plans']->contact_number 
-                    '2023-01-11 08:54:10'?></li>
+                    <li>Diet Plan ID  -<?php echo $data['his']->request_diet_plan_id; ?></li>
+                    <li>Description  - <?php echo $data['his']->description ;?></li>
+                    <li>Diet Plan File  - <?php ?></li>
+                    <li>Issued Date and Time  - <?php echo $data['his']->issued_date_and_time; ?></li>
                     
                    
                    

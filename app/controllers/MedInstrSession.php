@@ -7,6 +7,7 @@ class MedInstrSession extends Controller{
     $this->medInstrSessionModel = $this->model('M_MedInstrSession');
   }
 
+  //Meditation Instructor Session
   public function medInstrSession()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -26,6 +27,7 @@ class MedInstrSession extends Controller{
 
   }
 
+  //Meditation Instructor Old Session
   public function medInstrOldSession()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -44,7 +46,7 @@ class MedInstrSession extends Controller{
   }
   }
 
-  
+  //search Meditation Instructor OldSession
   public function searchMedInstrOldSession()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -78,6 +80,7 @@ class MedInstrSession extends Controller{
       }
   }
 
+ // view More Meditation Instructor OldSession
   public function viewMoreMedInstrOldSession($session_id)
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -97,6 +100,7 @@ class MedInstrSession extends Controller{
   }
 
   
+  //view Reg Users MedInstr OldSession
   public function viewRegUsersMedInstrOldSession($session_id)
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -122,7 +126,7 @@ class MedInstrSession extends Controller{
 
   }
 
- 
+  //Search Med Instr Completed Session RegUsers
   public function searchMedInstrCompletedSessionRegUsers()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -156,8 +160,7 @@ class MedInstrSession extends Controller{
   }
   }
 
-// new
-
+// MedInstr New Session
 
 public function medInstrNewSession()
 {
@@ -176,7 +179,7 @@ public function medInstrNewSession()
 
 }
 
-
+ //search Med Instr NewSession
   public function searchMedInstrNewSession()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -210,6 +213,7 @@ public function medInstrNewSession()
       }
   }
 
+  //view More MedInstr New Session
   public function viewMoreMedInstrNewSession($session_id)
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -218,10 +222,10 @@ public function medInstrNewSession()
    
    $data=[                      
      'newSession'=>$newSession
-     
-     
-   ];
+    ];
+  
    $this->view('MedInstr/MedInstrSession/MedInstrNewSession/v_medInstrNewSessionViewMore',$data);
+  
    if(isset($_POST['regusersSession'])){
     $_SESSION['medInstrsession_id'] = $_POST['regusersSession'];
    }
@@ -231,7 +235,7 @@ public function medInstrNewSession()
   }
   }
 
-  
+  //view Registered Users Med Instr NewSession
   public function viewRegUsersMedInstrNewSession($session_id)
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -256,7 +260,7 @@ public function medInstrNewSession()
 
   }
 
- 
+  // search MedInstr NewSession RegUsers
   public function searchMedInstrNewSessionRegUsers()
   {
     if(isset($_SESSION['MedInstr_id'])) {  

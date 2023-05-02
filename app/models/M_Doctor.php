@@ -9,14 +9,14 @@
 
         // Get All doctors
         public function getAllDoctors() {
-            $this->db->query('SELECT * FROM doctor');
+            $this->db->query('SELECT * FROM doctor WHERE delete_flag = 0');
 
             return $this->db->resultSet();
         }
 
         // Get doctors by a filter
         public function getDoctors($name, $specialization, $city, $day) {
-            $this->db->query("SELECT * FROM doctor WHERE CONCAT(first_name,last_name) LIKE '%$name%' AND specialization LIKE '%$specialization%' AND city LIKE '%$city%'");
+            $this->db->query("SELECT * FROM doctor WHERE CONCAT(first_name,last_name) LIKE '%$name%' AND specialization LIKE '%$specialization%' AND city LIKE '%$city%' AND delete_flag = 0");
 
             $today = date("Y-m-d");
             $tommorow = date("Y-m-d", strtotime('tomorrow'));
@@ -57,7 +57,7 @@
             $row = $this->db->single();
 
             if($this->db->rowCount() > 0) {
-                return true;
+                return $row;
             }
             else {
                 return false;
@@ -81,6 +81,18 @@
             }
         }
 
+        public function isDeactivateAccount($email){
+            $this->db->query('SELECT delete_flag FROM doctor WHERE email=:email');
+            $this->db->bind(':email',$email);
+            
+            $row= $this->db->single();
+            
+            if($this->db->rowCount() >0){
+              return $row;
+            }else{
+                  return false;
+            }  
+        }    
 
         public function updatePW($data, $doctor_id) {
             $this->db->query('UPDATE doctor SET password = :password WHERE doctor_id = :doctor_id');
@@ -100,7 +112,7 @@
        
             $this->db->query('UPDATE doctor set password = :password WHERE doctor_id = :id');
             $this->db->bind(':password', $data['password']);
-            $this->db->bind(':id', $data['doctor_id']);
+            $this->db->bind(':id', $data['user_id']);
                 
     
             if($this->db->execute()){
@@ -165,6 +177,34 @@
             return false;
         } 
       }
+
+
+      public function setToken($token,$email)
+      {
+          $this->db->query('UPDATE doctor set verify_token=:token WHERE email = :email');
+          $this->db->bind(':token',$token);
+          $this->db->bind(':email',$email);
+  
+          if($this->db->execute()){
+             return true;
+          }else{
+              return false;
+          }    
+      } 
+  
+      public function checkToken($email) {
+        
+        $this->db->query("SELECT verify_token FROM doctor WHERE email = :email");
+        $this->db->bind(':email',$email);
+        
+        $result=$this->db->single();
+
+        return $result ? $result : false; 
+    }
+
+   
+
+
     }
 
 ?>

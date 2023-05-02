@@ -11,10 +11,41 @@
 
         // get all doctor timeslots
         public function getAllDoctorTimeslots($doctor_id) {
+            // $this->db->query('SELECT doctor_timeslot.*, doctor.*, doctor_channel_day.* FROM doctor_channel_day INNER JOIN doctor_timeslot ON doctor_channel_day.doctor_timeslot_id = doctor_timeslot.doctor_timeslot_id INNER JOIN doctor ON doctor_channel_day.doctor_id = doctor.doctor_id WHERE doctor_channel_day.doctor_id = :doctor_id AND (doctor_channel_day.day > :today OR (doctor_channel_day.day = :today AND doctor_channel_day.current_channel_time >= :time)) ORDER BY doctor_channel_day.day ASC');
+            $this->db->query('SELECT * FROM doctor_timeslot WHERE doctor_id = :doctor_id');
+            $this->db->bind(':doctor_id', $doctor_id);
+
+            return $this->db->resultSet();
+        }
+
+        // get all channeling days and if there are 4 days and create the missing days
+        public function getChannelingDays($doctor_timeslot_id, $doctor_id, $day, $time) {
             date_default_timezone_set("Asia/Kolkata");
             $currentDate = date("Y-m-d");
             $currentTime = date("H:i:s");
 
+            $this->db->query('SELECT * FROM doctor_channel_day WHERE doctor_timeslot_id = :doctor_timeslot_id AND (doctor_channel_day.day > :today OR (doctor_channel_day.day = :today AND doctor_channel_day.current_channel_time >= :time)) ORDER BY doctor_channel_day.day ASC');
+            $this->db->bind(':doctor_timeslot_id', $doctor_timeslot_id);
+            $this->db->bind(':today', $currentDate);
+            $this->db->bind(':time', $currentTime);
+
+            $days_to_add_count = 0;
+
+            $rows = $this->db->resultSet();
+            if($this->db->rowCount() < 4) {
+                $days_to_add_count = 4 - $this->db->rowCount();
+                return $this->createChannelDays($day, $time, $doctor_id, $doctor_timeslot_id, $days_to_add_count);
+            }
+            else {
+                return true;
+            }
+        }
+        
+        // get all available timeslots with channeling days
+        public function getAllDoctorChannelingTimeslots($doctor_id) {
+            date_default_timezone_set("Asia/Kolkata");
+            $currentDate = date("Y-m-d");
+            $currentTime = date("H:i:s");
             $this->db->query('SELECT doctor_timeslot.*, doctor.*, doctor_channel_day.* FROM doctor_channel_day INNER JOIN doctor_timeslot ON doctor_channel_day.doctor_timeslot_id = doctor_timeslot.doctor_timeslot_id INNER JOIN doctor ON doctor_channel_day.doctor_id = doctor.doctor_id WHERE doctor_channel_day.doctor_id = :doctor_id AND (doctor_channel_day.day > :today OR (doctor_channel_day.day = :today AND doctor_channel_day.current_channel_time >= :time)) ORDER BY doctor_channel_day.day ASC');
             $this->db->bind(':doctor_id', $doctor_id);
             $this->db->bind(':today', $currentDate);
@@ -43,7 +74,7 @@
 
             if($this->db->execute()) {
                 $timeslot = $this->getTheLatestTimeslot($doctor_id);
-                return $this->createChannelDays($data['day'],$data['starting_time'] , $doctor_id, $timeslot->doctor_timeslot_id);
+                return $this->createChannelDays($data['day'],$data['starting_time'] , $doctor_id, $timeslot->doctor_timeslot_id, 4);
             }
             else {
                 return false;
@@ -51,19 +82,19 @@
         }
 
         // create channel days
-        public function createChannelDays($day, $time, $doctor_id,$timeslot_id) {
+        public function createChannelDays($day, $time, $doctor_id,$timeslot_id, $days_to_add_count) {
             $count = 0;
-            foreach (range(1, 4) as $i) {
-                if($i==1) {
+            foreach (range(1, $days_to_add_count) as $i) {
+                if($i==4) {
                     $mod_string = 'next '.$day;
                 }
-                if($i==2) {
+                if($i==3) {
                     $mod_string = 'second '.$day;
                 }
-                if($i==3) {
+                if($i==2) {
                     $mod_string = 'third '.$day;
                 }
-                if($i==4) {
+                if($i==1) {
                     $mod_string = 'fourth '.$day;
                 }
                 $channel_day = new DateTime();
@@ -78,7 +109,7 @@
                     $count = $count + 1;
                 }
             }
-            if($count == 4) {
+            if($count == $days_to_add_count) {
                 return true;
             }
             else {

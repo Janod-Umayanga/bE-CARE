@@ -9,14 +9,14 @@
 
         // Get All counsellors
         public function getAllCounsellors() {
-            $this->db->query('SELECT * FROM counsellor');
+            $this->db->query('SELECT * FROM counsellor WHERE delete_flag = 0');
 
             return $this->db->resultSet();
         }
 
         // Get counsellors by a filter
-        public function getCounsellors($filter) {
-            $this->db->query("SELECT * FROM counsellor WHERE CONCAT(first_name,last_name) LIKE '%$filter%'");
+        public function getCounsellors($filter, $city) {
+            $this->db->query("SELECT * FROM counsellor WHERE CONCAT(first_name,last_name) LIKE '%$filter%' AND city LIKE '%$city%' AND delete_flag = 0");
 
             return $this->db->resultSet();
         }
@@ -37,7 +37,7 @@
             $row = $this->db->single();
 
             if($this->db->rowCount() > 0) {
-                return true;
+                return $row;
             }
             else {
                 return false;
@@ -61,6 +61,19 @@
             }
         }
 
+        public function isDeactivateAccount($email){
+            $this->db->query('SELECT delete_flag FROM counsellor WHERE email=:email');
+            $this->db->bind(':email',$email);
+            
+            $row= $this->db->single();
+            
+            if($this->db->rowCount() >0){
+              return $row;
+            }else{
+                  return false;
+            }  
+        }    
+
         public function updatePW($data, $counsellor_id) {
             $this->db->query('UPDATE counsellor SET password = :password WHERE counsellor_id = :counsellor_id');
             $this->db->bind(':password', $data['newpw']);
@@ -79,7 +92,7 @@
        
             $this->db->query('UPDATE counsellor set password = :password WHERE counsellor_id = :id');
             $this->db->bind(':password', $data['password']);
-            $this->db->bind(':id', $data['counsellor_id']);
+            $this->db->bind(':id', $data['user_id']);
                 
     
             if($this->db->execute()){
@@ -142,6 +155,31 @@
             return false;
         } 
       }
+
+
+      public function setToken($token,$email)
+      {
+          $this->db->query('UPDATE counsellor set verify_token=:token WHERE email = :email');
+          $this->db->bind(':token',$token);
+          $this->db->bind(':email',$email);
+  
+          if($this->db->execute()){
+             return true;
+          }else{
+              return false;
+          }    
+      } 
+  
+      public function checkToken($email) {
+        
+        $this->db->query("SELECT verify_token FROM counsellor WHERE email = :email");
+        $this->db->bind(':email',$email);
+        
+        $result=$this->db->single();
+
+        return $result ? $result : false; 
+    }
+
 
     }
 

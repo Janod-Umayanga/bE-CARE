@@ -22,7 +22,7 @@
         <section class="table-section-Nutritionistreq theme">
         <div class="table-container theme">
             <div class="table-topic-main">
-                <h1>History</h1>
+                <h1><center>History</center></h1>
             </div>
 
             <div class="table">
@@ -37,9 +37,14 @@
                         <td><?php echo $his->diet_plan_id;?></td>
                         <td><?php echo $his->issued_date_and_time;?></td>
                         <td>
-                        <form  action="<?php echo URLROOT;?>/Nutritionist/nutritionistViewHistoryMore/<?php echo  $his->diet_plan_id ?>" method="post">
-                                    <button class="view "  name="submit">View</button>
-                        </form>    
+
+                        <form action="<?php echo URLROOT; ?>/Nutritionist/nutritionistViewHistoryMore" method="post">
+                               <input type="hidden" name="diet_plan_id" value="<?php echo $his->diet_plan_id; ?>">
+                              <button class="view" name="submit">View</button>
+                        </form>
+
+
+                        
                         </td>
                     </tr>
                     <?php endforeach; ?>

@@ -33,10 +33,11 @@
                 </div>
             </div>
           
+            <?php if(!empty($data['wednesday'])){ ?>
 
             <?php foreach($data['wednesday'] as $wednesday): ?>
                      
-               <h1><?php echo $wednesday->date; ?> | <?php echo $wednesday->appointment_day; ?></h1>
+               <h1><?php echo $wednesday->date; ?> | <?php echo $wednesday->day; ?></h1>
                    <h4 style="color:Green;"><?php echo $wednesday->address; ?> | Rs.<?php echo $wednesday->fee; ?></h4>
           
 
@@ -44,7 +45,7 @@
                 <table cellspacing="0" cellpadding="0">
                 <?php $gg=1; ?>
                     <?php foreach($data['medChannel'] as $medChannel): ?>
-                     <?php if($wednesday->med_timeslot_id==$medChannel->med_timeslot_id){ ?>
+                     <?php if($wednesday->med_ins_appointment_day_id==$medChannel->med_ins_appointment_day_id){ ?>
                         <?php if($gg==1){ ?> 
                     <tr>
                         <th>Starting time</th>
@@ -75,6 +76,52 @@
                 
             </div>
             <?php endforeach;?>
+
+            <?php }elseif(empty($data['timeslot'])){ ?>
+
+
+<!--  -->
+
+                              
+              <div class="table">
+                  <table cellspacing="0" cellpadding="0">
+                     
+                      
+                  
+                     <tr>
+                        <th>Starting time</th>
+                        <th>Ending time</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Contact number</th>
+                        <th>Gender</th>
+                     
+                      </tr>
+                     
+                                    
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        
+                      </tr>
+  
+                
+                    </table>
+              </div>
+
+
+           <!--  -->
+
+
+
+
+    <?php } ?>
+
+    
         </div>
     </section>
 

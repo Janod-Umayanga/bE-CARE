@@ -6,6 +6,7 @@ class MedInstrChangeSessionDetails extends Controller{
     $this->medInstrChangeSessionDetailsModel = $this->model('M_MedInstrChangeSessionDetails');
   }
 
+  //MedInstr Change Session Details
   public function medInstrChangeSessionDetails()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -22,6 +23,7 @@ class MedInstrChangeSessionDetails extends Controller{
 
   }
 
+  //Search MedInstr Change SessionDetails
   public function searchMedInstrChangeSessionDetails()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -52,7 +54,7 @@ class MedInstrChangeSessionDetails extends Controller{
   }
   }
 
-
+ //MedInstr Delete Session Details
   public function  medInstrDeleteSessionDetails($sessionId)
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -75,6 +77,8 @@ class MedInstrChangeSessionDetails extends Controller{
 
   }
 
+
+  //New MedInstr Session
   public function  newMedInstrSession()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -88,6 +92,7 @@ class MedInstrChangeSessionDetails extends Controller{
       'fee'=>'',
       'address'=>'',
       'description'=>'',
+      'noOfParticipants'=>'',
 
 
       'title_err'=>'',
@@ -96,7 +101,8 @@ class MedInstrChangeSessionDetails extends Controller{
       'ending_time_err'=>'',
       'fee_err'=>'',
       'address_err'=>'',
-      'description_err'=>''
+      'description_err'=>'',
+      'noOfParticipants_err'=>'',
 
     ];
 
@@ -111,8 +117,7 @@ class MedInstrChangeSessionDetails extends Controller{
 
 
 
-
-
+  //Add New Med Instructor Session
   public function  addNewMedInstrSession()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -128,7 +133,7 @@ class MedInstrChangeSessionDetails extends Controller{
           'fee'=>trim($_POST['fee']),
           'address'=>trim($_POST['address']),
           'description'=>trim($_POST['description']),
-
+          'noOfParticipants'=>trim($_POST['noOfParticipants']),
 
 
           'title_err'=>'',
@@ -137,12 +142,16 @@ class MedInstrChangeSessionDetails extends Controller{
           'ending_time_err'=>'',
           'fee_err'=>'',
           'address_err'=>'',
-          'description_err'=>''
-         ];
+          'description_err'=>'',
+          'noOfParticipants_err'=>''
+
+        ];
 
          if(empty($data['title'])){
           $data['title_err']='Please enter a title';
-        }
+        }else if(validateTitle($data['title'])!="true"){
+          $data['title_err']=validateTitle($data['title']);
+         }
 
         if(empty($data['date'])){
           $data['date_err']='Please select a date';
@@ -158,18 +167,31 @@ class MedInstrChangeSessionDetails extends Controller{
 
         if(empty($data['fee'])){
            $data['fee_err']='Please enter a fee';
-        }
+        }else if(validateFee($data['fee'])!="true"){
+          $data['fee_err']=validateFee($data['fee']);
+         }
 
         if(empty($data['address'])){
            $data['address_err']='Please enter a address';
-        }
+        }else if(validateAddress($data['address'])!="true"){
+          $data['address_err']=validateAddress($data['address']);
+         }
+        
+        if(empty($data['noOfParticipants'])){
+          $data['noOfParticipants_err']='Please enter a noOfParticipants';
+        }else if(validateMaxParticipants($data['noOfParticipants'])!="true"){
+          $data['noOfParticipants_err']=validateMaxParticipants($data['noOfParticipants']);
+         }
 
         if(empty($data['description'])){
           $data['description_err']='Please enter a description';
-       }
+        }else if(validateDescription($data['description'])!="true"){
+          $data['description_err']=validateDescription($data['description']);
+        }
 
 
-        if(empty($data['title_err']) && empty($data['date_err']) && empty($data['starting_time_err'])&& empty($data['ending_time_err'])&& empty($data['fee_err'])&& empty($data['address_err']) && empty($data['description_err'])){
+
+        if(empty($data['title_err']) && empty($data['date_err']) && empty($data['starting_time_err'])&& empty($data['ending_time_err'])&& empty($data['fee_err'])&& empty($data['address_err']) && empty($data['noOfParticipants_err'])&& empty($data['description_err'])){
 
             $addnewSession=$this->medInstrChangeSessionDetailsModel->medInstraddNewSession($_SESSION['MedInstr_id'],$data);
 
@@ -193,6 +215,7 @@ class MedInstrChangeSessionDetails extends Controller{
         'fee'=>'',
         'address'=>'',
         'description'=>'',
+        'noOfParticipants'=>'',
 
 
 
@@ -202,7 +225,9 @@ class MedInstrChangeSessionDetails extends Controller{
         'ending_time_err'=>'',
         'fee_err'=>'',
         'address_err'=>'',
-        'description_err'=>''
+        'description_err'=>'',
+        'noOfParticipants_err'=>'',
+
 
       ];
        $this->view('MedInstr/MedInstrChangeSessionDetails/v_medInstrChangeSessionDetails',$data);
@@ -212,7 +237,7 @@ class MedInstrChangeSessionDetails extends Controller{
   }
  }
 
-
+   //Med Instructor view Session Details
     public function  medInstrviewSessionDetails($sessionId)
     {
 
@@ -226,10 +251,11 @@ class MedInstrChangeSessionDetails extends Controller{
     'date'=>$sessionDetail->date,
     'starting_time'=>$sessionDetail->starting_time,
     'ending_time'=>$sessionDetail->ending_time,
-    'fee'=>$sessionDetail->fee,
+    'fee'=>$sessionDetail->registration_fee,
     'address'=>$sessionDetail->address,
     'description'=>$sessionDetail->description,
     'session_id'=>$_SESSION['Med_SESSION_ID'],
+    'noOfParticipants'=>$sessionDetail->noOfParticipants,
 
     
 
@@ -239,7 +265,8 @@ class MedInstrChangeSessionDetails extends Controller{
     'ending_time_err'=>'',
     'fee_err'=>'',
     'address_err'=>'',
-    'description_err'=>''
+    'description_err'=>'',
+    'noOfParticipants_err'=>''
 
     ];
 
@@ -248,11 +275,10 @@ class MedInstrChangeSessionDetails extends Controller{
     }else{
       redirect('Login/login');  
     }
-  
-
 
     }
 
+    //Med Instructor update SessionDetails
     public function  medInstrupdateSessionDetails($sessionId)
     {
       if(isset($_SESSION['MedInstr_id'])) {  
@@ -269,6 +295,7 @@ class MedInstrChangeSessionDetails extends Controller{
               'address'=>trim($_POST['address']),
               'description'=>trim($_POST['description']),
               'session_id'=>$_SESSION['Med_SESSION_ID'],
+              'noOfParticipants'=>trim($_POST['noOfParticipants']),
 
 
               'title_err'=>'',
@@ -277,11 +304,15 @@ class MedInstrChangeSessionDetails extends Controller{
               'ending_time_err'=>'',
               'fee_err'=>'',
               'address_err'=>'',
-              'description_err'=>''
-             ];
+              'description_err'=>'',
+              'noOfParticipants_err'=>''
+
+            ];
 
             if(empty($data['title'])){
               $data['title_err']='Please enter a title';
+            }else if(validateTitle($data['title'])!="true"){
+              $data['title_err']=validateTitle($data['title']);
             }
 
             if(empty($data['date'])){
@@ -298,18 +329,31 @@ class MedInstrChangeSessionDetails extends Controller{
 
             if(empty($data['fee'])){
                $data['fee_err']='Please enter a fee';
+            }else if(validateFee($data['fee'])!="true"){
+              $data['fee_err']=validateFee($data['fee']);
             }
 
             if(empty($data['address'])){
                $data['addres_err']='Please enter a addres';
-            }
+            }else if(validateAddress($data['address'])!="true"){
+              $data['address_err']=validateAddress($data['address']);
+             }
 
-             
+            if(empty($data['noOfParticipants'])){
+              $data['noOfParticipants_err']='Please enter a noOfParticipants';
+            }else if(validateMaxParticipants($data['noOfParticipants'])!="true"){
+              $data['noOfParticipants_err']=validateMaxParticipants($data['noOfParticipants']);
+             }
+          
             if(empty($data['description'])){
                $data['description_err']='Please enter a description';
+            }else if(validateDescription($data['description'])!="true"){
+              $data['description_err']=validateDescription($data['description']);
             }
+    
+    
 
-            if(empty($data['title_err']) && empty($data['date_err']) && empty($data['starting_time_err'])&& empty($data['ending_time_err'])&& empty($data['fee_err'])&& empty($data['address_err']) && empty($data['description_err'])){
+            if(empty($data['title_err']) && empty($data['date_err']) && empty($data['starting_time_err'])&& empty($data['ending_time_err'])&& empty($data['fee_err'])&& empty($data['noOfParticipants_err'])&& empty($data['address_err']) && empty($data['description_err'])){
 
                 $updateSession=$this->medInstrChangeSessionDetailsModel->medInstrupdateSession($_SESSION['MedInstr_id'],$sessionId,$data);
 
@@ -333,6 +377,7 @@ class MedInstrChangeSessionDetails extends Controller{
             'fee'=>'',
             'address'=>'',
             'description'=>'',
+            'noOfParticipants'=>'',
 
 
 
@@ -342,7 +387,9 @@ class MedInstrChangeSessionDetails extends Controller{
             'ending_time_err'=>'',
             'fee_err'=>'',
             'address_err'=>'',
-            'description_err'=>''
+            'description_err'=>'',
+            'noOfParticipants_err'=>'',
+
 
           ];
            $this->view('MedInstr/MedInstrChangeSessionDetails/v_medInstrChangeSessionDetails',$data);

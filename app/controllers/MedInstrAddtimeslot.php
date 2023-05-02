@@ -2,13 +2,13 @@
 
 class MedInstrAddtimeslot extends Controller{
     private $medInstrAddtimeslotModel; 
+
     public function __construct(){
-    $this->medInstrAddtimeslotModel = $this->model('M_MedInstrAddtimeslot');
-  }
+         $this->medInstrAddtimeslotModel = $this->model('M_MedInstrAddtimeslot');
+    }
 
   
-
-
+ //Med Instr Add timeslot
   public function medInstrAddtimeslot()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -17,28 +17,26 @@ class MedInstrAddtimeslot extends Controller{
         $_POST=filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
   
         $data = [
-          'month'=>trim($_POST['month']),
           'day'=>trim($_POST['day']),      
           'starting_time'=>trim($_POST['starting_time']),
           'ending_time'=>trim($_POST['ending_time']),      
           'fee'=>trim($_POST['fee']),
           'address'=>trim($_POST['address']),      
+          'noOfParticipants'=>trim($_POST['noOfParticipants']),      
         
 
           
-          'month_err'=>'',
           'day_err'=>'',
           'starting_time_err'=>'',
           'ending_time_err'=>'',
           'fee_err'=>'',
-          'address_err'=>''
+          'address_err'=>'',
+          'noOfParticipants_err'=>''
+          
 
         ];      
          
-        if(empty($data['month'])){
-          $data['month_err']='Please select a month';
-        }
-
+       
         if(empty($data['day'])){
            $data['day_err']='Please enter a day';
         } 
@@ -52,34 +50,28 @@ class MedInstrAddtimeslot extends Controller{
         } 
 
         if(empty($data['fee'])){
-          $data['fee_err']='Please enyer a fee';
-        }
+          $data['fee_err']='Please enter a fee';
+        }else if(validateFee($data['fee'])!="true"){
+          $data['fee_err']=validateFee($data['fee']);
+         }
+       
 
         if(empty($data['address'])){
            $data['address_err']='Please enter a address';
+        }else if(validateAddress($data['address'])!="true"){
+          $data['address_err']=validateAddress($data['address']);
         } 
-        
-        $month=trim($_POST['month']);
-        $day=trim($_POST['day']);      
        
-        $current_month= date("m");
-        $current_year= date("Y");
-      
-        $y=date("Y", strtotime("first {$day}.{$month}"));
-        $m=date("m", strtotime("first {$day}.{$month}"));
-      
-      
-       if($m<=$current_month && $y==$current_year){
-         $data['month_err']='recheck month';
-         
-       }
-        
-         $first_rel_day= date("d", strtotime("first {$day}.{$month}"));
-         $last_day= date("d",strtotime("last day of {$month}", time()));
-      
-         if(empty($data['month_err']) && empty($data['day_err']) && empty($data['starting_time_err']) && empty($data['ending_time_err']) && empty($data['fee_err']) && empty($data['address_err'])){
+        if(empty($data['noOfParticipants'])){
+          $data['noOfParticipants_err']='Please enter no of Participants';
+        }else if(validateMaxParticipants($data['noOfParticipants'])!="true"){
+          $data['noOfParticipants_err']=validateMaxParticipants($data['noOfParticipants']);
+        }
+       
+
+         if(empty($data['day_err']) && empty($data['starting_time_err']) && empty($data['ending_time_err']) && empty($data['fee_err']) && empty($data['address_err'])){
  
-            $addmedTimeslot=$this->medInstrAddtimeslotModel->medInstraddtimeslot($_SESSION['MedInstr_id'],$first_rel_day,$last_day,$y,$m,$data);
+            $addmedTimeslot=$this->medInstrAddtimeslotModel->medInstraddtimeslot($data,$_SESSION['MedInstr_id']);
 
          if($addmedTimeslot){
              $this->view('MedInstr/MedInstrAddtimeslot/v_medInstrAddtimeslot',$data);    
@@ -94,22 +86,22 @@ class MedInstrAddtimeslot extends Controller{
       }else{
 
       $data = [
-        'month'=>'',
         'day'=>'',      
         'starting_time'=>'',
         'ending_time'=>'',      
         'fee'=>$_SESSION['MedInstr_fee'],
         'address'=>$_SESSION['MedInstr_address'],      
-      
+        'noOfParticipants'=>'',
+          
 
         
-        'month_err'=>'',
         'day_err'=>'',
         'starting_time_err'=>'',
         'ending_time_err'=>'',
         'fee_err'=>'',
-        'address_err'=>''
-
+        'address_err'=>'',
+        'noOfParticipants_err'=>''
+          
       
       ];
        $this->view('MedInstr/MedInstrAddtimeslot/v_medInstrAddtimeslot',$data);     

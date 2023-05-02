@@ -11,6 +11,7 @@
     <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
     <script defer src="<?php echo URLROOT; ?>/js/script.js"></script>
+    <script defer src="<?php echo URLROOT; ?>/js/filterDoctor.js"></script>
     <title>Find a Doctor</title>
 </head>
 <body>
@@ -37,14 +38,47 @@
                 </select>
                 <select name="specialization" id="specialization">
                     <option value="">Specialization</option>
+                    <option value="Allergist">Allergist</option>
+                    <option value="Anesthesiologist">Anesthesiologist</option>
                     <option value="Cardiologist">Cardiologist</option>
+                    <option value="Dentist">Dentist</option>
+                    <option value="Dermatologist">Dermatologist</option>
+                    <option value="Endocrinologist">Endocrinologist</option>
+                    <option value="Gastroenterologist">Gastroenterologist</option>
+                    <option value="General Practitioner">General Practitioner</option>
+                    <option value="Geriatrician">Geriatrician</option>
+                    <option value="Gynecologist">Gynecologist</option>
+                    <option value="Hematologist">Hematologist</option>
+                    <option value="Infectious Disease Specialist">Infectious Disease Specialist</option>
+                    <option value="Internist">Internist</option>
+                    <option value="Nephrologist">Nephrologist</option>
+                    <option value="Neurologist">Neurologist</option>
+                    <option value="Obstetrician">Obstetrician</option>
+                    <option value="Oncologist">Oncologist</option>
+                    <option value="Ophthalmologist">Ophthalmologist</option>
+                    <option value="Orthopedic Surgeon">Orthopedic Surgeon</option>
+                    <option value="Otolaryngologist">Otolaryngologist</option>
+                    <option value="Pathologist">Pathologist</option>
+                    <option value="Pediatrician">Pediatrician</option>
+                    <option value="Physiatrist">Physiatrist</option>
+                    <option value="Plastic Surgeon">Plastic Surgeon</option>
+                    <option value="Psychiatrist">Psychiatrist</option>
+                    <option value="Pulmonologist">Pulmonologist</option>
+                    <option value="Radiologist">Radiologist</option>
+                    <option value="Rheumatologist">Rheumatologist</option>
+                    <option value="Surgeon">Surgeon</option>
+                    <option value="Urologist">Urologist</option>
                 </select>
                 <select name="city" id="city">
                     <option value="">City</option>
-                    <option value="">Colombo</option>
-                    <option value="">Galle</option>
-                    <option value="">Kandy</option>
+                    <option value="Colombo">Colombo</option>
+                    <option value="Galle">Galle</option>
+                    <option value="Kandy">Kandy</option>
                     <option value="Malabe">Malabe</option>
+                    <option value="Matara">Matara</option>
+                    <option value="Nugegoda">Nugegoda</option>
+                    <option value="Ratnapura">Ratnapura</option>
+                    <option value="Trincomalee">Trincomalee</option>
                 </select>
                 <div class="main-search">
                     <input type="text" name="search" placeholder="Search doctor by name..">

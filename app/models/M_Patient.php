@@ -9,8 +9,8 @@
 
         // Register patient
         public function register($data) {
-            $this->db->query('INSERT INTO patient(first_name, last_name, nic, contact_number, gender, email, password)
-            VALUES(:first_name, :last_name, :nic, :contact_number, :gender, :email, :password)');
+            $this->db->query('INSERT INTO patient(first_name, last_name, nic, contact_number, gender, email, password,delete_flag)
+            VALUES(:first_name, :last_name, :nic, :contact_number, :gender, :email, :password, :delete_flag)');
             $this->db->bind(':first_name', $data['fname']);
             $this->db->bind(':last_name', $data['lname']);
             $this->db->bind(':nic', $data['nic']);
@@ -18,6 +18,7 @@
             $this->db->bind(':gender', $data['gender']);
             $this->db->bind(':email', $data['email']);
             $this->db->bind(':password', $data['password']);
+            $this->db->bind(':delete_flag', 1);
 
             if($this->db->execute()) {
                 return true;
@@ -35,7 +36,7 @@
             $row = $this->db->single();
 
             if($this->db->rowCount() > 0) {
-                return true;
+                return $row;
             }
             else {
                 return false;
@@ -58,6 +59,20 @@
                 return false;
             }
         }
+
+        public function isDeactivateAccount($email){
+            $this->db->query('SELECT delete_flag FROM patient WHERE email=:email');
+            $this->db->bind(':email',$email);
+            
+            $row= $this->db->single();
+            
+            if($this->db->rowCount() >0){
+              return $row;
+              
+            }else{
+                  return false;
+            }  
+        }    
 
         // Get patient by id
         public function getPatientById($patient_id) {
@@ -98,6 +113,8 @@
             $this->db->bind(':password', $data['newpw']);
             $this->db->bind(':patient_id', $patient_id);
 
+            
+
             if($this->db->execute()) {
                 return true;
             }
@@ -122,6 +139,56 @@
                 return false;
             }
         }
+
+
+        public function setToken($token,$email)
+        {
+            $this->db->query('UPDATE patient set verify_token=:token WHERE email = :email');
+            $this->db->bind(':token',$token);
+            $this->db->bind(':email',$email);
+    
+            if($this->db->execute()){
+               return true;
+            }else{
+                return false;
+            }    
+        } 
+    
+        public function checkToken($email) {
+          
+          $this->db->query("SELECT verify_token FROM patient WHERE email = :email");
+          $this->db->bind(':email',$email);
+          
+          $result=$this->db->single();
+  
+          return $result ? $result : false; 
+      }
+
+      public function changePW($data){
+
+       
+        $this->db->query('UPDATE patient set password = :password WHERE patient_id = :id');
+        $this->db->bind(':password', $data['password']);
+        
+        $this->db->bind(':id', $data['user_id']);
+          
+
+        if($this->db->execute()){
+           return true;
+        }else{
+            return false;
+        } 
+      }
+    
+    //Get latest patient information  
+      
+    public function getLatestPatientID() {
+        $this->db->query('SELECT * FROM patient ORDER BY patient_id DESC');
+       
+        return $this->db->single();
+    }
+
+
     }
 
 ?>
