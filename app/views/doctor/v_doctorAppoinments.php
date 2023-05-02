@@ -26,21 +26,39 @@
                 <table cellspacing="0" cellpadding="0">
                     <tr>
                         <th>Appoinment Date</th>
-                        <th>Day</th>
-                        <th>Starting time</th>
-                        <th>Ending time</th>
-                        <th>View Appoinments</th>
+                        <th>Starting Time</th>
+                        <th>Ending Time</th>
+                        <th>Number of Registered Patients</th>
+                        <th>View Registered Patients</th>
+                        <th>Enable/Disable Timeslot</th>
                         
                     </tr>
                     <?php foreach($data['appoinments'] as $appoinments): ?>
                     <tr>
-                        <td><?php echo $appoinments->date ?></td>
-                        <td><?php echo $appoinments->channeling_day ?></td>
+                        <td><?php echo $appoinments->day ?></td>
                         <td><?php echo $appoinments->starting_time ?></td>
                         <td><?php echo $appoinments->ending_time ?></td>
-                        <td><form action="<?php echo URLROOT ?>/doctor/v_doctorTimeslotAppoinments" method="POST">
-                            <button class="View-button">View Appoinments</button>
+                        <td><?php echo (strtotime($appoinments->current_channel_time) - strtotime($appoinments->starting_time))/($appoinments->duration_for_one_patient * 60) ?></td>
+                        <td><form action="<?php echo URLROOT ?>/DoctorAppoinments/viewPatients/<?php echo $appoinments->doctor_channel_day_id ?>" method="POST">
+                            <button class="View-button">View</button>
                         </form></td>
+                        <?php if($appoinments->active == 0): ?>
+                            <td><form action="<?php echo URLROOT ?>/Doctor/enableTimeslot/<?php echo $appoinments->doctor_channel_day_id ?>">
+                            <?php if($appoinments->current_channel_time == $appoinments->ending_time): ?>
+                                <button class="main-button" disabled>Timeslot Full</button>
+                            <?php else: ?>
+                                <button class="main-button">enable</button>
+                            <?php endif; ?>
+                            </form></td>
+                        <?php else: ?>
+                            <td><form action="<?php echo URLROOT ?>/Doctor/disableTimeslot/<?php echo $appoinments->doctor_channel_day_id ?>">
+                            <?php if($appoinments->current_channel_time != $appoinments->starting_time): ?>
+                                <button class="main-button" disabled>Patients Already Registered</button>
+                            <?php else: ?>
+                                <button class="main-button">Disable</button>
+                            <?php endif; ?>
+                            </form></td>
+                        <?php endif; ?>
                     </tr>
                     <?php endforeach; ?>
                 </table>

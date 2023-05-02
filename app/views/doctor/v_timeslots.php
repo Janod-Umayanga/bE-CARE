@@ -30,6 +30,7 @@
                         <th>Day</th>
                         <th>Starting Time</th>
                         <th>Ending Time</th>
+                        <th>Duration Per One Patient</th>
                         <th>Fee</th>
                         <th>Address</th>
                         <th></th>
@@ -39,12 +40,18 @@
                         <td><?php echo $timeslot->channeling_day ?></td>
                         <td><?php echo $timeslot->starting_time ?></td>
                         <td><?php echo $timeslot->ending_time ?></td>
+                        <td><?php echo $timeslot->duration_for_one_patient ?> minutes</td>
                         <td><?php echo $timeslot->fee ?></td>
                         <td><?php echo $timeslot->address ?></td>
-                        <td>
-                            <button class="view-more"><i class="fa-solid fa-circle-info"></i></button>
-                            <button class="delete"><i class="fa-solid fa-trash"></i></button>
-                        </td>
+                        <?php if($timeslot->continue_flag == 0): ?>
+                            <td><form action="<?php echo URLROOT ?>/Doctor/continueTimeslot/<?php echo $timeslot->doctor_timeslot_id ?>">
+                                <button class="main-button">continue</button>
+                            </form></td>
+                        <?php else: ?>
+                            <td><form action="<?php echo URLROOT ?>/Doctor/discontinueTimeslot/<?php echo $timeslot->doctor_timeslot_id ?>">
+                                <button class="main-button">discontinue</button>
+                            </form></td>
+                        <?php endif; ?>
                     </tr>
                     <?php endforeach; ?>
                 </table>

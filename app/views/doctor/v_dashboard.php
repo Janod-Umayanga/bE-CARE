@@ -43,7 +43,7 @@
                 <img src="<?php echo URLROOT; ?>/img/doctor-reg-user-img/5.jpg" alt="">
                 <p>******<br>Appointments</p>
             </a>
-            <a href="<?php echo URLROOT ?>/DoctorAppoinments/DoctorAppoinments" class="card">
+            <a href="<?php echo URLROOT ?>/DoctorAppoinments/AppoinmentsHistory" class="card">
                 <img src="<?php echo URLROOT; ?>/img/doctor-reg-user-img/dp_history.jpg" alt="">
                 <p>******<br>Channeling Patients Hostory</p>
             </a>

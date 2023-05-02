@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="form-inputs-and-buttons">
-                    <label for="day">User Type:</label>
+                    <label for="day">Day:</label>
                         <select id="day" name="day">
                         <option value="Monday">Monday</option>
                         <option value="Tuesday">Tuesday</option>
@@ -49,6 +49,12 @@
                         <label for="ending_time">Ending Time</label>
                         <input type="time" id="ending_time" name="ending_time" value="<?php echo $data['ending_time'] ?>">
                         <span class="form-invalid"><?php echo $data['ending_time_err'] ?></span>
+
+                        <label for="duration">Duration Per One Patient:</label>
+                        <select id="duration" name="duration">
+                        <option value="5">5 minutes</option>
+                        <option value="10">10 minutes</option>
+                        </select>
 
                         <label for="fee">Fee (Rs.)</label>
                         <input type="number" id="fee" name="fee" value="<?php echo $data['fee'] ?>">

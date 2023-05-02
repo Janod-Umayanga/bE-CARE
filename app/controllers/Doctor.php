@@ -60,6 +60,7 @@
                         'day' => trim($_POST['day']),
                         'starting_time' => trim($_POST['starting_time']),
                         'ending_time' => trim($_POST['ending_time']),
+                        'duration' => trim($_POST['duration']),
                         'fee' => trim($_POST['fee']),
                         'address' => trim($_POST['address']),
     
@@ -118,6 +119,7 @@
                         'day' => '',
                         'starting_time' => '',
                         'ending_time' => '',
+                        'duration' => '',
                         'fee' => '',
                         'address' => '',
     
@@ -437,6 +439,62 @@ public function profile() {
   }
  
  }
+
+ public function enableTimeslot($channel_day_id) {
+
+    if(isset($_SESSION['doctor_id'])) {
+        if ($this->doctorTimeslotModel->enableDoctorChannelDay($channel_day_id)) {
+          redirect('DoctorAppoinments/DoctorAppoinments');
+        }
+    }
+    else {
+        $_SESSION['need_login'] = true;
+        // Redirect to login
+        redirect('Login/login');
+    }
+  }
+
+  public function disableTimeslot($channel_day_id) {
+
+    if(isset($_SESSION['doctor_id'])) {
+        if ($this->doctorTimeslotModel->disableDoctorChannelDay($channel_day_id)) {
+          redirect('DoctorAppoinments/DoctorAppoinments');
+        }
+    }
+    else {
+        $_SESSION['need_login'] = true;
+        // Redirect to login
+        redirect('Login/login');
+    }
+  }
+
+  public function continueTimeslot($timeslot_id) {
+
+    if(isset($_SESSION['doctor_id'])) {
+        if ($this->doctorTimeslotModel->continueDoctorChannelDay($timeslot_id)) {
+          redirect('Doctor/Timeslots');
+        }
+    }
+    else {
+        $_SESSION['need_login'] = true;
+        // Redirect to login
+        redirect('Login/login');
+    }
+  }
+
+  public function discontinueTimeslot($timeslot_id) {
+
+    if(isset($_SESSION['doctor_id'])) {
+        if ($this->doctorTimeslotModel->discontinueDoctorChannelDay($timeslot_id)) {
+          redirect('Doctor/Timeslots');
+        }
+    }
+    else {
+        $_SESSION['need_login'] = true;
+        // Redirect to login
+        redirect('Login/login');
+    }
+  }
  
 
 
