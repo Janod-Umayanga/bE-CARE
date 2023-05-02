@@ -51,6 +51,11 @@
                 <img src="<?php echo URLROOT; ?>/img/counsellor-reg-user-img/6.jpg" alt="">
                 <p>******<br>Appoinments</p>
             </a>
+            <a href="<?php echo URLROOT ?>/CounsellorAppoinments/AppoinmentsHistory" class="card">
+                <img src="<?php echo URLROOT; ?>/img/counsellor-reg-user-img/cp_history.jpg" alt="">
+                <p>******<br>Channeling Patients History</p>
+            </a>
+
         </div>
         <button id="show-button" class="show-button" onclick="showMore()"><span id="show-text">Show More</span><i class="fa-solid fa-angle-down" id="icon-more-orless"></i></button>
     </section>

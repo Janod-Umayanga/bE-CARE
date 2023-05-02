@@ -151,24 +151,17 @@
        }
 
        public function editUser($data){
-        $this->db->query('UPDATE doctor set first_name=:first_name, last_name = :last_name, nic = :nic,slmc_reg_number = :slmc_reg_number,specialization=:specialization, type = :type ,contact_number=:contact_number, bank_name = :bank_name, account_holder_name = :account_holder_name, branch=:branch, account_number = :account_number, gender = :gender, city=:city WHERE doctor_id = :id');
+        $this->db->query('UPDATE doctor set first_name=:first_name, last_name = :last_name, nic = :nic,contact_number=:contact_number, bank_name = :bank_name, account_holder_name = :account_holder_name, branch=:branch, account_number = :account_number WHERE doctor_id = :id');
         $this->db->bind(':first_name', $data['first_name']);
         $this->db->bind(':last_name',$data['last_name']);
         $this->db->bind(':nic', $data['nic']);
-        $this->db->bind(':slmc_reg_number', $data['slmc_reg_number']);
-        $this->db->bind(':specialization', $data['specialization']);
-        $this->db->bind(':type', $data['type']);
         $this->db->bind(':contact_number', $data['contact_number']);
         $this->db->bind(':bank_name', $data['bank_name']);
         $this->db->bind(':account_holder_name', $data['account_holder_name']);
         $this->db->bind(':branch', $data['branch']);
         $this->db->bind(':account_number', $data['account_number']);
-        $this->db->bind(':gender', $data['gender']);
         $this->db->bind(':id', $data['doctor_id']);
-        $this->db->bind(':city', $data['city']);
         
-             
-       
         
         if($this->db->execute()){
            $_SESSION['doctor_name']=$data['first_name'];

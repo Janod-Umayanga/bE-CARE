@@ -16,11 +16,11 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <section class="table-section theme">
+    <section class="table-section-doctortimeslot theme">
         <div class="table-container theme">
             <div class="table-topic-main">
                 <h1>Your Timeslots</h1>
-                <form action="<?php echo URLROOT ?>/Doctor/addTimeslot">
+                <form action="<?php echo URLROOT ?>/Counsellor/addTimeslot">
                     <button>Add new</button>
                 </form>
             </div>
@@ -30,6 +30,7 @@
                         <th>Day</th>
                         <th>Starting Time</th>
                         <th>Ending Time</th>
+                        <th>Duration Per One Patient</th>
                         <th>Fee</th>
                         <th>Address</th>
                         <th></th>
@@ -39,12 +40,18 @@
                         <td><?php echo $timeslot->channeling_day ?></td>
                         <td><?php echo $timeslot->starting_time ?></td>
                         <td><?php echo $timeslot->ending_time ?></td>
+                        <td><?php echo $timeslot->duration_for_one_patient ?> minutes</td>
                         <td><?php echo $timeslot->fee ?></td>
                         <td><?php echo $timeslot->address ?></td>
-                        <td>
-                            <button class="view-more"><i class="fa-solid fa-circle-info"></i></button>
-                            <button class="delete"><i class="fa-solid fa-trash"></i></button>
-                        </td>
+                        <?php if($timeslot->continue_flag == 0): ?>
+                            <td><form action="<?php echo URLROOT ?>/Counsellor/continueTimeslot/<?php echo $timeslot->counsellor_timeslot_id ?>">
+                                <button class="view">continue</button>
+                            </form></td>
+                        <?php else: ?>
+                            <td><form action="<?php echo URLROOT ?>/Counsellor/discontinueTimeslot/<?php echo $timeslot->counsellor_timeslot_id ?>">
+                                <button class="view">discontinue</button>
+                            </form></td>
+                        <?php endif; ?>
                     </tr>
                     <?php endforeach; ?>
                 </table>

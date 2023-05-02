@@ -64,13 +64,15 @@
 
         // create timeslot
         public function createTimeslot($data,$doctor_id) {
-            $this->db->query('INSERT INTO doctor_timeslot (channeling_day, starting_time, ending_time, fee, address, doctor_id) VALUES (:channeling_day, :starting_time, :ending_time, :fee, :address, :doctor_id)');
+            $this->db->query('INSERT INTO doctor_timeslot (channeling_day, starting_time, ending_time, duration_for_one_patient, fee, address, doctor_id, continue_flag) VALUES (:channeling_day, :starting_time, :ending_time, :duration_for_one_patient, :fee, :address, :doctor_id, :continue_flag)');
             $this->db->bind(':channeling_day', $data['day']);
             $this->db->bind(':starting_time', $data['starting_time']);
             $this->db->bind(':ending_time', $data['ending_time']);
+            $this->db->bind(':duration_for_one_patient', $data['duration']);
             $this->db->bind(':fee', $data['fee']);
             $this->db->bind(':address', $data['address']);
             $this->db->bind(':doctor_id', $doctor_id);
+            $this->db->bind(':continue_flag', 1);
 
             if($this->db->execute()) {
                 $timeslot = $this->getTheLatestTimeslot($doctor_id);
@@ -124,6 +126,63 @@
 
             return $this->db->single();
         }
+
+        // Disable the doctor channel day
+        public function disableDoctorChannelDay($channel_day_id) {
+            $this->db->query('UPDATE doctor_channel_day SET active = 0 WHERE doctor_channel_day_id = :doctor_channel_day_id');
+            $this->db->bind(':doctor_channel_day_id', $channel_day_id);
+
+            if($this->db->execute()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        // enable the doctor channel day
+        public function enableDoctorChannelDay($channel_day_id) {
+            $this->db->query('UPDATE doctor_channel_day SET active = 1 WHERE doctor_channel_day_id = :doctor_channel_day_id');
+            $this->db->bind(':doctor_channel_day_id', $channel_day_id);
+
+            if($this->db->execute()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        // Discontinue the doctor timeslot
+        public function discontinueDoctorChannelDay($timeslot_id) {
+            $this->db->query('UPDATE doctor_timeslot SET continue_flag = 0 WHERE doctor_timeslot_id = :doctor_timeslot_id');
+            $this->db->bind(':doctor_timeslot_id', $timeslot_id);
+
+            if($this->db->execute()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        // Continue the doctor timeslot
+        public function continueDoctorChannelDay($timeslot_id) {
+            $this->db->query('UPDATE doctor_timeslot SET continue_flag = 1 WHERE doctor_timeslot_id = :doctor_timeslot_id');
+            $this->db->bind(':doctor_timeslot_id', $timeslot_id);
+
+            if($this->db->execute()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+
+     
+       
+
     }
 
 ?>

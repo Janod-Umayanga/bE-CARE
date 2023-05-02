@@ -27,8 +27,9 @@
                 <ul>
                     <li>Starting Time - <?php echo $data['counsellorOldSession']->starting_time ?></li>
                     <li>Ending Time - <?php echo $data['counsellorOldSession']->ending_time ?></li>
-                    <li>Fee - <?php echo $data['counsellorOldSession']->fee ?></li>
+                    <li>Fee - <?php echo $data['counsellorOldSession']->registration_fee ?></li>
                     <li>Address - <?php echo $data['counsellorOldSession']->address ?></li>
+                    <li>Maximum number of Participants - <?php echo $data['counsellorOldSession']->noOfParticipants ?></li>
                    
                 </ul>
                 <div class="bottom-line"></div>

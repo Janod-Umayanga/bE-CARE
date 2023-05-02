@@ -49,6 +49,10 @@
                         <label for="address">Address</label>
                         <input type="text" id="address" name="address" value="<?php echo $data['address'] ?>">
                         <span class="form-invalid"><?php echo $data['address_err'] ?></span>
+
+                        <label for="noOfParticipants">Maximum No of Participants</label>
+                        <input type="text" id="noOfParticipants" name="noOfParticipants" value="<?php echo $data['noOfParticipants'] ?>">
+                        <span class="form-invalid"><?php echo $data['noOfParticipants_err'] ?></span>
    
                         <button>Submit</button>
                     </div>

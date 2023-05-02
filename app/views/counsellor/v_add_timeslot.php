@@ -16,7 +16,7 @@
     <section class="login-section">
         <div class="login-page-leftside">
             <div class="left-side-container">
-                <a href="<?php echo URLROOT ?>/Doctor/timeslots" class="page-change-button"><i class="fa-solid fa-arrow-left"></i>Back to Timeslots</a>
+                <a href="<?php echo URLROOT ?>/Counsellor/timeslots" class="page-change-button"><i class="fa-solid fa-arrow-left"></i>Back to Timeslots</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
                     <h2>Enter your login details to get into the application</h2>
@@ -52,8 +52,8 @@
 
                         <label for="duration">Duration Per One Patient:</label>
                         <select id="duration" name="duration">
-                        <option value="5">5 minutes</option>
-                        <option value="10">10 minutes</option>
+                        <option value="20">20 minutes</option>
+                        <option value="30">30 minutes</option>
                         </select>
 
                         <label for="fee">Fee (Rs.)</label>
