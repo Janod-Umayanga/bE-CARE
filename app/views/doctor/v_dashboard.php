@@ -43,6 +43,10 @@
                 <img src="<?php echo URLROOT; ?>/img/doctor-reg-user-img/5.jpg" alt="">
                 <p>******<br>Appointments</p>
             </a>
+            <a href="<?php echo URLROOT ?>/DoctorAppoinments/DoctorAppoinments" class="card">
+                <img src="<?php echo URLROOT; ?>/img/doctor-reg-user-img/dp_history.jpg" alt="">
+                <p>******<br>Channeling Patients Hostory</p>
+            </a>
             
         </div>
         <button id="show-button" class="show-button" onclick="showMore()"><span id="show-text">Show More</span><i class="fa-solid fa-angle-down" id="icon-more-orless"></i></button>

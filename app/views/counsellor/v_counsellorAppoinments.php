@@ -25,24 +25,22 @@
             <div class="table">
                 <table cellspacing="0" cellpadding="0">
                     <tr>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>Contact Number</th>
-                        <th>Gender</th>
-                        <th>Date</th>
-                        <th>Time</th>
-
-                        <th></th>
+                        <th>Appoinment Date</th>
+                        <th>Day</th>
+                        <th>Starting time</th>
+                        <th>Ending time</th>
+                        <th>View Appoinments</th>
+                        
                     </tr>
                     <?php foreach($data['appoinments'] as $appoinments): ?>
                     <tr>
-                        <td><?php echo $appoinments->name ?></td>
-                        <td><?php echo $appoinments->age ?></td>
-                        <td><?php echo $appoinments->contact_number ?></td>
-                        <td><?php echo $appoinments->gender ?></td>
                         <td><?php echo $appoinments->date ?></td>
-                        <td><?php echo $appoinments->time ?></td>
-                        
+                        <td><?php echo $appoinments->channeling_day ?></td>
+                        <td><?php echo $appoinments->starting_time ?></td>
+                        <td><?php echo $appoinments->ending_time ?></td>
+                        <td><form action="<?php echo URLROOT ?>/counsellor/v_counsellorTimeslotAppoinments" method="POST">
+                            <button class="View-button">View Appoinments</button>
+                        </form></td>
                     </tr>
                     <?php endforeach; ?>
                 </table>

@@ -38,9 +38,9 @@
                         <td><?php echo $appoinments->channeling_day ?></td>
                         <td><?php echo $appoinments->starting_time ?></td>
                         <td><?php echo $appoinments->ending_time ?></td>
-                        <td><form action="<?php echo URLROOT ?>/doctor/v_doctorTimeslotAppoinments" method="POST">
-                            <button class="View-button">View Appoinments</button>
-                        </form></td>
+                        <form action="<?php echo URLROOT ?>/doctor/v_doctorTimeslotAppoinments" method="POST">
+                            <button class="channel-butten">View</button>
+                        </form>
                     </tr>
                     <?php endforeach; ?>
                 </table>
