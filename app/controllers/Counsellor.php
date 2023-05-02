@@ -22,28 +22,30 @@
             
         }
 
-        public function timeslots() {
-          if(isset($_SESSION['counsellor_id'])) {
-              // Get current date and time
-              date_default_timezone_set("Asia/Kolkata");
-              $currentDate = date("Y-m-d");
-              $currentTime = date("H:i:s");
-              // Show all counsellor timeslots
-              $timeslots = $this->counsellorTimeslotModel->getTimeslotByCounsellorId($_SESSION['counsellor_id']);
-              $data = [
-                  'timeslots' => $timeslots,
-                  'currentDate' => $currentDate,
-                  'currentTime' => $currentTime
-              ];
 
-              // Load view
-              $this->view('counsellor/v_timeslots', $data);
-          }
-          else {
-              // Redirect to login
-              redirect('Login/login');
-          }
-      }
+      // View counsellor timeslots
+        public function timeslots() {
+            if(isset($_SESSION['counsellor_id'])) {
+                // Get current date and time
+                date_default_timezone_set("Asia/Kolkata");
+                $currentDate = date("Y-m-d");
+                $currentTime = date("H:i:s");
+                // Show all counsellor timeslots
+                $timeslots = $this->counsellorTimeslotModel->getTimeslotByCounsellorId($_SESSION['counsellor_id']);
+                $data = [
+                    'timeslots' => $timeslots,
+                    'currentDate' => $currentDate,
+                    'currentTime' => $currentTime
+                ];
+
+                // Load view
+                $this->view('counsellor/v_timeslots', $data);
+            }
+            else {
+                // Redirect to login
+                redirect('Login/login');
+            }
+        }
 
       // Create timeslot
       public function addTimeslot() {
@@ -60,6 +62,7 @@
                       'day' => trim($_POST['day']),
                       'starting_time' => trim($_POST['starting_time']),
                       'ending_time' => trim($_POST['ending_time']),
+                      'duration' => trim($_POST['duration']),
                       'fee' => trim($_POST['fee']),
                       'address' => trim($_POST['address']),
   
@@ -90,12 +93,16 @@
                   // Validate fee
                   if(empty($data['fee'])) {
                       $data['fee_err'] = 'Fee required';
-                  }
+                  }else if(validateFee($data['fee'])!="true"){
+                    $data['fee_err']=validateFee($data['fee']);
+                   }
 
                   // Validate address
                   if(empty($data['address'])) {
                       $data['address_err'] = 'Address required';
-                  }
+                  }else if(validateAddress($data['address'])!="true"){
+                    $data['address_err']=validateAddress($data['address']);
+                   }
   
                   // Create timeslot after validation
                   if(empty($data['day_err']) && empty($data['starting_time_err']) && empty($data['ending_time_err']) && empty($data['fee_err']) && empty($data['address_err'])) {
@@ -118,6 +125,7 @@
                       'day' => '',
                       'starting_time' => '',
                       'ending_time' => '',
+                      'duration' => '',
                       'fee' => '',
                       'address' => '',
   
@@ -420,6 +428,66 @@
        }
       
       }
+
+
+      public function enableTimeslot($channel_day_id) {
+
+        if(isset($_SESSION['counsellor_id'])) {
+            if ($this->counsellorTimeslotModel->enableCounsellorChannelDay($channel_day_id)) {
+              redirect('CounsellorAppoinments/CounsellorAppoinments');
+            }
+        }
+        else {
+            $_SESSION['need_login'] = true;
+            // Redirect to login
+            redirect('Login/login');
+        }
+      }
+    
+      public function disableTimeslot($channel_day_id) {
+    
+        if(isset($_SESSION['counsellor_id'])) {
+            if ($this->counsellorTimeslotModel->disableCounsellorChannelDay($channel_day_id)) {
+              redirect('CounsellorAppoinments/CounsellorAppoinments');
+            }
+        }
+        else {
+            $_SESSION['need_login'] = true;
+            // Redirect to login
+            redirect('Login/login');
+        }
+      }
+    
+      public function continueTimeslot($timeslot_id) {
+    
+        if(isset($_SESSION['counsellor_id'])) {
+            if ($this->counsellorTimeslotModel->continueCounsellorChannelDay($timeslot_id)) {
+              redirect('Counsellor/Timeslots');
+            }
+        }
+        else {
+            $_SESSION['need_login'] = true;
+            // Redirect to login
+            redirect('Login/login');
+        }
+      }
+    
+      public function discontinueTimeslot($timeslot_id) {
+    
+        if(isset($_SESSION['counsellor_id'])) {
+            if ($this->counsellorTimeslotModel->discontinueCounsellorChannelDay($timeslot_id)) {
+              redirect('Counsellor/Timeslots');
+            }
+        }
+        else {
+            $_SESSION['need_login'] = true;
+            // Redirect to login
+            redirect('Login/login');
+        }
+      }
+     
+    
+    
   }
 
 

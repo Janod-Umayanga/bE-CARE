@@ -209,31 +209,25 @@ public function profile() {
            'first_name'=>trim($_POST['first_name']),
            'last_name'=>trim($_POST['last_name']),
            'nic'=>trim($_POST['nic']),
-           'specialization'=>trim($_POST['specialization']),
-           'slmc_reg_number'=>trim($_POST['slmc']),
-           'type'=>trim($_POST['type']),
            'contact_number'=>trim($_POST['contact_number']),
            'bank_name'=>trim($_POST['bank_name']),
            'account_holder_name'=>trim($_POST['account_holder_name']),
            'branch'=>trim($_POST['branch']),
            'account_number'=>trim($_POST['account_number']),
-           'gender'=>trim($_POST['gender']),
-           'city'=>trim($_POST['city']),
+           
            
            
            'first_name_err'=>'',
            'last_name_err'=>'',
            'nic_err'=>'',
-           'specialization_err'=>'',
-           'type_err'=>'',
-           'slmc_reg_number_err'=>'',
            'contact_number_err'=>'',
-           'bank_name_err'=>'',
+           'bank_err'=>'',
            'account_holder_name_err'=>'',
            'branch_err'=>'',
            'account_number_err'=>'',
            'gender_err'=>'',
-           'city_err'=>'',
+           'city_err'=>''
+           
            
           
         ];
@@ -267,33 +261,14 @@ public function profile() {
            $data['branch_err']='branch name can not be empty';
        }
  
-       if(empty($data['gender'])){
-           $data['gender_err']='gender can not be empty';
-       }
+       
  
         if(empty($data['account_number'])){
            $data['account_number_err']='account number can not be empty';
         }
  
-        if(empty($data['city'])){
-           $data['city_err']='city can not be empty';
-        }
         
-        if(empty($data['slmc_reg_number'])){
-            $data['slmc_reg_number_err']='slmc registration number can not be empty';
-         }
-        
-        if(empty($data['type'])){
-            $data['type_err']='type can not be empty';
-        }
-
-        if(empty($data['specialization'])){
-            $data['specialization_err']='specialization can not be empty';
-         }
-
-        
- 
-       if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['gender_err'])  && empty($data['city_err'])&& empty($data['address_err'])&& empty($data['fee_err'])&& empty($data['bank_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])){
+       if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['address_err'])&& empty($data['fee_err'])&& empty($data['bank_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])){
              if($this->doctorModel->editUser($data)){
                    $_SESSION['profile_update']="true";
                    $this->view('doctor/v_profile',$data);    
@@ -318,7 +293,7 @@ public function profile() {
          'nic'=>$user->nic,
          'slmc'=>$user->slmc_reg_number,
          'specialization'=>$user->specialization,
-          'qualification_file'=>$user->qualification_file,
+         'qualification_file'=>$user->qualification_file,
          'type'=>$user->type,
          'contact_number'=>$user->contact_number,
          'bank_name'=>$user->bank_name,
@@ -338,7 +313,7 @@ public function profile() {
            'branch_err'=>'',
            'account_number_err'=>'',
            'gender_err'=>'',
-           'city_err'=>'',
+           'city_err'=>''
           
        
         ];

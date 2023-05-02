@@ -66,13 +66,15 @@
 
      // create timeslot
      public function createTimeslot($data,$counsellor_id) {
-        $this->db->query('INSERT INTO counsellor_timeslot (channeling_day, starting_time, ending_time, fee, address, counsellor_id) VALUES (:channeling_day, :starting_time, :ending_time, :fee, :address, :counsellor_id)');
+        $this->db->query('INSERT INTO counsellor_timeslot (channeling_day, starting_time, ending_time,duration_for_one_patient, fee, address, counsellor_id,continue_flag) VALUES (:channeling_day, :starting_time, :ending_time,:duration_for_one_patient, :fee, :address, :counsellor_id , :continue_flag)');
         $this->db->bind(':channeling_day', $data['day']);
         $this->db->bind(':starting_time', $data['starting_time']);
         $this->db->bind(':ending_time', $data['ending_time']);
+        $this->db->bind(':duration_for_one_patient', $data['duration']);
         $this->db->bind(':fee', $data['fee']);
         $this->db->bind(':address', $data['address']);
         $this->db->bind(':counsellor_id', $counsellor_id);
+        $this->db->bind(':continue_flag', 1);
 
         if($this->db->execute()) {
             $timeslot = $this->getTheLatestTimeslot($counsellor_id);
@@ -125,6 +127,62 @@
 
         return $this->db->single();
     }
+
+    
+    // Disable the doctor channel day
+    public function disableCounsellorChannelDay($channel_day_id) {
+        $this->db->query('UPDATE counsellor_channel_day SET active = 0 WHERE counsellor_channel_day_id = :counsellor_channel_day_id');
+        $this->db->bind(':counsellor_channel_day_id', $channel_day_id);
+
+        if($this->db->execute()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    // enable the counsellor channel day
+    public function enableCounsellorChannelDay($channel_day_id) {
+        $this->db->query('UPDATE counsellor_channel_day SET active = 1 WHERE counsellor_channel_day_id = :counsellor_channel_day_id');
+        $this->db->bind(':counsellor_channel_day_id', $channel_day_id);
+
+        if($this->db->execute()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    // Discontinue the counsellor timeslot
+    public function discontinueCounsellorChannelDay($timeslot_id) {
+        $this->db->query('UPDATE counsellor_timeslot SET continue_flag = 0 WHERE counsellor_timeslot_id = :counsellor_timeslot_id');
+        $this->db->bind(':counsellor_timeslot_id', $timeslot_id);
+
+        if($this->db->execute()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    // Continue the counsellor timeslot
+    public function continueCounsellorChannelDay($timeslot_id) {
+        $this->db->query('UPDATE counsellor_timeslot SET continue_flag = 1 WHERE counsellor_timeslot_id = :counsellor_timeslot_id');
+        $this->db->bind(':counsellor_timeslot_id', $timeslot_id);
+
+        if($this->db->execute()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+
+
 }
 
 
