@@ -16,31 +16,32 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <section class="table-section-doctortable theme">
+    <section class="table-section-doctorappointments theme">
         <div class="table-container theme">
             <div class="table-topic-main">
-                <h1>Appoinments</h1>
+                <h1>Appoinments History</h1>
                 
             </div>
             <div class="table">
                 <table cellspacing="0" cellpadding="0">
                     <tr>
                         <th>Appoinment Date</th>
-                        <th>Day</th>
-                        <th>Starting time</th>
-                        <th>Ending time</th>
-                        <th>View Appoinments</th>
+                        <th>Starting Time</th>
+                        <th>Ending Time</th>
+                        <th>Number of Registered Patients</th>
+                        <th>View Registered Patients</th>
                         
                     </tr>
                     <?php foreach($data['appoinments'] as $appoinments): ?>
                     <tr>
-                        <td><?php echo $appoinments->date ?></td>
-                        <td><?php echo $appoinments->channeling_day ?></td>
+                        <td><?php echo $appoinments->day ?></td>
                         <td><?php echo $appoinments->starting_time ?></td>
                         <td><?php echo $appoinments->ending_time ?></td>
-                        <form action="<?php echo URLROOT ?>/doctor/v_doctorTimeslotAppoinments" method="POST">
-                            <button class="channel-butten">View</button>
-                        </form>
+                        <td><?php echo (strtotime($appoinments->current_channel_time) - strtotime($appoinments->starting_time))/($appoinments->duration_for_one_patient * 60) ?></td>
+                        <td><form action="<?php echo URLROOT ?>/DoctorAppoinments/viewPatientsHistory/<?php echo $appoinments->doctor_channel_day_id ?>" method="POST">
+                            <button class="view">View</button>
+                        </form></td>
+                        
                     </tr>
                     <?php endforeach; ?>
                 </table>

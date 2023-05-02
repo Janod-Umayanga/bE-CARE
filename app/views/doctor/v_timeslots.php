@@ -16,7 +16,7 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <section class="table-section theme">
+    <section class="table-section-doctortimeslot theme">
         <div class="table-container theme">
             <div class="table-topic-main">
                 <h1>Your Timeslots</h1>
@@ -45,11 +45,11 @@
                         <td><?php echo $timeslot->address ?></td>
                         <?php if($timeslot->continue_flag == 0): ?>
                             <td><form action="<?php echo URLROOT ?>/Doctor/continueTimeslot/<?php echo $timeslot->doctor_timeslot_id ?>">
-                                <button class="main-button">continue</button>
+                                <button class="view">continue</button>
                             </form></td>
                         <?php else: ?>
                             <td><form action="<?php echo URLROOT ?>/Doctor/discontinueTimeslot/<?php echo $timeslot->doctor_timeslot_id ?>">
-                                <button class="main-button">discontinue</button>
+                                <button class="view">discontinue</button>
                             </form></td>
                         <?php endif; ?>
                     </tr>

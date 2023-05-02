@@ -16,31 +16,33 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <section class="table-section-doctortable theme">
+    <section class="table-section theme">
         <div class="table-container theme">
             <div class="table-topic-main">
-                <h1>Appoinments</h1>
+                <h1>Registered Patients History For The Selected Timeslot</h1>
                 
             </div>
             <div class="table">
                 <table cellspacing="0" cellpadding="0">
                     <tr>
-                        <th>Appoinment Date</th>
-                        <th>Day</th>
-                        <th>Starting time</th>
-                        <th>Ending time</th>
-                        <th>View Appoinments</th>
+                        <th>Appointment Number</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Contact Number</th>
+                        <th>Title</th>
+                        <!-- <th>View Registered Patients</th> -->
                         
                     </tr>
-                    <?php foreach($data['appoinments'] as $appoinments): ?>
+                    <?php foreach($data['patients'] as $patient): ?>
                     <tr>
-                        <td><?php echo $appoinments->date ?></td>
-                        <td><?php echo $appoinments->channeling_day ?></td>
-                        <td><?php echo $appoinments->starting_time ?></td>
-                        <td><?php echo $appoinments->ending_time ?></td>
-                        <form action="<?php echo URLROOT ?>/doctor/v_doctorTimeslotAppoinments" method="POST">
-                            <button class="channel-butten">View</button>
-                        </form>
+                        <td><?php echo $patient->appointment_number ?></td>
+                        <td><?php echo $patient->name ?></td>
+                        <td><?php echo $patient->age ?></td>
+                        <td><?php echo $patient->contact_number ?></td>
+                        <td><?php echo $patient->gender?></td>
+                        <!-- <td><form action="<?php echo URLROOT ?>/DoctorAppointments/viewPatients/<?php echo $appoinments->doctor_channel_day_id ?>" method="POST">
+                            <button class="View-button">View</button>
+                        </form></td> -->
                     </tr>
                     <?php endforeach; ?>
                 </table>

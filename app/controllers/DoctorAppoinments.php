@@ -62,6 +62,55 @@ public function viewPatients($channel_day_id) {
   }
 }
 
+
+
+public function viewPatientsHistory ($channel_day_id) {
+
+  if(isset($_SESSION['doctor_id'])) {
+      // Show all doctor appointments
+      $patients = $this->DoctorAppoinmentModel->getRegisteredPatientsHistory($channel_day_id);
+      $data = [
+          'patients' => $patients
+      ];
+
+      // Load view
+      $this->view('doctor/v_registered_patientsHistory', $data);
+  }
+  else {
+      $_SESSION['need_login'] = true;
+      // Redirect to login
+      redirect('Login/login');
+  }
+}
+
+
+public function AppoinmentsHistory() {
+
+  if(isset($_SESSION['doctor_id'])) {
+
+     // Get current date and time
+     date_default_timezone_set("Asia/Kolkata");
+     $currentDate = date("Y-m-d");
+     $currentTime = date("H:i:s");
+
+      // Show all doctor appointments
+      $appoinments = $this->DoctorAppoinmentModel->getDoctorTimeslotsHistory($_SESSION['doctor_id']); 
+      $data = [
+          'appoinments' => $appoinments,
+          'currentDate' => $currentDate,
+          'currentTime' => $currentTime
+      ];
+
+      // Load view
+      $this->view('doctor/v_doctorAppoinmentsHistory', $data);
+  }
+  else {
+      $_SESSION['need_login'] = true;
+      // Redirect to login
+      redirect('Login/login');
+  }
+}
+
   
 }
 

@@ -45,7 +45,7 @@
             </a>
             <a href="<?php echo URLROOT ?>/DoctorAppoinments/AppoinmentsHistory" class="card">
                 <img src="<?php echo URLROOT; ?>/img/doctor-reg-user-img/dp_history.jpg" alt="">
-                <p>******<br>Channeling Patients Hostory</p>
+                <p>******<br>Channeling Patients History</p>
             </a>
             
         </div>

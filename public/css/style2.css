@@ -1914,6 +1914,430 @@ nav.dark {
 /************************************************** Pharmacy Page style ends ****************************************************/
 
 
+/* doctor table */
+
+/************************************************** Table-section-nutritionistChangeSession style starts *********************************************************/
+
+.table-section-doctorappointments {
+    width: 100%;
+    height: fit-content;
+    background-color: #ebecee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.table-section-doctorappointments.dark {
+    background-color: var(--hue-black);
+}
+
+.table-section-doctorappointments .table-container {
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #c7c5c5;
+    padding: 30px 0;
+}
+
+.table-section-doctorappointments .table-container.dark {
+    box-shadow: none;
+}
+
+.table-section-doctorappointments .table-container .table-topic-main {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    color: var(--hue-black);
+}
+
+.table-section-doctorappointments .table-container .table-topic-main button {
+    padding: 8px 30px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+}
+
+.table-section-doctorappointments .table-container .table-topic-main button a {
+    text-decoration: none;
+    color: var(--hue-white);
+}
+
+.table-section-doctorappointments .table-container .search-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.table-section-doctorappointments .table-container .search-section .search-bar .searchform {
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+
+.table-section-doctorappointments .table-container .search-section .search-bar input {
+    width: 95%;
+}
+
+.table-section-doctorappointments .table-container .search-section .search-bar button {
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-section-doctorappointments .table-container .table {
+    width: 100%;
+    padding: 0 3%;
+    height: 50vh;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.table-section-doctorappointments .table-container .table table {
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: none;
+}
+
+.table-section-doctorappointments .table-container .table table th,
+.table-section-doctorappointments .table-container .table table td {
+    width: calc(100% / 6);
+    padding: 10px 15px;
+}
+
+.table-section-doctorappointments .table-container .table table th {
+    font-weight: 300;
+}
+
+.table-section-doctorappointments .table-container .table table tr:nth-child(1) {
+    background-color: #1D242B;
+    color: #f0ecec;
+}
+
+.table-section-doctorappointments .table-container .table table tr:nth-child(even) {
+    background-color: #f5f2f2;
+}
+
+.table-section-doctorappointments .table-container .table table tr td:nth-child(5) {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.table-section-doctorappointments .table-container .table table tr td:nth-child(5) form .view{
+    width: 80px;
+    height: fit-content;
+    background-color:var(--hue-dark-blue);
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+
+/************************************************** Table-section-Appointments style starts *********************************************************/
+
+.table-section-doctortimeslot {
+    width: 100%;
+    height: fit-content;
+    background-color: #ebecee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.table-section-doctortimeslot.dark {
+    background-color: var(--hue-black);
+}
+
+.table-section-doctortimeslot .table-container {
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #c7c5c5;
+    padding: 30px 0;
+}
+
+.table-section-doctortimeslot .table-container.dark {
+    box-shadow: none;
+}
+
+.table-section-doctortimeslot .table-container .table-topic-main {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    color: var(--hue-black);
+}
+
+.table-section-doctortimeslot .table-container .table-topic-main button {
+    padding: 8px 30px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+}
+
+.table-section-doctortimeslot .table-container .table-topic-main button a {
+    text-decoration: none;
+    color: var(--hue-white);
+}
+
+.table-section-doctortimeslot .table-container .search-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.table-section-doctortimeslot .table-container .search-section .search-bar .searchform {
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+
+.table-section-doctortimeslot .table-container .search-section .search-bar input {
+    width: 95%;
+}
+
+.table-section-doctortimeslot .table-container .search-section .search-bar button {
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-section-doctortimeslot .table-container .table {
+    width: 100%;
+    padding: 0 3%;
+    height: 50vh;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.table-section-doctortimeslot .table-container .table table {
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: none;
+}
+
+.table-section-doctortimeslot .table-container .table table th,
+.table-section-doctortimeslot .table-container .table table td {
+    width: calc(100% / 6);
+    padding: 10px 15px;
+}
+
+.table-section-doctortimeslot .table-container .table table th {
+    font-weight: 300;
+}
+
+.table-section-doctortimeslot .table-container .table table tr:nth-child(1) {
+    background-color: #1D242B;
+    color: #f0ecec;
+}
+
+.table-section-doctortimeslot .table-container .table table tr:nth-child(even) {
+    background-color: #f5f2f2;
+}
+
+.table-section-doctortimeslot .table-container .table table tr td:nth-child(7) {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.table-section-doctortimeslot .table-container .table table tr td:nth-child(7) form .view{
+    width: 80px;
+    height: fit-content;
+    background-color:var(--hue-dark-blue);
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+
+
+
+/************************************************** Table-section-doctortable style starts *********************************************************/
+
+.table-section-doctortable {
+    width: 100%;
+    height: fit-content;
+    background-color: #ebecee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.table-section-doctortable.dark {
+    background-color: var(--hue-black);
+}
+
+.table-section-doctortable .table-container {
+    width: 70%;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 2px #c7c5c5;
+    padding: 30px 0;
+}
+
+.table-section-doctortable .table-container.dark {
+    box-shadow: none;
+}
+
+.table-section-doctortable .table-container .table-topic-main {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    color: var(--hue-black);
+}
+
+.table-section-doctortable .table-container .table-topic-main button {
+    padding: 8px 30px;
+    background-color: var(--hue-dark-blue);
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+}
+
+.table-section-doctortable .table-container .table-topic-main button a {
+    text-decoration: none;
+    color: var(--hue-white);
+}
+
+.table-section-doctortable .table-container .search-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    margin-top: 20px;
+}
+
+.table-section-doctortable .table-container .search-section .search-bar .searchform {
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dcd5d5;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+
+.table-section-doctortable .table-container .search-section .search-bar input {
+    width: 95%;
+}
+
+.table-section-doctortable .table-container .search-section .search-bar button {
+    width: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.table-section-doctortable .table-container .table {
+    width: 100%;
+    padding: 0 3%;
+    height: 50vh;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.table-section-doctortable .table-container .table table {
+    width: 100%;
+    text-align: left;
+    outline: none;
+    border: none;
+}
+
+.table-section-doctortable .table-container .table table th,
+.table-section-doctortable .table-container .table table td {
+    width: calc(100% / 6);
+    padding: 10px 15px;
+}
+
+.table-section-doctortable .table-container .table table th {
+    font-weight: 300;
+}
+
+.table-section-doctortable .table-container .table table tr:nth-child(1) {
+    background-color: #1D242B;
+    color: #f0ecec;
+}
+
+.table-section-doctortable .table-container .table table tr:nth-child(even) {
+    background-color: #f5f2f2;
+}
+
+.table-section-doctortable .table-container .table table tr td:nth-child(5) {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.table-section-doctortable .table-container .table table tr td:nth-child(5) form .View-button{
+    width: 80px;
+    height: fit-content;
+    background-color:var(--hue-dark-blue);
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.table-section-doctortable .table-container .table table tr td:nth-child(6) form .main-button{
+    width: 140px;
+    height: fit-content;
+    background-color:green;
+    border: none;
+    color: var(--hue-white);
+    padding: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+
 /* Diet plan page style stars here */
 
 .diet-plan-section {

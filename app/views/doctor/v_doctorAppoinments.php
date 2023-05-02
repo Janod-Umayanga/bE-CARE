@@ -16,7 +16,7 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <section class="table-section theme">
+    <section class="table-section-doctortable theme">
         <div class="table-container theme">
             <div class="table-topic-main">
                 <h1>Appoinments</h1>

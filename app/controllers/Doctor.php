@@ -91,12 +91,16 @@
                     // Validate fee
                     if(empty($data['fee'])) {
                         $data['fee_err'] = 'Fee required';
-                    }
+                    }else if(validateFee($data['fee'])!="true"){
+                      $data['fee_err']=validateFee($data['fee']);
+                     }
 
                     // Validate address
                     if(empty($data['address'])) {
                         $data['address_err'] = 'Address required';
-                    }
+                    }else if(validateAddress($data['address'])!="true"){
+                      $data['address_err']=validateAddress($data['address']);
+                     }
     
                     // Create timeslot after validation
                     if(empty($data['day_err']) && empty($data['starting_time_err']) && empty($data['ending_time_err']) && empty($data['fee_err']) && empty($data['address_err'])) {
