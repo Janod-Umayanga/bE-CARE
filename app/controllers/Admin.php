@@ -269,6 +269,7 @@ class Admin extends Controller{
       } 
 
 
+      if($_SESSION['admin_account_number']!=trim(trim($_POST['account_number']))){
      
         if($this->userModel->findAdminByAccountNumber($data['account_number'])) {
           $data['account_number_err'] = 'Account Number already in used';
