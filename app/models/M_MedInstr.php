@@ -168,6 +168,109 @@
     }
 
 
+
+    
+      // Find MeditationInstructor by Nic
+      public function findMeditationInstructorByNic($nic)
+      {
+        $this->db->query('SELECT * FROM meditation_instructor WHERE nic= :nic');
+        $this->db->bind(':nic',$nic);  
+
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return true;
+        }else{
+              return false;
+        }
+    }
+
+       // Find Requested MeditationInstructor by Nic
+    
+      public function findReqMeditationInstructorByNic($nic)
+      {
+            $this->db->query('SELECT * FROM requested_meditation_instructor WHERE nic= :nic');
+            $this->db->bind(':nic',$nic);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+      }
+
+
+      
+       // Find  MeditationInstructor by Contact Number
+    
+      public function findMeditationInstructorByContactNumber($contact_number)
+      {
+        $this->db->query('SELECT * FROM meditation_instructor WHERE contact_number= :contact_number');
+        $this->db->bind(':contact_number',$contact_number);  
+
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return true;
+        }else{
+              return false;
+        }
+    }
+
+       // Find Requested MeditationInstructor by Contact Number
+    
+      public function findReqMeditationInstructorByContactNumber($contact_number)
+      {
+            $this->db->query('SELECT * FROM requested_meditation_instructor WHERE contact_number= :contact_number');
+            $this->db->bind(':contact_number',$contact_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+      }
+
+
+           
+
+           // Find  MeditationInstructor by Account Number
+            
+            public function findMeditationInstructorByAccountNumber($account_number)
+            {
+            $this->db->query('SELECT * FROM meditation_instructor WHERE account_number= :account_number');
+            $this->db->bind(':account_number',$account_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+            }
+
+            // Find Requested MeditationInstructor by Account Number
+
+            public function findReqMeditationInstructorByAccountNumber($account_number)
+            {
+                  $this->db->query('SELECT * FROM requested_meditation_instructor WHERE account_number= :account_number');
+                  $this->db->bind(':account_number',$account_number);  
+
+                  $row= $this->db->single();
+
+                  if($this->db->rowCount() >0){
+                        return true;
+                  }else{
+                        return false;
+                  }
+            }
+
+
 }
 
 

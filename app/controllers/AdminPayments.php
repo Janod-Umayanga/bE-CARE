@@ -1268,20 +1268,16 @@ public function medInstructorRegistrationViewMore($id)
         //Service Provider Name
 
           if($_SESSION['payment_service']=='medInstructorRegistration'||$_SESSION['payment_service']=='pharmacistOrder'){
-                if($row->gender=='Male'){$gend='Mr.';}
-                elseif($row->gender=='Female'){$gend='Mrs.';}
-
-            $pdf->Cell(109,10, $gend. $row->first_name.' '. $row->last_name, 1 , 0, 'C');
+          
+            $pdf->Cell(109,10, $row->gender.'. '. $row->first_name.' '. $row->last_name, 1 , 0, 'C');
            
           }
           
           elseif($_SESSION['payment_service']=='sessionRegistration'){
             
             if(!empty($row->meditation_instructor_id)){
-              if($row->gender=='Male'){$gend='Mr.';}
-              elseif($row->gender=='Female'){$gend='Mrs.';}
-
-               $pdf->Cell(109,10, $gend. $row->first_name.' '. $row->last_name, 1 , 0, 'C');
+         
+               $pdf->Cell(109,10,$row->gender.'. '.$row->first_name.' '. $row->last_name, 1 , 0, 'C');
        
             }
        

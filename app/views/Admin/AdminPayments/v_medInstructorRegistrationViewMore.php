@@ -26,7 +26,7 @@
                          <input type="hidden" name="search" value="<?php echo $data['search']?>">
                         <button class="backto-counsellors " type="submit" ><i class="fa-solid fa-arrow-left"></i>Back to Med Instructor Registration Payments </button> 
                 </form>
-                  <h1>Dr. <?php echo $data['medInstructorRegistration']->first_name ?> <br> <?php echo $data['medInstructorRegistration']->last_name ?></h1>
+                  <h1><?php echo $data['medInstructorRegistration']->gender ?>. <?php echo $data['medInstructorRegistration']->first_name ?> <br> <?php echo $data['medInstructorRegistration']->last_name ?></h1>
                 
             </div>
 

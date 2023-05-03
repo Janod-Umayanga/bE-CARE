@@ -826,7 +826,7 @@
 
       //pharmacist Order All Profit
       public function pharmacistOrderAllProfit(){
-       $this->db->query("SELECT sum((accept_order.charge/110)*10) AS profit, COUNT(accept_order.charge) AS no, pharmacist.gender AS gender FROM accept_order inner join pharmacist on pharmacist.pharmacist_id = accept_order.pharmacist_id ORDER BY accept_order.paid_time DESC");
+       $this->db->query("SELECT sum((accept_order.paid_amount/110)*10) AS profit, COUNT(accept_order.paid_amount) AS no, pharmacist.gender AS gender FROM accept_order inner join pharmacist on pharmacist.pharmacist_id = accept_order.pharmacist_id ORDER BY accept_order.paid_time DESC");
        $row= $this->db->single();
 
        if($this->db->rowCount() >0){
@@ -860,7 +860,7 @@
 
       //pharmacist Order Today Profit
       public function pharmacistOrderTodayProfit($today){
-       $this->db->query("SELECT sum((accept_order.charge/110)*10) AS profit,  COUNT(accept_order.charge) AS no,pharmacist.gender AS gender  FROM accept_order inner join pharmacist on pharmacist.pharmacist_id = accept_order.pharmacist_id  WHERE DATE(accept_order.paid_time)=:today ORDER BY accept_order.paid_time DESC");
+       $this->db->query("SELECT sum((accept_order.paid_amount/110)*10) AS profit,  COUNT(accept_order.paid_amount) AS no,pharmacist.gender AS gender  FROM accept_order inner join pharmacist on pharmacist.pharmacist_id = accept_order.pharmacist_id  WHERE DATE(accept_order.paid_time)=:today ORDER BY accept_order.paid_time DESC");
        $this->db->bind(':today',$today);
 
        $row= $this->db->single();
@@ -895,7 +895,7 @@
 
       //pharmacist Order Yesterday Profit
       public function pharmacistOrderYesterdayProfit($yesterday){
-       $this->db->query("SELECT sum((accept_order.charge/110)*10) AS profit, COUNT(accept_order.charge) AS no, pharmacist.gender AS gender FROM accept_order inner join pharmacist on pharmacist.pharmacist_id = accept_order.pharmacist_id  WHERE DATE(accept_order.paid_time)=:yesterday ORDER BY accept_order.paid_time DESC");
+       $this->db->query("SELECT sum((accept_order.paid_amount/110)*10) AS profit, COUNT(accept_order.paid_amount) AS no, pharmacist.gender AS gender FROM accept_order inner join pharmacist on pharmacist.pharmacist_id = accept_order.pharmacist_id  WHERE DATE(accept_order.paid_time)=:yesterday ORDER BY accept_order.paid_time DESC");
        $this->db->bind(':yesterday',$yesterday);
 
        $row= $this->db->single();
@@ -933,7 +933,7 @@
 
       //pharmacist Order This Month Profit
       public function pharmacistOrderThisMonthProfit($month,$year){
-       $this->db->query("SELECT sum((accept_order.charge/110)*10) AS profit, COUNT(accept_order.charge) AS no, pharmacist.gender AS gender FROM accept_order inner join pharmacist on pharmacist.pharmacist_id = accept_order.pharmacist_id  WHERE  MONTH(accept_order.paid_time)=:month AND YEAR(accept_order.paid_time)=:year ORDER BY accept_order.paid_time DESC");
+       $this->db->query("SELECT sum((accept_order.paid_amount/110)*10) AS profit, COUNT(accept_order.paid_amount) AS no, pharmacist.gender AS gender FROM accept_order inner join pharmacist on pharmacist.pharmacist_id = accept_order.pharmacist_id  WHERE  MONTH(accept_order.paid_time)=:month AND YEAR(accept_order.paid_time)=:year ORDER BY accept_order.paid_time DESC");
        $this->db->bind(':month',$month);
        $this->db->bind(':year',$year);
 
@@ -969,7 +969,7 @@
 
       // pharmacist Order This Year Profit
       public function pharmacistOrderThisYearProfit($year){
-       $this->db->query("SELECT sum((accept_order.charge/110)*10) AS profit, COUNT(accept_order.charge) AS no, pharmacist.gender AS gender FROM accept_order inner join pharmacist on pharmacist.pharmacist_id = accept_order.pharmacist_id  WHERE  YEAR(accept_order.paid_time)=:year ORDER BY accept_order.paid_time DESC");
+       $this->db->query("SELECT sum((accept_order.paid_amount/110)*10) AS profit, COUNT(accept_order.paid_amount) AS no, pharmacist.gender AS gender FROM accept_order inner join pharmacist on pharmacist.pharmacist_id = accept_order.pharmacist_id  WHERE  YEAR(accept_order.paid_time)=:year ORDER BY accept_order.paid_time DESC");
        $this->db->bind(':year',$year);
 
        $row= $this->db->single();

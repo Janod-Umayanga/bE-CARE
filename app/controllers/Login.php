@@ -493,7 +493,9 @@
             $_SESSION['admin_name'] = $admin->first_name;
             $_SESSION['first_time_logged_Admin'] = true;
             $_SESSION['admin_gender']=$admin->gender;
-   
+            $_SESSION['admin_nic']=$admin->nic;
+            $_SESSION['admin_contact_number']=$admin->contact_number;
+            $_SESSION['admin_account_number']=$admin->account_number;
     
             redirect('AdminDashboard/adminDashBoard');
         }
@@ -506,7 +508,10 @@
             $_SESSION['MedInstr_fee']=$medInstr->fee;
             $_SESSION['first_time_logged_MedInstr'] = true; 
             $_SESSION['MedInstr_gender']=$medInstr->gender;
-            
+            $_SESSION['MedInstr_nic']=$medInstr->nic;
+            $_SESSION['MedInstr_contact_number']=$medInstr->contact_number;
+            $_SESSION['MedInstr_account_number']=$medInstr->account_number;
+       
            
            redirect('MedInstrDashBoard/medInstrDashBoard');
           
@@ -569,6 +574,10 @@
                 unset($_SESSION['admin_name']);
                 unset($_SESSION['admin_email']);
                 unset($_SESSION['admin_gender']);
+                unset($_SESSION['admin_nic']);
+                unset($_SESSION['admin_contact_number']);
+                unset($_SESSION['admin_account_number']);
+        
                // session_destroy();
           
                 $_SESSION['logout'] = true;
@@ -582,6 +591,10 @@
                 unset($_SESSION['MedInstr_address']);
                 unset($_SESSION['MedInstr_fee']);
                 unset($_SESSION['medInstrsession_id']);
+                
+                unset($_SESSION['MedInstr_nic']);
+                unset($_SESSION['MedInstr_contact_number']);
+                unset($_SESSION['MedInstr_account_number']);
                 //session_destroy();
               
                 $_SESSION['logout'] = true;

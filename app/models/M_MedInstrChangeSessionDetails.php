@@ -54,7 +54,7 @@ class M_MedInstrChangeSessionDetails{
   public function medInstraddNewSession($id,$data)
   {
    
-    $this->db->query('INSERT INTO session (title,description,date,starting_time,ending_time,address,registration_fee,noOfParticipants,meditation_instructor_id) VALUES (:title,:description,:date,:starting_time,:ending_time,:address,:fee,:noOfParticipants,:id)');
+    $this->db->query('INSERT INTO session (title,description,date,starting_time,ending_time,address,registration_fee,noOfParticipants,meditation_instructor_id,active) VALUES (:title,:description,:date,:starting_time,:ending_time,:address,:fee,:noOfParticipants,:id,:active)');
     $this->db->bind(':title',$data['title']);
     $this->db->bind(':description',$data['description']);
     $this->db->bind(':date',$data['date']);
@@ -64,6 +64,7 @@ class M_MedInstrChangeSessionDetails{
     $this->db->bind(':fee',$data['fee']);
     $this->db->bind(':noOfParticipants',$data['noOfParticipants']);
     $this->db->bind(':id',$id);
+    $this->db->bind(':active',1);
 
     if($this->db->execute()){
        return true;

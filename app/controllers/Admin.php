@@ -253,6 +253,28 @@ class Admin extends Controller{
         $data['gender_err']='Title can not be empty';
       }
 
+      if($_SESSION['admin_contact_number']!=  trim($_POST['contact_number'])){
+     
+        if($this->userModel->findAdminByContactNumber($data['contact_number'])) {
+          $data['contact_number_err'] = 'Contact number already in used';
+         }
+        
+      }
+     
+      if($_SESSION['admin_nic']!=trim($_POST['nic'])){
+     
+        if($this->userModel->findAdminByNic($data['nic'])) {
+          $data['nic_err'] = 'Nic already in used';
+        }
+      } 
+
+
+     
+        if($this->userModel->findAdminByAccountNumber($data['account_number'])) {
+          $data['account_number_err'] = 'Account Number already in used';
+        }
+      }
+
        if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['gender_err'])){
             if($this->userModel->editUser($data)){
                   $_SESSION['profile_updateAdmin']="true";

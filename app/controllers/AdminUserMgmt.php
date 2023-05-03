@@ -647,7 +647,18 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
        if($this->adminUserMgmtModel->findPatientByEmail($data['email'])){
         $data['email_err']='Email is already registered';
 
-      } 
+       }
+      
+       if($this->adminUserMgmtModel->findPatientByContactNumber($data['contact_number'])) {
+        $data['contact_number_err'] = 'Contact number already in used';
+       }
+     
+       if($this->adminUserMgmtModel->findPatientByNic($data['nic'])) {
+            $data['nic_err'] = 'Nic already in used';
+        }
+
+       
+      
        if(empty($data['first_name'])){
           $data['first_name_err']='first name can not be empty';
        }else if(validateFirstName($data['first_name'])!="true"){
@@ -949,7 +960,47 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
             $data['email_err']='Email is already registered';
  
           }
-       
+     
+              
+        if($this->adminUserMgmtModel->findDoctorByNic($data['nic'])){
+          $data['nic_err']='Nic is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqDoctorByNic($data['nic'])){
+          $data['nic_err']='Nic is already used';
+
+        }
+
+        
+        if($this->adminUserMgmtModel->findDoctorByContactNumber($data['contact_number'])){
+          $data['contact_number_err']='Contact Number is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqDoctorByContactNumber($data['contact_number'])){
+          $data['contact_number_err']='Contact Number is already used';
+
+        }
+    
+        if($this->adminUserMgmtModel->findDoctorBySlmc($data['slmc_reg_number'])){
+          $data['slmc_reg_number_err']='Slmc regNo is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqDoctorBySlmc($data['slmc_reg_number'])){
+          $data['slmc_reg_number_err']='Slmc regNo is already used';
+
+        }
+
+        
+        if($this->adminUserMgmtModel->findDoctorByAccountNumber($data['account_number'])){
+          $data['account_number_err']='Account Number is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqDoctorByAccountNumber($data['account_number'])){
+          $data['account_number_err']='Account Number is already used';
+
+        }
+
+              
    
    
           if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['city_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['slmc_reg_number_err'])&& empty($data['type_err'])&& empty($data['specialization_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
@@ -1197,7 +1248,47 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
        
                 }
              
+                
+              if($this->adminUserMgmtModel->findCounsellorByNic($data['nic'])){
+                $data['nic_err']='Nic is already used';
+
+              } 
+              else if($this->adminUserMgmtModel->findReqCounsellorByNic($data['nic'])){
+                $data['nic_err']='Nic is already used';
+
+              }
+
+              
+              if($this->adminUserMgmtModel->findCounsellorByContactNumber($data['contact_number'])){
+                $data['contact_number_err']='Contact Number is already used';
+
+              } 
+              else if($this->adminUserMgmtModel->findReqCounsellorByContactNumber($data['contact_number'])){
+                $data['contact_number_err']='Contact Number is already used';
+
+              }
+          
+              if($this->adminUserMgmtModel->findCounsellorBySlmc($data['slmc_reg_number'])){
+                $data['slmc_reg_number_err']='Slmc regNo is already used';
+
+              } 
+              else if($this->adminUserMgmtModel->findReqCounsellorBySlmc($data['slmc_reg_number'])){
+                $data['slmc_reg_number_err']='Slmc regNo is already used';
+
+              }
+
+              
+              if($this->adminUserMgmtModel->findCounsellorByAccountNumber($data['account_number'])){
+                $data['account_number_err']='Account Number is already used';
+
+              } 
+              else if($this->adminUserMgmtModel->findReqCounsellorByAccountNumber($data['account_number'])){
+                $data['account_number_err']='Account Number is already used';
+
+              }
+
          
+
          
                 if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['city_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['slmc_reg_number_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
                
@@ -1389,7 +1480,18 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
  
           } 
           
-       
+          if($this->adminUserMgmtModel->findAdminByContactNumber($data['contact_number'])) {
+            $data['contact_number_err'] = 'Contact number already in used';
+           }
+         
+          if($this->adminUserMgmtModel->findAdminByNic($data['nic'])) {
+            $data['nic_err'] = 'Nic already in used';
+          }
+
+          if($this->adminUserMgmtModel->findAdminByAccountNumber($data['account_number'])) {
+            $data['account_number_err'] = 'Account Number already in used';
+          }
+
    
           if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err']) && empty($data['gender_err'])){
      
@@ -1637,7 +1739,37 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
           }
        
    
+          if($this->adminUserMgmtModel->findMeditationInstructorByNic($data['nic'])){
+            $data['nic_err']='Nic is already used';
+  
+          } 
+          else if($this->adminUserMgmtModel->findReqMeditationInstructorByNic($data['nic'])){
+            $data['nic_err']='Nic is already used';
+  
+          }
+  
+          
+          if($this->adminUserMgmtModel->findMeditationInstructorByContactNumber($data['contact_number'])){
+            $data['contact_number_err']='Contact Number is already used';
+  
+          } 
+          else if($this->adminUserMgmtModel->findReqMeditationInstructorByContactNumber($data['contact_number'])){
+            $data['contact_number_err']='Contact Number is already used';
+  
+          }
+      
+          
+          if($this->adminUserMgmtModel->findMeditationInstructorByAccountNumber($data['account_number'])){
+            $data['account_number_err']='Account Number is already used';
+  
+          } 
+          else if($this->adminUserMgmtModel->findReqMeditationInstructorByAccountNumber($data['account_number'])){
+            $data['account_number_err']='Account Number is already used';
+  
+          }
+  
    
+
           
           if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['city_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['address_err'])&& empty($data['fee_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
                
@@ -1896,6 +2028,46 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
  
           }
        
+         
+        if($this->adminUserMgmtModel->findPharmacistByNic($data['nic'])){
+          $data['nic_err']='Nic is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqPharmacistByNic($data['nic'])){
+          $data['nic_err']='Nic is already used';
+
+        }
+
+        
+        if($this->adminUserMgmtModel->findPharmacistByContactNumber($data['contact_number'])){
+          $data['contact_number_err']='Contact Number is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqPharmacistByContactNumber($data['contact_number'])){
+          $data['contact_number_err']='Contact Number is already used';
+
+        }
+    
+        if($this->adminUserMgmtModel->findPharmacistBySlmc($data['slmc_reg_number'])){
+          $data['slmc_reg_number_err']='Slmc regNo is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqPharmacistBySlmc($data['slmc_reg_number'])){
+          $data['slmc_reg_number_err']='Slmc regNo is already used';
+
+        }
+
+        
+        if($this->adminUserMgmtModel->findPharmacistByAccountNumber($data['account_number'])){
+          $data['account_number_err']='Account Number is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqPharmacistByAccountNumber($data['account_number'])){
+          $data['account_number_err']='Account Number is already used';
+
+        }
+
+
              
           if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['city_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['slmc_reg_number_err'])&& empty($data['pharmacy_name_err'])&& empty($data['address_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
                
@@ -2140,6 +2312,45 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
  
           }
        
+          
+        if($this->adminUserMgmtModel->findNutritionistByNic($data['nic'])){
+          $data['nic_err']='Nic is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqNutritionistByNic($data['nic'])){
+          $data['nic_err']='Nic is already used';
+
+        }
+
+        
+        if($this->adminUserMgmtModel->findNutritionistByContactNumber($data['contact_number'])){
+          $data['contact_number_err']='Contact Number is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqNutritionistByContactNumber($data['contact_number'])){
+          $data['contact_number_err']='Contact Number is already used';
+
+        }
+    
+        if($this->adminUserMgmtModel->findNutritionistBySlmc($data['slmc_reg_number'])){
+          $data['slmc_reg_number_err']='Slmc regNo is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqNutritionistBySlmc($data['slmc_reg_number'])){
+          $data['slmc_reg_number_err']='Slmc regNo is already used';
+
+        }
+
+        
+        if($this->adminUserMgmtModel->findNutritionistByAccountNumber($data['account_number'])){
+          $data['account_number_err']='Account Number is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqNutritionistByAccountNumber($data['account_number'])){
+          $data['account_number_err']='Account Number is already used';
+
+        }
+
    
    
         

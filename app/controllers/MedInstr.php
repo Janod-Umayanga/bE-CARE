@@ -278,6 +278,49 @@ class MedInstr extends Controller{
         $data['fee_err']=validateFee($data['fee']);
        }
 
+
+       if($_SESSION['MedInstr_contact_number']!=  trim($_POST['contact_number'])){
+     
+        if($this->userModel->findMeditationInstructorByContactNumber($data['contact_number'])){
+          $data['contact_number_err']='Contact Number is already used';
+
+        } 
+        else if($this->userModel->findReqMeditationInstructorByContactNumber($data['contact_number'])){
+          $data['contact_number_err']='Contact Number is already used';
+
+        }
+        
+      }
+     
+      if($_SESSION['MedInstr_nic']!=trim($_POST['nic'])){
+     
+        if($this->userModel->findMeditationInstructorByNic($data['nic'])){
+          $data['nic_err']='Nic is already used';
+
+        } 
+        else if($this->userModel->findReqMeditationInstructorByNic($data['nic'])){
+          $data['nic_err']='Nic is already used';
+
+        }
+
+      } 
+
+
+      if($_SESSION['MedInstr_account_number']!=trim(trim($_POST['account_number']))){
+     
+  
+        if($this->userModel->findMeditationInstructorByAccountNumber($data['account_number'])){
+          $data['account_number_err']='Account Number is already used';
+
+        } 
+        else if($this->userModel->findReqMeditationInstructorByAccountNumber($data['account_number'])){
+          $data['account_number_err']='Account Number is already used';
+
+        }
+
+
+      }
+
       if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['gender_err'])  && empty($data['city_err'])&& empty($data['address_err'])&& empty($data['fee_err'])&& empty($data['bank_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])){
             if($this->userModel->editUser($data)){
                   $_SESSION['profile_update']="true";

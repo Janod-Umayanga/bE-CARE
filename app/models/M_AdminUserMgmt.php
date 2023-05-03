@@ -996,19 +996,151 @@
 
        // Find Requested Doctor by Email
     
-    public function findReqDoctorByEmail($email)
-    {
-      $this->db->query('SELECT * FROM requested_doctor WHERE email= :email');
-      $this->db->bind(':email',$email);  
+      public function findReqDoctorByEmail($email)
+      {
+            $this->db->query('SELECT * FROM requested_doctor WHERE email= :email');
+            $this->db->bind(':email',$email);  
 
-      $row= $this->db->single();
+            $row= $this->db->single();
 
-      if($this->db->rowCount() >0){
-            return true;
-      }else{
-            return false;
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
       }
+
+      // Find Doctor by Nic
+      public function findDoctorByNic($nic)
+      {
+        $this->db->query('SELECT * FROM doctor WHERE nic= :nic');
+        $this->db->bind(':nic',$nic);  
+
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return true;
+        }else{
+              return false;
+        }
     }
+
+       // Find Requested Doctor by Nic
+    
+      public function findReqDoctorByNic($nic)
+      {
+            $this->db->query('SELECT * FROM requested_doctor WHERE nic= :nic');
+            $this->db->bind(':nic',$nic);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+      }
+
+
+      
+       // Find  Doctor by Contact Number
+    
+      public function findDoctorByContactNumber($contact_number)
+      {
+        $this->db->query('SELECT * FROM doctor WHERE contact_number= :contact_number');
+        $this->db->bind(':contact_number',$contact_number);  
+
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return true;
+        }else{
+              return false;
+        }
+    }
+
+       // Find Requested Doctor by Contact Number
+    
+      public function findReqDoctorByContactNumber($contact_number)
+      {
+            $this->db->query('SELECT * FROM requested_doctor WHERE contact_number= :contact_number');
+            $this->db->bind(':contact_number',$contact_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+      }
+
+            // Find  Doctor by Slmc
+            
+            public function findDoctorBySlmc($slmc_reg_number)
+            {
+            $this->db->query('SELECT * FROM doctor WHERE slmc_reg_number= :slmc_reg_number');
+            $this->db->bind(':slmc_reg_number',$slmc_reg_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+            }
+
+            // Find Requested Doctor by Slmc
+
+            public function findReqDoctorBySlmc($slmc_reg_number)
+            {
+                  $this->db->query('SELECT * FROM requested_doctor WHERE slmc_reg_number= :slmc_reg_number');
+                  $this->db->bind(':slmc_reg_number',$slmc_reg_number);  
+
+                  $row= $this->db->single();
+
+                  if($this->db->rowCount() >0){
+                        return true;
+                  }else{
+                        return false;
+                  }
+            }
+
+
+           // Find  Doctor by Account Number
+            
+            public function findDoctorByAccountNumber($account_number)
+            {
+            $this->db->query('SELECT * FROM doctor WHERE account_number= :account_number');
+            $this->db->bind(':account_number',$account_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+            }
+
+            // Find Requested Doctor by Account Number
+
+            public function findReqDoctorByAccountNumber($account_number)
+            {
+                  $this->db->query('SELECT * FROM requested_doctor WHERE account_number= :account_number');
+                  $this->db->bind(':account_number',$account_number);  
+
+                  $row= $this->db->single();
+
+                  if($this->db->rowCount() >0){
+                        return true;
+                  }else{
+                        return false;
+                  }
+            }
+
+
 
 
       // Find Counsellor by Email 
@@ -1044,6 +1176,143 @@
     }
 
 
+
+      // Find Counsellor by Nic
+      public function findCounsellorByNic($nic)
+      {
+        $this->db->query('SELECT * FROM counsellor WHERE nic= :nic');
+        $this->db->bind(':nic',$nic);  
+
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return true;
+        }else{
+              return false;
+        }
+    }
+
+       // Find Requested Counsellor by Nic
+    
+      public function findReqCounsellorByNic($nic)
+      {
+            $this->db->query('SELECT * FROM requested_counsellor WHERE nic= :nic');
+            $this->db->bind(':nic',$nic);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+      }
+
+
+      
+       // Find  Counsellor by Contact Number
+    
+      public function findCounsellorByContactNumber($contact_number)
+      {
+        $this->db->query('SELECT * FROM counsellor WHERE contact_number= :contact_number');
+        $this->db->bind(':contact_number',$contact_number);  
+
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return true;
+        }else{
+              return false;
+        }
+    }
+
+       // Find Requested Counsellor by Contact Number
+    
+      public function findReqCounsellorByContactNumber($contact_number)
+      {
+            $this->db->query('SELECT * FROM requested_counsellor WHERE contact_number= :contact_number');
+            $this->db->bind(':contact_number',$contact_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+      }
+
+            // Find  Counsellor by Slmc
+            
+            public function findCounsellorBySlmc($slmc_reg_number)
+            {
+            $this->db->query('SELECT * FROM counsellor WHERE slmc_reg_number= :slmc_reg_number');
+            $this->db->bind(':slmc_reg_number',$slmc_reg_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+            }
+
+            // Find Requested Counsellor by Slmc
+
+            public function findReqCounsellorBySlmc($slmc_reg_number)
+            {
+                  $this->db->query('SELECT * FROM requested_counsellor WHERE slmc_reg_number= :slmc_reg_number');
+                  $this->db->bind(':slmc_reg_number',$slmc_reg_number);  
+
+                  $row= $this->db->single();
+
+                  if($this->db->rowCount() >0){
+                        return true;
+                  }else{
+                        return false;
+                  }
+            }
+
+
+           // Find  Counsellor by Account Number
+            
+            public function findCounsellorByAccountNumber($account_number)
+            {
+            $this->db->query('SELECT * FROM counsellor WHERE account_number= :account_number');
+            $this->db->bind(':account_number',$account_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+            }
+
+            // Find Requested Counsellor by Account Number
+
+            public function findReqCounsellorByAccountNumber($account_number)
+            {
+                  $this->db->query('SELECT * FROM requested_counsellor WHERE account_number= :account_number');
+                  $this->db->bind(':account_number',$account_number);  
+
+                  $row= $this->db->single();
+
+                  if($this->db->rowCount() >0){
+                        return true;
+                  }else{
+                        return false;
+                  }
+            }
+
+
+
+
+
+
+
     // Find MeditationInstructor by Email 
       
     public function findMeditationInstructorByEmail($email)
@@ -1076,75 +1345,119 @@
     }
   }
 
-  // Find Pharmacist by Email 
-      
-  public function findPharmacistByEmail($email)
-  {
-    $this->db->query('SELECT * FROM pharmacist WHERE email= :email');
-    $this->db->bind(':email',$email);  
 
-    $row= $this->db->single();
 
-    if($this->db->rowCount() >0){
-          return true;
-    }else{
-          return false;
+  
+      // Find MeditationInstructor by Nic
+      public function findMeditationInstructorByNic($nic)
+      {
+        $this->db->query('SELECT * FROM meditation_instructor WHERE nic= :nic');
+        $this->db->bind(':nic',$nic);  
+
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return true;
+        }else{
+              return false;
+        }
     }
-}
 
-   // Find Requested Pharmacist by Email
-
-public function findReqPharmacistByEmail($email)
-{
-  $this->db->query('SELECT * FROM requested_pharmacist WHERE email= :email');
-  $this->db->bind(':email',$email);  
-
-  $row= $this->db->single();
-
-  if($this->db->rowCount() >0){
-        return true;
-  }else{
-        return false;
-  }
-}
-// Find Nutritionist by Email 
-      
-public function findNutritionistByEmail($email)
-{
-  $this->db->query('SELECT * FROM nutritionist WHERE email= :email');
-  $this->db->bind(':email',$email);  
-
-  $row= $this->db->single();
-
-  if($this->db->rowCount() >0){
-        return true;
-  }else{
-        return false;
-  }
-}
-
- // Find Requested Nutritionist by Email
-
-public function findReqNutritionistByEmail($email)
-{
-$this->db->query('SELECT * FROM requested_nutritionist WHERE email= :email');
-$this->db->bind(':email',$email);  
-
-$row= $this->db->single();
-
-if($this->db->rowCount() >0){
-      return true;
-}else{
-      return false;
-}
-}
-
-
-       // Find Patient by Email
+       // Find Requested MeditationInstructor by Nic
     
-    public function findPatientByEmail($email)
-    {
-      $this->db->query('SELECT * FROM patient WHERE email= :email');
+      public function findReqMeditationInstructorByNic($nic)
+      {
+            $this->db->query('SELECT * FROM requested_meditation_instructor WHERE nic= :nic');
+            $this->db->bind(':nic',$nic);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+      }
+
+
+      
+       // Find  MeditationInstructor by Contact Number
+    
+      public function findMeditationInstructorByContactNumber($contact_number)
+      {
+        $this->db->query('SELECT * FROM meditation_instructor WHERE contact_number= :contact_number');
+        $this->db->bind(':contact_number',$contact_number);  
+
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return true;
+        }else{
+              return false;
+        }
+    }
+
+       // Find Requested MeditationInstructor by Contact Number
+    
+      public function findReqMeditationInstructorByContactNumber($contact_number)
+      {
+            $this->db->query('SELECT * FROM requested_meditation_instructor WHERE contact_number= :contact_number');
+            $this->db->bind(':contact_number',$contact_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+      }
+
+
+           
+
+           // Find  MeditationInstructor by Account Number
+            
+            public function findMeditationInstructorByAccountNumber($account_number)
+            {
+            $this->db->query('SELECT * FROM meditation_instructor WHERE account_number= :account_number');
+            $this->db->bind(':account_number',$account_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+            }
+
+            // Find Requested MeditationInstructor by Account Number
+
+            public function findReqMeditationInstructorByAccountNumber($account_number)
+            {
+                  $this->db->query('SELECT * FROM requested_meditation_instructor WHERE account_number= :account_number');
+                  $this->db->bind(':account_number',$account_number);  
+
+                  $row= $this->db->single();
+
+                  if($this->db->rowCount() >0){
+                        return true;
+                  }else{
+                        return false;
+                  }
+            }
+
+
+
+
+
+
+      // Find Pharmacist by Email 
+            
+      public function findPharmacistByEmail($email)
+      {
+      $this->db->query('SELECT * FROM pharmacist WHERE email= :email');
       $this->db->bind(':email',$email);  
 
       $row= $this->db->single();
@@ -1154,15 +1467,31 @@ if($this->db->rowCount() >0){
       }else{
             return false;
       }
-    }
+      }
 
+      // Find Requested Pharmacist by Email
 
-      // Find Admin by Email 
-      
-      public function findAdminByEmail($email)
+      public function findReqPharmacistByEmail($email)
       {
-        $this->db->query('SELECT * FROM Admin WHERE email= :email');
-        $this->db->bind(':email',$email);  
+      $this->db->query('SELECT * FROM requested_pharmacist WHERE email= :email');
+      $this->db->bind(':email',$email);  
+
+      $row= $this->db->single();
+
+      if($this->db->rowCount() >0){
+            return true;
+      }else{
+            return false;
+      }
+      }
+
+
+
+            // Find Pharmacist by Nic
+      public function findPharmacistByNic($nic)
+      {
+        $this->db->query('SELECT * FROM pharmacist WHERE nic= :nic');
+        $this->db->bind(':nic',$nic);  
 
         $row= $this->db->single();
 
@@ -1171,11 +1500,403 @@ if($this->db->rowCount() >0){
         }else{
               return false;
         }
+    }
+
+       // Find Requested Pharmacist by Nic
+    
+      public function findReqPharmacistByNic($nic)
+      {
+            $this->db->query('SELECT * FROM requested_pharmacist WHERE nic= :nic');
+            $this->db->bind(':nic',$nic);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
       }
 
-     
+
+      
+       // Find  Pharmacist by Contact Number
+    
+      public function findPharmacistByContactNumber($contact_number)
+      {
+        $this->db->query('SELECT * FROM pharmacist WHERE contact_number= :contact_number');
+        $this->db->bind(':contact_number',$contact_number);  
+
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return true;
+        }else{
+              return false;
+        }
+    }
+
+       // Find Requested Pharmacist by Contact Number
+    
+      public function findReqPharmacistByContactNumber($contact_number)
+      {
+            $this->db->query('SELECT * FROM requested_pharmacist WHERE contact_number= :contact_number');
+            $this->db->bind(':contact_number',$contact_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+      }
+
+            // Find  Pharmacist by Slmc
+            
+            public function findPharmacistBySlmc($slmc_reg_number)
+            {
+            $this->db->query('SELECT * FROM pharmacist WHERE slmc_reg_number= :slmc_reg_number');
+            $this->db->bind(':slmc_reg_number',$slmc_reg_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+            }
+
+            // Find Requested Pharmacist by Slmc
+
+            public function findReqPharmacistBySlmc($slmc_reg_number)
+            {
+                  $this->db->query('SELECT * FROM requested_pharmacist WHERE slmc_reg_number= :slmc_reg_number');
+                  $this->db->bind(':slmc_reg_number',$slmc_reg_number);  
+
+                  $row= $this->db->single();
+
+                  if($this->db->rowCount() >0){
+                        return true;
+                  }else{
+                        return false;
+                  }
+            }
 
 
+           // Find  Pharmacist by Account Number
+            
+            public function findPharmacistByAccountNumber($account_number)
+            {
+            $this->db->query('SELECT * FROM pharmacist WHERE account_number= :account_number');
+            $this->db->bind(':account_number',$account_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+            }
+
+            // Find Requested Pharmacist by Account Number
+
+            public function findReqPharmacistByAccountNumber($account_number)
+            {
+                  $this->db->query('SELECT * FROM requested_pharmacist WHERE account_number= :account_number');
+                  $this->db->bind(':account_number',$account_number);  
+
+                  $row= $this->db->single();
+
+                  if($this->db->rowCount() >0){
+                        return true;
+                  }else{
+                        return false;
+                  }
+            }
+
+
+
+      // Find Nutritionist by Email 
+            
+      public function findNutritionistByEmail($email)
+      {
+      $this->db->query('SELECT * FROM nutritionist WHERE email= :email');
+      $this->db->bind(':email',$email);  
+
+      $row= $this->db->single();
+
+      if($this->db->rowCount() >0){
+            return true;
+      }else{
+            return false;
+      }
+      }
+
+      // Find Requested Nutritionist by Email
+
+      public function findReqNutritionistByEmail($email)
+      {
+      $this->db->query('SELECT * FROM requested_nutritionist WHERE email= :email');
+      $this->db->bind(':email',$email);  
+
+      $row= $this->db->single();
+
+      if($this->db->rowCount() >0){
+            return true;
+      }else{
+            return false;
+      }
+      }
+
+
+
+      // Find Nutritionist by Nic
+      public function findNutritionistByNic($nic)
+      {
+        $this->db->query('SELECT * FROM nutritionist WHERE nic= :nic');
+        $this->db->bind(':nic',$nic);  
+
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return true;
+        }else{
+              return false;
+        }
+    }
+
+       // Find Requested Nutritionist by Nic
+    
+      public function findReqNutritionistByNic($nic)
+      {
+            $this->db->query('SELECT * FROM requested_nutritionist WHERE nic= :nic');
+            $this->db->bind(':nic',$nic);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+      }
+
+
+      
+       // Find  Nutritionist by Contact Number
+    
+      public function findNutritionistByContactNumber($contact_number)
+      {
+        $this->db->query('SELECT * FROM nutritionist WHERE contact_number= :contact_number');
+        $this->db->bind(':contact_number',$contact_number);  
+
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return true;
+        }else{
+              return false;
+        }
+    }
+
+       // Find Requested Nutritionist by Contact Number
+    
+      public function findReqNutritionistByContactNumber($contact_number)
+      {
+            $this->db->query('SELECT * FROM requested_nutritionist WHERE contact_number= :contact_number');
+            $this->db->bind(':contact_number',$contact_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+      }
+
+            // Find  Nutritionist by Slmc
+            
+            public function findNutritionistBySlmc($slmc_reg_number)
+            {
+            $this->db->query('SELECT * FROM nutritionist WHERE slmc_reg_number= :slmc_reg_number');
+            $this->db->bind(':slmc_reg_number',$slmc_reg_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+            }
+
+            // Find Requested Nutritionist by Slmc
+
+            public function findReqNutritionistBySlmc($slmc_reg_number)
+            {
+                  $this->db->query('SELECT * FROM requested_nutritionist WHERE slmc_reg_number= :slmc_reg_number');
+                  $this->db->bind(':slmc_reg_number',$slmc_reg_number);  
+
+                  $row= $this->db->single();
+
+                  if($this->db->rowCount() >0){
+                        return true;
+                  }else{
+                        return false;
+                  }
+            }
+
+
+           // Find  Nutritionist by Account Number
+            
+            public function findNutritionistByAccountNumber($account_number)
+            {
+            $this->db->query('SELECT * FROM nutritionist WHERE account_number= :account_number');
+            $this->db->bind(':account_number',$account_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+            }
+
+            // Find Requested Nutritionist by Account Number
+
+            public function findReqNutritionistByAccountNumber($account_number)
+            {
+                  $this->db->query('SELECT * FROM requested_nutritionist WHERE account_number= :account_number');
+                  $this->db->bind(':account_number',$account_number);  
+
+                  $row= $this->db->single();
+
+                  if($this->db->rowCount() >0){
+                        return true;
+                  }else{
+                        return false;
+                  }
+            }
+
+
+
+            // Find Patient by Email
+      
+      public function findPatientByEmail($email)
+      {
+            $this->db->query('SELECT * FROM patient WHERE email= :email');
+            $this->db->bind(':email',$email);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+      }
+
+      // Find patient by nic
+      public function  findPatientByNic($nic) {
+            $this->db->query('SELECT * FROM patient WHERE nic = :nic');
+            $this->db->bind(':nic', $nic);
+
+            $row = $this->db->single();
+
+            if($this->db->rowCount() > 0) {
+            return $row;
+            }
+            else {
+            return false;
+            }
+      }
+
+      //findPatientByContactNumber
+
+      public function findPatientByContactNumber($contactnumber) {
+            $this->db->query('SELECT * FROM patient WHERE contact_number = :contactnumber');
+            $this->db->bind(':contactnumber', $contactnumber);
+
+            $row = $this->db->single();
+
+            if($this->db->rowCount() > 0) {
+            return $row;
+            }
+            else {
+            return false;
+            }
+      }
+      // Find Admin by Email 
+            
+      public function findAdminByEmail($email)
+      {
+      $this->db->query('SELECT * FROM Admin WHERE email= :email');
+      $this->db->bind(':email',$email);  
+
+      $row= $this->db->single();
+
+      if($this->db->rowCount() >0){
+            return true;
+      }else{
+            return false;
+      }
+      }
+
+
+      // Find Admin by Account Number
+
+      public function  findAdminByAccountNumber($account_number)
+      {
+            $this->db->query('SELECT * FROM admin WHERE account_number= :account_number');
+            $this->db->bind(':account_number',$account_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+      }
+
+
+
+
+      // Find admin by nic
+      public function  findAdminByNic($nic) {
+            $this->db->query('SELECT * FROM admin WHERE nic = :nic');
+            $this->db->bind(':nic', $nic);
+
+            $row = $this->db->single();
+
+            if($this->db->rowCount() > 0) {
+            return $row;
+            }
+            else {
+            return false;
+            }
+      }
+
+      //findAdminByContactNumber
+
+      public function findAdminByContactNumber($contactnumber) {
+            $this->db->query('SELECT * FROM admin WHERE contact_number = :contactnumber');
+            $this->db->bind(':contactnumber', $contactnumber);
+
+            $row = $this->db->single();
+
+            if($this->db->rowCount() > 0) {
+            return $row;
+            }
+            else {
+            return false;
+            }
+      }
    }
 
 

@@ -87,12 +87,24 @@
                 }else if(validateNIC($data['nic'])!="true"){
                     $data['nic_err']=validateNIC($data['nic']);
                 }
+                else {
+                    //check for existing nic
+                    if($this->patientModel->findPatientByNic($data['nic'])) {
+                        $data['nic_err'] = 'Nic already in use';
+                    }
+                }
+
 
                 // Validate contact number
                 if(empty($data['cnumber'])) {
                     $data['cnumber_err'] = 'Contact number required';
                 }else if(validateContactNumber($data['cnumber'])!="true"){
                     $data['cnumber_err']=validateContactNumber($data['cnumber']);
+                } else {
+                    //check for existing contact number
+                    if($this->patientModel->findPatientByContactNumber($data['cnumber'])) {
+                        $data['cnumber_err'] = 'Contact number already in use';
+                    }
                 }
 
                 // Validate gender

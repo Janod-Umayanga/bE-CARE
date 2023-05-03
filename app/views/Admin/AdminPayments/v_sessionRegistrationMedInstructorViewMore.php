@@ -28,16 +28,10 @@
                         <button class="backto-counsellors " type="submit" ><i class="fa-solid fa-arrow-left"></i>Back to Session Registration Payments </button> 
                 </form>
                 
-                <?php 
-                if($data['sessionRegistration']->gender=='Male'){
-                   $gender='Mr.';
-                }else if($data['sessionRegistration']->gender=='Female'){
-                   $gender='Mrs.';
-                }   
-                ?>
+       
                    
 
-                <h1><?php echo $gender ?> <?php echo $data['sessionRegistration']->first_name ?> <br> <?php echo $data['sessionRegistration']->last_name ?></h1>
+                <h1><?php echo $data['sessionRegistration']->gender ?>. <?php echo $data['sessionRegistration']->first_name ?> <br> <?php echo $data['sessionRegistration']->last_name ?></h1>
                 <h3>Meditation Instructor</h3>
             </div>
 
