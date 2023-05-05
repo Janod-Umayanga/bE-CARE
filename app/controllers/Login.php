@@ -27,8 +27,10 @@
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 
                 // Inserted form
+                //trim() whitespace characters removed from the beginning and end of the input string.
+
                 $data = [
-                    'usertype' => trim($_POST['usertype']),
+                    'usertype' => trim($_POST['usertype']),  
                     'email' => trim($_POST['email']),
                     'password' => trim($_POST['password']),
 
@@ -581,7 +583,7 @@
                // session_destroy();
           
                 $_SESSION['logout'] = true;
-                redirect('pages/v_login');  
+                redirect('Pages/index');  
             }
             elseif(isset($_SESSION['MedInstr_id'])){
                 unset($_SESSION['MedInstr_id']);
@@ -599,7 +601,7 @@
               
                 $_SESSION['logout'] = true;
                 
-                redirect('pages/v_login');
+                redirect('Pages/index');
             }
             elseif(isset($_SESSION['doctor_id'])){  
                 unset($_SESSION['doctor_id']);
@@ -626,7 +628,7 @@
                 // session_destroy();
 
                 $_SESSION['logout'] = true;
-                redirect('Pages/v_login');
+                 redirect('Pages/index');
             }
             elseif(isset($_SESSION['pharmacist_id'])){  
                 unset($_SESSION['pharmacist_id']);
@@ -635,7 +637,7 @@
                 // session_destroy();
 
                 $_SESSION['logout'] = true;
-                redirect('Pages/v_login');
+                 redirect('Pages/index');
             }
 
         }    
@@ -740,7 +742,7 @@
      
                      $flag=1;
                      if($updateResult) {
-                         $val = sendMail($email,$name, $token, $flag,'');
+                         $val = sendMail($email,$name, $token, $flag, $userType);
           
                          if($val){
                              $data = [

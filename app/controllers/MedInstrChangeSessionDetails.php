@@ -2,6 +2,7 @@
 
 class MedInstrChangeSessionDetails extends Controller{
   private $medInstrChangeSessionDetailsModel; 
+
   public function __construct(){
     $this->medInstrChangeSessionDetailsModel = $this->model('M_MedInstrChangeSessionDetails');
   }
@@ -11,7 +12,7 @@ class MedInstrChangeSessionDetails extends Controller{
   {
     if(isset($_SESSION['MedInstr_id'])) {  
   
-    $sessionDetail= $this->medInstrChangeSessionDetailsModel->getSessionDetails($_SESSION['MedInstr_id']);
+   $sessionDetail= $this->medInstrChangeSessionDetailsModel->getSessionDetails($_SESSION['MedInstr_id']);
    $data=[
      'sessionDetail'=> $sessionDetail,
      'search'=> ''

@@ -203,7 +203,7 @@
 
   function validateDescription($description) {
     // Check if the description contains only letters, numbers, spaces and common special characters
-    if (!preg_match('/^[A-Za-z0-9\s.,#\-\/\(\)]+$/', $description)) {
+    if (!preg_match('/^[A-Za-z0-9\s.,#\'\-\/\(\)]+$/', $description)) {
       return "Description contains invalid characters.";
     }
     

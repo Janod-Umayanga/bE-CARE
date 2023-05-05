@@ -37,12 +37,15 @@
                     <div class="left"> <br><br>
 
                         <label>Email</label><br>
-                        <input type="text"  name="email" id="email"  value="<?php echo $_SESSION['email_reset_password'] ?>" >
+                        <input type="text"  name="emailtext" id="email" disabled='true' value="<?php if(isset($_GET['email'])){ echo $_GET['email']; $_SESSION['email_reset_password']=$_GET['email'];} else{ echo $_SESSION['email_reset_password']; } ?>" >
+                        <input type="hidden"  name="email" id="email"  value="<?php if(isset($_GET['email'])){ echo $_GET['email']; $_SESSION['email_reset_password']=$_GET['email'];} else{ echo $_SESSION['email_reset_password']; } ?>" >
+                       
                         
                          <label>New Password</label>
                          <input type="password" name="new_pwd" id="password"  >
                          <span class="form-invalid"><?php echo $data['new_pwd_err'] ?></span>
-
+                         <input type="hidden"  name="usertype" id="usertype"  value="<?php if(isset($_GET['usertype'])){ $_SESSION['usertype']=$_GET['usertype'];} ?>" >
+                       
 
                          <label>Re-Type New Password</label>
                          <input type="password" name="password" id="passwordRepeat"  >

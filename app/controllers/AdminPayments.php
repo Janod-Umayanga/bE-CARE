@@ -1303,17 +1303,10 @@ public function medInstructorRegistrationViewMore($id)
  
       //Total Fee ,ServiceProvider fee, profit   
             
-        if($_SESSION['payment_service']=='pharmacistOrder'){
-          $pdf->Cell(30,10,Round($row->charge,2), 1 , 0, 'C');
-          $pdf->Cell(60,10,Round(($row->charge/110)*100,2), 1 , 0, 'C');
-          $pdf->Cell(30,10,Round(($row->charge/110)*10,2), 1 , 0, 'C');
-       
-        }else{
           $pdf->Cell(30,10,Round($row->paid_amount,2), 1 , 0, 'C');
           $pdf->Cell(60,10,Round(($row->paid_amount/110)*100,2), 1 , 0, 'C');
           $pdf->Cell(30,10,Round(($row->paid_amount/110)*10,2), 1 , 0, 'C');
        
-        }
           
 
       //Paid Time

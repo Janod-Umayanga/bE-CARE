@@ -118,12 +118,16 @@ class MedInstr extends Controller{
 
 
        if(empty($data['current_password_err']) && empty($data['retype_new_password_err']) && empty($data['new_password_err'])){
-     
+
+        //password_hash($data['new_password'],PASSWORD_DEFAULT)
+        //second argument is the hashing algorithm to be used. PASSWORD_DEFAULT is a constant 
+        //that represents the strongest algorithm currently supported by PHP.
+
         $data['password']=password_hash($data['new_password'],PASSWORD_DEFAULT);
-        $changeUserPW=$this->userModel->changePW($data);
+        $changeUserPW=$this->userModel->changePWMedInstr($data);
 
           if($changeUserPW){
-            
+            $_SESSION['profile_updatePasswordMedInstr']="true";
             redirect('MedInstr/changePW');    
             
           }
