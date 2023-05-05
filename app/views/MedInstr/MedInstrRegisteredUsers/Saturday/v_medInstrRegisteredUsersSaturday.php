@@ -39,7 +39,7 @@
             <?php foreach($data['saturday'] as $saturday): ?>
                      
                <h1><?php echo $saturday->date; ?> | <?php echo $saturday->day; ?></h1>
-                   <h4 style="color:Green;"><?php echo $saturday->address; ?> | Rs.<?php echo $saturday->fee; ?></h4>
+                   <h4 style="color:Green;"><?php echo $saturday->address; ?> | Rs.<?php echo $saturday->fee; ?>  | Max no of participants: <?php echo $saturday->noOfParticipants; ?></h4>
           
 
             <div class="table">

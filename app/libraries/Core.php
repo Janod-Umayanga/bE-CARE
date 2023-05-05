@@ -12,7 +12,7 @@
             // print_r($this->getURL());
             $url = $this->getURL();
 
-           if(file_exists('../app/controllers/'.ucwords($url[0]).'.php')) {
+           if(file_exists('../app/controllers/'.ucwords($url[0]).'.php')) {  //capitalize the first letter of the first word in the protocol string.
                 // Load the controller if exists
                 $this->currentController = ucwords($url[0]);
 
@@ -43,9 +43,12 @@
 
         public function getURL() {
             if(isset($_GET['url'])) {
-                $url = rtrim($_GET['url'], '/');
+                $url = rtrim($_GET['url'], '/');  //removes any trailing slashes from the url
                 $url = filter_var($url, FILTER_SANITIZE_URL);
-                $url = explode('/', $url);
+                $url = explode('/', $url);  //splits a string into an array
+
+                //http://localhost/be-care/Login/forgotPassword
+                //print_r($url);  ex: Array ( [0] => Login [1] => forgotPassword )
 
                 return $url;
             }

@@ -768,6 +768,14 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
         
     }
 
+    //$_FILES['qualification_file']
+    //contain info about the uploaded file, such name, type, size, and temporary location
+
+
+    //str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT)
+    //generates a random number between 0 and 99999 using the rand() function
+    //Then pads it with leading zeros until it reaches a length of 5 using the str_pad() function.
+
 
       //Add new Doctor
 
@@ -795,7 +803,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
              'type'=>trim($_POST['type']),
              'specialization'=>trim($_POST['specialization']),
              'gender'=>trim($_POST['gender']),
-             'qualification_file'=>$_FILES['qualification_file'],
+             'qualification_file'=>$_FILES['qualification_file'],    
              'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT).'_'.$_FILES['qualification_file']['name'],
              
           
@@ -822,8 +830,14 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
           if(empty($data['qualification_file'])){
             $data['qualification_file_err']='qualification file can not be empty';
           }else{
+              
+            //split the filename of the uploaded file into an array of strings, based on the delimiter "."
               $fileExt=explode('.',$_FILES['qualification_file']['name']);
+
+              
               $fileActualExt=strtolower(end($fileExt));
+              
+              
               $allowed=array('jpg','jpeg','png','pdf','zip','rar');
 
             
@@ -1073,7 +1087,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
      }
            
        }
+        
        
+       
+
 
              //Add new Counsellor
 

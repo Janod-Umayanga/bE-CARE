@@ -141,6 +141,30 @@
             return false;
         } 
       }
+
+
+   //changePW MedInstr
+    public function changePWMedInstr($data){
+      $this->db->query('UPDATE meditation_instructor set password = :password WHERE meditation_instructor_id = :id');
+      $this->db->bind(':password', $data['password']);
+      
+      if(!empty($data['meditation_instructor_id'])){
+        $this->db->bind(':id', $data['meditation_instructor_id']);
+   
+      }else{
+        $this->db->bind(':id', $data['meditation_instructor_id']);
+   
+      }
+          
+
+      if($this->db->execute()){
+         return true;
+      }else{
+          return false;
+      } 
+    }
+
+
       
      // Set Token
       public function setToken($token,$email)

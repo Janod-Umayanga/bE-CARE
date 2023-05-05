@@ -118,7 +118,7 @@ class Admin extends Controller{
        if(empty($data['current_password_err']) && empty($data['retype_new_password_err']) && empty($data['new_password_err'])){
      
         $data['password']=password_hash($data['new_password'],PASSWORD_DEFAULT);
-        $changeUserPW=$this->userModel->changePW($data);
+        $changeUserPW=$this->userModel->changePWAdmin($data);
 
           if($changeUserPW){
             $_SESSION['profile_updatePasswordAdmin']="true";

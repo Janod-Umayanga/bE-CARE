@@ -676,7 +676,7 @@ class ServiceProviderSignup extends Controller{
           $data['m_contact_number_err']=validateContactNumber($data['m_contact_number']);
         }
          
-           if(empty($data['m_email'])){
+         if(empty($data['m_email'])){
              $data['m_email_err']='email can not be empty';
          }else if(validateEmail($data['m_email'])!="true"){
           $data['m_email_err']=validateEmail($data['m_email']);
@@ -701,7 +701,7 @@ class ServiceProviderSignup extends Controller{
           $data['m_city_err']=validateCity($data['m_city']);
          }
 
-           if(empty($data['m_bank_name'])){
+         if(empty($data['m_bank_name'])){
              $data['m_bank_name_err']='bank name can not be empty';
          }else if(validateBankName($data['m_bank_name'])!="true"){
           $data['m_bank_name_err']=validateBankName($data['m_bank_name']);
