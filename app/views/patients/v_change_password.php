@@ -19,8 +19,8 @@
                 <a href="<?php echo URLROOT ?>/Patient/details" class="page-change-button"><i class="fa-solid fa-arrow-left"></i>Back to Your Details</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Enter your login details to get into the application</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                    <h2>Change your password</h2>
+                    <p>Provide your current password. Then fill the new password twice. Make sure to give a strong password.</p>
                 </div>
             </div>
         </div>

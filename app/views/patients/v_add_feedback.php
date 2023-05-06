@@ -21,8 +21,8 @@
                 <a href="<?php echo URLROOT ?>/Pages/index" class="page-change-button"><i class="fa-solid fa-arrow-left"></i>Back to Home</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Enter your login details to get into the application</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                    <h2>Enter your feedback</h2>
+                    <p>Type your feedback on our Be Care website to share the experience with others. Mention if our service has been helpful for you and don't forget to mention the weaknesses of our system if you faced any so we can improve the system according to your needs.</p>
                 </div>
             </div>
         </div>

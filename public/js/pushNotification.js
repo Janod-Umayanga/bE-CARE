@@ -4,6 +4,8 @@ let orderSentMessage = document.getElementById('isOrderSent')
 let paidForOrderMessage = document.getElementById('isPaidForOrder')
 let channelCreatedMessage = document.getElementById('isChannelCreated')
 let loggedOutMessage = document.getElementById('isLoggedOut')
+let detailsUpdatedMessage = document.getElementById('isDetailsUpdated')
+let passwordUpdatedMessage = document.getElementById('isPasswordUpdated')
 
 // Logged in notification for patient
 if (loggedInMessage.innerText) {
@@ -66,5 +68,29 @@ if (loggedOutMessage.innerText) {
         notification.remove()
     }, 6000)
     loggedOutMessage.innerText = ""
+}
+
+// Details updated notification for patient
+if (detailsUpdatedMessage.innerText) {
+    const notification = document.createElement('div')
+    notification.classList.add('notification')
+    notification.innerHTML = '<i class="fa-solid fa-circle-check"></i> Account details updated successfully'
+    notificationContainer.appendChild(notification)
+    setTimeout(() => {
+        notification.remove()
+    }, 6000)
+    detailsUpdatedMessage.innerText = ""
+}
+
+// Password updated notification for patient
+if (passwordUpdatedMessage.innerText) {
+    const notification = document.createElement('div')
+    notification.classList.add('notification')
+    notification.innerHTML = '<i class="fa-solid fa-circle-check"></i> Password updated successfully'
+    notificationContainer.appendChild(notification)
+    setTimeout(() => {
+        notification.remove()
+    }, 6000)
+    passwordUpdatedMessage.innerText = ""
 }
 

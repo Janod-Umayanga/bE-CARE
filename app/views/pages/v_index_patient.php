@@ -105,6 +105,8 @@
     <span id="isPaidForOrder"><?php if(isset($_SESSION['paid_for_order'])){echo $_SESSION['paid_for_order']; unset($_SESSION['paid_for_order']);}?></span>
     <span id="isChannelCreated"><?php if(isset($_SESSION['channel_created'])){echo $_SESSION['channel_created']; unset($_SESSION['channel_created']);}?></span>
     <span id="isLoggedOut"><?php if(isset($_SESSION['logout'])){echo $_SESSION['logout']; unset($_SESSION['logout']);}?></span>
+    <span id="isDetailsUpdated"><?php if(isset($_SESSION['details_updated'])){echo $_SESSION['details_updated']; unset($_SESSION['details_updated']);}?></span>
+    <span id="isPasswordUpdated"><?php if(isset($_SESSION['pw_updated'])){echo $_SESSION['pw_updated']; unset($_SESSION['pw_updated']);}?></span>
     <?php require APPROOT.'/views/inc/components/footer1.php'; ?>
 </body>
 </html>

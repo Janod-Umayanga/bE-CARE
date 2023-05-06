@@ -20,8 +20,8 @@
                 <a href="<?php echo URLROOT ?>/Pages/index" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Homepage</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Fill these details to request the diet plan</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                    <h2 id="form-text">Fill these details to signup as a patient</h2>
+                    <p id="form-text-paragraph">You will be receive an email for the provided email address to complete the signup process. Then you can proceed to login with the relevant credentials.</p>
                 </div>
             </div>
         </div>

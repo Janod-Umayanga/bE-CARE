@@ -17,27 +17,39 @@ function setFormNumber() {
 const forms = [
     {
         text: 'Patient',
-        element: document.getElementById('patient-form')
+        element: document.getElementById('patient-form'),
+        headerText: 'Fill these details to signup as a patient',
+        paragraphText: 'You will receive an email for the provided email address to complete the signup process. Then you can proceed to login with the relevant credentials.'
     },
     {
         text: 'Doctor',
-        element: document.getElementById('doctor-form')
+        element: document.getElementById('doctor-form'),
+        headerText: 'Fill these details to signup as a doctor',
+        paragraphText: 'The qualification file should include MBBS degree certificates, license or registration certificates, specialization certificates, continuing education certificates, professional memberships and any other relevant documentation as per the requirements of the Be Care web application. You will receive an email for the provided email address with the credentials needed to login to the Be Care web application after your qualifications are verified by a professional panel.'
     },
     {
         text: 'Counsellor',
-        element: document.getElementById('counsellor-form')
+        element: document.getElementById('counsellor-form'),
+        headerText: 'Fill these details to signup as a counsellor',
+        paragraphText: 'The qualification file should include MBBS degree certificates, license or certification , specialization certificates, continuing education certificates, and proof of professional memberships , Additional relevant documents. You will receive an email for the provided email address with the credentials needed to login to the Be Care web application after your qualifications are verified by a professional panel.'
     },
     {
         text: 'Pharmacist',
-        element: document.getElementById('pharmacist-form')
+        element: document.getElementById('pharmacist-form'),
+        headerText: 'Fill these details to signup as a pharmacist',
+        paragraphText: 'The qualification file should include pharmacist license, and relevant certificates, and professional memberships, Additional documentation. Delivery service availability is a mandatory requirement for a pharmacy to be registered. You will receive an email for the provided email address with the credentials needed to login to the Be Care web application after your qualifications are verified by a professional panel.'
     },
     {
         text: 'Nutritionist',
-        element: document.getElementById('nutritionist-form')
+        element: document.getElementById('nutritionist-form'),
+        headerText: 'Fill these details to signup as a nutritionist',
+        paragraphText: 'The qualification file may include MBBS degree certifications, continuing education certificates, professional memberships, and other relevant documentation, such as awards or publications. You will receive an email for the provided email address with the credentials needed to login to the Be Care web application after your qualifications are verified by a professional panel.'
     },
     {
         text: 'Meditation Instructor',
-        element: document.getElementById('meditation-instructor-form')
+        element: document.getElementById('meditation-instructor-form'),
+        headerText: 'Fill these details to signup as a meditation-instructor',
+        paragraphText: 'The qualification file should include training and workshop certificates, personal experience and practice, professional memberships, references, and any other relevant documentation. References: Contact information for references who can attest to the instructor\'s qualifications and experience, such as previous employers, colleagues, or students. You will receive an email for the provided email address with the credentials needed to login to the Be Care web application after your qualifications are verified by a professional panel.'
     }
 ]
 let setFormElement = forms
@@ -76,6 +88,8 @@ function resetState() {
 function showForm(form) {
     statusElement.innerHTML = form.text
     form.element.style.display = 'flex'
+    document.getElementById('form-text').innerHTML = form.headerText
+    document.getElementById('form-text-paragraph').innerHTML = form.paragraphText
 }
 
 
