@@ -102,7 +102,9 @@ class CounsellorChangeSessionDetails extends Controller{
 
         if(empty($data['date'])){
           $data['date_err']='Please select a date';
-        }
+        }else if(validateDate($data['date'])!="true"){
+          $data['date_err']=validateDate($data['date']);
+         }
 
         if(empty($data['starting_time'])){
            $data['starting_time_err']='Please select a starting time';
@@ -278,7 +280,9 @@ class CounsellorChangeSessionDetails extends Controller{
 
             if(empty($data['date'])){
               $data['date_err']='Please select a date';
-            }
+            }else if(validateDate($data['date'])!="true"){
+              $data['date_err']=validateDate($data['date']);
+             }
 
             if(empty($data['starting_time'])){
                $data['starting_time_err']='Please select a starting time';

@@ -23,8 +23,8 @@
                 <a href="<?php echo URLROOT ?>/Counsellor/dashboard" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Home page</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Enter your login details to get into the application</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                    <h2>Update your profile with the relevant details</h2>
+                    <p>Click the "Update" button to save your changes and update your profile information.</p>    
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
                         <span class="form-invalid"><?php echo $data['last_name_err'] ?></span>
 
                         <label for="nic">NIC</label>
-                        <input type="text" id="nic" name="nic" value="<?php echo $data['nic'] ?>">
+                        <input type="text" id="nic" name="nic" disabled= "true" value="<?php echo $data['nic'] ?>">
                         <span class="form-invalid"><?php echo $data['nic_err'] ?></span>
 
                         <label for="contact_number">contact Number</label>
@@ -62,24 +62,37 @@
                         <input type="email" id="email" name="email" disabled="true" value="<?php echo $data['email'] ?>">
                         
             
-                        <label for="city">City</label>
-                        <input type="text" id="city" name="city" value="<?php echo $data['city'] ?>">
-                        <span class="form-invalid"><?php echo $data['city_err'] ?></span>
+                       
 
-                      
+                        <label for="city">City</label>
+                            <select name="city" id="city">
+                                <option value="">City</option>
+                                <option value="Colombo">Colombo</option>
+                                <option value="Galle">Galle</option>
+                                <option value="Kandy">Kandy</option>
+                                <option value="Malabe">Malabe</option>
+                                <option value="Matara">Matara</option>
+                                <option value="Nugegoda">Nugegoda</option>
+                                <option value="Ratnapura">Ratnapura</option>
+                                <option value="Trincomalee">Trincomalee</option>
+                           </select> 
+
+                           <span class="form-invalid"><?php echo $data['city_err'] ?></span>
+
                         <button type="submit" >Submit</button> 
                     </div>
     
                     <div class="right">
                         
                         <label for="slmc">SLMC registration Number</label>
-                        <input type="text" id="slmc" name="slmc" value="<?php echo $data['slmc_reg_number'] ?>">
+                        <input type="text" id="slmc" name="slmc" disabled= "true" value="<?php echo $data['slmc_reg_number'] ?>">
                         <span class="form-invalid"><?php echo $data['slmc_reg_number_err'] ?></span>
                  
-                        <label for="gender">Gender</label>
+                        <label for="gender">Title</label>
                         <select name="gender" id="gender" >
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
+                           <option value="">Title</option>
+                           <option value="Mr">Mr</option>
+                           <option value="Ms">Ms</option>
                         </select>
                         <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
 
@@ -99,8 +112,7 @@
                         <input type="text" id="account_number" name="account_number" value="<?php echo $data['account_number'] ?>">
                         <span class="form-invalid"><?php echo $data['account_number_err'] ?></span>
 
-
-                        
+                      
                     </div>
                 </div>
             </form>

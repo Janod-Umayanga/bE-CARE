@@ -523,6 +523,10 @@
             $_SESSION['doctor_id'] = $doctor->doctor_id;
             $_SESSION['doctor_email'] = $doctor->email;
             $_SESSION['doctor_name'] = $doctor->first_name;
+            $_SESSION['doctor_contact_number'] = $doctor->contact_number;
+            $_SESSION['doctor_nic'] = $doctor->nic;
+            $_SESSION['doctor_slmc_reg_number'] = $doctor->slmc_reg_number;
+            $_SESSION['doctor_account_number'] = $doctor->account_number;
             $_SESSION['first_time_logged'] = true;
         
             redirect('Doctor/dashboard');
@@ -532,6 +536,11 @@
             $_SESSION['counsellor_id'] = $counsellor->counsellor_id;
             $_SESSION['counsellor_email'] = $counsellor->email;
             $_SESSION['counsellor_name'] = $counsellor->first_name;
+            $_SESSION['counsellor_contact_number'] = $counsellor->contact_number;
+            $_SESSION['counsellor_nic'] = $counsellor->nic;
+            $_SESSION['counsellor_slmc_reg_number'] = $counsellor->slmc_reg_number;
+            $_SESSION['counsellor_account_number'] = $counsellor->account_number;
+
             $_SESSION['first_time_logged'] = true;
         
             redirect('Counsellor/dashboard');

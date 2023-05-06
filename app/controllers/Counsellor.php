@@ -201,14 +201,14 @@
          if($_SERVER['REQUEST_METHOD']=='POST'){
 
               $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-      
+              
               $data=[
                 'email'=> $_SESSION['counsellor_email'],
                 'counsellor_id'=>$userId,
                 'first_name'=>trim($_POST['first_name']),
                 'last_name'=>trim($_POST['last_name']),
-                'nic'=>trim($_POST['nic']),
-                'slmc_reg_number'=>trim($_POST['slmc']),
+                'nic'=>$_SESSION['counsellor_nic'],
+                'slmc_reg_number'=>$_SESSION['counsellor_slmc_reg_number'],
                 'contact_number'=>trim($_POST['contact_number']),
                 'bank_name'=>trim($_POST['bank_name']),
                 'account_holder_name'=>trim($_POST['account_holder_name']),
@@ -236,31 +236,45 @@
             
              if(empty($data['first_name'])){
                 $data['first_name_err']='first name can not be empty';
+             }else if(validateFirstName($data['first_name'])!="true"){
+              $data['first_name_err']=validateFirstName($data['first_name']);
              }
       
              if(empty($data['last_name'])){
                 $data['last_name_err']='last name can not be empty';
+             }else if(validateLastName($data['last_name'])!="true"){
+              $data['last_name_err']=validateLastName($data['last_name']);
              }
       
              if(empty($data['nic'])){
                 $data['nic_err']='nic can not be empty';
+             }else if(validateNIC($data['nic'])!="true"){
+              $data['nic_err']=validateNIC($data['nic']);
              }
       
              if(empty($data['contact_number'])){
                 $data['contact_number_err']='contact number can not be empty';
-             }
+             }else if(validateContactNumber($data['contact_number'])!="true"){
+              $data['contact_number_err']=validateContactNumber($data['contact_number']);
+            }
       
              if(empty($data['bank_name'])){
               $data['bank_name_err']='bank name can not be empty';
+           }else if(validateBankName($data['bank_name'])!="true"){
+            $data['bank_name_err']=validateBankName($data['bank_name']);
            }
       
             if(empty($data['account_holder_name'])){
                 $data['account_holder_name_err']='account holder name can not be empty';
-            }
+            }else if(validateAccountHolderName($data['account_holder_name'])!="true"){
+              $data['account_holder_name_err']=validateAccountHolderName($data['account_holder_name']);
+             }
       
             if(empty($data['branch'])){
                 $data['branch_err']='branch name can not be empty';
-            }
+            }else if(validateBankBranch($data['branch'])!="true"){
+              $data['branch_err']=validateBankBranch($data['branch']);
+             }
       
             if(empty($data['gender'])){
                 $data['gender_err']='gender can not be empty';
@@ -268,17 +282,53 @@
       
              if(empty($data['account_number'])){
                 $data['account_number_err']='account number can not be empty';
+             }else if(validateAccountNumber($data['account_number'])!="true"){
+              $data['account_number_err']=validateAccountNumber($data['account_number']);
              }
       
              if(empty($data['city'])){
                 $data['city_err']='city can not be empty';
+             }else if(validateCity($data['city'])!="true"){
+              $data['city_err']=validateCity($data['city']);
              }
              
              if(empty($data['slmc_reg_number'])){
                  $data['slmc_reg_number_err']='slmc registration number can not be empty';
-              }
+              }else if(validateSlmcRegisterNumber($data['slmc_reg_number'])!="true"){
+                $data['slmc_reg_number_err']=validateSlmcRegisterNumber($data['slmc_reg_number']);
+               }
+
+               if($_SESSION['counsellor_contact_number']!=  trim($_POST['contact_number'])){
      
+                if($this->counsellorModel->findCounsellorByContactNumber($data['contact_number'])){
+                  $data['contact_number_err']='Contact Number is already used';
+        
+                } 
+                else if($this->counsellorModel->findReqCounsellorByContactNumber($data['contact_number'])){
+                  $data['contact_number_err']='Contact Number is already used';
+        
+                }
+                
+              }
              
+              
+        
+        
+              if($_SESSION['counsellor_account_number']!=trim(trim($_POST['account_number']))){
+             
+          
+                if($this->counsellorModel->findCounsellorByAccountNumber($data['account_number'])){
+                  $data['account_number_err']='Account Number is already used';
+        
+                } 
+                else if($this->counsellorModel->findReqCounsellorByAccountNumber($data['account_number'])){
+                  $data['account_number_err']='Account Number is already used';
+        
+                }
+        
+        
+              }
+
       
             if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['gender_err'])  && empty($data['city_err'])&& empty($data['address_err'])&& empty($data['fee_err'])&& empty($data['bank_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])){
                   if($this->counsellorModel->editUser($data)){
@@ -375,6 +425,8 @@
              if(empty($data['current_password'])){
                $data['current_password_err']='Please enter a current password';
             
+             }else if(validatePassword($data['current_password'])!="true"){
+              $data['current_password_err']=validatePassword($data['current_password']);
              }else{
                 if($this->counsellorModel->findUserPWMatch($id,$data['current_password'])){
            
@@ -385,22 +437,29 @@
              }
              if($data['new_password']!=$data['retype_new_password']){
               $data['new_password_err']='New password and retype new password is incorrect';
-             } 
+             }
       
              if(empty($data['new_password'])){
                 $data['new_password_err']='Please enter a new password';
-             } 
+             }else if(validatePassword($data['new_password'])!="true"){
+              $data['new_password_err']=validatePassword($data['new_password']);
+             }
              
              if(empty($data['retype_new_password'])){
               $data['retype_new_password_err']='Please retype new password';
-           } 
+             }else if(validatePassword($data['retype_new_password'])!="true"){
+              $data['retype_new_password_err']=validatePassword($data['retype_new_password']);
+            }
       
              if(empty($data['current_password_err']) && empty($data['retype_new_password_err']) && empty($data['new_password_err'])){
            
               $data['password']=password_hash($data['new_password'],PASSWORD_DEFAULT);
-              $changeUserPW=$this->counsellorModel->changePW($data);
+              $changeUserPW=$this->counsellorModel->changePWCounsellor($data);
       
                 if($changeUserPW){
+
+                  $_SESSION['profile_updatePasswordCounsellor'] = "true";
+
                   redirect('counsellor/changePassword');    
                   
                 }
