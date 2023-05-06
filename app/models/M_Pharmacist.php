@@ -44,6 +44,19 @@
             }
         }
 
+        public function isDeactivateAccount($email){
+            $this->db->query('SELECT delete_flag FROM pharmacist WHERE email=:email');
+            $this->db->bind(':email',$email);
+            
+            $row= $this->db->single();
+            
+            if($this->db->rowCount() >0){
+              return $row;
+            }else{
+                  return false;
+            }  
+        }    
+
         // Login pharmacist
         public function login($email, $password) {
             $this->db->query('SELECT * FROM pharmacist WHERE email = :email');
@@ -190,7 +203,7 @@
             $this->db->query('UPDATE order_request
             SET is_disabled = 1 WHERE order_request_id = :order_request_id');
 
-            $this->db->bind(':order_request_id',$data['more']->oreder_request_id);
+            $this->db->bind(':order_request_id',$data['more']->order_request_id);
 
             if($this->db->execute()) {
                 return true;

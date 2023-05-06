@@ -26,7 +26,7 @@
         </div>
         <div class="diet-plan-rightside">
             <form action="<?php echo URLROOT ?>/Pharmacist/acceptOrderSubmit/" method="POST">
-   <input type="hidden" name="order_request_id" value=" <?php echo $data['more']->order_request_id; ?>"> 
+            <input type="hidden" name="order_request_id" value=" <?php echo $data['more']->order_request_id; ?>"> 
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left">
 
@@ -52,7 +52,7 @@
                         <button type="submit">Accept </button>
                   
                     
-               </div>
+                </div>
             </form>
         </div>
     </section>  

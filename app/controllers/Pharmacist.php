@@ -1,4 +1,4 @@
-<?php
+ <?php
 
    class Pharmacist extends Controller {
     
@@ -143,7 +143,7 @@ public function acceptOrders(){
 }
 
 
-public function acceptOrderSubmit()
+public function acceptOrderSubmit() // submit form and send an email 
 {
 
 if(isset($_SESSION['pharmacist_id'])){
@@ -160,7 +160,7 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
     'more' => $more,
     'pharmacist_note'=> trim($_POST['pharmacist_note']),
     'bill' => trim($_POST['bill']),
-    'charge'=> trim($_POST['charge']),
+    'charge'=> trim($_POST['charge']),  
 
     'pharmacist_note_err'=>'',
     'bill_err' => '',
@@ -191,10 +191,13 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
 }
 }
 
+
 }    
 else 
 {   redirect('Login/login');
 }   
+
+
 }
 
 

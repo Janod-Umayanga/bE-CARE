@@ -141,10 +141,10 @@ public function viewissueDietPlans()
   }
 }
 
-//
+//send diet plan and email to patient
 public function sendDietPlan()
 {
- 
+    /*Send diet plan*/
   if(isset($_SESSION['nutritionist_id'])){
     
 
@@ -190,6 +190,21 @@ else
 {
 redirect('Login/login');
 }   
+
+ /*Send an email to patient*/
+ /*if (isset($_POST['submit'])){
+     
+     $name=$ 
+     $email =  $_SESSION['nutritionist_email'];
+     $subject = 'Your requested Diet Plan';
+     $message = $_POST['description'];
+     $dietFile = $_POST['diet_plan_file'];
+
+     $to = 'danamaduwije98@gmail.com';
+     $mail_subject = 
+     
+ }*/
+
 }
 
 // Nutritionist View Profile

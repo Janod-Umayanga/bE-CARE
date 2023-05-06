@@ -2,7 +2,7 @@
         <div class="top-content-formobile"></div> <!-- This only appear when view width fits for mobile-->
 
         <div class="aside-menu">
-            <span id="line" class="theme"></span>
+            <span id="line" class="theme"></span> 
             <span id="line" class="theme"></span>
             <span id="line" class="theme"></span>
         </div>
@@ -70,11 +70,11 @@
                             <a href="<?php echo URLROOT ?>/Login/logout" class="nav-buttons register-button">LOG OUT</a>
                        
                         <?php elseif(isset($_SESSION['nutritionist_id'])): ?>
-                            <a href="<?php echo URLROOT ?>/Nutritionist/profDetails" class="nav-buttons"><?php echo $_SESSION['nutritionist_name'] ?></a>
+                            <a href="<?php echo URLROOT ?>/Nutritionist/profile" class="nav-buttons"><?php echo $_SESSION['nutritionist_name'] ?></a>
                             <a href="<?php echo URLROOT ?>/Login/logout" class="nav-buttons register-button">LOG OUT</a>
                        
                         <?php elseif(isset($_SESSION['pharmacist_id'])): ?>
-                            <a href="<?php echo URLROOT ?>/Pharmacist/profDetails" class="nav-buttons"><?php echo $_SESSION['pharmacist_name'] ?></a>
+                            <a href="<?php echo URLROOT ?>/Pharmacist/profile" class="nav-buttons"><?php echo $_SESSION['pharmacist_name'] ?></a>
                             <a href="<?php echo URLROOT ?>/Login/logout" class="nav-buttons register-button">LOG OUT</a>
                        
                         <?php else: ?>

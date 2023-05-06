@@ -60,10 +60,54 @@
                                 <button class="accept " name="submit" >Accept</button>
                           </form>
 
-                          <form  action="<?php echo URLROOT;?>/Pharmacist/rejectOrders/" method="post">
+                         
+                          <!--reject button-->  
+                          <form id="order-form" action="<?php echo URLROOT;?>/Pharmacist/rejectOrders/" method="post">   
+                                <button type="submit" class="reject " name="submit" onclick="openPopup()">Reject</button>
                                 <input type="hidden" name="order_request_id" value="<?php echo $orders->order_request_id; ?>">
-                                <button class="reject " name="submit">Reject</button>
-                          </form>
+                                <div class="popup" id="popup">
+                                <input type="hidden" name="order_request_id" value="<?php echo $orders->order_request_id; ?>">
+                                    <h2></h2>
+                                    <p>Are you sure you want to reject this order request.</p>
+                                    <button type="submit" class="button" onclick="closePopup()">Cancel</button>
+
+                                    
+                                
+                                     
+                                        <button type="submit" class="button" onclick="rejectOrder()" >Yes.Reject it!</button>
+
+                                    <!--    <button type="submit" class="button" onclick="closePopup()" >Yes.Reject it!</button> -->
+                                    </form> 
+
+
+                                </div>
+
+                                <script>
+                                    let popup = document.getElementById("popup");
+
+                                    function openPopup(){
+                                        popup.classList.add("open-popup");
+                                    }
+
+                                    function closePopup(){
+                                        popup.classList.remove("open-popup")
+                                    }
+
+                                    function rejectOrder() {
+                                                 // Submit the form data
+                                                popup.classList.remove("open-popup")
+                                            //    document.getElementById("order-form").submit();
+
+                                                // Redirect to a new page
+                                                window.location.href = "<?php echo URLROOT;?>/Pharmacist/rejectOrders/";
+                                        }
+
+
+                                </script>
+
+</form> 
+                          
+                          
                         
                         </td>
                         

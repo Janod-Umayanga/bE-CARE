@@ -10,13 +10,13 @@
     <script src="https://kit.fontawesome.com/c4a594ff55.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
-    <title>Counsellor Details</title>
+    <title>Pharmacist Details</title>
 </head>
 <body>
     <section class="diet-plan-section">
         <div class="diet-plan-leftside">
             <div class="diet-left-side-container">
-                <a href="<?php echo URLROOT ?>/Nutritionist/nutritionistDashBoard" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Home page</a>
+                <a href="<?php echo URLROOT ?>/Pharmacist/dashboard" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Home page</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
                     <h2>Enter your login details to get into the application</h2>
@@ -26,7 +26,7 @@
         </div>
         <div class="diet-plan-rightside">
            
-        <form action="<?php echo URLROOT ?>/Nutritionist/updatePassword/<?php echo $_SESSION['nutritionist_id'];?>" method="POST">
+        <form action="<?php echo URLROOT ?>/Pharmacist/updatePassword/<?php echo $_SESSION['pharmacist_id'];?>" method="POST">
                 
                 <div class="">
                     <h1>Change Password</h1>
