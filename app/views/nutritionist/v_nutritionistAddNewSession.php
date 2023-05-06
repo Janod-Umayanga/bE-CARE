@@ -20,7 +20,8 @@
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
                     <h2>Fill these details to add new session</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                    <p>Click the "Submit" button to save your changes and add new session.</p>
+                    
                 </div>
             </div>
         </div>
@@ -49,6 +50,10 @@
                         <label for="address">Address</label>
                         <input type="text" id="address" name="address" value="<?php echo $data['address'] ?>">
                         <span class="form-invalid"><?php echo $data['address_err'] ?></span>
+
+                        <label for="noOfParticipants">Maximum No of Participants</label>
+                        <input type="text" id="noOfParticipants" name="noOfParticipants" value="<?php echo $data['noOfParticipants'] ?>">
+                        <span class="form-invalid"><?php echo $data['noOfParticipants_err'] ?></span>
    
                         <button>Submit</button>
                     </div>

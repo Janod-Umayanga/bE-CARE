@@ -58,7 +58,7 @@ public function findNutritionistNewSession($id)
 public function searchNutritionistNewSession($id,$search)
 {
 $current_date= date("Y-m-d");
-$this->db->query("SELECT * FROM session WHERE nutritionist_id=:id AND date>=:current_date AND CONCAT(title,date,address, fee) LIKE '%$search%'");
+$this->db->query("SELECT * FROM session WHERE nutritionist_id=:id AND date>=:current_date AND CONCAT(title,date,address, registration_fee) LIKE '%$search%'");
 $this->db->bind(':id',$id);  
 $this->db->bind(':current_date',$current_date);  
 
@@ -87,7 +87,7 @@ return $result;
 public function searchNutritionistOldSession($id,$search)
 {
  $current_date= date("Y-m-d");
- $this->db->query("SELECT * FROM session WHERE nutritionist_id=:id AND date<:current_date AND CONCAT(title,date,address, fee) LIKE '%$search%'");
+ $this->db->query("SELECT * FROM session WHERE nutritionist_id=:id AND date<:current_date AND CONCAT(title,date,address, registration_fee) LIKE '%$search%'");
  $this->db->bind(':id',$id);  
  $this->db->bind(':current_date',$current_date);  
  

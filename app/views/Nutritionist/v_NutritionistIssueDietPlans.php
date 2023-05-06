@@ -41,7 +41,7 @@
                         <span class="form-invalid"><?php echo $data['diet_plan_file_err'] ?></span>
 
                         <label for="description">Description</label>
-                        <textarea name="description" id="description"  rows="6" cols="80" required value="<?php echo $data['description'] ?>" placeholder="Any Description"></textarea>
+                        <textarea name="description" id="description"  rows="6" cols="80"  value="<?php echo $data['description'] ?>" placeholder="Any Description"></textarea>
                         <span class="form-invalid"><?php echo $data['description_err'] ?></span>
                   
                         <button type="submit" >Send</button>

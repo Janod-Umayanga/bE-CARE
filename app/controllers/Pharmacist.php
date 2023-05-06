@@ -100,6 +100,30 @@
 
     }
 
+     // view selling history More details
+     public function pharmacistSellingHistoryMore(){
+
+      if (isset($_SESSION['pharmacist_id'])) {
+        if (isset($_POST['submit'])) {
+          $history = $this->pharmacistViewSellingHistoryModel->getAllSellingHistoryMore($_SESSION['pharmacist_id']);
+        
+          $data=[                      
+            'history'=>$history
+          ]; 
+          $this->view('Pharmacist/v_PharmacistViewSellingHistoryMore',$data); 
+       
+        }else{
+          redirect('Pharmacist/getAllOrderDetailsOfPharmacist');
+        }
+        // rest of the code
+      } else {
+        redirect('Login/login');
+      }
+
+      
+
+  }
+
     // Pharmacist Accept Order 
     
     

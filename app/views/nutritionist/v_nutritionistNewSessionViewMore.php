@@ -27,8 +27,10 @@
                 <ul>
                     <li>Starting Time - <?php echo $data['nutritionistNewSession']->starting_time ?></li>
                     <li>Ending Time - <?php echo $data['nutritionistNewSession']->ending_time ?></li>
-                    <li>Fee - <?php echo $data['nutritionistNewSession']->fee ?></li>
+                    <li>Fee - <?php echo $data['nutritionistNewSession']->registration_fee ?></li>
                     <li>Address - <?php echo $data['nutritionistNewSession']->address ?></li>
+                    <li>Maximum No of Participants - <?php echo $data['nutritionistNewSession']->noOfParticipants ?></li>
+                    <li><?php echo $data['nutritionistNewSession']->description ?></li>
                    
                 </ul>
                 <div class="bottom-line"></div>
