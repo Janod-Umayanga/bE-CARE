@@ -328,8 +328,9 @@ else
 }   
 }
 
-// Pharmacist send orders
-public function sendOrders(){
+
+// Pharmacist send order view details
+public function sendOrder(){
   if (isset($_SESSION['pharmacist_id'])) {
       if (isset($_POST['submit'])) {
         $orderID = $_POST['order_request_id'];     
@@ -341,14 +342,42 @@ public function sendOrders(){
 
           'pharmacist_note_err'=>'',
         ];
-        $this->view('Pharmacist/v_PharmacistRejectOrder', $data);
-     
+       $this->view('Pharmacist/v_PharmacistSendOrder', $data);    
       }
       // rest of the code
     } else {
       redirect('Login/login');
     }
 }
+
+// Pharmacist send order submit
+public function sendOrderSubmit(){
+  if (isset($_SESSION['pharmacist_id'])) {
+      if (isset($_POST['submit'])) {
+        $orderID = $_POST['order_request_id'];     
+        $more = $this->pharmacistViewOrdersModel->getAllOrderDetailsMore($orderID);
+  
+        $data = [
+          'more' => $more,
+          'pharmacist_note'=>'',
+
+          'pharmacist_note_err'=>'',
+        ];
+
+        if(empty($data['pharmacist_note_err']))
+       { 
+          $this->pharmacistSendAcceptOrderDetailsModel->sendOrderforCustomer($_SESSION['pharmacist_id'], $data);
+          $this->view('Pharmacist/v_PharmacistSendOrder', $data);   
+       }
+      
+      }
+      // rest of the code
+    } else {
+      redirect('Login/login');
+    }
+}
+
+
 
 
 // profile update and change password

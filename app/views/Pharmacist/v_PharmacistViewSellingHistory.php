@@ -28,25 +28,23 @@
             <div class="table">
                 <table cellspacing="0" cellpadding="0">
                     <tr>
-                        <th>Order ID</th> 
+                      
                         <th>Name</th> 
                         <th>Contact Number</th>
                         <th></th>
                     </tr>
                     <?php foreach($data['history'] as $history): ?>
                     <tr>
-                        <td><?php echo $history->order_id;?></td>
+                
                         <td><?php echo $history->name;?></td>
-                     <td><?php echo $history->contact_number;?></td>
+                        <td><?php echo $history->contact_number;?></td>
 
                         <td>
 
-                        <form action="<?php echo URLROOT; ?>/Nutritionist/nutritionistViewHistoryMore" method="post">
+                        <form action="<?php echo URLROOT; ?>/Nutritionist/nutritionistViewHistoryMore/" method="post">
                                <input type="hidden" name="diet_plan_id" value="<?php echo $history->diet_plan_id; ?>">
-                              <button class="view" name="submit">View</button>
+                               <button class="view" name="submit">View</button>
                         </form>
-
-
                         
                         </td>
                     </tr>

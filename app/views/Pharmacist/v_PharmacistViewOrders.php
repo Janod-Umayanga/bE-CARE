@@ -149,7 +149,7 @@
                               <button class="view" name="submit">View</button>
                           </form>   
 
-                          <form  action="<?php echo URLROOT;?>/Pharmacist/sendOrders/" method="post">
+                          <form  action="<?php echo URLROOT;?>/Pharmacist/sendOrder/" method="post">
                                 <input type="hidden" name="order_request_id" value="<?php echo $paidOrders->order_request_id; ?>">
                                 <button class="accept " name="submit">Send</button>
                           </form>
