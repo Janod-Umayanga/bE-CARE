@@ -10,28 +10,23 @@
     <script src="https://kit.fontawesome.com/c4a594ff55.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
-    <script defer src="<?php echo URLROOT; ?>/js/pushNotificationProfile.js"></script>
-
-    <title>Counsellor Details</title>
+    <title>Pharmacist Details</title>
 </head>
 <body>
-    
-     <div id="notification-container"></div>
-
     <section class="diet-plan-section">
         <div class="diet-plan-leftside">
             <div class="diet-left-side-container">
-                <a href="<?php echo URLROOT ?>/Counsellor/dashboard" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Home page</a>
+                <a href="<?php echo URLROOT ?>/Pharmacist/dashboard" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Home page</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Update your password with the relavent details</h2>
-                    <p>Make sure to choose a strong and secure password. Click the "Change Password" button to update your password.</p> 
+                    <h2>Enter your login details to get into the application</h2>
+                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
                 </div>
             </div>
         </div>
         <div class="diet-plan-rightside">
            
-           <form action="<?php echo URLROOT ?>/Counsellor/updatePassword/<?php echo $_SESSION['counsellor_id'];?>" method="POST">
+        <form action="<?php echo URLROOT ?>/Pharmacist/updatePassword/<?php echo $_SESSION['pharmacist_id'];?>" method="POST">
                 
                 <div class="">
                     <h1>Change Password</h1>
@@ -62,10 +57,5 @@
             </form>
         </div>
     </section>  
-
-    <!-- For push notifications -->
-   
-       <span id="isUpdatedPassword"><?php if(isset($_SESSION['profile_updatePasswordCounsellor'])){echo $_SESSION['profile_updatePasswordCounsellor']; unset($_SESSION['profile_updatePasswordCounsellor']);}?></span>
-
 </body>
 </html>

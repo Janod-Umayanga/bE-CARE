@@ -199,6 +199,9 @@ public function profile() {
   public function edit_profile($userId){
   
     if(isset($_SESSION['doctor_id'])) {  
+
+      $doctor= $this->doctorModel->findDoctorByID($_SESSION['doctor_id']);
+  
    
     if($_SERVER['REQUEST_METHOD']=='POST'){
          $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -215,19 +218,29 @@ public function profile() {
            'branch'=>trim($_POST['branch']),
            'account_number'=>trim($_POST['account_number']),
            
+           'slmc_reg_number'=>$doctor->slmc_reg_number,
+           'specialization'=>$doctor->specialization,
+           'type'=>$doctor->type,
+           'gender'=>$doctor->gender,
+           'city'=>$doctor->city,
            
            
-           'first_name_err'=>'',
-           'last_name_err'=>'',
-           'nic_err'=>'',
-           'contact_number_err'=>'',
-           'bank_err'=>'',
-           'account_holder_name_err'=>'',
-           'branch_err'=>'',
-           'account_number_err'=>'',
-           'gender_err'=>'',
-           'city_err'=>''
-           
+  
+          'first_name_err'=>'',
+          'last_name_err'=>'',
+          'nic_err'=>'',
+          'specialization_err'=>'',
+          'qualification_file_err'=>'',
+          'slmc_reg_number_err'=>'',
+          'contact_number_err'=>'',
+          'bank_name_err'=>'',
+          'account_holder_name_err'=>'',
+          'branch_err'=>'',
+          'account_number_err'=>'',
+          'gender_err'=>'',
+          'city_err'=>'',
+          'type_err'=>''
+          
            
           
         ];
@@ -235,37 +248,53 @@ public function profile() {
        
         if(empty($data['first_name'])){
            $data['first_name_err']='first name can not be empty';
-        }
+        }else if(validateFirstName($data['first_name'])!="true"){
+          $data['first_name_err']=validateFirstName($data['first_name']);
+         }
  
         if(empty($data['last_name'])){
            $data['last_name_err']='last name can not be empty';
-        }
+        }else if(validateLastName($data['last_name'])!="true"){
+          $data['last_name_err']=validateLastName($data['last_name']);
+         }
  
         if(empty($data['nic'])){
            $data['nic_err']='nic can not be empty';
+        }else if(validateNic($data['nic'])!="true"){
+          $data['nic_err']=validateNic($data['nic']);
         }
  
         if(empty($data['contact_number'])){
            $data['contact_number_err']='contact number can not be empty';
-        }
+        }else if(validateContactNumber($data['contact_number'])!="true"){
+          $data['contact_number_err']=validateContactNumber($data['contact_number']);
+      }
  
         if(empty($data['bank_name'])){
          $data['bank_name_err']='bank name can not be empty';
-      }
+      }else if(validateBankName($data['bank_name'])!="true"){
+        $data['bank_name_err']=validateBankName($data['bank_name']);
+       }
  
        if(empty($data['account_holder_name'])){
            $data['account_holder_name_err']='account holder name can not be empty';
+       }else if(validateAccountHolderName($data['account_holder_name'])!="true"){
+        $data['account_holder_name_err']=validateAccountHolderName($data['account_holder_name']);
        }
  
        if(empty($data['branch'])){
            $data['branch_err']='branch name can not be empty';
+       }else if(validateBankBranch($data['branch'])!="true"){
+        $data['branch_err']=validateBankBranch($data['branch']);
        }
  
        
  
         if(empty($data['account_number'])){
            $data['account_number_err']='account number can not be empty';
-        }
+        }else if(validateAccountNumber($data['account_number'])!="true"){
+          $data['account_number_err']=validateAccountNumber($data['account_number']);
+         }
  
         
        if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['address_err'])&& empty($data['fee_err'])&& empty($data['bank_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])){
@@ -365,7 +394,11 @@ public function profile() {
         if(empty($data['current_password'])){
           $data['current_password_err']='Please enter a current password';
        
-        }else{
+        }else if(validatePassword($data['current_password'])!="true"){
+          $data['current_password_err']=validatePassword($data['current_password']);
+         }
+         
+         else{
            if($this->doctorModel->findUserPWMatch($id,$data['current_password'])){
       
           }else{
@@ -379,11 +412,15 @@ public function profile() {
  
         if(empty($data['new_password'])){
            $data['new_password_err']='Please enter a new password';
-        } 
+        }else if(validatePassword($data['new_password'])!="true"){
+          $data['new_password_err']=validatePassword($data['new_password']);
+         }  
         
         if(empty($data['retype_new_password'])){
          $data['retype_new_password_err']='Please retype new password';
-      } 
+      } else if(validatePassword($data['retype_new_password'])!="true"){
+        $data['retype_new_password_err']=validatePassword($data['retype_new_password']);
+       }
  
         if(empty($data['current_password_err']) && empty($data['retype_new_password_err']) && empty($data['new_password_err'])){
       

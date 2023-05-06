@@ -95,6 +95,8 @@
         $this->db->bind(':request_diet_plan_id',$data['request_diet_plan_id']); 
     }
 
+        
+
         // Login nutritionist
         public function login($email, $password) {
             $this->db->query('SELECT * FROM nutritionist WHERE email = :email');

@@ -44,6 +44,136 @@
             }
         }
 
+        // Find Counsellor by Nic
+      public function findCounsellorByNic($nic)
+      {
+        $this->db->query('SELECT * FROM counsellor WHERE nic= :nic');
+        $this->db->bind(':nic',$nic);  
+
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return true;
+        }else{
+              return false;
+        }
+    }
+
+       // Find Requested Counsellor by Nic
+    
+      public function findReqCounsellorByNic($nic)
+      {
+            $this->db->query('SELECT * FROM requested_counsellor WHERE nic= :nic');
+            $this->db->bind(':nic',$nic);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+      }
+
+
+      
+       // Find  Counsellor by Contact Number
+    
+      public function findCounsellorByContactNumber($contact_number)
+      {
+        $this->db->query('SELECT * FROM counsellor WHERE contact_number= :contact_number');
+        $this->db->bind(':contact_number',$contact_number);  
+
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return true;
+        }else{
+              return false;
+        }
+    }
+
+       // Find Requested Counsellor by Contact Number
+    
+      public function findReqCounsellorByContactNumber($contact_number)
+      {
+            $this->db->query('SELECT * FROM requested_counsellor WHERE contact_number= :contact_number');
+            $this->db->bind(':contact_number',$contact_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+      }
+
+            // Find  Counsellor by Slmc
+            
+            public function findCounsellorBySlmc($slmc_reg_number)
+            {
+            $this->db->query('SELECT * FROM counsellor WHERE slmc_reg_number= :slmc_reg_number');
+            $this->db->bind(':slmc_reg_number',$slmc_reg_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+            }
+
+            // Find Requested Counsellor by Slmc
+
+            public function findReqCounsellorBySlmc($slmc_reg_number)
+            {
+                  $this->db->query('SELECT * FROM requested_counsellor WHERE slmc_reg_number= :slmc_reg_number');
+                  $this->db->bind(':slmc_reg_number',$slmc_reg_number);  
+
+                  $row= $this->db->single();
+
+                  if($this->db->rowCount() >0){
+                        return true;
+                  }else{
+                        return false;
+                  }
+            }
+
+
+           // Find  Counsellor by Account Number
+            
+            public function findCounsellorByAccountNumber($account_number)
+            {
+            $this->db->query('SELECT * FROM counsellor WHERE account_number= :account_number');
+            $this->db->bind(':account_number',$account_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+            }
+
+            // Find Requested Counsellor by Account Number
+
+            public function findReqCounsellorByAccountNumber($account_number)
+            {
+                  $this->db->query('SELECT * FROM requested_counsellor WHERE account_number= :account_number');
+                  $this->db->bind(':account_number',$account_number);  
+
+                  $row= $this->db->single();
+
+                  if($this->db->rowCount() >0){
+                        return true;
+                  }else{
+                        return false;
+                  }
+            }
+
         // Login counsellor
         public function login($email, $password) {
             $this->db->query('SELECT * FROM counsellor WHERE email = :email');
@@ -101,6 +231,24 @@
                 return false;
             } 
           }
+
+         
+          public function changePWCounsellor($data){
+
+       
+            $this->db->query('UPDATE counsellor set password = :password WHERE counsellor_id = :id');
+            $this->db->bind(':password', $data['password']);
+            $this->db->bind(':id', $data['counsellor_id']);
+                
+    
+            if($this->db->execute()){
+               return true;
+            }else{
+                return false;
+            } 
+          }
+
+
 
         public function findUserPWMatch($id,$password){
             $this->db->query('SELECT password FROM counsellor WHERE counsellor_id=:id');

@@ -44,6 +44,19 @@
             }
         }
 
+        public function isDeactivateAccount($email){
+            $this->db->query('SELECT delete_flag FROM pharmacist WHERE email=:email');
+            $this->db->bind(':email',$email);
+            
+            $row= $this->db->single();
+            
+            if($this->db->rowCount() >0){
+              return $row;
+            }else{
+                  return false;
+            }  
+        }    
+
         // Login pharmacist
         public function login($email, $password) {
             $this->db->query('SELECT * FROM pharmacist WHERE email = :email');
@@ -115,7 +128,7 @@
         public function getAllSellingHistory($pharmacist_id){
 
             $this->db->query('SELECT * FROM accept_order
-            WHERE pharmacist_id = :pharmacist_id');
+            WHERE pharmacist_id = :pharmacist_id AND is_send=1' );
             $this->db->bind(':pharmacist_id',$pharmacist_id);  
     
             
@@ -171,7 +184,7 @@
               $this->db->bind(':pharmacist_id',$data['more']->pharmacist_id);
               $this->db->bind(':patient_id',$data['more']->patient_id);
               $this->db->bind(':order_request_id',$data['more']->order_request_id);
-         //     $this->db->bind(':is_disabled',1);
+         //    
   
               if($this->db->execute()) {
                   return true;
@@ -184,13 +197,13 @@
          }
        
 
-         public function disableOrderUntilPaid($data)
+         public function acceptedOrderDetails($data)
          {
 
             $this->db->query('UPDATE order_request
             SET is_disabled = 1 WHERE order_request_id = :order_request_id');
 
-            $this->db->bind(':order_request_id',$data['more']->oreder_request_id);
+            $this->db->bind(':order_request_id',$data['more']->order_request_id);
 
             if($this->db->execute()) {
                 return true;
@@ -241,6 +254,23 @@
              return false;
           } 
   
+         }
+
+         public function sendOrderforCustomer($data)
+         {
+            $this->db->query('UPDATE accept_order SET is_send=1
+            AND pharmacist_note=:pharmacist_note where order_request_id=:order_request_id');
+           
+            $this->db->bind(':order_request_id',$data['more']->order_request_id);
+            $this->db->bind(':pharmacist_note',$data['pharmacist_note']->pharmacist_note);
+
+            if($this->db->execute()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+
          }
     
          // change password
@@ -310,19 +340,9 @@
         }
   
 
-        public function isDeactivateAccount($email){
-            $this->db->query('SELECT delete_flag FROM pharmacist WHERE email=:email');
-            $this->db->bind(':email',$email);
-            
-            $row= $this->db->single();
-            
-            if($this->db->rowCount() >0){
-              return $row;
-              
-            }else{
-                  return false;
-            }  
-        }    
+       
+       
+  
 
     
     }

@@ -16,7 +16,7 @@
     <section class="diet-plan-section">
         <div class="diet-plan-leftside">
             <div class="diet-left-side-container">
-                <a href="<?php echo URLROOT ?>/Nutritionist/dashboard" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Home page</a>
+                <a href="<?php echo URLROOT ?>/Nutritionist/nutritionistDashBoard" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Home page</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
                     <h2>Enter your login details to get into the application</h2>

@@ -16,7 +16,7 @@
     <section class="diet-plan-section">
         <div class="diet-plan-leftside">
             <div class="diet-left-side-container">
-                <a href="<?php echo URLROOT ?>/Nutritionist/getAllRequests/" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Diet Plans requests Page</a>
+                <a href="<?php echo URLROOT ?>/Pharmacist/pharmacistViewOrders/" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Diet Plans requests Page</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
                     <h2>Fill these details to add new session</h2>
@@ -25,8 +25,9 @@
             </div>
         </div>
         <div class="diet-plan-rightside">
-            <form action="<?php echo URLROOT ?>/Pharmacist/acceptOrderSubmit/" method="POST">
-            <input type="hidden" name="order_request_id" value=" <?php echo $data['more']->order_request_id; ?>"> 
+            <form action="<?php echo URLROOT ?>/Pharmacist/sendOrderSubmit/" method="POST">
+            <input type="hidden" name="order_request_id" value=" <?php echo $data['more']->order_request_id; ?>"> <!-- ID value to be passed -->
+
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left">
 
@@ -37,22 +38,13 @@
                     <input type="hidden" name="request_diet_plan_id" value="<?php #echo $more->request_diet_plan_id; ?>"> -->
                         <label for="pharmacist_note">Note</label>
                         <textarea name="pharmacist_note" id="pharmacist_note" rows="6" cols="6" value="<?php echo $data['pharmacist_note'] ?>"
-                        placeholder="These medicines are Available.You can pay and confirm your order."></textarea>
+                        placeholder="Thank you For your Order."></textarea>
                         <span class="form-invalid"><?php echo $data['pharmacist_note'] ?></span>
 
-                        <label for="bill">Bill</label>
-                        <input type="file" name="bill" id="bill" required value="<?php echo $data['bill'] ?>" >
-                        <span class="form-invalid"><?php echo $data['bill_err'] ?></span>
-
-                        
-                        <label for="charge">Charge(Rs.)</label>
-                        <input name="charge" id="charge" required value="<?php echo $data['charge'] ?>" >
-                        <span class="form-invalid"><?php echo $data['charge_err'] ?></span>
-             
-                        <button type="submit">Accept </button>
+                        <button type="submit" name="submit">Send </button>
                   
                     
-                </div>
+               </div>
             </form>
         </div>
     </section>  
