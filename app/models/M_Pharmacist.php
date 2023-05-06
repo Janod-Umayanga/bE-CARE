@@ -184,7 +184,7 @@
               $this->db->bind(':pharmacist_id',$data['more']->pharmacist_id);
               $this->db->bind(':patient_id',$data['more']->patient_id);
               $this->db->bind(':order_request_id',$data['more']->order_request_id);
-         //     $this->db->bind(':is_disabled',1);
+         //    
   
               if($this->db->execute()) {
                   return true;
@@ -197,7 +197,7 @@
          }
        
 
-         public function disableOrderUntilPaid($data)
+         public function acceptedOrderDetails($data)
          {
 
             $this->db->query('UPDATE order_request
@@ -323,19 +323,8 @@
         }
   
 
-        public function isDeactivateAccount($email){
-            $this->db->query('SELECT delete_flag FROM pharmacist WHERE email=:email');
-            $this->db->bind(':email',$email);
-            
-            $row= $this->db->single();
-            
-            if($this->db->rowCount() >0){
-              return $row;
-              
-            }else{
-                  return false;
-            }  
-        }    
+       
+       
 
     
     }

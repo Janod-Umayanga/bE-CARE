@@ -37,7 +37,7 @@
                     <input type="hidden" name="request_diet_plan_id" value="<?php #echo $more->request_diet_plan_id; ?>"> -->
                         <label for="pharmacist_note">Note</label>
                         <textarea name="pharmacist_note" id="pharmacist_note" rows="6" cols="6" value="<?php echo $data['pharmacist_note'] ?>"
-                        placeholder="Any Note"></textarea>
+                        placeholder="These medicines are Available.You can pay and confirm your order."></textarea>
                         <span class="form-invalid"><?php echo $data['pharmacist_note'] ?></span>
 
                         <label for="bill">Bill</label>

@@ -168,24 +168,89 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
 
   ];
   //validate each input
+
   //validate name
   if (empty($data['pharmacist_note'])) {
     $data['pharmacist_note_err'] = 'Please enter Note';
   }
 
-  if (empty($data['bill'])) {
-    $data['bill_err'] = 'Please enter bill of medicine';
+  if(empty($data['bill'])){
+    $data['bill_err'] = 'Please enter bill.';
   }
+
+  /*
+  // validate bill and upload
+  if (uploadImage($data['bill']['tmp_name'], 'img/bills/')) {
+    //Done
+  }
+  else {
+    $data['bill_err'] = 'Please enter bill of order.';
+  }
+
+  */
+/*
+$target_dir = "uploads/";
+$target_file = $target_dir . basename($_FILES["bill"]["name"]);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+// Check if image file is a actual image or fake image
+if(isset($_POST["submit"])) {
+  $check = getimagesize($_FILES["bill"]["tmp_name"]);
+  if($check !== false) {
+    echo "File is an image - " . $check["mime"] . ".";
+    $uploadOk = 1;
+  } else {
+    echo "File is not an image.";
+    $uploadOk = 0;
+  }
+}
+
+// Check if file already exists
+if (file_exists($target_file)) {
+  echo "Sorry, file already exists.";
+  $uploadOk = 0;
+}
+
+// Check file size
+if ($_FILES["bill"]["size"] > 500000) {
+  echo "Sorry, your file is too large.";
+  $uploadOk = 0;
+}
+
+// Allow certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+  echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+  $uploadOk = 0;
+}
+
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+  echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+  if (move_uploaded_file($_FILES["bill"]["tmp_name"], $target_file)) {
+    echo "The file ". htmlspecialchars( basename( $_FILES["bill"]["name"])). " has been uploaded.";
+  } else {
+    echo "Sorry, there was an error uploading your file.";
+  }
+}
+*/
+
+
+  //validate charge
 
   if (empty($data['charge'])) {
     $data['charge_err'] = 'Please enter charge';
   }
+// after validation send order...
 
   if(empty($data['pharmacist_note_err']) && empty($data['bill_err']) && empty($data['charge_err']))
   {
    
     $this->pharmacistSendAcceptOrderDetailsModel->sendAcceptOrderDetails($_SESSION['pharmacist_id'], $data);
-    $this->pharmacistremoveOrderModel->disableOrderUntilPaid($data);
+    $this->pharmacistremoveOrderModel->acceptedOrderDetails($data);
     $this->view('Pharmacist/v_PharmacistDashBoard', $data);
     
 }
@@ -262,6 +327,29 @@ else
 {   redirect('Login/login');
 }   
 }
+
+// Pharmacist send orders
+public function sendOrders(){
+  if (isset($_SESSION['pharmacist_id'])) {
+      if (isset($_POST['submit'])) {
+        $orderID = $_POST['order_request_id'];     
+        $more = $this->pharmacistViewOrdersModel->getAllOrderDetailsMore($orderID);
+  
+        $data = [
+          'more' => $more,
+          'pharmacist_note'=>'',
+
+          'pharmacist_note_err'=>'',
+        ];
+        $this->view('Pharmacist/v_PharmacistRejectOrder', $data);
+     
+      }
+      // rest of the code
+    } else {
+      redirect('Login/login');
+    }
+}
+
 
 // profile update and change password
 

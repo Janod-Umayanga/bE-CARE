@@ -145,12 +145,12 @@
                        
                         <td>                           
                           <form action="<?php echo URLROOT; ?>/Pharmacist/pharmacistViewOrdersMore/" method="post">
-                               <input type="hidden" name="order_request_id" value="<?php echo $orders->order_request_id; ?>">
+                          <input type="hidden" name="order_request_id" value="<?php echo $paidOrders->order_request_id; ?>">
                               <button class="view" name="submit">View</button>
                           </form>   
 
-                          <form  action="<?php echo URLROOT;?>/Pharmacist/rejectOrders/" method="post">
-                                <input type="hidden" name="order_request_id" value="<?php echo $orders->order_request_id; ?>">
+                          <form  action="<?php echo URLROOT;?>/Pharmacist/sendOrders/" method="post">
+                                <input type="hidden" name="order_request_id" value="<?php echo $paidOrders->order_request_id; ?>">
                                 <button class="accept " name="submit">Send</button>
                           </form>
                         
