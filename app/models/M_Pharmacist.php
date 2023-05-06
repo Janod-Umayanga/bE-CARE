@@ -76,7 +76,7 @@
 
         // get all orders details of Pharmacist
         public function getAllOrderDetails($pharmacist_id){
-            $this->db->query('SELECT * FROM  WHERE pharmacist_id= :pharmacist_id');
+            $this->db->query('SELECT * FROM  WHERE pharmacist_id= :pharmacist_id ');
             $this->db->bind(':pharmacist_id',$pharmacist_id);  
     
             $row= $this->db->single();

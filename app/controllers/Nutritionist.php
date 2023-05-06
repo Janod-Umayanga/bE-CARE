@@ -191,6 +191,36 @@ else
 redirect('Login/login');
 }   
 
+/*Send an email with diet plan*/
+if(isset($_POST['submit'])){
+
+  $fullname = 'Danushika Wijeshige';
+  $email = 'danushikawijeshige@gmail.com';
+  $subject = 'Diet Plan';
+  $message = "This your diet plan";
+
+  $to = 'mwijesinghe528@gmail.com';
+  $mail_subject = "This your Diet Plan.";
+  $email_body = "Message from bE-CARE WebSite : <br>";
+  $email_body = "<b>From :</b> {$fullname} <br>";
+  $email_body = "<b>Subject :</b> <br> {$subject} <br>";
+  $email_body = "<b>Message :</b><br> . nl2br(strip_tags($message))";
+
+  $header = "From: {$email}\r\nContent-Type: text/html;";
+
+  $send_mail_result = mail($to, $mail_subject, $email_body, $header);
+
+  if($send_mail_result)
+  {
+    echo "Message Sent";
+  }
+  else{
+    echo "Message not sent";
+  }
+  
+
+}
+
  /*Send an email to patient*/
  /*if (isset($_POST['submit'])){
      

@@ -49,7 +49,8 @@
         // Get all requested diet plans of logged nutritionist
         public function getAllRequests($nutritionist_id){
             $this->db->query('SELECT * FROM request_diet_plan 
-            WHERE nutritionist_id = :nutritionist_id AND is_issued = 0 ORDER BY requested_date_and_time ASC');
+            WHERE nutritionist_id = :nutritionist_id AND is_issued = 0 
+            ORDER BY requested_date_and_time ASC');
             $this->db->bind(':nutritionist_id',$nutritionist_id);  
      
             return $this->db->resultSet();

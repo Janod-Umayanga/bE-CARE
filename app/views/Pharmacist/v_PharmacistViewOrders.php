@@ -45,14 +45,11 @@
                                <input type="hidden" name="order_request_id" value="<?php echo $orders->order_request_id; ?>">
                               <button class="view" name="submit">View</button>
                           </form>
+                          
 
-                        <button class="accept">
-                            <i class="fa-solid fa-download"></i>
-                            <a href="<?php echo URLROOT?>/img/prescriptions/<?php echo $orders->prescription ?>"
-                            download="<?php echo $orders->prescription ?>">
-                            Prescription
-                            </a>
-                        </button>
+
+                        <button class="delete"><i class="fa-solid fa-download"></i><a download="<?php echo $orders->prescription ?>"  href="<?php echo URLROOT?>/img/prescriptions/
+                        <?php echo $orders->prescription ?>">Download</a></button>
 
                           <form action="<?php echo URLROOT;?>/Pharmacist/acceptOrders/" method="post">
                                 <input type="hidden" name="order_request_id" value="<?php echo $orders->order_request_id; ?>">
