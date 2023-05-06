@@ -12,34 +12,67 @@ class AdminUserMgmt extends Controller{
   {
    if(isset($_SESSION['admin_id'])) {  
    
+  //Get number of Doctors
    $doctor= $this->adminUserMgmtModel->getNoOfDoctors();
+  
+   //Get number of Counsellors
    $counsellor= $this->adminUserMgmtModel->getNoOfCounsellors();
+
+   //Get number of Nutritionist
    $nutritionist= $this->adminUserMgmtModel->getNoOfNutritionist();
+  
+   //Get number of Meditatin Instructor
    $meditationInstr= $this->adminUserMgmtModel->getNoOfMeditationInstr();
+   
+   //Get number of pharmacist
    $pharmacist= $this->adminUserMgmtModel->getNoOfPharmacist();
+
+   //Get number of patient
    $patient= $this->adminUserMgmtModel->getNoOfPatient();
-   
-   $patient_active= $this->adminUserMgmtModel->getNoOfActivePatient();
-   $patient_deactive=$this->adminUserMgmtModel->getNoOfDeactivePatient();
-   
-   $doctor_active= $this->adminUserMgmtModel->getNoOfActiveDoctor();
-   $doctor_deactive=$this->adminUserMgmtModel->getNoOfDeactiveDoctor();
-   
-   $counsellor_active= $this->adminUserMgmtModel->getNoOfActiveCounsellor();
-   $counsellor_deactive=$this->adminUserMgmtModel->getNoOfDeactiveCounsellor();
-   
-   $nutritionist_active= $this->adminUserMgmtModel->getNoOfActiveNutritionist();
-   $nutritionist_deactive=$this->adminUserMgmtModel->getNoOfDeactiveNutritionist();
-   
-   $meditationInstr_active= $this->adminUserMgmtModel->getNoOfActiveMeditationInstr();
-   $meditationInstr_deactive=$this->adminUserMgmtModel->getNoOfDeactiveMeditationInstr();
-   
-   $pharmacist_active= $this->adminUserMgmtModel->getNoOfActivePharmacist();
-   $pharmacist_deactive=$this->adminUserMgmtModel->getNoOfDeactivePharmacist();
-   
+
+   //Get number Of Admin 
    $admin= $this->adminUserMgmtModel->getNoOfAdmin();
 
+   //Get No Of Active Patient
+   $patient_active= $this->adminUserMgmtModel->getNoOfActivePatient();
+
+   //Get No Of Deactive Patient
+   $patient_deactive=$this->adminUserMgmtModel->getNoOfDeactivePatient();
+   
+   //Get No Of Active Doctor
+   $doctor_active= $this->adminUserMgmtModel->getNoOfActiveDoctor();
+
+   //Get No Of Deactive Doctor
+   $doctor_deactive=$this->adminUserMgmtModel->getNoOfDeactiveDoctor();
+   
+  //Get No Of Active Counsellor
+   $counsellor_active= $this->adminUserMgmtModel->getNoOfActiveCounsellor();
+
+  //Get No Of Deactive Counsellor
+   $counsellor_deactive=$this->adminUserMgmtModel->getNoOfDeactiveCounsellor();
+   
+  //Get No Of Active Nutritionist
+   $nutritionist_active= $this->adminUserMgmtModel->getNoOfActiveNutritionist();
+  
+   //Get No Of Deactive Nutritionist
+   $nutritionist_deactive=$this->adminUserMgmtModel->getNoOfDeactiveNutritionist();
+  
+   //Get No Of Active Meditation Instructors
+   $meditationInstr_active= $this->adminUserMgmtModel->getNoOfActiveMeditationInstr();
+  
+   //Get No Of Deactive Meditation Instructors
+   $meditationInstr_deactive=$this->adminUserMgmtModel->getNoOfDeactiveMeditationInstr();
+  
+  //Get No Of Active Pharmacist
+  $pharmacist_active= $this->adminUserMgmtModel->getNoOfActivePharmacist();
+ 
+  //Get No Of Deactive Pharmacist
+   $pharmacist_deactive=$this->adminUserMgmtModel->getNoOfDeactivePharmacist();
+  
+  //Get No Of Active Admin
    $admin_active= $this->adminUserMgmtModel->getNoOfActiveAdmin();
+
+  //Get No Of Deactive Admin
    $admin_deactive=$this->adminUserMgmtModel->getNoOfDeactiveAdmin();
    
    $data=[                      
@@ -77,6 +110,8 @@ class AdminUserMgmt extends Controller{
 
   }
 
+
+  //Admin UserMgmt Patient
   public function Patient()
   {
     if(isset($_SESSION['admin_id'])) {  
@@ -96,6 +131,7 @@ class AdminUserMgmt extends Controller{
   }
 
 
+  //Admin UserMgmt Doctor
   public function Doctor()
   {
     if(isset($_SESSION['admin_id'])) {  
@@ -114,6 +150,7 @@ class AdminUserMgmt extends Controller{
 
   }
 
+  //Admin UserMgmt Counsellor
   public function Counsellor()
   {
     if(isset($_SESSION['admin_id'])) {  
@@ -132,7 +169,7 @@ class AdminUserMgmt extends Controller{
   }
   }
 
-  
+  //Admin UserMgmt Nutritionist
   public function Nutritionist()
   {
     if(isset($_SESSION['admin_id'])) {  
@@ -151,6 +188,7 @@ class AdminUserMgmt extends Controller{
   }
   }
   
+  //Admin UserMgmt Meditation Instructor
   public function MeditationInstructor()
   {
     if(isset($_SESSION['admin_id'])) {  
@@ -169,7 +207,7 @@ class AdminUserMgmt extends Controller{
   }
   }
   
-
+//Admin UserMgmt Pharmacist
   public function Pharmacist()
   {
     if(isset($_SESSION['admin_id'])) {  
@@ -188,6 +226,7 @@ class AdminUserMgmt extends Controller{
 
   }
 
+  //Admin UserMgmt Admin
   public function Admin()
   {
     if(isset($_SESSION['admin_id'])) {  
@@ -209,7 +248,7 @@ class AdminUserMgmt extends Controller{
 
   // Doctor
 
-
+  //Admin Search Doctor
   public function  adminSearchDoctor()
   {
     if(isset($_SESSION['admin_id'])) {  
@@ -239,7 +278,7 @@ class AdminUserMgmt extends Controller{
     }
   }
 
-
+ //Admin View More Doctor
   public function  adminViewMoreDoctor($doctor_id)
   {
     if(isset($_SESSION['admin_id'])) {  
@@ -260,7 +299,8 @@ class AdminUserMgmt extends Controller{
   
 
 //Pharmacist
-  
+ 
+//Admin Search Pharmacist
 public function  adminSearchPharmacist()
 {
   if(isset($_SESSION['admin_id'])) {  
@@ -290,7 +330,7 @@ public function  adminSearchPharmacist()
   }
 }
 
-
+//Admin View More Pharmacist
 public function  adminViewMorePharmacist($pharmacist_id)
 {
   if(isset($_SESSION['admin_id'])) {  
@@ -312,6 +352,7 @@ public function  adminViewMorePharmacist($pharmacist_id)
 
 //Counsellor
 
+//Admin Search Counsellor
 public function  adminSearchCounsellor()
 {
   if(isset($_SESSION['admin_id'])) {  
@@ -341,7 +382,7 @@ public function  adminSearchCounsellor()
   }
 }
 
-
+//Admin View More Counsellor
 public function  adminViewMoreCounsellor($counsellor_id)
 {
   if(isset($_SESSION['admin_id'])) {  
@@ -363,6 +404,7 @@ public function  adminViewMoreCounsellor($counsellor_id)
 
 //Nutritionist
 
+//Admin Search Nutritionist
 public function  adminSearchNutritionist()
 {
   if(isset($_SESSION['admin_id'])) {  
@@ -392,7 +434,7 @@ public function  adminSearchNutritionist()
   }
 }
 
-
+// Admin View More Nutritionist
 public function  adminViewMoreNutritionist($nutritionist_id)
 {
   if(isset($_SESSION['admin_id'])) {  
@@ -411,11 +453,9 @@ public function  adminViewMoreNutritionist($nutritionist_id)
 }
 
 
-
-
-
 //Meditation Instructor
 
+//Admin Search Meditation Instructor
 public function  adminSearchMeditationInstructor()
 {
   if(isset($_SESSION['admin_id'])) {  
@@ -445,7 +485,7 @@ public function  adminSearchMeditationInstructor()
   }
 }
 
-                
+ //Admin View More MeditationInstructor               
 public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
 {
   if(isset($_SESSION['admin_id'])) {  
@@ -469,7 +509,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
 
   // Patient
 
-
+//Admin Search Patient
   public function  adminSearchPatient()
   {
     if(isset($_SESSION['admin_id'])) {  
@@ -499,7 +539,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
     }
   }
 
-
+//Admin View More Patient
   public function  adminViewMorePatient($patient_id)
   {
     if(isset($_SESSION['admin_id'])) {  
@@ -522,7 +562,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
 
   // Admin
 
-
+//Admin Search Admin
   public function  adminSearchAdmin()
   {
     if(isset($_SESSION['admin_id'])) {  
@@ -552,7 +592,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
     }
   }
 
-
+//Admin View More Admin
   public function  adminViewMoreAdmin($admin_id)
   {
     if(isset($_SESSION['admin_id'])) {  
@@ -570,166 +610,6 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
   }
   }
 
-
-  // Delete Patient
-
-  public function  adminDeletePatient($patient_id)
-  {
-    if(isset($_SESSION['admin_id'])) {  
-  
-    $deleteStatus= $this->adminUserMgmtModel->deletePatient($patient_id);
-    $patient= $this->adminUserMgmtModel->getPatients();
-   
-   $data=[                      
-     'patient'=>$patient,
-     'deleteStatus'=>$deleteStatus,
-     'search'=>''
-  
-    ];
-   $this->view('Admin/AdminUserMgmt/Patient/v_patientUserMgmt',$data);
-
-  }else{
-    redirect('Login/login');  
-  }
-  }
-
-  
-  // Delete Doctor
-
-  public function  adminDeleteDoctor($doctor_id)
-  {
-    if(isset($_SESSION['admin_id'])) {  
-  
-    $deleteStatus= $this->adminUserMgmtModel->deleteDoctor($doctor_id);
-    $doctor= $this->adminUserMgmtModel->getDoctors();
-   
-   $data=[                      
-     'doctor'=>$doctor,
-     'deleteStatus'=>$deleteStatus,
-     'search'=>''
-  
-    ];
-   $this->view('Admin/AdminUserMgmt/Doctor/v_DoctorUserMgmt',$data);
-
-  }else{
-    redirect('Login/login');  
-  }
-  }
-
-
-  // Delete Counsellor
-
-  public function  adminDeleteCounsellor($counsellor_id)
-  {
-    if(isset($_SESSION['admin_id'])) {  
-  
-    $deleteStatus= $this->adminUserMgmtModel->deleteCounsellor($counsellor_id);
-    $counsellor= $this->adminUserMgmtModel->getCounsellors();
-   
-   $data=[                      
-     'counsellor'=>$counsellor,
-     'deleteStatus'=>$deleteStatus,
-     'search'=>''
-  
-    ];
-   $this->view('Admin/AdminUserMgmt/Counsellor/v_CounsellorUserMgmt',$data);
-
-  }else{
-    redirect('Login/login');  
-  }
-  }
-
-
-    // Delete Admin
-
-    public function  adminDeleteAdmin($admin_id)
-    {
-      if(isset($_SESSION['admin_id'])) {  
-  
-      $deleteStatus= $this->adminUserMgmtModel->deleteAdmin($admin_id);
-      $admin= $this->adminUserMgmtModel->getAdmins();
-     
-     $data=[                      
-       'admin'=>$admin,
-       'deleteStatus'=>$deleteStatus,
-       'search'=>''
-    
-      ];
-     $this->view('Admin/AdminUserMgmt/Admin/v_AdminUserMgmt',$data);
-  
-    }else{
-      redirect('Login/login');  
-    }
-    }
-  
-
-  // Delete Meditation instructor
-
-  public function  adminDeleteMeditationInstructor($meditationInstructor_id)
-  {
-    if(isset($_SESSION['admin_id'])) {  
-  
-    $deleteStatus= $this->adminUserMgmtModel->deleteMeditationInstructor($meditationInstructor_id);
-    $meditationInstructor= $this->adminUserMgmtModel->getMeditationInstructors();
-   
-   $data=[                      
-     'meditationInstructor'=>$meditationInstructor,
-     'deleteStatus'=>$deleteStatus,
-     'search'=>''
-  
-    ];
-   $this->view('Admin/AdminUserMgmt/MeditationInstructor/v_MedInstrUserMgmt',$data);
-
-  }else{
-    redirect('Login/login');  
-  }
-  }
-
-
-    // Delete Pharmacist
-
-    public function  adminDeletePharmacist($pharmacist_id)
-    {
-      if(isset($_SESSION['admin_id'])) {  
-  
-      $deleteStatus= $this->adminUserMgmtModel->deletePharmacist($pharmacist_id);
-      $pharmacist= $this->adminUserMgmtModel->getPharmacists();
-     
-     $data=[                      
-       'pharmacist'=>$pharmacist,
-       'deleteStatus'=>$deleteStatus,
-       'search'=>''
-    
-      ];
-     $this->view('Admin/AdminUserMgmt/Pharmacist/v_PharmacistUserMgmt',$data);
-  
-    }else{
-      redirect('Login/login');  
-    }
-    }
-
-    
-      // Delete Nutritionist
-
-  public function  adminDeleteNutritionist($nutritionist_id)
-  {
-    if(isset($_SESSION['admin_id'])) {  
-  
-    $deleteStatus= $this->adminUserMgmtModel->deleteNutritionist($nutritionist_id);
-    $nutritionist= $this->adminUserMgmtModel->getNutritionists();
-   
-   $data=[                      
-     'nutritionist'=>$nutritionist,
-     'deleteStatus'=>$deleteStatus,
-     'search'=>''
-  
-    ];
-   $this->view('Admin/AdminUserMgmt/Nutritionist/v_NutritionistUserMgmt',$data);
-
-  }else{
-    redirect('Login/login');  
-  }
-  }
 
 
     //Add new Patient
@@ -767,7 +647,18 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
        if($this->adminUserMgmtModel->findPatientByEmail($data['email'])){
         $data['email_err']='Email is already registered';
 
-      } 
+       }
+      
+       if($this->adminUserMgmtModel->findPatientByContactNumber($data['contact_number'])) {
+        $data['contact_number_err'] = 'Contact number already in used';
+       }
+     
+       if($this->adminUserMgmtModel->findPatientByNic($data['nic'])) {
+            $data['nic_err'] = 'Nic already in used';
+        }
+
+       
+      
        if(empty($data['first_name'])){
           $data['first_name_err']='first name can not be empty';
        }else if(validateFirstName($data['first_name'])!="true"){
@@ -814,7 +705,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
     
     
       if(empty($data['gender'])){
-        $data['gender_err']='gender can not be empty';
+        $data['gender_err']='title can not be empty';
       }
 
 
@@ -877,13 +768,16 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
         
     }
 
+    //$_FILES['qualification_file']
+    //contain info about the uploaded file, such name, type, size, and temporary location
 
-    
+
+    //str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT)
+    //generates a random number between 0 and 99999 using the rand() function
+    //Then pads it with leading zeros until it reaches a length of 5 using the str_pad() function.
 
 
-    
-
-       //Add new Doctor
+      //Add new Doctor
 
        public function  addnewDoctor()
        {
@@ -909,8 +803,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
              'type'=>trim($_POST['type']),
              'specialization'=>trim($_POST['specialization']),
              'gender'=>trim($_POST['gender']),
-             'qualification_file'=>$_FILES['qualification_file'],
-             'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
+             'qualification_file'=>$_FILES['qualification_file'],    
+             'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT).'_'.$_FILES['qualification_file']['name'],
              
           
              'first_name_err'=>'',
@@ -936,8 +830,14 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
           if(empty($data['qualification_file'])){
             $data['qualification_file_err']='qualification file can not be empty';
           }else{
+              
+            //split the filename of the uploaded file into an array of strings, based on the delimiter "."
               $fileExt=explode('.',$_FILES['qualification_file']['name']);
+
+              
               $fileActualExt=strtolower(end($fileExt));
+              
+              
               $allowed=array('jpg','jpeg','png','pdf','zip','rar');
 
             
@@ -1056,7 +956,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
           
 
           if(empty($data['gender'])){
-            $data['gender_err']='gender can not be empty';
+            $data['gender_err']='title can not be empty';
           }
           
        
@@ -1074,7 +974,47 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
             $data['email_err']='Email is already registered';
  
           }
-       
+     
+              
+        if($this->adminUserMgmtModel->findDoctorByNic($data['nic'])){
+          $data['nic_err']='Nic is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqDoctorByNic($data['nic'])){
+          $data['nic_err']='Nic is already used';
+
+        }
+
+        
+        if($this->adminUserMgmtModel->findDoctorByContactNumber($data['contact_number'])){
+          $data['contact_number_err']='Contact Number is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqDoctorByContactNumber($data['contact_number'])){
+          $data['contact_number_err']='Contact Number is already used';
+
+        }
+    
+        if($this->adminUserMgmtModel->findDoctorBySlmc($data['slmc_reg_number'])){
+          $data['slmc_reg_number_err']='Slmc regNo is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqDoctorBySlmc($data['slmc_reg_number'])){
+          $data['slmc_reg_number_err']='Slmc regNo is already used';
+
+        }
+
+        
+        if($this->adminUserMgmtModel->findDoctorByAccountNumber($data['account_number'])){
+          $data['account_number_err']='Account Number is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqDoctorByAccountNumber($data['account_number'])){
+          $data['account_number_err']='Account Number is already used';
+
+        }
+
+              
    
    
           if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['city_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['slmc_reg_number_err'])&& empty($data['type_err'])&& empty($data['specialization_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
@@ -1147,7 +1087,10 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
      }
            
        }
+        
        
+       
+
 
              //Add new Counsellor
 
@@ -1174,8 +1117,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                    'slmc_reg_number'=>trim($_POST['slmc']),
                    'gender'=>trim($_POST['gender']),
                    'qualification_file'=>$_FILES['qualification_file'],
-                   'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
-                   
+                   'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT).'_'.$_FILES['qualification_file']['name'],
+         
                
                                        
                     'first_name_err'=>'',
@@ -1218,7 +1161,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                  
                 }
        
-                if(empty($data['first_name'])){
+               if(empty($data['first_name'])){
                   $data['first_name_err']='first name can not be empty';
                }else if(validateFirstName($data['first_name'])!="true"){
                 $data['first_name_err']=validateFirstName($data['first_name']);
@@ -1273,7 +1216,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
                }
                
                if(empty($data['account_holder_name'])){
-                   $data['account_holder_name_err']='account_holder name can not be empty';
+                   $data['account_holder_name_err']='account holder name can not be empty';
                }else if(validateAccountHolderName($data['account_holder_name'])!="true"){
                 $data['account_holder_name_err']=validateAccountHolderName($data['account_holder_name']);
                }
@@ -1286,7 +1229,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
               
              
                if(empty($data['account_number'])){
-                 $data['account_number_err']='last name can not be empty';
+                 $data['account_number_err']='account number can not be empty';
                }else if(validateAccountNumber($data['account_number'])!="true"){
                 $data['account_number_err']=validateAccountNumber($data['account_number']);
                }
@@ -1300,7 +1243,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
              
                
                if(empty($data['gender'])){
-                 $data['gender_err']='gender can not be empty';
+                 $data['gender_err']='title can not be empty';
                }
                
                if(empty($data['qualification_file'])){
@@ -1322,7 +1265,47 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
        
                 }
              
+                
+              if($this->adminUserMgmtModel->findCounsellorByNic($data['nic'])){
+                $data['nic_err']='Nic is already used';
+
+              } 
+              else if($this->adminUserMgmtModel->findReqCounsellorByNic($data['nic'])){
+                $data['nic_err']='Nic is already used';
+
+              }
+
+              
+              if($this->adminUserMgmtModel->findCounsellorByContactNumber($data['contact_number'])){
+                $data['contact_number_err']='Contact Number is already used';
+
+              } 
+              else if($this->adminUserMgmtModel->findReqCounsellorByContactNumber($data['contact_number'])){
+                $data['contact_number_err']='Contact Number is already used';
+
+              }
+          
+              if($this->adminUserMgmtModel->findCounsellorBySlmc($data['slmc_reg_number'])){
+                $data['slmc_reg_number_err']='Slmc regNo is already used';
+
+              } 
+              else if($this->adminUserMgmtModel->findReqCounsellorBySlmc($data['slmc_reg_number'])){
+                $data['slmc_reg_number_err']='Slmc regNo is already used';
+
+              }
+
+              
+              if($this->adminUserMgmtModel->findCounsellorByAccountNumber($data['account_number'])){
+                $data['account_number_err']='Account Number is already used';
+
+              } 
+              else if($this->adminUserMgmtModel->findReqCounsellorByAccountNumber($data['account_number'])){
+                $data['account_number_err']='Account Number is already used';
+
+              }
+
          
+
          
                 if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['city_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['slmc_reg_number_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
                
@@ -1481,7 +1464,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
          }
          
          if(empty($data['account_holder_name'])){
-             $data['account_holder_name_err']='account_holder name can not be empty';
+             $data['account_holder_name_err']='account holder name can not be empty';
          }else if(validateAccountHolderName($data['account_holder_name'])!="true"){
           $data['account_holder_name_err']=validateAccountHolderName($data['account_holder_name']);
          }
@@ -1493,14 +1476,14 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
          }
        
          if(empty($data['account_number'])){
-           $data['account_number_err']='account_number can not be empty';
+           $data['account_number_err']='account number can not be empty';
          }else if(validateAccountNumber($data['account_number'])!="true"){
           $data['account_number_err']=validateAccountNumber($data['account_number']);
          }
         
 
          if(empty($data['gender'])){
-           $data['gender_err']='gender can not be empty';
+           $data['gender_err']='title can not be empty';
          }
          
       
@@ -1514,7 +1497,18 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
  
           } 
           
-       
+          if($this->adminUserMgmtModel->findAdminByContactNumber($data['contact_number'])) {
+            $data['contact_number_err'] = 'Contact number already in used';
+           }
+         
+          if($this->adminUserMgmtModel->findAdminByNic($data['nic'])) {
+            $data['nic_err'] = 'Nic already in used';
+          }
+
+          if($this->adminUserMgmtModel->findAdminByAccountNumber($data['account_number'])) {
+            $data['account_number_err'] = 'Account Number already in used';
+          }
+
    
           if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err']) && empty($data['gender_err'])){
      
@@ -1605,8 +1599,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
              'fee'=>trim($_POST['fee']),
              'gender'=>trim($_POST['gender']),
              'qualification_file'=>$_FILES['qualification_file'],
-             'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
-             
+             'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT).'_'.$_FILES['qualification_file']['name'],
+         
          
              'first_name_err'=>'',
              'last_name_err'=>'',
@@ -1704,7 +1698,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
          }
          
          if(empty($data['account_holder_name'])){
-             $data['account_holder_name_err']='account_holder name can not be empty';
+             $data['account_holder_name_err']='account holder name can not be empty';
          }else if(validateAccountHolderName($data['account_holder_name'])!="true"){
           $data['account_holder_name_err']=validateAccountHolderName($data['account_holder_name']);
          }
@@ -1717,7 +1711,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
          }
        
          if(empty($data['account_number'])){
-           $data['account_number_err']='account_number can not be empty';
+           $data['account_number_err']='account number can not be empty';
          }else if(validateAccountNumber($data['account_number'])!="true"){
           $data['account_number_err']=validateAccountNumber($data['account_number']);
          }
@@ -1738,7 +1732,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
        
         
          if(empty($data['gender'])){
-           $data['gender_err']='gender can not be empty';
+           $data['gender_err']='title can not be empty';
          }
          
          if(empty($data['qualification_file'])){
@@ -1762,7 +1756,37 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
           }
        
    
+          if($this->adminUserMgmtModel->findMeditationInstructorByNic($data['nic'])){
+            $data['nic_err']='Nic is already used';
+  
+          } 
+          else if($this->adminUserMgmtModel->findReqMeditationInstructorByNic($data['nic'])){
+            $data['nic_err']='Nic is already used';
+  
+          }
+  
+          
+          if($this->adminUserMgmtModel->findMeditationInstructorByContactNumber($data['contact_number'])){
+            $data['contact_number_err']='Contact Number is already used';
+  
+          } 
+          else if($this->adminUserMgmtModel->findReqMeditationInstructorByContactNumber($data['contact_number'])){
+            $data['contact_number_err']='Contact Number is already used';
+  
+          }
+      
+          
+          if($this->adminUserMgmtModel->findMeditationInstructorByAccountNumber($data['account_number'])){
+            $data['account_number_err']='Account Number is already used';
+  
+          } 
+          else if($this->adminUserMgmtModel->findReqMeditationInstructorByAccountNumber($data['account_number'])){
+            $data['account_number_err']='Account Number is already used';
+  
+          }
+  
    
+
           
           if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['city_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['address_err'])&& empty($data['fee_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
                
@@ -1860,8 +1884,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
              'address'=>trim($_POST['address']),
              'gender'=>trim($_POST['gender']),
              'qualification_file'=>$_FILES['qualification_file'],
-             'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
-             
+             'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT).'_'.$_FILES['qualification_file']['name'],
+          
          
              'first_name_err'=>'',
              'last_name_err'=>'',
@@ -1959,7 +1983,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
          }
          
          if(empty($data['account_holder_name'])){
-             $data['account_holder_name_err']='account_holder name can not be empty';
+             $data['account_holder_name_err']='account holder name can not be empty';
          }else if(validateAccountHolderName($data['account_holder_name'])!="true"){
           $data['account_holder_name_err']=validateAccountHolderName($data['account_holder_name']);
          }
@@ -1972,7 +1996,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
         
        
          if(empty($data['account_number'])){
-           $data['account_number_err']='last name can not be empty';
+           $data['account_number_err']='account number can not be empty';
          }else if(validateAccountNumber($data['account_number'])!="true"){
           $data['account_number_err']=validateAccountNumber($data['account_number']);
          }
@@ -2000,7 +2024,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
          }
          
          if(empty($data['gender'])){
-           $data['gender_err']='gender can not be empty';
+           $data['gender_err']='title can not be empty';
          }
          
          if(empty($data['qualification_file'])){
@@ -2021,6 +2045,46 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
  
           }
        
+         
+        if($this->adminUserMgmtModel->findPharmacistByNic($data['nic'])){
+          $data['nic_err']='Nic is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqPharmacistByNic($data['nic'])){
+          $data['nic_err']='Nic is already used';
+
+        }
+
+        
+        if($this->adminUserMgmtModel->findPharmacistByContactNumber($data['contact_number'])){
+          $data['contact_number_err']='Contact Number is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqPharmacistByContactNumber($data['contact_number'])){
+          $data['contact_number_err']='Contact Number is already used';
+
+        }
+    
+        if($this->adminUserMgmtModel->findPharmacistBySlmc($data['slmc_reg_number'])){
+          $data['slmc_reg_number_err']='Slmc regNo is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqPharmacistBySlmc($data['slmc_reg_number'])){
+          $data['slmc_reg_number_err']='Slmc regNo is already used';
+
+        }
+
+        
+        if($this->adminUserMgmtModel->findPharmacistByAccountNumber($data['account_number'])){
+          $data['account_number_err']='Account Number is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqPharmacistByAccountNumber($data['account_number'])){
+          $data['account_number_err']='Account Number is already used';
+
+        }
+
+
              
           if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['email_err'])&& empty($data['password_err'])&& empty($data['confirm_password_err'])&& empty($data['city_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])&& empty($data['slmc_reg_number_err'])&& empty($data['pharmacy_name_err'])&& empty($data['address_err'])&& empty($data['gender_err'])&& empty($data['qualification_file_err'])){
                
@@ -2118,8 +2182,8 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
              'fee'=>trim($_POST['fee']),
              'gender'=>trim($_POST['gender']),
              'qualification_file'=>$_FILES['qualification_file'],
-             'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.$_FILES['qualification_file']['name'],
-             
+             'qualification_file_name'=>trim($_POST['first_name']).' '.trim($_POST['last_name']).'_'.str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT).'_'.$_FILES['qualification_file']['name'],
+           
          
             
              'first_name_err'=>'',
@@ -2244,7 +2308,7 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
        
          
          if(empty($data['gender'])){
-           $data['gender_err']='gender can not be empty';
+           $data['gender_err']='title can not be empty';
          }
          
          if(empty($data['qualification_file'])){
@@ -2265,6 +2329,45 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
  
           }
        
+          
+        if($this->adminUserMgmtModel->findNutritionistByNic($data['nic'])){
+          $data['nic_err']='Nic is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqNutritionistByNic($data['nic'])){
+          $data['nic_err']='Nic is already used';
+
+        }
+
+        
+        if($this->adminUserMgmtModel->findNutritionistByContactNumber($data['contact_number'])){
+          $data['contact_number_err']='Contact Number is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqNutritionistByContactNumber($data['contact_number'])){
+          $data['contact_number_err']='Contact Number is already used';
+
+        }
+    
+        if($this->adminUserMgmtModel->findNutritionistBySlmc($data['slmc_reg_number'])){
+          $data['slmc_reg_number_err']='Slmc regNo is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqNutritionistBySlmc($data['slmc_reg_number'])){
+          $data['slmc_reg_number_err']='Slmc regNo is already used';
+
+        }
+
+        
+        if($this->adminUserMgmtModel->findNutritionistByAccountNumber($data['account_number'])){
+          $data['account_number_err']='Account Number is already used';
+
+        } 
+        else if($this->adminUserMgmtModel->findReqNutritionistByAccountNumber($data['account_number'])){
+          $data['account_number_err']='Account Number is already used';
+
+        }
+
    
    
         

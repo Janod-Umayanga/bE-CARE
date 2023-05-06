@@ -19,30 +19,41 @@
 
        // $flag =8 Notification for pharmacist(Patient paid for medicine order)
 
-                        // //Server settings
+       // //Server settings
       $mail = new PHPMailer(true);
                         
       try{
           $mail->isSMTP();
                         
-                                                                //Send using SMTP
-          $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+                                                                      //Send using SMTP
+          $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
           $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-          $mail->Username   = 'becarecs11@gmail.com';                     //SMTP username
-          $mail->Password   = 'smxgohcohghpewpr'; 
-    
-                                                  //SMTP password
+          $mail->Username   = 'becarecs11@gmail.com';                 //SMTP username
+          $mail->Password   = 'smxgohcohghpewpr';                     //SMTP password
+      
           $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
           $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
                 
-                        //Recipients
-          $mail->setFrom('becarecs11@gmail.com','BeCare CS11');
+                        
+          $mail->setFrom('becarecs11@gmail.com','BeCare CS11');       //set from address of the email  
           $mail->addAddress($email, $name);               //Name is optional
                     
-          $mail->isHTML(true);
-          $mail->CharSet = 'UTF-8';
+          $mail->isHTML(true);                            // email format to HTML
+          $mail->CharSet = 'UTF-8';                      // character encoding of the email to UTF-8                
                         
                     
+         // font-family: Arial, sans-serif;  browser will use sans-serif if Arial is not 
+         // margin: 0 auto; auto left and right center
+         //box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+                  
+         //0  horizontal offset of the shadow
+         //2px  vertical offset of the shadow
+         //4px blur radius of the shadow
+         //transparency of 0.1
+        
+        // display: inline-block;  element will be rendered on a single line
+             
+
 
 
           if($bodyFlag == 1){
@@ -54,7 +65,7 @@
               <title> Reset Your BeCare Account Password</title>
               <style>
                 body {
-                  font-family: Arial, sans-serif;
+                  font-family: Arial, sans-serif; 
                   margin: 0;
                   padding: 0;
                   background-color: #f4f4f4;
@@ -63,10 +74,12 @@
           
                 .container {
                   max-width: 600px;
-                  margin: 0 auto;
+                  margin: 0 auto; 
                   padding: 20px;
                   background-color: #ffffff;
-                  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+                  
+           
                 }
           
                 h1 {
@@ -86,7 +99,7 @@
                 }
           
                 .button {
-                  display: inline-block;
+                  display: inline-block;  
                   padding: 10px 20px;
                   background-color: #007bff;
                   color: #ffffff;
@@ -109,7 +122,7 @@
                 <h1>Reset your BeCare password</h1>
                 <p>Dear $name,</p>
                 <p>We received a request to reset your BeCare password. Please click the button below to reset your password:</p>
-                <p><a class='button' href='http://localhost/be-care/Login/reset_password?token=$token&email=$email'  style='color:white'>Reset Password</a></p>
+                <p><a class='button' href='http://localhost/be-care/Login/reset_password?token=$token&email=$email&usertype=$other'  style='color:white'>Reset Password</a></p>
                 <p>If you did not request a password reset, please ignore this email.</p>
                 <p>Best regards,</p>
                 <p>The BeCare Team</p>
@@ -647,6 +660,7 @@
              $mail->send();
              return true;
 
+             
        }catch(Exception $e){
                echo "Message could not be sent: {$mail->ErrorInfo}";
        }

@@ -9,14 +9,14 @@
 
         // Get All pharmacists
         public function getAllPharmacists() {
-            $this->db->query('SELECT * FROM pharmacist');
+            $this->db->query('SELECT * FROM pharmacist WHERE delete_flag = 0');
 
             return $this->db->resultSet();
         }
 
         // Get pharmacists by a filter
         public function getPharmacists($name, $city) {
-            $this->db->query("SELECT * FROM pharmacist WHERE CONCAT(pharmacy_name) LIKE '%$name%' AND city LIKE '%$city%'");
+            $this->db->query("SELECT * FROM pharmacist WHERE CONCAT(pharmacy_name) LIKE '%$name%' AND city LIKE '%$city%' AND delete_flag = 0");
 
             return $this->db->resultSet();
         }
@@ -275,7 +275,7 @@
        
             $this->db->query('UPDATE pharmacist set password = :password WHERE pharmacist_id = :id');
             $this->db->bind(':password', $data['password']);
-            $this->db->bind(':id', $data['pharmacist_id']);
+            $this->db->bind(':id', $data['user_id']);
                 
     
             if($this->db->execute()){
@@ -322,6 +322,21 @@
             return $result ? $result : false; 
         }
   
+
+        public function isDeactivateAccount($email){
+            $this->db->query('SELECT delete_flag FROM pharmacist WHERE email=:email');
+            $this->db->bind(':email',$email);
+            
+            $row= $this->db->single();
+            
+            if($this->db->rowCount() >0){
+              return $row;
+              
+            }else{
+                  return false;
+            }  
+        }    
+
     
     }
   

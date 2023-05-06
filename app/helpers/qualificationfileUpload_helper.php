@@ -6,5 +6,7 @@
       return move_uploaded_file($file,$target);
   }  
 
+     //uploadFile($data['qualification_file']['tmp_name'],$data['qualification_file_name'],'/upload/doctor_qualification/')
+  
      
 ?>

@@ -21,26 +21,21 @@
                 <a href="<?php echo URLROOT ?>/Pages/index" class="page-change-button"><i class="fa-solid fa-arrow-left"></i>Back to Homepage</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Enter your login details to get into the application</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                  
                 </div>
             </div>
         </div>
         <div class="login-page-rightside">
             <form action="" method="POST">
                 <div class="topic-of-form">
-                    <h1>PENDING</h1>
-                    <p>PENDING <a href="<?php echo URLROOT ?>/Patient/signup">PENDING</a></p>
-                </div>
+                    <h1></h1>
+                 </div>
 
                 <div class="form-inputs-and-buttons">
-                  <h1>Pending</h1>
+                  <h1>- Please note that your qualification and other details will now be reviewed by our admin team. You will receive an email at your registered email address confirming whether or not you have been selected as a service provider. Thank you for your patience -</h1>
                 </div>
             </form>
         </div>
     </section>
-    <!-- For push notifications -->
-    <span id="needLogin"><?php if(isset($_SESSION['need_login'])){echo $_SESSION['need_login']; unset($_SESSION['need_login']);}?></span>
-    <span id="isSignedUp"><?php if(isset($_SESSION['signed_up'])){echo $_SESSION['signed_up']; unset($_SESSION['signed_up']);}?></span>
-</body>
+ </body>
 </html>

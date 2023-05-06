@@ -19,9 +19,9 @@
                 <a href="<?php echo URLROOT ?>/MedInstrChangeSessionDetails/medInstrChangeSessionDetails" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Change Session Details</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Fill these details to add new session</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
-                </div>
+                    <h2>Fill these details to update your session</h2>
+                    <p>Click the "update" button to save your changes and update session.</p>
+               </div>
             </div>
         </div>
         <div class="diet-plan-rightside">
@@ -55,7 +55,7 @@
                         <span class="form-invalid"><?php echo $data['noOfParticipants_err'] ?></span>
    
 
-                        <button>Submit</button>
+                        <button>Update</button>
                     </div>
                     <div class="right">
                         

@@ -535,7 +535,6 @@ public function updatePassword($id){
        $changeUserPW=$this->userModel->changePW($data);
 
          if($changeUserPW){
-           flash('reg_flash', 'You are succesfully changed Password!');
            redirect('Pharmacist/changePassword');    
            
          }

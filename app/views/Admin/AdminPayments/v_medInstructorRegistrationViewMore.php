@@ -16,7 +16,7 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <section class="view-profile-container-userMgmt theme">
+    <section class="view-profile-container-adminPayment theme">
         <div class="card">
             
             <div class="main-image">
@@ -26,7 +26,7 @@
                          <input type="hidden" name="search" value="<?php echo $data['search']?>">
                         <button class="backto-counsellors " type="submit" ><i class="fa-solid fa-arrow-left"></i>Back to Med Instructor Registration Payments </button> 
                 </form>
-                  <h1>Dr. <?php echo $data['medInstructorRegistration']->first_name ?> <br> <?php echo $data['medInstructorRegistration']->last_name ?></h1>
+                  <h1><?php echo $data['medInstructorRegistration']->gender ?>. <?php echo $data['medInstructorRegistration']->first_name ?> <br> <?php echo $data['medInstructorRegistration']->last_name ?></h1>
                 
             </div>
 
@@ -39,8 +39,8 @@
 
                     <li>Payment Date & Time - <?php echo $data['medInstructorRegistration']->paid_time?></li>
                    
-                    <li>Doctor Email - <a href="mailto:<?php echo $data['medInstructorRegistration']->email ?>"><?php echo $data['medInstructorRegistration']->email ?></a></li>
-                    <li>Doctor Contact number - <?php echo $data['medInstructorRegistration']->contact_number ?></li>
+                    <li>Meditation Instructor Email - <a href="mailto:<?php echo $data['medInstructorRegistration']->email ?>"><?php echo $data['medInstructorRegistration']->email ?></a></li>
+                    <li>Meditation Instructor Contact number - <?php echo $data['medInstructorRegistration']->contact_number ?></li>
                    
                     <li>Patient Name -<?php echo $data['medInstructorRegistration']->name ?></a></li>
                     <li>Patient Contact Number - <?php echo $data['medInstructorRegistration']->contact_number ?></li>

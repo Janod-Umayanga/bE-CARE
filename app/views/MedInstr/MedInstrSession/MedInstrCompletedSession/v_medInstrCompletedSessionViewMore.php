@@ -16,7 +16,7 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <section class="view-profile-container theme">
+    <section class="view-profile-container-medinstrSession theme">
         <div class="card">
             <div class="main-image">
                 <a href="<?php echo URLROOT ?>/MedInstrSession/medInstrOldSession" class="backto-doctors"><i class="fa-solid fa-arrow-left"></i>Back to Completed Sessions</a>
@@ -30,6 +30,7 @@
                     <li>Fee - <?php echo $data['oldSession']->registration_fee ?></li>
                     <li>Address - <?php echo $data['oldSession']->address ?></li>
                     <li>Maximum No of Participants - <?php echo $data['oldSession']->noOfParticipants ?></li>
+                    <li><?php echo $data['oldSession']->description ?></li>
                    
                 </ul>
                 <div class="bottom-line"></div>

@@ -6,12 +6,10 @@
       public function __construct()
       {
         $this->db=new Database();
-       
-
       }
 
+      //find medInstr Registered Users History
       public function findmedInstrRegisteredUsersHistory($id)
-      
       {
         $current_date= date("Y-m-d");
         $this->db->query('SELECT * FROM med_ins_appointment_day INNER JOIN med_ins_register ON med_ins_appointment_day.med_ins_appointment_day_id=med_ins_register.med_ins_appointment_day_id WHERE med_ins_register.meditation_instructor_id=:id AND med_ins_appointment_day.date<:current_date ORDER BY med_ins_appointment_day.date DESC');
@@ -23,9 +21,8 @@
         return $result;
       } 
 
-
+       //search medInstr Registered Users History  
        public function searchmedInstrRegisteredUsersHistory($search,$id)
-
       {
         $current_date= date("Y-m-d");
         $day='Saturday';
@@ -39,10 +36,9 @@
       } 
 
      
-      
+      //view More MedInstr Registered User History   
       public function  viewMoremedInstrRegisteredUserHistory($med_ins_appointment_day_id)
       {
-          
         $this->db->query("SELECT * FROM med_ins_appointment_day INNER JOIN med_ins_register ON med_ins_appointment_day.med_ins_appointment_day_id=med_ins_register.med_ins_appointment_day_id WHERE med_ins_appointment_day.med_ins_appointment_day_id=:id");
         $this->db->bind(':id',$med_ins_appointment_day_id);  
           

@@ -132,7 +132,22 @@
       public function changePW($data){
 
        
-        $this->db->query('UPDATE admin set password = :password WHERE admin_id = :id');
+        $this->db->query('UPDATE admin set password= :password WHERE admin_id = :id');
+        $this->db->bind(':password', $data['password']);
+        $this->db->bind(':id', $data['user_id']);
+            
+
+        if($this->db->execute()){
+           return true;
+        }else{
+            return false;
+        } 
+      }
+      
+      public function changePWAdmin($data){
+
+       
+        $this->db->query('UPDATE admin set password= :password WHERE admin_id = :id');
         $this->db->bind(':password', $data['password']);
         $this->db->bind(':id', $data['admin_id']);
             
@@ -143,6 +158,8 @@
             return false;
         } 
       }
+
+
       
       public function setToken($token,$email)
       {
@@ -167,6 +184,57 @@
         return $result ? $result : false; 
     }
 
+
+    
+      // Find Admin by Account Number
+
+      public function  findAdminByAccountNumber($account_number)
+      {
+            $this->db->query('SELECT * FROM admin WHERE account_number= :account_number');
+            $this->db->bind(':account_number',$account_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+      }
+
+
+
+
+      // Find admin by nic
+      public function  findAdminByNic($nic) {
+            $this->db->query('SELECT * FROM admin WHERE nic = :nic');
+            $this->db->bind(':nic', $nic);
+
+            $row = $this->db->single();
+
+            if($this->db->rowCount() > 0) {
+            return $row;
+            }
+            else {
+            return false;
+            }
+      }
+
+      //findAdminByContactNumber
+
+      public function findAdminByContactNumber($contactnumber) {
+            $this->db->query('SELECT * FROM admin WHERE contact_number = :contactnumber');
+            $this->db->bind(':contactnumber', $contactnumber);
+
+            $row = $this->db->single();
+
+            if($this->db->rowCount() > 0) {
+            return $row;
+            }
+            else {
+            return false;
+            }
+      }
 
 
 

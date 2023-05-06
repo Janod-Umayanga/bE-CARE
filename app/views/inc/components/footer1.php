@@ -5,17 +5,22 @@
         </div>
         <div class="footer-links">
             <div>
-                <h3>Home</h3>
+                <h3>Your</h3>
                 <ul>
-                    <li>
+                    <!-- <li>
                         <a href="#">Home</a>
                     </li>
                     <li>
                         <a href="#">About</a>
-                    </li>
+                    </li> -->
                     <li>
-                        <a href="#">Service</a>
+                        <a href="<?php echo URLROOT ?>/Patient/viewFeedbacks">Feedbacks</a>
                     </li>
+                    <?php if (isset($_SESSION['patient_id'])): ?>
+                        <li>
+                            <a href="<?php echo URLROOT ?>/Patient/addFeedback">Add a feedback</a>
+                        </li>
+                    <?php endif; ?>
                     <?php if (isset($_SESSION['patient_id']) || isset($_SESSION['MedInstr_id']) || isset($_SESSION['doctor_id']) || isset($_SESSION['counsellor_id']) || isset($_SESSION['nutritionist_id']) || isset($_SESSION['pharmacist_id'])  ): ?>
                         <li>
                             <a href="<?php echo URLROOT ?>/Complaint/complaint">Complaint</a>
@@ -31,16 +36,22 @@
                 <h3>Services</h3>
                 <ul>
                     <li>
-                        <a href="#">Find a Doctor</a>
+                        <a href="<?php echo URLROOT ?>/Patient/findDoctor">Find a Doctor</a>
                     </li>
                     <li>
-                        <a href="#">Find a Counsellor</a>
+                        <a href="<?php echo URLROOT ?>/Patient/findCounsellor">Find a Counsellor</a>
                     </li>
                     <li>
-                        <a href="#">Find a Pharmacy</a>
+                        <a href="<?php echo URLROOT ?>/Patient/findPharmacy">Find a Pharmacy</a>
                     </li>
                     <li>
-                        <a href="#">Find a Nutritionist</a>
+                        <a href="<?php echo URLROOT ?>/Patient/findNutritionist">Find a Nutritionist</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo URLROOT ?>/Patient/findMeditationInstructor">Find a Meditation Instructor</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo URLROOT ?>/Patient/findSession">Find a Session</a>
                     </li>
                 </ul>
             </div>
@@ -48,10 +59,40 @@
                 <h3>Links</h3>
                 <ul>
                     <li>
-                        <button class="footer-buttons">Register</button>
+                        <?php if(isset($_SESSION['admin_id'])): ?>
+                            <form action="<?php echo URLROOT ?>/AdminDashboard/adminDashBoard">
+                                <button class="footer-buttons">Home</button>
+                            </form>
+                        <?php elseif(isset($_SESSION['MedInstr_id'])): ?>
+                            <form action="<?php echo URLROOT ?>/MedInstrDashBoard/medInstrDashBoard">
+                                <button class="footer-buttons">Home</button>
+                            </form>
+                        <?php elseif(isset($_SESSION['doctor_id'])): ?>
+                            <form action="<?php echo URLROOT ?>/Doctor/dashboard">
+                                <button class="footer-buttons">Home</button>
+                            </form>
+                        <?php elseif(isset($_SESSION['counsellor_id'])): ?>
+                            <form action="<?php echo URLROOT ?>/Counsellor/dashboard">
+                                <button class="footer-buttons">Home</button>
+                            </form>
+                        <?php elseif(isset($_SESSION['nutritionist_id'])): ?>
+                            <form action="<?php echo URLROOT ?>/Nutritionist/nutritionistDashBoard">
+                                <button class="footer-buttons">Home</button>
+                            </form>
+                        <?php elseif(isset($_SESSION['pharmacist_id'])): ?>
+                            <form action="<?php echo URLROOT ?>/Pharmacist/pharmacistDashBoard">
+                                <button class="footer-buttons">Home</button>
+                            </form>
+                        <?php else: ?>
+                            <form action="<?php echo URLROOT ?>/Pages/index">
+                                <button class="footer-buttons">Home</button>
+                            </form>
+                        <?php endif; ?>
                     </li>
                     <li>
-                        <button class="footer-buttons footer-login">Login</button>
+                        <form action="<?php echo URLROOT ?>/Pages/about">
+                            <button class="footer-buttons footer-login">About</button>
+                        </form>
                     </li>
                 </ul>
             </div>

@@ -5,6 +5,8 @@ class MedInstr extends Controller{
   public function __construct(){
     $this->userModel = $this->model('M_MedInstr');
   }
+
+  //Meditation Instructor Profile
   public function profile()
   {
    if(isset($_SESSION['MedInstr_id'])) {  
@@ -46,6 +48,7 @@ class MedInstr extends Controller{
 
   }
 
+  //Change Password
   public function changePW()
   {
    if(isset($_SESSION['MedInstr_id'])) {  
@@ -64,6 +67,7 @@ class MedInstr extends Controller{
 
   }
 
+  //Update Password
   public function updatePW($id){
   
    if(isset($_SESSION['MedInstr_id'])) {  
@@ -114,12 +118,16 @@ class MedInstr extends Controller{
 
 
        if(empty($data['current_password_err']) && empty($data['retype_new_password_err']) && empty($data['new_password_err'])){
-     
+
+        //password_hash($data['new_password'],PASSWORD_DEFAULT)
+        //second argument is the hashing algorithm to be used. PASSWORD_DEFAULT is a constant 
+        //that represents the strongest algorithm currently supported by PHP.
+
         $data['password']=password_hash($data['new_password'],PASSWORD_DEFAULT);
-        $changeUserPW=$this->userModel->changePW($data);
+        $changeUserPW=$this->userModel->changePWMedInstr($data);
 
           if($changeUserPW){
-            
+            $_SESSION['profile_updatePasswordMedInstr']="true";
             redirect('MedInstr/changePW');    
             
           }
@@ -149,8 +157,7 @@ class MedInstr extends Controller{
 }
 
   
-
-  
+// is LoggedIn 
   public function isLoggedIn(){
     if(isset($_SESSION['MedInstr_id'])){
       return true;
@@ -159,6 +166,7 @@ class MedInstr extends Controller{
     }
   }
   
+ // edit Profile
   public function editProfile($userId){
   
    if(isset($_SESSION['MedInstr_id'])) {  
@@ -244,7 +252,7 @@ class MedInstr extends Controller{
        }
 
       if(empty($data['gender'])){
-          $data['gender_err']='gender can not be empty';
+          $data['gender_err']='title can not be empty';
       }
 
        if(empty($data['account_number'])){
@@ -273,6 +281,49 @@ class MedInstr extends Controller{
        }else if(validateFee($data['fee'])!="true"){
         $data['fee_err']=validateFee($data['fee']);
        }
+
+
+       if($_SESSION['MedInstr_contact_number']!=  trim($_POST['contact_number'])){
+     
+        if($this->userModel->findMeditationInstructorByContactNumber($data['contact_number'])){
+          $data['contact_number_err']='Contact Number is already used';
+
+        } 
+        else if($this->userModel->findReqMeditationInstructorByContactNumber($data['contact_number'])){
+          $data['contact_number_err']='Contact Number is already used';
+
+        }
+        
+      }
+     
+      if($_SESSION['MedInstr_nic']!=trim($_POST['nic'])){
+     
+        if($this->userModel->findMeditationInstructorByNic($data['nic'])){
+          $data['nic_err']='Nic is already used';
+
+        } 
+        else if($this->userModel->findReqMeditationInstructorByNic($data['nic'])){
+          $data['nic_err']='Nic is already used';
+
+        }
+
+      } 
+
+
+      if($_SESSION['MedInstr_account_number']!=trim(trim($_POST['account_number']))){
+     
+  
+        if($this->userModel->findMeditationInstructorByAccountNumber($data['account_number'])){
+          $data['account_number_err']='Account Number is already used';
+
+        } 
+        else if($this->userModel->findReqMeditationInstructorByAccountNumber($data['account_number'])){
+          $data['account_number_err']='Account Number is already used';
+
+        }
+
+
+      }
 
       if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['gender_err'])  && empty($data['city_err'])&& empty($data['address_err'])&& empty($data['fee_err'])&& empty($data['bank_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])){
             if($this->userModel->editUser($data)){

@@ -10,18 +10,21 @@
     <script src="https://kit.fontawesome.com/c4a594ff55.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
+    <script defer src="<?php echo URLROOT; ?>/js/pushNotificationProfile.js"></script>
+  
     <title>Meditation Instructor Details</title>
 </head>
 <body>
+   <div id="notification-container"></div>
     <section class="diet-plan-section">
         <div class="diet-plan-leftside">
             <div class="diet-left-side-container">
                 <a href="<?php echo URLROOT ?>/MedInstrDashBoard/medInstrDashBoard" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Home page</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Enter your login details to get into the application</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
-                </div>
+                    <h2>Update your password with the relavent details</h2>
+                    <p>Make sure to choose a strong and secure password. Click the "Change Password" button to update your password.</p>
+                 </div>
             </div>
         </div>
         <div class="diet-plan-rightside">
@@ -50,12 +53,17 @@
 
 
 
-                        <button type="submit" >Update</button> 
+                        <button type="submit" >Change Password</button> 
                     </div>
     
                   
             </form>
         </div>
     </section>  
+
+       <!-- For push notifications -->
+       <span id="isUpdated"><?php if(isset($_SESSION['profile_updateMedInstr'])){echo $_SESSION['profile_updateMedInstr']; unset($_SESSION['profile_updateMedInstr']);}?></span>
+       <span id="isUpdatedPassword"><?php if(isset($_SESSION['profile_updatePasswordMedInstr'])){echo $_SESSION['profile_updatePasswordMedInstr']; unset($_SESSION['profile_updatePasswordMedInstr']);}?></span>
+   
 </body>
 </html>

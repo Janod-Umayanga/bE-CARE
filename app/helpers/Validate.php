@@ -33,9 +33,7 @@
 
   
   function validateContactNumber($contactNumber) {
-    // Remove any non-digit characters
-    $contactNumber = preg_replace('/\D/', '', $contactNumber);
-    
+       
     // Check if the number is exactly 10 digits long
     if (strlen($contactNumber) != 10) {
       return 'contact number should be exactly 10 digits long';
@@ -46,6 +44,11 @@
       return 'contact number should start with 0';
     }
     
+    // Check if the resulting number contains only digits
+    if (!ctype_digit($contactNumber)) {
+      return "Contact number should contain only digits";
+    }
+
     // If all checks pass, return true
     return "true";
   }
@@ -94,11 +97,6 @@
     // Check if the number is exactly 7 digits long
     if (strlen($registerNumber) != 7) {
       return "slmc reg number should be 7 digits long";
-    }
-    
-    // Check if the number starts with "1" or "2"
-    if (substr($registerNumber, 0, 1) != "1" && substr($registerNumber, 0, 1) != "2") {
-      return "slmc reg number should start with 1 or 2";
     }
     
     // If all checks pass, return true
@@ -205,7 +203,7 @@
 
   function validateDescription($description) {
     // Check if the description contains only letters, numbers, spaces and common special characters
-    if (!preg_match('/^[A-Za-z0-9\s.,#\-\/\(\)]+$/', $description)) {
+    if (!preg_match('/^[A-Za-z0-9\s.,#\'\-\/\(\)]+$/', $description)) {
       return "Description contains invalid characters.";
     }
     
@@ -260,6 +258,56 @@
     // If all checks pass, return true
     return "true";
   }
+
+  function validatePostitiveNumber($number) {
+    // Check if the given number is a positive number
+    if ($number <= 0) {
+      return "Cannot be a negative number or zero";
+    }
+    
+    // If all checks pass, return true
+    return "true";
+  }
+
+  function validateSubject($subject) {
+    // Check if the subject contains only letters, numbers, spaces and common special characters
+    if (!preg_match('/^[A-Za-z0-9\s.,#\-\/\(\)]+$/', $subject)) {
+      return "Subject contains invalid characters.";
+    }
+    
+    // Check if the subject is too long
+    if (strlen($subject) > 100) {
+      return "Subject should not exceed 100 characters."; // Return an error message for long subject
+    }
+
+    // If all checks pass, return true
+    return "true";
+  }
+
+
+  function validateComplaint($complaint) {
+    // Check if the complaint contains only letters, numbers, spaces and common special characters
+    if (!preg_match('/^[A-Za-z0-9\s.,#\-\/\(\)]+$/', $complaint)) {
+      return "Complaint contains invalid characters.";
+    }
+    
+    // Check if the complaint is too long
+    if (strlen($complaint) > 1000) {
+      return "Complaint should not exceed 1000 characters."; // Return an error message for long complaint
+    }
+   
+    // If all checks pass, return true
+    return "true";
+  }
+
+  function validateDate($date) {
+    $currentDate = date("Y-m-d");
+    if ($date < $currentDate) {
+       return "Date cannot be less than current date";
+    } else {
+       return "true";
+    }
+   }
 
 
  ?>

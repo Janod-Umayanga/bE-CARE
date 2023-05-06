@@ -57,10 +57,10 @@
                             <a href="<?php echo URLROOT ?>/Patient/details" class="nav-buttons"><?php echo $_SESSION['patient_name'] ?></a>
                             <a href="<?php echo URLROOT ?>/Login/logout" class="nav-buttons register-button">LOG OUT</a>
                         <?php elseif(isset($_SESSION['admin_id'])): ?>
-                            <a href="<?php echo URLROOT ?>/Admin/profile" class="nav-buttons"><?php echo strtoupper($_SESSION["admin_gender"].$_SESSION['admin_name']) ?></a>
+                            <a href="<?php echo URLROOT ?>/Admin/profile" class="nav-buttons"><?php echo strtoupper($_SESSION["admin_gender"].'.'.$_SESSION['admin_name']) ?></a>
                             <a href="<?php echo URLROOT ?>/Login/logout" class="nav-buttons register-button">LOG OUT</a>  
                         <?php elseif(isset($_SESSION['MedInstr_id'])): ?>
-                            <a href="<?php echo URLROOT ?>/MedInstr/profile" class="nav-buttons"><?php echo strtoupper($_SESSION["MedInstr_gender"].$_SESSION['MedInstr_name']) ?></a>
+                            <a href="<?php echo URLROOT ?>/MedInstr/profile" class="nav-buttons"><?php echo strtoupper($_SESSION["MedInstr_gender"].'.'.$_SESSION['MedInstr_name']) ?></a>
                             <a href="<?php echo URLROOT ?>/Login/logout" class="nav-buttons register-button">LOG OUT</a>
                         <?php elseif(isset($_SESSION['doctor_id'])): ?>
                             <a href="<?php echo URLROOT ?>/Doctor/profile" class="nav-buttons">Dr. <?php echo $_SESSION['doctor_name'] ?></a>

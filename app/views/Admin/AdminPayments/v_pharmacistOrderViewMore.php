@@ -16,7 +16,7 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <section class="view-profile-container-userMgmt theme">
+    <section class="view-profile-container-adminPayment theme">
         <div class="card">
             
             <div class="main-image">
@@ -28,7 +28,7 @@
                         <button class="backto-counsellors " type="submit" ><i class="fa-solid fa-arrow-left"></i>Back to pharmacist order Payments </button> 
                 </form>
                 
-                <h1>Dr. <?php echo $data['pharmacistOrder']->first_name ?> <br> <?php echo $data['pharmacistOrder']->last_name ?></h1>
+                <h1><?php echo $data['pharmacistOrder']->gender ?>. <?php echo $data['pharmacistOrder']->first_name ?> <br> <?php echo $data['pharmacistOrder']->last_name ?></h1>
                 
             </div>
 

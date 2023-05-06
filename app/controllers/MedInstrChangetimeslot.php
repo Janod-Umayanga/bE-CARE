@@ -7,7 +7,8 @@ class MedInstrChangetimeslot extends Controller{
     $this->medInstrChangetimeslotModel = $this->model('M_MedInstrChangetimeslot');
   }
 
-  
+
+  //Med Instr Changetimeslot
   public function medInstrChangetimeslot()
   {
   
@@ -15,37 +16,36 @@ class MedInstrChangetimeslot extends Controller{
    
    $timeslot= $this->medInstrChangetimeslotModel->medInstrtimeslot($_SESSION['MedInstr_id']);
   
-  
+    
    foreach($timeslot AS $slot){
 
-       if($slot->continue_flag==1){
+     //check timeslot is recurring
+     if($slot->continue_flag==1){
+
+        // if timeslot is recurring set upcomming 4 weeks.
         $this->medInstrChangetimeslotModel->getChannelingDays($slot->med_timeslot_id,$slot->appointment_day, $slot->starting_time,$slot->ending_time,$slot->fee,$slot->address,$slot->noOfParticipants, $slot->meditation_instructor_id);
-       }
+      }
 
 
    }
   
+    $appointmentday= $this->medInstrChangetimeslotModel->medInstrappointmentday($_SESSION['MedInstr_id']);
   
-  
-  
-   $appointmentday= $this->medInstrChangetimeslotModel->medInstrappointmentday($_SESSION['MedInstr_id']);
-  
-   
-
-
-
-   $data=[                      
+    $data=[                      
      'timeslot'=>$timeslot,
      'appointmentday'=>$appointmentday,
      'search'=>''
    ];
+  
    $this->view('MedInstr/MedInstrChangetimeslot/v_medInstrChangetimeslot',$data);
+  
   }else{
     redirect('Login/login');  
   }
 
   }
 
+  //search MedInstr Change Timeslot
   public function  searchMedInstrChangeTimeslot()
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -72,6 +72,7 @@ class MedInstrChangetimeslot extends Controller{
       }
   }
 
+  //Update Appointment Day
   public function updateAppointmentDay($appointment_day_id)
   {
     if(isset($_SESSION['MedInstr_id'])) {  
@@ -150,7 +151,7 @@ class MedInstrChangetimeslot extends Controller{
   }
 
  
-
+    //view Appointment Day
     public function viewAppointmentDay($appointment_day_id)
     {
       if(isset($_SESSION['MedInstr_id'])) {  
@@ -186,7 +187,7 @@ class MedInstrChangetimeslot extends Controller{
           }
     } 
         
-    
+    //view Timeslot
     public function viewTimeslot($timeslot_id)
     {
       if(isset($_SESSION['MedInstr_id'])) {  
@@ -222,7 +223,7 @@ class MedInstrChangetimeslot extends Controller{
     } 
     
 
-
+   //Disable Appointment Day
     public function disableAppointmentDay($appointment_day_id)
     {
           
@@ -245,7 +246,7 @@ class MedInstrChangetimeslot extends Controller{
 
     } 
 
-    
+    //Enable Appointment Day
     public function enableAppointmentDay($appointment_day_id)
     {
           
@@ -268,6 +269,7 @@ class MedInstrChangetimeslot extends Controller{
 
     } 
 
+    //Stop Creating Recurring Timeslot
     public function stopCreatingRecurringTimeslot($appointment_day_id)
     {
           
@@ -290,6 +292,7 @@ class MedInstrChangetimeslot extends Controller{
 
     } 
  
+    //creating Recurring Timeslot
     public function creatingRecurringTimeslot($appointment_day_id)
     {
           
@@ -312,7 +315,7 @@ class MedInstrChangetimeslot extends Controller{
 
     } 
     
-
+  //Update Future Timeslot
 public function updateFutureTimeslot($timeslot_id)
 {
   if(isset($_SESSION['MedInstr_id'])) {  

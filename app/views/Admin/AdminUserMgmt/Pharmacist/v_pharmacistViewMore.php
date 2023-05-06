@@ -40,7 +40,7 @@
                     <li>SLMC number - <?php echo $data['pharmacist']->slmc_reg_number ?></li>
                    
                     <li>NIC - <?php echo $data['pharmacist']->nic ?></li>
-                    <li>Gender - <?php echo $data['pharmacist']->gender ?></li>
+                    <li>Title - <?php echo $data['pharmacist']->gender ?></li>
                     <li>City - <?php echo $data['pharmacist']->city ?></li>
                    
                     <li>Bank Name - <?php echo $data['pharmacist']->bank_name ?></li>

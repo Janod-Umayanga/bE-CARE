@@ -43,6 +43,38 @@
             }
         }
 
+       
+        // Find patient by nic
+        public function  findPatientByNic($nic) {
+            $this->db->query('SELECT * FROM patient WHERE nic = :nic');
+            $this->db->bind(':nic', $nic);
+
+            $row = $this->db->single();
+
+            if($this->db->rowCount() > 0) {
+                return $row;
+            }
+            else {
+                return false;
+            }
+        }
+
+        //findPatientByContactNumber
+
+        public function findPatientByContactNumber($contactnumber) {
+            $this->db->query('SELECT * FROM patient WHERE contact_number = :contactnumber');
+            $this->db->bind(':contactnumber', $contactnumber);
+
+            $row = $this->db->single();
+
+            if($this->db->rowCount() > 0) {
+                return $row;
+            }
+            else {
+                return false;
+            }
+        }
+
         // Login patient
         public function login($email, $password) {
             $this->db->query('SELECT * FROM patient WHERE email = :email');

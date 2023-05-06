@@ -10,7 +10,7 @@
     <script src="https://kit.fontawesome.com/c4a594ff55.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
-    <script defer src="script.js"></script>
+    <script defer src="<?php echo URLROOT; ?>/js/script.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -38,7 +38,7 @@
             <?php foreach($data['wednesday'] as $wednesday): ?>
                      
                <h1><?php echo $wednesday->date; ?> | <?php echo $wednesday->day; ?></h1>
-                   <h4 style="color:Green;"><?php echo $wednesday->address; ?> | Rs.<?php echo $wednesday->fee; ?></h4>
+                   <h4 style="color:Green;"><?php echo $wednesday->address; ?> | Rs.<?php echo $wednesday->fee; ?>  | Max no of participants: <?php echo $wednesday->noOfParticipants; ?></h4>
           
 
             <div class="table">

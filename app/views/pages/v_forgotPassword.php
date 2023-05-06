@@ -11,6 +11,7 @@
     <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
     <script defer src="<?php echo URLROOT; ?>/js/pushNotificationforLogin.js"></script>
+    <script defer src="<?php echo URLROOT; ?>/js/forgetpassword.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -20,8 +21,10 @@
                 <a href="<?php echo URLROOT ?>/Login/login" class="page-change-button"><i class="fa-solid fa-arrow-left"></i>Back to Login</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Enter your login details to get into the application</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                    <h2>Select user type and enter the email address associated with your account and click "Reset Password Link"</h2>
+                    <p> Check your email inbox for a message from us with instructions on how to reset your password.
+</p>
+               
                 </div>
             </div>
         </div>

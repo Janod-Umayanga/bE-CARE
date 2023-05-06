@@ -9,14 +9,14 @@
 
         // Get All meditation instructors
         public function getAllMeditationInstructors() {
-            $this->db->query('SELECT * FROM meditation_instructor');
+            $this->db->query('SELECT * FROM meditation_instructor WHERE delete_flag = 0');
 
             return $this->db->resultSet();
         }
 
         // Get meditation instructors by a filter
         public function getMeditationInstructors($name, $city) {
-            $this->db->query("SELECT * FROM meditation_instructor WHERE CONCAT(first_name,last_name) LIKE '%$name%' AND city LIKE '%$city%'");
+            $this->db->query("SELECT * FROM meditation_instructor WHERE CONCAT(first_name,last_name) LIKE '%$name%' AND city LIKE '%$city%' AND delete_flag = 0");
 
             return $this->db->resultSet();
         }

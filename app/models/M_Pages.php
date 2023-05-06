@@ -8,21 +8,21 @@
         $this->db=new Database();
       }
 
+      //Get Users
       public function getUsers()
       {
         $this->db->query('SELECT * FROM Users');
         return $this->db->resultSet();
       }
 
-
-            
+      //Get All feedBack
       public function getAllfeedBack()
       {
         $this->db->query('SELECT * FROM feedback ORDER BY feedback_date DESC');
         return $this->db->resultSet();
       }
 
-
+      //Get Patient Details
       public function getPatientDetails()
       {
         $this->db->query('SELECT * FROM patient');
@@ -30,7 +30,7 @@
       }
 
 
-     
+     //verify Patient Email
       public function  verifyPatientEmail($id)
       {
         $this->db->query('UPDATE patient set delete_flag = :delete_flag WHERE patient_id = :id');
@@ -45,7 +45,7 @@
         } 
       }
 
-      
+      //verify Doctor Email
       public function verifyDoctorEmail($id)
 
       {
@@ -61,7 +61,7 @@
         } 
       }
 
-
+      //verify Counsellor Email
       public function verifyCounsellorEmail($id)
 
       {
@@ -76,7 +76,8 @@
             return false;
         } 
       }
-
+     
+      //verify Meditation Instructor Email
       public function verifyMeditationInstructorEmail($id)
 
       {
@@ -92,7 +93,7 @@
         } 
       }
 
-
+      //verify Nutritionist Email
       public function verifyNutritionistEmail($id)
 
       {
@@ -108,7 +109,7 @@
         } 
       }
 
-
+      //verify Pharmacist Email
       public function verifyPharmacistEmail($id)
 
       {

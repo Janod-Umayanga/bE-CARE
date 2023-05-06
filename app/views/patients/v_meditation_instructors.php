@@ -26,10 +26,14 @@
             <form action="" class="search-form-pharmacy" method="POST">
                 <select name="city" id="city">
                     <option value="">City</option>
-                    <option value="">Colombo</option>
-                    <option value="">Galle</option>
-                    <option value="">Kandy</option>
+                    <option value="Colombo">Colombo</option>
+                    <option value="Galle">Galle</option>
+                    <option value="Kandy">Kandy</option>
                     <option value="Malabe">Malabe</option>
+                    <option value="Matara">Matara</option>
+                    <option value="Nugegoda">Nugegoda</option>
+                    <option value="Ratnapura">Ratnapura</option>
+                    <option value="Trincomalee">Trincomalee</option>
                 </select>
                 <div class="main-search">
                     <input type="text" name="search" placeholder="Search doctor by name..">
@@ -57,7 +61,7 @@
                     <div class="right">
                         <p>City : <?php  echo $meditation_instructor->city ?></p>
                         <h2>Meditation Instructor</h2>
-                        <form action="<?php echo URLROOT ?>/Patient/getMeditationIsnstructorId" method="POST">
+                        <form action="<?php echo URLROOT ?>/Patient/getMeditationInstructorId" method="POST">
                             <input type="hidden" name="meditation_instructor_id" id="meditation_instructor_id" value="<?php echo $meditation_instructor->meditation_instructor_id ?>">
                             <button class="channel-butten">Select</button>
                         </form>

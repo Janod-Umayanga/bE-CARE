@@ -21,8 +21,8 @@
                 <a href="<?php echo URLROOT ?>/Login/login" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Home page</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Enter your login details to get into the application</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                    <h2>Change your password with the relavent details</h2>
+                    <p>Make sure to choose a strong and secure password. Click the "Change Password" button to update your password.</p>
                 </div>
             </div>
         </div>
@@ -37,12 +37,15 @@
                     <div class="left"> <br><br>
 
                         <label>Email</label><br>
-                        <input type="text"  name="email" id="email"  value="<?php echo $_SESSION['email_reset_password'] ?>" >
+                        <input type="text"  name="emailtext" id="email" disabled='true' value="<?php if(isset($_GET['email'])){ echo $_GET['email']; $_SESSION['email_reset_password']=$_GET['email'];} else{ echo $_SESSION['email_reset_password']; } ?>" >
+                        <input type="hidden"  name="email" id="email"  value="<?php if(isset($_GET['email'])){ echo $_GET['email']; $_SESSION['email_reset_password']=$_GET['email'];} else{ echo $_SESSION['email_reset_password']; } ?>" >
+                       
                         
                          <label>New Password</label>
                          <input type="password" name="new_pwd" id="password"  >
                          <span class="form-invalid"><?php echo $data['new_pwd_err'] ?></span>
-
+                         <input type="hidden"  name="usertype" id="usertype"  value="<?php if(isset($_GET['usertype'])){ $_SESSION['usertype']=$_GET['usertype'];} ?>" >
+                       
 
                          <label>Re-Type New Password</label>
                          <input type="password" name="password" id="passwordRepeat"  >

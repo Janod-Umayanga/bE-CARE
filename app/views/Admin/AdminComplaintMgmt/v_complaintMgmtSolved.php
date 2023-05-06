@@ -10,7 +10,7 @@
     <script src="https://kit.fontawesome.com/c4a594ff55.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
-    <script defer src="script.js"></script>
+    <script defer src="<?php echo URLROOT; ?>/js/script.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -35,7 +35,7 @@
                     </tr>
                    
                      
-                    <?php foreach($data['complaint'] as $complaint): ?>
+        <?php foreach($data['complaint'] as $complaint): ?>
          
          <?php if($complaint->patient_id != NULL):
               

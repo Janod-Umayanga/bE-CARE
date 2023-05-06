@@ -11,6 +11,7 @@
     <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
     <script defer src="<?php echo URLROOT; ?>/js/pushNotificationforLogin.js"></script>
+    <script defer src="<?php echo URLROOT; ?>/js/login.js"></script>
     <title>Document</title>
 </head>
 <body>

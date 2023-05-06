@@ -6,6 +6,7 @@
             $this->pagesModel = $this->model('M_Pages');
         }
 
+        //index
         public function index() {
             $data = [];
 
@@ -28,13 +29,12 @@
           }
 
         public function about() {
-            $users = $this->pagesModel->getUsers();
+            
 
             $data = [
-                'users' => $users
             ];
             
-            $this->view('v_about', $data);
+            $this->view('pages/v_about', $data);
         }
 
 

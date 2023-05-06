@@ -37,7 +37,7 @@
                     <li>Registered date - <?php echo $data['meditationInstructor']->registered_date ?></li>
                    
                     <li>NIC - <?php echo $data['meditationInstructor']->nic ?></li>
-                    <li>Gender - <?php echo $data['meditationInstructor']->gender ?></li>
+                    <li>Title - <?php echo $data['meditationInstructor']->gender ?></li>
                     <li>City - <?php echo $data['meditationInstructor']->city ?></li>
                    
                     <li>Address - <?php echo $data['meditationInstructor']->address ?></li>
