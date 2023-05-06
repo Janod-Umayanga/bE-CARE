@@ -482,6 +482,7 @@
         public function createPatientSession($patient) {
             $_SESSION['patient_id'] = $patient->patient_id;
             $_SESSION['patient_email'] = $patient->email;
+            $_SESSION['patient_title'] = $patient->gender;
             $_SESSION['patient_name'] = $patient->first_name;
             $_SESSION['first_time_logged'] = true;
         
@@ -566,6 +567,7 @@
                 unset($_SESSION['patient_id']);
                 unset($_SESSION['patient_email']);
                 unset($_SESSION['patient_name']);
+                unset($_SESSION['patient_title']);
                 // session_destroy();
 
                 $_SESSION['logout'] = true;

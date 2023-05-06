@@ -268,6 +268,7 @@
                 if(empty($data['fname_err']) && empty($data['lname_err']) && empty($data['nic_err']) && empty($data['cnumber_err']) && empty($data['gender_err'])) {
                     // Update patient
                     if($this->patientModel->update($data, $_SESSION['patient_id'])) {
+                        $_SESSION['details_updated'] = true;
                         redirect('Pages/index');
                     }
                     else {
@@ -350,6 +351,7 @@
                     $data['newpw'] = password_hash($data['newpw'], PASSWORD_DEFAULT);
                     // Update patient
                     if($this->patientModel->updatePW($data, $_SESSION['patient_id'])) {
+                        $_SESSION['pw_updated'] = true;
                         redirect('Pages/index');
                     }
                     else {
@@ -613,7 +615,7 @@
     
                     // Validate gneder
                     if(empty($data['gender'])) {
-                        $data['gender_err'] = 'Gender required';
+                        $data['gender_err'] = 'Title required';
                     }
     
                     // Create order after validation
@@ -838,7 +840,7 @@
     
                     // Validate gneder
                     if(empty($data['gender'])) {
-                        $data['gender_err'] = 'Gender required';
+                        $data['gender_err'] = 'Title required';
                     }
     
                     // Create order after validation
@@ -1033,7 +1035,7 @@
 
                     // Validate gender
                     if(empty($data['gender'])) {
-                        $data['gender_err'] = 'Gender required';
+                        $data['gender_err'] = 'Title required';
                     }
     
                     // Validate contact number
@@ -1490,7 +1492,7 @@
     
                     // Validate gneder
                     if(empty($data['gender'])) {
-                        $data['gender_err'] = 'Gender required';
+                        $data['gender_err'] = 'Title required';
                     }
     
                     // Create order after validation
@@ -1669,7 +1671,7 @@
     
                     // Validate gneder
                     if(empty($data['gender'])) {
-                        $data['gender_err'] = 'Gender required';
+                        $data['gender_err'] = 'Title required';
                     }
     
                     // Create order after validation

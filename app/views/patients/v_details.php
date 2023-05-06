@@ -19,8 +19,8 @@
                 <a href="<?php echo URLROOT ?>/Pages/index" class="page-change-button"><i class="fa-solid fa-arrow-left"></i>Back to Homepage</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Enter your login details to get into the application</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                    <h2>Change your account details</h2>
+                    <p>Fill the relevant fields you need to change. If you need to change the password, click the provided link for that.</p>
                 </div>
             </div>
         </div>
@@ -52,8 +52,12 @@
                         <button>Update</button>
                     </div>
                     <div class="right">
-                        <label for="gender">Gender</label>
-                        <input type="text" id="gender" name="gender" value="<?php echo $data['gender'] ?>">
+                        <label for="gender">Title</label>
+                            <select name="gender" id="gender"  value="<?php echo $data['gender'] ?>">
+                                <option value="">Title</option>
+                                <option value="Mr">Mr</option>
+                                <option value="Ms">Ms</option>
+                            </select>
                         <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
 
                         <label for="email">Email</label>

@@ -19,8 +19,8 @@
                 <a href="<?php echo URLROOT ?>/Patient/findNutritionist" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Find a Nutritionist</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Fill these details to request the diet plan</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                    <h2>Enter your details</h2>
+                    <p>Fill the relevant details needed for the diet plan request. Make sure to mention any additional medical details if there is any in the relevant field or type "-" if there is none. You need to mention the goal in the relevant field and click submit to proceed with the payment. You will soon receive an email when the nutritionist issued your diet plan and you can download the diet plan via our website.</p>
                 </div>
             </div>
         </div>
@@ -36,11 +36,13 @@
                         <input type="number" id="age" name="age" value="<?php echo $data['age'] ?>">
                         <span class="form-invalid"><?php echo $data['age_err'] ?></span>
 
-                        <label for="gender">Gender</label>
-                        <select name="gender" id="gender">
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </select>
+                        <label for="gender">Title</label>
+                            <select name="gender" id="gender"  value="<?php echo $data['gender'] ?>">
+                                <option value="">Title</option>
+                                <option value="Mr">Mr</option>
+                                <option value="Ms">Ms</option>
+                            </select>
+                        <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
 
                         <label for="cnumber">Contact number</label>
                         <input type="number" id="cnumber" name="cnumber" value="<?php echo $data['cnumber'] ?>">

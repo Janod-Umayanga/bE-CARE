@@ -19,8 +19,8 @@
                 <a href="<?php echo URLROOT ?>/Patient/findPharmacy" class="page-change-button"><i class="fa-solid fa-arrow-left"></i>Back to Find a Pharmacy</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Enter your login details to get into the application</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                    <h2>Enter your details</h2>
+                    <p>Fill the relevant details needed for the order. Make sure to upload a photo of your prescription. You will soon receive an email when the pharmacy accepted your order. Then you can proceed with the payment.</p>
                 </div>
             </div>
         </div>

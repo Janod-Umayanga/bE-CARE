@@ -54,7 +54,7 @@
                         <p class="register-approach">Register for the system</p> <!-- This only appear when view width fits for mobile-->
                         
                         <?php if(isset($_SESSION['patient_id'])): ?>
-                            <a href="<?php echo URLROOT ?>/Patient/details" class="nav-buttons"><?php echo $_SESSION['patient_name'] ?></a>
+                            <a href="<?php echo URLROOT ?>/Patient/details" class="nav-buttons"><?php echo $_SESSION['patient_title'] ?>. <?php echo $_SESSION['patient_name'] ?></a>
                             <a href="<?php echo URLROOT ?>/Login/logout" class="nav-buttons register-button">LOG OUT</a>
                         <?php elseif(isset($_SESSION['admin_id'])): ?>
                             <a href="<?php echo URLROOT ?>/Admin/profile" class="nav-buttons"><?php echo strtoupper($_SESSION["admin_gender"].'.'.$_SESSION['admin_name']) ?></a>

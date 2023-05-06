@@ -19,8 +19,8 @@
                 <a href="<?php echo URLROOT ?>/Patient/findMeditationInstructor" class="page-change-button"><i class="fa-solid fa-arrow-left"></i>Back to Find a Meditation Instructor</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Enter your login details to get into the application</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                    <h2>Enter your details</h2>
+                    <p>Fill the relevant details needed for the appointment and click submit to proceed with the payment to complete the appointment.</p>
                 </div>
             </div>
         </div>
@@ -39,11 +39,12 @@
                         <input type="number" id="age" name="age" value="<?php echo $data['age'] ?>">
                         <span class="form-invalid"><?php echo $data['age_err'] ?></span>
 
-                        <label for="">Gender</label>
-                        <select name="gender" id="gender">
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
+                        <label for="gender">Title</label>
+                            <select name="gender" id="gender"  value="<?php echo $data['gender'] ?>">
+                                <option value="">Title</option>
+                                <option value="Mr">Mr</option>
+                                <option value="Ms">Ms</option>
+                            </select>
                         <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
 
                         <label for="cnumber">Contact number</label>
