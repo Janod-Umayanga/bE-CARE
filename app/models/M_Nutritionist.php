@@ -49,7 +49,7 @@
         // Get all requested diet plans of logged nutritionist
         public function getAllRequests($nutritionist_id){
             $this->db->query('SELECT * FROM request_diet_plan 
-            WHERE nutritionist_id = :nutritionist_id ORDER BY requested_date_and_time ASC');
+            WHERE nutritionist_id = :nutritionist_id AND is_issued = 0 ORDER BY requested_date_and_time ASC');
             $this->db->bind(':nutritionist_id',$nutritionist_id);  
      
             return $this->db->resultSet();
@@ -194,7 +194,7 @@
         // After sent a diet plan Then delete requests from diet_plan_requets table
         public function removeRequest($dietPlanID)
         {
-            $this->db->query('DELETE  FROM request_diet_plan WHERE request_diet_plan_id=:request_diet_plan_id');
+            $this->db->query('UPDATE  request_diet_plan SET is_issued = 1 WHERE request_diet_plan_id=:request_diet_plan_id');
             $this->db->bind(':request_diet_plan_id', $dietPlanID);
 
             if($this->db->execute())

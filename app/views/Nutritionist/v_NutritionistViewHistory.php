@@ -28,7 +28,7 @@
             <div class="table">
                 <table cellspacing="0" cellpadding="0">
                     <tr>
-                    <th>Diet Plan ID</th> 
+                        <th>Diet Plan ID</th> 
                         <th>Issued Date and Time</th> 
                         <th></th>
                     </tr>

@@ -117,7 +117,7 @@
         public function getAllPaidOrderDetails($pharmacist_id)
         {
             $this->db->query('SELECT * FROM accept_order
-            WHERE pharmacist_id = :pharmacist_id AND  paid = 1');
+            WHERE pharmacist_id = :pharmacist_id AND  paid = 1 AND is_send=0');
 
             $this->db->bind(':pharmacist_id',$pharmacist_id);
 

@@ -367,7 +367,7 @@ public function sendOrderSubmit(){
         if(empty($data['pharmacist_note_err']))
        { 
           $this->pharmacistSendAcceptOrderDetailsModel->sendOrderforCustomer($_SESSION['pharmacist_id'], $data);
-          $this->view('Pharmacist/v_PharmacistSendOrder', $data);   
+          $this->view('Pharmacist/v_PharmacistViewOrders', $data);   
        }
       
       }
