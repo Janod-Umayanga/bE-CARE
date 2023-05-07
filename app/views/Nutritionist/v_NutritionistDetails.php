@@ -19,8 +19,8 @@
                 <a href="<?php echo URLROOT ?>/Nutritionist/nutritionistDashboard" class="page-change-button"><i class="fa-solid fa-arrow-left"></i>Back to Homepage</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Enter your login details to get into the application</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                    <h2>Update your profile with the relevant details</h2>
+                    <p>Click the "Update" button to save your changes and update your profile information.</p>
                 </div>
             </div>
         </div>
@@ -42,17 +42,18 @@
                         <span class="form-invalid"><?php echo $data['last_name_err'] ?></span>
 
                         <label for="nic">NIC</label>
-                        <input type="text" id="nic" name="nic" value="<?php echo $data['nic'] ?>">
+                        <input type="text" disabled='true' id="nic" name="nic" value="<?php echo $data['nic'] ?>">
                         <span class="form-invalid"><?php echo $data['nic_err'] ?></span>
 
                         <label for="contact_number">Contact number</label>
                         <input type="text" id="contact_number" name="contact_number" value="<?php echo $data['contact_number'] ?>">
                         <span class="form-invalid"><?php echo $data['contact_number_err'] ?></span>
                         
-                        <label for="gender">Gender</label>
+                        <label for="gender">Title</label>
                         <select name="gender" id="gender" >
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
+                           <option value="">Title</option>
+                           <option value="Mr">Mr</option>
+                           <option value="Ms">Ms</option>
                         </select>
                         <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
                      
@@ -66,7 +67,7 @@
                     <div class="right">
 
                     <label for="slmc_reg_number">SLMC Reg No</label>
-                        <input type="text" id="slmcregNo" name="slmc_reg_number" value="<?php echo $data['slmc_reg_number'] ?>">
+                        <input type="text" disabled='true' id="slmcregNo" name="slmc_reg_number" value="<?php echo $data['slmc_reg_number'] ?>">
 
                         
                                     

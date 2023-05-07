@@ -166,16 +166,23 @@ public function sendDietPlan()
         'diet_plan_file_err' => ''
 
         ];
-        //validate each input
-        //validate name
+
+        /*validate each input*/
+
+        //validate Description
         if (empty($data['description'])) {
           $data['description_err'] = 'Please enter any description';
         }
-        // validate diet
+        else if(validateDescription($data['description'])!="true"){
+          $data['description_err']=validateDescription($data['description']);
+        }
+
+        // validate diet plan file
         if (empty($data['diet_plan_file'])) {
           $data['diet_plan_file_err'] = 'Please enter diet plan';
         }
 
+        // after validation 
         if (empty($data['description_err']) && empty($data['diet_plan_file_err'])) 
       {
 
@@ -183,6 +190,11 @@ public function sendDietPlan()
         $this->view('Nutritionist/v_NutritionistDashboard', $data);
         $this->nutritionistremoverequestModel->removeRequest( $dietPlanID);
        } 
+       else{
+        $this->view('Nutritionist/v_NutritionistViewRequests', $data);
+
+       }
+       
   }
   
 }    
@@ -191,49 +203,7 @@ else
 redirect('Login/login');
 }   
 
-/*Send an email with diet plan*/
-if(isset($_POST['submit'])){
 
-  $fullname = 'Danushika Wijeshige';
-  $email = 'danushikawijeshige@gmail.com';
-  $subject = 'Diet Plan';
-  $message = "This your diet plan";
-
-  $to = 'mwijesinghe528@gmail.com';
-  $mail_subject = "This your Diet Plan.";
-  $email_body = "Message from bE-CARE WebSite : <br>";
-  $email_body = "<b>From :</b> {$fullname} <br>";
-  $email_body = "<b>Subject :</b> <br> {$subject} <br>";
-  $email_body = "<b>Message :</b><br> . nl2br(strip_tags($message))";
-
-  $header = "From: {$email}\r\nContent-Type: text/html;";
-
-  $send_mail_result = mail($to, $mail_subject, $email_body, $header);
-
-  if($send_mail_result)
-  {
-    echo "Message Sent";
-  }
-  else{
-    echo "Message not sent";
-  }
-  
-
-}
-
- /*Send an email to patient*/
- /*if (isset($_POST['submit'])){
-     
-     $name=$ 
-     $email =  $_SESSION['nutritionist_email'];
-     $subject = 'Your requested Diet Plan';
-     $message = $_POST['description'];
-     $dietFile = $_POST['diet_plan_file'];
-
-     $to = 'danamaduwije98@gmail.com';
-     $mail_subject = 
-     
- }*/
 
 }
 
@@ -291,8 +261,8 @@ public function editProfile($userId){
          'nutritionist_id'=>$userId,
          'first_name'=>trim($_POST['first_name']),
          'last_name'=>trim($_POST['last_name']),
-         'nic'=>trim($_POST['nic']),
-         'slmc_reg_number'=>trim($_POST['slmc_reg_number']),
+         'nic'=>$_SESSION['nutritionist_nic'],
+         'slmc_reg_number'=>$_SESSION['nutritionist_slmc_reg_number'],
          'contact_number'=>trim($_POST['contact_number']),
          'bank_name'=>trim($_POST['bank_name']),
          'account_holder_name'=>trim($_POST['account_holder_name']),
@@ -322,29 +292,54 @@ public function editProfile($userId){
       if(empty($data['first_name'])){
          $data['first_name_err']='first name can not be empty';
       }
+      else if(validateFirstName($data['first_name'])!="true"){
+        $data['first_name_err']=validateFirstName($data['first_name']);
+       }
 
       if(empty($data['last_name'])){
          $data['last_name_err']='last name can not be empty';
       }
+      else if(validateLastName($data['last_name'])!="true"){
+        $data['last_name_err']=validateLastName($data['last_name']);
+       }
 
       if(empty($data['nic'])){
          $data['nic_err']='nic can not be empty';
       }
+      else if(validateNIC($data['nic'])!="true"){
+        $data['nic_err']=validateNIC($data['nic']);
+       }
+
 
       if(empty($data['contact_number'])){
          $data['contact_number_err']='contact number can not be empty';
       }
+      else if(validateContactNumber($data['contact_number'])!="true"){
+        $data['contact_number_err']=validateContactNumber($data['contact_number']);
+      }
+
 
       if(empty($data['bank_name'])){
        $data['bank_name_err']='bank name can not be empty';
     }
+    else if(validateBankName($data['bank_name'])!="true"){
+      $data['bank_name_err']=validateBankName($data['bank_name']);
+     }
+
 
      if(empty($data['account_holder_name'])){
          $data['account_holder_name_err']='account holder name can not be empty';
      }
+     else if(validateAccountHolderName($data['account_holder_name'])!="true"){
+      $data['account_holder_name_err']=validateAccountHolderName($data['account_holder_name']);
+     }
+
 
      if(empty($data['branch'])){
          $data['branch_err']='branch name can not be empty';
+     }
+     else if(validateBankBranch($data['branch'])!="true"){
+      $data['branch_err']=validateBankBranch($data['branch']);
      }
 
      if(empty($data['gender'])){
@@ -354,14 +349,54 @@ public function editProfile($userId){
       if(empty($data['account_number'])){
          $data['account_number_err']='account number can not be empty';
       }
+      else if(validateAccountNumber($data['account_number'])!="true"){
+        $data['account_number_err']=validateAccountNumber($data['account_number']);
+       }
+
 
       if(empty($data['fee'])){
          $data['fee_err']='city can not be empty';
       }
+      else if(validateFee($data['fee'])!="true"){
+        $data['fee_err']=validateFee($data['fee']);
+       }
+
       
       if(empty($data['slmc_reg_number'])){
           $data['slmc_reg_number_err']='slmc registration number can not be empty';
        }
+
+       if($_SESSION['nutritionist_contact_number']!=  trim($_POST['contact_number'])){
+     
+        if($this->userModel->findNutritionistByContactNumber($data['contact_number'])){
+          $data['contact_number_err']='Contact Number is already used';
+
+        } 
+        else if($this->userModel->findReqNutritionistByContactNumber($data['contact_number'])){
+          $data['contact_number_err']='Contact Number is already used';
+
+        }
+        
+      }
+     
+     
+
+      if($_SESSION['nutritionist_account_number']!=trim(trim($_POST['account_number']))){
+     
+  
+        if($this->userModel->findNutritionistByAccountNumber($data['account_number'])){
+          $data['account_number_err']='Account Number is already used';
+
+        } 
+        else if($this->userModel->findReqNutritionistByAccountNumber($data['account_number'])){
+          $data['account_number_err']='Account Number is already used';
+
+        }
+
+
+      }
+     
+     
 
       
 
@@ -461,25 +496,40 @@ public function updatePassword($id){
       if(empty($data['current_password'])){
         $data['current_password_err']='Please enter a current password';
      
-      }else{
+      }
+      else if(validatePassword($data['current_password'])!="true"){
+        $data['current_password_err']=validatePassword($data['current_password']);
+       }
+      
+      else{
          if($this->userModel->findUserPWMatch($id,$data['current_password'])){
     
         }else{
                $data['current_password_err']='Current password is incorrect';
-         }  
-       
+         }   
       }
+
+
       if($data['new_password']!=$data['retype_new_password']){
        $data['new_password_err']='New password and retype new password is incorrect';
       } 
 
+
       if(empty($data['new_password'])){
          $data['new_password_err']='Please enter a new password';
       } 
+      else if(validatePassword($data['new_password'])!="true"){
+        $data['new_password_err']=validatePassword($data['new_password']);
+       }
+
       
       if(empty($data['retype_new_password'])){
        $data['retype_new_password_err']='Please retype new password';
-    } 
+      } 
+    else if(validatePassword($data['retype_new_password'])!="true"){
+      $data['retype_new_password_err']=validatePassword($data['retype_new_password']);
+    }
+
 
       if(empty($data['current_password_err']) && empty($data['retype_new_password_err']) && empty($data['new_password_err'])){
     

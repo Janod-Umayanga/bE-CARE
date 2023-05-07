@@ -553,6 +553,10 @@
             $_SESSION['nutritionist_name'] = $nutritionist->first_name;
             $_SESSION['first_time_logged'] = true;
             $_SESSION['nutritionist_gender']=$nutritionist->gender;
+            $_SESSION['nutritionist_contact_number'] = $nutritionist->contact_number;
+            $_SESSION['nutritionist_nic'] = $nutritionist->nic;
+            $_SESSION['nutritionist_slmc_reg_number'] = $nutritionist->slmc_reg_number;
+            $_SESSION['nutritionist_account_number'] = $nutritionist->account_number;
 
 
             redirect('Nutritionist/nutritionistDashBoard');
@@ -564,6 +568,10 @@
             $_SESSION['pharmacist_name'] = $pharmacist->first_name;
             $_SESSION['first_time_logged'] = true;
             $_SESSION['pharmacist_gender']=$pharmacist->gender;
+            $_SESSION['pharmacist_contact_number'] = $pharmacist->contact_number;
+            $_SESSION['pharmacist_nic'] = $pharmacist->nic;
+            $_SESSION['pharmacist_slmc_reg_number'] = $pharmacist->slmc_reg_number;
+            $_SESSION['pharmacist_account_number'] = $pharmacist->account_number;
             
                     
              redirect('Pharmacist/pharmacistDashBoard');
@@ -636,6 +644,10 @@
                 unset($_SESSION['nutritionist_id']);
                 unset($_SESSION['nutritionist_email']);
                 unset($_SESSION['nutritionist_name']);
+                unset($_SESSION['nutritionist_contact_number']);
+                unset($_SESSION['nutritionist_nic']);
+                unset($_SESSION['nutritionist_slmc_reg_number']);
+                unset($_SESSION['nutritionist_account_number']);
                 // session_destroy();
 
                 $_SESSION['logout'] = true;
@@ -645,6 +657,10 @@
                 unset($_SESSION['pharmacist_id']);
                 unset($_SESSION['pharmacist_email']);
                 unset($_SESSION['pharmacist_name']);
+                unset($_SESSION['pharmacist_contact_number']);
+                unset($_SESSION['pharmacist_nic']);
+                unset($_SESSION['pharmacist_slmc_reg_number']);
+                unset($_SESSION['pharmacist_account_number']);
                 // session_destroy();
 
                 $_SESSION['logout'] = true;

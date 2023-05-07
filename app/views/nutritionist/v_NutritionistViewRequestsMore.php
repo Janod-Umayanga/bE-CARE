@@ -19,13 +19,13 @@
     <section class="view-profile-container-nutritionistSession theme">
         <div class="card">
             <div class="main-image">
-                <a href="<?php echo URLROOT ?>/Nutritionist/nutritionistViewRequests/" class="backto-doctors"><i class="fa-solid fa-arrow-left"></i>Back to Diet Plans List</a> 
+                <a href="<?php echo URLROOT ?>/Nutritionist/getAllRequests/" class="backto-doctors"><i class="fa-solid fa-arrow-left"></i>Back to Diet Plans List</a> 
             </div>
             <div class="bottom">
                 <ul>
                     <li>Name - <?php echo $data['more']->name ?></li>
                     <li>Age - <?php echo $data['more']->age ?></li>
-                    <li>Gender - <?php echo $data['more']->gender ?></li>
+                    <li>Title - <?php echo $data['more']->gender ?></li>
                     <li>Contact Number - <?php echo $data['more']->contact_number ?></li>
                     <li>Weight - <?php echo $data['more']->weight?></li>   
                     <li>Height - <?php echo $data['more']->height ?></li>

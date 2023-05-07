@@ -169,7 +169,76 @@
             else {
                 return false;
             }
+
+            
         }
+
+        // Find  Nutritionist by Contact Number
+    
+      public function findNutritionistByContactNumber($contact_number)
+      {
+        $this->db->query('SELECT * FROM nutritionist WHERE contact_number= :contact_number');
+        $this->db->bind(':contact_number',$contact_number);  
+
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return true;
+        }else{
+              return false;
+        }
+    }
+
+       // Find Requested Nutritionist by Contact Number
+    
+      public function findReqNutritionistByContactNumber($contact_number)
+      {
+            $this->db->query('SELECT * FROM requested_nutritionist WHERE contact_number= :contact_number');
+            $this->db->bind(':contact_number',$contact_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+      }
+
+
+           
+
+           // Find  Nutritionist by Account Number
+            
+            public function findNutritionistByAccountNumber($account_number)
+            {
+            $this->db->query('SELECT * FROM nutritionist WHERE account_number= :account_number');
+            $this->db->bind(':account_number',$account_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+            }
+
+            // Find Requested Nutritionist by Account Number
+
+            public function findReqNutritionistByAccountNumber($account_number)
+            {
+                  $this->db->query('SELECT * FROM requested_nutritionist WHERE account_number= :account_number');
+                  $this->db->bind(':account_number',$account_number);  
+
+                  $row= $this->db->single();
+
+                  if($this->db->rowCount() >0){
+                        return true;
+                  }else{
+                        return false;
+                  }
+            }
 
         public function sendDietPlanDetails($nutritionist_id,$data)
         {
@@ -235,6 +304,24 @@
                 return false;
             } 
           }
+
+          
+     /*     public function changePWNutritionist($data){
+
+       
+            $this->db->query('UPDATE nutritionist set password = :password WHERE nutritionist_id = :id');
+            $this->db->bind(':password', $data['password']);
+            $this->db->bind(':id', $data['nutritionist_id']);
+                
+    
+            if($this->db->execute()){
+               return true;
+            }else{
+                return false;
+            } 
+          }*/
+
+
 
         public function findUserPWMatch($id,$password){
             $this->db->query('SELECT password FROM nutritionist WHERE nutritionist_id=:id');
