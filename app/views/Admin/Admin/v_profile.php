@@ -49,7 +49,7 @@
                         <span class="form-invalid"><?php echo $data['last_name_err'] ?></span>
 
                         <label for="nic">NIC</label>
-                        <input type="text" id="nic" name="nic" value="<?php echo $data['nic'] ?>">
+                        <input type="text" id="nic" name="nic" disabled="true" value="<?php echo $data['nic'] ?>">
                         <span class="form-invalid"><?php echo $data['nic_err'] ?></span>
 
                         <label for="contact_number">contact Number</label>

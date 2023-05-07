@@ -170,7 +170,7 @@ class Admin extends Controller{
           'admin_id'=>$userId,
           'first_name'=>trim($_POST['first_name']),
           'last_name'=>trim($_POST['last_name']),
-          'nic'=>trim($_POST['nic']),
+          'nic'=> $_SESSION['admin_nic'],
           'contact_number'=>trim($_POST['contact_number']),
           'bank_name'=>trim($_POST['bank_name']),
           'account_holder_name'=>trim($_POST['account_holder_name']),
@@ -261,12 +261,6 @@ class Admin extends Controller{
         
       }
      
-      if($_SESSION['admin_nic']!=trim($_POST['nic'])){
-     
-        if($this->userModel->findAdminByNic($data['nic'])) {
-          $data['nic_err'] = 'Nic already in used';
-        }
-      } 
 
 
       if($_SESSION['admin_account_number']!=trim(trim($_POST['account_number']))){

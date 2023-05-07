@@ -39,7 +39,7 @@
                       <th>Name</th>
                       <th>Contact Number</th>
                       <th>Age</th>
-                      <th>Gender</th>
+                      <th>Title</th>
                       <th>Registered Date and Time</th>
                     </tr>
                    

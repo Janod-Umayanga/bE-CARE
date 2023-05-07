@@ -51,7 +51,7 @@
                         <span class="form-invalid"><?php echo $data['last_name_err'] ?></span>
 
                         <label for="nic">NIC</label>
-                        <input type="text" id="nic" name="nic" value="<?php echo $data['nic'] ?>">
+                        <input type="text" id="nic" name="nic" disabled='true' value="<?php echo $data['nic'] ?>">
                         <span class="form-invalid"><?php echo $data['nic_err'] ?></span>
 
                         <label for="contact_number">contact Number</label>
@@ -63,7 +63,17 @@
                         
             
                         <label for="city">City</label>
-                        <input type="text" id="city" name="city" value="<?php echo $data['city'] ?>">
+                        <select name="city" id="city">
+                            <option value="">City</option>
+                            <option value="Colombo">Colombo</option>
+                            <option value="Galle">Galle</option>
+                            <option value="Kandy">Kandy</option>
+                            <option value="Malabe">Malabe</option>
+                            <option value="Matara">Matara</option>
+                            <option value="Nugegoda">Nugegoda</option>
+                            <option value="Ratnapura">Ratnapura</option>
+                            <option value="Trincomalee">Trincomalee</option>
+                        </select>
                         <span class="form-invalid"><?php echo $data['city_err'] ?></span>
 
 
