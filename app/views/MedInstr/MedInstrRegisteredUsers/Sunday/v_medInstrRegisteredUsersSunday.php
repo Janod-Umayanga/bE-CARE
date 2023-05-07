@@ -53,7 +53,7 @@
                         <th>Name</th>
                         <th>Age</th>
                         <th>Contact number</th>
-                        <th>Gender</th>
+                        <th>Title</th>
                     </tr>
                     <?php $gg=0;?>
                     <?php } ?>

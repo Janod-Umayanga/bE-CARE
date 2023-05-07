@@ -19,6 +19,10 @@
           
       } 
 
+
+     // FROM_UNIXTIME(:current_timestamp)  returns a datetime string in the format "YYYY-MM-DD   
+     // HH:MM:SS". 
+
       //MedInstr appointment day
       public function medInstrappointmentday($id)
       {
