@@ -24,9 +24,9 @@
             <div class="bottom">
                 <ul>
                     
-                    <li>Name - <?php echo $data['history']->name ?></li>
-                    <li>Contact Number - <?php echo $data['history']->contact_number ?></li>
-                    <li>Delivery Address - <?php echo $data['history']->delivery_address?></li>
+                    <li>Name - <?php echo $data['historymore']->name ?></li>
+                    <li>Contact Number - <?php echo $data['historymore']->contact_number ?></li>
+                    <li>Delivery Address - <?php echo $data['historymore']->delivery_address?></li>
                     <li>Prescription - <a href="prescription.pdf" download="">Click Here</a> <?php ?></li>
                 </ul>
                 <div class="bottom-line"></div>

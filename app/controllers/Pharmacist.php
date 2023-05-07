@@ -103,12 +103,14 @@
      // view selling history More details
      public function pharmacistSellingHistoryMore(){
 
-      if (isset($_SESSION['pharmacist_id'])) {
-        if (isset($_POST['submit'])) {
-          $history = $this->pharmacistViewSellingHistoryModel->getAllSellingHistoryMore($_SESSION['pharmacist_id']);
+      if(isset($_SESSION['pharmacist_id'])) {
+        if(isset($_POST['submit'])) {
+
+          $orderId = $_POST['order_id'];
+          $historymore = $this->pharmacistViewSellingHistoryModel->getAllSellingHistoryMore($orderId);
         
           $data=[                      
-            'history'=>$history
+            'historymore'=>$historymore
           ]; 
           $this->view('Pharmacist/v_PharmacistViewSellingHistoryMore',$data); 
        
@@ -202,67 +204,7 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
     $data['bill_err'] = 'Please enter bill.';
   }
 
-  /*
-  // validate bill and upload
-  if (uploadImage($data['bill']['tmp_name'], 'img/bills/')) {
-    //Done
-  }
-  else {
-    $data['bill_err'] = 'Please enter bill of order.';
-  }
-
-  */
-/*
-$target_dir = "uploads/";
-$target_file = $target_dir . basename($_FILES["bill"]["name"]);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
-// Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
-  $check = getimagesize($_FILES["bill"]["tmp_name"]);
-  if($check !== false) {
-    echo "File is an image - " . $check["mime"] . ".";
-    $uploadOk = 1;
-  } else {
-    echo "File is not an image.";
-    $uploadOk = 0;
-  }
-}
-
-// Check if file already exists
-if (file_exists($target_file)) {
-  echo "Sorry, file already exists.";
-  $uploadOk = 0;
-}
-
-// Check file size
-if ($_FILES["bill"]["size"] > 500000) {
-  echo "Sorry, your file is too large.";
-  $uploadOk = 0;
-}
-
-// Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
-  echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-  $uploadOk = 0;
-}
-
-// Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-  echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
-} else {
-  if (move_uploaded_file($_FILES["bill"]["tmp_name"], $target_file)) {
-    echo "The file ". htmlspecialchars( basename( $_FILES["bill"]["name"])). " has been uploaded.";
-  } else {
-    echo "Sorry, there was an error uploading your file.";
-  }
-}
-*/
-
-
+  
   //validate charge
 
   if (empty($data['charge'])) {
@@ -383,15 +325,32 @@ public function sendOrderSubmit(){
   
         $data = [
           'more' => $more,
-          'pharmacist_note'=>'',
+          'pharmacist_note'=> trim($_POST['pharmacist_note']),
 
           'pharmacist_note_err'=>'',
         ];
 
+        // validate pharmacist_note
+        if (empty($data['pharmacist_note'])) {
+          $data['pharmacist_note_err'] = 'Please enter Note';
+        }
+      
+        
+      /*      else if(validatePharmacistNote($data['pharmacist_note'])!="true"){
+              $data['pharmacist_note_err']=validatePharmacistNote($data['pharmacist_note']);
+             } */
+
+        // after validate send order
         if(empty($data['pharmacist_note_err']))
-       { 
-          $this->pharmacistSendAcceptOrderDetailsModel->sendOrderforCustomer($_SESSION['pharmacist_id'], $data);
-          $this->view('Pharmacist/v_PharmacistViewOrders', $data);   
+        { 
+          $this->pharmacistSendAcceptOrderDetailsModel->sendOrderforCustomer( $orderID,$data);
+          $this->view('Pharmacist/v_PharmacistDashBoard', $data);   
+       }
+
+       else{
+        $this->view('Pharmacist/v_PharmacistSendOrder', $data);
+
+
        }
       
       }

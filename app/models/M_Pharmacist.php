@@ -117,7 +117,7 @@
         public function getAllPaidOrderDetails($pharmacist_id)
         {
             $this->db->query('SELECT * FROM accept_order
-            WHERE pharmacist_id = :pharmacist_id AND  paid = 1 AND is_send=0');
+            WHERE pharmacist_id = :pharmacist_id AND  paid_amount > 0 AND is_send=0');
 
             $this->db->bind(':pharmacist_id',$pharmacist_id);
 
@@ -133,6 +133,16 @@
     
             
             return $this->db->resultSet();
+
+        }
+
+        public function getAllSellingHistoryMore($orderId){
+
+            $this->db->query('SELECT * FROM accept_order
+            WHERE order_id = :order_id' );
+           $this->db->bind(':order_id', $orderId);
+    
+            return $this->db->single();
 
         }
 
@@ -256,13 +266,14 @@
   
          }
 
-         public function sendOrderforCustomer($data)
+         public function sendOrderforCustomer($orderID,$data)
          {
             $this->db->query('UPDATE accept_order SET is_send=1
             AND pharmacist_note=:pharmacist_note where order_request_id=:order_request_id');
            
-            $this->db->bind(':order_request_id',$data['more']->order_request_id);
-            $this->db->bind(':pharmacist_note',$data['pharmacist_note']->pharmacist_note);
+           
+            $this->db->bind(':pharmacist_note',$data['pharmacist_note']);
+            $this->db->bind(':order_request_id',$orderID);
 
             if($this->db->execute()) {
                 return true;

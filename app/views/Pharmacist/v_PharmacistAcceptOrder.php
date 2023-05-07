@@ -40,13 +40,13 @@
                         placeholder="These medicines are Available.You can pay and confirm your order."></textarea>
                         <span class="form-invalid"><?php echo $data['pharmacist_note'] ?></span>
 
-                        <label for="bill">Bill</label>
-                        <input type="file" name="bill" id="bill" required value="<?php echo $data['bill'] ?>" >
+                        <label for="bill">Upload Bill</label>
+                        <input type="file" name="bill" id="bill"  value="<?php echo $data['bill'] ?>" >
                         <span class="form-invalid"><?php echo $data['bill_err'] ?></span>
 
                         
                         <label for="charge">Charge(Rs.)</label>
-                        <input name="charge" id="charge" required value="<?php echo $data['charge'] ?>" >
+                        <input name="charge" id="charge"  value="<?php echo $data['charge'] ?>" >
                         <span class="form-invalid"><?php echo $data['charge_err'] ?></span>
              
                         <button type="submit">Accept </button>

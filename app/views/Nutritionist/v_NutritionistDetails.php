@@ -10,9 +10,12 @@
     <script src="https://kit.fontawesome.com/c4a594ff55.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
+    <script defer src="<?php echo URLROOT; ?>/js/pushNotificationProfile.js"></script>
+  
     <title>Nutritionist Details</title>
 </head>
 <body>
+   <div id="notification-container"></div>
     <section class="login-section-p-and-n">
         <div class="login-page-leftside">
             <div class="left-side-container">
@@ -97,6 +100,10 @@
             </form>
         </div>
     </section>  
+
+      <!-- For push notifications -->
+      <span id="isUpdated"><?php if(isset($_SESSION['profile_update'])){echo $_SESSION['profile_update']; unset($_SESSION['profile_update']);}?></span>
+    
 </body>
 </html>
 

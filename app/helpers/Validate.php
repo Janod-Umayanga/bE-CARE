@@ -259,6 +259,18 @@
     return "true";
   }
 
+   /*pharmacist note*/
+  function validatePharmacistNote($pharmacy_note) {
+    // Check if the pharmacist note contains only letters, numbers, spaces and common special characters
+    if (!preg_match('/^[A-Za-z0-9\s.,#\'\-\/\(\)]+$/', $pharmacy_note)) {
+      return "Note contains invalid characters.";
+    }
+    
+    // If all checks pass, return true
+    return "true";
+  }
+
+
   function validatePostitiveNumber($number) {
     // Check if the given number is a positive number
     if ($number <= 0) {

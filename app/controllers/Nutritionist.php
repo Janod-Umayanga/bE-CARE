@@ -47,6 +47,7 @@ class Nutritionist extends Controller
       ];
       $this->view('Nutritionist/v_NutritionistViewRequests', $data);
     } else {
+      $_SESSION['need_login'] = true;
       redirect('Login/login');
     }
 
@@ -159,7 +160,9 @@ public function sendDietPlan()
         $data = [
         'more' => $more,
         'description' => trim($_POST['description']),
-        'diet_plan_file' => trim($_POST['diet_plan_file']),
+        'diet_plan_file'=> trim($_POST['diet_plan_file']),
+  //      'diet_plan_file' => $_FILES['diet_plan_file'],
+ //       'diet_plan_file_name' => time().'_'.$_FILES['diet_plan_file']['name'],
           
           
         'description_err' => '',
@@ -170,30 +173,39 @@ public function sendDietPlan()
         /*validate each input*/
 
         //validate Description
-        if (empty($data['description'])) {
+        if(empty($data['description'])) {
           $data['description_err'] = 'Please enter any description';
         }
-        else if(validateDescription($data['description'])!="true"){
+       /* else if(validateDescription($data['description'])!="true"){
           $data['description_err']=validateDescription($data['description']);
-        }
+        }*/
 
-        // validate diet plan file
-        if (empty($data['diet_plan_file'])) {
+
+  /*      // Validate prescription and upload
+        if(uploadImage($data['diet_plan_file']['tmp_name'], $data['diet_plan_file_name'], '/img/prescriptions/')) {
+          // Done
+      }
+      else {
+          $data['diet_plan_file_err'] = 'Diet Plan required';
+      }*/
+
+      // validate diet plan file
+        if(empty($data['diet_plan_file'])) {
           $data['diet_plan_file_err'] = 'Please enter diet plan';
-        }
+        } 
 
         // after validation 
-        if (empty($data['description_err']) && empty($data['diet_plan_file_err'])) 
+        if(empty($data['description_err']) && empty($data['diet_plan_file_err'])) 
       {
 
+        $this->nutritionistremoverequestModel->removeRequest($data);
         $this->nutritionistIssueDietPlansModel->sendDietPlanDetails($_SESSION['nutritionist_id'], $data);
         $this->view('Nutritionist/v_NutritionistDashboard', $data);
-        $this->nutritionistremoverequestModel->removeRequest( $dietPlanID);
        } 
        else{
         $this->view('Nutritionist/v_NutritionistViewRequests', $data);
-
        }
+     
        
   }
   
@@ -202,10 +214,8 @@ else
 {
 redirect('Login/login');
 }   
-
-
-
 }
+
 
 // Nutritionist View Profile
 public function profile(){
@@ -534,9 +544,10 @@ public function updatePassword($id){
       if(empty($data['current_password_err']) && empty($data['retype_new_password_err']) && empty($data['new_password_err'])){
     
        $data['password']=password_hash($data['new_password'],PASSWORD_DEFAULT);
-       $changeUserPW=$this->userModel->changePW($data);
+       $changeUserPW=$this->userModel->changePWNutritionist($data);
 
          if($changeUserPW){
+          $_SESSION['profile_updatePasswordNutritionist']='true';
            redirect('Nutritionist/changePassword');    
            
          }
@@ -565,9 +576,9 @@ public function updatePassword($id){
 
 }
 
-
-
 }
+
+
 ?>
 
 

@@ -243,12 +243,13 @@
         public function sendDietPlanDetails($nutritionist_id,$data)
         {
             $this->db->query('INSERT INTO diet_plan (description,diet_plan_file
-            ,nutritionist_id,request_diet_plan_id) 
-            VALUES (:description,:diet_plan_file,:nutritionist_id,:request_diet_plan_id)');
+            ,nutritionist_id,patient_id,request_diet_plan_id) 
+            VALUES (:description,:diet_plan_file,:nutritionist_id,:patient_id, :request_diet_plan_id)');
 
             $this->db->bind(':description',$data['description']);
             $this->db->bind(':diet_plan_file',$data['diet_plan_file']); 
             $this->db->bind(':nutritionist_id',$nutritionist_id);
+            $this->db->bind(':patient_id',$data['more']->patient_id);
             $this->db->bind(':request_diet_plan_id',$data['more']->request_diet_plan_id);
           //  $this->db->bind(':diet_plan_id',$data['more']->diet_plan_id); 
          //   $this->db->bind(':issued_date_and_time',GETDATE());
@@ -262,10 +263,10 @@
         
         }
         // After sent a diet plan Then delete requests from diet_plan_requets table
-        public function removeRequest($dietPlanID)
+        public function removeRequest($data)
         {
             $this->db->query('UPDATE  request_diet_plan SET is_issued = 1 WHERE request_diet_plan_id=:request_diet_plan_id');
-            $this->db->bind(':request_diet_plan_id', $dietPlanID);
+            $this->db->bind(':request_diet_plan_id', $data['more']->request_diet_plan_id);
 
             if($this->db->execute())
             {
@@ -306,7 +307,7 @@
           }
 
           
-     /*     public function changePWNutritionist($data){
+          public function changePWNutritionist($data){
 
        
             $this->db->query('UPDATE nutritionist set password = :password WHERE nutritionist_id = :id');
@@ -319,7 +320,7 @@
             }else{
                 return false;
             } 
-          }*/
+        }
 
 
 
