@@ -50,6 +50,24 @@
                     </li>
 
                     
+                    <li>Verified By  <br><br>
+                      Admin Name - <?php echo $data['admin_verified']->first_name ?>   <?php echo $data['admin_verified']->last_name ?></li>
+                    <li>Admin Email - <?php echo $data['admin_verified']->email ?></li>
+                
+
+                    
+                    <?php if($data['counsellor']->deactivated_admin_id!=NULL): ?>
+
+                      
+
+                        <li>Deactivated By  <br><br>
+                      Admin Name - <?php echo $data['admin_deactivated']->first_name ?>   <?php echo $data['admin_deactivated']->last_name ?></li>
+                    <li>Admin Email - <?php echo $data['admin_deactivated']->email ?></li>
+                
+                      
+
+                    <?php endif?>
+                    
                            
                     <?php if($data['counsellor']->delete_flag==0): ?>
                         <form class="deactiveForm" action="<?php echo URLROOT;?>/AdminUserMgmt/adminDeactivatedCounsellor/<?php echo $data['counsellor']->counsellor_id ?>" method="GET">

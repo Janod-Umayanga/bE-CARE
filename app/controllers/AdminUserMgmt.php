@@ -284,9 +284,13 @@ class AdminUserMgmt extends Controller{
     if(isset($_SESSION['admin_id'])) {  
   
     $doctor= $this->adminUserMgmtModel->getDoctorDetails($doctor_id);
-   
+    $admin_verified=  $this->adminUserMgmtModel->getAdminDetails($doctor->verified_admin_id);
+    $admin_deactivated=  $this->adminUserMgmtModel->getAdminDetails($doctor->deactivated_admin_id);
+    
    $data=[                      
-     'doctor'=>$doctor
+     'doctor'=>$doctor,
+     'admin_verified'=>$admin_verified,
+     'admin_deactivated'=>$admin_deactivated
      
    ];
    $this->view('Admin/AdminUserMgmt/Doctor/v_doctorViewMore',$data);
@@ -336,9 +340,14 @@ public function  adminViewMorePharmacist($pharmacist_id)
   if(isset($_SESSION['admin_id'])) {  
   
   $pharmacist= $this->adminUserMgmtModel->getPharmacistDetails($pharmacist_id);
+  $admin_verified=  $this->adminUserMgmtModel->getAdminDetails($pharmacist->verified_admin_id);
+  $admin_deactivated=  $this->adminUserMgmtModel->getAdminDetails($pharmacist->deactivated_admin_id);
+  
  
  $data=[                      
-   'pharmacist'=>$pharmacist
+   'pharmacist'=>$pharmacist,
+   'admin_verified'=>$admin_verified,
+   'admin_deactivated'=>$admin_deactivated
    
  ];
  $this->view('Admin/AdminUserMgmt/Pharmacist/v_pharmacistViewMore',$data);
@@ -388,9 +397,14 @@ public function  adminViewMoreCounsellor($counsellor_id)
   if(isset($_SESSION['admin_id'])) {  
   
   $counsellor= $this->adminUserMgmtModel->getCounsellorDetails($counsellor_id);
+  $admin_verified=  $this->adminUserMgmtModel->getAdminDetails($counsellor->verified_admin_id);
+  $admin_deactivated=  $this->adminUserMgmtModel->getAdminDetails($counsellor->deactivated_admin_id);
+  
    
  $data=[                      
-   'counsellor'=>$counsellor
+   'counsellor'=>$counsellor,
+   'admin_verified'=>$admin_verified,
+   'admin_deactivated'=>$admin_deactivated
    
  ];
  $this->view('Admin/AdminUserMgmt/Counsellor/v_counsellorViewMore',$data);
@@ -440,9 +454,14 @@ public function  adminViewMoreNutritionist($nutritionist_id)
   if(isset($_SESSION['admin_id'])) {  
   
   $nutritionist= $this->adminUserMgmtModel->getNutritionistDetails($nutritionist_id);
+  $admin_verified=  $this->adminUserMgmtModel->getAdminDetails($nutritionist->verified_admin_id);
+  $admin_deactivated=  $this->adminUserMgmtModel->getAdminDetails($nutritionist->deactivated_admin_id);
+
  
  $data=[                      
-   'nutritionist'=>$nutritionist
+   'nutritionist'=>$nutritionist,
+   'admin_verified'=>$admin_verified,
+   'admin_deactivated'=>$admin_deactivated
    
  ];
  $this->view('Admin/AdminUserMgmt/Nutritionist/v_nutritionistViewMore',$data);
@@ -491,9 +510,13 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
   if(isset($_SESSION['admin_id'])) {  
   
   $meditationInstructor= $this->adminUserMgmtModel->getMeditationInstructorDetails($meditationInstructor_id);
+  $admin_verified=  $this->adminUserMgmtModel->getAdminDetails($meditationInstructor->verified_admin_id);
+  $admin_deactivated=  $this->adminUserMgmtModel->getAdminDetails($meditationInstructor->deactivated_admin_id);
  
  $data=[                      
-   'meditationInstructor'=>$meditationInstructor
+   'meditationInstructor'=>$meditationInstructor,
+   'admin_verified'=>$admin_verified,
+   'admin_deactivated'=>$admin_deactivated
    
  ];
  $this->view('Admin/AdminUserMgmt/MeditationInstructor/v_medInstrViewMore',$data);
@@ -545,9 +568,11 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
     if(isset($_SESSION['admin_id'])) {  
   
     $patient= $this->adminUserMgmtModel->getpatientDetails($patient_id);
-   
+    $admin_deactivated=  $this->adminUserMgmtModel->getAdminDetails($patient->deactivated_admin_id);
+  
    $data=[                      
-     'patient'=>$patient
+     'patient'=>$patient,
+     'admin_deactivated'=>$admin_deactivated
      
    ];
    $this->view('Admin/AdminUserMgmt/Patient/v_patientViewMore',$data);
@@ -598,9 +623,12 @@ public function  adminViewMoreMeditationInstructor($meditationInstructor_id)
     if(isset($_SESSION['admin_id'])) {  
   
     $admin= $this->adminUserMgmtModel->getadminDetails($admin_id);
+    $admin_deactivated=  $this->adminUserMgmtModel->getAdminDetails($admin->deactivated_admin_id);
+  
    
    $data=[                      
-     'admin'=>$admin
+     'admin'=>$admin,
+     'admin_deactivated'=>$admin_deactivated
      
    ];
    $this->view('Admin/AdminUserMgmt/Admin/v_adminViewMore',$data);

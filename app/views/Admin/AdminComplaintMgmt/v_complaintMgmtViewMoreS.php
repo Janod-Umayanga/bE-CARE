@@ -30,12 +30,14 @@
             </div>
             <div class="bottom">
                 <ul>
-                    <li>Subject - <?php echo $data['complaint']->subject ?></a></li>
-                    <li>Date - <?php echo $data['complaint']->complaint_date ?></a></li>
-                    <li>Email - <a href="mailto:<?php echo $data['email'] ?>"><?php echo $data['email'] ?></a></li>
-                    <li>Complaint <br><br> <?php echo $data['complaint']->description ?></a></li>
-                              
-                
+                    <li>Subject - <?php echo $data['complaint']->subject ?></li>
+                    <li>Date - <?php echo $data['complaint']->complaint_date ?></li>
+                    <li>Email - <a href="mailto:<?php echo $data['email'] ?>"></a><?php echo $data['email'] ?></li>
+                    <li>Complaint <br><br> <?php echo $data['complaint']->description ?></li>
+                    <li>Solved By <br><br>   </li>             
+                    <li>Admin Name - <?php echo $data['complaint']->first_name  ?>  <?php echo $data['complaint']->last_name  ?></li>
+                    <li>Admin email - <?php echo $data['complaint']->email  ?></li>
+                  
                 
                    
                 </ul>

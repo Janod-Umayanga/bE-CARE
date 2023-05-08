@@ -185,7 +185,7 @@ class MedInstr extends Controller{
           'account_holder_name'=>trim($_POST['account_holder_name']),
           'branch'=>trim($_POST['branch']),
           'account_number'=>trim($_POST['account_number']),
-          'gender'=>trim($_POST['gender']),
+          'gender'=>$_SESSION['MedInstr_gender'],
           'city'=>trim($_POST['city']),
           'address'=>trim($_POST['address']),
           'fee'=>trim($_POST['fee']),

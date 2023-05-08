@@ -570,8 +570,10 @@
        
         public function  deactivatedPatient($id)
         {
-            $this->db->query('UPDATE patient set delete_flag=1 WHERE patient_id = :id');
+            $this->db->query('UPDATE patient set delete_flag=1, deactivated_admin_id=:admin_id WHERE patient_id = :id');
             $this->db->bind(':id',$id);
+            $this->db->bind(':admin_id',$_SESSION['admin_id']);
+    
     
             if($this->db->execute()){
                return true;
@@ -585,8 +587,10 @@
                   
             public function  activatedPatient($id)
             {
-            $this->db->query('UPDATE patient set delete_flag=0 WHERE patient_id = :id');
+            $this->db->query('UPDATE patient set delete_flag=0, deactivated_admin_id=:admin_id WHERE patient_id = :id');
             $this->db->bind(':id',$id);
+            $this->db->bind(':admin_id',NULL);
+
 
             if($this->db->execute()){
                   return true;
@@ -601,8 +605,9 @@
        
         public function  deactivatedDoctor($id)
         {
-            $this->db->query('UPDATE doctor set delete_flag=1 WHERE doctor_id = :id');
+            $this->db->query('UPDATE doctor set delete_flag=1, deactivated_admin_id=:admin_id	 WHERE doctor_id = :id');
             $this->db->bind(':id',$id);
+            $this->db->bind(':admin_id',$_SESSION['admin_id']);
     
             if($this->db->execute()){
                return true;
@@ -612,12 +617,13 @@
         } 
         
             // Activated a Doctor
-
+            
                   
             public function  activatedDoctor($id)
             {
-            $this->db->query('UPDATE doctor set delete_flag=0 WHERE doctor_id = :id');
+            $this->db->query('UPDATE doctor set delete_flag=0, deactivated_admin_id=:admin_id WHERE doctor_id = :id');
             $this->db->bind(':id',$id);
+            $this->db->bind(':admin_id',NULL);
 
             if($this->db->execute()){
                   return true;
@@ -632,8 +638,10 @@
        
         public function  deactivatedCounsellor($id)
         {
-            $this->db->query('UPDATE counsellor set delete_flag=1 WHERE counsellor_id = :id');
+            $this->db->query('UPDATE counsellor set delete_flag=1,deactivated_admin_id=:admin_id WHERE counsellor_id = :id');
             $this->db->bind(':id',$id);
+            $this->db->bind(':admin_id',$_SESSION['admin_id']);
+    
     
             if($this->db->execute()){
                return true;
@@ -647,8 +655,10 @@
                   
             public function  activatedCounsellor($id)
             {
-            $this->db->query('UPDATE counsellor set delete_flag=0 WHERE counsellor_id = :id');
+            $this->db->query('UPDATE counsellor set delete_flag=0, deactivated_admin_id=:admin_id WHERE counsellor_id = :id');
             $this->db->bind(':id',$id);
+            $this->db->bind(':admin_id',NULL);
+
 
             if($this->db->execute()){
                   return true;
@@ -662,8 +672,10 @@
        
         public function  deactivatedNutritionist($id)
         {
-            $this->db->query('UPDATE nutritionist set delete_flag=1 WHERE nutritionist_id = :id');
+            $this->db->query('UPDATE nutritionist set delete_flag=1, deactivated_admin_id=:admin_id WHERE nutritionist_id = :id');
             $this->db->bind(':id',$id);
+            $this->db->bind(':admin_id',$_SESSION['admin_id']);
+    
     
             if($this->db->execute()){
                return true;
@@ -677,8 +689,10 @@
                   
             public function  activatedNutritionist($id)
             {
-            $this->db->query('UPDATE nutritionist set delete_flag=0 WHERE nutritionist_id = :id');
+            $this->db->query('UPDATE nutritionist set delete_flag=0, deactivated_admin_id=:admin_id WHERE nutritionist_id = :id');
             $this->db->bind(':id',$id);
+            $this->db->bind(':admin_id',NULL);
+
 
             if($this->db->execute()){
                   return true;
@@ -693,8 +707,10 @@
        
         public function  deactivatedPharmacist($id)
         {
-            $this->db->query('UPDATE pharmacist set delete_flag=1 WHERE pharmacist_id = :id');
+            $this->db->query('UPDATE pharmacist set delete_flag=1, deactivated_admin_id=:admin_id WHERE pharmacist_id = :id');
             $this->db->bind(':id',$id);
+            $this->db->bind(':admin_id',$_SESSION['admin_id']);
+    
     
             if($this->db->execute()){
                return true;
@@ -708,8 +724,9 @@
                   
             public function  activatedPharmacist($id)
             {
-            $this->db->query('UPDATE pharmacist set delete_flag=0 WHERE pharmacist_id = :id');
+            $this->db->query('UPDATE pharmacist set delete_flag=0, deactivated_admin_id=:admin_id WHERE pharmacist_id = :id');
             $this->db->bind(':id',$id);
+            $this->db->bind(':admin_id',NULL);
 
             if($this->db->execute()){
                   return true;
@@ -724,9 +741,10 @@
        
               public function  deactivatedAdmin($id)
               {
-                  $this->db->query('UPDATE admin set delete_flag=1 WHERE admin_id = :id');
+                  $this->db->query('UPDATE admin set delete_flag=1, deactivated_admin_id=:admin_id WHERE admin_id = :id');
                   $this->db->bind(':id',$id);
-          
+                  $this->db->bind(':admin_id',$_SESSION['admin_id']);
+    
                   if($this->db->execute()){
                      return true;
                   }else{
@@ -739,8 +757,9 @@
                         
                   public function  activatedAdmin($id)
                   {
-                  $this->db->query('UPDATE admin set delete_flag=0 WHERE admin_id = :id');
+                  $this->db->query('UPDATE admin set delete_flag=0, deactivated_admin_id=:admin_id WHERE admin_id = :id');
                   $this->db->bind(':id',$id);
+                  $this->db->bind(':admin_id',NULL);
       
                   if($this->db->execute()){
                         return true;
@@ -755,8 +774,10 @@
        
           public function  deactivatedMeditationInstructor($id)
           {
-              $this->db->query('UPDATE meditation_instructor set delete_flag=1 WHERE meditation_instructor_id = :id');
+              $this->db->query('UPDATE meditation_instructor set delete_flag=1, deactivated_admin_id=:admin_id WHERE meditation_instructor_id = :id');
               $this->db->bind(':id',$id);
+              $this->db->bind(':admin_id',$_SESSION['admin_id']);
+    
       
               if($this->db->execute()){
                  return true;
@@ -770,8 +791,9 @@
                     
               public function  activatedMeditationInstructor($id)
               {
-              $this->db->query('UPDATE meditation_instructor set delete_flag=0 WHERE meditation_instructor_id = :id');
+              $this->db->query('UPDATE meditation_instructor set delete_flag=0, deactivated_admin_id=:admin_id WHERE meditation_instructor_id = :id');
               $this->db->bind(':id',$id);
+              $this->db->bind(':admin_id',NULL);
   
               if($this->db->execute()){
                     return true;
@@ -809,7 +831,7 @@
 
       public function  addDoctor($data)
       {
-            $this->db->query('INSERT INTO doctor(first_name,last_name,nic,contact_number,gender,email,password,city,bank_name,account_holder_name,branch,account_number,slmc_reg_number,type,specialization,qualification_file) VALUES (:first_name,:last_name,:nic,:contact_number,:gender,:email,:password,:city,:bank_name,:account_holder_name,:branch,:account_number,:slmc_reg_number,:type,:specialization,:qualification_file)');
+            $this->db->query('INSERT INTO doctor(first_name,last_name,nic,contact_number,gender,email,password,city,bank_name,account_holder_name,branch,account_number,slmc_reg_number,type,specialization,qualification_file,verified_admin_id) VALUES (:first_name,:last_name,:nic,:contact_number,:gender,:email,:password,:city,:bank_name,:account_holder_name,:branch,:account_number,:slmc_reg_number,:type,:specialization,:qualification_file,:verified_admin_id)');
             $this->db->bind(':first_name',$data['first_name']);
             $this->db->bind(':last_name', $data['last_name']);
             $this->db->bind(':nic', $data['nic']);
@@ -826,7 +848,7 @@
             $this->db->bind(':type',$data['type']);
             $this->db->bind(':specialization', $data['specialization']);
             $this->db->bind(':qualification_file',$data['qualification_file_name']);
-           
+            $this->db->bind(':verified_admin_id',$_SESSION['admin_id']);
 
             if($this->db->execute()){
                 return true;
@@ -839,7 +861,7 @@
 
       public function  addCounsellor($data)
       {
-            $this->db->query('INSERT INTO counsellor(first_name,last_name,nic,contact_number,gender,email,password,city,bank_name,account_holder_name,branch,account_number,slmc_reg_number,qualification_file) VALUES (:first_name,:last_name,:nic,:contact_number,:gender,:email,:password,:city,:bank_name,:account_holder_name,:branch,:account_number,:slmc_reg_number,:qualification_file)');
+            $this->db->query('INSERT INTO counsellor(first_name,last_name,nic,contact_number,gender,email,password,city,bank_name,account_holder_name,branch,account_number,slmc_reg_number,qualification_file,verified_admin_id) VALUES (:first_name,:last_name,:nic,:contact_number,:gender,:email,:password,:city,:bank_name,:account_holder_name,:branch,:account_number,:slmc_reg_number,:qualification_file,:verified_admin_id)');
             $this->db->bind(':first_name',$data['first_name']);
             $this->db->bind(':last_name', $data['last_name']);
             $this->db->bind(':nic', $data['nic']);
@@ -854,7 +876,7 @@
             $this->db->bind(':branch', $data['branch']);
             $this->db->bind(':slmc_reg_number', $data['slmc_reg_number']);
             $this->db->bind(':qualification_file',$data['qualification_file_name']);
-           
+            $this->db->bind(':verified_admin_id',$_SESSION['admin_id']); 
 
             if($this->db->execute()){
                 return true;
@@ -894,7 +916,7 @@
 
     public function  addMeditationInstructor($data)
     {
-          $this->db->query('INSERT INTO meditation_instructor(first_name,last_name,nic,contact_number,gender,email,password,city,bank_name,account_holder_name,branch,account_number,address,fee,qualification_file) VALUES (:first_name,:last_name,:nic,:contact_number,:gender,:email,:password,:city,:bank_name,:account_holder_name,:branch,:account_number,:address,:fee,:qualification_file)');
+          $this->db->query('INSERT INTO meditation_instructor(first_name,last_name,nic,contact_number,gender,email,password,city,bank_name,account_holder_name,branch,account_number,address,fee,qualification_file,verified_admin_id) VALUES (:first_name,:last_name,:nic,:contact_number,:gender,:email,:password,:city,:bank_name,:account_holder_name,:branch,:account_number,:address,:fee,:qualification_file,:verified_admin_id)');
           $this->db->bind(':first_name',$data['first_name']);
           $this->db->bind(':last_name', $data['last_name']);
           $this->db->bind(':nic', $data['nic']);
@@ -910,6 +932,7 @@
           $this->db->bind(':address',$data['address']);
           $this->db->bind(':fee', $data['fee']);
           $this->db->bind(':qualification_file',$data['qualification_file_name']);
+          $this->db->bind(':verified_admin_id',$_SESSION['admin_id']);
          
 
           if($this->db->execute()){
@@ -924,7 +947,7 @@
 
     public function  addPharmacist($data)
     {
-          $this->db->query('INSERT INTO pharmacist(first_name,last_name,nic,contact_number,gender,email,password,city,bank_name,account_holder_name,branch,account_number,slmc_reg_number,address,pharmacy_name,qualification_file) VALUES (:first_name,:last_name,:nic,:contact_number,:gender,:email,:password,:city,:bank_name,:account_holder_name,:branch,:account_number,:slmc_reg_number,:address,:pharmacy_name,:qualification_file)');
+          $this->db->query('INSERT INTO pharmacist(first_name,last_name,nic,contact_number,gender,email,password,city,bank_name,account_holder_name,branch,account_number,slmc_reg_number,address,pharmacy_name,qualification_file,verified_admin_id) VALUES (:first_name,:last_name,:nic,:contact_number,:gender,:email,:password,:city,:bank_name,:account_holder_name,:branch,:account_number,:slmc_reg_number,:address,:pharmacy_name,:qualification_file,:verified_admin_id)');
           $this->db->bind(':first_name',$data['first_name']);
           $this->db->bind(':last_name', $data['last_name']);
           $this->db->bind(':nic', $data['nic']);
@@ -941,7 +964,7 @@
           $this->db->bind(':pharmacy_name',$data['pharmacy_name']);
           $this->db->bind(':address', $data['address']);
           $this->db->bind(':qualification_file',$data['qualification_file_name']);
-         
+          $this->db->bind(':verified_admin_id',$_SESSION['admin_id']);
 
           if($this->db->execute()){
               return true;
@@ -954,7 +977,7 @@
 
       public function  addNutritionist($data)
       {
-            $this->db->query('INSERT INTO nutritionist(first_name,last_name,nic,contact_number,gender,email,password,bank_name,account_holder_name,branch,account_number,slmc_reg_number,fee,qualification_file) VALUES (:first_name,:last_name,:nic,:contact_number,:gender,:email,:password,:bank_name,:account_holder_name,:branch,:account_number,:slmc_reg_number,:fee,:qualification_file)');
+            $this->db->query('INSERT INTO nutritionist(first_name,last_name,nic,contact_number,gender,email,password,bank_name,account_holder_name,branch,account_number,slmc_reg_number,fee,qualification_file,verified_admin_id) VALUES (:first_name,:last_name,:nic,:contact_number,:gender,:email,:password,:bank_name,:account_holder_name,:branch,:account_number,:slmc_reg_number,:fee,:qualification_file,:verified_admin_id)');
             $this->db->bind(':first_name',$data['first_name']);
             $this->db->bind(':last_name', $data['last_name']);
             $this->db->bind(':nic', $data['nic']);
@@ -969,7 +992,7 @@
             $this->db->bind(':slmc_reg_number', $data['slmc_reg_number']);
             $this->db->bind(':fee',$data['fee']);
             $this->db->bind(':qualification_file',$data['qualification_file_name']);
-           
+            $this->db->bind(':verified_admin_id',$_SESSION['admin_id']);
 
             if($this->db->execute()){
                 return true;

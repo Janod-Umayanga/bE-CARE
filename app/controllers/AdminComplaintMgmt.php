@@ -94,7 +94,7 @@ class AdminComplaintMgmt extends Controller{
      
       $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
       
-        $complaint= $this->adminComplaintMgmtModel->getComplaint($complaintId);
+        $complaint= $this->adminComplaintMgmtModel->getSolvedComplaintViewMore($complaintId);
         
       $data=[                      
         'complaint'=>$complaint,
