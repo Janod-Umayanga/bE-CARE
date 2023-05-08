@@ -25,17 +25,14 @@
             </div>
         </div>
         <div class="diet-plan-rightside">
-            <form action="<?php echo URLROOT ?>/Nutritionist/sendDietPlan/" method="POST">
+            <form action="<?php echo URLROOT ?>/Nutritionist/sendDietPlan/" method="POST"  enctype="multipart/form-data">
             <input type="hidden" name="request_diet_plan_id" value=" <?php echo $data['more']->request_diet_plan_id; ?>"> 
 
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left">
 
                   
-                   <!--     <lable for="" >Request Diet Plan ID</lable>
-                        <input type="text" id="request_diet_plan_id" name="request_diet_plan_id" value="<?php #echo $details->request_diet_plan_id?>" disabled>
-                   
-                    <input type="hidden" name="request_diet_plan_id" value="<?php #echo $more->request_diet_plan_id; ?>"> -->
+                
                         <label for="diet_plan_file">Diet Plan File</label>
                         <input type="file" name="diet_plan_file" id="diet_plan_file" value="<?php echo $data['diet_plan_file'] ?>">
                         <span class="form-invalid"><?php echo $data['diet_plan_file_err'] ?></span>

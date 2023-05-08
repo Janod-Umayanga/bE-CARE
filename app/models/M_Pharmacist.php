@@ -177,10 +177,10 @@
         
         public function sendAcceptOrderDetails($pharmacist_id,$data){
               $this->db->query('INSERT INTO accept_order (name,contact_number,delivery_address,
-              prescription,ordered_date_and_time,pharmacist_note,charge,bill,
+              prescription,ordered_date_and_time,pharmacist_note,charge,
               pharmacist_id,patient_id,order_request_id) 
               VALUES (:name,:contact_number,:delivery_address,
-              :prescription,:ordered_date_and_time,:pharmacist_note,:charge,:bill,
+              :prescription,:ordered_date_and_time,:pharmacist_note,:charge,
               :pharmacist_id,:patient_id,:order_request_id)');
   
               $this->db->bind(':name',$data['more']->name);
@@ -190,7 +190,6 @@
               $this->db->bind(':ordered_date_and_time',$data['more']->ordered_date_and_time);
               $this->db->bind(':pharmacist_note',$data['pharmacist_note']);
               $this->db->bind(':charge',$data['charge']);
-              $this->db->bind(':bill',$data['bill']);
               $this->db->bind(':pharmacist_id',$data['more']->pharmacist_id);
               $this->db->bind(':patient_id',$data['more']->patient_id);
               $this->db->bind(':order_request_id',$data['more']->order_request_id);

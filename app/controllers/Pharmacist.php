@@ -185,11 +185,9 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
   $data = [
     'more' => $more,
     'pharmacist_note'=> trim($_POST['pharmacist_note']),
-    'bill' => trim($_POST['bill']),
     'charge'=> trim($_POST['charge']),  
 
     'pharmacist_note_err'=>'',
-    'bill_err' => '',
     'charge_err' => ''
 
   ];
@@ -200,9 +198,9 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
     $data['pharmacist_note_err'] = 'Please enter Note';
   }
 
-  if(empty($data['bill'])){
-    $data['bill_err'] = 'Please enter bill.';
-  }
+  // if(empty($data['bill'])){
+  //   $data['bill_err'] = 'Please enter bill.';
+  // }
 
   
   //validate charge
@@ -212,14 +210,16 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
   }
 // after validation send order...
 
-  if(empty($data['pharmacist_note_err']) && empty($data['bill_err']) && empty($data['charge_err']))
+  if(empty($data['pharmacist_note_err']) && empty($data['charge_err']))
   {
    
     $this->pharmacistSendAcceptOrderDetailsModel->sendAcceptOrderDetails($_SESSION['pharmacist_id'], $data);
     $this->pharmacistremoveOrderModel->acceptedOrderDetails($data);
     $this->view('Pharmacist/v_PharmacistDashBoard', $data);
-    
-}
+  }
+  else {
+    $this->view('Pharmacist/v_PharmacistAcceptOrder', $data);
+  }
 }
 
 

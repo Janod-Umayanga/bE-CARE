@@ -247,7 +247,7 @@
             VALUES (:description,:diet_plan_file,:nutritionist_id,:patient_id, :request_diet_plan_id)');
 
             $this->db->bind(':description',$data['description']);
-            $this->db->bind(':diet_plan_file',$data['diet_plan_file']); 
+            $this->db->bind(':diet_plan_file',$data['diet_plan_file_name']); 
             $this->db->bind(':nutritionist_id',$nutritionist_id);
             $this->db->bind(':patient_id',$data['more']->patient_id);
             $this->db->bind(':request_diet_plan_id',$data['more']->request_diet_plan_id);

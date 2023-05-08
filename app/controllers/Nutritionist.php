@@ -160,9 +160,10 @@ public function sendDietPlan()
         $data = [
         'more' => $more,
         'description' => trim($_POST['description']),
-        'diet_plan_file'=> trim($_POST['diet_plan_file']),
-  //      'diet_plan_file' => $_FILES['diet_plan_file'],
- //       'diet_plan_file_name' => time().'_'.$_FILES['diet_plan_file']['name'],
+      //  'diet_plan_file'=> trim($_POST['diet_plan_file']),
+        'diet_plan_file' => $_FILES['diet_plan_file'],
+        
+        'diet_plan_file_name' => time().'_'.$_FILES['diet_plan_file']['name'],
           
           
         'description_err' => '',
@@ -176,23 +177,42 @@ public function sendDietPlan()
         if(empty($data['description'])) {
           $data['description_err'] = 'Please enter any description';
         }
-       /* else if(validateDescription($data['description'])!="true"){
+        else if(validateDescription($data['description'])!="true"){
           $data['description_err']=validateDescription($data['description']);
-        }*/
+        }
 
 
-  /*      // Validate prescription and upload
-        if(uploadImage($data['diet_plan_file']['tmp_name'], $data['diet_plan_file_name'], '/img/prescriptions/')) {
-          // Done
+      if(empty($data['diet_plan_file'])){
+        $data['diet_plan_file_err']='qualification file can not be empty';
+      }else{
+          $fileExt=explode('.',$_FILES['diet_plan_file']['name']);
+          $fileActualExt=strtolower(end($fileExt));
+          $allowed=array('jpg','jpeg','png','pdf','zip','rar');
+
+        
+          if(!in_array($fileActualExt,$allowed)){
+            $data['diet_plan_file_err']='You cannot upload files of this type';
+
+          }
+    
+
+          if($data['diet_plan_file']['size']>0){
+            if(uploadFile($data['diet_plan_file']['tmp_name'],$data['diet_plan_file_name'],'/upload/dietplans/')){
+                      
+            }else{  
+            $data['diet_plan_file_err']='Unsuccessful qualification_file uploading';
+            
+            }
+          }else{
+            $data[ 'diet_plan_file_err'] ="qualification file size is empty";
+          
+          }
+
       }
-      else {
-          $data['diet_plan_file_err'] = 'Diet Plan required';
-      }*/
-
-      // validate diet plan file
+     /*
         if(empty($data['diet_plan_file'])) {
           $data['diet_plan_file_err'] = 'Please enter diet plan';
-        } 
+        } */
 
         // after validation 
         if(empty($data['description_err']) && empty($data['diet_plan_file_err'])) 
@@ -203,7 +223,7 @@ public function sendDietPlan()
         $this->view('Nutritionist/v_NutritionistDashboard', $data);
        } 
        else{
-        $this->view('Nutritionist/v_NutritionistViewRequests', $data);
+        $this->view('Nutritionist/v_NutritionistIssueDietPlans', $data);
        }
      
        

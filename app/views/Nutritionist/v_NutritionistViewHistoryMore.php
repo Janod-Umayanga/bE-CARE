@@ -25,7 +25,7 @@
                 <ul>
                     <li>Diet Plan ID  -<?php echo $data['his']->request_diet_plan_id; ?></li>
                     <li>Description  - <?php echo $data['his']->description ;?></li>
-                    <li>Diet Plan File  - <?php ?></li>
+                    <li>Diet Plan File  - </li><button class="delete"><i class="fa-solid fa-download"></i><a download="<?php echo $data['his']->diet_plan_file ?>"  href="<?php echo URLROOT?>/upload/dietplans/<?php echo $data['his']->diet_plan_file ?>">Download</a></button>
                     <li>Issued Date and Time  - <?php echo $data['his']->issued_date_and_time; ?></li>
                     
                    
