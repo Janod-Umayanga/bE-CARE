@@ -48,7 +48,7 @@
     {
       if(isset($_SESSION['pharmacist_id'])){
         $orders = $this->pharmacistViewOrdersModel->getAllOrderDetailsOfPharmacist($_SESSION['pharmacist_id']);
-        $paidOrders = $this->pharmacistPaidOrderViewModel->getAllPaidOrderDetails($_SESSION['pharmacist_id']);
+        $paidOrders = $this->pharmacistPaidOrderViewModel->getAllAcceptedOrderDetails($_SESSION['pharmacist_id']);
 
         $data=[                      
           'orders'=>$orders,
@@ -106,8 +106,8 @@
       if(isset($_SESSION['pharmacist_id'])) {
         if(isset($_POST['submit'])) {
 
-          $orderId = $_POST['order_id'];
-          $historymore = $this->pharmacistViewSellingHistoryModel->getAllSellingHistoryMore($orderId);
+          $order_Id = $_POST['order_id'];
+          $historymore = $this->pharmacistViewSellingHistoryModel->getAllSellingHistoryMore($order_Id);
         
           $data=[                      
             'historymore'=>$historymore
@@ -282,7 +282,7 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
   if(empty($data['pharmacist_note_err']))
   {
    
-    $this->pharmacistSendAcceptOrderDetailsModel->sendRejectOrderDetails($_SESSION['pharmacist_id'], $data);
+    $this->pharmacistSendAcceptOrderDetailsModel->rejectOrderDetails($_SESSION['pharmacist_id'], $data);
     $this->view('Pharmacist/v_PharmacistDashBoard', $data);
     
 }

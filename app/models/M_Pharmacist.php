@@ -90,8 +90,9 @@
         // get all orders details of Pharmacist
         public function getAllOrderDetailsOfPharmacist($pharmacist_id){
             $this->db->query('SELECT * FROM order_request  
-            WHERE pharmacist_id= :pharmacist_id AND is_disabled = 0');
-            $this->db->bind(':pharmacist_id',$pharmacist_id);  
+            WHERE pharmacist_id= :pharmacist_id AND status = :status');
+            $this->db->bind(':pharmacist_id',$pharmacist_id);
+            $this->db->bind(':status', "p");
     
            /* $row= $this->db->single();
     
@@ -114,13 +115,21 @@
 
         }
 
-        public function getAllPaidOrderDetails($pharmacist_id)
+        // get accepted order details
+        public function getAllAcceptedOrderDetails($pharmacist_id)
         {
-            $this->db->query('SELECT * FROM accept_order
-            WHERE pharmacist_id = :pharmacist_id AND  paid_amount > 0 AND is_send=0');
-
+            $this->db->query('SELECT * FROM order_request  
+            WHERE pharmacist_id= :pharmacist_id AND status = :status');
             $this->db->bind(':pharmacist_id',$pharmacist_id);
-
+            $this->db->bind(':status', "a");
+    
+           /* $row= $this->db->single();
+    
+            if($this->db->rowCount() >0){
+                 return true;
+            }else{
+                 return false;
+            }*/
             return $this->db->resultSet();
         }
 
@@ -128,7 +137,7 @@
         public function getAllSellingHistory($pharmacist_id){
 
             $this->db->query('SELECT * FROM accept_order
-            WHERE pharmacist_id = :pharmacist_id AND is_send=1' );
+            WHERE pharmacist_id = :pharmacist_id' );
             $this->db->bind(':pharmacist_id',$pharmacist_id);  
     
             
@@ -136,11 +145,11 @@
 
         }
 
-        public function getAllSellingHistoryMore($orderId){
+        public function getAllSellingHistoryMore($order_Id){
 
             $this->db->query('SELECT * FROM accept_order
             WHERE order_id = :order_id' );
-           $this->db->bind(':order_id', $orderId);
+            $this->db->bind(':order_id', $order_Id);
     
             return $this->db->single();
 
@@ -208,10 +217,10 @@
 
          public function acceptedOrderDetails($data)
          {
-
             $this->db->query('UPDATE order_request
-            SET is_disabled = 1 WHERE order_request_id = :order_request_id');
+            SET status= "a" WHERE order_request_id = :order_request_id');
 
+          //  $this->db->bind(':status', "a");
             $this->db->bind(':order_request_id',$data['more']->order_request_id);
 
             if($this->db->execute()) {
@@ -220,38 +229,12 @@
             else {
                 return false;
             }
-
-
           }
     
-          public function sendRejectOrderDetails($pharmacist_id,$data){
-  
-    /*          $this->db->query('INSERT INTO accept_order (name,contact_number,delivery_address,
-              prescription,ordered_date_and_time,pharmacist_note,
-              pharmacist_id,patient_id,order_request_id) 
-              VALUES (:name,:contact_number,:delivery_address,
-              :prescription,:ordered_date_and_time,:pharmacist_note,
-              :pharmacist_id,:patient_id,:order_request_id)');
-  
-              $this->db->bind(':name',$data['more']->name);
-              $this->db->bind(':contact_number',$data['more']->contact_number);
-              $this->db->bind(':delivery_address',$data['more']->delivery_address);
-              $this->db->bind(':prescription',$data['more']->prescription);
-              $this->db->bind(':ordered_date_and_time',$data['more']->ordered_date_and_time);
-              $this->db->bind(':pharmacist_note',$data['pharmacist_note']);
-              $this->db->bind(':pharmacist_id',$data['more']->pharmacist_id);
-              $this->db->bind(':patient_id',$data['more']->patient_id);
-              $this->db->bind(':order_request_id',$data['more']->order_request_id);
-  
-              if($this->db->execute()) {
-                  return true;
-              }
-              else {
-                  return false;
-              }
-          */
+          public function rejectOrderDetails($pharmacist_id,$data){ 
           
-          $this->db->query('DELETE FROM order_request WHERE order_request_id = :order_request_id');
+          $this->db->query('UPDATE order_request 
+          SET status = "r" WHERE order_request_id = :order_request_id');
           $this->db->bind(':order_request_id',$data['more']->order_request_id);
 
           if($this->db->execute())
@@ -262,8 +245,9 @@
           {
              return false;
           } 
-  
          }
+
+
 
          public function sendOrderforCustomer($orderID,$data)
          {

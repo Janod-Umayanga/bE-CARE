@@ -361,7 +361,21 @@
             return $result ? $result : false; 
         }
   
+        
+          // Get patient by id
+          public function getPatientDetails($patient_id) {
+            $this->db->query('SELECT * FROM patient WHERE patient_id = :patient_id');
+            $this->db->bind(':patient_id', $patient_id);
 
+            $row = $this->db->single();
+
+            if($this->db->rowCount() > 0) {
+                return $row;
+            }
+            else {
+                return false;
+            }
+        }
 
     }
 

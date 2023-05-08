@@ -20,7 +20,7 @@
     <section class="table-section-Nutritionistreq theme">
         <div class="table-container theme">
             <div class="table-topic-main">
-                <h1><center>Details of Requested Orders</center>
+                <h1><center>Details of Requested Orders</center> <!--Details of pending orders(not accepted)-->
                 </h1>
             </div>
             <div class="table">
@@ -117,46 +117,50 @@
     <section class="table-section-Nutritionistreq theme">
         <div class="table-container theme">
             <div class="table-topic-main">
-                <h1><center>Details of Paid Orders</center>
+                <h1><center>Details of Accepted Orders</center> <!--pharmacist accepted order details-->
                 </h1>
             </div>
             <div class="table">
                 
-                <table cellspacing="0" cellpadding="0">
+            <table cellspacing="0" cellpadding="0">
                     <tr> 
                         <th>Name of patient</th> 
-                        <th>contact Number</th>
-                        
+                        <th>Order Date and Time</th>
                         <th></th>
+                      
                         
                         
                     </tr>
                     <?php foreach($data['paidOrders'] as $paidOrders): ?>
-
+                        
                     <tr>
                         <td><?php echo $paidOrders->name?></td>
-                        <td><?php echo $paidOrders->contact_number?></td>
-                       
-                        <td>                           
-                          <form action="<?php echo URLROOT; ?>/Pharmacist/pharmacistViewOrdersMore/" method="post">
-                          <input type="hidden" name="order_request_id" value="<?php echo $paidOrders->order_request_id; ?>">
-                              <button class="view" name="submit">View</button>
-                          </form>   
+                        <td><?php echo $paidOrders->ordered_date_and_time?></td>
 
-                          <form  action="<?php echo URLROOT;?>/Pharmacist/sendOrder/" method="post">
-                                <input type="hidden" name="order_request_id" value="<?php echo $paidOrders->order_request_id; ?>">
-                                <button class="accept " name="submit">Send</button>
-                          </form>
-                        
+                        <td>
+
+                          <form action="<?php echo URLROOT; ?>/Pharmacist/pharmacistViewOrdersMore/" method="post">
+                               <input type="hidden" name="order_request_id" value="<?php echo $orders->order_request_id; ?>">
+                              <button class="view" name="submit">View</button>
+                          </form>       
+                   
+                    <button class="delete"><i class="fa-solid fa-download"></i><a download="<?php echo $orders->prescription ?>"  href="<?php echo URLROOT?>/img/prescriptions/<?php echo $orders->prescription ?>">Download</a></button>
+
+
+                    </td>
+                          
+                         
+            </div>                  
+</form> 
                         </td>
                         
-                    </tr>
+                    </tr>        
                     <?php endforeach;?>
                 </table>
             </div>
         </div>
     </section>
        
-    <?php require APPROOT.'/views/inc/components/footer1.php'; ?>
+<?php require APPROOT.'/views/inc/components/footer1.php'; ?>
 </body>
 </html>

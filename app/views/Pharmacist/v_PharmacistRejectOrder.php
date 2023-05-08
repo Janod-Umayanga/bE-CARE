@@ -41,7 +41,7 @@
                         placeholder="Any Note"></textarea>
                         <span class="form-invalid"><?php echo $data['pharmacist_note'] ?></span>
 
-                        <button type="submit" name="submit">Accept </button>
+                        <button type="submit" name="submit">Send</button>
                   
                     
                </div>

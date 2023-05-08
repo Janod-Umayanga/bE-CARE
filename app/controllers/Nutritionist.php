@@ -218,9 +218,17 @@ public function sendDietPlan()
         if(empty($data['description_err']) && empty($data['diet_plan_file_err'])) 
       {
 
-        $this->nutritionistremoverequestModel->removeRequest($data);
-        $this->nutritionistIssueDietPlansModel->sendDietPlanDetails($_SESSION['nutritionist_id'], $data);
+       if($this->nutritionistremoverequestModel->removeRequest($data)){
+
+       if($this->nutritionistIssueDietPlansModel->sendDietPlanDetails($_SESSION['nutritionist_id'], $data)){
+       
+        $patientDetails=$this->nutritionistIssueDietPlansModel->getPatientDetails($more->patient_id);
+        sendMail( $patientDetails->email, $patientDetails->first_name,'', 9,'');
+
         $this->view('Nutritionist/v_NutritionistDashboard', $data);
+
+      }
+    }  
        } 
        else{
         $this->view('Nutritionist/v_NutritionistIssueDietPlans', $data);
