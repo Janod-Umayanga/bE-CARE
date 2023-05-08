@@ -9,18 +9,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/c4a594ff55.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
+    <script defer src="<?php echo URLROOT; ?>/js/pushNotificationProfile.js"></script>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
-    <title>Meditation Instructor Details</title>
+    <title>Doctor Details</title>
 </head>
 <body>
+<div id="notification-container"></div>
     <section class="diet-plan-section">
         <div class="diet-plan-leftside">
             <div class="diet-left-side-container">
                 <a href="<?php echo URLROOT ?>/Doctor/dashboard" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Home page</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Enter your login details to get into the application</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                    <h2>Update your password with the relavent details</h2>
+                    <p>Make sure to choose a strong and secure password. Click the "Change Password" button to update your password.</p>
                 </div>
             </div>
         </div>
@@ -48,14 +50,16 @@
                          <input type="password" name="retype_new_password" id="passwordRepeat"  >
                          <span class="form-invalid"><?php echo $data['retype_new_password_err'] ?></span>
 
-
-
-                        <button type="submit" >Update</button> 
+                         <button type="submit" >Update</button> 
                     </div>
     
                   
             </form>
         </div>
     </section>  
+    <div id="notification-container"></div>
+<!-- For push notifications -->
+    <span id="isUpdated"><?php if(isset($_SESSION['profile_updateDoctor'])){echo $_SESSION['profile_updateDoctor']; unset($_SESSION['profile_updateDoctor']);}?></span>
+    <span id="isUpdatedPassword"><?php if(isset($_SESSION['profile_updatePasswordDoctor'])){echo $_SESSION['profile_updatePasswordDoctor']; unset($_SESSION['profile_updatePasswordDoctor']);}?></span>
 </body>
 </html>

@@ -65,35 +65,20 @@
                        
 
                         <label for="city">City</label>
-                            <select name="city" id="city">
-                                <option value="">City</option>
-                                <option value="Colombo">Colombo</option>
-                                <option value="Galle">Galle</option>
-                                <option value="Kandy">Kandy</option>
-                                <option value="Malabe">Malabe</option>
-                                <option value="Matara">Matara</option>
-                                <option value="Nugegoda">Nugegoda</option>
-                                <option value="Ratnapura">Ratnapura</option>
-                                <option value="Trincomalee">Trincomalee</option>
-                           </select> 
+                        <input type="text" id="city" disabled='true' name="city" value="<?php echo $data['city'] ?>">
+                        <span class="form-invalid"><?php echo $data['city_err'] ?></span>
 
-                           <span class="form-invalid"><?php echo $data['city_err'] ?></span>
-
-                        <button type="submit" >Submit</button> 
+                        <button type="submit" >Update</button> 
                     </div>
     
                     <div class="right">
                         
                         <label for="slmc">SLMC registration Number</label>
-                        <input type="text" id="slmc" name="slmc" disabled= "true" value="<?php echo $data['slmc_reg_number'] ?>">
+                        <input type="text" id="slmc" name="slmc" disabled="true" value="<?php echo $data['slmc_reg_number'] ?>">
                         <span class="form-invalid"><?php echo $data['slmc_reg_number_err'] ?></span>
                  
                         <label for="gender">Title</label>
-                        <select name="gender" id="gender" >
-                           <option value="">Title</option>
-                           <option value="Mr">Mr</option>
-                           <option value="Ms">Ms</option>
-                        </select>
+                        <input type="text" id="gender" disabled='true' name="gender" value="<?php echo $data['gender'] ?>">
                         <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
 
                         <label for="bank_name">Bank Name</label>

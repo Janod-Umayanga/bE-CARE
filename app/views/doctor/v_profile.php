@@ -23,8 +23,8 @@
                 <a href="<?php echo URLROOT ?>/Doctor/dashboard" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Home page</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
-                    <h2>Enter your login details to get into the application</h2>
-                    <p>Login to the application to experience the healthcare services we are providing. If you haven't registered with the application yet, click the <b>sign up</b> button and create an account for free.</p>
+                    <h2>Update your profile with the relevant details</h2>
+                    <p>Click the "Update" button to save your changes and update your profile information.</p>
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
                         <span class="form-invalid"><?php echo $data['last_name_err'] ?></span>
 
                         <label for="nic">NIC</label>
-                        <input type="text" id="nic" name="nic" value="<?php echo $data['nic'] ?>">
+                        <input type="text" id="nic" name="nic" disabled="true" value="<?php echo $data['nic'] ?>">
                         <span class="form-invalid"><?php echo $data['nic_err'] ?></span>
 
                         <label for="contact_number">contact Number</label>
@@ -67,14 +67,14 @@
                         <span class="form-invalid"><?php echo $data['city_err'] ?></span>
 
                       
-                        <button type="submit" >Submit</button> 
+                        <button type="submit" >Update</button> 
                     </div>
     
                     <div class="right">
 
                         
                         <label for="type">Type</label>
-                        <input type="text" id="city" name="city" disabled="true" value="<?php echo $data['type'] ?>">
+                        <input type="text" id="type" name="type" disabled="true" value="<?php echo $data['type'] ?>">
                         <span class="form-invalid"><?php echo $data['type_err'] ?></span>
 
 

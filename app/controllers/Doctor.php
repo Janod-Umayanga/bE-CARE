@@ -211,7 +211,7 @@ public function profile() {
            'doctor_id'=>$userId,
            'first_name'=>trim($_POST['first_name']),
            'last_name'=>trim($_POST['last_name']),
-           'nic'=>trim($_POST['nic']),
+           'nic'=>$doctor->nic,
            'contact_number'=>trim($_POST['contact_number']),
            'bank_name'=>trim($_POST['bank_name']),
            'account_holder_name'=>trim($_POST['account_holder_name']),
@@ -297,6 +297,36 @@ public function profile() {
          }
  
         
+         if($_SESSION['doctor_contact_number']!=  trim($_POST['contact_number'])){
+     
+          if($this->userModel->findDoctorByContactNumber($data['contact_number'])){
+            $data['contact_number_err']='Contact Number is already used';
+  
+          } 
+          else if($this->userModel->findReqDoctorByContactNumber($data['contact_number'])){
+            $data['contact_number_err']='Contact Number is already used';
+  
+          }
+          
+        }
+       
+       
+  
+        if($_SESSION['doctor_account_number']!=trim(trim($_POST['account_number']))){
+       
+    
+          if($this->userModel->findDoctorByAccountNumber($data['account_number'])){
+            $data['account_number_err']='Account Number is already used';
+  
+          } 
+          else if($this->userModel->findReqDoctorByAccountNumber($data['account_number'])){
+            $data['account_number_err']='Account Number is already used';
+  
+          }
+  
+  
+        }
+
        if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['address_err'])&& empty($data['fee_err'])&& empty($data['bank_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])){
              if($this->doctorModel->editUser($data)){
                    $_SESSION['profile_update']="true";
@@ -425,9 +455,11 @@ public function profile() {
         if(empty($data['current_password_err']) && empty($data['retype_new_password_err']) && empty($data['new_password_err'])){
       
          $data['password']=password_hash($data['new_password'],PASSWORD_DEFAULT);
-         $changeUserPW=$this->doctorModel->changePW($data);
+         $changeUserPW=$this->doctorModel->changePWDoctor($data);
  
            if($changeUserPW){
+            $_SESSION['profile_updatePasswordDoctor']='true';
+
               redirect('Doctor/changePassword');    
              
            }
