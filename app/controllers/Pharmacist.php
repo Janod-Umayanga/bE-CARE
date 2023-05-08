@@ -168,10 +168,9 @@ public function acceptOrders(){
     }
 }
 
-
-public function acceptOrderSubmit() // submit form and send an email 
+// submit form and send an email to pharmacist
+public function acceptOrderSubmit() 
 {
-
 if(isset($_SESSION['pharmacist_id'])){
   
 if($_SERVER["REQUEST_METHOD"] == 'POST')
@@ -193,10 +192,14 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
   ];
   //validate each input
 
-  //validate name
+  //validate Pharmacist Note
   if (empty($data['pharmacist_note'])) {
     $data['pharmacist_note_err'] = 'Please enter Note';
   }
+  else if(validatePharmacistNote($data['pharmacist_note']) != "true") {
+    $data['pharmacist_note_err'] = 'Note cannot contains invalid numbers.';
+}
+  
 
   // if(empty($data['bill'])){
   //   $data['bill_err'] = 'Please enter bill.';
@@ -208,6 +211,9 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
   if (empty($data['charge'])) {
     $data['charge_err'] = 'Please enter charge';
   }
+  else if(validatePostitiveNumber($data['charge']) != "true") {
+    $data['charge_err'] = 'Charge must be a positive number';
+}
 // after validation send order...
 
   if(empty($data['pharmacist_note_err']) && empty($data['charge_err']))
