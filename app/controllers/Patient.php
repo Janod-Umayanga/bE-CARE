@@ -595,8 +595,8 @@
                     // Validate name
                     if(empty($data['name'])) {
                         $data['name_err'] = 'Name required';
-                    }else if(validateFirstName($data['name']) != "true") {
-                        $data['name_err'] = validateFirstName($data['name']);
+                    }else if(validateName($data['name']) != "true") {
+                        $data['name_err'] = validateName($data['name']);
                     }
     
                     // Validate address
@@ -820,8 +820,8 @@
                     // Validate name
                     if(empty($data['name'])) {
                         $data['name_err'] = 'Name required';
-                    } else if(validateFirstName($data['name']) != "true") {
-                        $data['name_err'] = validateFirstName($data['name']);
+                    } else if(validateName($data['name']) != "true") {
+                        $data['name_err'] = validateName($data['name']);
                     }
     
                     // Validate address
@@ -1022,8 +1022,8 @@
                     // Validate name
                     if(empty($data['name'])) {
                         $data['name_err'] = 'Name required';
-                    } else if(validateFirstName($data['name']) != "true") {
-                        $data['name_err'] = validateFirstName($data['name']);
+                    } else if(validateName($data['name']) != "true") {
+                        $data['name_err'] = validateName($data['name']);
                     }
     
                     // Validate age
@@ -1268,6 +1268,8 @@
                     // Validate name
                     if(empty($data['name'])) {
                         $data['name_err'] = 'Name required';
+                    } else if(validateName($data['name']) != "true") {
+                        $data['name_err'] = validateName($data['name']);
                     }
     
                     // Validate address
@@ -1472,8 +1474,8 @@
                     // Validate name
                     if(empty($data['name'])) {
                         $data['name_err'] = 'Name required';
-                    }else if(validateFirstName($data['name']) != "true") {
-                        $data['name_err'] = validateFirstName($data['name']);
+                    }else if(validateName($data['name']) != "true") {
+                        $data['name_err'] = validateName($data['name']);
                     }
     
                     // Validate address
@@ -1651,8 +1653,8 @@
                     // Validate name
                     if(empty($data['name'])) {
                         $data['name_err'] = 'Name required';
-                    } else if(validateFirstName($data['name']) != "true") {
-                        $data['name_err'] = validateFirstName($data['name']);
+                    } else if(validateName($data['name']) != "true") {
+                        $data['name_err'] = validateName($data['name']);
                     }
     
                     // Validate address
