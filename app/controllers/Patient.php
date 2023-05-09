@@ -134,8 +134,6 @@
                 }
                 if(empty($data['password_confirmation'])) {
                     $data['password_confirmation_err'] = 'Password confirmation required';
-                }else if(validatePassword($data['password_confirmation'])!="true"){
-                    $data['password_confirmation_err']=validatePassword($data['password_confirmation']);
                 }
                 else {
                     if($data['password'] != $data['password_confirmation']) {

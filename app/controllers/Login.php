@@ -42,8 +42,6 @@
                     // Validate email
                     if(empty($data['email'])) {
                         $data['email_err'] = 'Email required';
-                    }else if(validateEmail($data['email'])!="true"){
-                        $data['email_err']=validateEmail($data['email']);
                     }
                     else {
                         //check for existing emails
@@ -73,10 +71,7 @@
                     if(empty($data['password'])) {
                         $data['password_err'] = 'Password required';
                     }
-                    else if(validatePassword($data['password'])!="true"){
-                        $data['password_err']=validatePassword($data['password']);
-                    }
-
+                   
                     // Login patient after validation
                     if(empty($data['email_err']) && empty($data['password_err'])) {
                         // Log the patient
@@ -103,8 +98,6 @@
                     // Validate email
                     if(empty($data['email'])) {
                         $data['email_err'] = 'Email required';
-                    }else if(validateEmail($data['email'])!="true"){
-                        $data['email_err']=validateEmail($data['email']);
                     }
                     else {
                         //check for existing emails
@@ -132,10 +125,7 @@
                     if(empty($data['password'])) {
                         $data['password_err'] = 'Password required';
                     }
-                    else if(validatePassword($data['password'])!="true"){
-                        $data['password_err']=validatePassword($data['password']);
-                       }
-
+                  
                     // Login Admin after validation
                     if(empty($data['email_err']) && empty($data['password_err'])) {
                         // Log the admin
@@ -162,8 +152,6 @@
                         // Validate email
                         if(empty($data['email'])) {
                             $data['email_err'] = 'Email required';
-                        }else if(validateEmail($data['email'])!="true"){
-                            $data['email_err']=validateEmail($data['email']);
                         }
 
                         else {
@@ -192,10 +180,7 @@
                         if(empty($data['password'])) {
                             $data['password_err'] = 'Password required';
                         }
-                        else if(validatePassword($data['password'])!="true"){
-                            $data['password_err']=validatePassword($data['password']);
-                        }
-    
+                       
                         // Login medInstr after validation
                         if(empty($data['email_err']) && empty($data['password_err'])) {
                             // Log the medInstr
@@ -223,8 +208,6 @@
                     // Validate email
                     if(empty($data['email'])) {
                         $data['email_err'] = 'Email required';
-                    }else if(validateEmail($data['email'])!="true"){
-                        $data['email_err']=validateEmail($data['email']);
                     }
                     else {
                         //check for existing emails
@@ -252,10 +235,7 @@
                     if(empty($data['password'])) {
                         $data['password_err'] = 'Password required';
                     }
-                    else if(validatePassword($data['password'])!="true"){
-                        $data['password_err']=validatePassword($data['password']);
-                    }
-
+            
                     // Login doctor after validation
                     if(empty($data['email_err']) && empty($data['password_err'])) {
                         // Log the patient
@@ -282,8 +262,6 @@
                     // Validate email
                     if(empty($data['email'])) {
                         $data['email_err'] = 'Email required';
-                    }else if(validateEmail($data['email'])!="true"){
-                        $data['email_err']=validateEmail($data['email']);
                     }
                     else {
                         //check for existing emails
@@ -311,10 +289,7 @@
                     if(empty($data['password'])) {
                         $data['password_err'] = 'Password required';
                     }
-                    else if(validatePassword($data['password'])!="true"){
-                        $data['password_err']=validatePassword($data['password']);
-                    }
-
+                  
                     // Login counsellor after validation
                     if(empty($data['email_err']) && empty($data['password_err'])) {
                         // Log the patient
@@ -342,8 +317,6 @@
                     // Validate email
                     if(empty($data['email'])) {
                         $data['email_err'] = 'Email required';
-                    }else if(validateEmail($data['email'])!="true"){
-                        $data['email_err']=validateEmail($data['email']);
                     }
                     else {
                         //check for existing emails
@@ -372,10 +345,7 @@
                     if(empty($data['password'])) {
                         $data['password_err'] = 'Password required';
                     }
-                    else if(validatePassword($data['password'])!="true"){
-                        $data['password_err']=validatePassword($data['password']);
-                    }
-
+                  
                     // Login nutritionist after validation
                     if(empty($data['email_err']) && empty($data['password_err'])) {
                         // Log the Nutritionist
@@ -404,8 +374,6 @@
                     // Validate email
                     if(empty($data['email'])) {
                         $data['email_err'] = 'Email required';
-                    }else if(validateEmail($data['email'])!="true"){
-                        $data['email_err']=validateEmail($data['email']);
                     }
                     else {
                         //check for existing emails
@@ -433,9 +401,6 @@
                     // Validate password
                     if(empty($data['password'])) {
                         $data['password_err'] = 'Password required';
-                    }
-                    else if(validatePassword($data['password'])!="true"){
-                        $data['password_err']=validatePassword($data['password']);
                     }
                     
 
