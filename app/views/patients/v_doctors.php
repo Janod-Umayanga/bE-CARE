@@ -40,6 +40,15 @@
                     <option value="">Specialization</option>
                     <option value="Allergist">Allergist</option>
                     <option value="Anesthesiologist">Anesthesiologist</option>
+                    <option value="Ayurveda">Ayurveda</option>
+                    <option value="Ayurveda Consultant Physician">Ayurveda Consultant Physician</option>
+                    <option value="Ayurvedic Dermatologist">Ayurvedic Dermatologist</option>
+                    <option value="Ayurveda Kayachikithsa">Ayurveda Kayachikithsa</option>
+                    <option value="Ayurveda Panchakarma">Ayurveda Panchakarma</option>
+                    <option value="Ayurveda Shalya">Ayurveda Shalya</option>
+                    <option value="Ayurveda Shalakya">Ayurveda Shalakya</option>
+                    <option value="Ayurveda Specialist">Ayurveda Specialist</option>
+                    <option value="Cardiac Surgeon">Cardiac Surgeon</option>
                     <option value="Cardiologist">Cardiologist</option>
                     <option value="Dentist">Dentist</option>
                     <option value="Dermatologist">Dermatologist</option>
