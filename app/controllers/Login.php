@@ -42,8 +42,6 @@
                     // Validate email
                     if(empty($data['email'])) {
                         $data['email_err'] = 'Email required';
-                    }else if(validateEmail($data['email'])!="true"){
-                        $data['email_err']=validateEmail($data['email']);
                     }
                     else {
                         //check for existing emails
@@ -52,7 +50,7 @@
                         }
                         else {
                             // Patient not found
-                            $data['email_err'] = 'Invalid email';
+                            $data['password_err'] = 'Invalid email or password';
                         }
                     }
 
@@ -61,7 +59,7 @@
                     
                     if(!empty($isDeactivated)){
                         if($isDeactivated->delete_flag=='1') {
-                            $data['email_err'] = 'Deactivated Account';
+                            $data['password_err'] = 'Deactivated Account';
                         }
                         else {
                             
@@ -73,10 +71,7 @@
                     if(empty($data['password'])) {
                         $data['password_err'] = 'Password required';
                     }
-                    // else if(validatePassword($data['password'])!="true"){
-                    //     $data['password_err']=validatePassword($data['password']);
-                    // }
-
+                   
                     // Login patient after validation
                     if(empty($data['email_err']) && empty($data['password_err'])) {
                         // Log the patient
@@ -88,7 +83,7 @@
                             $this->createPatientSession($loggedPatient);
                         }
                         else {
-                            $data['password_err'] = 'Invalid password';
+                            $data['password_err'] = 'Invalid email or password';
                         
                             // Load view
                             $this->view('pages/v_login', $data);
@@ -103,8 +98,6 @@
                     // Validate email
                     if(empty($data['email'])) {
                         $data['email_err'] = 'Email required';
-                    }else if(validateEmail($data['email'])!="true"){
-                        $data['email_err']=validateEmail($data['email']);
                     }
                     else {
                         //check for existing emails
@@ -113,7 +106,7 @@
                         }
                         else {
                             // Admin not found
-                            $data['email_err'] = 'Invalid email';
+                            $data['password_err'] = 'Invalid email or password';
                         }
                     }
 
@@ -121,7 +114,7 @@
                     
                     if(!empty($isDeactivated)){
                         if($isDeactivated->delete_flag=='1') {
-                            $data['email_err'] = 'Deactivated Account';
+                            $data['password_err'] = 'Deactivated Account';
                         }
                         else {
                             
@@ -132,10 +125,7 @@
                     if(empty($data['password'])) {
                         $data['password_err'] = 'Password required';
                     }
-                    // else if(validatePassword($data['password'])!="true"){
-                    //     $data['password_err']=validatePassword($data['password']);
-                    //    }
-
+                  
                     // Login Admin after validation
                     if(empty($data['email_err']) && empty($data['password_err'])) {
                         // Log the admin
@@ -147,7 +137,7 @@
                             $this->createAdminSession($loggedAdmin);
                         }
                         else {
-                            $data['password_err'] = 'Invalid password';
+                            $data['password_err'] = 'Invalid email or password';
                         
                             // Load view
                             $this->view('pages/v_login', $data);
@@ -162,8 +152,6 @@
                         // Validate email
                         if(empty($data['email'])) {
                             $data['email_err'] = 'Email required';
-                        }else if(validateEmail($data['email'])!="true"){
-                            $data['email_err']=validateEmail($data['email']);
                         }
 
                         else {
@@ -173,7 +161,7 @@
                             }
                             else {
                                 // medInstr not found
-                                $data['email_err'] = 'Invalid email';
+                                $data['password_err'] = 'Invalid email or password';
                             }
                         }
                         $isDeactivated=$this->medInstrModel->isDeactivateAccount($data['email']);
@@ -181,7 +169,7 @@
                         if(!empty($isDeactivated)){
 
                             if($isDeactivated->delete_flag=='1') {
-                                $data['email_err'] = 'Deactivated Account';
+                                $data['password_err'] = 'Deactivated Account';
                             }
                             else {
                                 
@@ -192,10 +180,7 @@
                         if(empty($data['password'])) {
                             $data['password_err'] = 'Password required';
                         }
-                        // else if(validatePassword($data['password'])!="true"){
-                        //     $data['password_err']=validatePassword($data['password']);
-                        // }
-    
+                       
                         // Login medInstr after validation
                         if(empty($data['email_err']) && empty($data['password_err'])) {
                             // Log the medInstr
@@ -207,7 +192,7 @@
                                 $this->createmedInstrSession($loggedmedInstr);
                             }
                             else {
-                                $data['password_err'] = 'Invalid password';
+                                $data['password_err'] = 'Invalid email or password';
                             
                                 // Load view
                                 $this->view('pages/v_login', $data);
@@ -223,8 +208,6 @@
                     // Validate email
                     if(empty($data['email'])) {
                         $data['email_err'] = 'Email required';
-                    }else if(validateEmail($data['email'])!="true"){
-                        $data['email_err']=validateEmail($data['email']);
                     }
                     else {
                         //check for existing emails
@@ -233,7 +216,7 @@
                         }
                         else {
                             // Doctor not found
-                            $data['email_err'] = 'Invalid email';
+                            $data['password_err'] = 'Invalid email or password';
                         }
                     }
 
@@ -241,7 +224,7 @@
 
                     if(!empty($isDeactivated)){
                         if($isDeactivated->delete_flag=='1') {
-                            $data['email_err'] = 'Deactivated Account';
+                            $data['password_err'] = 'Deactivated Account';
                         }
                         else {
                             
@@ -252,10 +235,7 @@
                     if(empty($data['password'])) {
                         $data['password_err'] = 'Password required';
                     }
-                    // else if(validatePassword($data['password'])!="true"){
-                    //     $data['password_err']=validatePassword($data['password']);
-                    // }
-
+            
                     // Login doctor after validation
                     if(empty($data['email_err']) && empty($data['password_err'])) {
                         // Log the patient
@@ -267,7 +247,7 @@
                             $this->createDoctorSession($loggedDoctor);
                         }
                         else {
-                            $data['password_err'] = 'Invalid password';
+                            $data['password_err'] = 'Invalid email or password';
                         
                             // Load view
                             $this->view('pages/v_login', $data);
@@ -282,8 +262,6 @@
                     // Validate email
                     if(empty($data['email'])) {
                         $data['email_err'] = 'Email required';
-                    }else if(validateEmail($data['email'])!="true"){
-                        $data['email_err']=validateEmail($data['email']);
                     }
                     else {
                         //check for existing emails
@@ -292,7 +270,7 @@
                         }
                         else {
                             // Counsellor not found
-                            $data['email_err'] = 'Invalid email';
+                            $data['password_err'] = 'Invalid email or password';
                         }
                     }
 
@@ -300,7 +278,7 @@
                      
                     if(!empty($isDeactivated)){
                         if($isDeactivated->delete_flag=='1') {
-                            $data['email_err'] = 'Deactivated Account';
+                            $data['password_err'] = 'Deactivated Account';
                         }
                         else {
                             
@@ -311,10 +289,7 @@
                     if(empty($data['password'])) {
                         $data['password_err'] = 'Password required';
                     }
-                    // else if(validatePassword($data['password'])!="true"){
-                    //     $data['password_err']=validatePassword($data['password']);
-                    // }
-
+                  
                     // Login counsellor after validation
                     if(empty($data['email_err']) && empty($data['password_err'])) {
                         // Log the patient
@@ -326,7 +301,7 @@
                             $this->createCounsellorSession($loggedCounsellor);
                         }
                         else {
-                            $data['password_err'] = 'Invalid password';
+                            $data['password_err'] = 'Invalid email or password';
                         
                             // Load view
                             $this->view('pages/v_login', $data);
@@ -342,8 +317,6 @@
                     // Validate email
                     if(empty($data['email'])) {
                         $data['email_err'] = 'Email required';
-                    }else if(validateEmail($data['email'])!="true"){
-                        $data['email_err']=validateEmail($data['email']);
                     }
                     else {
                         //check for existing emails
@@ -352,7 +325,7 @@
                         }
                         else {
                             // Nutritionist not found
-                            $data['email_err'] = 'Invalid email';
+                            $data['password_err'] = 'Invalid email or password';
                         }
                     }
 
@@ -361,7 +334,7 @@
                     if(!empty($isDeactivated)){
 
                         if($isDeactivated->delete_flag=='1') {
-                            $data['email_err'] = 'Deactivated Account';
+                            $data['password_err'] = 'Deactivated Account';
                         }
                         else {
                             
@@ -372,10 +345,7 @@
                     if(empty($data['password'])) {
                         $data['password_err'] = 'Password required';
                     }
-                    // else if(validatePassword($data['password'])!="true"){
-                    //     $data['password_err']=validatePassword($data['password']);
-                    // }
-
+                  
                     // Login nutritionist after validation
                     if(empty($data['email_err']) && empty($data['password_err'])) {
                         // Log the Nutritionist
@@ -387,7 +357,7 @@
                             $this->createNutritionistSession($loggedNutritionist);
                         }
                         else {
-                            $data['password_err'] = 'Invalid password';
+                            $data['password_err'] = 'Invalid email or password';
                         
                             // Load view
                             $this->view('pages/v_login', $data);
@@ -404,8 +374,6 @@
                     // Validate email
                     if(empty($data['email'])) {
                         $data['email_err'] = 'Email required';
-                    }else if(validateEmail($data['email'])!="true"){
-                        $data['email_err']=validateEmail($data['email']);
                     }
                     else {
                         //check for existing emails
@@ -414,7 +382,7 @@
                         }
                         else {
                             // Pharmacist not found
-                            $data['email_err'] = 'Invalid email';
+                            $data['password_err'] = 'Invalid email or password';
                         }
                     }
 
@@ -423,7 +391,7 @@
                     if(!empty($isDeactivated)){
 
                         if($isDeactivated->delete_flag=='1') {
-                            $data['email_err'] = 'Deactivated Account';
+                            $data['password_err'] = 'Deactivated Account';
                         }
                         else {
                             
@@ -434,9 +402,6 @@
                     if(empty($data['password'])) {
                         $data['password_err'] = 'Password required';
                     }
-                    // else if(validatePassword($data['password'])!="true"){
-                    //     $data['password_err']=validatePassword($data['password']);
-                    // }
                     
 
                     // Login pharmacist after validation

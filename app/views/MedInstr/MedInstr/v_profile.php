@@ -63,17 +63,8 @@
                         
             
                         <label for="city">City</label>
-                        <select name="city" id="city">
-                            <option value="">City</option>
-                            <option value="Colombo">Colombo</option>
-                            <option value="Galle">Galle</option>
-                            <option value="Kandy">Kandy</option>
-                            <option value="Malabe">Malabe</option>
-                            <option value="Matara">Matara</option>
-                            <option value="Nugegoda">Nugegoda</option>
-                            <option value="Ratnapura">Ratnapura</option>
-                            <option value="Trincomalee">Trincomalee</option>
-                        </select>
+                        <input type="text" id="city" name="city" disabled='true' value="<?php echo $data['city'] ?>">
+                       
                         <span class="form-invalid"><?php echo $data['city_err'] ?></span>
 
 

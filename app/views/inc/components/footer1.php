@@ -35,31 +35,8 @@
             <div>
                 <h3>Services</h3>
 
-                <?php if (isset($_SESSION['patient_id'])): ?>
                 
-
-                <ul>
-                    <li>
-                        <a href="<?php echo URLROOT ?>/Patient/findDoctor">Find a Doctor</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo URLROOT ?>/Patient/findCounsellor">Find a Counsellor</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo URLROOT ?>/Patient/findPharmacy">Find a Pharmacy</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo URLROOT ?>/Patient/findNutritionist">Find a Nutritionist</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo URLROOT ?>/Patient/findMeditationInstructor">Find a Meditation Instructor</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo URLROOT ?>/Patient/findSession">Find a Session</a>
-                    </li>
-                </ul>
-
-                <?php elseif(isset($_SESSION['admin_id']) ): ?>
+                <?php if(isset($_SESSION['admin_id']) ): ?>
 
                   <ul>
                     <li>
@@ -175,6 +152,31 @@
                    
                 </ul>
 
+              <?php else: ?>
+  
+                
+                <ul>
+                    <li>
+                        <a href="<?php echo URLROOT ?>/Patient/findDoctor">Find a Doctor</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo URLROOT ?>/Patient/findCounsellor">Find a Counsellor</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo URLROOT ?>/Patient/findPharmacy">Find a Pharmacy</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo URLROOT ?>/Patient/findNutritionist">Find a Nutritionist</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo URLROOT ?>/Patient/findMeditationInstructor">Find a Meditation Instructor</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo URLROOT ?>/Patient/findSession">Find a Session</a>
+                    </li>
+                </ul>
+
+            
               <?php endif; ?>
 
 
