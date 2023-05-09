@@ -15,11 +15,11 @@
 </head>
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
-
+   
     <section class="table-section theme">
         <div class="table-container theme">
             <div class="table-topic-main">
-                <h1>More Details os Selling History</h1>
+                <h1>Details</h1>
             </div>
             <div class="table">
                 <table cellspacing="0" cellpadding="0">
@@ -28,16 +28,16 @@
                         <th>Details </th>
                     </tr>
                     <tr>
-                        <td>Name</td>
-                        <td><?php echo $data['historymore']->name ?></td>
+                        <td>Name </td>
+                        <td><?php echo $data['more']->name ?></td>
                     </tr>
                     <tr>
                         <td>Contact Number</td>
-                        <td><?php echo $data['historymore']->contact_number ?></td>
+                        <td><?php echo $data['more']->contact_number ?></td>
                     </tr>
                     <tr>
                         <td>Delivery Address</td>
-                        <td><?php echo $data['historymore']->delivery_address ?></td>
+                        <td><?php echo $data['more']->delivery_address ?></td>
                     </tr>
                     <tr>
                         <td>Prescription</td>
@@ -45,27 +45,31 @@
                     </tr>
                     <tr>
                         <td>Ordered Date and Time</td>
-                        <td><?php echo $data['historymore']->ordered_date_and_time ?></td>
+                        <td><?php echo $data['more']->ordered_date_and_time ?></td>
                     </tr>
+
+                   
+
                     <tr>
                         <td>Accepted Date and Time</td>
-                        <td><?php echo $data['historymore']->accepted_date_and_time ?></td>
+                        <td><?php echo $data['more']->accepted_date_and_time ?></td>
                     </tr>
+
                     <tr>
                         <td>Pharmacist Note</td>
-                        <td><?php echo $data['historymore']->pharmacist_note ?></td>
+                        <td><?php echo $data['more']->pharmacist_note ?></td>
                     </tr>
+
                     <tr>
-                        <td>Charge</td>
-                        <td><?php echo $data['historymore']->charge?></td>
-                        
+                        <td>Charge of Bill</td>
+                        <td>Rs.<?php echo $data['more']->charge ?></td>
                     </tr>
+
                     
                 </table>
             </div>
         </div>
     </section>
-
 
     <?php require APPROOT.'/views/inc/components/footer1.php'; ?>
 </body>

@@ -118,10 +118,11 @@
         // get accepted order details
         public function getAllAcceptedOrderDetails($pharmacist_id)
         {
-            $this->db->query('SELECT * FROM order_request  
-            WHERE pharmacist_id= :pharmacist_id AND status = :status');
+            $this->db->query('SELECT * FROM accept_order  
+            WHERE pharmacist_id= :pharmacist_id AND paid_amount=:paid_amount');
             $this->db->bind(':pharmacist_id',$pharmacist_id);
-            $this->db->bind(':status', "a");
+            $this->db->bind(':paid_amount',0);
+           
     
            /* $row= $this->db->single();
     
@@ -133,12 +134,33 @@
             return $this->db->resultSet();
         }
 
+        public function getAllAcceptedOrderDetailsMore($orderID)
+        {
+            $this->db->query('SELECT * FROM accept_order 
+            WHERE order_request_id= :order_request_id AND paid_amount= :paid_amount');
+            $this->db->bind(':order_request_id',$orderID);
+            $this->db->bind(':paid_amount',0);
+
+          /*  $row= $this->db->single();
+    
+            if($this->db->rowCount() >0){
+                 return true;
+            }else{
+                 return false;
+            } */
+
+           // return $this->db->resultSet();
+            return $this->db->single();
+
+        }
+
         // View selling history
         public function getAllSellingHistory($pharmacist_id){
 
             $this->db->query('SELECT * FROM accept_order
-            WHERE pharmacist_id = :pharmacist_id' );
+            WHERE pharmacist_id = :pharmacist_id AND paid_amount > 0' );
             $this->db->bind(':pharmacist_id',$pharmacist_id);  
+
     
             
             return $this->db->resultSet();
@@ -152,6 +174,7 @@
             $this->db->bind(':order_id', $order_Id);
     
             return $this->db->single();
+           // return $this->db->resultSet();
 
         }
 
@@ -255,10 +278,10 @@
         public function sendAcceptOrderDetails($pharmacist_id,$data){
               $this->db->query('INSERT INTO accept_order (name,contact_number,delivery_address,
               prescription,ordered_date_and_time,pharmacist_note,charge,
-              pharmacist_id,patient_id,order_request_id) 
+              pharmacist_id,patient_id,order_request_id,paid_amount) 
               VALUES (:name,:contact_number,:delivery_address,
               :prescription,:ordered_date_and_time,:pharmacist_note,:charge,
-              :pharmacist_id,:patient_id,:order_request_id)');
+              :pharmacist_id,:patient_id,:order_request_id,:paid_amount)');
   
               $this->db->bind(':name',$data['more']->name);
               $this->db->bind(':contact_number',$data['more']->contact_number);
@@ -270,6 +293,7 @@
               $this->db->bind(':pharmacist_id',$data['more']->pharmacist_id);
               $this->db->bind(':patient_id',$data['more']->patient_id);
               $this->db->bind(':order_request_id',$data['more']->order_request_id);
+              $this->db->bind(':paid_amount',0);
          //    
   
               if($this->db->execute()) {

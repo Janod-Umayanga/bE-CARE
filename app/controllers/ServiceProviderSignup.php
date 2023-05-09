@@ -123,8 +123,6 @@ class ServiceProviderSignup extends Controller{
      
        if(empty($data['d_confirm_password'])){
          $data['d_confirm_password_err']='confirm password  can not be empty';
-       }else if(validatePassword($data['d_confirm_password'])!="true"){
-        $data['d_confirm_password_err']=validatePassword($data['d_confirm_password']);
        }
      
        if(empty($data['d_city'])){
@@ -409,10 +407,8 @@ class ServiceProviderSignup extends Controller{
           
             if(empty($data['c_confirm_password'])){
               $data['c_confirm_password_err']='confirm password  can not be empty';
-            }else if(validatePassword($data['c_confirm_password'])!="true"){
-              $data['c_confirm_password_err']=validatePassword($data['c_confirm_password']);
-             }
-          
+            }
+
             if(empty($data['c_city'])){
               $data['c_city_err']='city can not be empty';
             }else if(validateCity($data['c_city'])!="true"){
@@ -691,8 +687,6 @@ class ServiceProviderSignup extends Controller{
        
          if(empty($data['m_confirm_password'])){
            $data['m_confirm_password_err']='confirm password  can not be empty';
-         }else if(validatePassword($data['m_confirm_password'])!="true"){
-          $data['m_confirm_password_err']=validatePassword($data['m_confirm_password']);
          }
        
          if(empty($data['m_city'])){
@@ -977,8 +971,6 @@ class ServiceProviderSignup extends Controller{
        
          if(empty($data['p_confirm_password'])){
            $data['p_confirm_password_err']='confirm password  can not be empty';
-         }else if(validatePassword($data['p_confirm_password'])!="true"){
-          $data['p_confirm_password_err']=validatePassword($data['p_confirm_password']);
          }
        
          if(empty($data['p_city'])){
@@ -1274,8 +1266,6 @@ class ServiceProviderSignup extends Controller{
        
          if(empty($data['n_confirm_password'])){
            $data['n_confirm_password_err']='confirm password  can not be empty';
-         }else if(validatePassword($data['n_confirm_password'])!="true"){
-          $data['n_confirm_password_err']=validatePassword($data['n_confirm_password']);
          }
       
        
