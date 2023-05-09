@@ -4,9 +4,8 @@
     
     private $pharmacistModel;
     private $pharmacistViewOrdersModel;
-
     private $pharmacistViewOrdersMoreModel;
-    private  $pharmacistViewSellingHistoryModel;
+    private $pharmacistViewSellingHistoryModel;
     private $pharamacistAcceptOrderModel;
     private $pharmacistSendAcceptOrderDetailsModel;
     private $pharmacistremoveOrderModel;
@@ -26,7 +25,7 @@
        $this->pharmacistremoveOrderModel=$this->model('M_Pharmacist');
        $this->pharmacistSendAcceptOrderDetailsModel = $this->model('M_Pharmacist');
        $this->pharmacistPaidOrderViewModel=$this->model('M_Pharmacist');
-       $this->userModel=$this->model('M_Nutritionist');
+       $this->userModel=$this->model('M_Pharmacist');
     }
 
     public function pharmacistDashBoard()
@@ -190,31 +189,24 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
     'charge_err' => ''
 
   ];
-  //validate each input
 
   //validate Pharmacist Note
   if (empty($data['pharmacist_note'])) {
     $data['pharmacist_note_err'] = 'Please enter Note';
   }
   else if(validatePharmacistNote($data['pharmacist_note']) != "true") {
-    $data['pharmacist_note_err'] = 'Note cannot contains invalid numbers.';
+    $data['pharmacist_note_err'] = 'Note cannot contains invalid characters.';
 }
-  
 
-  // if(empty($data['bill'])){
-  //   $data['bill_err'] = 'Please enter bill.';
-  // }
-
-  
   //validate charge
-
   if (empty($data['charge'])) {
     $data['charge_err'] = 'Please enter charge';
   }
   else if(validatePostitiveNumber($data['charge']) != "true") {
     $data['charge_err'] = 'Charge must be a positive number';
 }
-// after validation send order...
+
+  //after validation 
 
   if(empty($data['pharmacist_note_err']) && empty($data['charge_err']))
   {
@@ -279,24 +271,28 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
   
     'pharmacist_note_err'=>'',
   ];
-  //validate each input
-  //validate name
-  if (empty($data['pharmacist_note'])) {
+  
+  //validate Pharmacist Note
+  if(empty($data['pharmacist_note'])) {
     $data['pharmacist_note_err'] = 'Please enter Note';
   }
+  else if(validatePharmacistNote($data['pharmacist_note']) != "true") {
+    $data['pharmacist_note_err'] = 'Note cannot contains invalid characters.';
+}
 
   if(empty($data['pharmacist_note_err']))
   {
-   
     $this->pharmacistSendAcceptOrderDetailsModel->rejectOrderDetails($_SESSION['pharmacist_id'], $data);
-    $this->view('Pharmacist/v_PharmacistDashBoard', $data);
-    
-}
-}
+    $this->view('Pharmacist/v_PharmacistDashBoard', $data);  
+    }
+  else{
+   }
 
-}    
+
+} }   
 else 
-{   redirect('Login/login');
+{   
+  redirect('Login/login');
 }   
 }
 
@@ -428,8 +424,8 @@ public function editProfile($userId){
          'pharmacist_id'=>$userId,
          'first_name'=>trim($_POST['first_name']),
          'last_name'=>trim($_POST['last_name']),
-         'nic'=>trim($_POST['nic']),
-         'slmc_reg_number'=>trim($_POST['slmc_reg_number']),
+         'nic'=>$_SESSION['pharmacist_nic'],
+         'slmc_reg_number'=>$_SESSION['pharmacist_slmc_reg_number'],
          'contact_number'=>trim($_POST['contact_number']),
          'bank_name'=>trim($_POST['bank_name']),
          'account_holder_name'=>trim($_POST['account_holder_name']),
@@ -459,56 +455,116 @@ public function editProfile($userId){
 
      
       if(empty($data['first_name'])){
-         $data['first_name_err']='first name can not be empty';
+         $data['first_name_err']='first name cannot be empty';
       }
+      else if(validateFirstName($data['first_name'])!="true"){
+        $data['first_name_err']=validateFirstName($data['first_name']);
+       }
+
 
       if(empty($data['last_name'])){
-         $data['last_name_err']='last name can not be empty';
-      }
+         $data['last_name_err']='last name cannot be empty';
+      }else if(validateLastName($data['last_name'])!="true"){
+        $data['last_name_err']=validateLastName($data['last_name']);
+       }
+
 
       if(empty($data['nic'])){
-         $data['nic_err']='nic can not be empty';
+         $data['nic_err']='nic cannot be empty';
       }
+
 
       if(empty($data['contact_number'])){
-         $data['contact_number_err']='contact number can not be empty';
+         $data['contact_number_err']='contact number cannot be empty';
+      }else if(validateContactNumber($data['contact_number'])!="true"){
+        $data['contact_number_err']=validateContactNumber($data['contact_number']);
       }
+
 
       if(empty($data['bank_name'])){
-       $data['bank_name_err']='bank name can not be empty';
-    }
+       $data['bank_name_err']='bank name cannot be empty';
+      } else if(validateBankName($data['bank_name'])!="true"){
+        $data['bank_name_err']=validateBankName($data['bank_name']);
+       }
+
 
      if(empty($data['account_holder_name'])){
-         $data['account_holder_name_err']='account holder name can not be empty';
+         $data['account_holder_name_err']='account holder name cannot be empty';
+     }else if(validateAccountHolderName($data['account_holder_name'])!="true"){
+      $data['account_holder_name_err']=validateAccountHolderName($data['account_holder_name']);
      }
+
 
      if(empty($data['branch'])){
-         $data['branch_err']='branch name can not be empty';
+         $data['branch_err']='branch name cannot be empty';
+     }else if(validateBankBranch($data['branch'])!="true"){
+      $data['branch_err']=validateBankBranch($data['branch']);
      }
+
 
      if(empty($data['gender'])){
-         $data['gender_err']='gender can not be empty';
+         $data['gender_err']='Title cannot be empty';
      }
+
 
       if(empty($data['account_number'])){
-         $data['account_number_err']='account number can not be empty';
-      }
+         $data['account_number_err']='account number cannot be empty';
+      } else if(validateAccountNumber($data['account_number'])!="true"){
+        $data['account_number_err']=validateAccountNumber($data['account_number']);
+       }
+
 
       if(empty($data['city'])){
-         $data['city_err']='city can not be empty';
-      }
+         $data['city_err']='city cannot be empty';
+      }else if( validateCityOfPharmacy($data['city'])!="true"){
+        $data['city_err']= validateCityOfPharmacy($data['city']);
+       }
+
 
       if(empty($data['pharmacy_name'])){
-        $data['pharmacy_name_err']='Pharmacy Name can not be empty';
+        $data['pharmacy_name_err']='Pharmacy Name cannot be empty';
+     }else if(validatePharmacyName($data['pharmacy_name'])!="true"){
+      $data['pharmacy_name_err']=validatePharmacyName($data['pharmacy_name']);
      }
 
+
      if(empty($data['address'])){
-      $data['address_err']='Address can not be empty';
-   }
+      $data['address_err']='Address cannot be empty';
+     }else if(validateAddress($data['address'])!="true"){
+      $data['address_err']=validateAddress($data['address']);
+     }
+
+
       
-      if(empty($data['slmc_reg_number'])){
-          $data['slmc_reg_number_err']='slmc registration number can not be empty';
-       }
+    if(empty($data['slmc_reg_number'])){
+          $data['slmc_reg_number_err']='slmc registration number cannot be empty';
+    }
+
+
+    if($_SESSION['pharmacist_contact_number']!=  trim($_POST['contact_number'])){
+     
+      if($this->userModel->findPharmacistByContactNumber($data['contact_number'])){
+        $data['contact_number_err']='Contact Number is already used';
+
+      } 
+      else if($this->userModel->findReqPharmacistByContactNumber($data['contact_number'])){
+        $data['contact_number_err']='Contact Number is already used';
+      }    
+    }
+
+
+    if($_SESSION['pharmacist_account_number']!=trim(trim($_POST['account_number']))){
+     
+      if($this->userModel->findPharmacistByAccountNumber($data['account_number'])){
+        $data['account_number_err']='Account Number is already used';
+      } 
+      else if($this->userModel->findReqPharmacistByAccountNumber($data['account_number'])){
+        $data['account_number_err']='Account Number is already used';
+      }
+    }
+
+
+
 
       
 
@@ -518,13 +574,13 @@ public function editProfile($userId){
      empty($data['account_number_err']) && empty($data['city_err']) && empty($data['address_err']) && empty($data['pharmacy_name_err'])){
            if($this->userModel->editUser($data)){
                  $_SESSION['profile_update']="true";
-                 $this->view('Pharmacist/pharmacistDetails',$data);    
+                 $this->view('Pharmacist/v_PharmacistDetails',$data);    
            }else{
-             $this->view('Pharmacist/pharmacistDetails',$data);    
+             $this->view('Pharmacist/v_PharmacistDetails',$data);    
            }  
       
      }else{
-       $this->view('Pharmacist/pharmacistDetails',$data);     
+       $this->view('Pharmacist/v_PharmacistDetails',$data);     
      }
 
 
@@ -615,33 +671,46 @@ public function updatePassword($id){
       if(empty($data['current_password'])){
         $data['current_password_err']='Please enter a current password';
      
-      }else{
+      }else if(validatePassword($data['current_password'])!="true"){
+        $data['current_password_err']=validatePassword($data['current_password']);
+       }
+      
+      else{
          if($this->userModel->findUserPWMatch($id,$data['current_password'])){
     
         }else{
                $data['current_password_err']='Current password is incorrect';
-         }  
-       
+         }   
       }
+
+
+
       if($data['new_password']!=$data['retype_new_password']){
-       $data['new_password_err']='New password and retype new password is incorrect';
+       $data['new_password_err']='New password and retype new password does not match';
       } 
 
       if(empty($data['new_password'])){
          $data['new_password_err']='Please enter a new password';
-      } 
+      } else if(validatePassword($data['new_password'])!="true"){
+        $data['new_password_err']=validatePassword($data['new_password']);
+       }
+
       
       if(empty($data['retype_new_password'])){
        $data['retype_new_password_err']='Please retype new password';
-    } 
+      }  else if(validatePassword($data['retype_new_password'])!="true"){
+        $data['retype_new_password_err']=validatePassword($data['retype_new_password']);
+      }
+
 
       if(empty($data['current_password_err']) && empty($data['retype_new_password_err']) && empty($data['new_password_err'])){
     
        $data['password']=password_hash($data['new_password'],PASSWORD_DEFAULT);
-       $changeUserPW=$this->userModel->changePW($data);
+       $changeUserPW=$this->userModel->changePWPharmacist($data);
 
          if($changeUserPW){
-           redirect('Pharmacist/changePassword');    
+          $_SESSION['profile_updatePasswordPharmacist']='true';
+          redirect('Pharmacist/changePassword');    
            
          }
          else{

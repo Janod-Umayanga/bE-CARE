@@ -157,13 +157,13 @@
 
         public function editUser($data) {
             $this->db->query('UPDATE pharmacist SET first_name = :first_name, last_name = :last_name,
-            nic = :nic, contact_number = :contact_number, gender = :gender,
+            contact_number = :contact_number, gender = :gender,
             pharmacy_name = :pharmacy_name,city= :city, address=:address,
             bank_name=:bank_name,account_holder_name=:account_holder_name,branch=:branch,
             account_number=:account_number WHERE pharmacist_id = :pharmacist_id');
             $this->db->bind(':first_name', $data['first_name']);
             $this->db->bind(':last_name', $data['last_name']);          
-            $this->db->bind(':nic', $data['nic']);
+        //    $this->db->bind(':nic', $data['nic']);
             $this->db->bind(':contact_number', $data['contact_number']);
             $this->db->bind(':gender', $data['gender']);
             $this->db->bind(':city', $data['city']);
@@ -183,7 +183,75 @@
                 return false;
             }
         }
+
+            // Find  Nutritionist by Contact Number
+    
+      public function findPharmacistByContactNumber($contact_number)
+      {
+        $this->db->query('SELECT * FROM pharmacist WHERE contact_number= :contact_number');
+        $this->db->bind(':contact_number',$contact_number);  
+
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return true;
+        }else{
+              return false;
+        }
+    }
+
+       // Find Requested Nutritionist by Contact Number
+    
+      public function findReqPharmacistByContactNumber($contact_number)
+      {
+            $this->db->query('SELECT * FROM requested_pharmacist WHERE contact_number= :contact_number');
+            $this->db->bind(':contact_number',$contact_number);  
+
+            $row= $this->db->single();
+
+            if($this->db->rowCount() >0){
+                  return true;
+            }else{
+                  return false;
+            }
+      }
+
+
+         // Find  Nutritionist by Account Number
+            
+         public function findPharmacistByAccountNumber($account_number)
+         {
+         $this->db->query('SELECT * FROM pharmacist WHERE account_number= :account_number');
+         $this->db->bind(':account_number',$account_number);  
+
+         $row= $this->db->single();
+
+         if($this->db->rowCount() >0){
+               return true;
+         }else{
+               return false;
+         }
+         }
+
+         // Find Requested Nutritionist by Account Number
+
+         public function findReqPharmacistByAccountNumber($account_number)
+         {
+               $this->db->query('SELECT * FROM requested_pharmacist WHERE account_number= :account_number');
+               $this->db->bind(':account_number',$account_number);  
+
+               $row= $this->db->single();
+
+               if($this->db->rowCount() >0){
+                     return true;
+               }else{
+                     return false;
+               }
+         }
         
+
+
+
         public function sendAcceptOrderDetails($pharmacist_id,$data){
               $this->db->query('INSERT INTO accept_order (name,contact_number,delivery_address,
               prescription,ordered_date_and_time,pharmacist_note,charge,
@@ -296,6 +364,21 @@
             } 
           }
 
+        public function changePWPharmacist($data){
+
+       
+            $this->db->query('UPDATE pharmacist set password = :password WHERE pharmacist_id = :id');
+            $this->db->bind(':password', $data['password']);
+            $this->db->bind(':id', $data['pharmacist_id']);
+                
+    
+            if($this->db->execute()){
+               return true;
+            }else{
+                return false;
+            } 
+        }
+
         public function findUserPWMatch($id,$password){
             $this->db->query('SELECT password FROM pharmacist WHERE pharmacist_id=:id');
             $this->db->bind(':id',$id);
@@ -332,6 +415,22 @@
     
             return $result ? $result : false; 
         }
+
+
+        public function getPatientDetailsById($patient_id) {
+            $this->db->query('SELECT * FROM patient WHERE patient_id = :patient_id');
+            $this->db->bind(':patient_id', $patient_id);
+
+            $row = $this->db->single();
+
+            if($this->db->rowCount() > 0) {
+                return $row;
+            }
+            else {
+                return false;
+            }
+        }
+
   
 
        

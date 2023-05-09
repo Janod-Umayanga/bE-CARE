@@ -259,6 +259,18 @@
     return "true";
   }
 
+
+  // validate pharmacy city
+  function validateCityOfPharmacy($city) {
+    // Check if the branch name contains only letters, numbers and spaces
+    if (!preg_match('/^[A-Za-z0-9\s]+$/', $city)) {
+      return "City name should contains only letters, numbers and spaces";
+    }   
+    // If all checks pass, return true
+    return "true";
+  }
+
+
    /*pharmacist note*/
   function validatePharmacistNote($pharmacy_note) {
     // Check if the pharmacist note contains only letters, numbers, spaces and common special characters

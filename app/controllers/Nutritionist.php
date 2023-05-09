@@ -328,21 +328,21 @@ public function editProfile($userId){
 
      
       if(empty($data['first_name'])){
-         $data['first_name_err']='first name can not be empty';
+         $data['first_name_err']='first name cannot be empty';
       }
       else if(validateFirstName($data['first_name'])!="true"){
         $data['first_name_err']=validateFirstName($data['first_name']);
        }
 
       if(empty($data['last_name'])){
-         $data['last_name_err']='last name can not be empty';
+         $data['last_name_err']='last name cannot be empty';
       }
       else if(validateLastName($data['last_name'])!="true"){
         $data['last_name_err']=validateLastName($data['last_name']);
        }
 
       if(empty($data['nic'])){
-         $data['nic_err']='nic can not be empty';
+         $data['nic_err']='nic cannot be empty';
       }
       else if(validateNIC($data['nic'])!="true"){
         $data['nic_err']=validateNIC($data['nic']);
@@ -350,7 +350,7 @@ public function editProfile($userId){
 
 
       if(empty($data['contact_number'])){
-         $data['contact_number_err']='contact number can not be empty';
+         $data['contact_number_err']='contact number cannot be empty';
       }
       else if(validateContactNumber($data['contact_number'])!="true"){
         $data['contact_number_err']=validateContactNumber($data['contact_number']);
@@ -366,7 +366,7 @@ public function editProfile($userId){
 
 
      if(empty($data['account_holder_name'])){
-         $data['account_holder_name_err']='account holder name can not be empty';
+         $data['account_holder_name_err']='account holder name cannot be empty';
      }
      else if(validateAccountHolderName($data['account_holder_name'])!="true"){
       $data['account_holder_name_err']=validateAccountHolderName($data['account_holder_name']);
@@ -374,7 +374,7 @@ public function editProfile($userId){
 
 
      if(empty($data['branch'])){
-         $data['branch_err']='branch name can not be empty';
+         $data['branch_err']='branch name cannot be empty';
      }
      else if(validateBankBranch($data['branch'])!="true"){
       $data['branch_err']=validateBankBranch($data['branch']);
@@ -385,7 +385,7 @@ public function editProfile($userId){
      }
 
       if(empty($data['account_number'])){
-         $data['account_number_err']='account number can not be empty';
+         $data['account_number_err']='account number cannot be empty';
       }
       else if(validateAccountNumber($data['account_number'])!="true"){
         $data['account_number_err']=validateAccountNumber($data['account_number']);
@@ -393,7 +393,7 @@ public function editProfile($userId){
 
 
       if(empty($data['fee'])){
-         $data['fee_err']='city can not be empty';
+         $data['fee_err']='fee cannot be empty';
       }
       else if(validateFee($data['fee'])!="true"){
         $data['fee_err']=validateFee($data['fee']);
