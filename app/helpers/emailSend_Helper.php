@@ -813,10 +813,9 @@ else if($bodyFlag == 10){
   </html>
                            
   ";
-<<<<<<< HEAD
 }
 //  Send email after send diet plan for patient
-else if($bodyFlag == 11){
+else if($bodyFlag == 14){
   $mail->Subject ="BeCare Diet Plan";  
   $email_template = "
   <!DOCTYPE html>
@@ -891,8 +890,8 @@ else if($bodyFlag == 11){
   </html>
                            
   ";
-}
-=======
+
+
 } else if($bodyFlag == 11){
   $mail->Subject ="Be-Care Doctor Channel";
   $email_template = "
@@ -1149,7 +1148,6 @@ else if($bodyFlag == 11){
                                         
                 ";
                   }
->>>>>>> d62330f29a4a90ebeff14b5805c97cce1b0c38cc
 
 
 
@@ -1164,7 +1162,7 @@ else if($bodyFlag == 11){
        }
 
 
-    }
+      }
 
-                
+  
 ?>
