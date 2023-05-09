@@ -76,6 +76,8 @@
                         'fee' => trim($_POST['fee']),
                     ];
 
+                    $_SESSION['name'] = $data['name'];
+
                     // Set your test stripe API key for the payment process
                     \Stripe\Stripe::setApiKey(STRIPEKEY);
 
@@ -91,7 +93,7 @@
                             'quantity' => 1,
                           ]],
                         'mode' => 'payment',
-                        'success_url' => URLROOT.'/Payment/createDoctorChannel/'.$data['name'].'/'.$data['age'].'/'.$data['cnumber'].'/'.$data['gender'].'/'.$data['doctor_id'].'/'.$data['channel_day_id'].'/'.$data['date'].'/'.$data['starting_time'].'/'.$data['time'].'/'.$data['duration'].'/'.$data['ending_time'].'/'.$data['fee'],
+                        'success_url' => URLROOT.'/Payment/createDoctorChannel/'.$data['age'].'/'.$data['cnumber'].'/'.$data['gender'].'/'.$data['doctor_id'].'/'.$data['channel_day_id'].'/'.$data['date'].'/'.$data['starting_time'].'/'.$data['time'].'/'.$data['duration'].'/'.$data['ending_time'].'/'.$data['fee'],
                         'cancel_url' => URLROOT.'/Payment/paymentUnsuccess/',
                       ]);
 
@@ -110,11 +112,11 @@
         }
 
         // Create doctor channel after the payment is successful
-        public function createDoctorChannel($name, $age, $cnumber, $gender, $doctor_id, $channel_day_id, $date, $starting_time, $time, $duration, $ending_time, $fee) {
+        public function createDoctorChannel($age, $cnumber, $gender, $doctor_id, $channel_day_id, $date, $starting_time, $time, $duration, $ending_time, $fee) {
 
             if(isset($_SESSION['patient_id'])) {
                 $data = [
-                    'name' => $name,
+                    'name' => $_SESSION['name'],
                     'age' => $age,
                     'gender' => $gender,
                     'cnumber' => $cnumber,
@@ -127,6 +129,8 @@
                     'ending_time' => $ending_time,
                     'fee' => $fee,
                 ];
+
+                unset($_SESSION['name']);
 
                 // Create apppointment
                 if($this->paymentModel->createDoctorChannel($data, $_SESSION['patient_id'])) {
@@ -167,6 +171,8 @@
                         'ending_time' => trim($_POST['ending_time']),
                         'fee' => trim($_POST['fee']),
                     ];
+
+                    $_SESSION['name'] = $data['name'];
     
                     // Set your test stripe API key for the payment process
                     \Stripe\Stripe::setApiKey(STRIPEKEY);
@@ -183,7 +189,7 @@
                             'quantity' => 1,
                           ]],
                         'mode' => 'payment',
-                        'success_url' => URLROOT.'/Payment/createCounsellorChannel/'.$data['name'].'/'.$data['age'].'/'.$data['cnumber'].'/'.$data['gender'].'/'.$data['counsellor_id'].'/'.$data['channel_day_id'].'/'.$data['date'].'/'.$data['starting_time'].'/'.$data['time'].'/'.$data['duration'].'/'.$data['ending_time'].'/'.$data['fee'],
+                        'success_url' => URLROOT.'/Payment/createCounsellorChannel/'.$data['age'].'/'.$data['cnumber'].'/'.$data['gender'].'/'.$data['counsellor_id'].'/'.$data['channel_day_id'].'/'.$data['date'].'/'.$data['starting_time'].'/'.$data['time'].'/'.$data['duration'].'/'.$data['ending_time'].'/'.$data['fee'],
                         'cancel_url' => URLROOT.'/Payment/paymentUnsuccess/',
                       ]);
 
@@ -200,11 +206,11 @@
         }
 
         // Create counsellor channel after the payment is successful
-        public function createCounsellorChannel($name, $age, $cnumber, $gender, $counsellor_id, $channel_day_id, $date, $starting_time, $time, $duration, $ending_time, $fee) {
+        public function createCounsellorChannel($age, $cnumber, $gender, $counsellor_id, $channel_day_id, $date, $starting_time, $time, $duration, $ending_time, $fee) {
 
             if(isset($_SESSION['patient_id'])) {
                 $data = [
-                    'name' => $name,
+                    'name' => $_SESSION['name'],
                     'age' => $age,
                     'gender' => $gender,
                     'cnumber' => $cnumber,
@@ -217,6 +223,8 @@
                     'ending_time' => $ending_time,
                     'fee' => $fee,
                 ];
+
+                unset($_SESSION['name']);
 
                 // Create apppointment
                 if($this->paymentModel->createCounsellorChannel($data, $_SESSION['patient_id'])) {
@@ -253,6 +261,8 @@
                         'current_participants' => trim($_POST['current_participants']),
                     ];
 
+                    $_SESSION['name'] = $data['name'];
+
                     // Set your test stripe API key for the payment process
                     \Stripe\Stripe::setApiKey(STRIPEKEY);
 
@@ -268,7 +278,7 @@
                             'quantity' => 1,
                           ]],
                         'mode' => 'payment',
-                        'success_url' => URLROOT.'/Payment/createSessionRegister/'.$data['name'].'/'.$data['age'].'/'.$data['cnumber'].'/'.$data['gender'].'/'.$data['session_id'].'/'.$data['fee'].'/'.$data['noOfParticipants'].'/'.$data['current_participants'],
+                        'success_url' => URLROOT.'/Payment/createSessionRegister/'.$data['age'].'/'.$data['cnumber'].'/'.$data['gender'].'/'.$data['session_id'].'/'.$data['fee'].'/'.$data['noOfParticipants'].'/'.$data['current_participants'],
                         'cancel_url' => URLROOT.'/Payment/paymentUnsuccess/',
                       ]);
 
@@ -281,10 +291,10 @@
         }
 
         // Create session register after the payment is successful
-        public function createSessionRegister($name, $age, $cnumber, $gender, $session_id, $fee, $noOfParticipants, $current_participants) {
+        public function createSessionRegister($age, $cnumber, $gender, $session_id, $fee, $noOfParticipants, $current_participants) {
 
                 $data = [
-                    'name' => $name,
+                    'name' => $_SESSION['name'],
                     'age' => $age,
                     'gender' => $gender,
                     'cnumber' => $cnumber,
@@ -293,6 +303,8 @@
                     'noOfParticipants' => $noOfParticipants,
                     'current_participants' => $current_participants,
                 ];
+
+                unset($_SESSION['name']);
 
                 // Create session register
                 if($this->paymentModel->createSessionRegister($data)) {
@@ -331,6 +343,11 @@
                         'nutritionist_id' => trim($_POST['nutritionist_id']),
                         'fee' => trim($_POST['fee']),
                     ];
+
+                    $_SESSION['name'] = $data['name'];
+                    $_SESSION['medical_details'] = $data['medical_details'];
+                    $_SESSION['allergies'] = $data['allergies'];
+                    $_SESSION['goal'] = $data['goal'];
     
                     // Set your test stripe API key for the payment process
                     \Stripe\Stripe::setApiKey(STRIPEKEY);
@@ -347,7 +364,7 @@
                             'quantity' => 1,
                           ]],
                         'mode' => 'payment',
-                        'success_url' => URLROOT.'/Payment/createDietPlanRequest/'.$data['name'].'/'.$data['age'].'/'.$data['gender'].'/'.$data['cnumber'].'/'.$data['weight'].'/'.$data['height'].'/'.$data['marital_status'].'/'.$data['medical_details'].'/'.$data['allergies'].'/'.$data['sleeping_hours'].'/'.$data['water_consumption_per_day'].'/'.$data['goal'].'/'.$data['nutritionist_id'].'/'.$data['fee'],
+                        'success_url' => URLROOT.'/Payment/createDietPlanRequest/'.$data['age'].'/'.$data['gender'].'/'.$data['cnumber'].'/'.$data['weight'].'/'.$data['height'].'/'.$data['marital_status'].'/'.$data['sleeping_hours'].'/'.$data['water_consumption_per_day'].'/'.$data['nutritionist_id'].'/'.$data['fee'],
                         'cancel_url' => URLROOT.'/Payment/paymentUnsuccess/',
                       ]);
 
@@ -364,25 +381,30 @@
         }
 
         // Create diet plan request after the payment is successful
-        public function createDietPlanRequest($name, $age, $gender, $cnumber, $weight, $height, $marital_status, $medical_details, $allergies, $sleeping_hours, $water_consumption_per_day, $goal, $nutritionist_id, $fee) {
+        public function createDietPlanRequest($age, $gender, $cnumber, $weight, $height, $marital_status, $sleeping_hours, $water_consumption_per_day, $nutritionist_id, $fee) {
 
             if(isset($_SESSION['patient_id'])) {
                 $data = [
-                    'name' => $name,
+                    'name' => $_SESSION['name'],
                     'age' => $age,
                     'gender' => $gender,
                     'cnumber' => $cnumber,
                     'weight' => $weight,
                     'height' => $height,
                     'marital_status' => $marital_status,
-                    'medical_details' => $medical_details,
-                    'allergies' => $allergies,
+                    'medical_details' => $_SESSION['medical_details'],
+                    'allergies' => $_SESSION['allergies'],
                     'sleeping_hours' => $sleeping_hours,
                     'water_consumption_per_day' => $water_consumption_per_day,
-                    'goal' => $goal,
+                    'goal' => $_SESSION['goal'],
                     'nutritionist_id' => $nutritionist_id,
                     'fee' => $fee,
                 ];
+
+                unset($_SESSION['name']);
+                unset($_SESSION['medical_details']);
+                unset($_SESSION['allergies']);
+                unset($_SESSION['goal']);
 
                 // Create diet plan request
                 if($this->paymentModel->createDietPlanRequest($data, $_SESSION['patient_id'])) {
@@ -493,6 +515,8 @@
                         'fee' => trim($_POST['fee']),
                     ];
 
+                    $_SESSION['name'] = $data['name'];
+
                     // Set your test stripe API key for the payment process
                     \Stripe\Stripe::setApiKey(STRIPEKEY);
 
@@ -508,7 +532,7 @@
                             'quantity' => 1,
                           ]],
                         'mode' => 'payment',
-                        'success_url' => URLROOT.'/Payment/createMeditationInstructorRegistration/'.$data['name'].'/'.$data['age'].'/'.$data['cnumber'].'/'.$data['gender'].'/'.$data['meditation_instructor_id'].'/'.$data['appointment_day_id'].'/'.$data['noOfParticipants'].'/'.$data['current_participants'].'/'.$data['fee'],
+                        'success_url' => URLROOT.'/Payment/createMeditationInstructorRegistration/'.$data['age'].'/'.$data['cnumber'].'/'.$data['gender'].'/'.$data['meditation_instructor_id'].'/'.$data['appointment_day_id'].'/'.$data['noOfParticipants'].'/'.$data['current_participants'].'/'.$data['fee'],
                         'cancel_url' => URLROOT.'/Payment/paymentUnsuccess/',
                       ]);
 
@@ -527,11 +551,11 @@
         }
 
         // Create doctor channel after the payment is successful
-        public function createMeditationInstructorRegistration($name, $age, $cnumber, $gender, $meditation_instructor_id, $appointment_day_id, $noOfParticipants, $current_participants, $fee) {
+        public function createMeditationInstructorRegistration($age, $cnumber, $gender, $meditation_instructor_id, $appointment_day_id, $noOfParticipants, $current_participants, $fee) {
 
             if(isset($_SESSION['patient_id'])) {
                 $data = [
-                    'name' => $name,
+                    'name' => $_SESSION['name'],
                     'age' => $age,
                     'gender' => $gender,
                     'cnumber' => $cnumber,
@@ -541,6 +565,8 @@
                     'current_participants' => $current_participants,
                     'fee' => $fee,
                 ];
+
+                unset($_SESSION['name']);
 
                 // Create apppointment
                 if($this->paymentModel->createMeditationInstructorRegistration($data, $_SESSION['patient_id'])) {

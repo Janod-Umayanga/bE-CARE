@@ -122,6 +122,22 @@
             } 
           }
 
+           
+         public function changePWDoctor($data){
+
+       
+            $this->db->query('UPDATE doctor set password = :password WHERE doctor_id = :id');
+            $this->db->bind(':password', $data['password']);
+            $this->db->bind(':id', $data['doctor_id']);
+                
+    
+            if($this->db->execute()){
+               return true;
+            }else{
+                return false;
+            } 
+          }
+
         public function findUserPWMatch($id,$password){
             $this->db->query('SELECT password FROM doctor WHERE doctor_id=:id');
             $this->db->bind(':id',$id);
@@ -194,6 +210,73 @@
 
         return $result ? $result : false; 
     }
+
+    // Find  Doctor by Contact Number
+    
+    public function findDoctorByContactNumber($contact_number)
+    {
+      $this->db->query('SELECT * FROM doctor WHERE contact_number= :contact_number');
+      $this->db->bind(':contact_number',$contact_number);  
+
+      $row= $this->db->single();
+
+      if($this->db->rowCount() >0){
+            return true;
+      }else{
+            return false;
+      }
+  }
+
+     // Find Requested Doctor by Contact Number
+  
+    public function findReqDoctorByContactNumber($contact_number)
+    {
+          $this->db->query('SELECT * FROM requested_doctor WHERE contact_number= :contact_number');
+          $this->db->bind(':contact_number',$contact_number);  
+
+          $row= $this->db->single();
+
+          if($this->db->rowCount() >0){
+                return true;
+          }else{
+                return false;
+          }
+    }
+
+
+         
+
+         // Find  Doctor by Account Number
+          
+          public function findDoctorByAccountNumber($account_number)
+          {
+          $this->db->query('SELECT * FROM doctor WHERE account_number= :account_number');
+          $this->db->bind(':account_number',$account_number);  
+
+          $row= $this->db->single();
+
+          if($this->db->rowCount() >0){
+                return true;
+          }else{
+                return false;
+          }
+          }
+
+          // Find Requested Doctor by Account Number
+
+          public function findReqDoctorByAccountNumber($account_number)
+          {
+                $this->db->query('SELECT * FROM requested_doctor WHERE account_number= :account_number');
+                $this->db->bind(':account_number',$account_number);  
+
+                $row= $this->db->single();
+
+                if($this->db->rowCount() >0){
+                      return true;
+                }else{
+                      return false;
+                }
+          }
 
    
 

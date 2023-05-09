@@ -50,7 +50,28 @@
                    
                     <li>Account Number - <?php echo $data['meditationInstructor']->account_number ?></li>
                     <li>Qualification File -   <button class="qualification"><a download="<?php echo $data['meditationInstructor']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/meditationInstructor_qualification/<?php echo  $data['meditationInstructor']->qualification_file ?>">Download</a></button>
-               </li>
+            
+            
+                
+                    <li>Verified By  <br><br>
+                      Admin Name - <?php echo $data['admin_verified']->first_name ?>   <?php echo $data['admin_verified']->last_name ?></li>
+                    <li>Admin Email - <?php echo $data['admin_verified']->email ?></li>
+                
+
+                    
+                    <?php if($data['meditationInstructor']->deactivated_admin_id!=NULL): ?>
+
+                      
+
+                        <li>Deactivated By  <br><br>
+                      Admin Name - <?php echo $data['admin_deactivated']->first_name ?>   <?php echo $data['admin_deactivated']->last_name ?></li>
+                    <li>Admin Email - <?php echo $data['admin_deactivated']->email ?></li>
+                
+                      
+
+                    <?php endif?>    
+            
+                </li>
                           
                     <?php if($data['meditationInstructor']->delete_flag==0): ?>
                         <form class="deactiveForm" action="<?php echo URLROOT;?>/AdminUserMgmt/adminDeactivatedMeditationInstructor/<?php echo $data['meditationInstructor']->meditation_instructor_id ?>" method="GET">

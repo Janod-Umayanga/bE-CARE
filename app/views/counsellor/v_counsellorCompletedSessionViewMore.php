@@ -30,6 +30,7 @@
                     <li>Fee - <?php echo $data['counsellorOldSession']->registration_fee ?></li>
                     <li>Address - <?php echo $data['counsellorOldSession']->address ?></li>
                     <li>Maximum number of Participants - <?php echo $data['counsellorOldSession']->noOfParticipants ?></li>
+                    <li><?php echo $data['counsellorOldSession']->description ?></li>
                    
                 </ul>
                 <div class="bottom-line"></div>

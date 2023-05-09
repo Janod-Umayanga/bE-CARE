@@ -201,6 +201,7 @@
          if($_SERVER['REQUEST_METHOD']=='POST'){
 
               $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+              $counsellor= $this->counsellorModel->findCounsellorByID($_SESSION['counsellor_id']);
               
               $data=[
                 'email'=> $_SESSION['counsellor_email'],
@@ -214,8 +215,8 @@
                 'account_holder_name'=>trim($_POST['account_holder_name']),
                 'branch'=>trim($_POST['branch']),
                 'account_number'=>trim($_POST['account_number']),
-                'gender'=>trim($_POST['gender']),
-                'city'=>trim($_POST['city']),
+                'gender'=>$counsellor->gender,
+                'city'=>$counsellor->city,
                 
                 
                 'first_name_err'=>'',
@@ -458,7 +459,7 @@
       
                 if($changeUserPW){
 
-                  $_SESSION['profile_updatePasswordCounsellor'] = "true";
+                  $_SESSION['profile_updateCounsellor'] = "true";
 
                   redirect('counsellor/changePassword');    
                   

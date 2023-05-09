@@ -65,7 +65,8 @@
 
     <!-- For push notifications -->
    
+<!-- For push notifications -->
+<span id="isUpdated"><?php if(isset($_SESSION['profile_updateCounsellor'])){echo $_SESSION['profile_updateCounsellor']; unset($_SESSION['profile_updateCounsellor']);}?></span>
        <span id="isUpdatedPassword"><?php if(isset($_SESSION['profile_updatePasswordCounsellor'])){echo $_SESSION['profile_updatePasswordCounsellor']; unset($_SESSION['profile_updatePasswordCounsellor']);}?></span>
-
 </body>
 </html>

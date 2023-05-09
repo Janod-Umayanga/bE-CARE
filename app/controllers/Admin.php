@@ -176,7 +176,7 @@ class Admin extends Controller{
           'account_holder_name'=>trim($_POST['account_holder_name']),
           'branch'=>trim($_POST['branch']),
           'account_number'=>trim($_POST['account_number']),
-          'gender'=>trim($_POST['gender']),
+          'gender'=>$_SESSION['admin_gender'],
           'email'=>$_SESSION['admin_email'],
 
           'first_name_err'=>'',

@@ -48,8 +48,28 @@
                    
                     <li>Account Number - <?php echo $data['doctor']->account_number ?></li>
                     <li>Type - <?php echo $data['doctor']->type ?></li>
-                    <li>Qualification File -   <button class="qualification"><a download="<?php echo $data['doctor']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/doctor_qualification/<?php echo  $data['doctor']->qualification_file ?>">Download</a></button>
-                    </li>
+                    <li>Qualification File -   <button class="qualification"><a download="<?php echo $data['doctor']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/doctor_qualification/<?php echo  $data['doctor']->qualification_file ?>">Download</a></button> </li>
+                  
+                    <li>Verified By  <br><br>
+                      Admin Name - <?php echo $data['admin_verified']->first_name ?>   <?php echo $data['admin_verified']->last_name ?></li>
+                    <li>Admin Email - <?php echo $data['admin_verified']->email ?></li>
+                
+
+                    
+                    <?php if($data['doctor']->deactivated_admin_id!=NULL): ?>
+
+                      
+
+                        <li>Deactivated By  <br><br>
+                      Admin Name - <?php echo $data['admin_deactivated']->first_name ?>   <?php echo $data['admin_deactivated']->last_name ?></li>
+                    <li>Admin Email - <?php echo $data['admin_deactivated']->email ?></li>
+                
+                      
+
+                    <?php endif?>
+                    
+
+                 
                    
                            
                     <?php if($data['doctor']->delete_flag==0): ?>

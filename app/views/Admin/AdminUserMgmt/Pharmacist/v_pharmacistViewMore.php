@@ -50,7 +50,26 @@
                     <li>Account Number - <?php echo $data['pharmacist']->account_number ?></li>
                      <li>Qualification File -   <button class="qualification"><a download="<?php echo $data['pharmacist']->qualification_file ?>"  href="<?php echo URLROOT?>/upload/pharmacist_qualification/<?php echo  $data['pharmacist']->qualification_file ?>">Download</a></button>
                     </li>
-                   
+                  
+                    
+                    <li>Verified By  <br><br>
+                      Admin Name - <?php echo $data['admin_verified']->first_name ?>   <?php echo $data['admin_verified']->last_name ?></li>
+                    <li>Admin Email - <?php echo $data['admin_verified']->email ?></li>
+                
+
+                    
+                    <?php if($data['pharmacist']->deactivated_admin_id!=NULL): ?>
+
+                      
+
+                        <li>Deactivated By  <br><br>
+                      Admin Name - <?php echo $data['admin_deactivated']->first_name ?>   <?php echo $data['admin_deactivated']->last_name ?></li>
+                    <li>Admin Email - <?php echo $data['admin_deactivated']->email ?></li>
+                
+                      
+
+                    <?php endif?>
+                    
                     <?php if($data['pharmacist']->delete_flag==0): ?>
                         <form class="deactiveForm" action="<?php echo URLROOT;?>/AdminUserMgmt/adminDeactivatedpharmacist/<?php echo $data['pharmacist']->pharmacist_id ?>" method="GET">
                              <button type="submit">Deactivate</button>

@@ -34,6 +34,10 @@
             </div>
             <div>
                 <h3>Services</h3>
+
+                <?php if (isset($_SESSION['patient_id'])): ?>
+                
+
                 <ul>
                     <li>
                         <a href="<?php echo URLROOT ?>/Patient/findDoctor">Find a Doctor</a>
@@ -54,6 +58,126 @@
                         <a href="<?php echo URLROOT ?>/Patient/findSession">Find a Session</a>
                     </li>
                 </ul>
+
+                <?php elseif(isset($_SESSION['admin_id']) ): ?>
+
+                  <ul>
+                    <li>
+                        <a href="<?php echo URLROOT;?>/AdminReqSerProviders/adminReqSerProviders">Requested Service Providers</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo URLROOT;?>/AdminComplaintMgmt/adminComplaintMgmt">Complaint Management</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo URLROOT;?>/AdminUserMgmt/adminUserMgmt">User Management</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo URLROOT;?>/AdminPayments/doctorChannelPayments">Payments</a>
+                    </li>
+                   
+                </ul>
+
+                <?php elseif(isset($_SESSION['MedInstr_id']) ): ?>
+
+                  <ul>
+                    <li>
+                        <a href="<?php echo URLROOT;?>/MedInstrRegisteredUsers/medInstrRegisteredUsers">Registered Users for Med Instructions</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo URLROOT;?>/MedInstrRegisteredUsersHistory/medInstrRegisteredUsersHistory">Registered Users History</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo URLROOT;?>/MedInstrChangeSessionDetails/medInstrChangeSessionDetails">Change Session Details</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo URLROOT;?>/MedInstrChangetimeslot/medInstrChangetimeslot">Change Timeslot</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo URLROOT;?>/MedInstrSession/medInstrSession">Session</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo URLROOT;?>/MedInstrAddtimeslot/medInstrAddtimeslot">Add timeslot</a>
+                    </li>
+                   
+                </ul>
+
+              <?php elseif(isset($_SESSION['doctor_id']) ): ?>
+
+                  <ul>
+                    <li>
+                        <a href="<?php echo URLROOT ?>/Doctor/timeslots">Timeslots</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo URLROOT ?>/DoctorAppoinments/DoctorAppoinments">Appointments</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo URLROOT ?>/DoctorAppoinments/AppoinmentsHistory">Channeling Patients History</a>
+                    </li>
+                   
+                   
+                </ul>
+
+
+              <?php elseif(isset($_SESSION['counsellor_id']) ): ?>
+
+                  <ul>
+                    <li>
+                        <a href="<?php echo URLROOT ?>/CounsellorSession/counsellorSession">Session</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo URLROOT ?>/Counsellor/timeslots">Timeslots</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo URLROOT ?>/CounsellorChangeSessionDetails/counsellorChangeSessionDetails">Change Sessions</a>
+                    </li>
+
+                    <li>
+                        <a href="<?php echo URLROOT ?>/CounsellorAppoinments/counsellorAppoinments">Appointments</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo URLROOT ?>/CounsellorAppoinments/AppoinmentsHistory">Channeling Patients History</a>
+                    </li>
+                   
+                   
+                </ul>
+
+              <?php elseif(isset($_SESSION['nutritionist_id']) ): ?>
+
+                  <ul>
+                    <li>
+                        <a href="<?php echo URLROOT ?>/Nutritionist/getAllRequests">Diet Plan Requests</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo URLROOT ?>/Nutritionist/nutritionistViewHistory">Issued Diet plans History</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo URLROOT ?>/NutritionistSession/nutritionistSession">Sessions</a>
+                    </li>
+
+                    <li>
+                        <a href="<?php echo URLROOT ?>/NutritionistChangeSessionDetails/nutritionistChangeSessionDetails">Change Session Details</a>
+                    </li>
+                   
+                   
+                </ul>
+
+                
+              <?php elseif(isset($_SESSION['pharmacist_id']) ): ?>
+
+                  <ul>
+                    <li>
+                        <a href="<?php echo URLROOT ?>/Pharmacist/pharmacistViewOrders">Orders</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo URLROOT ?>/Pharmacist/pharmacistSellingHistory/">Selling History</a>
+                    </li>
+                  
+                   
+                </ul>
+
+              <?php endif; ?>
+
+
             </div>
             <div>
                 <h3>Links</h3>

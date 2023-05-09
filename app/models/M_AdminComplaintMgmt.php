@@ -73,6 +73,22 @@
       }
 
 
+      
+      //Get Complaint Details 
+      public function  getSolvedComplaintViewMore($complaintId)
+      {
+        $this->db->query('SELECT * FROM complaint INNER JOIN admin ON complaint.admin_id=admin.admin_id WHERE complaint_id= :complaint_id');
+        $this->db->bind(':complaint_id',$complaintId);  
+
+        $row= $this->db->single();
+
+        if($this->db->rowCount() >0){
+              return $row;
+        }else{
+              return false;
+        }
+      }
+
       //Get no Of Solved Complaint
       public function getnoOfSolvedComplaint()
       {
@@ -118,8 +134,9 @@
       public function  setSolved($id)
  
       {
-          $this->db->query('UPDATE complaint set complaint_flag=1 WHERE complaint_id = :id');
+          $this->db->query('UPDATE complaint set complaint_flag=1,admin_id=:admin_id WHERE complaint_id = :id');
           $this->db->bind(':id',$id);
+          $this->db->bind(':admin_id',$_SESSION['admin_id']);
   
           if($this->db->execute()){
              return true;

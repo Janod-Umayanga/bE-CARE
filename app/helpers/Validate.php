@@ -333,5 +333,21 @@
     }
    }
 
+   // Validate name of the patient when filling forms
+   function validateName($name) {
+    // Check if the first name only contains letters
+    if (!preg_match("/^[a-zA-Z\s]+$/", $name)) {
+      return 'Name should only contain letters';
+    }
+    
+    // Check if the length of the first name is between 2 and 50 characters
+    if (strlen($name) < 2 || strlen($name) > 100) {
+      return 'Name must be between 2 and 100 characters';
+    }
+    
+    // If all checks pass, return true
+    return "true";
+  }
+
 
  ?>

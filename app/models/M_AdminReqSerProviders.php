@@ -129,7 +129,7 @@
       public function VerifyReqDoctor($doctor_id)
       {
             $data=$this->getReqDoctorDetails($doctor_id);
-            $this->db->query('INSERT INTO doctor(first_name,last_name,nic,contact_number,gender,email,password,slmc_reg_number,type,city,specialization,bank_name,account_holder_name,branch,account_number,qualification_file) VALUES (:first_name,:last_name,:nic,:contact_number,:gender,:email,:password,:slmc_reg_number,:type,:city,:specialization,:bank_name,:account_holder_name,:branch,:account_number,:qualification_file)');
+            $this->db->query('INSERT INTO doctor(first_name,last_name,nic,contact_number,gender,email,password,slmc_reg_number,type,city,specialization,bank_name,account_holder_name,branch,account_number,qualification_file,verified_admin_id) VALUES (:first_name,:last_name,:nic,:contact_number,:gender,:email,:password,:slmc_reg_number,:type,:city,:specialization,:bank_name,:account_holder_name,:branch,:account_number,:qualification_file,:verified_admin_id)');
             $this->db->bind(':first_name',$data->first_name);
             $this->db->bind(':last_name', $data->last_name);
             $this->db->bind(':nic', $data->nic);
@@ -146,6 +146,8 @@
             $this->db->bind(':account_number', $data->account_number);
             $this->db->bind(':branch', $data->branch);
             $this->db->bind(':qualification_file', $data->qualification_file);
+            $this->db->bind(':verified_admin_id', $_SESSION['admin_id']);
+            
     
 
             if($this->db->execute()){
@@ -215,7 +217,7 @@
       public function VerifyReqCounsellor($counsellor_id)
       {
             $data=$this->getReqCounsellorDetails($counsellor_id);
-            $this->db->query('INSERT INTO counsellor(first_name,last_name,nic,contact_number,gender,email,password,slmc_reg_number,city,bank_name,account_holder_name,branch,account_number,qualification_file) VALUES (:first_name,:last_name,:nic,:contact_number,:gender,:email,:password,:slmc_reg_number,:city,:bank_name,:account_holder_name,:branch,:account_number,:qualification_file)');
+            $this->db->query('INSERT INTO counsellor(first_name,last_name,nic,contact_number,gender,email,password,slmc_reg_number,city,bank_name,account_holder_name,branch,account_number,qualification_file,verified_admin_id) VALUES (:first_name,:last_name,:nic,:contact_number,:gender,:email,:password,:slmc_reg_number,:city,:bank_name,:account_holder_name,:branch,:account_number,:qualification_file,:verified_admin_id)');
             $this->db->bind(':first_name',$data->first_name);
             $this->db->bind(':last_name', $data->last_name);
             $this->db->bind(':nic', $data->nic);
@@ -230,7 +232,8 @@
             $this->db->bind(':account_number', $data->account_number);
             $this->db->bind(':branch', $data->branch);
             $this->db->bind(':qualification_file', $data->qualification_file);
-    
+            $this->db->bind(':verified_admin_id', $_SESSION['admin_id']);
+            
 
             if($this->db->execute()){
                 return $this->NotVerifyReqCounsellor($counsellor_id);
@@ -299,10 +302,10 @@
             $data=$this->getReqNutritionistDetails($nutritionist_id);
             $this->db->query('INSERT INTO nutritionist(first_name,last_name,
             nic,contact_number,gender,email,password,slmc_reg_number,fee,bank_name,
-            account_holder_name,branch,account_number,qualification_file)
+            account_holder_name,branch,account_number,qualification_file,verified_admin_id)
              VALUES (:first_name,:last_name,:nic,:contact_number,:gender,:email,
              :password,:slmc_reg_number,:fee,:bank_name,:account_holder_name,:branch,
-             :account_number,:qualification_file)');
+             :account_number,:qualification_file,:verified_admin_id)');
             
             $this->db->bind(':first_name',$data->first_name);
             $this->db->bind(':last_name', $data->last_name);
@@ -318,7 +321,8 @@
             $this->db->bind(':branch', $data->branch);
             $this->db->bind(':account_number', $data->account_number);
             $this->db->bind(':qualification_file', $data->qualification_file);
-    
+            $this->db->bind(':verified_admin_id', $_SESSION['admin_id']);
+          
 
             if($this->db->execute()){
                 return $this->NotVerifyReqNutritionist($nutritionist_id);
@@ -385,7 +389,7 @@
       public function VerifyReqMeditationInstructor($meditation_instructor_id)
       {
             $data=$this->getReqMeditationInstructorDetails($meditation_instructor_id);
-            $this->db->query('INSERT INTO meditation_instructor(first_name,last_name,nic,contact_number,gender,email,password,city,address,fee,bank_name,account_holder_name,branch,account_number,qualification_file) VALUES (:first_name,:last_name,:nic,:contact_number,:gender,:email,:password,:city,:address,:fee,:bank_name,:account_holder_name,:branch,:account_number,:qualification_file)');
+            $this->db->query('INSERT INTO meditation_instructor(first_name,last_name,nic,contact_number,gender,email,password,city,address,fee,bank_name,account_holder_name,branch,account_number,qualification_file,verified_admin_id) VALUES (:first_name,:last_name,:nic,:contact_number,:gender,:email,:password,:city,:address,:fee,:bank_name,:account_holder_name,:branch,:account_number,:qualification_file,:verified_admin_id)');
             $this->db->bind(':first_name',$data->first_name);
             $this->db->bind(':last_name', $data->last_name);
             $this->db->bind(':nic', $data->nic);
@@ -401,6 +405,8 @@
             $this->db->bind(':account_number', $data->account_number);
             $this->db->bind(':branch', $data->branch);
             $this->db->bind(':qualification_file', $data->qualification_file);
+            $this->db->bind(':verified_admin_id', $_SESSION['admin_id']);
+            
     
 
             if($this->db->execute()){
@@ -466,7 +472,7 @@
       public function VerifyReqPharmacist($pharmacist_id)
       {
             $data=$this->getReqPharmacistDetails($pharmacist_id);
-            $this->db->query('INSERT INTO pharmacist(first_name,last_name,nic,contact_number,gender,email,password,slmc_reg_number,pharmacy_name,city,address,bank_name,account_holder_name,branch,account_number,qualification_file) VALUES (:first_name,:last_name,:nic,:contact_number,:gender,:email,:password,:slmc_reg_number,:pharmacy_name,:city,:address,:bank_name,:account_holder_name,:branch,:account_number,:qualification_file)');
+            $this->db->query('INSERT INTO pharmacist(first_name,last_name,nic,contact_number,gender,email,password,slmc_reg_number,pharmacy_name,city,address,bank_name,account_holder_name,branch,account_number,qualification_file,verified_admin_id) VALUES (:first_name,:last_name,:nic,:contact_number,:gender,:email,:password,:slmc_reg_number,:pharmacy_name,:city,:address,:bank_name,:account_holder_name,:branch,:account_number,:qualification_file,:verified_admin_id)');
 
             $this->db->bind(':first_name',$data->first_name);
             $this->db->bind(':last_name', $data->last_name);
@@ -484,7 +490,8 @@
             $this->db->bind(':account_number', $data->account_number);
             $this->db->bind(':branch', $data->branch);
             $this->db->bind(':qualification_file', $data->qualification_file);
-    
+            $this->db->bind(':verified_admin_id', $_SESSION['admin_id']);
+          
 
             if($this->db->execute()){
                 return $this->NotVerifyReqPharmacist($pharmacist_id);
