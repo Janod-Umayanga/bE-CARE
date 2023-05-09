@@ -223,7 +223,7 @@ public function sendDietPlan()
        if($this->nutritionistIssueDietPlansModel->sendDietPlanDetails($_SESSION['nutritionist_id'], $data)){
        
         $patientDetails=$this->nutritionistIssueDietPlansModel->getPatientDetails($more->patient_id);
-        sendMail( $patientDetails->email, $patientDetails->first_name,'', 9,'');
+        sendMail( $patientDetails->email, $patientDetails->first_name,'', 11,'');
 
         $this->view('Nutritionist/v_NutritionistDashboard', $data);
 

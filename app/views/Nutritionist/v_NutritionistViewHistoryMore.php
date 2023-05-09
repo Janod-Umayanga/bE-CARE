@@ -16,22 +16,36 @@
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <section class="view-profile-container-nutritionistSession theme">
-        <div class="card">
-            <div class="main-image">
-                <a href="<?php echo URLROOT ?>/Nutritionist/nutritionistViewHistory/" class="backto-doctors"><i class="fa-solid fa-arrow-left"></i>Back to History</a> 
+    <section class="table-section theme">
+        <div class="table-container theme">
+
+            <div class="table-topic-main">
+                <h1>More Details of History</h1>
             </div>
-            <div class="bottom">
-                <ul>
-                    <li>Diet Plan ID  -<?php echo $data['his']->request_diet_plan_id; ?></li>
-                    <li>Description  - <?php echo $data['his']->description ;?></li>
-                    <li>Diet Plan File  - </li><button class="delete"><i class="fa-solid fa-download"></i><a download="<?php echo $data['his']->diet_plan_file ?>"  href="<?php echo URLROOT?>/upload/dietplans/<?php echo $data['his']->diet_plan_file ?>">Download</a></button>
-                    <li>Issued Date and Time  - <?php echo $data['his']->issued_date_and_time; ?></li>
+            <div class="table">
+                <table cellspacing="0" cellpadding="0">
+                    <tr>
+                        <th>Field</th>
+                        <th>Details</th>
+                    </tr>
+                    <tr>
+                        <td>Diet Plan ID</td>
+                        <td><?php echo $data['his']->request_diet_plan_id ?></td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td><?php echo $data['his']->description ;?></td>
+                    </tr>
+                    <tr>
+                        <td>Diet Plan File</td>
+                        <td><button class="delete"><i class="fa-solid fa-download"></i><a download="<?php echo $data['his']->diet_plan_file ?>"  href="<?php echo URLROOT?>/upload/dietplans/<?php echo $data['his']->diet_plan_file ?>">Download</a></button></td>
+                    </tr>
+                    <tr>
+                        <td>Issued Date and Time</td>
+                        <td><?php echo $data['his']->issued_date_and_time; ?></td>
+                    </tr>
                     
-                   
-                   
-                </ul>
-                <div class="bottom-line"></div>
+                </table>
             </div>
         </div>
     </section>

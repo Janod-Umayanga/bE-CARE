@@ -11,7 +11,7 @@
     <script src="https://kit.fontawesome.com/f1513ae29e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style2.css">
     <script defer src="<?php echo URLROOT; ?>/js/script.js"></script>
-    <script defer src="<?php echo URLROOT; ?>/js/pushNotification.js"></script>
+   
     <title>BeCare</title>
 </head>
 <body>
@@ -45,7 +45,7 @@
                                <input type="hidden" name="order_request_id" value="<?php echo $orders->order_request_id; ?>">
                               <button class="view" name="submit">View</button>
                           </form>
-                         
+                
                         <button class="delete"><i class="fa-solid fa-download"></i><a download="<?php echo $orders->prescription ?>"  href="<?php echo URLROOT?>/img/prescriptions/<?php echo $orders->prescription ?>">Download</a></button>
 
                           <form action="<?php echo URLROOT;?>/Pharmacist/acceptOrders/" method="post">

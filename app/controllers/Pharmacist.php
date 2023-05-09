@@ -232,16 +232,20 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
 
   if(empty($data['pharmacist_note_err']) && empty($data['charge_err']))
   {
-   
-    $this->pharmacistSendAcceptOrderDetailsModel->sendAcceptOrderDetails($_SESSION['pharmacist_id'], $data);
-    $this->pharmacistremoveOrderModel->acceptedOrderDetails($data);
-    $this->view('Pharmacist/v_PharmacistDashBoard', $data);
+   if($this->pharmacistSendAcceptOrderDetailsModel->sendAcceptOrderDetails($_SESSION['pharmacist_id'], $data))
+   {
+    if($this->pharmacistremoveOrderModel->acceptedOrderDetails($data))
+    {
+      $patientDetails = $this->pharmacistModel->getPatientDetails($more->patient_id);
+      sendMail( $patientDetails->email, $patientDetails->first_name,'', 10,'');
+      $this->view('Pharmacist/v_PharmacistDashBoard', $data);
+    }
+   }   
   }
   else {
     $this->view('Pharmacist/v_PharmacistAcceptOrder', $data);
   }
 }
-
 
 }    
 else 
@@ -305,8 +309,11 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
 
   if(empty($data['pharmacist_note_err']))
   {
-    $this->pharmacistSendAcceptOrderDetailsModel->rejectOrderDetails($_SESSION['pharmacist_id'], $data);
-    $this->view('Pharmacist/v_PharmacistDashBoard', $data);  
+    if($this->pharmacistSendAcceptOrderDetailsModel->rejectOrderDetails($_SESSION['pharmacist_id'], $data))
+    { 
+      $patientDetails = $this->pharmacistModel->getPatientDetails($more->patient_id);
+      sendMail( $patientDetails->email, $patientDetails->first_name,'', 9,'');
+      $this->view('Pharmacist/v_PharmacistDashBoard', $data);  
     }
   else{
     $this->view('Pharmacist/v_PharmacistRejectOrder', $data);
@@ -319,7 +326,7 @@ else
 {   
   redirect('Login/login');
 }   
-}
+}}
 
 
 // Pharmacist send order view details

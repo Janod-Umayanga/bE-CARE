@@ -326,8 +326,7 @@
 
         public function findUserPWMatch($id,$password){
             $this->db->query('SELECT password FROM nutritionist WHERE nutritionist_id=:id');
-            $this->db->bind(':id',$id);
-            
+            $this->db->bind(':id',$id);           
             $row= $this->db->single();
             $hashed_password =$row->password;
             if(password_verify($password,$hashed_password)){
@@ -352,23 +351,19 @@
           } 
       
           public function checkToken($email) {
-            
             $this->db->query("SELECT verify_token FROM nutritionist WHERE email = :email");
             $this->db->bind(':email',$email);
             
-            $result=$this->db->single();
-    
+            $result=$this->db->single(); 
             return $result ? $result : false; 
         }
   
         
-          // Get patient by id
-          public function getPatientDetails($patient_id) {
+        // Get patient by id
+        public function getPatientDetails($patient_id) {
             $this->db->query('SELECT * FROM patient WHERE patient_id = :patient_id');
             $this->db->bind(':patient_id', $patient_id);
-
             $row = $this->db->single();
-
             if($this->db->rowCount() > 0) {
                 return $row;
             }
@@ -376,6 +371,7 @@
                 return false;
             }
         }
+
 
     }
 

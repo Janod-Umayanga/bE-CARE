@@ -655,14 +655,14 @@
               
 " ;
 
-} // Send diet plan email
+} // Send email after reject order of patient
 else if($bodyFlag == 9){
-   $mail->Subject ="BeCare Diet plan";  
+   $mail->Subject ="BeCare Order Medicine";  
    $email_template = "
    <!DOCTYPE html>
    <html>
      <head>
-       <title>Your BeCare Account has been verified!</title>
+       <title>Your order has been rejected!</title>
        <style>
          /* CSS styles */
          body {
@@ -713,9 +713,9 @@ else if($bodyFlag == 9){
      </head>
      <body>
        <div class='container'>
-         <h1>Your BeCare Account has been !</h1>
+         <h1>Your order has been rejected!</h1>
          <p>Dear {$name},</p>
-         <p>We are pleased to inform you that your account on BeCare has been verified and is now active.</p>
+         <p>We are pleased to inform you that your order has been rejected.This pharmacy may have rejected your order because they do not have the requested medicines available in their inventory.</p>
          <p>To access your account, please click the button below:</p>
          <p>
             <a href='http://localhost/be-care/Login/login' style='color:white' class='btn'>Login to BeCare</a>
@@ -732,14 +732,14 @@ else if($bodyFlag == 9){
                             
    ";
 }
-// accept order email
+//  Send email after accept order of patient
 else if($bodyFlag == 10){
-  $mail->Subject ="BeCare Diet plan";  
+  $mail->Subject ="BeCare Order Medicine";  
   $email_template = "
   <!DOCTYPE html>
   <html>
     <head>
-      <title>Your BeCare Account has been verified!</title>
+      <title>Your order has been rejected!</title>
       <style>
         /* CSS styles */
         body {
@@ -789,27 +789,103 @@ else if($bodyFlag == 10){
       </style>
     </head>
     <body>
-      <div class='container'>
-        <h1>Your BeCare Account has been !</h1>
-        <p>Dear {$name},</p>
-        <p>We are pleased to inform you that your account on BeCare has been verified and is now active.</p>
-        <p>To access your account, please click the button below:</p>
-        <p>
-           <a href='http://localhost/be-care/Login/login' style='color:white' class='btn'>Login to BeCare</a>
-        </p>
-        <p>Please use the username and password you entered during the signup process to login.</p>
-        <p>If you have any questions or concerns, please do not hesitate to contact us.</p>
-        <p>Thank you for choosing BeCare!</p>
-        <p>Best regards,</p>
-        <p>The BeCare Team</p>
+    <div class='container'>
+    <h1>Your order has been Accepted!</h1>
+    <p>Dear {$name},</p>
+    <p>We are pleased to inform you that your order has been Accepted.You can pay and confirm your order.</p>
+    <p>To access your account, please click the button below:</p>
+    <p>
+       <a href='http://localhost/be-care/Login/login' style='color:white' class='btn'>Login to BeCare</a>
+    </p>
+    <p>Please use the username and password you entered during the signup process to login.</p>
+    <p>If you have any questions or concerns, please do not hesitate to contact us.</p>
+    <p>Thank you for choosing BeCare!</p>
+    <p>Best regards,</p>
+    <p>The BeCare Team</p>
 
-      </div>
+  </div>
     </body>
   </html>
                            
   ";
 }
+//  Send email after send diet plan for patient
+else if($bodyFlag == 11){
+  $mail->Subject ="BeCare Diet Plan";  
+  $email_template = "
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>Your diet plan has been sent!</title>
+      <style>
+        /* CSS styles */
+        body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #f4f4f4;
+          color: #333;
+        }
+        .container {
+           max-width: 600px;
+           margin: 0 auto;
+           padding: 20px;
+           background-color: #ffffff;
+           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
+        h1 {
+           font-size: 28px;
+           font-weight: bold;
+           margin: 0;
+           margin-bottom: 20px;
+           color: #333333;
+        }
+
+        p {
+              font-size: 16px;
+              line-height: 24px;
+              margin: 0;
+              margin-bottom: 20px;
+              color: #333333;
+        }
+
+        .btn {
+          display: inline-block;
+          padding: 10px 20px;
+          background-color: #007bff;
+          color: #ffffff;
+          text-decoration: none;
+          border-radius: 4px;
+          font-size: 16px;
+          font-weight: bold;
+        }
+        .btn:hover {
+          background-color: #0069d9;
+        }
+      </style>
+    </head>
+    <body>
+    <div class='container'>
+    <h1>Your diet plan is ready!</h1>
+    <p>Dear {$name},</p>
+    <p>We are pleased to inform you that your diet plan has been sent.Follow it and achieve your goals.Good luck!</p>
+    <p>To access your account, please click the button below:</p>
+    <p>
+       <a href='http://localhost/be-care/Login/login' style='color:white' class='btn'>Login to BeCare</a>
+    </p>
+    <p>Please use the username and password you entered during the signup process to login.</p>
+    <p>If you have any questions or concerns, please do not hesitate to contact us.</p>
+    <p>Thank you for choosing BeCare!</p>
+    <p>Best regards,</p>
+    <p>The BeCare Team</p>
+
+  </div>
+    </body>
+  </html>
+                           
+  ";
+}
 
 
 

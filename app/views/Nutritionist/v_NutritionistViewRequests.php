@@ -59,6 +59,8 @@
             </div>
         </div>
     </section>
+
+    
     <?php require APPROOT.'/views/inc/components/footer1.php'; ?>
 </body>
 </html>

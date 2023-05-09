@@ -16,11 +16,11 @@
     <section class="diet-plan-section">
         <div class="diet-plan-leftside">
             <div class="diet-left-side-container">
-                <a href="<?php echo URLROOT ?>/Pharmacist/pharmacistViewOrders/" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Order Requests</a>
+                <a href="<?php echo URLROOT ?>/Pharmacist/pharmacistViewOrders/" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Order Requests page</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
                     <h2>Fill these details to Accept Order</h2>
-                    <p>click the "Accept" button to accept order.</p>
+                    <p>click the "Accept" button to accept order</p>
                 </div>
             </div>
         </div>

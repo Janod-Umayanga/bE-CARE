@@ -16,7 +16,7 @@
     <section class="diet-plan-section">
         <div class="diet-plan-leftside">
             <div class="diet-left-side-container">
-                <a href="<?php echo URLROOT ?>/Pharmacist/pharmacistViewOrders/" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to Diet Plans requests Page</a>
+                <a href="<?php echo URLROOT ?>/Pharmacist/pharmacistViewOrders/" class="page-change-button-from-diet"><i class="fa-solid fa-arrow-left"></i>Back to order requests Page</a>
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
                     <h2>Fill these details to Reject Order</h2>
@@ -38,7 +38,7 @@
                     <input type="hidden" name="request_diet_plan_id" value="<?php #echo $more->request_diet_plan_id; ?>"> -->
                         <label for="pharmacist_note">Note</label>
                         <textarea name="pharmacist_note" id="pharmacist_note" rows="6" cols="6" value="<?php echo $data['pharmacist_note'] ?>"
-                        placeholder="Any Note"></textarea>
+                        placeholder="The requested medicines not available in our inventory.Sorry for that."></textarea>
                         <span class="form-invalid"><?php echo $data['pharmacist_note'] ?></span>
 
                         <button type="submit" name="submit">Send</button>
