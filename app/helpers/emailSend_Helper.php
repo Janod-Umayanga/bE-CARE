@@ -19,6 +19,11 @@
 
        // $flag =8 Notification for pharmacist(Patient paid for medicine order)
 
+       // Patient's notifications
+        // $flag =11 Doctor Channel Created
+        // $flag =12 Counsellor Channel Created
+        // $flag =13 Meditation instructing appointment created
+
        // //Server settings
       $mail = new PHPMailer(true);
                         
@@ -808,6 +813,7 @@ else if($bodyFlag == 10){
   </html>
                            
   ";
+<<<<<<< HEAD
 }
 //  Send email after send diet plan for patient
 else if($bodyFlag == 11){
@@ -886,6 +892,264 @@ else if($bodyFlag == 11){
                            
   ";
 }
+=======
+} else if($bodyFlag == 11){
+  $mail->Subject ="Be-Care Doctor Channel";
+  $email_template = "
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Channel Created</title>
+        <style>
+          /* CSS styles */
+          body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+          }
+          .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          }
+
+          h1 {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0;
+            margin-bottom: 20px;
+            color: #333333;
+          }
+
+          p {
+                font-size: 16px;
+                line-height: 24px;
+                margin: 0;
+                margin-bottom: 20px;
+                color: #333333;
+          }
+
+          .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+          }
+          .btn:hover {
+            background-color: #0069d9;
+          }
+        </style>
+      </head>
+      <body>
+        <div class='container'>
+          <h1>Your Doctor Channel Appointment Created Successfully!</h1>
+          <p>Dear {$name},</p>
+          <p>We are pleased to inform you that your channelling appointment has been successfully created.</p>
+          <p>The details of your appointment are listed below.</p>
+          <li>Patient Name: {$other['patient_title']}. {$other['patient_name']}</li>
+          <li>Patient Age: {$other['patient_age']}</li>
+          <li>Patient Contact Number: {$other['patient_contact_number']}</li>
+          <li>Doctor Name: Dr. {$other['doctor_first_name']} {$other['doctor_last_name']}</li>
+          <li>Appointment Date: {$other['date']}</li>
+          <li>Appointment Time: {$other['time']}</li>
+          <li>Venue: {$other['venue']}</li>
+          <li>Your Appointment number: {$other['appointment_number']}</li>
+          <li>Paid amount: Rs. {$other['fee']}</li>
+          <p>You can visit Be Care website to see more details by clicking the button below:</p>
+          <p>
+            <a href='http://localhost/be-care/Patient/viewDoctorAppointments' style='color:white' class='btn'>BeCare Appointments</a>
+          </p>
+          <p>Use your username and password to login.</p>
+          <p>If you have any questions or concerns, please do not hesitate to contact us.</p>
+          <p>Thank you for choosing BeCare!</p>
+          <p>Best regards,</p>
+          <p>The BeCare Team</p>
+
+        </div>
+      </body>
+    </html>
+                            
+    ";
+      } else if($bodyFlag == 12){
+        $mail->Subject ="Be-Care Counsellor Channel";
+        $email_template = "
+          <!DOCTYPE html>
+          <html>
+            <head>
+              <title>Channel Created</title>
+              <style>
+                /* CSS styles */
+                body {
+                  font-family: Arial, sans-serif;
+                  margin: 0;
+                  padding: 0;
+                  background-color: #f4f4f4;
+                  color: #333;
+                }
+                .container {
+                  max-width: 600px;
+                  margin: 0 auto;
+                  padding: 20px;
+                  background-color: #ffffff;
+                  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                }
+      
+                h1 {
+                  font-size: 28px;
+                  font-weight: bold;
+                  margin: 0;
+                  margin-bottom: 20px;
+                  color: #333333;
+                }
+      
+                p {
+                      font-size: 16px;
+                      line-height: 24px;
+                      margin: 0;
+                      margin-bottom: 20px;
+                      color: #333333;
+                }
+      
+                .btn {
+                  display: inline-block;
+                  padding: 10px 20px;
+                  background-color: #007bff;
+                  color: #ffffff;
+                  text-decoration: none;
+                  border-radius: 4px;
+                  font-size: 16px;
+                  font-weight: bold;
+                }
+                .btn:hover {
+                  background-color: #0069d9;
+                }
+              </style>
+            </head>
+            <body>
+              <div class='container'>
+                <h1>Your Counsellor Channel Appointment Created Successfully!</h1>
+                <p>Dear {$name},</p>
+                <p>We are pleased to inform you that your channelling appointment has been successfully created.</p>
+                <p>The details of your appointment are listed below.</p>
+                <li>Patient Name: {$other['patient_title']}. {$other['patient_name']}</li>
+                <li>Patient Age: {$other['patient_age']}</li>
+                <li>Patient Contact Number: {$other['patient_contact_number']}</li>
+                <li>Counsellor Name: Dr. {$other['counsellor_first_name']} {$other['counsellor_last_name']}</li>
+                <li>Appointment Date: {$other['date']}</li>
+                <li>Appointment Time: {$other['time']}</li>
+                <li>Venue: {$other['venue']}</li>
+                <li>Your Appointment number: {$other['appointment_number']}</li>
+                <li>Paid amount: Rs. {$other['fee']}</li>
+                <p>You can visit Be Care website to see more details by clicking the button below:</p>
+                <p>
+                  <a href='http://localhost/be-care/Patient/viewCounsellorAppointments' style='color:white' class='btn'>BeCare Appointments</a>
+                </p>
+                <p>Use your username and password to login.</p>
+                <p>If you have any questions or concerns, please do not hesitate to contact us.</p>
+                <p>Thank you for choosing BeCare!</p>
+                <p>Best regards,</p>
+                <p>The BeCare Team</p>
+      
+              </div>
+            </body>
+          </html>
+                                  
+          ";
+            } else if($bodyFlag == 13){
+              $mail->Subject ="Be-Care Meditation Instructing Registration";
+              $email_template = "
+                <!DOCTYPE html>
+                <html>
+                  <head>
+                    <title>Appointment Created</title>
+                    <style>
+                      /* CSS styles */
+                      body {
+                        font-family: Arial, sans-serif;
+                        margin: 0;
+                        padding: 0;
+                        background-color: #f4f4f4;
+                        color: #333;
+                      }
+                      .container {
+                        max-width: 600px;
+                        margin: 0 auto;
+                        padding: 20px;
+                        background-color: #ffffff;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                      }
+            
+                      h1 {
+                        font-size: 28px;
+                        font-weight: bold;
+                        margin: 0;
+                        margin-bottom: 20px;
+                        color: #333333;
+                      }
+            
+                      p {
+                            font-size: 16px;
+                            line-height: 24px;
+                            margin: 0;
+                            margin-bottom: 20px;
+                            color: #333333;
+                      }
+            
+                      .btn {
+                        display: inline-block;
+                        padding: 10px 20px;
+                        background-color: #007bff;
+                        color: #ffffff;
+                        text-decoration: none;
+                        border-radius: 4px;
+                        font-size: 16px;
+                        font-weight: bold;
+                      }
+                      .btn:hover {
+                        background-color: #0069d9;
+                      }
+                    </style>
+                  </head>
+                  <body>
+                    <div class='container'>
+                      <h1>Your Meditation Instructing Appointment Created Successfully!</h1>
+                      <p>Dear {$name},</p>
+                      <p>We are pleased to inform you that your meditation instructing appointment has been successfully created.</p>
+                      <p>The details of your appointment are listed below.</p>
+                      <li>Patient Name: {$other['patient_title']}. {$other['patient_name']}</li>
+                      <li>Patient Age: {$other['patient_age']}</li>
+                      <li>Patient Contact Number: {$other['patient_contact_number']}</li>
+                      <li>Meditating Instructor Name: {$other['instructor_title']}. {$other['instructor_first_name']} {$other['instructor_last_name']}</li>
+                      <li>Date: {$other['date']}</li>
+                      <li>Starting Time: {$other['starting_time']}</li>
+                      <li>Ending Time: {$other['ending_time']}</li>
+                      <li>Venue: {$other['venue']}</li>
+                      <li>Paid amount: Rs. {$other['fee']}</li>
+                      <p>You can visit Be Care website to see more details by clicking the button below:</p>
+                      <p>
+                        <a href='http://localhost/be-care/Patient/viewDoctorAppointments' style='color:white' class='btn'>BeCare Appointments</a>
+                      </p>
+                      <p>Use your username and password to login.</p>
+                      <p>If you have any questions or concerns, please do not hesitate to contact us.</p>
+                      <p>Thank you for choosing BeCare!</p>
+                      <p>Best regards,</p>
+                      <p>The BeCare Team</p>
+            
+                    </div>
+                  </body>
+                </html>
+                                        
+                ";
+                  }
+>>>>>>> d62330f29a4a90ebeff14b5805c97cce1b0c38cc
 
 
 

@@ -2,8 +2,20 @@
 
     class Payment extends Controller{
         private $paymentModel;
+        private $doctorModel;
+        private $doctorTimeslotModel;
+        private $counsellorTimeslotModel;
+        private $counsellorModel;
+        private $meditationInstructorModel;
+        private $meditationInstructorTimeslotModel;
         public function __construct() {
             $this->paymentModel = $this->model('M_Payment');
+            $this->doctorModel = $this->model('M_Doctor');
+            $this->doctorTimeslotModel = $this->model('M_Doctor_Timeslot');
+            $this->counsellorTimeslotModel = $this->model('M_Counsellor_Timeslot');
+            $this->counsellorModel = $this->model('M_Counsellor');
+            $this->meditationInstructorModel = $this->model('M_MedInstr');
+            $this->meditationInstructorTimeslotModel = $this->model('M_MedInstrAddtimeslot');
         }
 
         // // Verify the payment
@@ -135,6 +147,30 @@
                 // Create apppointment
                 if($this->paymentModel->createDoctorChannel($data, $_SESSION['patient_id'])) {
                     $_SESSION['channel_created'] = true;
+
+                    $doctor = $this->doctorModel->findDoctorByID($doctor_id);
+                    $channel = $this->doctorTimeslotModel->getDoctorChannelDayById($channel_day_id);
+
+                    $other = [
+                        'patient_name' => $data['name'],
+                        'patient_title' => $data['gender'],
+                        'patient_age' => $data['age'],
+                        'patient_contact_number' => $data['cnumber'],
+                        'doctor_first_name' => $doctor->first_name,
+                        'doctor_last_name' => $doctor->last_name,
+                        'venue' => $channel->address,
+                        'date' => $date,
+                        'time' => $time,
+                        'appointment_number' => ((strtotime($time) - strtotime($data['starting_time'])) / (60 * $duration))+1,
+                        'fee' => $data['fee'] + $data['fee']*0.1,
+                    ];
+
+                    $email = $_SESSION['patient_email'];
+                    $name = $_SESSION['patient_name'];
+                    $bodyFlag = 11;
+
+                    // Send email notification to the patient
+                    sendMail($email,$name,"",$bodyFlag,$other);
                     redirect('Pages/index');
                 }
                 else {
@@ -229,6 +265,30 @@
                 // Create apppointment
                 if($this->paymentModel->createCounsellorChannel($data, $_SESSION['patient_id'])) {
                     $_SESSION['channel_created'] = true;
+
+                    $counsellor = $this->counsellorModel->findCounsellorByID($counsellor_id);
+                    $channel = $this->counsellorTimeslotModel->getCounsellorChannelDayById($channel_day_id);
+
+                    $other = [
+                        'patient_name' => $data['name'],
+                        'patient_title' => $data['gender'],
+                        'patient_age' => $data['age'],
+                        'patient_contact_number' => $data['cnumber'],
+                        'counsellor_first_name' => $counsellor->first_name,
+                        'counsellor_last_name' => $counsellor->last_name,
+                        'venue' => $channel->address,
+                        'date' => $date,
+                        'time' => $time,
+                        'appointment_number' => ((strtotime($time) - strtotime($data['starting_time'])) / (60 * $duration))+1,
+                        'fee' => $data['fee'] + $data['fee']*0.1,
+                    ];
+
+                    $email = $_SESSION['patient_email'];
+                    $name = $_SESSION['patient_name'];
+                    $bodyFlag = 12;
+
+                    // Send email notification to the patient
+                    sendMail($email,$name,"",$bodyFlag,$other);
                     redirect('Pages/index');
                 }
                 else {
@@ -571,6 +631,30 @@
                 // Create apppointment
                 if($this->paymentModel->createMeditationInstructorRegistration($data, $_SESSION['patient_id'])) {
                     $_SESSION['channel_created'] = true;
+
+                    $instructor = $this->meditationInstructorModel->findUserByID($meditation_instructor_id);
+                    $appointment = $this->meditationInstructorTimeslotModel->getMedInstrAppointmentDayById($appointment_day_id);
+
+                    $other = [
+                        'patient_name' => $data['name'],
+                        'patient_title' => $data['gender'],
+                        'patient_age' => $data['age'],
+                        'patient_contact_number' => $data['cnumber'],
+                        'instructor_first_name' => $instructor->first_name,
+                        'instructor_last_name' => $instructor->last_name,
+                        'venue' => $appointment->address,
+                        'date' => $appointment->date,
+                        'starting_time' => $appointment->starting_time,
+                        'ending_time' => $appointment->ending_time,
+                        'fee' => $data['fee'] + $data['fee']*0.1,
+                    ];
+
+                    $email = $_SESSION['patient_email'];
+                    $name = $_SESSION['patient_name'];
+                    $bodyFlag = 13;
+
+                    // Send email notification to the patient
+                    sendMail($email,$name,"",$bodyFlag,$other);
                     redirect('Pages/index');
                 }
                 else {

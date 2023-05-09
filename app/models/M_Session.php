@@ -36,7 +36,7 @@
 
         // get session details
         public function getSessionById($session_id) {
-            $this->db->query('SELECT * FROM session WHERE session_id = :session_id');
+            $this->db->query('SELECT session.* FROM session WHERE session_id = :session_id');
             $this->db->bind(':session_id', $session_id);
             return $this->db->single();
         }

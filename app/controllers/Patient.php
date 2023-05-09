@@ -1340,9 +1340,11 @@
             // Show all order requests
             $orders = $this->orderRequestModel->getAllOrderRequests($_SESSION['patient_id']);
             $accepted_orders = $this->orderRequestModel->getAllAcceptedOrders($_SESSION['patient_id']);
+            $rejected_orders = $this->orderRequestModel->getAllRejectedOrders($_SESSION['patient_id']);
             $data = [
                 'orders' => $orders,
-                'acccepted_orders' => $accepted_orders
+                'acccepted_orders' => $accepted_orders,
+                'rejected_orders' => $rejected_orders
             ];
 
             // Load view

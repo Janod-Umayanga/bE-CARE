@@ -41,7 +41,7 @@
                         
                         </li>
                         <li>
-                            <a id="navigation-link" class="navigation-link theme" href="#">About</a>
+                            <a id="navigation-link" class="navigation-link theme" href="<?php echo URLROOT ?>/Pages/about">About</a>
                         </li>
                         <!-- <li>
                             <a id="navigation-link" class="navigation-link theme" href="#">Service</a>

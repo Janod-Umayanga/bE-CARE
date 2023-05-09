@@ -90,6 +90,13 @@
           return $this->db->single();
       }
 
+      // get med instructor appointment day by id
+        public function getMedInstrAppointmentDayById($med_ins_appointment_day_id) {
+            $this->db->query('SELECT * FROM med_ins_appointment_day WHERE med_ins_appointment_day_id = :med_ins_appointment_day_id');
+            $this->db->bind(':med_ins_appointment_day_id', $med_ins_appointment_day_id);
+    
+            return $this->db->single();
+        }
      
 
 }

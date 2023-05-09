@@ -181,6 +181,14 @@
         }
     }
 
+    // get the counsellor channel day by id
+    public function getCounsellorChannelDayById($channel_day_id) {
+        $this->db->query('SELECT counsellor_timeslot.*, counsellor_channel_day.* FROM counsellor_channel_day INNER JOIN counsellor_timeslot ON counsellor_channel_day.counsellor_timeslot_id = counsellor_timeslot.counsellor_timeslot_id WHERE counsellor_channel_day.counsellor_channel_day_id = :counsellor_channel_day_id');
+        $this->db->bind(':counsellor_channel_day_id', $channel_day_id);
+
+        return $this->db->single();
+    }
+
 
 
 }

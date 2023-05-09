@@ -179,6 +179,14 @@
             }
         }
 
+        // get the doctor channel day by id
+        public function getDoctorChannelDayById($channel_day_id) {
+            $this->db->query('SELECT doctor_timeslot.*, doctor_channel_day.* FROM doctor_channel_day INNER JOIN doctor_timeslot ON doctor_channel_day.doctor_timeslot_id = doctor_timeslot.doctor_timeslot_id WHERE doctor_channel_day.doctor_channel_day_id = :doctor_channel_day_id');
+            $this->db->bind(':doctor_channel_day_id', $channel_day_id);
+
+            return $this->db->single();
+        }
+
 
      
        

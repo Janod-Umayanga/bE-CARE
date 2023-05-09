@@ -20,8 +20,8 @@
         <div class="session-card theme">
             <div class="top-box">
                 <div class="top-box-inner">
-                    <h2><?php echo $session->title ?></h2>
-                    <p><?php echo $session->description ?></p>
+                    <h2><?php echo $data['session']->title ?></h2>
+                    <p><?php echo $data['session']->description ?></p>
                     <div class="icon-container">
                         <i class="fa-brands fa-facebook"></i>
                         <i class="fa-brands fa-linkedin"></i>
@@ -34,10 +34,7 @@
             </div>
             <div class="bottom">
                 <p>*******</p>
-                <h3>This session will be conducted by Dr. <?php echo $session->first_name ?> <?php echo $session->last_name ?> on <?php echo $session->date ?> during <?php echo $session->starting_time ?> to <?php echo $session->ending_time ?> at <?php echo $session->address ?></h3>
-                <form action="<?php echo URLROOT ?>/Patient/registerSession/<?php echo $session->sesion_id ?>/<?php echo $session->registration_fee ?>">
-                    <button>Register</button>
-                </form>
+                <h3>This session will be on <?php echo $data['session']->date ?> during <?php echo $data['session']->starting_time ?> to <?php echo $data['session']->ending_time ?> at <?php echo $data['session']->address ?></h3>
             </div>
         </div>
     </section>
