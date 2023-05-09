@@ -31,12 +31,12 @@
         public function getRegisteredSessions($patient_id) {
             $this->db->query('SELECT session_register.*, session.* FROM session_register INNER JOIN session ON session_register.session_id = session.session_id WHERE session_register.patient_id = :patient_id');
             $this->db->bind(':patient_id', $patient_id);
-            return $this->db->resultSet();*222
+            return $this->db->resultSet();
         }
 
         // get session details
         public function getSessionById($session_id) {
-            $this->db->query('SELECT * FROM session WHERE session_id = :session_id');
+            $this->db->query('SELECT session.* FROM session WHERE session_id = :session_id');
             $this->db->bind(':session_id', $session_id);
             return $this->db->single();
         }
