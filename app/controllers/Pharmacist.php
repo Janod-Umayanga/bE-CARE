@@ -47,6 +47,7 @@
     {
       if(isset($_SESSION['pharmacist_id'])){
         $orders = $this->pharmacistViewOrdersModel->getAllOrderDetailsOfPharmacist($_SESSION['pharmacist_id']);
+      //  $orderReqID = $orders->order_request_id;
         $paidOrders = $this->pharmacistPaidOrderViewModel->getAllAcceptedOrderDetails($_SESSION['pharmacist_id']);
 
         $data=[                      
@@ -79,8 +80,29 @@
           } else {
             redirect('Login/login');
           }
+         
+    }
+
+    public function pharmacistViewAcceptedOrdersMore()
+    {
+        if (isset($_SESSION['pharmacist_id'])) {
+            if (isset($_POST['submit'])) {
+              $orderID = $_POST['order_request_id'];     
+              $more = $this->pharmacistViewOrdersModel->getAllAcceptedOrderDetailsMore($orderID);
         
-       
+              $data = [
+                'more' => $more
+              ];
+              $this->view('Pharmacist/v_PharmacistAcceptedOrderDetailsMore', $data);
+           
+            }else{
+              redirect('Pharmacist/getAllOrderDetailsOfPharmacist');
+            }
+            // rest of the code
+          } else {
+            redirect('Login/login');
+          }
+         
     }
 
     // view selling history 
@@ -272,13 +294,14 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
     'pharmacist_note_err'=>'',
   ];
   
+
   //validate Pharmacist Note
-  if(empty($data['pharmacist_note'])) {
+  if (empty($data['pharmacist_note'])) {
     $data['pharmacist_note_err'] = 'Please enter Note';
   }
   else if(validatePharmacistNote($data['pharmacist_note']) != "true") {
     $data['pharmacist_note_err'] = 'Note cannot contains invalid characters.';
-}
+  }
 
   if(empty($data['pharmacist_note_err']))
   {
@@ -286,6 +309,8 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
     $this->view('Pharmacist/v_PharmacistDashBoard', $data);  
     }
   else{
+    $this->view('Pharmacist/v_PharmacistRejectOrder', $data);
+
    }
 
 

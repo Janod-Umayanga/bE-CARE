@@ -15,21 +15,40 @@
 </head>
 <body>
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
-
-    <section class="view-profile-container-nutritionistSession theme">
-        <div class="card">
-            <div class="main-image">
-                <a href="<?php echo URLROOT ?>/Pharmacist/pharmacistViewOrders" class="backto-doctors"><i class="fa-solid fa-arrow-left"></i>Back to Orders</a> 
+   
+    <section class="table-section theme">
+        <div class="table-container theme">
+            <div class="table-topic-main">
+                <h1>Details</h1>
             </div>
-            <div class="bottom">
-                <ul>
-                    <li>Ordered Date and Time - <?php echo $data['more']->ordered_date_and_time ?></li>
-                    <li>Name - <?php echo $data['more']->name ?></li>
-                    <li>Contact Number - <?php echo $data['more']->contact_number ?></li>
-                    <li>Delivery Address - <?php echo $data['more']->delivery_address?></li>
-                    <li>Prescription - <a href="prescription.pdf" download="">Click Here</a> <?php ?></li>
-                </ul>
-                <div class="bottom-line"></div>
+            <div class="table">
+                <table cellspacing="0" cellpadding="0">
+                    <tr>
+                        <th>Field</th>
+                        <th>Details </th>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td><?php echo $data['more']->name ?></td>
+                    </tr>
+                    <tr>
+                        <td>Contact Number</td>
+                        <td><?php echo $data['more']->contact_number ?></td>
+                    </tr>
+                    <tr>
+                        <td>Delivery Address</td>
+                        <td><?php echo $data['more']->delivery_address ?></td>
+                    </tr>
+                    <tr>
+                        <td>Prescription</td>
+                        <td><button class="delete"><i class="fa-solid fa-download"></i><a download="<?php #echo $more->prescription ?>"  href="<?php echo URLROOT?>/img/prescriptions/<?php# echo $more->prescription ?>">Download</a></button></td>
+                    </tr>
+                    <tr>
+                        <td>Ordered Date and Time</td>
+                        <td><?php echo $data['more']->ordered_date_and_time ?></td>
+                    </tr>
+                    
+                </table>
             </div>
         </div>
     </section>

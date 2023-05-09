@@ -42,7 +42,7 @@
                         <td>
 
                         <form action="<?php echo URLROOT; ?>/Pharmacist/pharmacistSellingHistoryMore/" method="post">
-                               <input type="hidden" name="diet_plan_id" value="<?php echo $history->diet_plan_id; ?>">
+                               <input type="hidden" name="order_id" value="<?php echo $history->order_id; ?>">
                                <button class="view" name="submit">View</button>
                         </form>
                         

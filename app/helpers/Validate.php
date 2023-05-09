@@ -275,9 +275,8 @@
   function validatePharmacistNote($pharmacy_note) {
     // Check if the pharmacist note contains only letters, numbers, spaces and common special characters
     if (!preg_match('/^[A-Za-z0-9\s.,#\'\-\/\(\)]+$/', $pharmacy_note)) {
-      return "Note contains invalid characters.";
+      return "Note cannot contains invalid characters.";
     }
-    
     // If all checks pass, return true
     return "true";
   }

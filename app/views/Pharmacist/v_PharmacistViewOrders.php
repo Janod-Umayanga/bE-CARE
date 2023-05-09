@@ -125,7 +125,7 @@
             <table cellspacing="0" cellpadding="0">
                     <tr> 
                         <th>Name of patient</th> 
-                        <th>Order Date and Time</th>
+                        <th>Accepted Date and Time</th>
                         <th></th>
                       
                         
@@ -135,16 +135,16 @@
                         
                     <tr>
                         <td><?php echo $paidOrders->name?></td>
-                        <td><?php echo $paidOrders->ordered_date_and_time?></td>
+                        <td><?php echo $paidOrders->accepted_date_and_time?></td>
 
                         <td>
 
-                          <form action="<?php echo URLROOT; ?>/Pharmacist/pharmacistViewOrdersMore/" method="post">
-                               <input type="hidden" name="order_request_id" value="<?php echo $orders->order_request_id; ?>">
+                          <form action="<?php echo URLROOT; ?>/Pharmacist/pharmacistViewAcceptedOrdersMore/" method="post">
+                               <input type="hidden" name="order_request_id" value="<?php echo $paidOrders->order_request_id; ?>">
                               <button class="view" name="submit">View</button>
                           </form>       
                    
-                    <button class="delete"><i class="fa-solid fa-download"></i><a download="<?php echo $orders->prescription ?>"  href="<?php echo URLROOT?>/img/prescriptions/<?php echo $orders->prescription ?>">Download</a></button>
+                    <button class="delete"><i class="fa-solid fa-download"></i><a download="<?php echo $paidOrders->prescription ?>"  href="<?php echo URLROOT?>/img/prescriptions/<?php echo $paidOrders->prescription ?>">Download</a></button>
 
 
                     </td>
