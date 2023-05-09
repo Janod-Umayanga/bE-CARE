@@ -172,6 +172,9 @@ class MedInstr extends Controller{
    if(isset($_SESSION['MedInstr_id'])) {  
   
    if($_SERVER['REQUEST_METHOD']=='POST'){
+
+    $user= $this->userModel->findUserByID($_SESSION['MedInstr_id']);
+  
         $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
         $data=[
@@ -186,7 +189,7 @@ class MedInstr extends Controller{
           'branch'=>trim($_POST['branch']),
           'account_number'=>trim($_POST['account_number']),
           'gender'=>$_SESSION['MedInstr_gender'],
-          'city'=>trim($_POST['city']),
+          'city'=>$user->city,
           'address'=>trim($_POST['address']),
           'fee'=>trim($_POST['fee']),
            

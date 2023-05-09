@@ -57,19 +57,22 @@
 
                     <?php if($data['admin']->admin_id!=1): ?>
                       
-                    <?php if($data['admin']->delete_flag==0): ?>
-                        <form class="deactiveForm" action="<?php echo URLROOT;?>/AdminUserMgmt/adminDeactivatedAdmin/<?php echo $data['admin']->admin_id ?>" method="GET">
-                             <button type="submit">Deactivate</button>
-                       </form>  
-                       
-                    <?php elseif($data['admin']->delete_flag==1):?>
-                        <form class="activeForm" action="<?php echo URLROOT;?>/AdminUserMgmt/adminActivatedAdmin/<?php echo $data['admin']->admin_id ?>" method="GET">
-                             <button type="submit">Activate</button>
-                       </form>  
+                      <?php if($_SESSION['admin_id']==1): ?>
+                                
+                            <?php if($data['admin']->delete_flag==0): ?>
+                                <form class="deactiveForm" action="<?php echo URLROOT;?>/AdminUserMgmt/adminDeactivatedAdmin/<?php echo $data['admin']->admin_id ?>" method="GET">
+                                    <button type="submit">Deactivate</button>
+                            </form>  
+                            
+                            <?php elseif($data['admin']->delete_flag==1):?>
+                                <form class="activeForm" action="<?php echo URLROOT;?>/AdminUserMgmt/adminActivatedAdmin/<?php echo $data['admin']->admin_id ?>" method="GET">
+                                    <button type="submit">Activate</button>
+                            </form>  
+                        
+                            <?php endif?>
+                            
+                      <?php endif?> 
                     
-                    
-                     <?php endif?> 
-                   
                      <?php endif?>
 
                 </ul>
