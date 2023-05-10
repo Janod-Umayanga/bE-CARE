@@ -23,7 +23,7 @@
       $currentDate = date("Y-m-d");
       $currentTime = date("H:i:s");
 
-      $this->db->query('SELECT counsellor_timeslot.*,counsellor_channel_day.* from counsellor_timeslot INNER JOIN counsellor_channel_day ON counsellor_timeslot.counsellor_timeslot_id = counsellor_channel_day.counsellor_timeslot_id WHERE counsellor_channel_day.day > :today OR (counsellor_channel_day.day = :today AND counsellor_timeslot.starting_time >= :time) ORDER BY counsellor_channel_day.day ASC');
+      $this->db->query('SELECT counsellor_timeslot.*,counsellor_channel_day.* from counsellor_timeslot INNER JOIN counsellor_channel_day ON counsellor_timeslot.counsellor_timeslot_id = counsellor_channel_day.counsellor_timeslot_id WHERE counsellor_channel_day.counsellor_id=:counsellor_id AND ( counsellor_channel_day.day > :today OR (counsellor_channel_day.day = :today AND counsellor_timeslot.starting_time >= :time)) ORDER BY counsellor_channel_day.day ASC');
       $this->db->bind(':counsellor_id', $counsellor_id);
       $this->db->bind(':today', $currentDate);
       $this->db->bind(':time', $currentTime);
@@ -38,7 +38,7 @@
     $currentDate = date("Y-m-d");
     $currentTime = date("H:i:s");
 
-    $this->db->query('SELECT counsellor_timeslot.*,counsellor_channel_day.* from counsellor_timeslot INNER JOIN counsellor_channel_day ON counsellor_timeslot.counsellor_timeslot_id = counsellor_channel_day.counsellor_timeslot_id WHERE counsellor_channel_day.day < :today OR (counsellor_channel_day.day = :today AND counsellor_timeslot.starting_time <= :time) ORDER BY counsellor_channel_day.day ASC');
+    $this->db->query('SELECT counsellor_timeslot.*,counsellor_channel_day.* from counsellor_timeslot INNER JOIN counsellor_channel_day ON counsellor_timeslot.counsellor_timeslot_id = counsellor_channel_day.counsellor_timeslot_id WHERE counsellor_channel_day.counsellor_id=:counsellor_id AND ( counsellor_channel_day.day < :today OR (counsellor_channel_day.day = :today AND counsellor_timeslot.starting_time <= :time) ) ORDER BY counsellor_channel_day.day ASC');
     $this->db->bind(':counsellor_id', $counsellor_id);
     $this->db->bind(':today', $currentDate);
     $this->db->bind(':time', $currentTime);

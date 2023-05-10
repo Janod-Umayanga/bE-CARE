@@ -24,7 +24,7 @@
       $currentDate = date("Y-m-d");
       $currentTime = date("H:i:s");
 
-      $this->db->query('SELECT doctor_timeslot.*,doctor_channel_day.* from doctor_timeslot INNER JOIN doctor_channel_day ON doctor_timeslot.doctor_timeslot_id = doctor_channel_day.doctor_timeslot_id WHERE doctor_channel_day.day > :today OR (doctor_channel_day.day = :today AND doctor_timeslot.starting_time >= :time) ORDER BY doctor_channel_day.day ASC');
+      $this->db->query('SELECT doctor_timeslot.*,doctor_channel_day.* from doctor_timeslot INNER JOIN doctor_channel_day ON doctor_timeslot.doctor_timeslot_id = doctor_channel_day.doctor_timeslot_id WHERE doctor_channel_day.doctor_id=:doctor_id AND (doctor_channel_day.day > :today OR (doctor_channel_day.day = :today AND doctor_timeslot.starting_time >= :time) )  ORDER BY doctor_channel_day.day ASC');
       $this->db->bind(':doctor_id', $doctor_id);
       $this->db->bind(':today', $currentDate);
       $this->db->bind(':time', $currentTime);
@@ -39,7 +39,7 @@
     $currentDate = date("Y-m-d");
     $currentTime = date("H:i:s");
 
-    $this->db->query('SELECT doctor_timeslot.*,doctor_channel_day.* from doctor_timeslot INNER JOIN doctor_channel_day ON doctor_timeslot.doctor_timeslot_id = doctor_channel_day.doctor_timeslot_id WHERE doctor_channel_day.day < :today OR (doctor_channel_day.day = :today AND doctor_timeslot.starting_time <= :time) ORDER BY doctor_channel_day.day ASC');
+    $this->db->query('SELECT doctor_timeslot.*,doctor_channel_day.* from doctor_timeslot INNER JOIN doctor_channel_day ON doctor_timeslot.doctor_timeslot_id = doctor_channel_day.doctor_timeslot_id WHERE doctor_channel_day.doctor_id=:doctor_id AND (doctor_channel_day.day < :today OR (doctor_channel_day.day = :today AND doctor_timeslot.starting_time <= :time)) ORDER BY doctor_channel_day.day ASC');
     $this->db->bind(':doctor_id', $doctor_id);
     $this->db->bind(':today', $currentDate);
     $this->db->bind(':time', $currentTime);
