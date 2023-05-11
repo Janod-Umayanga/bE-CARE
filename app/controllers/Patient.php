@@ -1358,16 +1358,30 @@
         }
 
         // pay for order
-        public function payForOrder($order_id, $fee, $email) {
+        public function payForOrder($order_id, $fee, $email, $accepted_datetime) {
             if(isset($_SESSION['patient_id'])) {
+                
+
                 $data = [
                     'order_id' => $order_id,
                     'fee' => $fee,
                     'email' => $email
                 ];
 
-                // Load view
-                $this->view('patients/v_pay_order_invoice', $data);
+                // get today's date time
+                date_default_timezone_set("Asia/Kolkata");
+                $today = date("Y-m-d H:i:s");
+
+                // check if the accepted date time is less than 48 hours
+                $diff = abs(strtotime($today) - strtotime($accepted_datetime));
+                $hours = floor($diff / (60*60));
+                if($hours > 48) {
+                    $this->view('patients/v_pay_order_expired', $data);
+                }
+                else {
+                    // Load view
+                    $this->view('patients/v_pay_order_invoice', $data);
+                }
             }
             else {
                 $_SESSION['need_login'] = true;
