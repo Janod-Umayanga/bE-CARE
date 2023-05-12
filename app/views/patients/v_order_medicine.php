@@ -20,7 +20,7 @@
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
                     <h2>Enter your details</h2>
-                    <p>Fill the relevant details needed for the order. Make sure to upload a photo of your prescription. You will soon receive an email when the pharmacy accepted your order. Then you can proceed with the payment.</p>
+                    <p>Fill the relevant details needed for the order. Make sure to upload a clear photo of your prescription with valid infoemation including the doctor's signature or seal. You will receive an email when the pharmacy accepted your order within a day otherwise it got rejected. Then you can proceed with the payment. Please note that the order will exxpire if you failed pay before a day after the pharmacy accept the order.</p>
                 </div>
             </div>
         </div>
