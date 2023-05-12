@@ -37,7 +37,7 @@
         <div class="card-container-forservices" id="to-be-show-more">
             <a href="<?php echo URLROOT ?>/Pharmacist/pharmacistViewOrders" class="card">
                 <img src="<?php echo URLROOT; ?>/img/pharmacist-page-pictures/p-orders.jpg" alt="">
-                <p>******<br>Orders</p>
+                <p>******<br>Order Details</p>
             </a>
             <a href="<?php echo URLROOT ?>/Pharmacist/pharmacistSellingHistory/" class="card">
                 <img src="<?php echo URLROOT; ?>/img/pharmacist-page-pictures/p-history.jpg" alt="">

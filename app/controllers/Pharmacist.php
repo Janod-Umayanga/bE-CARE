@@ -43,23 +43,107 @@
      } 
     }
 
+    /*view count of orders...pending, accepted,rejected and paid details*/
     public function pharmacistViewOrders()
     {
       if(isset($_SESSION['pharmacist_id'])){
-        $orders = $this->pharmacistViewOrdersModel->getAllOrderDetailsOfPharmacist($_SESSION['pharmacist_id']);
-      //  $orderReqID = $orders->order_request_id;
-        $paidOrders = $this->pharmacistPaidOrderViewModel->getAllAcceptedOrderDetails($_SESSION['pharmacist_id']);
 
-        $data=[                      
-          'orders'=>$orders,
-          'paidOrders'=>$paidOrders
-        ]; 
-        $this->view('Pharmacist/v_PharmacistViewOrders',$data);  
-        }else{
-          $_SESSION['need_login'] = true;
-          redirect('Login/login');
+      $noOfPendingOrders = $this->pharmacistModel->pharmacistPendingOrdersCount($_SESSION["pharmacist_id"]);
+      $noOfAcceptedOrders = $this->pharmacistModel->pharmacistAcceptedOrdersCount($_SESSION["pharmacist_id"]);
+      $noOfRejectedOrders = $this->pharmacistModel->pharmacistRejectedOrdersCount($_SESSION["pharmacist_id"]);
+      $noOfPaidOrders = $this->pharmacistModel->pharmacistPaidOrdersCount($_SESSION["pharmacist_id"]);
+
+      $data=[   
+      
+        'noOfPendingOrders' => $noOfPendingOrders,
+        'noOfAcceptedOrders' => $noOfAcceptedOrders,
+        'noOfRejectedOrders' => $noOfRejectedOrders,
+        'noOfPaidOrders' =>  $noOfPaidOrders
+       ];
+
+      $this->view('Pharmacist/v_PharmacistViewAllOrderDetails',$data);  
+      }else{
+        //  $_SESSION['need_login'] = true;
+        //  redirect('Login/login');
+        redirect('Login/login');  
+      }
+
       }   
-    }
+
+
+    /*view all pending orders details*/
+    public function pharmacistViewPendingOrders()
+    {
+      if(isset($_SESSION['pharmacist_id']))
+      {
+        $DeleteAfter5Days = $this->pharmacistViewOrdersModel->deleteAcceptedOrderIfNotPaidWithin5Days($_SESSION['pharmacist_id']);
+        $Pendingorders = $this->pharmacistViewOrdersModel->getAllPendingOrderDetailsOfPharmacist($_SESSION['pharmacist_id']);
+        
+    $data=[      
+      'Pendingorders' => $Pendingorders,
+      'DeleteAfter5Days' => $DeleteAfter5Days
+     ];
+
+      $this->view('Pharmacist/v_PharmacistViewPendingOrders',$data);  
+       }else{
+      redirect('Login/login');  
+       }
+      }
+    
+    /*view all pending orders details*/
+    public function pharmacistViewAcceptedOrders()
+    {
+      if(isset($_SESSION['pharmacist_id']))
+      {
+        $Acceptedorders = $this->pharmacistViewOrdersModel->getAllAcceptedOrderDetailsOfPharmacist($_SESSION['pharmacist_id']);
+    $data=[      
+       'Acceptedorders' => $Acceptedorders
+     ];
+
+        $this->view('Pharmacist/v_PharmacistViewAcceptedOrders',$data);  
+       }else{
+      
+      redirect('Login/login');  
+       }
+      }
+    
+    /*view all rejected orders details*/
+    public function pharmacistViewRejectedOrders()
+    {
+      if(isset($_SESSION['pharmacist_id']))
+      {
+        $Rejectedorders = $this->pharmacistViewOrdersModel->getAllRejectedOrderDetailsOfPharmacist($_SESSION['pharmacist_id']);
+    $data=[      
+       'Rejectedorders' => $Rejectedorders
+     ];
+
+        $this->view('Pharmacist/v_PharmacistViewRejectedOrders',$data);  
+       }else{
+      
+      redirect('Login/login');  
+       }
+      }
+    
+      /*view all paid orders details*/
+      public function pharmacistViewPaidOrders()
+      {
+        if(isset($_SESSION['pharmacist_id']))
+      {
+        $Paidorders = $this->pharmacistViewOrdersModel->getAllPaidOrderDetailsOfPharmacist($_SESSION['pharmacist_id']);
+    $data=[      
+       'Paidorders' => $Paidorders
+     ];
+
+        $this->view('Pharmacist/v_PharmacistViewPaidOrders',$data);  
+       }else{
+      
+      redirect('Login/login');  
+       }
+      }
+    
+
+ 
+   
 
     public function pharmacistViewOrdersMore()
     {
@@ -319,7 +403,6 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
     $this->view('Pharmacist/v_PharmacistRejectOrder', $data);
 
    }
-
 
 } }   
 else 

@@ -20,7 +20,7 @@
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
                     <h2>Fill these details to Accept Order</h2>
-                    <p>click the "Accept" button to accept order</p>
+                    <p>click the "Accept" button to accept order and Add details of order charge in given Note field.</p>
                 </div>
             </div>
         </div>
@@ -30,21 +30,11 @@
                 <div class="diet-form-inputs-and-buttons">
                     <div class="left">
 
-                  
-                   <!--     <lable for="" >Request Diet Plan ID</lable>
-                        <input type="text" id="request_diet_plan_id" name="request_diet_plan_id" value="<?php #echo $details->request_diet_plan_id?>" disabled>
-                   
-                    <input type="hidden" name="request_diet_plan_id" value="<?php #echo $more->request_diet_plan_id; ?>"> -->
                         <label for="pharmacist_note">Note</label>
-                        <textarea name="pharmacist_note" id="pharmacist_note" rows="6" cols="6" value="<?php echo $data['pharmacist_note'] ?>"
-                        placeholder="These medicines are Available.You can pay and confirm your order."></textarea>
+                        <textarea name="pharmacist_note" id="pharmacist_note" rows="8" cols="10" value="<?php echo $data['pharmacist_note'] ?>"
+                        placeholder="These medicines are Available.You can pay and confirm your order.                (1)Name of medicine - charge          (2)Name of medicine - charge           (3)Name of medicine - charge"></textarea>
                         <span class="form-invalid"><?php echo $data['pharmacist_note_err'] ?></span>
-
-                        <!-- <label for="bill">Upload Bill</label>
-                        <input type="file" name="bill" id="bill"  value="<?php echo $data['bill'] ?>" >
-                        <span class="form-invalid"><?php echo $data['bill_err'] ?></span> -->
-
-                        
+ 
                         <label for="charge">Charge(Rs.)</label>
                         <input name="charge" id="charge"  value="<?php echo $data['charge'] ?>" >
                         <span class="form-invalid"><?php echo $data['charge_err'] ?></span>

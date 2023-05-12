@@ -74,6 +74,142 @@
             }
         }
 
+        // get number of pending orders of pharmacist
+        public function pharmacistPendingOrdersCount($pharmacist_id)
+        {
+          $this->db->query('SELECT COUNT(order_request_id) 
+          AS pending_orders_count FROM order_request 
+          WHERE status= :status 
+          AND pharmacist_id=:pharmacist_id ');
+          $this->db->bind(':pharmacist_id', $pharmacist_id);
+          $this->db->bind(':status', "p");  
+                        
+          $row=$this->db->single();
+          return $row;                 
+        } 
+
+        // get number of accepted orders of pharmacist
+        public function pharmacistAcceptedOrdersCount($pharmacist_id){
+        /*  $this->db->query('SELECT COUNT(order_request_id)
+          AS accpted_orders_count FROM order_request
+          WHERE status = :status
+          AND pharmacist_id=:pharmacist_id '); */
+          $this->db->query('SELECT COUNT(order_id) AS 
+          accpted_orders_count FROM accept_order 
+          WHERE pharmacist_id=:pharmacist_id AND 
+          paid_amount = 0');
+          $this->db->bind(':pharmacist_id', $pharmacist_id);
+        //  $this->db->bind(':pharmacist_id', $pharmacist_id);
+        //  $this->db->bind(':status', "a");  
+                       
+          return $this->db->single();
+         // return $row;                 
+        } 
+
+        // get number of rejected orders of pharmacist
+        public function pharmacistRejectedOrdersCount($pharmacist_id)
+        {
+          $this->db->query('SELECT COUNT(order_request_id) 
+          AS rejected_orders_count FROM order_request 
+          WHERE status= :status 
+          AND pharmacist_id=:pharmacist_id ');
+          $this->db->bind(':pharmacist_id', $pharmacist_id);
+          $this->db->bind(':status', "r");  
+                        
+          $row=$this->db->single();
+          return $row;                 
+        } 
+
+         // get number of rejected orders of pharmacist
+         public function pharmacistPaidOrdersCount($pharmacist_id)
+         {
+           $this->db->query('SELECT COUNT(order_id) 
+           AS paid_orders_count FROM accept_order 
+           WHERE paid_amount > 0 
+           AND pharmacist_id=:pharmacist_id ');
+           $this->db->bind(':pharmacist_id', $pharmacist_id); 
+                         
+           $row=$this->db->single();
+           return $row;              
+           
+         } 
+
+
+        // get all pending details of Pharmacist
+        public function getAllPendingOrderDetailsOfPharmacist($pharmacist_id){
+            $this->db->query('SELECT * FROM order_request  
+            WHERE pharmacist_id= :pharmacist_id AND status = :status');
+            $this->db->bind(':pharmacist_id',$pharmacist_id);
+            $this->db->bind(':status', "p");
+
+            return $this->db->resultSet();
+        }
+
+        // get all accepted details of Pharmacist
+        public function getAllAcceptedOrderDetailsOfPharmacist($pharmacist_id){
+        /*    $this->db->query('SELECT * FROM order_request  
+            WHERE pharmacist_id= :pharmacist_id AND status = :status');
+            $this->db->bind(':pharmacist_id',$pharmacist_id);
+            $this->db->bind(':status', "a");
+            $this->db->execute(); */
+
+            $this->db->query('SELECT * FROM accept_order  
+            WHERE pharmacist_id= :pharmacist_id AND paid_amount=:paid_amount');
+            $this->db->bind(':pharmacist_id',$pharmacist_id);
+            $this->db->bind(':paid_amount',0);
+
+            return $this->db->resultSet();
+
+           }
+
+      
+
+        public function deleteAcceptedOrderIfNotPaidWithin5Days($pharmacist_id)
+        {
+            $this->db->query('DELETE FROM accept_order WHERE pharmacist_id= :pharmacist_id AND 
+            AND accepted_date_and_time <= DATE_SUB(NOW(), INTERVAL 3 DAY )' );
+            $this->db->bind(':pharmacist_id',$pharmacist_id);
+          //  $this->db->query(':paid_amount', 0);
+
+            
+        //    $this->db->execute();
+
+             // Check if the delete query was successful
+         //  if ($this->db->rowCount() > 0){
+
+        /*    $this->db->query('UPDATE order_request SET status = :status WHERE 
+            pharmacist_id= :pharmacist_id');
+            $this->db->bind(':pharmacist_id',$pharmacist_id);
+            $this->db->bind(':status', "r");
+            $this->db->execute(); 
+
+        */
+
+         //  }
+           
+           return $this->db->resultSet();
+
+        }
+
+        // get all rejected details of Pharmacist
+        public function getAllRejectedOrderDetailsOfPharmacist($pharmacist_id){
+            $this->db->query('SELECT * FROM order_request  
+            WHERE pharmacist_id= :pharmacist_id AND status = :status');
+            $this->db->bind(':pharmacist_id',$pharmacist_id);
+            $this->db->bind(':status', "r");
+            
+            return $this->db->resultSet();
+        }
+       
+        // get all rejected details of Pharmacist
+        public function  getAllPaidOrderDetailsOfPharmacist($pharmacist_id){
+            $this->db->query('SELECT * FROM accept_order  
+            WHERE pharmacist_id= :pharmacist_id AND paid_amount > 0 ');
+            $this->db->bind(':pharmacist_id',$pharmacist_id);
+            
+            return $this->db->resultSet();
+        }
+
         // get all orders details of Pharmacist
         public function getAllOrderDetails($pharmacist_id){
             $this->db->query('SELECT * FROM  WHERE pharmacist_id= :pharmacist_id ');
@@ -115,7 +251,7 @@
 
         }
 
-        // get accepted order details
+        // get all accepted order details for reject after 3 days(after accepting order by pharmacist)
         public function getAllAcceptedOrderDetails($pharmacist_id)
         {
             $this->db->query('SELECT * FROM accept_order  
