@@ -25,9 +25,14 @@
             <form action="<?php echo URLROOT ?>/Patient/findPharmacy" class="search-form-pharmacy" method="POST">
                 <select name="city" id="city">
                     <option value="">City</option>
-                    <option value="">Colombo</option>
+                    <option value="Colombo">Colombo</option>
+                    <option value="Galle">Galle</option>
+                    <option value="Kandy">Kandy</option>
                     <option value="Malabe">Malabe</option>
                     <option value="Matara">Matara</option>
+                    <option value="Nugegoda">Nugegoda</option>
+                    <option value="Ratnapura">Ratnapura</option>
+                    <option value="Trincomalee">Trincomalee</option>
                 </select>
                 <div class="main-search">
                     <input type="text" name="search" placeholder="Search pharmacy by name..">

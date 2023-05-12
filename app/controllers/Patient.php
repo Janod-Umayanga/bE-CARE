@@ -1284,13 +1284,36 @@
                         $data['cnumber_err'] = validateContactNumber($data['cnumber']);
                     }
     
+                    // // Validate prescription and upload
+                    // if(uploadImage($data['prescription']['tmp_name'], $data['prescription_name'], '/img/prescriptions/')) {
+                    //     // Done
+                    // }
+                    // else {
+                    //     $data['prescription_err'] = 'Prescription required';
+                    // }
                     // Validate prescription and upload
-                    if(uploadImage($data['prescription']['tmp_name'], $data['prescription_name'], '/img/prescriptions/')) {
-                        // Done
-                    }
-                    else {
-                        $data['prescription_err'] = 'Prescription required';
-                    }
+                    if(empty($data['prescription'])){
+                        $data['prescription_err']='Prescription required';
+                    } else {
+                          $fileExt=explode('.',$_FILES['prescription']['name']);
+                          $fileActualExt=strtolower(end($fileExt));
+                          $allowed=array('jpg','jpeg','png','pdf');
+               
+                        
+                          if(!in_array($fileActualExt,$allowed)){
+                            $data['prescription_err']='Prescription required (should be in jpg,jpeg,png or pdf format)';
+               
+                          } else if($data['prescription']['size']>0 ){
+                            if(uploadFile($data['prescription']['tmp_name'],$data['prescription_name'],'/img/prescriptions/')){
+                                //Done
+                            } else {  
+                                $data['prescription_err']='Unsuccessful prescription upload';
+                            }
+                          } else {
+                                $data[ 'prescription_err'] ="Prescription required (size should be less than 5MB)";                       
+                          }
+                
+                      }
     
                     // Create order after validation
                     if(empty($data['name_err']) && empty($data['address_err']) && empty($data['cnumber_err']) && empty($data['prescription_err'])) {
