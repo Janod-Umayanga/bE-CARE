@@ -7249,27 +7249,89 @@ h4 {
     width: 100%;
  }
 
-
-.table-section-adminPayment .table-container .search-section .search-bar .searchForm {
-    width: 900px;
+ .search-form-payement {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    border: 1px solid #dcd5d5;
-    border-radius: 5px;
-    padding-right: 10px;
+    justify-content: center;
+    gap: 20px;
+    width: 70%;
 }
 
-.table-section-adminPayment .table-container .search-section .search-bar input {
-    width: 95%;
-}
-
-.table-section-adminPayment .table-container .search-section .search-bar button {
-    width: 5%;
+.search-form-payement select {
+    width: 180px;
+    height: 35px;
     border: none;
+    border-radius: 20px;
+    padding: 0px 10px;
+    background-color: var(--hue-white);
+    color: #646161;
+}
+
+
+.search-form-payement input {
+    width: 250px;
+    height: 35px;
+    border: none;
+    border-radius: 20px;
+    padding: 0px 10px;
+    background-color: var(--hue-white);
+    color: #646161;
+}
+
+
+.search-form-payement select:focus {
+    outline: none;
+    border: none;
+}
+
+.search-form-payement .main-search {
+    margin-bottom: 10px;
+    width: 600px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #d4cece;
+    background-color: var(--hue-white);
+    border-radius: 20px;
+}
+
+.search-form-payement .main-search input {
+    width: 90%;
+    height: 100%;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    padding: 0px 10px;
+}
+
+.search-form-payement .main-search input:focus {
+    border: none;
+    outline: none;
+}
+
+.search-form-payement .main-search button {
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 10px;
+    background-color: transparent;
+    border: none;
+}
+
+.generateReport button {
+    width:100%;
+    border: none;
+    font-size: 20px;
     background-color: transparent;
     cursor: pointer;
 }
+
+.generateReport button i {
+   
+   margin-right:5px;
+  
+}
+
 
 .table-section-adminPayment .table-container .table {
     width: 100%;
