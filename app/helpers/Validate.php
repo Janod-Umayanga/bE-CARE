@@ -91,12 +91,13 @@
   }
 
   function validateSlmcRegisterNumber($registerNumber) {
-    // Remove any non-digit characters
-    $registerNumber = preg_replace('/\D/', '', $registerNumber);
-    
-    // Check if the number is exactly 7 digits long
-    if (strlen($registerNumber) != 7) {
-      return "slmc reg number should be 7 digits long";
+   
+    if (!is_numeric($registerNumber)) {
+      return "slmc reg number should be numeric";
+    } 
+    // Check if the number is exactly 5 digits long
+    if (strlen($registerNumber) != 5) {
+      return "slmc reg number should be 5 digits long";
     }
     
     // If all checks pass, return true
