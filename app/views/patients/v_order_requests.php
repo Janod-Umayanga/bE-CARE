@@ -99,14 +99,14 @@
                         <th></th>
                     </tr>
                     <?php foreach($data['rejected_orders'] as $accepted_order): ?>
-                    <?php if(!$accepted_order->paid_amount): ?>
+                    <!-- <?php if(!$accepted_order->paid_amount): ?> -->
                     <tr>
                         <td><?php echo $accepted_order->pharmacy_name ?></td>
                         <td><?php echo $accepted_order->contact_number ?></td>
                         <td><button class="delete"><i class="fa-solid fa-download"></i><a download="<?php echo $accepted_order->prescription ?>"  href="<?php echo URLROOT?>/img/prescriptions/<?php echo $accepted_order->prescription ?>">Download</a></button></td>
                         <td><?php echo $accepted_order->ordered_date_and_time ?></td>
                     </tr>
-                    <?php endif; ?>
+                    <!-- <?php endif; ?> -->
                     <?php endforeach; ?>
                 </table>
             </div>
