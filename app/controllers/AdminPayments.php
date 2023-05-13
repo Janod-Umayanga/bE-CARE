@@ -1332,7 +1332,7 @@ public function medInstructorRegistrationViewMore($id)
         
         $pdf->AliasNbPages();  // Total number of pages in a PDF document
         $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(0, 10, 'Page ' . $pdf->PageNo() . ' of {nb}', 0, 0, 'C'); 
+       // $pdf->Cell(0, 10, 'Page ' . $pdf->PageNo() . ' of {nb}', 0, 0, 'C'); 
         // $pdf->PageNo() retrieve the current page number of the document
         
   
