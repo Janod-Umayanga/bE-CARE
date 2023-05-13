@@ -20,7 +20,7 @@
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
                     <h2>Fill these details to send Diet Plan</h2>
-                    <p>click the "Send" button to send Diet Plan</p>
+                    <p>click the "Send" button to send Diet Plan.Make sure to send the Diet Plan within 2 days after it is requested.</p>
                 </div>
             </div>
         </div>

@@ -24,7 +24,7 @@
             <h1>Local Healthcare <br> Platform</h1>
             <div class="main-two-buttons-container">
                 <a href="#our-services-container" class="main-button">Dashboard</a>
-                <a class="main-button">About</a>
+                <a href="<?php echo URLROOT ?>/Pages/about" class="main-button">About</a>
             </div>
         </div>
     </section>

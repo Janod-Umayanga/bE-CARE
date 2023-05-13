@@ -19,9 +19,9 @@
     <section class="pay-section theme">
         <div class="pay-card theme">
             <i class="fa-solid fa-square-xmark" id="pay-icon"></i>
-            <h1 class="main-topic">We're sorry. Your Order has expired! You must reject the order within one day if the requested medicines are not available..</h1>
+            <h1 class="main-topic">We're sorry. Your Order has expired! You must check and reject the order within one day if the requested medicines are not available..</h1>
         
-            <form action="<?php echo URLROOT ?>/Pharmacist/v_PharmacistDashboard">
+            <form action="<?php echo URLROOT ?>/Pharmacist/pharmacistDashBoard/">
                 <button>Go to Home Page</button>
             </form>
         </div>

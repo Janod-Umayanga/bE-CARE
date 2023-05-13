@@ -20,7 +20,7 @@
     <section class="table-section-Nutritionistreq theme">
         <div class="table-container theme">
             <div class="table-topic-main">
-                <h1><center>Details of Pending Orders<br>(Make sure to accept the order within one day after it is made)</center> <!--Details of pending orders(not accepted)-->
+                <h1>Details of Pending Orders<br>(Make sure to accept the order within one day after it is recieved) <!--Details of pending orders(not accepted)-->
                 </h1>
             </div>
             <div class="table">
