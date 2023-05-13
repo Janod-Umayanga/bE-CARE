@@ -1398,7 +1398,7 @@
                 // check if the accepted date time is less than 48 hours
                 $diff = abs(strtotime($today) - strtotime($accepted_datetime));
                 $hours = floor($diff / (60*60));
-                if($hours > 48) {
+                if($hours > 24) {
                     $this->view('patients/v_pay_order_expired', $data);
                 }
                 else {

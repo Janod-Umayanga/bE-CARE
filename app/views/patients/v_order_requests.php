@@ -49,7 +49,7 @@
     <section class="table-section theme">
         <div class="table-container theme">
             <div class="table-topic-main">
-                <h1>Accepted Orders (Make sure to pay for the order before 2 days after order is accepted)</h1>
+                <h1>Accepted Orders (Make sure to pay for the order before a day after the order is accepted)</h1>
             <div class="table">
                 <table cellspacing="0" cellpadding="0">
                     <tr>
@@ -95,7 +95,6 @@
                         <th>Pharmacy Contact Number</th>
                         <th>Given Prescription</th>
                         <th>Ordered Date and Time</th>
-                        <th>Pharmacist note</th>
                         <!-- <th>Accepted Date and Time</th> -->
                         <th></th>
                     </tr>
@@ -106,7 +105,6 @@
                         <td><?php echo $accepted_order->contact_number ?></td>
                         <td><button class="delete"><i class="fa-solid fa-download"></i><a download="<?php echo $accepted_order->prescription ?>"  href="<?php echo URLROOT?>/img/prescriptions/<?php echo $accepted_order->prescription ?>">Download</a></button></td>
                         <td><?php echo $accepted_order->ordered_date_and_time ?></td>
-                        <td><?php echo $accepted_order->pharmacist_note ?></td>
                     </tr>
                     <?php endif; ?>
                     <?php endforeach; ?>
