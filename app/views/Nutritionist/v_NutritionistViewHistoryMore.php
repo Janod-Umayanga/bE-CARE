@@ -38,7 +38,7 @@
                     </tr>
                     <tr>
                         <td>Diet Plan File</td>
-                        <td><button class="delete"><i class="fa-solid fa-download"></i><a download="<?php echo $data['his']->diet_plan_file ?>"  href="<?php echo URLROOT?>/upload/dietplans/<?php echo $data['his']->diet_plan_file ?>">Download</a></button></td>
+                        <td><button class="Prescription"><i class="fa-solid fa-download"></i><a download="<?php echo $data['his']->diet_plan_file ?>"  href="<?php echo URLROOT?>/upload/dietplans/<?php echo $data['his']->diet_plan_file ?>">Download</a></button></td>
                     </tr>
                     <tr>
                         <td>Issued Date and Time</td>

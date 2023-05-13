@@ -45,6 +45,8 @@
                                <input type="hidden" name="order_id" value="<?php echo $history->order_id; ?>">
                                <button class="view" name="submit">View</button>
                         </form>
+
+                        <button class="Prescription"><i class="fa-solid fa-download"></i><a download="<?php echo $history->prescription  ?>"  href="<?php echo URLROOT?>/img/prescriptions/<?php echo $history->prescription ?>">Download</a></button>
                         
                         </td>
                     </tr>

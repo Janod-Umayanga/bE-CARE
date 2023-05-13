@@ -146,7 +146,7 @@
 
         public function editUser($data) {
             $this->db->query('UPDATE nutritionist SET first_name = :first_name, last_name = :last_name,
-            nic = :nic, contact_number = :contact_number, gender = :gender,
+            nic = :nic, contact_number = :contact_number, 
             bank_name=:bank_name,account_holder_name=:account_holder_name,branch=:branch,
             account_number=:account_number, fee=:fee WHERE nutritionist_id = :nutritionist_id');
             $this->db->bind(':first_name', $data['first_name']);
@@ -154,7 +154,7 @@
         //   $this->db->bind(':slmc_reg_number', $data['slmc_reg_number']);           
             $this->db->bind(':nic', $data['nic']);
             $this->db->bind(':contact_number', $data['contact_number']);
-            $this->db->bind(':gender', $data['gender']);
+        //    $this->db->bind(':gender', $data['gender']);
             $this->db->bind(':bank_name', $data['bank_name']);
             $this->db->bind(':account_holder_name', $data['account_holder_name']);
             $this->db->bind(':branch', $data['branch']);

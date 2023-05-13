@@ -19,7 +19,7 @@
     <section class="table-section theme">
         <div class="table-container theme">
             <div class="table-topic-main">
-                <h1>More Details os Selling History</h1>
+                <h1><center>More Details of Selling History</center></h1>
             </div>
             <div class="table">
                 <table cellspacing="0" cellpadding="0">
@@ -39,10 +39,7 @@
                         <td>Delivery Address</td>
                         <td><?php echo $data['historymore']->delivery_address ?></td>
                     </tr>
-                    <tr>
-                        <td>Prescription</td>
-                        <td><button class="delete"><i class="fa-solid fa-download"></i><a download="<?php #echo $more->prescription ?>"  href="<?php echo URLROOT?>/img/prescriptions/<?php# echo $more->prescription ?>">Download</a></button></td>
-                    </tr>
+                    
                     <tr>
                         <td>Ordered Date and Time</td>
                         <td><?php echo $data['historymore']->ordered_date_and_time ?></td>

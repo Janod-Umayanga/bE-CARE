@@ -30,6 +30,7 @@
             return $this->db->single();
         }
 
+        // find pharmacist by Id
         public function findPharmacistByEmail($email) {
             $this->db->query('SELECT * FROM pharmacist WHERE email = :email');
             $this->db->bind(':email', $email);
@@ -44,6 +45,7 @@
             }
         }
 
+        
         public function isDeactivateAccount($email){
             $this->db->query('SELECT delete_flag FROM pharmacist WHERE email=:email');
             $this->db->bind(':email',$email);
@@ -74,6 +76,50 @@
             }
         }
 
+        // get all orders details of Pharmacist // ??????
+       public function getAllOrderDetails($pharmacist_id){
+            $this->db->query('SELECT * FROM  WHERE pharmacist_id= :pharmacist_id ');
+            $this->db->bind(':pharmacist_id',$pharmacist_id);  
+    
+            $row= $this->db->single();
+    
+            if($this->db->rowCount() >0){
+                 return true;
+            }else{
+                 return false;
+            }
+        }
+
+         // get all orders details of Pharmacist ?????????????????
+         public function getAllOrderDetailsOfPharmacist($pharmacist_id){
+            $this->db->query('SELECT * FROM order_request  
+            WHERE pharmacist_id= :pharmacist_id AND status = :status');
+            $this->db->bind(':pharmacist_id',$pharmacist_id);
+            $this->db->bind(':status', "p");
+    
+           /* $row= $this->db->single();
+    
+            if($this->db->rowCount() >0){
+                 return true;
+            }else{
+                 return false;
+            }*/
+            return $this->db->resultSet();
+        }
+
+        // get view more details about rquested orders ?????????????????
+        public function getAllOrderDetailsMore($orderID){ 
+            $this->db->query('SELECT * FROM order_request 
+            WHERE  order_request_id = :order_request_id');
+           // $this->db->bind(':pharmacist_id',$pharmacist_id); 
+            $this->db->bind(':order_request_id',$orderID);
+            
+            return $this->db->single();
+
+        }
+
+
+
         // get number of pending orders of pharmacist
         public function pharmacistPendingOrdersCount($pharmacist_id)
         {
@@ -94,7 +140,7 @@
           $this->db->query('SELECT COUNT(order_id) AS 
           accpted_orders_count FROM accept_order 
           WHERE pharmacist_id=:pharmacist_id AND 
-          paid_amount = 0');
+          paid_amount = 0 AND accepted_date_and_time >= DATE_SUB(NOW(), INTERVAL 1 DAY)');
           $this->db->bind(':pharmacist_id', $pharmacist_id);
                        
           return $this->db->single();
@@ -108,6 +154,7 @@
           AS rejected_orders_count FROM order_request 
           WHERE status= :status 
           AND pharmacist_id=:pharmacist_id ');
+          
           $this->db->bind(':pharmacist_id', $pharmacist_id);
           $this->db->bind(':status', "r");  
                         
@@ -115,7 +162,7 @@
           return $row;                 
         } 
 
-         // get number of rejected orders of pharmacist
+       /*  // get number of rejected orders of pharmacist
          public function pharmacistPaidOrdersCount($pharmacist_id)
          {
            $this->db->query('SELECT COUNT(order_id) 
@@ -127,10 +174,10 @@
            $row=$this->db->single();
            return $row;              
            
-         } 
+         } */
 
 
-        // get all pending details of Pharmacist
+        // get all pending order details of Pharmacist
         public function getAllPendingOrderDetailsOfPharmacist($pharmacist_id){
             $this->db->query('SELECT * FROM order_request  
             WHERE pharmacist_id= :pharmacist_id AND status = :status');
@@ -143,16 +190,15 @@
         // get all accepted details of Pharmacist
         public function getAllAcceptedOrderDetailsOfPharmacist($pharmacist_id){
 
-            $this->db->query('SELECT accept_order.*, order_request.* FROM accept_order 
-            INNER JOIN order_request ON accept_order.order_request_id = order_request.order_request_id 
-            AND status = "a" AND paid_amount=0  AND accepted_date_and_time >= DATE_SUB(NOW(), INTERVAL 1 DAY) 
-            WHERE accept_order.pharmacist_id = :pharmacist_id ');
-
+            $this->db->query('SELECT * FROM accept_order WHERE
+            pharmacist_id = :pharmacist_id 
+            AND paid_amount=0  
+            AND accepted_date_and_time >= DATE_SUB(NOW(), INTERVAL 1 DAY)');
             $this->db->bind(':pharmacist_id', $pharmacist_id);
 
             return $this->db->resultSet();
            }
-
+        
 
         // get all rejected details of Pharmacist
         public function getAllRejectedOrderDetailsOfPharmacist($pharmacist_id){
@@ -164,94 +210,52 @@
             return $this->db->resultSet();
         }
        
-        // get all rejected details of Pharmacist
+        /*// get all paid details of Pharmacist
         public function  getAllPaidOrderDetailsOfPharmacist($pharmacist_id){
             $this->db->query('SELECT * FROM accept_order  
             WHERE pharmacist_id= :pharmacist_id AND paid_amount > 0 ');
             $this->db->bind(':pharmacist_id',$pharmacist_id);
             
             return $this->db->resultSet();
-        }
+        }*/
 
-        // get all orders details of Pharmacist
-        public function getAllOrderDetails($pharmacist_id){
-            $this->db->query('SELECT * FROM  WHERE pharmacist_id= :pharmacist_id ');
-            $this->db->bind(':pharmacist_id',$pharmacist_id);  
-    
-            $row= $this->db->single();
-    
-            if($this->db->rowCount() >0){
-                 return true;
-            }else{
-                 return false;
-            }
-        }
-        // get all orders details of Pharmacist
-        public function getAllOrderDetailsOfPharmacist($pharmacist_id){
-            $this->db->query('SELECT * FROM order_request  
-            WHERE pharmacist_id= :pharmacist_id AND status = :status');
-            $this->db->bind(':pharmacist_id',$pharmacist_id);
-            $this->db->bind(':status', "p");
-    
-           /* $row= $this->db->single();
-    
-            if($this->db->rowCount() >0){
-                 return true;
-            }else{
-                 return false;
-            }*/
-            return $this->db->resultSet();
-        }
 
-        // get view more details about rquested orders
-        public function getAllOrderDetailsMore($orderID){
+       
+
+        // view more details of pending orders
+        public function getAllViewPendingOrderDetailsMore($orderID){
             $this->db->query('SELECT * FROM order_request 
-            WHERE  order_request_id = :order_request_id');
-           // $this->db->bind(':pharmacist_id',$pharmacist_id); 
+            WHERE order_request_id = :order_request_id'); 
             $this->db->bind(':order_request_id',$orderID);
             
             return $this->db->single();
 
         }
 
-        // get all accepted order details for reject after 3 days(after accepting order by pharmacist)
-        public function getAllAcceptedOrderDetails($pharmacist_id)
-        {
-            $this->db->query('SELECT * FROM accept_order  
-            WHERE pharmacist_id= :pharmacist_id AND paid_amount=:paid_amount');
-            $this->db->bind(':pharmacist_id',$pharmacist_id);
-            $this->db->bind(':paid_amount',0);
-           
-    
-           /* $row= $this->db->single();
-    
-            if($this->db->rowCount() >0){
-                 return true;
-            }else{
-                 return false;
-            }*/
-            return $this->db->resultSet();
-        }
 
-        public function getAllAcceptedOrderDetailsMore($orderID)
-        {
-            $this->db->query('SELECT * FROM accept_order 
-            WHERE order_request_id= :order_request_id AND paid_amount= :paid_amount');
-            $this->db->bind(':order_request_id',$orderID);
-            $this->db->bind(':paid_amount',0);
+        public function getAllAcceptedOrderDetailsMore($orderID){
 
-          /*  $row= $this->db->single();
-    
-            if($this->db->rowCount() >0){
-                 return true;
-            }else{
-                 return false;
-            } */
+            $this->db->query('SELECT * FROM accept_order WHERE
+            order_request_id=:order_request_id');
+            $this->db->bind(':order_request_id',$orderID );
 
-           // return $this->db->resultSet();
+            return $this->db->single();
+          //  return $this->db->resultSet();
+
+           }
+        
+        public function getAllRejectedOrderDetailsMore($orderID){
+
+            $this->db->query('SELECT * FROM order_request WHERE
+            order_request_id=:order_request_id');
+            $this->db->bind(':order_request_id',$orderID );
+
             return $this->db->single();
 
-        }
+           }
+
+        
+
 
         // View selling history
         public function getAllSellingHistory($pharmacist_id){

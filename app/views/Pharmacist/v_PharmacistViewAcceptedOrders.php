@@ -42,7 +42,7 @@
                             <button class="view" name="submit">View</button>
                         </form>       
                    
-                        <button class="delete"><i class="fa-solid fa-download"></i><a download="<?php echo $Acceptedorders->prescription ?>"  href="<?php echo URLROOT?>/img/prescriptions/<?php echo $Acceptedorders->prescription ?>">Download</a></button>
+                        <button class="Prescription"><i class="fa-solid fa-download"></i><a download="<?php echo $Acceptedorders->prescription ?>"  href="<?php echo URLROOT?>/img/prescriptions/<?php echo $Acceptedorders->prescription ?>">Prescription</a></button>
                         </td>
                           
                          

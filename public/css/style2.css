@@ -1794,7 +1794,7 @@ nav.dark {
     position: relative;
     align-items: center;
     justify-content: center;
-    background-image: url(../img/pharmacist-page-pictures/p-orders.jpg);
+    background-image: url(../img/pharmacist-page-pictures/p-orders.jpeg);
     background-size: cover;
     overflow: hidden;
 }
@@ -1814,9 +1814,44 @@ nav.dark {
     font-size: 4.5rem;
 }
 
-
-
 /* time slot card design starts */
+
+/*style Prescription Button*/
+.Prescription {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 12px;
+    
+    text-align: center;
+    text-decoration: none;
+    background-color: #8967bb;
+    color: var(--hue-white);
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .Prescription:hover {
+    background-color: #0056b3;
+    
+  }
+  
+  .Prescription i {
+    margin-right: 8px;
+  }
+  
+  .Prescription a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .Prescription a:hover {
+    text-decoration: underline;
+  }
+  
+
+
+/*end style prescription button*/
 
 .time-slot-main-container {
     width: 70%;

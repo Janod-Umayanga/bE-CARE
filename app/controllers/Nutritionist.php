@@ -160,9 +160,7 @@ public function sendDietPlan()
         $data = [
         'more' => $more,
         'description' => trim($_POST['description']),
-      //  'diet_plan_file'=> trim($_POST['diet_plan_file']),
-        'diet_plan_file' => $_FILES['diet_plan_file'],
-        
+        'diet_plan_file' => $_FILES['diet_plan_file'],       
         'diet_plan_file_name' => time().'_'.$_FILES['diet_plan_file']['name'],
           
           
@@ -183,7 +181,7 @@ public function sendDietPlan()
 
 
       if(empty($data['diet_plan_file'])){
-        $data['diet_plan_file_err']='qualification file can not be empty';
+        $data['diet_plan_file_err']='Diet plan file can not be empty';
       }else{
           $fileExt=explode('.',$_FILES['diet_plan_file']['name']);
           $fileActualExt=strtolower(end($fileExt));
@@ -204,7 +202,7 @@ public function sendDietPlan()
             
             }
           }else{
-            $data[ 'diet_plan_file_err'] ="qualification file size is empty";
+            $data[ 'diet_plan_file_err'] ="Diet plan file size is empty";
           
           }
 
@@ -301,12 +299,13 @@ public function editProfile($userId){
          'last_name'=>trim($_POST['last_name']),
          'nic'=>$_SESSION['nutritionist_nic'],
          'slmc_reg_number'=>$_SESSION['nutritionist_slmc_reg_number'],
+         'gender' => $_SESSION['nutritionist_gender'],
          'contact_number'=>trim($_POST['contact_number']),
          'bank_name'=>trim($_POST['bank_name']),
          'account_holder_name'=>trim($_POST['account_holder_name']),
          'branch'=>trim($_POST['branch']),
          'account_number'=>trim($_POST['account_number']),
-         'gender'=>trim($_POST['gender']),
+         
          'fee' => trim($_POST['fee']),
         // 'city'=>trim($_POST['city']),
          
@@ -381,7 +380,7 @@ public function editProfile($userId){
      }
 
      if(empty($data['gender'])){
-         $data['gender_err']='gender can not be empty';
+         $data['gender_err']='title can not be empty';
      }
 
       if(empty($data['account_number'])){
@@ -438,7 +437,7 @@ public function editProfile($userId){
 
       
 
-     if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err'])&& empty($data['gender_err']) && empty($data['fee_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])){
+     if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& empty($data['contact_number_err']) && empty($data['fee_err'])&& empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& empty($data['account_number_err'])){
            if($this->userModel->editUser($data)){
                  $_SESSION['profile_update']="true";
                  $this->view('Nutritionist/v_NutritionistDetails',$data);    

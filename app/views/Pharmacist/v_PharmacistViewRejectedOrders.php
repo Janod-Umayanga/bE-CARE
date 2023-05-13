@@ -37,12 +37,12 @@
                         <td><?php echo $Rejectedorders->name?></td>
                         <td><?php echo $Rejectedorders->contact_number?></td>
                         <td>
-                        <form action="<?php echo URLROOT; ?>/Pharmacist/pharmacistViewAcceptedOrdersMore/" method="post">
+                        <form action="<?php echo URLROOT; ?>/Pharmacist/pharmacistViewRejectedOrdersMore/" method="post">
                             <input type="hidden" name="order_request_id" value="<?php echo $Rejectedorders->order_request_id; ?>">
                             <button class="view" name="submit">View</button>
                         </form>       
                    
-                        <button class="delete"><i class="fa-solid fa-download"></i><a download="<?php echo $Rejectedorders->prescription ?>"  href="<?php echo URLROOT?>/img/prescriptions/<?php echo $Rejectedorders->prescription ?>">Download</a></button>
+                        <button class="Prescription"><i class="fa-solid fa-download"></i><a download="<?php echo $Rejectedorders->prescription ?>"  href="<?php echo URLROOT?>/img/prescriptions/<?php echo $Rejectedorders->prescription ?>">Prescription</a></button>
                         </td>
                           
                          

@@ -3,28 +3,14 @@
    class Pharmacist extends Controller {
     
     private $pharmacistModel;
-    private $pharmacistViewOrdersModel;
-    private $pharmacistViewOrdersMoreModel;
-    private $pharmacistViewSellingHistoryModel;
-    private $pharamacistAcceptOrderModel;
-    private $pharmacistSendAcceptOrderDetailsModel;
-    private $pharmacistremoveOrderModel;
-    private $pharmacistPaidOrderViewModel;
+    private $pharmacistViewOrdersModel; 
     private $userModel;
-
-
 
     public function __construct()
     {
       
        $this->pharmacistModel = $this->model('M_Pharmacist');
        $this->pharmacistViewOrdersModel = $this->model('M_Pharmacist');
-       $this->pharmacistViewOrdersMoreModel = $this->model('M_Pharmacist');
-       $this->pharmacistViewSellingHistoryModel = $this->model('M_pharmacist');
-       $this->pharamacistAcceptOrderModel = $this->model("M_Pharmacist");
-       $this->pharmacistremoveOrderModel=$this->model('M_Pharmacist');
-       $this->pharmacistSendAcceptOrderDetailsModel = $this->model('M_Pharmacist');
-       $this->pharmacistPaidOrderViewModel=$this->model('M_Pharmacist');
        $this->userModel=$this->model('M_Pharmacist');
     }
 
@@ -48,17 +34,16 @@
     {
       if(isset($_SESSION['pharmacist_id'])){
 
+      // get type of orders count seperately
       $noOfPendingOrders = $this->pharmacistModel->pharmacistPendingOrdersCount($_SESSION["pharmacist_id"]);
       $noOfAcceptedOrders = $this->pharmacistModel->pharmacistAcceptedOrdersCount($_SESSION["pharmacist_id"]);
       $noOfRejectedOrders = $this->pharmacistModel->pharmacistRejectedOrdersCount($_SESSION["pharmacist_id"]);
-      $noOfPaidOrders = $this->pharmacistModel->pharmacistPaidOrdersCount($_SESSION["pharmacist_id"]);
 
       $data=[   
       
         'noOfPendingOrders' => $noOfPendingOrders,
         'noOfAcceptedOrders' => $noOfAcceptedOrders,
-        'noOfRejectedOrders' => $noOfRejectedOrders,
-        'noOfPaidOrders' =>  $noOfPaidOrders
+        'noOfRejectedOrders' => $noOfRejectedOrders
        ];
 
       $this->view('Pharmacist/v_PharmacistViewAllOrderDetails',$data);  
@@ -76,13 +61,11 @@
     {
       if(isset($_SESSION['pharmacist_id']))
       {
-      //  $DeleteAfter5Days = $this->pharmacistViewOrdersModel->deleteAcceptedOrderIfNotPaidWithin5Days($_SESSION['pharmacist_id']);
-        $Pendingorders = $this->pharmacistViewOrdersModel->getAllPendingOrderDetailsOfPharmacist($_SESSION['pharmacist_id']);
+        $Pendingorders = $this->pharmacistModel->getAllPendingOrderDetailsOfPharmacist($_SESSION['pharmacist_id']);
         
-    $data=[      
-      'Pendingorders' => $Pendingorders
-    //  'DeleteAfter5Days' => $DeleteAfter5Days
-     ];
+        $data=[      
+           'Pendingorders' => $Pendingorders
+        ];
 
       $this->view('Pharmacist/v_PharmacistViewPendingOrders',$data);  
        }else{
@@ -95,7 +78,7 @@
     {
       if(isset($_SESSION['pharmacist_id']))
       {
-        $Acceptedorders = $this->pharmacistViewOrdersModel->getAllAcceptedOrderDetailsOfPharmacist($_SESSION['pharmacist_id']);
+        $Acceptedorders = $this->pharmacistModel->getAllAcceptedOrderDetailsOfPharmacist($_SESSION['pharmacist_id']);
     $data=[      
        'Acceptedorders' => $Acceptedorders
      ];
@@ -112,7 +95,7 @@
     {
       if(isset($_SESSION['pharmacist_id']))
       {
-        $Rejectedorders = $this->pharmacistViewOrdersModel->getAllRejectedOrderDetailsOfPharmacist($_SESSION['pharmacist_id']);
+        $Rejectedorders = $this->pharmacistModel->getAllRejectedOrderDetailsOfPharmacist($_SESSION['pharmacist_id']);
     $data=[      
        'Rejectedorders' => $Rejectedorders
      ];
@@ -124,41 +107,21 @@
        }
       }
     
-      /*view all paid orders details*/
-      public function pharmacistViewPaidOrders()
-      {
-        if(isset($_SESSION['pharmacist_id']))
-      {
-        $Paidorders = $this->pharmacistViewOrdersModel->getAllPaidOrderDetailsOfPharmacist($_SESSION['pharmacist_id']);
-    $data=[      
-       'Paidorders' => $Paidorders
-     ];
-
-        $this->view('Pharmacist/v_PharmacistViewPaidOrders',$data);  
-       }else{
-      
-      redirect('Login/login');  
-       }
-      }
     
-
- 
-   
-
-    public function pharmacistViewOrdersMore()
+      public function pharmacistViewPendingOrdersMore()
     {
         if (isset($_SESSION['pharmacist_id'])) {
             if (isset($_POST['submit'])) {
               $orderID = $_POST['order_request_id'];     
-              $more = $this->pharmacistViewOrdersModel->getAllOrderDetailsMore($orderID);
+              $PendingOrdersMore = $this->pharmacistModel->getAllViewPendingOrderDetailsMore($orderID);
         
               $data = [
-                'more' => $more
+                'PendingOrdersMore' => $PendingOrdersMore
               ];
-              $this->view('Pharmacist/v_PharmacistViewOrdersMore', $data);
+              $this->view('Pharmacist/v_PharmacistViewPendingOrdersMore', $data);
            
             }else{
-              redirect('Pharmacist/getAllOrderDetailsOfPharmacist');
+              redirect('Pharmacist/pharmacistViewPendingOrders');
             }
             // rest of the code
           } else {
@@ -167,20 +130,44 @@
          
     }
 
+
     public function pharmacistViewAcceptedOrdersMore()
     {
         if (isset($_SESSION['pharmacist_id'])) {
             if (isset($_POST['submit'])) {
               $orderID = $_POST['order_request_id'];     
-              $more = $this->pharmacistViewOrdersModel->getAllAcceptedOrderDetailsMore($orderID);
+              $AcceptedOrdersMore = $this->pharmacistModel->getAllAcceptedOrderDetailsMore($orderID);
         
               $data = [
-                'more' => $more
+                'AcceptedOrdersMore' => $AcceptedOrdersMore
               ];
-              $this->view('Pharmacist/v_PharmacistAcceptedOrderDetailsMore', $data);
+              $this->view('Pharmacist/v_PharmacistViewAcceptOrdersMore', $data);
            
             }else{
-              redirect('Pharmacist/getAllOrderDetailsOfPharmacist');
+              redirect('Pharmacist/pharmacistViewAcceptedOrders');
+            }
+            // rest of the code
+          } else {
+            redirect('Login/login');
+          }
+         
+    }
+
+
+    public function pharmacistViewRejectedOrdersMore()
+    {
+        if (isset($_SESSION['pharmacist_id'])) {
+            if (isset($_POST['submit'])) {
+              $orderID = $_POST['order_request_id'];     
+              $RejectedOrdersMore = $this->pharmacistModel->getAllRejectedOrderDetailsMore($orderID);
+        
+              $data = [
+                'RejectedOrdersMore' => $RejectedOrdersMore
+              ];
+              $this->view('Pharmacist/v_PharmacistViewRejectedOrdersMore', $data);
+           
+            }else{
+              redirect('Pharmacist/pharmacistViewRejectedOrders');
             }
             // rest of the code
           } else {
@@ -193,7 +180,7 @@
     public function pharmacistSellingHistory(){
 
         if(isset($_SESSION['pharmacist_id'])){
-            $history = $this->pharmacistViewSellingHistoryModel->getAllSellingHistory($_SESSION['pharmacist_id']);
+            $history = $this->pharmacistModel->getAllSellingHistory($_SESSION['pharmacist_id']);
         
             $data=[                      
               'history'=>$history
@@ -212,7 +199,7 @@
         if(isset($_POST['submit'])) {
 
           $order_Id = $_POST['order_id'];
-          $historymore = $this->pharmacistViewSellingHistoryModel->getAllSellingHistoryMore($order_Id);
+          $historymore = $this->pharmacistModel->getAllSellingHistoryMore($order_Id);
         
           $data=[                      
             'historymore'=>$historymore
@@ -220,7 +207,7 @@
           $this->view('Pharmacist/v_PharmacistViewSellingHistoryMore',$data); 
        
         }else{
-          redirect('Pharmacist/getAllOrderDetailsOfPharmacist');
+          redirect('Pharmacist/pharmacistSellingHistory');
         }
         // rest of the code
       } else {
@@ -231,28 +218,14 @@
 
   }
 
-    // Pharmacist Accept Order 
-    
-    
- 
-/*Pharmacist View Prescription*/
-public function pharmacistViewPrescriptions(){
 
-    // temporary
-  //  $this->view('Pharmacist/v_Prescription');
-  if (isset($_POST['download'])) {
-    $this->view('Pharmacist/v_Prescription');
-  }
-  
-    
-}
+ 
 
 // Get rder details and 
 public function acceptOrders($orderedDateAndTime, $orderID){
   if (isset($_SESSION['pharmacist_id'])) {
-      if (isset($_POST['submit'])) {
-      //  $orderID = $_POST['order_request_id'];     
-        $more = $this->pharmacistViewOrdersModel->getAllOrderDetailsMore($orderID);
+      if (isset($_POST['submit'])) { 
+        $more = $this->pharmacistModel->getAllOrderDetailsMore($orderID);
   
         $data = [
           'more' => $more,
@@ -296,7 +269,7 @@ if(isset($_SESSION['pharmacist_id'])){
 if($_SERVER["REQUEST_METHOD"] == 'POST')
 { // form is submitting
   $orderID = $_POST['order_request_id'];     
-  $more = $this->pharmacistViewOrdersModel->getAllOrderDetailsMore($orderID);
+  $more = $this->pharmacistModel->getAllOrderDetailsMore($orderID);
   $_POST=filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
 
   
@@ -331,9 +304,9 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
 
   if(empty($data['pharmacist_note_err']) && empty($data['charge_err']))
   {
-   if($this->pharmacistSendAcceptOrderDetailsModel->sendAcceptOrderDetails($_SESSION['pharmacist_id'], $data))
+   if($this->pharmacistModel->sendAcceptOrderDetails($_SESSION['pharmacist_id'], $data))
    {
-    if($this->pharmacistremoveOrderModel->acceptedOrderDetails($data))
+    if($this->pharmacistModel->acceptedOrderDetails($data))
     {
       $patientDetails = $this->pharmacistModel->getPatientDetails($more->patient_id);
       sendMail( $patientDetails->email, $patientDetails->first_name,'', 10,'');

@@ -20,7 +20,7 @@
     <section class="table-section-Nutritionistreq theme">
         <div class="table-container theme">
             <div class="table-topic-main">
-                <h1><center>Details of Pending Orders(Make sure to Accept the order after order is made.)</center> <!--Details of pending orders(not accepted)-->
+                <h1><center>Details of Pending Orders<br>(Make sure to accept the order within one day after it is made)</center> <!--Details of pending orders(not accepted)-->
                 </h1>
             </div>
             <div class="table">
@@ -41,12 +41,12 @@
 
                         <td>
 
-                        <form action="<?php echo URLROOT; ?>/Pharmacist/pharmacistViewOrdersMore/" method="post">
+                        <form action="<?php echo URLROOT; ?>/Pharmacist/pharmacistViewPendingOrdersMore/" method="post">
                             <input type="hidden" name="order_request_id" value="<?php echo $Pendingorders->order_request_id; ?>">
                             <button class="view" name="submit">View</button>
                         </form>
                 
-                        <button class="delete"><i class="fa-solid fa-download"></i><a download="<?php echo $Pendingorders->prescription ?>"  href="<?php echo URLROOT?>/img/prescriptions/<?php echo $Pendingorders->prescription ?>">Download</a></button>
+                        <button class="Prescription"><i class="fa-solid fa-download"></i><a download="<?php echo $Pendingorders->prescription ?>"  href="<?php echo URLROOT?>/img/prescriptions/<?php echo $Pendingorders->prescription ?>">Prescription</a></button>
 
                         <form action="<?php echo URLROOT;?>/Pharmacist/acceptOrders/<?php echo $Pendingorders->ordered_date_and_time; ?>/<?php echo $Pendingorders->order_request_id; ?>" method="post">
                             <input type="hidden" name="order_request_id" value="<?php echo $Pendingorders->order_request_id; ?>">

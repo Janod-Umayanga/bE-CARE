@@ -20,7 +20,7 @@
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
                     <h2>Fill these details to Reject Order</h2>
-                    <p>click the "Reject" button to accept order.</p>
+                    <p>click the "Reject" button to reject order.You can mention the reason in the note section.</p>
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
                         placeholder="The requested medicines not available in our inventory.Sorry for that."></textarea>
                         <span class="form-invalid"><?php echo $data['pharmacist_note'] ?></span>
 
-                        <button type="submit" name="submit">Send</button>
+                        <button type="submit" name="submit">Reject Order</button>
                   
                     
                </div>

@@ -34,25 +34,19 @@
              
             
             <a href="<?php echo URLROOT;?>/Pharmacist/pharmacistViewPendingOrders/" class="card">
-                <img src="<?php echo URLROOT;?>/img/pharmacist-page-pictures/pending_orders.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/pharmacist-page-pictures/pending_orders.jpeg" alt="">
                 <h3>******<br> Pending Orders - <?php echo $data["noOfPendingOrders"]->pending_orders_count ?> </h3> 
             </a>
             
             <a href="<?php echo URLROOT;?>/Pharmacist/pharmacistViewAcceptedOrders/" class="card">
-                <img src="<?php echo URLROOT;?>/img/pharmacist-page-pictures/accepted_orders.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/pharmacist-page-pictures/accepted_orders.jpeg" alt="">
                 <h3>******<br> Accepted Orders - <?php echo $data["noOfAcceptedOrders"]->accpted_orders_count ?>    </h3> 
             </a>
 
             <a href="<?php echo URLROOT;?>/Pharmacist/pharmacistViewRejectedOrders/" class="card">
-                <img src="<?php echo URLROOT;?>/img/pharmacist-page-pictures/rejected_orders.jpg" alt="">
+                <img src="<?php echo URLROOT;?>/img/pharmacist-page-pictures/rejected_orders.jpeg" alt="">
                 <h3>******<br> Rejected Orders - <?php echo $data["noOfRejectedOrders"]->rejected_orders_count ?> </h3>  
             </a>
-
-            <a href="<?php echo URLROOT;?>/Pharmacist/pharmacistViewPaidOrders/" class="card">
-                <img src="<?php echo URLROOT;?>/img/pharmacist-page-pictures/paid_orders.jpg" alt="">
-                <h3>******<br> Paid Orders - <?php echo $data["noOfPaidOrders"]->paid_orders_count?> </h3> 
-            </a>
-            
             
         </div>
         <button id="show-button" class="show-button" onclick="showMore()"><span id="show-text">Show More</span><i class="fa-solid fa-angle-down" id="icon-more-orless"></i></button>
