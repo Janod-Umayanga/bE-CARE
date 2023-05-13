@@ -8,6 +8,8 @@
         private $counsellorModel;
         private $meditationInstructorModel;
         private $meditationInstructorTimeslotModel;
+        private $nutritionistModel;
+        private $pharmacistModel;
         public function __construct() {
             $this->paymentModel = $this->model('M_Payment');
             $this->doctorModel = $this->model('M_Doctor');
@@ -16,6 +18,8 @@
             $this->counsellorModel = $this->model('M_Counsellor');
             $this->meditationInstructorModel = $this->model('M_MedInstr');
             $this->meditationInstructorTimeslotModel = $this->model('M_MedInstrAddtimeslot');
+            $this->nutritionistModel = $this->model('M_Nutritionist');
+            $this->pharmacistModel = $this->model('M_Pharmacist');
         }
 
         // // Verify the payment
@@ -469,6 +473,21 @@
                 // Create diet plan request
                 if($this->paymentModel->createDietPlanRequest($data, $_SESSION['patient_id'])) {
                     $_SESSION['diet_plan_request_created'] = true;
+
+                    // Send email to the nutritionist
+                    $nutritionist = $this->nutritionistModel->getNutritionistbyId($nutritionist_id);
+                    $other = [
+                        'patient_name' => $data['name'],
+                        'patient_title' => $data['gender'],
+                    ];
+
+                    $email = $nutritionist->email;
+                    $name = $nutritionist->first_name;
+                    $bodyFlag = 15;
+
+                    // Send email notification to the patient
+                    sendMail($email,$name,"",$bodyFlag,$other);
+
                     redirect('Pages/index');
                 }
                 else {
@@ -494,7 +513,8 @@
                     $data = [
                         'order_id' => trim($_POST['order_id']),
                         'fee' => trim($_POST['fee']),
-                        'email' => trim($_POST['email'])
+                        'email' => trim($_POST['email']),
+                        'pharmacist_id' => trim($_POST['pharmacist_id']),
                     ];
 
                     // Set your test stripe API key for the payment process
@@ -512,7 +532,7 @@
                             'quantity' => 1,
                           ]],
                         'mode' => 'payment',
-                        'success_url' => URLROOT.'/Payment/createOrder/'.$data['order_id'].'/'.$data['fee'].'/'.$data['email'],
+                        'success_url' => URLROOT.'/Payment/createOrder/'.$data['order_id'].'/'.$data['fee'].'/'.$data['email'].'/'.$data['pharmacist_id'],
                         'cancel_url' => URLROOT.'/Payment/paymentUnsuccess/',
                       ]);
 
@@ -530,7 +550,7 @@
         }
 
         // Create order after the payment is success
-        public function createOrder($order_id, $fee, $email) {
+        public function createOrder($order_id, $fee, $email, $pharmacist_id) {
 
             $data = [
                 'order_id' => $order_id,
@@ -541,11 +561,19 @@
             if($this->paymentModel->payForOrder($data)) {
                 $_SESSION['paid_for_order'] = true;
 
-                $name = "";
+                $pharmacist = $this->pharmacistModel->getPharmacistbyId($pharmacist_id);
+
+                $other = [
+                    'patient_name' => $_SESSION['patient_name'],
+                    'patient_title' => $_SESSION['patient_title'],
+                    'fee' => $fee + $fee*0.1,
+                ];
+
+                $name = $pharmacist->first_name;
                 $bodyFlag = 8;
 
                 // Send email notification to the pharmacist
-                sendMail($email,$name,"",$bodyFlag,"");
+                sendMail($email,$name,"",$bodyFlag,$other);
 
                 redirect('Pages/index');
             }

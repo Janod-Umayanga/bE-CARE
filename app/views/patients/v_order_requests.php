@@ -72,7 +72,7 @@
                         <td><?php echo $accepted_order->accepted_date_and_time ?></td>
                         <td><?php echo $accepted_order->pharmacist_note ?></td>
                         <td>
-                            <form action="<?php echo URLROOT ?>/Patient/payForOrder/<?php echo $accepted_order->order_id ?>/<?php echo $accepted_order->charge ?>/<?php echo $accepted_order->email ?>/<?php echo $accepted_order->accepted_date_and_time ?>">
+                            <form action="<?php echo URLROOT ?>/Patient/payForOrder/<?php echo $accepted_order->order_id ?>/<?php echo $accepted_order->charge ?>/<?php echo $accepted_order->email ?>/<?php echo $accepted_order->accepted_date_and_time ?>/<?php echo $accepted_order->pharmacist_id ?>">
                                 <button class="delete"><i class="fa-solid fa-credit-card"></i>Pay!</button>
                             </form>
                         </td>
