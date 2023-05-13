@@ -53,11 +53,7 @@
                         <span class="form-invalid"><?php echo $data['contact_number_err'] ?></span>
                         
                         <label for="gender">Title</label>
-                        <select name="gender" id="gender" >
-                           <option value="">Title</option>
-                           <option value="Mr">Mr</option>
-                           <option value="Ms">Ms</option>
-                        </select>
+                        <input type="text" disabled='true' id="gender" name="gender" value="<?php echo $data['gender'] ?>">
                         <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
                      
                         <label for="fee ">Fee(Rs.)</label>

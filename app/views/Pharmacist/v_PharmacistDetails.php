@@ -50,15 +50,12 @@
                         <span class="form-invalid"><?php echo $data['contact_number_err'] ?></span>
                         
                         <label for="gender">Title</label>
-                        <select name="gender" id="gender" >
-                           <option value="">Title</option>
-                           <option value="Mr">Mr</option>
-                           <option value="Ms">Ms</option>
-                        </select>
+                        <input type="text" disabled='true' id="gender" name="gender" value="<?php echo $data['gender'] ?>">
                         <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
+
                      
                         <label for="city ">City</label>
-                        <input type="text" id="city" name="city" value="<?php echo $data['city'] ?>">
+                        <input type="text" disabled='true' id="city" name="city" value="<?php echo $data['city'] ?>">
                         <span class="form-invalid"><?php echo $data['city_err'] ?></span>
 
                         <label for="pharmacy_name ">Pharmacy Name</label>

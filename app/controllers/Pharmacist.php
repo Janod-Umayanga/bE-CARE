@@ -43,23 +43,107 @@
      } 
     }
 
+    /*view count of orders...pending, accepted,rejected and paid details*/
     public function pharmacistViewOrders()
     {
       if(isset($_SESSION['pharmacist_id'])){
-        $orders = $this->pharmacistViewOrdersModel->getAllOrderDetailsOfPharmacist($_SESSION['pharmacist_id']);
-      //  $orderReqID = $orders->order_request_id;
-        $paidOrders = $this->pharmacistPaidOrderViewModel->getAllAcceptedOrderDetails($_SESSION['pharmacist_id']);
 
-        $data=[                      
-          'orders'=>$orders,
-          'paidOrders'=>$paidOrders
-        ]; 
-        $this->view('Pharmacist/v_PharmacistViewOrders',$data);  
-        }else{
-          $_SESSION['need_login'] = true;
-          redirect('Login/login');
+      $noOfPendingOrders = $this->pharmacistModel->pharmacistPendingOrdersCount($_SESSION["pharmacist_id"]);
+      $noOfAcceptedOrders = $this->pharmacistModel->pharmacistAcceptedOrdersCount($_SESSION["pharmacist_id"]);
+      $noOfRejectedOrders = $this->pharmacistModel->pharmacistRejectedOrdersCount($_SESSION["pharmacist_id"]);
+      $noOfPaidOrders = $this->pharmacistModel->pharmacistPaidOrdersCount($_SESSION["pharmacist_id"]);
+
+      $data=[   
+      
+        'noOfPendingOrders' => $noOfPendingOrders,
+        'noOfAcceptedOrders' => $noOfAcceptedOrders,
+        'noOfRejectedOrders' => $noOfRejectedOrders,
+        'noOfPaidOrders' =>  $noOfPaidOrders
+       ];
+
+      $this->view('Pharmacist/v_PharmacistViewAllOrderDetails',$data);  
+      }else{
+        //  $_SESSION['need_login'] = true;
+        //  redirect('Login/login');
+        redirect('Login/login');  
+      }
+
       }   
-    }
+
+
+    /*view all pending orders details*/
+    public function pharmacistViewPendingOrders()
+    {
+      if(isset($_SESSION['pharmacist_id']))
+      {
+      //  $DeleteAfter5Days = $this->pharmacistViewOrdersModel->deleteAcceptedOrderIfNotPaidWithin5Days($_SESSION['pharmacist_id']);
+        $Pendingorders = $this->pharmacistViewOrdersModel->getAllPendingOrderDetailsOfPharmacist($_SESSION['pharmacist_id']);
+        
+    $data=[      
+      'Pendingorders' => $Pendingorders
+    //  'DeleteAfter5Days' => $DeleteAfter5Days
+     ];
+
+      $this->view('Pharmacist/v_PharmacistViewPendingOrders',$data);  
+       }else{
+      redirect('Login/login');  
+       }
+      }
+    
+    /*view all pending orders details*/
+    public function pharmacistViewAcceptedOrders()
+    {
+      if(isset($_SESSION['pharmacist_id']))
+      {
+        $Acceptedorders = $this->pharmacistViewOrdersModel->getAllAcceptedOrderDetailsOfPharmacist($_SESSION['pharmacist_id']);
+    $data=[      
+       'Acceptedorders' => $Acceptedorders
+     ];
+
+        $this->view('Pharmacist/v_PharmacistViewAcceptedOrders',$data);  
+       }else{
+      
+      redirect('Login/login');  
+       }
+      }
+    
+    /*view all rejected orders details*/
+    public function pharmacistViewRejectedOrders()
+    {
+      if(isset($_SESSION['pharmacist_id']))
+      {
+        $Rejectedorders = $this->pharmacistViewOrdersModel->getAllRejectedOrderDetailsOfPharmacist($_SESSION['pharmacist_id']);
+    $data=[      
+       'Rejectedorders' => $Rejectedorders
+     ];
+
+        $this->view('Pharmacist/v_PharmacistViewRejectedOrders',$data);  
+       }else{
+      
+      redirect('Login/login');  
+       }
+      }
+    
+      /*view all paid orders details*/
+      public function pharmacistViewPaidOrders()
+      {
+        if(isset($_SESSION['pharmacist_id']))
+      {
+        $Paidorders = $this->pharmacistViewOrdersModel->getAllPaidOrderDetailsOfPharmacist($_SESSION['pharmacist_id']);
+    $data=[      
+       'Paidorders' => $Paidorders
+     ];
+
+        $this->view('Pharmacist/v_PharmacistViewPaidOrders',$data);  
+       }else{
+      
+      redirect('Login/login');  
+       }
+      }
+    
+
+ 
+   
 
     public function pharmacistViewOrdersMore()
     {
@@ -164,30 +248,45 @@ public function pharmacistViewPrescriptions(){
 }
 
 // Get rder details and 
-public function acceptOrders(){
+public function acceptOrders($orderedDateAndTime, $orderID){
   if (isset($_SESSION['pharmacist_id'])) {
       if (isset($_POST['submit'])) {
-        $orderID = $_POST['order_request_id'];     
+      //  $orderID = $_POST['order_request_id'];     
         $more = $this->pharmacistViewOrdersModel->getAllOrderDetailsMore($orderID);
   
         $data = [
           'more' => $more,
           'pharmacist_note'=>'',
-          'bill' => '',
           'charge'=> '',
 
           'pharmacist_note_err'=>'',
-          'bill_err' => '',
           'charge_err' => ''
         ];
-        $this->view('Pharmacist/v_PharmacistAcceptOrder', $data);
-     
+
+        // get today's date time
+        date_default_timezone_set("Asia/Kolkata");
+        $today = date("Y-m-d H:i:s");
+
+        // check if the accepted date time is less than 48 hours
+        $diff = abs(strtotime($today) - strtotime($orderedDateAndTime));
+        $hours = floor($diff / (60*60));
+        if($hours > 24) {
+            $this->view('Pharmacist/v_Pharmacist_Accept_order_expired', $data);
+        }
+        else {
+            // Load view
+            $this->view('Pharmacist/v_PharmacistAcceptOrder', $data);
+        }
+        
       }
       // rest of the code
     } else {
-      redirect('Login/login');
+      $_SESSION['need_login'] = true;
+      // Redirect to login
+       redirect('Login/login');
     }
 }
+
 
 // submit form and send an email to pharmacist
 public function acceptOrderSubmit() 
@@ -257,10 +356,10 @@ else
 
 
 // Pharmacist reject orders
-public function rejectOrders(){
+public function rejectOrders($orderedDateAndTime, $orderID){
   if (isset($_SESSION['pharmacist_id'])) {
       if (isset($_POST['submit'])) {
-        $orderID = $_POST['order_request_id'];     
+      //  $orderID = $_POST['order_request_id'];     
         $more = $this->pharmacistViewOrdersModel->getAllOrderDetailsMore($orderID);
   
         $data = [
@@ -269,12 +368,27 @@ public function rejectOrders(){
 
           'pharmacist_note_err'=>'',
         ];
-        $this->view('Pharmacist/v_PharmacistRejectOrder', $data);
-     
+
+          // get today's date time
+          date_default_timezone_set("Asia/Kolkata");
+          $today = date("Y-m-d H:i:s");
+  
+          // check if the accepted date time is less than 48 hours
+          $diff = abs(strtotime($today) - strtotime($orderedDateAndTime));
+          $hours = floor($diff / (60*60));
+          if($hours > 24) {
+              $this->view('Pharmacist/v_Pharmacist_Rejected_order_expired', $data);
+          }
+          else {
+              // Load view
+              $this->view('Pharmacist/v_PharmacistRejectOrder', $data);
+          }    
       }
       // rest of the code
     } else {
-      redirect('Login/login');
+      $_SESSION['need_login'] = true;
+      // Redirect to login
+       redirect('Login/login');
     }
 }
 
@@ -319,7 +433,6 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
     $this->view('Pharmacist/v_PharmacistRejectOrder', $data);
 
    }
-
 
 } }   
 else 

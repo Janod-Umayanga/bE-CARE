@@ -42,8 +42,7 @@
                         <span class="form-invalid"><?php echo $data['lname_err'] ?></span>
 
                         <label for="nic">NIC</label>
-                        <input type="text" id="nic" name="nic" value="<?php echo $data['nic'] ?>">
-                        <span class="form-invalid"><?php echo $data['nic_err'] ?></span>
+                        <p><?php echo $data['nic'] ?></p>
 
                         <label for="cnumber">Contact number</label>
                         <input type="text" id="cnumber" name="cnumber" value="<?php echo $data['cnumber'] ?>">
@@ -53,12 +52,7 @@
                     </div>
                     <div class="right">
                         <label for="gender">Title</label>
-                            <select name="gender" id="gender"  value="<?php echo $data['gender'] ?>">
-                                <option value="">Title</option>
-                                <option value="Mr">Mr</option>
-                                <option value="Ms">Ms</option>
-                            </select>
-                        <span class="form-invalid"><?php echo $data['gender_err'] ?></span>
+                        <p><?php echo $data['gender'] ?></p>
 
                         <label for="email">Email</label>
                         <p><?php echo $data['email'] ?></p>

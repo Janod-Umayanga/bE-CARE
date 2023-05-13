@@ -40,7 +40,7 @@
             <div class="search-section">
                 <div class="search-bar">
              
-               <form action="<?php echo URLROOT?>/AdminPayments/doctorChannelPaymentsSearch" class="search-form-pharmacy" method="GET">
+               <form action="<?php echo URLROOT?>/AdminPayments/doctorChannelPaymentsSearch" class="search-form-payement" method="GET">
                 <select name="service" id="service">
                     <option value="doctorChannel">Doctor Channel</option>
                     <option value="counsellorChannel">Counsellor Channel</option>
@@ -51,7 +51,7 @@
                     
                 </select>
                 <select name="period" id="period">
-                    <option value="transactionPeriod">Transaction Period</option>
+                    <option value="transactionPeriod">All</option>
                     <option value="today">Today</option>
                     <option value="yesterday">Yesterday</option>
                     <option value="thisMonth">This Month</option>
@@ -71,8 +71,8 @@
           
                <?php if(empty($data['search']) ): ?>
 
-                  <form  action="<?php echo URLROOT?>/AdminPayments/generateReport" method="POST">
-                         <button class="view-more" type="submit"><i class="fa-solid fa-file-invoice">Generate Report</i></button>
+                  <form  action="<?php echo URLROOT?>/AdminPayments/generateReport" class="generateReport" method="POST">
+                         <button class="view-more" type="submit"><i class="fa-solid fa-file-invoice"></i>Generate Report</button>
                   </form>
                   
                <?php endif ?>
