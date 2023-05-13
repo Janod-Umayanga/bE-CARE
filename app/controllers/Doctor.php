@@ -299,11 +299,11 @@ public function profile() {
         
          if($_SESSION['doctor_contact_number']!=  trim($_POST['contact_number'])){
      
-          if($this->userModel->findDoctorByContactNumber($data['contact_number'])){
+          if($this->doctorModel->findDoctorByContactNumber($data['contact_number'])){
             $data['contact_number_err']='Contact Number is already used';
   
           } 
-          else if($this->userModel->findReqDoctorByContactNumber($data['contact_number'])){
+          else if($this->doctorModel->findReqDoctorByContactNumber($data['contact_number'])){
             $data['contact_number_err']='Contact Number is already used';
   
           }
@@ -315,11 +315,11 @@ public function profile() {
         if($_SESSION['doctor_account_number']!=trim(trim($_POST['account_number']))){
        
     
-          if($this->userModel->findDoctorByAccountNumber($data['account_number'])){
+          if($this->doctorModel->findDoctorByAccountNumber($data['account_number'])){
             $data['account_number_err']='Account Number is already used';
   
           } 
-          else if($this->userModel->findReqDoctorByAccountNumber($data['account_number'])){
+          else if($this->doctorModel->findReqDoctorByAccountNumber($data['account_number'])){
             $data['account_number_err']='Account Number is already used';
   
           }
@@ -466,7 +466,7 @@ public function profile() {
            else{
             $data['retype_new_password_err']='something wrong';
             $this->view('doctor/v_changePassword',$data);
-           }   
+           } 
         }else{
           $this->view('doctor/v_changePassword',$data);
         } 

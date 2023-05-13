@@ -216,9 +216,9 @@
                 $data = [
                     'fname' => trim($_POST['fname']),
                     'lname' => trim($_POST['lname']),
-                    'nic' => trim($_POST['nic']),
+                    'nic' => $loggedPatient->nic,
                     'cnumber' => trim($_POST['cnumber']),
-                    'gender' => trim($_POST['gender']),
+                    'gender' => $loggedPatient->gender,
                     'email' => $loggedPatient->email,
                     'rdate' => $loggedPatient->registered_date,
 
