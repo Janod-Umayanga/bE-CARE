@@ -20,7 +20,7 @@
     <section class="table-section-NutritionistSession theme">
         <div class="table-container theme">
             <div class="table-topic-main">
-                <h1>Sessions To be Done</h1>
+                <h1>Upcoming Sessions</h1>
             </div>
             <div class="search-section">
                 <div class="search-bar">
