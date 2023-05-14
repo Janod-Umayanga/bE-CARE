@@ -385,7 +385,7 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
     'pharmacist_note_err'=>'',
   ];
   
-
+  
   //validate Pharmacist Note
   if (empty($data['pharmacist_note'])) {
     $data['pharmacist_note_err'] = 'Please enter Note';
@@ -396,18 +396,19 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
 
   if(empty($data['pharmacist_note_err']))
   {
-    if($this->pharmacistModel->rejectOrderDetails($_SESSION['pharmacist_id'], $data))
+    if($this->pharmacistModel->rejectOrderDetails($_SESSION['pharmacist_id']))
     { 
       $patientDetails = $this->pharmacistModel->getPatientDetails($more->patient_id);
       sendMail( $patientDetails->email, $patientDetails->first_name,'', 9,'');
       $this->view('Pharmacist/v_PharmacistDashBoard', $data);  
     }
+  } 
   else{
     $this->view('Pharmacist/v_PharmacistRejectOrder', $data);
 
    }
 
-} }   
+}   
 else 
 {   
   redirect('Login/login');
