@@ -649,7 +649,7 @@
               <h1>Be Care notification</h1>
               <h2>Patient paid for medicine order</h2>
               <p>Dear {$name},</p>
-              <p>Patient paid for the medicine order and now you can preceed with deliver. Click below for details</p>
+              <p>{$other['patient_title']}. {$other['patient_name']} paid for the medicine order and now you can preceed with deliver. Click below for details</p>
               <p><a href='http://localhost/be-care/Pages' style='color:white' class='btn' >Order Details</a></p>
               <p>Thank you,</p>
               <p>The Be Care Team</p>
@@ -1147,7 +1147,157 @@ else if($bodyFlag == 14){
                 </html>
                                         
                 ";
-                  }
+                  } else if($bodyFlag == 15){
+                    $mail->Subject ="Be-Care Diet Plans";
+                    $email_template = "
+                      <!DOCTYPE html>
+                      <html>
+                        <head>
+                          <title>Appointment Created</title>
+                          <style>
+                            /* CSS styles */
+                            body {
+                              font-family: Arial, sans-serif;
+                              margin: 0;
+                              padding: 0;
+                              background-color: #f4f4f4;
+                              color: #333;
+                            }
+                            .container {
+                              max-width: 600px;
+                              margin: 0 auto;
+                              padding: 20px;
+                              background-color: #ffffff;
+                              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                            }
+                  
+                            h1 {
+                              font-size: 28px;
+                              font-weight: bold;
+                              margin: 0;
+                              margin-bottom: 20px;
+                              color: #333333;
+                            }
+                  
+                            p {
+                                  font-size: 16px;
+                                  line-height: 24px;
+                                  margin: 0;
+                                  margin-bottom: 20px;
+                                  color: #333333;
+                            }
+                  
+                            .btn {
+                              display: inline-block;
+                              padding: 10px 20px;
+                              background-color: #007bff;
+                              color: #ffffff;
+                              text-decoration: none;
+                              border-radius: 4px;
+                              font-size: 16px;
+                              font-weight: bold;
+                            }
+                            .btn:hover {
+                              background-color: #0069d9;
+                            }
+                          </style>
+                        </head>
+                        <body>
+                          <div class='container'>
+                            <h1>You have received a diet plan request!</h1>
+                            <p>Dear {$name},</p>
+                            <p>you have received a diet plan request from {$other['patient_title']}. {$other['patient_name']}.</p>
+                            <p>You can visit Be Care website to see more details by clicking the button below:</p>
+                            <p>
+                              <a href='http://localhost/be-care/pages' style='color:white' class='btn'>BeCare Diet Plans</a>
+                            </p>
+                            <p>Use your username and password to login.</p>
+                            <p>If you have any questions or concerns, please do not hesitate to contact us.</p>
+                            <p>Thank you for choosing BeCare!</p>
+                            <p>Best regards,</p>
+                            <p>The BeCare Team</p>
+                  
+                          </div>
+                        </body>
+                      </html>
+                                              
+                      ";
+                        } else if($bodyFlag == 16){
+                          $mail->Subject ="Be-Care Medicine Order";
+                          $email_template = "
+                            <!DOCTYPE html>
+                            <html>
+                              <head>
+                                <title>Appointment Created</title>
+                                <style>
+                                  /* CSS styles */
+                                  body {
+                                    font-family: Arial, sans-serif;
+                                    margin: 0;
+                                    padding: 0;
+                                    background-color: #f4f4f4;
+                                    color: #333;
+                                  }
+                                  .container {
+                                    max-width: 600px;
+                                    margin: 0 auto;
+                                    padding: 20px;
+                                    background-color: #ffffff;
+                                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                                  }
+                        
+                                  h1 {
+                                    font-size: 28px;
+                                    font-weight: bold;
+                                    margin: 0;
+                                    margin-bottom: 20px;
+                                    color: #333333;
+                                  }
+                        
+                                  p {
+                                        font-size: 16px;
+                                        line-height: 24px;
+                                        margin: 0;
+                                        margin-bottom: 20px;
+                                        color: #333333;
+                                  }
+                        
+                                  .btn {
+                                    display: inline-block;
+                                    padding: 10px 20px;
+                                    background-color: #007bff;
+                                    color: #ffffff;
+                                    text-decoration: none;
+                                    border-radius: 4px;
+                                    font-size: 16px;
+                                    font-weight: bold;
+                                  }
+                                  .btn:hover {
+                                    background-color: #0069d9;
+                                  }
+                                </style>
+                              </head>
+                              <body>
+                                <div class='container'>
+                                  <h1>You have received a diet plan request!</h1>
+                                  <p>Dear {$name},</p>
+                                  <p>you have received a medicine order request from {$other['patient_title']}. {$other['patient_name']}.</p>
+                                  <p>You can visit Be Care website to see more details by clicking the button below:</p>
+                                  <p>
+                                    <a href='http://localhost/be-care/pages' style='color:white' class='btn'>BeCare Medicine Orders</a>
+                                  </p>
+                                  <p>Use your username and password to login.</p>
+                                  <p>If you have any questions or concerns, please do not hesitate to contact us.</p>
+                                  <p>Thank you for choosing BeCare!</p>
+                                  <p>Best regards,</p>
+                                  <p>The BeCare Team</p>
+                        
+                                </div>
+                              </body>
+                            </html>
+                                                    
+                            ";
+                              } 
 
 
 

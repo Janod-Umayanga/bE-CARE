@@ -36,7 +36,7 @@
                         <td><?php echo $data['request']->age ?></td>
                     </tr>
                     <tr>
-                        <td>Gender</td>
+                        <td>Title</td>
                         <td><?php echo $data['request']->gender ?></td>
                     </tr>
                     <tr>

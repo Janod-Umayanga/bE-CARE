@@ -19,7 +19,7 @@
     <section class="pay-section theme">
         <div class="pay-card theme">
             <i class="fa-solid fa-square-xmark" id="pay-icon"></i>
-            <h1 class="main-topic">We're sorry. Your Order has expired! You had to pay before 2 days after order is accpeted.</h1>
+            <h1 class="main-topic">We're sorry. Your Order has expired! You had to pay before a day after the order is accpeted.</h1>
         
             <form action="<?php echo URLROOT ?>/Pages/index">
                 <button>Go to Home</button>
