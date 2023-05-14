@@ -17,7 +17,7 @@
     
     <?php require APPROOT.'/views/inc/components/header1.php'; ?>
 
-    <div class="doctor-main-picture-container">
+    <div class="meditation-instructor-main-picture-container">
         <div class="tittle">
             <i class="fa-solid fa-hands-praying"></i>
             <h1>Find Your Instructor<br>for Meditating!</h1>

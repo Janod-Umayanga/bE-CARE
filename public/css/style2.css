@@ -1135,6 +1135,35 @@ nav.dark {
 
 /* doctor page ends */
 
+/* meditation instructor page starts */
+
+.meditation-instructor-main-picture-container {
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../img/meditationInstructorPictures/meditationInstructors.jpg);
+    background-size: cover;
+    overflow: hidden;
+}
+
+.meditation-instructor-main-picture-container .tittle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 40px;
+    color: var(--hue-white);
+    line-height: 40px;
+    margin-bottom: 50px;
+}
+
+.meditation-instructor-main-picture-container .tittle i {
+    font-size: 4.5rem;
+}
+
 
 /* For meditation instructor reg users page */
 
@@ -1474,6 +1503,7 @@ nav.dark {
 .doctor-main-picture-container-nutritionistSession .tittle i {
     font-size: 4.5rem;
 }
+
 
 
 /* Nutritionist session page ends */
