@@ -396,7 +396,7 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
 
   if(empty($data['pharmacist_note_err']))
   {
-    if($this->pharmacistModel->rejectOrderDetails($_SESSION['pharmacist_id']))
+    if($this->pharmacistModel->rejectOrderDetails($_SESSION['pharmacist_id'],$data))
     { 
       $patientDetails = $this->pharmacistModel->getPatientDetails($more->patient_id);
       sendMail( $patientDetails->email, $patientDetails->first_name,'', 9,'');
@@ -408,6 +408,7 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
 
    }
 
+  
 }   
 else 
 {   
