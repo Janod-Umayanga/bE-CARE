@@ -22,7 +22,7 @@
         <section class="table-section-Nutritionistreq theme">
         <div class="table-container theme">
             <div class="table-topic-main">
-                <h1><center>Diet Plan Requests<br>(Make sure to send the Diet Plan within 2 days after it is requested)</center></h1>
+                <h1><center>Diet Plan Requests<br>(Make sure to send the Diet Plan within 3 days after it is requested)</center></h1>
             </div>
 
             <div class="table">

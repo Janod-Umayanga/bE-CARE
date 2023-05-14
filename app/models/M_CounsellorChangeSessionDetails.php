@@ -50,7 +50,7 @@ class M_CounsellorChangeSessionDetails{
 
    { 
          $current_date= date("Y-m-d");
-         $this->db->query("SELECT * FROM session WHERE counsellor_id=:id AND date>=:current_date AND  session_id NOT IN (SELECT session_id from session_register) AND CONCAT(title,date,address, fee) LIKE '%$search%'");
+         $this->db->query("SELECT * FROM session WHERE counsellor_id=:id AND date>=:current_date AND  session_id NOT IN (SELECT session_id from session_register) AND CONCAT(title,date,address, registration_fee) LIKE '%$search%'");
          $this->db->bind(':id',$id);
          $this->db->bind(':current_date',$current_date);
         

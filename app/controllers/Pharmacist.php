@@ -385,7 +385,7 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
     'pharmacist_note_err'=>'',
   ];
   
-
+  
   //validate Pharmacist Note
   if (empty($data['pharmacist_note'])) {
     $data['pharmacist_note_err'] = 'Please enter Note';
@@ -396,18 +396,20 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
 
   if(empty($data['pharmacist_note_err']))
   {
-    if($this->pharmacistModel->rejectOrderDetails($_SESSION['pharmacist_id'], $data))
+    if($this->pharmacistModel->rejectOrderDetails($_SESSION['pharmacist_id'],$data))
     { 
       $patientDetails = $this->pharmacistModel->getPatientDetails($more->patient_id);
       sendMail( $patientDetails->email, $patientDetails->first_name,'', 9,'');
       $this->view('Pharmacist/v_PharmacistDashBoard', $data);  
     }
+  } 
   else{
     $this->view('Pharmacist/v_PharmacistRejectOrder', $data);
 
    }
 
-} }   
+  
+}   
 else 
 {   
   redirect('Login/login');
@@ -482,7 +484,7 @@ public function profile(){
 
   if(isset($_SESSION['pharmacist_id'])){
    
-    $loggedPharmacist = $this->pharmacistModel->getPharmacistById($_SESSION['pharmacist_id']);
+    $loggedPharmacist = $this->pharmacistModel-> getPharmacistById($_SESSION['pharmacist_id']);
     $data=[
                   
     'first_name'=> $loggedPharmacist->first_name,
@@ -528,6 +530,8 @@ public function editProfile($userId){
  
   if($_SERVER['REQUEST_METHOD']=='POST'){
 
+       $user = $this->pharmacistModel-> getPharmacistById($_SESSION['pharmacist_id']);
+       
        $_POST=filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
        $data=[
@@ -542,9 +546,9 @@ public function editProfile($userId){
          'account_holder_name'=>trim($_POST['account_holder_name']),
          'branch'=>trim($_POST['branch']),
          'account_number'=>trim($_POST['account_number']),
-         'gender'=>trim($_POST['gender']),
+         'gender'=>$user->gender,
          'pharmacy_name' => trim($_POST['pharmacy_name']),
-         'city'=>trim($_POST['city']),
+         'city'=>$user->city,
          'address'=>trim($_POST['address']),
          
          'first_name_err'=>'',
@@ -560,8 +564,7 @@ public function editProfile($userId){
          'city_err'=>'',
          'address_err'=>'',
          'pharmacy_name_err'=>''
-         
-        
+               
       ];
 
      
@@ -644,9 +647,7 @@ public function editProfile($userId){
      }else if(validateAddress($data['address'])!="true"){
       $data['address_err']=validateAddress($data['address']);
      }
-
-
-      
+     
     if(empty($data['slmc_reg_number'])){
           $data['slmc_reg_number_err']='slmc registration number cannot be empty';
     }
@@ -676,9 +677,6 @@ public function editProfile($userId){
 
 
 
-
-      
-
      if(empty($data['first_name_err']) && empty($data['last_name_err'])&& empty($data['nic_err'])&& 
      empty($data['contact_number_err'])&& empty($data['gender_err']) &&  
      empty($data['bank_name_err'])&& empty($data['account_holder_name_err'])&& empty($data['branch_err'])&& 
@@ -697,7 +695,7 @@ public function editProfile($userId){
 
 
    }else{
-      $user= $this->pharmacistModel->getPharmaciststById($userId);
+      $user= $this->pharmacistModel-> getPharmacistById($userId);
 
       
      $data=[

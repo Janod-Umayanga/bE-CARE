@@ -34,7 +34,7 @@
                         <label for="pharmacist_note">Note</label>
                         <textarea name="pharmacist_note" id="pharmacist_note" rows="6" cols="6" value="<?php echo $data['pharmacist_note'] ?>"
                         placeholder="The requested medicines not available in our inventory.Sorry for that."></textarea>
-                        <span class="form-invalid"><?php echo $data['pharmacist_note'] ?></span>
+                        <span class="form-invalid"><?php echo $data['pharmacist_note_err'] ?></span>
 
                         <button type="submit" name="submit">Reject Order</button>
                   

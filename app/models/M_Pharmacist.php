@@ -21,14 +21,14 @@
             return $this->db->resultSet();
         }
 
-
         // Get pharmacist by id
-        public function getPharmacistbyId($pharmacist_id) {
+        public function  getPharmacistById($pharmacist_id) {
             $this->db->query("SELECT * FROM pharmacist WHERE pharmacist_id = :pharmacist_id");
             $this->db->bind(':pharmacist_id', $pharmacist_id);
             
             return $this->db->single();
         }
+       
 
         // find pharmacist by Id
         public function findPharmacistByEmail($email) {
@@ -76,8 +76,8 @@
             }
         }
 
-        // get all orders details of Pharmacist // ??????
-       public function getAllOrderDetails($pharmacist_id){
+        // get all orders details of Pharmacist 
+        public function getAllOrderDetails($pharmacist_id){
             $this->db->query('SELECT * FROM  WHERE pharmacist_id= :pharmacist_id ');
             $this->db->bind(':pharmacist_id',$pharmacist_id);  
     
@@ -90,7 +90,7 @@
             }
         }
 
-         // get all orders details of Pharmacist ?????????????????
+         // get all orders details of Pharmacist 
          public function getAllOrderDetailsOfPharmacist($pharmacist_id){
             $this->db->query('SELECT * FROM order_request  
             WHERE pharmacist_id= :pharmacist_id AND status = :status');
@@ -107,11 +107,10 @@
             return $this->db->resultSet();
         }
 
-        // get view more details about rquested orders ?????????????????
+        // get view more details about rquested orders 
         public function getAllOrderDetailsMore($orderID){ 
             $this->db->query('SELECT * FROM order_request 
-            WHERE  order_request_id = :order_request_id');
-           // $this->db->bind(':pharmacist_id',$pharmacist_id); 
+            WHERE  order_request_id = :order_request_id'); 
             $this->db->bind(':order_request_id',$orderID);
             
             return $this->db->single();
@@ -162,20 +161,6 @@
           return $row;                 
         } 
 
-       /*  // get number of rejected orders of pharmacist
-         public function pharmacistPaidOrdersCount($pharmacist_id)
-         {
-           $this->db->query('SELECT COUNT(order_id) 
-           AS paid_orders_count FROM accept_order 
-           WHERE paid_amount > 0 
-           AND pharmacist_id=:pharmacist_id ');
-           $this->db->bind(':pharmacist_id', $pharmacist_id); 
-                         
-           $row=$this->db->single();
-           return $row;              
-           
-         } */
-
 
         // get all pending order details of Pharmacist
         public function getAllPendingOrderDetailsOfPharmacist($pharmacist_id){
@@ -209,18 +194,7 @@
             
             return $this->db->resultSet();
         }
-       
-        /*// get all paid details of Pharmacist
-        public function  getAllPaidOrderDetailsOfPharmacist($pharmacist_id){
-            $this->db->query('SELECT * FROM accept_order  
-            WHERE pharmacist_id= :pharmacist_id AND paid_amount > 0 ');
-            $this->db->bind(':pharmacist_id',$pharmacist_id);
-            
-            return $this->db->resultSet();
-        }*/
 
-
-       
 
         // view more details of pending orders
         public function getAllViewPendingOrderDetailsMore($orderID){
@@ -257,19 +231,18 @@
         
 
 
-        // View selling history
+        // get selling history
         public function getAllSellingHistory($pharmacist_id){
 
             $this->db->query('SELECT * FROM accept_order
             WHERE pharmacist_id = :pharmacist_id AND paid_amount > 0' );
             $this->db->bind(':pharmacist_id',$pharmacist_id);  
-
-    
             
             return $this->db->resultSet();
 
         }
 
+        // get selling History More details
         public function getAllSellingHistoryMore($order_Id){
 
             $this->db->query('SELECT * FROM accept_order
@@ -277,22 +250,21 @@
             $this->db->bind(':order_id', $order_Id);
     
             return $this->db->single();
-           // return $this->db->resultSet();
-
+        
         }
 
+        // update user profile details
         public function editUser($data) {
             $this->db->query('UPDATE pharmacist SET first_name = :first_name, last_name = :last_name,
-            contact_number = :contact_number, gender = :gender,
-            pharmacy_name = :pharmacy_name,city= :city, address=:address,
+            contact_number = :contact_number, 
+            pharmacy_name = :pharmacy_name, address=:address,
             bank_name=:bank_name,account_holder_name=:account_holder_name,branch=:branch,
             account_number=:account_number WHERE pharmacist_id = :pharmacist_id');
             $this->db->bind(':first_name', $data['first_name']);
             $this->db->bind(':last_name', $data['last_name']);          
-        //    $this->db->bind(':nic', $data['nic']);
             $this->db->bind(':contact_number', $data['contact_number']);
-            $this->db->bind(':gender', $data['gender']);
-            $this->db->bind(':city', $data['city']);
+        //    $this->db->bind(':gender', $data['gender']);
+        //    $this->db->bind(':city', $data['city']);
             $this->db->bind(':pharmacy_name', $data['pharmacy_name']);
             $this->db->bind(':address', $data['address']);
             $this->db->bind(':bank_name', $data['bank_name']);
@@ -310,8 +282,7 @@
             }
         }
 
-            // Find  Nutritionist by Contact Number
-    
+       // Find  Nutritionist by Contact Number
       public function findPharmacistByContactNumber($contact_number)
       {
         $this->db->query('SELECT * FROM pharmacist WHERE contact_number= :contact_number');
@@ -324,7 +295,7 @@
         }else{
               return false;
         }
-    }
+       }
 
        // Find Requested Nutritionist by Contact Number
     
@@ -345,7 +316,7 @@
 
          // Find  Nutritionist by Account Number
             
-         public function findPharmacistByAccountNumber($account_number)
+        public function findPharmacistByAccountNumber($account_number)
          {
          $this->db->query('SELECT * FROM pharmacist WHERE account_number= :account_number');
          $this->db->bind(':account_number',$account_number);  
@@ -361,7 +332,7 @@
 
          // Find Requested Nutritionist by Account Number
 
-         public function findReqPharmacistByAccountNumber($account_number)
+        public function findReqPharmacistByAccountNumber($account_number)
          {
                $this->db->query('SELECT * FROM requested_pharmacist WHERE account_number= :account_number');
                $this->db->bind(':account_number',$account_number);  
@@ -376,8 +347,7 @@
          }
         
 
-
-
+        // send accepted order details
         public function sendAcceptOrderDetails($pharmacist_id,$data){
               $this->db->query('INSERT INTO accept_order (name,contact_number,delivery_address,
               prescription,ordered_date_and_time,pharmacist_note,charge,
@@ -396,8 +366,7 @@
               $this->db->bind(':pharmacist_id',$data['more']->pharmacist_id);
               $this->db->bind(':patient_id',$data['more']->patient_id);
               $this->db->bind(':order_request_id',$data['more']->order_request_id);
-              $this->db->bind(':paid_amount',0);
-         //    
+              $this->db->bind(':paid_amount',0);   
   
               if($this->db->execute()) {
                   return true;
@@ -409,13 +378,12 @@
   
          }
        
-
-         public function acceptedOrderDetails($data)
+         // after accept order by pharmacist then update order request status as "a"
+        public function acceptedOrderDetails($data)
          {
             $this->db->query('UPDATE order_request
             SET status= "a" WHERE order_request_id = :order_request_id');
 
-          //  $this->db->bind(':status', "a");
             $this->db->bind(':order_request_id',$data['more']->order_request_id);
 
             if($this->db->execute()) {
@@ -426,7 +394,8 @@
             }
           }
     
-          public function rejectOrderDetails($pharmacist_id,$data){ 
+          // after pharmacist reject any order then update order request table status as "r"
+        public function rejectOrderDetails($pharmacist_id,$data){ 
           
           $this->db->query('UPDATE order_request 
           SET status = "r" WHERE order_request_id = :order_request_id');
@@ -442,25 +411,6 @@
           } 
          }
 
-
-
-         public function sendOrderforCustomer($orderID,$data)
-         {
-            $this->db->query('UPDATE accept_order SET is_send=1
-            AND pharmacist_note=:pharmacist_note where order_request_id=:order_request_id');
-           
-           
-            $this->db->bind(':pharmacist_note',$data['pharmacist_note']);
-            $this->db->bind(':order_request_id',$orderID);
-
-            if($this->db->execute()) {
-                return true;
-            }
-            else {
-                return false;
-            }
-
-         }
     
          // change password
          public function updatePW($data, $pharmacist_id) {
@@ -520,7 +470,7 @@
     
           }
 
-          public function setToken($token,$email)
+        public function setToken($token,$email)
           {
               $this->db->query('UPDATE pharmacist set verify_token=:token WHERE email = :email');
               $this->db->bind(':token',$token);
@@ -533,7 +483,7 @@
               }    
           } 
       
-          public function checkToken($email) {
+        public function checkToken($email) {
             
             $this->db->query("SELECT verify_token FROM pharmacist WHERE email = :email");
             $this->db->bind(':email',$email);
