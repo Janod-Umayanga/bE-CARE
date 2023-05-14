@@ -74,7 +74,7 @@
 
 
                     <label for="slmc_reg_number">SLMC Reg No</label>
-                        <input type="text" disabled='true' id="slmcregNo" name="slmc_reg_number" value="<?php echo $data['slmc_reg_number'] ?>">
+                        <input type="text"  id="slmcregNo" name="slmc_reg_number" value="<?php echo $data['slmc_reg_number'] ?>">
 
                         
                                     
