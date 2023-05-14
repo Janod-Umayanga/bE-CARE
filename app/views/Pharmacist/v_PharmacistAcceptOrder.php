@@ -20,7 +20,7 @@
                 <div>
                     <h1><i class="fa-solid fa-pills"></i> Be-Care</h1>
                     <h2>Fill these details to Accept Order</h2>
-                    <p>click the "Accept" button to accept order and Add details of order charge in given Note section.</p>
+                    <p>Add details about delivery charge and order charge in given Note section.Add total charge in given charge filed.Then Click the "Accept" button to accept order.</p>
                 </div>
             </div>
         </div>
@@ -32,11 +32,11 @@
 
                         <label for="pharmacist_note">Note</label>
                         <textarea name="pharmacist_note" id="pharmacist_note" rows="8" cols="10" value="<?php echo $data['pharmacist_note'] ?>"
-                        placeholder="These medicines are Available.You can pay and confirm your order.                (1)Name of medicine - charge          (2)Name of medicine - charge           (3)Name of medicine - charge"></textarea>
+                        placeholder="These medicines are Available.You can pay and confirm your order.                (1)Name of medicine - charge          (2)Name of medicine - charge           (3)Name of medicine - charge                   Delivery charge - charge"></textarea>
                         <span class="form-invalid"><?php echo $data['pharmacist_note_err'] ?></span>
  
                         <label for="charge">Charge(Rs.)</label>
-                        <input name="charge" id="charge"  value="<?php echo $data['charge'] ?>" >
+                        <input name="charge" id="charge" placeholder="Total Charge" value="<?php echo $data['charge'] ?>" >
                         <span class="form-invalid"><?php echo $data['charge_err'] ?></span>
              
                         <button type="submit">Accept </button>

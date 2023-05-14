@@ -21,14 +21,14 @@
             return $this->db->resultSet();
         }
 
-
         // Get pharmacist by id
-        public function getPharmacistbyId($pharmacist_id) {
+        public function  getPharmacistById($pharmacist_id) {
             $this->db->query("SELECT * FROM pharmacist WHERE pharmacist_id = :pharmacist_id");
             $this->db->bind(':pharmacist_id', $pharmacist_id);
             
             return $this->db->single();
         }
+       
 
         // find pharmacist by Id
         public function findPharmacistByEmail($email) {
@@ -256,15 +256,15 @@
         // update user profile details
         public function editUser($data) {
             $this->db->query('UPDATE pharmacist SET first_name = :first_name, last_name = :last_name,
-            contact_number = :contact_number, gender = :gender,
-            pharmacy_name = :pharmacy_name,city= :city, address=:address,
+            contact_number = :contact_number, 
+            pharmacy_name = :pharmacy_name, address=:address,
             bank_name=:bank_name,account_holder_name=:account_holder_name,branch=:branch,
             account_number=:account_number WHERE pharmacist_id = :pharmacist_id');
             $this->db->bind(':first_name', $data['first_name']);
             $this->db->bind(':last_name', $data['last_name']);          
             $this->db->bind(':contact_number', $data['contact_number']);
-            $this->db->bind(':gender', $data['gender']);
-            $this->db->bind(':city', $data['city']);
+        //    $this->db->bind(':gender', $data['gender']);
+        //    $this->db->bind(':city', $data['city']);
             $this->db->bind(':pharmacy_name', $data['pharmacy_name']);
             $this->db->bind(':address', $data['address']);
             $this->db->bind(':bank_name', $data['bank_name']);

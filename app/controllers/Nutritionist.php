@@ -6,7 +6,6 @@ class Nutritionist extends Controller
   private $nutritionistViewRequestsModel;
   private $nutritionistViewRequestsMoreModel;
   private $nutritionistIssueDietPlansModel;
-//  private $requestedDietPlanModel;
   private $nutritionistremoverequestModel;
   private $userModel;
 
