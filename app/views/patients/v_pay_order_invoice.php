@@ -47,6 +47,7 @@
                 <input type="hidden" name="fee" value="<?php echo $data['fee'] ?>">
                 <input type="hidden" name="order_id" value="<?php echo $data['order_id'] ?>">
                 <input type="hidden" name="email" value="<?php echo $data['email'] ?>">
+                <input type="hidden" name="pharmacist_id" value="<?php echo $data['pharmacist_id'] ?>">
                 <button>Pay here</button>
             </form>
         </div>

@@ -385,7 +385,7 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
     'pharmacist_note_err'=>'',
   ];
   
-
+  
   //validate Pharmacist Note
   if (empty($data['pharmacist_note'])) {
     $data['pharmacist_note_err'] = 'Please enter Note';
@@ -396,18 +396,20 @@ if($_SERVER["REQUEST_METHOD"] == 'POST')
 
   if(empty($data['pharmacist_note_err']))
   {
-    if($this->pharmacistSendAcceptOrderDetailsModel->rejectOrderDetails($_SESSION['pharmacist_id'], $data))
+    if($this->pharmacistModel->rejectOrderDetails($_SESSION['pharmacist_id'],$data))
     { 
       $patientDetails = $this->pharmacistModel->getPatientDetails($more->patient_id);
       sendMail( $patientDetails->email, $patientDetails->first_name,'', 9,'');
       $this->view('Pharmacist/v_PharmacistDashBoard', $data);  
     }
+  } 
   else{
     $this->view('Pharmacist/v_PharmacistRejectOrder', $data);
 
    }
 
-} }   
+  
+}   
 else 
 {   
   redirect('Login/login');
@@ -420,7 +422,7 @@ public function sendOrder(){
   if (isset($_SESSION['pharmacist_id'])) {
       if (isset($_POST['submit'])) {
         $orderID = $_POST['order_request_id'];     
-        $more = $this->pharmacistViewOrdersModel->getAllOrderDetailsMore($orderID);
+        $more = $this->pharmacistModel->getAllOrderDetailsMore($orderID);
   
         $data = [
           'more' => $more,
@@ -441,7 +443,7 @@ public function sendOrderSubmit(){
   if (isset($_SESSION['pharmacist_id'])) {
       if (isset($_POST['submit'])) {
         $orderID = $_POST['order_request_id'];     
-        $more = $this->pharmacistViewOrdersModel->getAllOrderDetailsMore($orderID);
+        $more = $this->pharmacistModel->getAllOrderDetailsMore($orderID);
   
         $data = [
           'more' => $more,
@@ -455,22 +457,15 @@ public function sendOrderSubmit(){
           $data['pharmacist_note_err'] = 'Please enter Note';
         }
       
-        
-      /*      else if(validatePharmacistNote($data['pharmacist_note'])!="true"){
-              $data['pharmacist_note_err']=validatePharmacistNote($data['pharmacist_note']);
-             } */
-
         // after validate send order
         if(empty($data['pharmacist_note_err']))
         { 
-          $this->pharmacistSendAcceptOrderDetailsModel->sendOrderforCustomer( $orderID,$data);
+          $this->pharmacistModel->sendOrderforCustomer( $orderID,$data);
           $this->view('Pharmacist/v_PharmacistDashBoard', $data);   
        }
 
        else{
         $this->view('Pharmacist/v_PharmacistSendOrder', $data);
-
-
        }
       
       }

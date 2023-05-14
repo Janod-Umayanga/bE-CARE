@@ -46,7 +46,7 @@
             <form action="<?php echo URLROOT ?>/Payment/payforDietPlanRequest" method="POST">
                 <input type="hidden" name="name" value="<?php echo $data['name'] ?>">
                 <input type="hidden" name="age" value="<?php echo $data['age'] ?>">
-                <input type="hidden" name="gender" value="<?php echo $data['name'] ?>">
+                <input type="hidden" name="gender" value="<?php echo $data['gender'] ?>">
                 <input type="hidden" name="cnumber" value="<?php echo $data['cnumber'] ?>">
                 <input type="hidden" name="weight" value="<?php echo $data['weight'] ?>">
                 <input type="hidden" name="height" value="<?php echo $data['height'] ?>">

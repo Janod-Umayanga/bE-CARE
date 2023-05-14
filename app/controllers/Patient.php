@@ -1320,6 +1320,20 @@
                         // Create order
                         if($this->orderRequestModel->createOrderRequest($data, $_SESSION['patient_id'])) {
                             $_SESSION['order_sent'] = true;
+
+                            $pharmacist = $this->pharmacistModel->getPharmacistbyId($pharmacist_id);
+
+                            $other = [
+                                'patient_name' => $_SESSION['patient_name'],
+                                'patient_title' => $_SESSION['patient_title'],
+                            ];
+
+                            $name = $pharmacist->first_name;
+                            $email = $pharmacist->email;
+                            $bodyFlag = 16;
+
+                            // Send email notification to the pharmacist
+                            sendMail($email,$name,"",$bodyFlag,$other);
                             redirect('Pages/index');
                         }
                         else {
@@ -1381,14 +1395,15 @@
         }
 
         // pay for order
-        public function payForOrder($order_id, $fee, $email, $accepted_datetime) {
+        public function payForOrder($order_id, $fee, $email, $accepted_datetime, $pharmacist_id) {
             if(isset($_SESSION['patient_id'])) {
                 
 
                 $data = [
                     'order_id' => $order_id,
                     'fee' => $fee,
-                    'email' => $email
+                    'email' => $email,
+                    'pharmacist_id' => $pharmacist_id,
                 ];
 
                 // get today's date time
@@ -1398,7 +1413,7 @@
                 // check if the accepted date time is less than 48 hours
                 $diff = abs(strtotime($today) - strtotime($accepted_datetime));
                 $hours = floor($diff / (60*60));
-                if($hours > 48) {
+                if($hours > 24) {
                     $this->view('patients/v_pay_order_expired', $data);
                 }
                 else {
